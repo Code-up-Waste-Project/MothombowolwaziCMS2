@@ -14,6 +14,34 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: 'inbound',
+    loadChildren: () => import('./inbound/inbound.module').then( m => m.InboundPageModule)
+  },
+  {
+    path: 'outbound',
+    loadChildren: () => import('./outbound/outbound.module').then( m => m.OutboundPageModule)
+  },
+  {
+    path: 'reclaimer',
+    loadChildren: () => import('./reclaimer/reclaimer.module').then( m => m.ReclaimerPageModule)
+  },
+  {
+    path: 'manageusers',
+    loadChildren: () => import('./manageusers/manageusers.module').then( m => m.ManageusersPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 

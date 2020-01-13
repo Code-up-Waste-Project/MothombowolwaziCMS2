@@ -1,5 +1,7 @@
 {
   "name": "Mothimbowolwazi",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
