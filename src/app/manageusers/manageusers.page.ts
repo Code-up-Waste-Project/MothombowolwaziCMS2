@@ -13,6 +13,7 @@ import { AuthService } from '../../app/user/auth.service';
 export class ManageusersPage implements OnInit {
 
   public signupForm: FormGroup;
+  viewuser;
   storage = firebase.storage().ref();
   admin = [];
   Newadmin = [];
@@ -21,7 +22,7 @@ export class ManageusersPage implements OnInit {
   newuserprofile = [];
   db = firebase.firestore();
   profiles;
-
+  newuserprofilezzzzz = [];
   isLabelActive;
 
   public loading: any;
@@ -69,7 +70,7 @@ export class ManageusersPage implements OnInit {
    }
 
   ngOnInit() {
-    this.db.collection('userprofile').onSnapshot(snapshot => {
+    this.db.collection('profiles').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
@@ -85,6 +86,38 @@ export class ManageusersPage implements OnInit {
         console.log("user profile ", this.newuserprofile);
       });
     });
+  }
+  segmentChanged(ev: any, id) {
+    if (ev.detail.value === true) {
+      this.db.collection("profiles").doc(id).update({ActiveAcount: "true"});
+      console.log("true selected");
+    }
+    if (ev.detail.value === false) {
+      this.changeStatusFalse(id);
+      console.log("false selected");
+    }
+    console.log('Segment changed', ev);
+    console.log(id);
+  }
+
+  changeStatusTrue(id) {
+    this.db.collection("profiles").doc(id).update({ActiveAcount: "true"});
+    console.log(this.changeStatusTrue(id));
+  }
+  
+  changeStatusFalse(id) {
+    this.db.collection("profiles").doc(id).update({ActiveAcount: "false"});
+    console.log(this.changeStatusTrue(id));
+  }
+  viewprofile(id) {
+    this.newuserprofilezzzzz = [];
+    this.viewuser = this.db.collection('profiles').doc(id);
+      this.viewuser.get().then((documentSnapshot) => {
+        this.newuserprofilezzzzz = [];
+        // console.log(documentSnapshot.data());
+        this.newuserprofilezzzzz.push(documentSnapshot.data());
+        console.log(this.newuserprofilezzzzz);
+      });
   }
 
   async signupUser(signupForm: FormGroup): Promise<void> {

@@ -15,6 +15,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import * as firebase from 'firebase';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { RegistersPipe } from './registers.pipe';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -32,7 +33,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RegistersPipe],
   entryComponents: [],
   imports: [
     BrowserModule,
