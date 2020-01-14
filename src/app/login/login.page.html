@@ -36,9 +36,8 @@
 </div>
 </div>
 <div style="text-align: center;">
-   <P id="forgot">Forgot Password?</P>
+   <P id="forgot" (click)="  forgetpassword()">Forgot Password?</P>
 </div>
-
 
 <button ion-button   [disabled]="!loginForm.valid"  (click)="loginUser(loginForm)">LOGIN</button><br>
 
