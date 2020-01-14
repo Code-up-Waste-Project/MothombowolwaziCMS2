@@ -214,6 +214,10 @@
 
            </ion-slides>
 
+           <ion-card *ngFor = "let records  of newreclaimer">
+            <p>records: {{records.reName}} {{records.reDate}}</p>
+          </ion-card>
+
            <div class="totals">
             <!-- <h4>Grand-Total  =  R{{ TotalTotal }}</h4> -->
             <button ion-button (click)="checkinputfields()" [disabled]="!RegisterForm.valid"> PRINT RECEIPT</button>
