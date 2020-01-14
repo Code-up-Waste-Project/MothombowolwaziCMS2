@@ -15,6 +15,9 @@ export class InboundPage implements OnInit {
   admin = [];
   Newadmin = [];
 
+  records;
+  recordinbounddisplays = [];
+
   db = firebase.firestore();
 
   GH001;
@@ -89,9 +92,11 @@ export class InboundPage implements OnInit {
       console.log('Newadmins', this.Newadmin);
     });
     this.getMasses();
+    this.recordInboundsdisplay();
    }
 
   ngOnInit() {
+
   }
 
   getMasses() {
@@ -242,7 +247,7 @@ export class InboundPage implements OnInit {
     // storageGH001
     this.storageGH001 = this.GH001storagemass + this.GH001mass;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({GL001: this.storageGH001});
-    // console.log(this.storageGH001);
+    console.log(this.storageGH001);
 
     // storage NFAL01;
     this.storageNFAL01 = this.NFAL01storagemass + this.NFAL01mass;
@@ -301,9 +306,9 @@ export class InboundPage implements OnInit {
   }
 
   recordInbounds() {
-    this.db.collection("inboundRecords").doc("hD3GRe9MMPFB401vA7kS").set({
+    this.db.collection("inbounds").doc("hD3GRe9MMPFB401vA7kS").set({
       time: new Date(),
-      storageGH00: this.storageGH001,
+      storageGH001: this.storageGH001,
       storageNFAL01: this.storageNFAL01,
       storagePAP005: this.storagePAP005,
       storagePAP007: this.storagePAP007,
@@ -316,6 +321,17 @@ export class InboundPage implements OnInit {
       storagePET003: this.storagePET003,
       storagePET005: this.storagePET005,
     });
+  }
+
+  recordInboundsdisplay() {
+    this.recordinbounddisplays = [];
+    this.records = this.db.collection('inbounds').doc();
+    this.records.get().then((documentSnapshot) => {
+        this.recordinbounddisplays = [];
+        // console.log(documentSnapshot.data());
+        this.recordinbounddisplays.push(documentSnapshot.data());
+        console.log(this.recordinbounddisplays);
+      });
   }
 
   async presentAlertupdate() {
@@ -333,6 +349,7 @@ export class InboundPage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
+            this.recordInbounds();
             this.saveDatafirebase();
             this.clearInputs();
             this.route.navigateByUrl('/analytics');
