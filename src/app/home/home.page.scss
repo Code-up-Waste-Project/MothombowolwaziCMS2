@@ -2,3 +2,22 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+.graph {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 100%;
+  width: 100%;
+ border-radius: 5px;
+//  background: url(../../assets/graph.jpg);
+//  background-repeat: no-repeat;
+//  object-fit: cover;
+//  background-position: center;
+//  background-size: cover;
+canvas {
+  //border: 2px solid blue !important;
+  height: 100% !important;
+  width: 100% !important;
+  background: white !important;
+  border-radius: 10px !important;
+}
+}

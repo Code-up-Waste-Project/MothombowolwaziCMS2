@@ -70,6 +70,10 @@ export class ManageusersPage implements OnInit {
    }
 
   ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers() {
     this.db.collection('profiles').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
@@ -79,90 +83,98 @@ export class ManageusersPage implements OnInit {
       // this.profile.position = snapshot.data().position;
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
-      
+
       this.newuserprofile = [];
       snapshot.forEach(item => {
-        this.newuserprofile.push({...{id:item.id},...item.data()});
+        this.newuserprofile.push({...{id: item.id},...item.data()});
         console.log("user profile ", this.newuserprofile);
       });
     });
   }
+
   segmentChanged(ev: any, id) {
-    if (ev.detail.value === true) {
-      this.db.collection("profiles").doc(id).update({ActiveAcount: "true"});
+    if (ev.detail.value === 'true') {
+      this.presentAlertChangeStatusAccountTrue(id);
       console.log("true selected");
     }
-    if (ev.detail.value === false) {
-      this.changeStatusFalse(id);
+    if (ev.detail.value === 'false') {
+      this.presentAlertChangeStatusAccountFalse(id);
       console.log("false selected");
     }
     console.log('Segment changed', ev);
     console.log(id);
   }
 
-  changeStatusTrue(id) {
-    this.db.collection("profiles").doc(id).update({ActiveAcount: "true"});
-    console.log(this.changeStatusTrue(id));
+  changeSegmentTrue(id) {
+    this.db.collection('profiles').doc(id).update({ActiveAcount: 'true'});
+      this.getUsers();
   }
-  
-  changeStatusFalse(id) {
-    this.db.collection("profiles").doc(id).update({ActiveAcount: "false"});
-    console.log(this.changeStatusTrue(id));
+
+  changeSegmentFalse(id) {
+    this.db.collection('profiles').doc(id).update({ActiveAcount: 'false'});
+      this.getUsers();
   }
+
+  async presentAlertChangeStatusAccountTrue(id) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to Activate Account?.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.changeSegmentTrue(id);
+            this.router.navigateByUrl('/manageusers');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertChangeStatusAccountFalse(id) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to de-Activate Account?.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.changeSegmentFalse(id);
+            this.router.navigateByUrl('/manageusers');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   viewprofile(id) {
     this.newuserprofilezzzzz = [];
     this.viewuser = this.db.collection('profiles').doc(id);
-      this.viewuser.get().then((documentSnapshot) => {
+    this.viewuser.get().then((documentSnapshot) => {
         this.newuserprofilezzzzz = [];
         // console.log(documentSnapshot.data());
         this.newuserprofilezzzzz.push(documentSnapshot.data());
         console.log(this.newuserprofilezzzzz);
       });
   }
-
-  async signupUser(signupForm: FormGroup): Promise<void> {
-    this.authService.profile = {...signupForm.value, ...{image: this.profile.image}};
-    console.log(signupForm.value);
-    console.log(this.profile.image);
-    this.db.collection('userprofile').add({
-          name: this.profile.name,
-         surname: this.profile.surname,
-          email: signupForm.value.email,
-          position: this.profile.position,
-          // userUid:firebase.auth().currentUser.uid,
-        //    userid: this.profile.userid,
-           image: this.profile.image,
-           password: signupForm.value.password.toString()
-        })
-        .then(function() {
-          console.log("Document successfully written!");
-        })
-        .catch(function(error) {
-          console.error("Error writing document: ", error);
-        });
-    error => {
-          // this.db.collection('userprofile2').doc(firebase.auth().currentUser.uid).delete();
-          this.newuserprofile = [];
-          // this.db.collection('userprofile2').onSnapshot(snapshot => {
-          //     snapshot.forEach(element => {
-          //       this.newuserprofile.push(element.data());
-          //       console.log("user profile ",this.newuserprofile);
-          //     });
-          //     this.router.navigate(['register']);
-          //   });
-
-          this.loading.dismiss().then(async () => {
-            const alert = await this.alertCtrl.create({
-              message: error.message,
-              buttons: [{ text: 'Ok', role: 'cancel' }]
-            });
-            await alert.present();
-          });
-        };
-
-        this.router.navigate(['register']);
-
-      }
 
       delete(userUid) {
         console.log(userUid);
@@ -180,22 +192,6 @@ export class ManageusersPage implements OnInit {
       //   });
       // });
       }
-
-    changeListener(profile): void {
-      const i = profile.target.files[0];
-      console.log(i);
-      const upload = this.storage.child(i.name).put(i);
-      upload.on('state_changed', snapshot => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('upload is: ', progress , '% done.');
-      }, err => {
-      }, () => {
-        upload.snapshot.ref.getDownloadURL().then(dwnURL => {
-          console.log('File avail at: ', dwnURL);
-          this.profile.image = dwnURL;
-        });
-      });
-    }
 
 
     Logout() {

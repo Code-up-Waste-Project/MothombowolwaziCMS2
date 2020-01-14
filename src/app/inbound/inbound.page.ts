@@ -300,6 +300,24 @@ export class InboundPage implements OnInit {
     // console.log(this.storagePET005);
   }
 
+  recordInbounds() {
+    this.db.collection("inboundRecords").doc("hD3GRe9MMPFB401vA7kS").set({
+      time: new Date(),
+      storageGH00: this.storageGH001,
+      storageNFAL01: this.storageNFAL01,
+      storagePAP005: this.storagePAP005,
+      storagePAP007: this.storagePAP007,
+      storagePAP001: this.storagePAP001,
+      storagePAP003: this.storagePAP003,
+      storageHD001: this.storageHD001,
+      storageLD001: this.storageLD001,
+      storageLD003: this.storageLD003,
+      storagePET001: this.storagePET001,
+      storagePET003: this.storagePET003,
+      storagePET005: this.storagePET005,
+    });
+  }
+
   async presentAlertupdate() {
     const alert = await this.alertController.create({
       header: 'Confirm!',

@@ -11,17 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  
   public signupForm: FormGroup;
   public loading: any;
+
   constructor(
-    public platform : Platform,
+    public platform: Platform,
     public authService: AuthService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public formBuilder: FormBuilder,
     public router: Router
-  ) 
-  {
+  ) {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: [
