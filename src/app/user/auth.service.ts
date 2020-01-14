@@ -28,7 +28,7 @@ export class AuthService {
         console.log('The User UID is', newUserCredential.user.uid);
 
         firebase
-      .firestore().collection('userprofile2').doc(newUserCredential.user.uid).set({...this.profile,...{userUid:newUserCredential.user.uid}});
+      // .firestore().collection('userprofile2').doc(newUserCredential.user.uid).set({...this.profile,...{userUid:newUserCredential.user.uid}});
 
       })
       .catch(error => {

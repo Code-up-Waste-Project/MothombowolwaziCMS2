@@ -58,10 +58,10 @@ export class LoginPage implements OnInit {
         (user) => {
           firebase.auth().onAuthStateChanged(user => {
             if (user.uid) {
-              this.db.collection('admin').where('userid', '==', user.uid).get().then(res => {
+              this.db.collection('profiles').where('userid', '==', user.uid).get().then(res => {
                 if (res.empty) {
                   // this.loading.dismiss();
-                  // this.router.navigate(['profile']);
+                  this.router.navigate(['profile']);
                 } else {
                   // this.loading.dismiss()
                   this.router.navigate(['home']);
@@ -87,7 +87,7 @@ export class LoginPage implements OnInit {
   }
 
   goToRegister() {
-    this.router.navigate(['register']);
+    this.router.navigate(['registers']);
   }
 
 }

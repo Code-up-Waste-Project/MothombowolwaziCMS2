@@ -6,4 +6,62 @@
 
 <ion-content>
 
+  <div class="divitems">
+    <ion-item *ngIf="!profile.image" class="imageitem" lines="none" >
+     <ion-label position="stacked" id="profile_image" color="primary"></ion-label>
+     <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
+   </ion-item>
+<ion-item class="imageitem" lines="none" *ngIf="profile.image"><img  src="{{profile.image}}" height="400px" width="400px" ></ion-item>
+</div>
+
+
+
+  <div class="everything">
+    <div class="TheContent">
+      <div class="profile">
+        <div class="ProPic">
+          <img src="../../assets/admin.jpg">
+        </div>
+        <div class="Name">
+          <h1> {{profile.name}} {{profile.surname}}</h1>
+        </div>
+      </div>
+      <div class="InfoItems">
+        <div>
+        <div class="theITEMS">
+          <div class="labels"><img class="Iconnn" src="../../assets/icon/user (3).svg" alt=""></div>
+          <div class="theplaceholder">
+          <ion-input placeholder="Name" [(ngModel)]="profile.name"></ion-input>
+        </div>
+        </div><br>
+        <div class="theITEMS">
+          <div class="labels"><img class="Iconnn" src="../../assets/icon/user (3).svg" alt=""></div>
+          <div class="theplaceholder">
+          <ion-input placeholder="Surname"  [(ngModel)]="profile.surname"></ion-input>
+        </div>
+       
+      </div><br>
+      <div class="theITEMS">
+        <div class="labels"><img class="Iconnn" src="../../assets/icon/user (3).svg" alt=""></div>
+        <div class="theplaceholder">
+        <ion-input placeholder="Position" [(ngModel)]="profile.position"></ion-input>
+      </div>
+      </div><br>
+       
+        <div class="theITEMS">
+          <div class="labels"><img class="Iconnn" src="../../assets/icon/email.svg" alt=""></div>
+          <div class="placeholder">
+          <ion-input placeholder="Email Address" [(ngModel)]="profile.email"></ion-input>
+        </div>
+      </div><br>
+      
+        <div class="theButton">
+        <ion-button color="clear" (click)="users()" type="submit">submit</ion-button>
+      </div>
+​
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
+
