@@ -32,7 +32,7 @@
                 <p>{{myprofiles.position}}</p>
               </ion-label>
               <!-- <button (click)="show()">view full details </button> -->
-              <!-- <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon> -->
+              <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon>
             </ion-item>
           </ion-card>
       </div>
@@ -57,75 +57,12 @@
                 </ion-segment-button>
               </ion-segment>
             </ion-label>
-            <!-- <button (click)="show()">view full details </button> -->
-            <!-- <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon> -->
+            <!-- <button (click)="show()">view full details </button>  -->
+             <!-- <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon> -->
           </ion-item>
         </div>
-        
-     
-    <!-- <div  class="internal" [formGroup]="signupForm">
-      <input type="file" id="sthombe" accept="image/*" (change)="changeListener($event)">
-      <div class="myHead">
-          <img src="../../assets/wavy.png" id="wavey-image-bg" alt="">
-          <label for="sthombe" id="user-upload">
-        <div class="circle-thingy">
-          <ion-icon name="camera" id="sthombe-upload"></ion-icon>
-          <img src="../../assets/icon/userimage.png" alt="">
-        </div>
-      </label>
-      </div>
-      <div class="theInputs">
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-person" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Full Names" (ionBlur)="toggleIcon($event)" (ionFocus)="toggleIcon($event)" formControlName="name" type="text" 
-            [class.invalid]="!signupForm.controls['name'].valid && signupForm.controls['name'].touched" [(ngModel)]="profile.name">
-          </div>
-        </div>
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-briefcase" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Position" (ionBlur)="toggleIcon($event)" (ionFocus)="toggleIcon($event)" formControlName="position" type="text" 
-            [class.invalid]="!signupForm.controls['position'].valid && signupForm.controls['position'].touched" [(ngModel)]="profile.position">
-          </div>
-        </div>
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-mail" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Email Address" (ionBlur)="toggleIcon($event)" (ionFocus)="toggleIcon($event)" formControlName="email"  type="email" 
-            [class.invalid]="!signupForm.controls['email'].valid && signupForm.controls['email'].touched" [(ngModel)]="profile.email">
-          </div>
-        </div>
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-lock" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Password" (ionBlur)="toggleIcon($event)" (ionFocus)="toggleIcon($event)" formControlName="password" type="password" 
-            [class.invalid]="!signupForm.controls['password'].valid && signupForm.controls['password'].touched" [(ngModel)]="profile.password">
-          </div>
-        </div>
-        <div class="user-input-button">
-          <button style="border-radius: 5px;width: 50%;" id="user-button" (click)="signupUser(signupForm)">REGISTER MEMBER</button>
-          
-
-          <button style="border-radius: 5px;width: 50%;" id="user-button" (click)="createUser()">Cancel</button>
-        </div>
-      </div>
-
-    </div> -->
-
-
 
     </div>
-
-   
 
   </div>
 </ion-content>

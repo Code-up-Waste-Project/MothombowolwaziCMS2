@@ -215,7 +215,7 @@
            </ion-slides>
 
            <ion-card *ngFor = "let records  of newreclaimer">
-            <p>records: {{records.reName}} {{records.reDate}}</p>
+            <p>records: {{records.reName}} {{records.reDate | date:'dd/MM/yyyy' }}</p>
           </ion-card>
 
            <div class="totals">

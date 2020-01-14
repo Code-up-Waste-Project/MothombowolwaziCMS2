@@ -74,7 +74,7 @@ export class ManageusersPage implements OnInit {
   }
 
   getUsers() {
-    this.db.collection('profiles').onSnapshot(snapshot => {
+    this.db.collection('admin').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
@@ -106,12 +106,12 @@ export class ManageusersPage implements OnInit {
   }
 
   changeSegmentTrue(id) {
-    this.db.collection('profiles').doc(id).update({ActiveAcount: 'true'});
+    this.db.collection('admin').doc(id).update({ActiveAcount: 'true'});
       this.getUsers();
   }
 
   changeSegmentFalse(id) {
-    this.db.collection('profiles').doc(id).update({ActiveAcount: 'false'});
+    this.db.collection('admin').doc(id).update({ActiveAcount: 'false'});
       this.getUsers();
   }
 
@@ -167,7 +167,7 @@ export class ManageusersPage implements OnInit {
 
   viewprofile(id) {
     this.newuserprofilezzzzz = [];
-    this.viewuser = this.db.collection('profiles').doc(id);
+    this.viewuser = this.db.collection('admin').doc(id);
     this.viewuser.get().then((documentSnapshot) => {
         this.newuserprofilezzzzz = [];
         // console.log(documentSnapshot.data());
@@ -180,7 +180,7 @@ export class ManageusersPage implements OnInit {
         console.log(userUid);
         // let email = x.email;
         // this.Booking = [];
-        this.db.collection("userprofile").doc(userUid.id).delete().then(function() {
+        this.db.collection("admin").doc(userUid.id).delete().then(function() {
           console.log("Document successfully deleted!");
       }).catch(function(error) {
           console.error("Error removing document: ", error);
