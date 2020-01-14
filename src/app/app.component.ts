@@ -80,12 +80,7 @@ this.appPages.push({
     icon: 'home2',
     admin:"cool"
   },
-  {
-    title: 'Edit Prices',
-    url: '/profile',
-    icon: 'edit',
-    admin:"cool"
-  }, {
+ {
     title: 'Inbound',
     url: '/list',
     icon: 'inbound',
@@ -102,12 +97,12 @@ this.appPages.push({
     admin:"cool"
   }, {
     title: 'History',
-    url: '/profile',
+    url: '/history',
     icon: 'filing',
     admin:"cool"
   }, {
     title: 'Manage Users',
-    url: '/manageusers',
+    url: '/register',
     icon: 'people',
     admin:"cool"
   },

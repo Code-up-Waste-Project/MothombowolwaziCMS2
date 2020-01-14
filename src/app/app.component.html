@@ -1,3 +1,90 @@
+<!-- <ion-app>
+  <ion-split-pane contentId="main-content" >
+    <ion-menu  contentId="main-content" type="overlay">
+ 
+      <ion-content>
+<div class="logo">
+  <img src="../assets/MthomboLOGO.png">
+  <p id="big">MTHOMBOWOLWAZI</p>
+  <P id="small">(PTY)LTD</P>
+  <P id="medium">A CLASS ON IT'S OWN</P>
+</div>
+          <ion-list> -->
+                  <!-- <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+                <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" >
+                  <img src="../assets/{{p.icon}}.svg" alt="" slot="start">
+                  <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
+                    {{p.title}}
+                  </ion-label>
+                </ion-item>
+              </ion-menu-toggle> -->
+
+
+              <!-- <ion-menu-toggle auto-hide="false">
+                  <ion-item [routerDirection]="'root'" color="{{segColor1}}" routerLink="/home" id="myHomeSegment" (click)="toggleHome()">
+                    <ion-icon slot="start" name="home2"></ion-icon>
+                    <img src="../assets/home2.svg" alt="" slot="start">
+                    <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
+                        Home
+                    </ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+
+               
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item [routerDirection]="'root'" color="{{segColor3}}" routerLink="/analytics" (click)="toggleInbound()">
+                      <ion-icon slot="start" name="inbound"></ion-icon>
+                      <img src="../assets/inbound.svg" alt="" slot="start">
+                      <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
+                          Inbound
+                      </ion-label>
+                    </ion-item>
+                  </ion-menu-toggle>
+
+                  <ion-menu-toggle auto-hide="false">
+                      <ion-item [routerDirection]="'root'" color="{{segColor4}}" routerLink="/outbound" (click)="toggleOutbound()">
+                        <ion-icon slot="start" name="dispatch"></ion-icon>
+                        <img src="../assets/dispatch.svg" alt="" slot="start">
+                        <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
+                            Outbound
+                        </ion-label>
+                      </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item [routerDirection]="'root'" color="{{segColor5}}" routerLink="/reclaimer" (click)="toggleReclaimer()">
+                          <ion-icon slot="start" name="reclaimer2"></ion-icon>
+                          <img src="../assets/reclaimer2.svg" alt="" slot="start">
+                          <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
+                              Reclaimer
+                          </ion-label>
+                        </ion-item>
+                      </ion-menu-toggle>
+
+                      
+
+                        <ion-menu-toggle auto-hide="false">
+                            <ion-item [routerDirection]="'root'" [color]="segColor7" routerLink="/manageusers" (click)="toggleUsers()">
+                              <ion-icon slot="start" name="people"></ion-icon>
+                              <img src="../assets/people.svg" alt="" slot="start">
+                              <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
+                                  Manage Users
+                              </ion-label>
+                            </ion-item>
+                          </ion-menu-toggle>
+
+            </ion-list>
+   
+        </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+  <div class="header" ></div>
+</ion-app> -->
+
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
@@ -7,7 +94,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <!-- <ion-list>
+        <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
@@ -16,98 +103,9 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list> -->
-        <div class="logo">
-          <img src="../assets/MthomboLOGO.png">
-          <p id="big">MTHOMBOWOLWAZI</p>
-          <P id="small">(PTY)LTD</P>
-          <P id="medium">A CLASS ON IT'S OWN</P>
-        </div>
-                  <ion-list>
-                          <!-- <ion-icon slot="start" [name]="p.icon"></ion-icon>
-                      <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-                        <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" >
-                          <img src="../assets/{{p.icon}}.svg" alt="" slot="start">
-                          <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                            {{p.title}}
-                          </ion-label>
-                        </ion-item>
-                      </ion-menu-toggle> -->
-        
-        
-                      <ion-menu-toggle auto-hide="false">
-                          <ion-item [routerDirection]="'root'" routerLink="/home" id="myHomeSegment">
-                            <ion-icon slot="start" name="home2"></ion-icon>
-                            <img src="../assets/home2.svg" alt="" slot="start">
-                            <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                Home
-                            </ion-label>
-                          </ion-item>
-                        </ion-menu-toggle>
-        
-                        <ion-menu-toggle auto-hide="false">
-                          <ion-item [routerDirection]="'root'" routerLink="/editprice" id="">
-                            <ion-icon slot="start" name="edit"></ion-icon>
-                            <img src="../assets/edit.svg" alt="" slot="start">
-                            <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                Edit Prices
-                            </ion-label>
-                          </ion-item>
-                        </ion-menu-toggle>
-        
-                        <ion-menu-toggle auto-hide="false">
-                            <ion-item [routerDirection]="'root'" routerLink="/analytics">
-                              <ion-icon slot="start" name="inbound"></ion-icon>
-                              <img src="../assets/inbound.svg" alt="" slot="start">
-                              <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                  Inbound
-                              </ion-label>
-                            </ion-item>
-                          </ion-menu-toggle>
-        
-                          <ion-menu-toggle auto-hide="false">
-                              <ion-item [routerDirection]="'root'" routerLink="/outbound">
-                                <ion-icon slot="start" name="dispatch"></ion-icon>
-                                <img src="../assets/dispatch.svg" alt="" slot="start">
-                                <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                    Outbound
-                                </ion-label>
-                              </ion-item>
-                            </ion-menu-toggle>
-        
-                            <ion-menu-toggle auto-hide="false">
-                                <ion-item [routerDirection]="'root'" routerLink="/reclaimer">
-                                  <ion-icon slot="start" name="reclaimer2"></ion-icon>
-                                  <img src="../assets/reclaimer2.svg" alt="" slot="start">
-                                  <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                      Reclaimer
-                                  </ion-label>
-                                </ion-item>
-                              </ion-menu-toggle>
-        
-                              <ion-menu-toggle auto-hide="false">
-                                  <ion-item [routerDirection]="'root'" routerLink="/history">
-                                    <ion-icon slot="start" name="filing"></ion-icon>
-                                    <img src="../assets/filing.svg" alt="" slot="start">
-                                    <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                        History
-                                    </ion-label>
-                                  </ion-item>
-                                </ion-menu-toggle>
-        
-                                <ion-menu-toggle auto-hide="false">
-                                    <ion-item [routerDirection]="'root'" routerLink="/register">
-                                      <ion-icon slot="start" name="people"></ion-icon>
-                                      <img src="../assets/people.svg" alt="" slot="start">
-                                      <ion-label style="margin-left: 6%;text-align: left; padding-left: 10%;width: 50% !important;">
-                                          Manage Users
-                                      </ion-label>
-                                    </ion-item>
-                                  </ion-menu-toggle>
-        
-                    </ion-list>
+        </ion-list>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
-</ion-app>
+  </ion-app>
