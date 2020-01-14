@@ -82,7 +82,7 @@ this.appPages.push({
   },
  {
     title: 'Inbound',
-    url: '/list',
+    url: '/inbound',
     icon: 'inbound',
     admin:"cool"
   }, {
@@ -96,13 +96,8 @@ this.appPages.push({
     icon: 'reclaimer2',
     admin:"cool"
   }, {
-    title: 'History',
-    url: '/history',
-    icon: 'filing',
-    admin:"cool"
-  }, {
     title: 'Manage Users',
-    url: '/register',
+    url: '/manageusers',
     icon: 'people',
     admin:"cool"
   },

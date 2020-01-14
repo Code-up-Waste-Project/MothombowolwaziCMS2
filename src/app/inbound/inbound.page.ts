@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController, LoadingController, ToastController, ModalController } from '@ionic/angular';
@@ -92,7 +93,18 @@ export class InboundPage implements OnInit {
       console.log('Newadmins', this.Newadmin);
     });
     this.getMasses();
-    this.recordInboundsdisplay();
+
+    // recordInboundsdisplay
+    this.records = this.db.collection('inbounds').onSnapshot(snapshot => {
+      this.recordinbounddisplays = [];
+      snapshot.forEach(element => {
+        // this.recordinbounddisplays = [];
+        // console.log(documentSnapshot.data());
+        this.recordinbounddisplays.push(element.data());
+        console.log(this.recordinbounddisplays);
+      });
+      });
+
    }
 
   ngOnInit() {
@@ -116,18 +128,18 @@ export class InboundPage implements OnInit {
         this.PET005storagemass = element.data().PEP005;
         // console.log(element);
       });
-      console.log(this.GH001storagemass);
-      console.log(this.NFAL01storagemass);
-      console.log(this.PAP005storagemass);
-      console.log(this.PAP007storagemass);
-      console.log(this.PAP001storagemass);
-      console.log(this.PAP003storagemass);
-      console.log(this.HD001storagemass);
-      console.log(this.LD001storagemass);
-      console.log(this.LD003storagemass);
-      console.log(this.PET001storagemass);
-      console.log(this.PET003storagemass);
-      console.log(this.PET005storagemass);
+      // console.log(this.GH001storagemass);
+      // console.log(this.NFAL01storagemass);
+      // console.log(this.PAP005storagemass);
+      // console.log(this.PAP007storagemass);
+      // console.log(this.PAP001storagemass);
+      // console.log(this.PAP003storagemass);
+      // console.log(this.HD001storagemass);
+      // console.log(this.LD001storagemass);
+      // console.log(this.LD003storagemass);
+      // console.log(this.PET001storagemass);
+      // console.log(this.PET003storagemass);
+      // console.log(this.PET005storagemass);
     });
   }
 
@@ -247,7 +259,7 @@ export class InboundPage implements OnInit {
     // storageGH001
     this.storageGH001 = this.GH001storagemass + this.GH001mass;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({GL001: this.storageGH001});
-    console.log(this.storageGH001);
+    // console.log(this.storageGH001);
 
     // storage NFAL01;
     this.storageNFAL01 = this.NFAL01storagemass + this.NFAL01mass;
@@ -306,32 +318,22 @@ export class InboundPage implements OnInit {
   }
 
   recordInbounds() {
-    this.db.collection("inbounds").doc("hD3GRe9MMPFB401vA7kS").set({
+    this.db.collection("inbounds").doc().set({
       time: new Date(),
-      storageGH001: this.storageGH001,
-      storageNFAL01: this.storageNFAL01,
-      storagePAP005: this.storagePAP005,
-      storagePAP007: this.storagePAP007,
-      storagePAP001: this.storagePAP001,
-      storagePAP003: this.storagePAP003,
-      storageHD001: this.storageHD001,
-      storageLD001: this.storageLD001,
-      storageLD003: this.storageLD003,
-      storagePET001: this.storagePET001,
-      storagePET003: this.storagePET003,
-      storagePET005: this.storagePET005,
+      inboundGH001: this.GH001mass,
+      inboundNFAL01: this.NFAL01mass,
+      inboundPAP005: this.PAP005mass,
+      inboundPAP007: this.PAP007mass,
+      inboundPAP001: this.PAP001mass,
+      inboundPAP003: this.PAP003mass,
+      inboundHD001: this.HD001mass,
+      inboundLD001: this.LD001mass,
+      inboundLD003: this.LD003mass,
+      inboundPET001: this.PET001mass,
+      inboundPET003: this.PET003mass,
+      inboundPET005: this.PET005mass,
     });
-  }
-
-  recordInboundsdisplay() {
-    this.recordinbounddisplays = [];
-    this.records = this.db.collection('inbounds').doc();
-    this.records.get().then((documentSnapshot) => {
-        this.recordinbounddisplays = [];
-        // console.log(documentSnapshot.data());
-        this.recordinbounddisplays.push(documentSnapshot.data());
-        console.log(this.recordinbounddisplays);
-      });
+    console.log("inbound pushed");
   }
 
   async presentAlertupdate() {
@@ -349,10 +351,10 @@ export class InboundPage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            this.recordInbounds();
             this.saveDatafirebase();
+            this.recordInbounds();
             this.clearInputs();
-            this.route.navigateByUrl('/analytics');
+            this.route.navigateByUrl('/inbound');
             console.log('Confirm Okay');
           }
         }

@@ -182,6 +182,10 @@
      </ion-slide><!-- end of slide four -->
   </ion-slides>
 
+  <ion-card *ngFor = "let records  of outbound">
+    <p>records: {{records.outDate}} {{records.outdriverName}} {{records.outRegistarionNo}}</p>
+  </ion-card>
+
   <div class="totals">
     <button ion-button full (click)="calculateOverall()" [disabled]="!RegisterForm.valid">SAVE</button>
     <button style="background: rgb(138, 18, 18);" ion-button full (click)="presentAlertCancel()">CANCEL</button>

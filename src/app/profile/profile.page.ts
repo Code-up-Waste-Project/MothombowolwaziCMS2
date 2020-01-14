@@ -10,24 +10,23 @@ import * as firebase from 'firebase';
 })
 export class ProfilePage implements OnInit {
   storage = firebase.storage().ref();
-  userprofile=[];
-  newuserprofile=[]
-    db =firebase.firestore();
-    profiles
-    profile={
-  image:null,
-  name:null,
-  addres:null,
-  surname:null, 
-  position:null,
+  userprofile = [];
+  newuserprofile = [];
+  db = firebase.firestore();
+  profiles;
+
+  profile = {
+  image: null,
+  name: null,
+  addres: null,
+  surname: null,
+  position: null,
   isAdmin: false,
-ActiveAcount:false,
-userid: firebase.auth().currentUser.uid,
-email: firebase.auth().currentUser.email
+  ActiveAcount: false,
+  userid: firebase.auth().currentUser.uid,
+  email: firebase.auth().currentUser.email
     };
 
-
-  
   constructor(
     private router: Router,
     private toastController: ToastController
@@ -61,13 +60,13 @@ email: firebase.auth().currentUser.email
     } else {
     this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
       name: this.profile.name,
-     surname: this.profile.surname,
+      surname: this.profile.surname,
       email: this.profile.email,
       position: this.profile.position,
-       userid: this.profile.userid,
-       image: this.profile.image,
+      userid: this.profile.userid,
+      image: this.profile.image,
       isAdmin: this.profile.isAdmin,
-      ActiveAcount:this.profile.ActiveAcount,
+      ActiveAcount: this.profile.ActiveAcount,
 
     })
     .then(function() {
@@ -96,6 +95,3 @@ email: firebase.auth().currentUser.email
     });
   }
   }
-
-
-  

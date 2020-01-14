@@ -30,7 +30,7 @@ export class ResetPasswordPage implements OnInit {
     this.router.navigate(['login'])
   }
 
-  goToReg(){
+  goToReg() {
     this.router.navigate(['register'])
   }
   resetPassword(resetPasswordForm: FormGroup): void {

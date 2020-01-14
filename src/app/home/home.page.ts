@@ -1,9 +1,7 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { log } from 'util';
 
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
 
@@ -15,9 +13,9 @@ import { log } from 'util';
 })
 export class HomePage implements OnInit {
 
-@ViewChild('barChart', {static: false}) barChart;
-bars: any;
-colorArray: any;
+// @ViewChild('barChart', {static: false}) barChart;
+// bars: any;
+// colorArray: any;
 
   // user infor
   admin = [];
@@ -77,11 +75,6 @@ colorArray: any;
       // console.log('Newadmins', this.Newadmin);
     });
 
-    }
-
-    // chart
-    ionViewDidEnter() {
-      
     }
 
  

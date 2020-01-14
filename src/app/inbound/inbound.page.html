@@ -146,6 +146,10 @@
        </ion-slide>
     </ion-slides>
 
+        <ion-card *ngFor = "let records  of recordinbounddisplays">
+          <p>time: {{records.time}}</p>
+        </ion-card>
+
     </div>
     <div class="totals">
       <button ion-button (click)="checkinputfields()"> UPDATE</button>

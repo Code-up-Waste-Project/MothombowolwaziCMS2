@@ -27,6 +27,14 @@ export class OutboundPage implements OnInit {
   admin = [];
   Newadmin = [];
 
+  // outbound
+  outbound = [];
+  id;
+  outdate;
+  outDriverName;
+  outRegistarionNumberPlates;
+  outovarallMass;
+
   db = firebase.firestore();
 
   prices;
@@ -114,6 +122,34 @@ export class OutboundPage implements OnInit {
       });
 
     this.getMasses();
+
+    this.db.collection('outbound').onSnapshot(snapshot => {
+      this.outbound = [];
+      snapshot.forEach(element => {
+        let id = {};
+        let outdate = {};
+        let outDriverName = {};
+        let outRegistarionNumberPlates = {};
+        let outovarallMass = {};
+
+        id = this.id = element.id;
+        outdate = this.outdate = element.data().date;
+        outDriverName = this.outDriverName = element.data().DriverName;
+        outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
+        outovarallMass = this.outovarallMass = element.data().ovarallMass;
+
+        // this.outbound = [];
+        this.outbound.push({
+          id: id,
+          outDate: outdate,
+          outdriverName: outDriverName,
+          outRegistarionNo: outRegistarionNumberPlates,
+          outovarallmass: outovarallMass,
+        });
+        // this.outbound.push(element.data());
+        // console.log(this.outbound);
+      });
+    });
    }
 
   ngOnInit() {
@@ -180,7 +216,7 @@ export class OutboundPage implements OnInit {
     this.overallStorage = this.GH001mass + this.HD001mass + this.LD001mass + this.LD003mass + this.NFAL01mass
      + this.PAP001mass + this.PAP003mass + this.PAP005mass + this.PAP007mass + this.PET001mass +
      this.PET003mass + this.PET005mass;
-    console.log(this.overallStorage);
+    // console.log(this.overallStorage);
 
     this.SaveOutbound();
     this.createPdf();
