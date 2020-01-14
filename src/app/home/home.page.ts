@@ -153,5 +153,8 @@ export class HomePage implements OnInit {
       this.route.navigateByUrl('/login');
      });
     }
-
+    editprofile() {
+      this.route.navigate(['profile']);
+    }
+  
 }
