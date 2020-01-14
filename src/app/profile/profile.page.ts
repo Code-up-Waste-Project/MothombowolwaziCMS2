@@ -33,11 +33,12 @@ email: firebase.auth().currentUser.email
     private toastController: ToastController
     ) {
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
-        // this.profile.email = snapshot.data().email;
-        // email: firebase.auth().currentUser.email,
-        // this.profile.name = snapshot.data().name;
-        // this.profile.surname = snapshot.data().surname;
-        // this.profile.image = snapshot.data().image;
+        this.profile.email = snapshot.data().email;
+        email: firebase.auth().currentUser.email,
+        this.profile.name = snapshot.data().name;
+        this.profile.surname = snapshot.data().surname;
+        this.profile.image = snapshot.data().image;
+        this.profile.position= snapshot.data().position;
         console.log('admin', this.userprofile);
       });
   }

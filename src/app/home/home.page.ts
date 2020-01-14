@@ -160,5 +160,8 @@ colorArray: any;
       this.route.navigateByUrl('/login');
      });
     }
-
+    editprofile() {
+      this.route.navigate(['profile']);
+    }
+  
 }

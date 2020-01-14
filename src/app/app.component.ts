@@ -102,7 +102,7 @@ this.appPages.push({
     admin:"cool"
   }, {
     title: 'Manage Users',
-    url: '/register',
+    url: '/manageusers',
     icon: 'people',
     admin:"cool"
   },
