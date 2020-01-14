@@ -20,7 +20,7 @@ export class ProfilePage implements OnInit {
   addres:null,
   surname:null, 
   position:null,
-  // isAdmin: false,
+  isAdmin: false,
 ActiveAcount:false,
 userid: firebase.auth().currentUser.uid,
 email: firebase.auth().currentUser.email
@@ -32,7 +32,7 @@ email: firebase.auth().currentUser.email
     private router: Router,
     private toastController: ToastController
     ) {
-      this.db.collection('profiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
+      this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         // this.profile.email = snapshot.data().email;
         // email: firebase.auth().currentUser.email,
         // this.profile.name = snapshot.data().name;
@@ -59,14 +59,14 @@ email: firebase.auth().currentUser.email
       });
       toast.present();
     } else {
-    this.db.collection('profiles').doc(firebase.auth().currentUser.uid).set({
+    this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
       name: this.profile.name,
      surname: this.profile.surname,
       email: this.profile.email,
       position: this.profile.position,
        userid: this.profile.userid,
        image: this.profile.image,
-      //  isAdmin: this.profile.isAdmin
+      isAdmin: this.profile.isAdmin,
       ActiveAcount:this.profile.ActiveAcount,
 
     })
@@ -80,8 +80,8 @@ email: firebase.auth().currentUser.email
   }
   }
 
-  changeListener(profiles): void {
-    const i = profiles.target.files[0];
+  changeListener(admin): void {
+    const i = admin.target.files[0];
     console.log(i);
     const upload = this.storage.child(i.name).put(i);
     upload.on('state_changed', snapshot => {

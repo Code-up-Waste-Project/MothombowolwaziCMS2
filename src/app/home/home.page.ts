@@ -1,8 +1,12 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
-// import { Chart } from 'chart.js';
+import { log } from 'util';
+
+// import { ModalpopupPage } from '../modalpopup/modalpopup.page';
+
 
 @Component({
   selector: 'app-home',
@@ -11,9 +15,9 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  @ViewChild('barChart', {static: false}) barChart;
-  bars: any;
-  colorArray: any;
+@ViewChild('barChart', {static: false}) barChart;
+bars: any;
+colorArray: any;
 
   // user infor
   admin = [];
@@ -58,8 +62,8 @@ export class HomePage implements OnInit {
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
     public route: Router,
-  ) {
-    // pulling for admin
+    ) {
+      // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
       // this.Newadmin = [];
       snapshot.forEach(Element => {
@@ -72,29 +76,31 @@ export class HomePage implements OnInit {
       });
       // console.log('Newadmins', this.Newadmin);
     });
-  }
 
+    }
+
+    // chart
+    ionViewDidEnter() {
+      
+    }
+
+ 
   ngOnInit() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        firebase
-          .firestore()
-          .doc(`/admin/${user.uid}`)
-          .get()
-          .then(adminSnapshot => {
-          this.isAdmin = adminSnapshot.data().isAdmin;
-          });
-      }
-    });
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (user) {
+    //     firebase
+    //       .firestore()
+    //       .doc(`/admin/${user.uid}`)
+    //       .get()
+    //       .then(adminSnapshot => {
+    //       this.isAdmin = adminSnapshot.data().isAdmin;
+    //       });
+    //   }
+    // });
     this.menuCtrl.enable(true); // or true
 
     this.getMasses();
     console.log( this.getMasses());
-  }
-
-  // chart
-  ionViewDidEnter() {
-    this.createBarChart();
   }
 
   getMasses() {
@@ -146,34 +152,7 @@ export class HomePage implements OnInit {
     });
   }
 
-  createBarChart() {
-    this.bars = new Chart(this.barChart.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)',
-        'Plastic(HD001)', 'Plastic(LD001)', 'Plastic(LD003)', 'Plastic(PET001)', 'Plastic(PET003)', 'Plastic(PET005)'],
-        // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
-        datasets: [{
-          label: 'Overall material ',
-          data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP003storagemass,
-          this.HD001storagemass, this.LD001storagemass, this.LD003storagemass, this.PET001storagemass, this.PET003storagemass, this.PET005storagemass],
-          // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
-          borderColor: 'green',  // array should have same number of elements as number of dataset
-          borderWidth: 0.2
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
+
 
   Logout() {
     firebase.auth().signOut().then((res) => {
