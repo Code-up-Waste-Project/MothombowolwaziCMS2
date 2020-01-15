@@ -182,7 +182,7 @@
      </ion-slide><!-- end of slide four   -->
   </ion-slides>
 
-  <ion-card *ngFor = "let records  of outbound" [routerLink]="[records.id]">
+  <ion-card *ngFor = "let records  of outbound">
     <p>records: {{records.outDate}} {{records.outdriverName}} {{records.outRegistarionNo}}</p>
     <div>
       <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>

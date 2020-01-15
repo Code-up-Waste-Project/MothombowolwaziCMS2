@@ -148,6 +148,9 @@
 
         <ion-card *ngFor = "let records  of recordinbounddisplays">
           <p>time: {{records.time}}</p>
+          <div>
+            <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
+          </div>
         </ion-card>
 
     </div>

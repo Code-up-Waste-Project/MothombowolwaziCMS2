@@ -215,7 +215,10 @@
            </ion-slides>
 
            <ion-card *ngFor = "let records  of newreclaimer">
-            <p>records: {{records.reName}} {{records.reDate | date:'dd/MM/yyyy' }}</p>
+            <p>records: {{records.reName}}</p>
+            <div>
+              <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
+            </div>
           </ion-card>
 
            <div class="totals">
