@@ -15,6 +15,10 @@ export class ProfilePage implements OnInit {
   db = firebase.firestore();
   profiles;
 
+ 
+
+
+
   profile = {
   image: null,
   name: null,
@@ -43,6 +47,40 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+
+   
+
+
+  //  // pulling from outbound
+  //  this.db.collection('outbound').onSnapshot(snapshot => {
+     
+  //   this.outbound = [];
+  //   snapshot.forEach(element => {
+  //     let id = {};
+  //     let outdate = {};
+  //     let outDriverName = {};
+  //     let outRegistarionNumberPlates = {};
+  //     let outovarallMass = {};
+
+  //     id = this.id = element.id;
+  //     outdate = this.outdate = element.data().date;
+  //     outDriverName = this.outDriverName = element.data().DriverName;
+  //     outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
+  //     outovarallMass = this.outovarallMass = element.data().ovarallMass;
+
+  //     // this.outbound = [];
+  //     this.outbound.push({
+  //       id: id,
+  //       outDate: outdate,
+  //       outdriverName: outDriverName,
+  //       outRegistarionNo: outRegistarionNumberPlates,
+  //       outovarallmass: outovarallMass,
+  //     });
+  //     // this.outbound.push(element.data());
+  //     console.log('outboud',this.outbound);
+  //   });
+  // });
+
   }
 
   async users() {
@@ -95,4 +133,14 @@ export class ProfilePage implements OnInit {
       });
     });
   }
+  
+
+
+
+
+
+
+
+
+  
   }

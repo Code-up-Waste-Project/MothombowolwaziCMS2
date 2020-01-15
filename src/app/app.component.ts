@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   ) {
 
  
-
+this.getAuth();
     this.initializeApp();
   }
 
@@ -190,7 +190,15 @@ this.appPages.push({
     this.segColor6 = "light"
     this.segColor7 = "primary"
   }
-
+  getAuth() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if(user) {
+            this.router.navigateByUrl('/home')
+          }else {
+            this.router.navigateByUrl('/login')
+          }
+        })
+      }
    
 }
 
