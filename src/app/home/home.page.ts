@@ -30,6 +30,7 @@ export class HomePage implements OnInit {
   surname: null,
   position: null,
   isAdmin: true,
+  // ActiveAcount : Boolean,
   // userid:firebase.auth().currentUser.uid,
   // email:firebase.auth().currentUser.email
     };
@@ -55,6 +56,7 @@ export class HomePage implements OnInit {
   Totalpaper: number = 0;
   Totalplastic: number = 0;
   Totalplasticz: string;
+  ActiveAcount: Boolean;
 
   constructor(
     private modalcontroller: ModalController,
@@ -79,17 +81,9 @@ export class HomePage implements OnInit {
 
  
   ngOnInit() {
-    // firebase.auth().onAuthStateChanged(user => {
-    //   if (user) {
-    //     firebase
-    //       .firestore()
-    //       .doc(`/admin/${user.uid}`)
-    //       .get()
-    //       .then(adminSnapshot => {
-    //       this.isAdmin = adminSnapshot.data().isAdmin;
-    //       });
-    //   }
-    // });
+    
+    
+
     this.menuCtrl.enable(true); // or true
 
     this.getMasses();
@@ -156,5 +150,23 @@ export class HomePage implements OnInit {
     editprofile() {
       this.route.navigate(['profile']);
     }
-  
+  ionViewWillEnter(){
+
+    firebase.auth().onAuthStateChanged(user => {
+      firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot =>{
+        console.log('activateuser', snapshot.data().ActiveAccount);
+        this.ActiveAcount =snapshot.data().ActiveAcount;
+ 
+        if (this.ActiveAcount == false){
+ 
+    
+           this.route.navigate(['contactmanager']);
+         
+        }
+        else if (this.ActiveAcount == true){
+          this.route.navigate(['home'])
+        }
+      })
+    })
+  }
 }

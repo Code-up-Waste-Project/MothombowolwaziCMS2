@@ -194,6 +194,12 @@ export class ReclaimerPage implements OnInit {
   admin = [];
   Newadmin = [];
 
+  newreclaimer = [];
+  id;
+  reclaimername;
+  reclaimersurname;
+  reclaimerDate;
+
   pdfObj = null;
 
   constructor(
@@ -224,6 +230,31 @@ export class ReclaimerPage implements OnInit {
         }
       });
       // console.log('Newadmins', this.Newadmin);
+    });
+
+    // pulling from reclaimers
+    this.db.collection('reclaimers').onSnapshot(snapshot => {
+      this.newreclaimer = [];
+      snapshot.forEach(element => {
+        let id = {};
+        let reclaimername = {};
+        let reclaimersurname = {};
+        let reclaimerDate = {};
+
+        id = this.id = element.id;
+        reclaimername = this.reclaimername = element.data().name;
+        reclaimersurname = this.reclaimersurname = element.data().surname;
+        reclaimerDate = this.reclaimerDate = element.data().date;
+
+        // this.newreclaimer = [];
+        this.newreclaimer.push({
+          id: id,
+          reName: reclaimername,
+          reSurname: reclaimersurname,
+          reDate: reclaimerDate,
+        });
+        // console.log(this.newreclaimer);
+      });
     });
 
     this.RegisterForm = formGroup.group({

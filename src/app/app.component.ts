@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   public appPages = [];
   admin;
+  ActiveAcount: boolean;
 
   constructor(
     private platform: Platform,
@@ -23,6 +24,9 @@ export class AppComponent implements OnInit {
     private render: Renderer2,
     public router: Router,
   ) {
+
+ 
+
     this.initializeApp();
   }
 
@@ -187,5 +191,6 @@ this.appPages.push({
     this.segColor7 = "primary"
   }
 
+   
 }
 

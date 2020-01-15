@@ -106,12 +106,12 @@ export class ManageusersPage implements OnInit {
   }
 
   changeSegmentTrue(id) {
-    this.db.collection('profiles').doc(id).update({ActiveAcount: 'true'});
+    this.db.collection('admin').doc(id).update({ActiveAcount: 'true'});
       this.getUsers();
   }
 
   changeSegmentFalse(id) {
-    this.db.collection('profiles').doc(id).update({ActiveAcount: 'false'});
+    this.db.collection('admin').doc(id).update({ActiveAcount: 'false'});
       this.getUsers();
   }
 
@@ -167,7 +167,7 @@ export class ManageusersPage implements OnInit {
 
   viewprofile(id) {
     this.newuserprofilezzzzz = [];
-    this.viewuser = this.db.collection('profiles').doc(id);
+    this.viewuser = this.db.collection('admin').doc(id);
     this.viewuser.get().then((documentSnapshot) => {
         this.newuserprofilezzzzz = [];
         // console.log(documentSnapshot.data());
