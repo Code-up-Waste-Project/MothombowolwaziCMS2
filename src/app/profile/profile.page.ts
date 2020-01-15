@@ -21,7 +21,7 @@ export class ProfilePage implements OnInit {
   addres: null,
   surname: null,
   position: null,
-  isAdmin: false,
+  isAdmin: true,
   ActiveAcount: false,
   userid: firebase.auth().currentUser.uid,
   email: firebase.auth().currentUser.email

@@ -74,7 +74,7 @@ export class ManageusersPage implements OnInit {
   }
 
   getUsers() {
-    this.db.collection('profiles').onSnapshot(snapshot => {
+    this.db.collection('admin').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
@@ -180,7 +180,7 @@ export class ManageusersPage implements OnInit {
         console.log(userUid);
         // let email = x.email;
         // this.Booking = [];
-        this.db.collection("userprofile").doc(userUid.id).delete().then(function() {
+        this.db.collection("admin").doc(userUid.id).delete().then(function() {
           console.log("Document successfully deleted!");
       }).catch(function(error) {
           console.error("Error removing document: ", error);

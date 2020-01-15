@@ -12,6 +12,7 @@
           <H4>{{ item.name }}</H4>  
           <P>{{ item.position }}</P>
       </div>
+       
     </div>
     <div class="logout" (click)="Logout()">
       <ion-icon name="log-out" style="color:black"></ion-icon>
@@ -32,7 +33,7 @@
                 <p>{{myprofiles.position}}</p>
               </ion-label>
               <!-- <button (click)="show()">view full details </button> -->
-              <!-- <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon> -->
+              <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon>
             </ion-item>
           </ion-card>
       </div>
