@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { AuthService } from '../../app/user/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-manageusers',
@@ -84,8 +85,8 @@ export class ManageusersPage implements OnInit {
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
 
-      this.newuserprofile = [];
       snapshot.forEach(item => {
+        this.newuserprofile = [];
         this.newuserprofile.push({...{id: item.id},...item.data()});
         console.log("user profile ", this.newuserprofile);
       });
@@ -106,12 +107,12 @@ export class ManageusersPage implements OnInit {
   }
 
   changeSegmentTrue(id) {
-    this.db.collection('admin').doc(id).update({ActiveAcount: 'true'});
+    this.db.collection('admin').doc(id).update({ActiveAcount: true});
       this.getUsers();
   }
 
   changeSegmentFalse(id) {
-    this.db.collection('admin').doc(id).update({ActiveAcount: 'false'});
+    this.db.collection('admin').doc(id).update({ActiveAcount: false});
       this.getUsers();
   }
 
@@ -192,8 +193,7 @@ export class ManageusersPage implements OnInit {
       //   });
       // });
       }
-
-
+     
     Logout() {
       firebase.auth().signOut().then((res) => {
         console.log(res);

@@ -9,6 +9,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-inbound',
   templateUrl: './inbound.page.html',
@@ -490,6 +491,7 @@ export class InboundPage implements OnInit {
       inboundPET001: this.PET001mass,
       inboundPET003: this.PET003mass,
       inboundPET005: this.PET005mass,
+      id: firebase.auth().currentUser.uid
     });
     console.log("inbound pushed");
   }
@@ -505,6 +507,7 @@ export class InboundPage implements OnInit {
 
     var docDefinition = {
       content: [
+        
         { text: 'Mothombowolwazi', style: 'header' },
         { text: new Date().toTimeString(), alignment: 'right' },
         {
@@ -520,18 +523,32 @@ export class InboundPage implements OnInit {
         { text: '', style: 'subheader' },
         this.letterObj.to,
 
+        // {
+        //   layout: 'lightHorizontalLines',
+        //   styles: Headers,
+        //   // color: 'green',
+        //   // background: 'red',
+        //   table: {
+        //     headerRows: 1,
+        //     widths: [ '35%', '35%' ],
+        //     body: [
+        //       [ 'CODE/NUMBER', 'MASS(KG)' ],
+        //       [ printDataName, printDataNumber]
+        //     ]
+        //   }
+        // },
+
         {
-          layout: 'lightHorizontalLines',
-          styles: Headers,
+          style: 'tableExample',
           table: {
-            headerRows: 1,
-            widths: [ 'auto', 'auto', 'auto' ],
+            heights: [ 50, 70],
             body: [
-              [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
-              ['', printDataName, printDataNumber]
+              ['CODE/NUMBER', 'MASS(KG)'],
+              [printDataName, printDataNumber]
             ]
           }
         },
+
       ],
 
       // footer: {
@@ -540,23 +557,36 @@ export class InboundPage implements OnInit {
       //     { text: new Date().toTimeString(), alignment: 'right' }
       //   ]
       // },
-
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-        },
-        subheader: {
-          fontSize: 13,
-          bold: true,
-          margin: [0, 15, 0, 0]
-        },
-        story: {
-          italic: true,
-          alignment: 'center',
-          width: '50%',
+      
+        style: 'tableExample',
+        table: {
+          color:'red',
+          heights: function (row) {
+            return (row + 2) * 55;
+          },
+          body: [
+            ['row 1', 'column B'],
+            ['row 2', 'column B'],
+            ['row 3', 'column B']
+          ]
         }
-      }
+      
+      // styles: {
+      //   header: {
+      //     fontSize: 18,
+      //     bold: true,
+      //   },
+      //   subheader: {
+      //     fontSize: 13,
+      //     bold: true,
+      //     margin: [0, 15, 0, 0]
+      //   },
+      //   story: {
+      //     italic: true,
+      //     alignment: 'center',
+      //     width: '50%',
+      //   }, 
+      // }
     };
     this.pdfObj = pdfMake.createPdf(docDefinition);
   }
