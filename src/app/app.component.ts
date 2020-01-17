@@ -24,29 +24,11 @@ export class AppComponent implements OnInit {
     private render: Renderer2,
     public router: Router,
   ) {
-
- 
-this.getAuth();
-    this.initializeApp();
+      // this.getAuth();
+      this.initializeApp();
   }
 
   ngOnInit() {
-    console.log(this.content.nativeElement);
-    this.render.setStyle(this.content.nativeElement.children[0], 'width', '80%' );
-    this.render.setStyle(this.content.nativeElement.children[0], 'height', '80%' );
-    this.render.setStyle(this.content.nativeElement, 'background-image', 'url(../assets/cover.png)');
-
-    this.render.setStyle(this.content.nativeElement.children[0], 'box-shadow', ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' );    this.render.setStyle(this.content.nativeElement.children[0], 'transform', 'translate(12%, 12%)');
-    this.render.setStyle(this.content.nativeElement.children[0], 'border-radius', '15px');
-    //this.render.setStyle(this.content.nativeElement.children[0], 'border', '2px solid red');
-    this.render.setStyle(this.content.nativeElement.children[0], 'display', 'flex' );
-    this.render.setStyle(this.content.nativeElement.children[0], 'justify-content', 'center');
-    this.render.setStyle(this.content.nativeElement.children[0], 'align-items', 'center');
-
-    this.render.setStyle(this.content.nativeElement.children[0], 'background-position', 'center');
-    this.render.setStyle(this.content.nativeElement.children[0], 'background-size', 'cover');
-    this.render.setStyle(this.content.nativeElement.children[0], 'object-fit', '2%' );
-
     this.appPages = [];
 
     firebase.auth().onAuthStateChanged(user => {
@@ -57,148 +39,87 @@ this.getAuth();
         this.admin = snapshot.data().isAdmin;
         this.appPages = [];
         if (this.admin == "true") {
-this.appPages.push({
- 
-  title: 'Home',
-  url: '/home',
-  icon: 'home2',
-  admin:"hot"
-},
-{
-  title: 'Inbounds',
-  url: '/analytics',
-  icon: 'inbound',
-  admin:"cool"
-},
-{
-  title: 'Reclaimer',
-  url: '/reclaimer',
-  icon: 'reclaimer2',
-  admin:"cool"
-});
-} else {
-  this.appPages.push(
-  {
-    title: 'home',
-    url: '/home',
-    icon: 'home2',
-    admin:"cool"
-  },
- {
-    title: 'Inbound',
-    url: '/inbound',
-    icon: 'inbound',
-    admin:"cool"
-  }, {
-    title: 'Outbound',
-    url: '/outbound',
-    icon: 'dispatch',
-    admin:"cool"
-  }, {
-    title: 'Reclaimer',
-    url: '/reclaimer',
-    icon: 'reclaimer2',
-    admin:"cool"
-  }, {
-    title: 'Manage Users',
-    url: '/manageusers',
-    icon: 'people',
-    admin:"cool"
-  },
-  );
-}
-        console.log(this.appPages);
-      });
+    this.appPages.push({
+     
+      title: 'Home',
+      url: '/home',
+      icon: 'home2',
+      admin:"hot"
+    },
+    {
+      title: 'Inbounds',
+      url: '/analytics',
+      icon: 'inbound',
+      admin:"cool"
+    },
+    {
+      title: 'Reclaimer',
+      url: '/reclaimer',
+      icon: 'reclaimer2',
+      admin:"cool"
     });
-  }
+    } else {
+      this.appPages.push(
+      {
+        title: 'home',
+        url: '/home',
+        icon: 'home2',
+        admin:"cool"
+      },
+     {
+        title: 'Inbound',
+        url: '/inbound',
+        icon: 'inbound',
+        admin:"cool"
+      }, {
+        title: 'Outbound',
+        url: '/outbound',
+        icon: 'dispatch',
+        admin:"cool"
+      }, {
+        title: 'Reclaimer',
+        url: '/reclaimer',
+        icon: 'reclaimer2',
+        admin:"cool"
+      }, {
+        title: 'Manage Users',
+        url: '/manageusers',
+        icon: 'people',
+        admin:"cool"
+      },
+      );
+    }
+            console.log(this.appPages);
+          });
+        });
+      }
+    
+      initializeApp() {
+        this.platform.ready().then(() => {
+          this.statusBar.styleDefault();
+          this.splashScreen.hide();
+        });
+      }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
+    getAuth() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.router.navigateByUrl('/home');
+          }else {
+            this.router.navigateByUrl('/login');
+          }
+          });
+        }
 
-  segColor1 = "light"
-  segColor2 = "light"
-  segColor3 = "light"
-  segColor4 = "light"
-  segColor5 = "light"
-  segColor6 = "light"
-  segColor7 = "light"
-  toggleHome(){
-    this.segColor1 = "primary"
-    this.segColor2 = "light"
-    this.segColor3 = "light"
-    this.segColor4 = "light"
-    this.segColor5 = "light"
-    this.segColor6 = "light"
-    this.segColor7 = "light"
-  }
-  toggleEdit(){
-    this.segColor1 = "light"
-    this.segColor2 = "primary"
-    this.segColor3 = "light"
-    this.segColor4 = "light"
-    this.segColor5 = "light"
-    this.segColor6 = "light"
-    this.segColor7 = "light"
-  }
-  
-  toggleInbound(){
-    this.segColor1 = "light"
-    this.segColor2 = "light"
-    this.segColor3 = "primary"
-    this.segColor4 = "light"
-    this.segColor5 = "light"
-    this.segColor6 = "light"
-    this.segColor7 = "light"
-  }
-  toggleOutbound(){
-    this.segColor1 = "light"
-    this.segColor2 = "light"
-    this.segColor3 = "light"
-    this.segColor4 = "primary"
-    this.segColor5 = "light"
-    this.segColor6 = "light"
-    this.segColor7 = "light"
-  }
-  toggleReclaimer(){
-    this.segColor1 = "light"
-    this.segColor2 = "light"
-    this.segColor3 = "light"
-    this.segColor4 = "light"
-    this.segColor5 = "primary"
-    this.segColor6 = "light"
-    this.segColor7 = "light"
-  }
-  toggleHistory(){
-    this.segColor1 = "light"
-    this.segColor2 = "light"
-    this.segColor3 = "light"
-    this.segColor4 = "light"
-    this.segColor5 = "light"
-    this.segColor6 = "primary"
-    this.segColor7 = "light"
-  }
-  toggleUsers(){
-    this.segColor1 = "light"
-    this.segColor2 = "light"
-    this.segColor3 = "light"
-    this.segColor4 = "light"
-    this.segColor5 = "light"
-    this.segColor6 = "light"
-    this.segColor7 = "primary"
-  }
-  getAuth() {
-        firebase.auth().onAuthStateChanged((user) => {
-          if(user) {
-            this.router.navigateByUrl('/home')
-          }else {
-            this.router.navigateByUrl('/login')
-          }
-        })
-      }
-   
+      //   afAuth.authState.subscribe( user => {
+      //     if (user) {
+      //       this.rootPage = 'HomePage';
+      //     } else {
+      //       this.rootPage = 'SignupPage';
+      //     }
+      //   });
+    
+      //   platform.ready().then(() => {...});
+      // }
+
 }
-
