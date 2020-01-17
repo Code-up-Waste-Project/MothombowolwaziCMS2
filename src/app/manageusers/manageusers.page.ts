@@ -14,7 +14,6 @@ import { MenuController } from '@ionic/angular';
 export class ManageusersPage implements OnInit {
 
   public signupForm: FormGroup;
-  viewuser;
   storage = firebase.storage().ref();
   admin = [];
   Newadmin = [];
@@ -23,22 +22,21 @@ export class ManageusersPage implements OnInit {
   newuserprofile = [];
   db = firebase.firestore();
   profiles;
-  newuserprofilezzzzz = [];
-  isLabelActive;
+  profile = {
 
+  image: 'https://firebasestorage.googleapis.com/v0/b/https://gs://mthombowolwazi-a7902.appspot.com/mthombologo (1).png',
+    name: null,
+    addres: null,
+    surname: null,
+    position: null,
+    // isAdmin: null,
+    // userid: firebase.auth().currentUser.uid,
+    email: null,
+    password: null,
+      };
   public loading: any;
 
-  profile = {
-    image: 'https://firebasestorage.googleapis.com/v0/b/https://gs://mthombowolwazi-a7902.appspot.com/mthombologo (1).png',
-      name: null,
-      addres: null,
-      surname: null,
-      position: null,
-      // isAdmin: null,
-      // userid: firebase.auth().currentUser.uid,
-      email: null,
-      password: null,
-    };
+  isLabelActive;
 
   constructor(
     public platform: Platform,
@@ -71,10 +69,6 @@ export class ManageusersPage implements OnInit {
    }
 
   ngOnInit() {
-    this.getUsers();
-  }
-
-  getUsers() {
     this.db.collection('admin').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
@@ -84,98 +78,58 @@ export class ManageusersPage implements OnInit {
       // this.profile.position = snapshot.data().position;
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
-
+      
+      this.newuserprofile = [];
       snapshot.forEach(item => {
-        this.newuserprofile = [];
-        this.newuserprofile.push({...{id: item.id},...item.data()});
+        this.newuserprofile.push({...{id:item.id},...item.data()});
         console.log("user profile ", this.newuserprofile);
       });
     });
   }
 
-  segmentChanged(ev: any, id) {
-    if (ev.detail.value === 'true') {
-      this.presentAlertChangeStatusAccountTrue(id);
-      console.log("true selected");
-    }
-    if (ev.detail.value === 'false') {
-      this.presentAlertChangeStatusAccountFalse(id);
-      console.log("false selected");
-    }
-    console.log('Segment changed', ev);
-    console.log(id);
-  }
+  async signupUser(signupForm: FormGroup): Promise<void> {
+    this.authService.profile = {...signupForm.value, ...{image: this.profile.image}};
+    console.log(signupForm.value);
+    console.log(this.profile.image);
+    this.db.collection('admin').add({
+          name: this.profile.name,
+         surname: this.profile.surname,
+          email: signupForm.value.email,
+          position: this.profile.position,
+          // userUid:firebase.auth().currentUser.uid,
+        //    userid: this.profile.userid,
+           image: this.profile.image,
+           password: signupForm.value.password.toString()
+        })
+        .then(function() {
+          console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+          console.error("Error writing document: ", error);
+        });
+    error => {
+          // this.db.collection('userprofile2').doc(firebase.auth().currentUser.uid).delete();
+          this.newuserprofile = [];
+          // this.db.collection('userprofile2').onSnapshot(snapshot => {
+          //     snapshot.forEach(element => {
+          //       this.newuserprofile.push(element.data());
+          //       console.log("user profile ",this.newuserprofile);
+          //     });
+          //     this.router.navigate(['register']);
+          //   });
 
-  changeSegmentTrue(id) {
-    this.db.collection('admin').doc(id).update({ActiveAcount: true});
-      this.getUsers();
-  }
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }]
+            });
+            await alert.present();
+          });
+        };
 
-  changeSegmentFalse(id) {
-    this.db.collection('admin').doc(id).update({ActiveAcount: false});
-      this.getUsers();
-  }
+        this.router.navigate(['register']);
 
-  async presentAlertChangeStatusAccountTrue(id) {
-    const alert = await this.alertCtrl.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to Activate Account?.</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.changeSegmentTrue(id);
-            this.router.navigateByUrl('/manageusers');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  async presentAlertChangeStatusAccountFalse(id) {
-    const alert = await this.alertCtrl.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to de-Activate Account?.</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.changeSegmentFalse(id);
-            this.router.navigateByUrl('/manageusers');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  viewprofile(id) {
-    this.newuserprofilezzzzz = [];
-    this.viewuser = this.db.collection('admin').doc(id);
-    this.viewuser.get().then((documentSnapshot) => {
-        this.newuserprofilezzzzz = [];
-        // console.log(documentSnapshot.data());
-        this.newuserprofilezzzzz.push(documentSnapshot.data());
-        console.log(this.newuserprofilezzzzz);
-      });
-  }
+      }
 
       delete(userUid) {
         console.log(userUid);
@@ -193,12 +147,79 @@ export class ManageusersPage implements OnInit {
       //   });
       // });
       }
-     
+
+    changeListener(profile): void {
+      const i = profile.target.files[0];
+      console.log(i);
+      const upload = this.storage.child(i.name).put(i);
+      upload.on('state_changed', snapshot => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('upload is: ', progress , '% done.');
+      }, err => {
+      }, () => {
+        upload.snapshot.ref.getDownloadURL().then(dwnURL => {
+          console.log('File avail at: ', dwnURL);
+          this.profile.image = dwnURL;
+        });
+      });
+    }
+
+    //active form icons
+    toggleIcon(event) {
+    this.isLabelActive = !this.isLabelActive;
+    }
+
     Logout() {
       firebase.auth().signOut().then((res) => {
         console.log(res);
         this.router.navigateByUrl('/login');
        });
       }
+
+    // firebase functions
+    async createUser() {
+      const alert = await this.alertCtrl.create({
+        header: 'New CMS User',
+        message: 'This user will have access to your CMS',
+        backdropDismiss: false,
+        inputs: [{
+          name: 'email',
+          type: 'email',
+          placeholder: 'Email'
+        }, {
+          name: 'password',
+          type: 'password',
+          placeholder: 'Password'
+        }],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Create User',
+            handler: (data) => {
+              console.log('credentials', data);
+            
+              this.db.collection('admin').add({data, profile: 'no'}).then(async res => {
+                let goodRes = await this.alertCtrl.create({
+                  header: 'Created new User.',
+                  message: 'They must use the credentials for this account to login to the CMS',
+                  buttons: [{
+                    text: 'Done',
+                    role: 'cancel'
+                  }]
+                });
+                goodRes.present();
+              });
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
 
 }
