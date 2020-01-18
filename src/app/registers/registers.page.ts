@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AuthService } from '../../app/user/auth.service';
-import { LoadingController, AlertController, Platform } from '@ionic/angular';
+import { LoadingController, AlertController, Platform, MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -20,8 +19,8 @@ export class RegistersPage implements OnInit {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public formBuilder: FormBuilder,
-    public router: Router
-
+    public router: Router,
+    private menuCtrl: MenuController,
 
   ) { 
     this.signupForm = this.formBuilder.group({
@@ -34,7 +33,9 @@ export class RegistersPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
+
 
   async signupUser(signupForm: FormGroup): Promise<void> {
     console.log('Method is called');
@@ -72,4 +73,14 @@ export class RegistersPage implements OnInit {
 goToLogin() {
     this.router.navigate(['login']);
   }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
+
+   ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menuCtrl.enable(true);
+  }
+
 }

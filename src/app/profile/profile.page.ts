@@ -1,6 +1,7 @@
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { LoadingController, AlertController, MenuController} from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -15,9 +16,8 @@ export class ProfilePage implements OnInit {
   db = firebase.firestore();
   profiles;
 
- 
-
-
+  ActiveAcount: boolean = false;
+  isAdmin: string = 'true';
 
   profile = {
   image: null,
@@ -25,15 +25,16 @@ export class ProfilePage implements OnInit {
   addres: null,
   surname: null,
   position: null,
-  isAdmin: true,
-  ActiveAcount: false,
+  // isAdmin: true,
+  // ActiveAcount: false,
   userid: firebase.auth().currentUser.uid,
   email: firebase.auth().currentUser.email
     };
 
   constructor(
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private menuCtrl: MenuController,
     ) {
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
@@ -47,40 +48,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-
-   
-
-
-  //  // pulling from outbound
-  //  this.db.collection('outbound').onSnapshot(snapshot => {
-     
-  //   this.outbound = [];
-  //   snapshot.forEach(element => {
-  //     let id = {};
-  //     let outdate = {};
-  //     let outDriverName = {};
-  //     let outRegistarionNumberPlates = {};
-  //     let outovarallMass = {};
-
-  //     id = this.id = element.id;
-  //     outdate = this.outdate = element.data().date;
-  //     outDriverName = this.outDriverName = element.data().DriverName;
-  //     outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
-  //     outovarallMass = this.outovarallMass = element.data().ovarallMass;
-
-  //     // this.outbound = [];
-  //     this.outbound.push({
-  //       id: id,
-  //       outDate: outdate,
-  //       outdriverName: outDriverName,
-  //       outRegistarionNo: outRegistarionNumberPlates,
-  //       outovarallmass: outovarallMass,
-  //     });
-  //     // this.outbound.push(element.data());
-  //     console.log('outboud',this.outbound);
-  //   });
-  // });
-
+    this.menuCtrl.enable(false); // or true
   }
 
   async users() {
@@ -104,8 +72,8 @@ export class ProfilePage implements OnInit {
       position: this.profile.position,
       userid: this.profile.userid,
       image: this.profile.image,
-      isAdmin: this.profile.isAdmin,
-      ActiveAcount: this.profile.ActiveAcount,
+      isAdmin: this.isAdmin,
+      ActiveAcount: this.ActiveAcount,
 
     })
     .then(function() {
@@ -133,14 +101,14 @@ export class ProfilePage implements OnInit {
       });
     });
   }
-  
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
 
-
-
-
-
-
-
+   ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menuCtrl.enable(true);
+  }
   
   }
