@@ -4,13 +4,50 @@
   </ion-toolbar>
 </ion-header>
 
+ 
+
 <ion-content>
+
+  <div class="Mother">
+    <div class="Son"></div> 
+    <div class="Mask">
+      <div class="LEFT"><ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon></div>
+       <h3 class="Tittle"><b>Outbound Details</b></h3> 
+       <div class="Content">
+        <div class="Group1">
+          <div class="theSearch">
+            <input id="theSearchbar" type="text" placeholder="Search Driver">
+          </div>
+          div
+        </div>
+        <div class="Group2">
+          <div class="Sub2">
+
+          </div>
+        </div>
+       </div>
+    </div>
+     <div class="Daughter">
+      
+      <div class="FirstIMG">
+        <img id="RecyleIMG" src="../../assets/icon/Asset 10.svg" alt="">
+      </div>
+      <div class="SecIMG">
+        <img id="PurpleBubbles" src="../../assets/icon/outboundPOPup                                                                .svg" alt="">
+        <div class="TheTruck">
+          <img src="" alt="">
+        </div>
+      </div>
+     </div>
+  </div>
+
+  <div class="TheCont">
+
   <div class="header">	
     <div class="nav">	
       <h2>My Dashboard</h2>	
       <h3> Outbound</h3>	
     </div> 	
-
     <div class="profiles" *ngFor="let item of Newadmin">	
       <div class="image">   	
         <img  src="{{item.image}}" height="400px" width="400px" >
@@ -195,6 +232,7 @@
     <!-- <button id="pdf" ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">DOWNLOAD PDF</button> -->
   </div>
   </div><!-- end of  -->
+</div>
 </div>
 
 </ion-content>
