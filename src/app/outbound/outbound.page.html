@@ -8,11 +8,246 @@
 
 <ion-content>
 
-  <div class="Mother">
+  <div class="Mother"  *ngIf="otherPopup === false">
+    <div id="Son"> (click)="goAway()"</div>
+    <div id="Daughter">
+      <div id="Header">
+        <div id="Paper" (click)="togglePaper()">
+          <h4>PAPER</h4>
+        </div>
+        <div id="Plastic" (click)="togglePlastic()">
+          <h4>PLASTIC</h4>
+        </div>
+        <div id="Aluminium" (click)="toggleAluminium()">
+          <h4>ALUMINIUM</h4>
+        </div>
+        <div id="Glass" (click)="toggleGlass()">
+          <h4>GLASS</h4>
+        </div>
+        <div id="line"></div>
+      </div>
+
+      <div class="myInfo">
+        <div class="for-plastic" id="toPlastic">
+          <div id="toFlex">
+            
+          <div class="FirstRow">
+            <div id="FirstCol">
+              <input type="text" placeholder="Weight in Kilograms">
+              <div class="Amount">
+                <b>
+                  <p>HD001</p>
+                </b>
+              </div>
+            </div>
+            <div id="SecondCol">
+              <input type="text" placeholder="Weight in Kilograms">
+              <div class="Amount">
+                <b>
+                  <p>LD001</p>
+                </b>
+              </div>
+            </div>
+          </div>
+          <div class="FirstRow">
+            <div id="FirstCol">
+              <input type="text" placeholder="Weight in Kilograms">
+              <div class="Amount">
+                <b>
+                  <p>LD003</p>
+                </b>
+              </div>
+            </div>
+            <div id="SecondCol">
+              <input type="text" placeholder="Weight in Kilograms">
+              <div class="Amount">
+                <b>
+                  <p>PET005</p>
+                </b>
+              </div>
+            </div>
+          </div>
+          <div class="FirstRow">
+            <div id="FirstCol">
+              <input type="text" placeholder="Weight in Kilograms">
+              <div class="Amount">
+                <b>
+                  <p>PET001</p>
+                </b>
+              </div>
+            </div>
+            <div id="SecondCol">
+              <input type="text" placeholder="Weight in Kilograms">
+              <div class="Amount">
+                <b>
+                  <p>PET003</p>
+                </b>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="total-values">
+            <div><b>Paper Total: R400.00</b></div>
+            <div><b>Total: R400.00</b></div>
+          </div> -->
+
+          <!-- <ion-grid>
+            <ion-row>
+              <ion-col id="col1"></ion-col>
+              <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
+              <ion-col><b>Total: R400.00</b></ion-col>
+            </ion-row>
+          </ion-grid> -->
+          </div>
+
+          <div class="Button">
+            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+            <div class="TheButton">
+              <button clear (click)="showOtherPopup()">Next</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="for-paper" id="toPaper">
+
+          <div id="toFlex">
+            
+            <div class="FirstRow">
+              <div id="FirstCol">
+                <input type="text" placeholder="Weight in Kilograms">
+                <div class="Amount">
+                  <b>
+                    <p>PAP005</p>
+                  </b>
+                </div>
+              </div>
+              <div id="SecondCol">
+                <input type="text" placeholder="Weight in Kilograms">
+                <div class="Amount">
+                  <b>
+                    <p>PAP007</p>
+                  </b>
+                </div>
+              </div>
+            </div>
+            <div class="FirstRow">
+              <div id="FirstCol">
+                <input type="text" placeholder="Weight in Kilograms">
+                <div class="Amount">
+                  <b>
+                    <p>PAP001</p>
+                  </b>
+                </div>
+              </div>
+              <div id="SecondCol">
+                <input type="text" placeholder="Weight in Kilograms">
+                <div class="Amount">
+                  <b>
+                    <p>PAP003</p>
+                  </b>
+                </div>
+              </div>
+            </div>  
+            <!-- <div class="total-values">
+              <div><b>Paper Total: R400.00</b></div>
+              <div><b>Total: R400.00</b></div>
+            </div> -->
+  
+            <!-- <ion-grid>
+              <ion-row>
+                <ion-col id="col1"></ion-col>
+                <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
+                <ion-col><b>Total: R400.00</b></ion-col>
+              </ion-row>
+            </ion-grid> -->
+            </div>
+  
+            <div class="Button">
+              <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+              <div class="TheButton">
+                <button clear  (click)="showOtherPopup()">Next</button>
+              </div>
+            </div>
+  
+        </div>
+
+        <div class="for-Aluminium" id="toAluminium">
+          
+          <div id="toFlex">
+            
+            <div class="FirstRow">
+              <div id="FirstCol-one-input">
+                <input type="text"  placeholder="Weight in Kilograms">
+                <div class="Amount">
+                  <b>
+                    <p>NFAL01</p>
+                  </b>
+                </div>
+              </div>
+            </div>  
+            <!-- <div class="total-values">
+              <div><b>Paper Total: R400.00</b></div>
+              <div><b>Total: R400.00</b></div>
+            </div> -->
+  
+            <!-- <ion-grid>
+              <ion-row>
+                <ion-col id="col1"></ion-col>
+                <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
+                <ion-col><b>Total: R400.00</b></ion-col>
+              </ion-row>
+            </ion-grid> -->
+            </div>
+  
+            <div class="Button">
+              <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+              <div class="TheButton">
+                <button clear  (click)="showOtherPopup()">Next</button>
+              </div>
+            </div>
+        </div>
+        
+        <div class="for-Glass" id="toGlass">
+
+          <div id="toFlex">
+            
+            <div class="FirstRow">
+              <div id="FirstCol-one-input">
+                <input type="text" placeholder="Weight in Kilograms">
+                <div class="Amount">
+                  <b>
+                    <p>GL001</p>
+                  </b>
+                </div>
+              </div>
+            </div>  
+            <!-- <div class="total-values">
+              <div><b>Paper Total: R400.00</b></div>
+              <div><b>Total: R400.00</b></div>
+            </div> -->
+  
+            </div>
+  
+            <div class="Button">
+              <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+              <div class="TheButton">
+                <button clear  (click)="showOtherPopup()">Next</button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="Mother" *ngIf="otherPopup === true">
     <div class="Son"></div>
     <div class="Mask">
       <div class="LEFT">
-        <ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon>
+        <ion-icon id="GO" (click)="showInputs()" name="arrow-dropleft-circle"></ion-icon>
       </div>
       <h3 class="Tittle"><b>Outbound Details</b></h3>
       <div class="Content">
@@ -35,14 +270,28 @@
             </ion-card>
           </div>
           <div class="Thebutton">
-
+            <ion-button class="AddDriver" color="clear"><ion-icon name="add"></ion-icon> New Driver</ion-button>
           </div>
         </div>
         <div class="Group2">
           <div class="Sub2">
-
+            <div class="Heading">
+              <h3 id="theH3">Driver Information</h3>
+              <div class="DriverInputs">
+                <input id="input" placeholder="Driver's Name">
+                <input id="input" placeholder="Registarion No.">
+                <input id="input" placeholder="Destination">
+                <input id="input" placeholder="Truck Source">
+              </div>
+              <div class="DoneBTN">
+                <ion-button id="Done" color="clear">Done</ion-button>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="Finish">
+        <button id="FinishBTN" color="clear">Done</button>
       </div>
     </div>
     <div class="Daughter">
@@ -55,7 +304,7 @@
           src="../../assets/icon/outboundPOPup                                                                .svg"
           alt="">
         <div class="TheTruck">
-          <img src="" alt="">
+          <img id="TruckIMG" src="../../assets/icon/outboundPopup.svg" alt="">
         </div>
       </div>
     </div>
@@ -276,7 +525,7 @@
         </ion-slides>
 
         <ion-card *ngFor="let records  of outbound">
-          <p>records: {{records.outDate}} {{records.outdriverName}} {{records.outRegistarionNo}}</p>
+          <p>records: {{records.outDate * 1000 | date:'MM-dd-yyyy HH-ss'}} {{records.outdriverName}} {{records.outRegistarionNo}}</p>
           <div>
             <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
           </div>
