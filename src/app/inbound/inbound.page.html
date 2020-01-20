@@ -31,7 +31,7 @@
             
           <div class="FirstRow">
             <div id="FirstCol">
-              <input type="text" placeholder="Weight in Kilograms">
+              <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass">
               <div class="Amount">
                 <b>
                   <p>HD001</p>
@@ -39,7 +39,7 @@
               </div>
             </div>
             <div id="SecondCol">
-              <input type="text" placeholder="Weight in Kilograms">
+              <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass">
               <div class="Amount">
                 <b>
                   <p>LD001</p>
@@ -49,7 +49,7 @@
           </div>
           <div class="FirstRow">
             <div id="FirstCol">
-              <input type="text" placeholder="Weight in Kilograms">
+              <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass">
               <div class="Amount">
                 <b>
                   <p>LD003</p>
@@ -420,7 +420,7 @@
         </ion-slides>
 
         <ion-card *ngFor="let records  of recordinbounddisplays">
-          <p>time: {{records.time}}</p>
+          <p>time: {{records.time * 1000 | date:'MM-dd-yyyy HH-ss'}}</p>
           <div>
             <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
           </div>

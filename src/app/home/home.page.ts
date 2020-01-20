@@ -327,8 +327,15 @@ inovarallMass;
         this.NFAL01 = (String(NFAL01z).substring(0, 6));
       });
     }
-  
-  
 
+    // query for week and months
+    // ref.where("timestamp", ">=", "2017-11").where("timestamp", "<", "2017-12")
+
+    // onether way
+    // Query query = mFirestore.collection("rootcollection").whereEqualTo("month", 3);
+    // 
+    // Query query = mFirestore.collection("rootcollection")
+    // .orderBy("timestamp", Query.Direction.DESCENDING)
+    // .whereEqualTo("month", 3);
 
 }

@@ -44,7 +44,33 @@ export class ReclaimerPage implements OnInit {
   ViewReclaimer = [];
   testArray = [];
   PDFArray = {};
+  PDFOverallMass = {};
+  PDFOverallSubTotal = {};
+  PDFOverallVat = {};
+  PDFOverallGrandTotal = {};
+  PDFPrices = {};
+  PDFCodes = {};
+  PDFSubTotals = {};
+  PDFVats = {};
+  PDFGrandTotal = {};
+  PDFMass = {};
   PDFArrayPrint = [];
+  PDFOverallMassPrint = [];
+  PDFOverallSubTotalPrint = [];
+  PDFOverallVatPrint = [];
+  PDFOverallGrandTotalPrint = [];
+  PDFPricesPrint = [];
+  PDFCodesPrint = [];
+  PDFSubTotalsPrint = [];
+  PDFVatsPrint = [];
+  PDFGrandTotalPrint = [];
+  PDFMassPrint = [];
+
+  // converted Numbers
+  printOverallMassz;
+  printOverallSubTotalz;
+  printOverallVatz;
+  printOverallGrandTotalz;
 
   isLabelActive;
 
@@ -831,6 +857,7 @@ export class ReclaimerPage implements OnInit {
           OverallSubTotal: OverallSubTotal,
           OverallVat: OverallVat,
           OverallGrandTotal: OverallGrandTotal,
+
           GH001: GH001,
           NFAL01: NFAL01,
           PAP005: PAP005,
@@ -843,6 +870,7 @@ export class ReclaimerPage implements OnInit {
           PET001: PET001,
           PET003: PET003,
           PET005: PET005,
+
           GH001mass: GH001mass,
           NFAL01mass: NFAL01mass,
           PAP005mass: PAP005mass,
@@ -855,6 +883,7 @@ export class ReclaimerPage implements OnInit {
           PET001mass: PET001mass,
           PET003mass: PET003mass,
           PET005mass: PET005mass,
+
           GH001price: GH001price,
           NFAL01price: NFAL01price,
           PAP005price: PAP005price,
@@ -867,54 +896,177 @@ export class ReclaimerPage implements OnInit {
           PET001price: PET001price,
           PET003price: PET003price,
           PET005price: PET005price,
+
           GH001SubTotal: GH001SubTotal,
-          GH001Vat: GH001Vat,
-          GH001GrandTotal: GH001GrandTotal,
           NFAL01SubTotal: NFAL01SubTotal,
-          NFAL01Vat: NFAL01Vat,
-          NFAL01GrandTotal: NFAL01GrandTotal,
           PAP005SubTotal: PAP005SubTotal,
-          PAP005Vat: PAP005Vat,
-          PAP005GrandTotal: PAP005GrandTotal,
           PAP007SubTotal: PAP007SubTotal,
-          PAP007Vat: PAP007Vat,
-          PAP007GrandTotal: PAP007GrandTotal,
           PAP001SubTotal: PAP001SubTotal,
-          PAP001Vat: PAP001Vat,
-          PAP001GrandTotal: PAP001GrandTotal,
           PAP003SubTotal: PAP003SubTotal,
-          PAP003Vat: PAP003Vat,
-          PAP003GrandTotal: PAP003GrandTotal,
           HD001SubTotal: HD001SubTotal,
-          HD001Vat: HD001Vat,
-          HD001GrandTotal: HD001GrandTotal,
           LD001SubTotal: LD001SubTotal,
-          LD001Vat: LD001Vat,
-          LD001GrandTotal: LD001GrandTotal,
           LD003SubTotal: LD003SubTotal,
-          LD003Vat: LD003Vat,
-          LD003GrandTotal: LD003GrandTotal,
           PET001SubTotal: PET001SubTotal,
-          PET001Vat: PET001Vat,
-          PET001GrandTotal: PET001GrandTotal,
           PET003SubTotal: PET003SubTotal,
-          PET003Vat: PET003Vat,
-          PET003GrandTotal: PET003GrandTotal,
           PET005SubTotal: PET005SubTotal,
+
+          GH001Vat: GH001Vat,
+          NFAL01Vat: NFAL01Vat,
+          PAP005Vat: PAP005Vat,
+          PAP007Vat: PAP007Vat,
+          PAP001Vat: PAP001Vat,
+          PAP003Vat: PAP003Vat,
+          HD001Vat: HD001Vat,
+          LD001Vat: LD001Vat,
+          LD003Vat: LD003Vat,
+          PET001Vat: PET001Vat,
+          PET003Vat: PET003Vat,
           PET005Vat: PET005Vat,
+
+          GH001GrandTotal: GH001GrandTotal,
+          NFAL01GrandTotal: NFAL01GrandTotal,
+          PAP005GrandTotal: PAP005GrandTotal,
+          PAP007GrandTotal: PAP007GrandTotal,
+          PAP001GrandTotal: PAP001GrandTotal,
+          PAP003GrandTotal: PAP003GrandTotal,
+          HD001GrandTotal: HD001GrandTotal,
+          LD001GrandTotal: LD001GrandTotal,
+          LD003GrandTotal: LD003GrandTotal,
+          PET001GrandTotal: PET001GrandTotal,
+          PET003GrandTotal: PET003GrandTotal,
           PET005GrandTotal: PET005GrandTotal,
+        };
+
+        // PDFOverallz
+        this.PDFOverallMass = {
+          overallMass: overallMass
+        };
+
+        this.PDFOverallSubTotal = {
+          OverallSubTotal: OverallSubTotal
+        };
+
+        this.PDFOverallVat = {
+          OverallVat: OverallVat
+        };
+
+        this.PDFOverallGrandTotal = {
+          OverallGrandTotal: OverallGrandTotal
+        };
+
+        // PDFPrices
+        this.PDFPrices = {
+          GH001price: GH001price,
+          NFAL01price: NFAL01price,
+          PAP005price: PAP005price,
+          PAP007price: PAP007price,
+          PAP001price: PAP001price,
+          PAP003price: PAP003price,
+          HD001price: HD001price,
+          LD001price: LD001price,
+          LD003price: LD003price,
+          PET001price: PET001price,
+          PET003price: PET003price,
+          PET005price: PET005price
+        };
+
+        // PDFCodes
+        this.PDFCodes = {
+          GH001: GH001,
+          NFAL01: NFAL01,
+          PAP005: PAP005,
+          PAP007: PAP007,
+          PAP001: PAP001,
+          PAP003: PAP003,
+          HD001: HD001,
+          LD001: LD001,
+          LD003: LD003,
+          PET001: PET001,
+          PET003: PET003,
+          PET005: PET005
+        };
+
+        // PDFSubTotals
+        this.PDFSubTotals = {
+          GH001SubTotal: GH001SubTotal,
+          NFAL01SubTotal: NFAL01SubTotal,
+          PAP005SubTotal: PAP005SubTotal,
+          PAP007SubTotal: PAP007SubTotal,
+          PAP001SubTotal: PAP001SubTotal,
+          PAP003SubTotal: PAP003SubTotal,
+          HD001SubTotal: HD001SubTotal,
+          LD001SubTotal: LD001SubTotal,
+          LD003SubTotal: LD003SubTotal,
+          PET001SubTotal: PET001SubTotal,
+          PET003SubTotal: PET003SubTotal,
+          PET005SubTotal: PET005SubTotal
+        };
+
+        // PDFVats
+        this.PDFVats = {
+          GH001Vat: GH001Vat,
+          NFAL01Vat: NFAL01Vat,
+          PAP005Vat: PAP005Vat,
+          PAP007Vat: PAP007Vat,
+          PAP001Vat: PAP001Vat,
+          PAP003Vat: PAP003Vat,
+          HD001Vat: HD001Vat,
+          LD001Vat: LD001Vat,
+          LD003Vat: LD003Vat,
+          PET001Vat: PET001Vat,
+          PET003Vat: PET003Vat,
+          PET005Vat: PET005Vat
+        };
+
+        // PDFGrandTotal
+        this.PDFGrandTotal = {
+          GH001GrandTotal: GH001GrandTotal,
+          NFAL01GrandTotal: NFAL01GrandTotal,
+          PAP005GrandTotal: PAP005GrandTotal,
+          PAP007GrandTotal: PAP007GrandTotal,
+          PAP001GrandTotal: PAP001GrandTotal,
+          PAP003GrandTotal: PAP003GrandTotal,
+          HD001GrandTotal: HD001GrandTotal,
+          LD001GrandTotal: LD001GrandTotal,
+          LD003GrandTotal: LD003GrandTotal,
+          PET001GrandTotal: PET001GrandTotal,
+          PET003GrandTotal: PET003GrandTotal,
+          PET005GrandTotal: PET005GrandTotal
+        };
+
+        // PDFMass
+        this.PDFMass = {
+          GH001mass: GH001mass,
+          NFAL01mass: NFAL01mass,
+          PAP005mass: PAP005mass,
+          PAP007mass: PAP007mass,
+          PAP001mass: PAP001mass,
+          PAP003mass: PAP003mass,
+          HD001mass: HD001mass,
+          LD001mass: LD001mass,
+          LD003mass: LD003mass,
+          PET001mass: PET001mass,
+          PET003mass: PET003mass,
+          PET005mass: PET005mass
         };
 
       // });
 
       // create PDF for Download
-      this.ForLoop();
+        this.ForLoop();
     });
   }
 
   ForLoop() {
-    console.log(this.PDFArray);
+    // console.log(this.PDFArray);
+    // console.log(this.PDFCodes);
+    // console.log(this.PDFPrices);
+    // console.log(this.PDFMass);
+    // console.log(this.PDFSubTotals);
+    // console.log(this.PDFVats);
+    // console.log(this.PDFGrandTotal);
 
+    // all (old pdf)
     // tslint:disable-next-line: forin
     for (let key in this.PDFArray) {
       console.log(key);
@@ -925,6 +1077,110 @@ export class ReclaimerPage implements OnInit {
       }
     }
     console.log(this.PDFArrayPrint);
+
+    // PDFCodes
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFCodes) {
+      console.log(key);
+      // if (this.PDFCodes[key] === '0') {
+      //   console.log('Skipped because its 0');
+      // } else if (this.PDFCodes[key] !== '0') {
+        this.PDFCodesPrint.push({name : key, number : this.PDFCodes[key]});
+      // }
+    }
+    console.log(this.PDFCodesPrint);
+
+    // PDFPrices
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFPrices) {
+      console.log(key);
+      // if (this.PDFPrices[key] === '0') {
+      //   console.log('Skipped because its 0');
+      // } else if (this.PDFPrices[key] !== '0') {
+        this.PDFPricesPrint.push({name : key, number : this.PDFPrices[key]});
+      // }
+    }
+    console.log(this.PDFPricesPrint);
+
+    // PDFMass
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFMass) {
+      console.log(key);
+      if (this.PDFMass[key] === '0') {
+        console.log('Skipped because its 0');
+      } else if (this.PDFMass[key] !== '0') {
+        this.PDFMassPrint.push({name : key, number : this.PDFMass[key]});
+      }
+    }
+    console.log(this.PDFMassPrint);
+
+    // PDFSubTotals
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFSubTotals) {
+      console.log(key);
+      if (this.PDFSubTotals[key] === '0') {
+        console.log('Skipped because its 0');
+      } else if (this.PDFSubTotals[key] !== '0') {
+        this.PDFSubTotalsPrint.push({name : key, number : this.PDFSubTotals[key]});
+      }
+    }
+    console.log(this.PDFSubTotalsPrint);
+
+    // PDFVats
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFVats) {
+      console.log(key);
+      if (this.PDFVats[key] === '0') {
+        console.log('Skipped because its 0');
+      } else if (this.PDFVats[key] !== '0') {
+        this.PDFVatsPrint.push({name : key, number : this.PDFVats[key]});
+      }
+    }
+    console.log(this.PDFVatsPrint);
+
+    // PDFGrandTotal
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFGrandTotal) {
+      console.log(key);
+      if (this.PDFGrandTotal[key] === '0') {
+        console.log('Skipped because its 0');
+      } else if (this.PDFGrandTotal[key] !== '0') {
+        this.PDFGrandTotalPrint.push({name : key, number : this.PDFGrandTotal[key]});
+      }
+    }
+    console.log(this.PDFGrandTotalPrint);
+
+    // PDFOverall Mass
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFOverallMass) {
+      console.log(key);
+      this.PDFOverallMassPrint.push({name : key, number : this.PDFOverallMass[key]});
+    }
+    console.log(this.PDFOverallMassPrint);
+
+    // PDFOverall SubTotal
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFOverallSubTotal) {
+      console.log(key);
+      this.PDFOverallSubTotalPrint.push({name : key, number : this.PDFOverallSubTotal[key]});
+    }
+    console.log(this.PDFOverallSubTotalPrint);
+
+    // PDFOverall Vat
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFOverallVat) {
+      console.log(key);
+      this.PDFOverallVatPrint.push({name : key, number : this.PDFOverallVat[key]});
+    }
+    console.log(this.PDFOverallVatPrint);
+
+    // PDFOverall Grand Total
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFOverallGrandTotal) {
+      console.log(key);
+      this.PDFOverallGrandTotalPrint.push({name : key, number : this.PDFOverallGrandTotal[key]});
+    }
+    console.log(this.PDFOverallGrandTotalPrint);
 
     // create PDF for Download
     this.createPdf();
@@ -1865,12 +2121,111 @@ export class ReclaimerPage implements OnInit {
   }
 
   createPdf() {
+    // All
     let printDataName = [];
     let printDataNumber = [];
 
+    // Codes
+    let printCodeName = [];
+    let printCodeNumber = [];
+
+    // Prices
+    let printPriceName = [];
+    let printPriceNumber = [];
+
+    // Mass
+    let printMassName = [];
+    let printMassNumber = [];
+
+    // Subtotals
+    let printSubTotalName = [];
+    let printSubTotalNumber = [];
+
+    // Vats
+    let printVatsName = [];
+    let printVatsNumber = [];
+
+    // Grand Total
+    let printGrandTotalName = [];
+    let printGrandTotalNumber = [];
+
+    // Overalls
+    let printOverallMass = [];
+    let printOverallSubTotal = [];
+    let printOverallVat = [];
+    let printOverallGrandTotal = [];
+
+    // All
     this.PDFArrayPrint.forEach((item) => {
       printDataName.push(item.name);
       printDataNumber.push(item.number);
+    });
+
+    // Codes
+    this.PDFCodesPrint.forEach((item) => {
+      printCodeName.push(item.name);
+      // printCodeNumber.push(item.number);
+      printCodeNumber.push(String(item.number).substring(0, 4));
+    });
+
+    // Prices
+    this.PDFPricesPrint.forEach((item) => {
+      printPriceName.push(item.name);
+      // printPriceNumber.push(item.number);
+      printPriceNumber.push(String(item.number).substring(0, 4));
+    });
+
+    // Mass
+    this.PDFMassPrint.forEach((item) => {
+      printMassName.push(item.name);
+      // printMassNumber.push(item.number);
+      printMassNumber.push(String(item.number).substring(0, 4));
+    });
+
+    // Subtotals
+    this.PDFSubTotalsPrint.forEach((item) => {
+      printSubTotalName.push(item.name);
+      // printSubTotalNumber.push(item.number);
+      printSubTotalNumber.push(String(item.number).substring(0, 4));
+    });
+
+    // Vats
+    this.PDFVatsPrint.forEach((item) => {
+      printVatsName.push(item.name);
+      // printVatsNumber.push(item.number);
+      printVatsNumber.push(String(item.number).substring(0, 4));
+    });
+
+    // Grand Total
+    this.PDFGrandTotalPrint.forEach((item) => {
+      printGrandTotalName.push(item.name);
+      // printGrandTotalNumber.push(item.number);
+      printGrandTotalNumber.push(String(item.number).substring(0, 4));
+    });
+
+    // PDFOverallz
+    // PDFOverallMassPrint
+    this.PDFOverallMassPrint.forEach((item) => {
+      printOverallMass.push(item.number);
+      this.printOverallMassz = (String(printOverallMass).substring(0, 4));
+    });
+
+    // PDFOverallSubTotalPrint
+    this.PDFOverallSubTotalPrint.forEach((item) => {
+      printOverallSubTotal.push(item.number);
+      this.printOverallSubTotalz = (String(printOverallSubTotal).substring(0, 4));
+    });
+
+    // PDFOverallVatPrint
+    this.PDFOverallVatPrint.forEach((item) => {
+      printOverallVat.push(item.number);
+      this.printOverallVatz = (String(printOverallVat).substring(0, 4));
+    });
+
+    // PDFOverallGrandTotalPrint
+    this.PDFOverallGrandTotalPrint.forEach((item) => {
+      printOverallGrandTotal.push(item.number);
+      this.printOverallGrandTotalz = (String(printOverallGrandTotal).substring(0, 4));
     });
 
     var docDefinition = {
@@ -1896,10 +2251,11 @@ export class ReclaimerPage implements OnInit {
           styles: Headers,
           table: {
             headerRows: 1,
-            widths: [ 'auto', 'auto', 'auto' ],
+            widths: [ 'auto', 'auto', 'auto', 'auto', 'auto', 'auto' ],
             body: [
-              [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
-              ['', printDataName, printDataNumber],
+              [ 'CODE/NUMBER', 'PRICE', 'MASS(KG)', 'VAT', 'SUB-TOTAL', 'GRAND tOTAL' ],
+              [ printCodeName, printPriceNumber, printMassNumber, printSubTotalNumber, printVatsNumber, printGrandTotalNumber],
+              [ '', 'Overall Totals', this.printOverallMassz, this.printOverallSubTotalz, this.printOverallVatz, this.printOverallGrandTotalz],
             ]
           }
         },
@@ -1932,7 +2288,7 @@ export class ReclaimerPage implements OnInit {
     this.pdfObj = pdfMake.createPdf(docDefinition);
   }
 
-  downloadPdf() {
+downloadPdf() {
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
@@ -1949,7 +2305,7 @@ export class ReclaimerPage implements OnInit {
     }
   }
 
-  Logout() {
+Logout() {
     firebase.auth().signOut().then((res) => {
       console.log(res);
       this.route.navigateByUrl('/login');
