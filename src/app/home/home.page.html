@@ -1,114 +1,77 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-title>Refilwe Dikutle <span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <button (click)="editprofile()">edit profile</button>
-  <div class="header">	
-    <div class="nav">	
-      <h2>My Dashboard</h2>	
-      <p id="titler">Home</p>	
-    </div> 	
-
-    <div class="profiles" *ngFor="let item of Newadmin">	
-        <div class="image">   	
-          <img  src="{{item.image}}" height="400px" width="400px" >
-          </div>	
-    <div class="names">	
-        <H4>{{ item.name }}</H4>  
-        <P>{{ item.position }}</P>	
-    </div>	
-      </div>	
-
-    <div class="logout" (click)="Logout()">	
-        <ion-icon name="log-out"></ion-icon>	
-    </div>	
-  </div>
-     
-    <div class="container">
-      <!-- <div class="halfone" padding>
-          <div class="graph">
-              <canvas #barChart></canvas>
-          </div>
-      </div>
-     -->
-      <div class="halftwo" padding>
-   <!-- one  -->
-   <div class="alluminium">
-    <div class="imagediv" id="aluminium">
-      <img src="../../assets/alluminium.svg">
-      <div class="grams">
-          <h5>ALLUMINIUM</h5>
-          <h3>{{ NFAL01 }}<span>Kg</span></h3>
-      </div>
-    </div>
-  <!-- <div id="names">
-      <h5>ALLUMINIUM  =  {{NFAL01storagemass }}<span>Kg</span></h5>
-          <h5 id="number"></h5>
-  </div> -->
-  </div>
-  <!-- two -->
-  <div class="glass">
-    <div class="imagediv" id="plastic">
-        <img src="../../assets/glass.svg">
-        <div class="grams" style=" display: flex;flex-direction: column;justify-content: center;">
-            <h5>GLASS</h5>
-            <h3>{{ GH001 }}<span>Kg</span></h3>
-        </div> </div>
-        <!-- <div  id="glasscat"  >
-            <h5>GLASS  =</h5>
-                <h5 id="number">{{ GH001storagemass }}<span>Kg</span></h5>
-        </div> -->
-  </div>
-      <!-- three -->
-      <div class="paper">
-        <div class="imagediv" id="plastic" >
-            <img src="../../assets/paper.svg">
-            <div class="grams">
-                <h5>PAPER</h5>
-                <h3>{{ Totalpaper }}<span>Kg</span></h3>
-            </div>
-  
+<div class="container">
+  <div padding class="alltime">
+    <div class="stats">
+      <div class="big">
+        <div class="small">
+          <img src="../../assets/inbound.svg">
         </div>
-        <!-- <div  id="papercat">
-          <p>PAP005  =  {{ PAP005storagemass }} <span>Kg</span></p>
-          <p>PAP007  =  {{ PAP007storagemass }} <span>Kg</span></p>
-          <p>PAP001  =  {{ PAP001storagemass }} <span>Kg</span></p>
-          <p>PAP003  =  {{ PAP003storagemass }} <span>Kg</span></p>
-      </div> -->
-    </div>
-    <!-- four -->
-    <div class="plastic">
-      <div class="imagediv" id="plastic">
-          <img src="../../assets/plastic.svg">
-        <div class="grams">
-            <h5>PLASTIC</h5>
-            <h3>{{ Totalplasticz }}<span>Kg</span></h3>
+        <h3>Inbound</h3>
+        <p class="mass">234.87</p>
+        <div class="updates">
+          <p>Updated 56min ago</p>
         </div>
       </div>
-      <!-- <div  id="papercat">
-        <p>HD001  =  {{ HD001storagemass }} <span>Kg</span></p>
-        <p>LD001  =  {{ LD001storagemass }} <span>Kg</span></p>
-        <p>LD003  =  {{ LD003storagemass }} <span>Kg</span></p>
-        <p>PET001  =  {{ PET001storagemass }} <span>Kg</span></p>
-        <p>PET003  =  {{ PET003storagemass }} <span>Kg</span></p>
-        <p>PET005  =  {{ PET005storagemass }} <span>Kg</span></p>
-    </div> -->
-      <!-- <h2>HD001 {{ mass.HD001}}</h2>
-      <h2>LD001 {{ mass.LD001}}</h2>
-      <h2>LD003 {{ mass.LD003}}</h2>
-      <h2>PET005 {{ mass.PET005}}</h2>
-      <h2>PET001 {{ mass.PET001}}</h2>
-      <h2>PET003 {{ mass.PET003}}</h2> -->
-  </div>  
-       
+    
+    </div>
+    <!-- box 2 -->
+    <div class="stats">
+      <div class="big">
+        <div class="small">
+          <img src="../../assets/inbound.svg">
+        </div>
+        <h3>Inbound</h3>
+        <p class="mass">234.87</p>
+        <div class="updates">
+          <p>Updated 56min ago</p>
+        </div>
       </div>
     </div>
+    <!-- box 3 -->
+    <div class="stats">
+      <div class="big">
+        <div class="small">
+          <img src="../../assets/inbound.svg">
+        </div>
+        <h3>Inbound</h3>
+        <p class="mass">234.87</p>
+        <div class="updates">
+          <p>Updated 56min ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h6></h6>
+  <!-- material -->
+  <div padding class="material">
+    <!-- <h4>All Time Material</h4> -->
+    <div class="box">
+      <div class="mat">
+        <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg">
+      </div>
+      <div class="matnames">
+        <div class="codes">
+          <input placeholder="">
+        </div>
+        <div class="manname"></div>
+      </div>
+    </div>
+   
+    <!-- <div class="mat">
+      <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg"> </div>
+    <div class="mat">
+      <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg">
+</div>
+    <div class="mat">
+      <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg">
+</div> -->
+  </div>
+</div>
 </ion-content>

@@ -16,7 +16,7 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['./inbound.page.scss'],
 })
 export class InboundPage implements OnInit {
-
+  
   // start of Declaretions
   // user infor
   admin = [];
@@ -147,6 +147,7 @@ export class InboundPage implements OnInit {
   pdfmakerFirebase(id) {
     this.db.collection('inbounds').onSnapshot(element => {
       element.forEach(element => {
+        
         let time = [];
         let GH001storagemass = {};
         let NFAL01storagemass = {};
@@ -478,6 +479,8 @@ export class InboundPage implements OnInit {
 
   recordInbounds() {
     this.db.collection("inbounds").doc().set({
+     
+
       time: new Date(),
       inboundGH001: this.GH001mass,
       inboundNFAL01: this.NFAL01mass,
