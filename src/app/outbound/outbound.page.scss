@@ -81,9 +81,9 @@
 
 #PurpleBubbles{
     position: absolute;
-    bottom: -40%;
-    right: -20%;
-    height: 600px;
+    bottom: -45%;
+    right: -24%;
+    height: 780px;
 
 }
 img {
@@ -167,4 +167,27 @@ img {
     padding-left: 4%;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
+}
+
+.TheContent{
+    height: 70%;
+    width: 100%;
+    //border: solid 2px blue;
+    background-color: red;
+    border-radius: 6px;
+}
+
+ion-card{
+    background-color:#F4F4F4;
+    margin-top: 5%;
+}
+
+.Thebutton{
+    height: 15%;
+    width: 100%;
+    border: solid 2px orangered;
+}
+
+h5{
+    color: black;
 }

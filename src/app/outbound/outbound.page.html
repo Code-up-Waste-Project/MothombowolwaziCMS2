@@ -4,235 +4,291 @@
   </ion-toolbar>
 </ion-header>
 
- 
+
 
 <ion-content>
 
   <div class="Mother">
-    <div class="Son"></div> 
+    <div class="Son"></div>
     <div class="Mask">
-      <div class="LEFT"><ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon></div>
-       <h3 class="Tittle"><b>Outbound Details</b></h3> 
-       <div class="Content">
+      <div class="LEFT">
+        <ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon>
+      </div>
+      <h3 class="Tittle"><b>Outbound Details</b></h3>
+      <div class="Content">
         <div class="Group1">
           <div class="theSearch">
             <input id="theSearchbar" type="text" placeholder="Search Driver">
           </div>
-          div
+          <div class="TheContent">
+            <ion-card>
+              <ion-card-content>
+                <h5><b>Driver's Name</b></h5>
+                <p>Driver's Name</p>
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content>
+                <h5><b>Driver's Name</b></h5>
+                <p>Driver's Name</p>
+              </ion-card-content>
+            </ion-card>
+          </div>
+          <div class="Thebutton">
+
+          </div>
         </div>
         <div class="Group2">
           <div class="Sub2">
 
           </div>
         </div>
-       </div>
+      </div>
     </div>
-     <div class="Daughter">
-      
+    <div class="Daughter">
+
       <div class="FirstIMG">
         <img id="RecyleIMG" src="../../assets/icon/Asset 10.svg" alt="">
       </div>
       <div class="SecIMG">
-        <img id="PurpleBubbles" src="../../assets/icon/outboundPOPup                                                                .svg" alt="">
+        <img id="PurpleBubbles"
+          src="../../assets/icon/outboundPOPup                                                                .svg"
+          alt="">
         <div class="TheTruck">
           <img src="" alt="">
         </div>
       </div>
-     </div>
+    </div>
   </div>
 
   <div class="TheCont">
 
-  <div class="header">	
-    <div class="nav">	
-      <h2>My Dashboard</h2>	
-      <h3> Outbound</h3>	
-    </div> 	
-    <div class="profiles" *ngFor="let item of Newadmin">	
-      <div class="image">   	
-        <img  src="{{item.image}}" height="400px" width="400px" >
-        </div>	
-  <div class="names">	
-      <H4>{{ item.name }}</H4>  
-      <P>{{ item.position }}</P>	
-  </div>	
-    </div>	
+    <div class="header">
+      <div class="nav">
+        <h2>My Dashboard</h2>
+        <h3> Outbound</h3>
+      </div>
+      <div class="profiles" *ngFor="let item of Newadmin">
+        <div class="image">
+          <img src="{{item.image}}" height="400px" width="400px">
+        </div>
+        <div class="names">
+          <H4>{{ item.name }}</H4>
+          <P>{{ item.position }}</P>
+        </div>
+      </div>
 
-    <div class="logout" (click)="Logout()">	
-        <ion-icon name="log-out"></ion-icon>	
-    </div>	
-  </div>
+      <div class="logout" (click)="Logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </div>
+    </div>
 
-<!-- new code -->
-<div class="container" padding>
-  <div class="slideContainer">
-  <ion-slides #slides  style=" overflow: visible;">
+    <!-- new code -->
+    <div class="container" padding>
+      <div class="slideContainer">
+        <ion-slides #slides style=" overflow: visible;">
 
-    <!-- INFORMATIN ABOUT DISPATCHING -->
-    <ion-slide id="form" > 
-      <div class="wave">
-       <img src="../../assets/wavy.png">
-       <h1> Add dispatch Information here </h1> 
-     </div>
-    
+          <!-- INFORMATIN ABOUT DISPATCHING -->
+          <ion-slide id="form">
+            <div class="wave">
+              <img src="../../assets/wavy.png">
+              <h1> Add dispatch Information here </h1>
+            </div>
 
-     <div class="form" style="width: 80%;margin-top: 15%" >
-       <!-- <form padding  style="margin-left: 10px;margin-right: 10px;"> -->
-         
-        <ion-item class="class-item"  style="border: 1px solid green;margin-top: 3%;   border-radius: 50px; font-size: 1.3vw;padding: 0 !important;">
-            <ion-label position="floating">Driver Name</ion-label>
-              <ion-input  [(ngModel)]="DriverName"  type="text" ></ion-input>
-              <ion-icon class="inpIco" name="ios-person"  [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"slot="end" style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
-            </ion-item>
 
-            <ion-item class="class-item"  style="border: 1px solid green;margin-top: 2%;   border-radius: 50px; font-size: 1.3vw;">
-                <ion-label position="floating">Registarion Number Plates</ion-label>
-                <ion-input [(ngModel)]="RegistarionNumberPlates" type="text" ></ion-input>
-                <ion-icon class="inpIco" name="car" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end" style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
+            <div class="form" style="width: 80%;margin-top: 15%">
+              <!-- <form padding  style="margin-left: 10px;margin-right: 10px;"> -->
+
+              <ion-item class="class-item"
+                style="border: 1px solid green;margin-top: 3%;   border-radius: 50px; font-size: 1.3vw;padding: 0 !important;">
+                <ion-label position="floating">Driver Name</ion-label>
+                <ion-input [(ngModel)]="DriverName" type="text"></ion-input>
+                <ion-icon class="inpIco" name="ios-person"
+                  [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end"
+                  style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
               </ion-item>
 
-              <ion-item class="class-item"  style="border: 1px solid green;margin-top: 2%;   border-radius: 50px; font-size: 1.3vw;">
-                  <ion-label position="floating">Destination</ion-label>
-                  <ion-input   [(ngModel)]="Destination" type="text" ></ion-input>
-                  <ion-icon class="inpIco" name="ios-pin" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end" style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
-                </ion-item>
+              <ion-item class="class-item"
+                style="border: 1px solid green;margin-top: 2%;   border-radius: 50px; font-size: 1.3vw;">
+                <ion-label position="floating">Registarion Number Plates</ion-label>
+                <ion-input [(ngModel)]="RegistarionNumberPlates" type="text"></ion-input>
+                <ion-icon class="inpIco" name="car"
+                  [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end"
+                  style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
+              </ion-item>
 
-                <ion-item class="class-item"  style="border: 1px solid green;margin-top: 2%;   border-radius: 50px; font-size: 1.3vw;">
-                    <ion-label position="floating">Truck Source</ion-label>
-                    <ion-input  [(ngModel)]="TruckSourcess" type="text" [ngModelOptions]="{standalone: true}"></ion-input>
-                    <ion-icon class="inpIco" name="car" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end" style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
-                  </ion-item>
-         
-         <!-- </form> -->
-       </div>
-   </ion-slide> 
-   
-  <!-- paper -->
-    <ion-slide style=" border-radius: 20px !; overflow: hidden" >
-     <div class="lists" style="overflow: auto;">
-         <h3 id="title">PAPER</h3>
-       <div class="list">
-       <div class="image"><img src="../../assets/common white paper.jpg" height="80%%">
-       <p>COMMON PAPER</p>
-     </div>
-       <div class="name"><p> PAP005</p></div>
-       <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP005mass" placeholder="Enter Mass Here">
-    
-     </div>
-     <div class="list" style="overflow: auto;">
-         <div class="image"><img src="../../assets/news papers.jpg" height="80%%">
-         <p>FLAT NEWS</p>
-       </div>
-         <div class="name"><p>PAP007</p></div>
-         <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP007mass" placeholder="Enter Mass Here">
-     
-       </div>
-       <div class="list">
-           <div class="image"><img src="../../assets/shapes.svg" height="80%%">
-           <p>HL 1</p>
-         </div>
-           <div class="name"><p> PAP001</p></div>
-           <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP001mass" placeholder="Enter Mass Here">
-         </div>
-         <div class="list" style="margin-bottom: 5px !important">
-             <div class="image"><img src="../../assets/cardboard.jpg" height="80%%">
-             <p>K4-CARDBOARD</p>
-           </div>
-             <div class="name" ><p>PAP003</p></div>
-             <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP003mass" placeholder="Enter Mass Here">
-           </div>
-     </div>
-   </ion-slide><!-- end of slide one -->
-        <!-- plastic -->
-   <ion-slide style=" border-radius: 20px !; overflow: hidden" >
-       <div class="lists" style="overflow: auto;">
-           <h3 id="title">PLASTIC</h3>
-         <div class="list" id="paper">
-         <div class="image"><img src="../../assets/Hd plastic.jpg" height="80%%">
-         <p>HD</p>
-       </div>
-         <div class="name"><p>HD001</p></div>
-         <input style="font-size: 1vw;" type="number" [(ngModel)]="HD001mass" placeholder="Enter Mass Here">
-       </div>
-       <div class="list">
-           <div class="image"><img src="../../assets/CLEAR PLASTIC.jpg" height="80%%">
-           <p>LD CLEAR</p>
-         </div>
-           <div class="name"><p>LD001</p></div>
-           <input style="font-size: 1vw;" type="number" [(ngModel)]="LD001mass" placeholder="Enter Mass Here">
-         </div>
-         <div class="list">
-             <div class="image"><img src="../../assets/colour cups.jpg" height="80%%">
-             <p>LD MIXED COLORS</p>
-           </div>
-             <div class="name"><p>LD003</p></div>
-             <input style="font-size: 1vw;" type="number" [(ngModel)]="LD003mass" placeholder="Enter Mass Here">
-           </div>
-           <div class="list">
-               <div class="image"><img src="../../assets/Brown bottles.png" height="80%%">
-               <p>PET BROWN</p>
-             </div>
-               <div class="name"><p>PET005</p></div>
-               <input style="font-size: 1vw;" type="number" [(ngModel)]="PET005mass" placeholder="Enter Mass Here">
-             </div>
-             <div class="list">
-              <div class="image"><img src="../../assets/pet clear bottle.jpg" height="80%%">
-              <p>PET CLEAR</p>
-            </div>
-              <div class="name"><p>PET001</p></div>
-              <input style="font-size: 1vw;" type="number" [(ngModel)]="PET001mass" placeholder="Enter Mass Here">
-            </div>
-            <div class="list">
-              <div class="image"><img src="../../assets/pet green bottle.jpg" height="80%%">
-              <p>PET GREEN</p>
-            </div>
-              <div class="name"><p>PET003</p></div>
-              <input style="font-size: 1vw;" type="number" [(ngModel)]="PET003mass" placeholder="Enter Mass Here">
-            </div>
-       </div>
-     </ion-slide><!-- end of slide two -->
-             <!-- NON-FERROUS/ ALLUMINIUM -->
-    <ion-slide style=" border-radius: 20px !; overflow: hidden" >
-       <div class="lists">
-           <h3 id="title">NON-FERROUS</h3>
-         <div class="list">
-         <div class="image"><img src="../../assets/ALU-CANS-cropped.jpg" height="80%%">
-         <p>ALLINIUM CANS</p>
-       </div>
-         <div class="name"><p> NFAL01</p></div>
-         <input style="font-size: 1vw;" type="number" [(ngModel)]=" NFAL01mass" placeholder="Enter Mass Here">
-       </div>
-       </div>
-     </ion-slide><!-- end of slide three -->
-    <ion-slide style=" border-radius: 20px !; overflow: hidden" >
-       <div class="lists">
-           <h3 id="title">GLASS</h3>
-         <div class="list">
-         <div class="image"><img src="../../assets/glass.jpg" height="80%%">
-         <p>GLASS</p>
-       </div>
-         <div class="name"><p> GL001</p></div>
-     <input style="font-size: 1vw;" type="number" [(ngModel)]="GH001mass" placeholder="Enter Mass Here">
-       </div>
-   
-       </div>
-     </ion-slide><!-- end of slide four   -->
-  </ion-slides>
+              <ion-item class="class-item"
+                style="border: 1px solid green;margin-top: 2%;   border-radius: 50px; font-size: 1.3vw;">
+                <ion-label position="floating">Destination</ion-label>
+                <ion-input [(ngModel)]="Destination" type="text"></ion-input>
+                <ion-icon class="inpIco" name="ios-pin"
+                  [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end"
+                  style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
+              </ion-item>
 
-  <ion-card *ngFor = "let records  of outbound">
-    <p>records: {{records.outDate}} {{records.outdriverName}} {{records.outRegistarionNo}}</p>
-    <div>
-      <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
+              <ion-item class="class-item"
+                style="border: 1px solid green;margin-top: 2%;   border-radius: 50px; font-size: 1.3vw;">
+                <ion-label position="floating">Truck Source</ion-label>
+                <ion-input [(ngModel)]="TruckSourcess" type="text" [ngModelOptions]="{standalone: true}"></ion-input>
+                <ion-icon class="inpIco" name="car"
+                  [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}" slot="end"
+                  style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
+              </ion-item>
+
+              <!-- </form> -->
+            </div>
+          </ion-slide>
+
+          <!-- paper -->
+          <ion-slide style=" border-radius: 20px !; overflow: hidden">
+            <div class="lists" style="overflow: auto;">
+              <h3 id="title">PAPER</h3>
+              <div class="list">
+                <div class="image"><img src="../../assets/common white paper.jpg" height="80%%">
+                  <p>COMMON PAPER</p>
+                </div>
+                <div class="name">
+                  <p> PAP005</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP005mass" placeholder="Enter Mass Here">
+
+              </div>
+              <div class="list" style="overflow: auto;">
+                <div class="image"><img src="../../assets/news papers.jpg" height="80%%">
+                  <p>FLAT NEWS</p>
+                </div>
+                <div class="name">
+                  <p>PAP007</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP007mass" placeholder="Enter Mass Here">
+
+              </div>
+              <div class="list">
+                <div class="image"><img src="../../assets/shapes.svg" height="80%%">
+                  <p>HL 1</p>
+                </div>
+                <div class="name">
+                  <p> PAP001</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP001mass" placeholder="Enter Mass Here">
+              </div>
+              <div class="list" style="margin-bottom: 5px !important">
+                <div class="image"><img src="../../assets/cardboard.jpg" height="80%%">
+                  <p>K4-CARDBOARD</p>
+                </div>
+                <div class="name">
+                  <p>PAP003</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP003mass" placeholder="Enter Mass Here">
+              </div>
+            </div>
+          </ion-slide><!-- end of slide one -->
+          <!-- plastic -->
+          <ion-slide style=" border-radius: 20px !; overflow: hidden">
+            <div class="lists" style="overflow: auto;">
+              <h3 id="title">PLASTIC</h3>
+              <div class="list" id="paper">
+                <div class="image"><img src="../../assets/Hd plastic.jpg" height="80%%">
+                  <p>HD</p>
+                </div>
+                <div class="name">
+                  <p>HD001</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="HD001mass" placeholder="Enter Mass Here">
+              </div>
+              <div class="list">
+                <div class="image"><img src="../../assets/CLEAR PLASTIC.jpg" height="80%%">
+                  <p>LD CLEAR</p>
+                </div>
+                <div class="name">
+                  <p>LD001</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="LD001mass" placeholder="Enter Mass Here">
+              </div>
+              <div class="list">
+                <div class="image"><img src="../../assets/colour cups.jpg" height="80%%">
+                  <p>LD MIXED COLORS</p>
+                </div>
+                <div class="name">
+                  <p>LD003</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="LD003mass" placeholder="Enter Mass Here">
+              </div>
+              <div class="list">
+                <div class="image"><img src="../../assets/Brown bottles.png" height="80%%">
+                  <p>PET BROWN</p>
+                </div>
+                <div class="name">
+                  <p>PET005</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PET005mass" placeholder="Enter Mass Here">
+              </div>
+              <div class="list">
+                <div class="image"><img src="../../assets/pet clear bottle.jpg" height="80%%">
+                  <p>PET CLEAR</p>
+                </div>
+                <div class="name">
+                  <p>PET001</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PET001mass" placeholder="Enter Mass Here">
+              </div>
+              <div class="list">
+                <div class="image"><img src="../../assets/pet green bottle.jpg" height="80%%">
+                  <p>PET GREEN</p>
+                </div>
+                <div class="name">
+                  <p>PET003</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="PET003mass" placeholder="Enter Mass Here">
+              </div>
+            </div>
+          </ion-slide><!-- end of slide two -->
+          <!-- NON-FERROUS/ ALLUMINIUM -->
+          <ion-slide style=" border-radius: 20px !; overflow: hidden">
+            <div class="lists">
+              <h3 id="title">NON-FERROUS</h3>
+              <div class="list">
+                <div class="image"><img src="../../assets/ALU-CANS-cropped.jpg" height="80%%">
+                  <p>ALLINIUM CANS</p>
+                </div>
+                <div class="name">
+                  <p> NFAL01</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]=" NFAL01mass" placeholder="Enter Mass Here">
+              </div>
+            </div>
+          </ion-slide><!-- end of slide three -->
+          <ion-slide style=" border-radius: 20px !; overflow: hidden">
+            <div class="lists">
+              <h3 id="title">GLASS</h3>
+              <div class="list">
+                <div class="image"><img src="../../assets/glass.jpg" height="80%%">
+                  <p>GLASS</p>
+                </div>
+                <div class="name">
+                  <p> GL001</p>
+                </div>
+                <input style="font-size: 1vw;" type="number" [(ngModel)]="GH001mass" placeholder="Enter Mass Here">
+              </div>
+
+            </div>
+          </ion-slide><!-- end of slide four   -->
+        </ion-slides>
+
+        <ion-card *ngFor="let records  of outbound">
+          <p>records: {{records.outDate}} {{records.outdriverName}} {{records.outRegistarionNo}}</p>
+          <div>
+            <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
+          </div>
+        </ion-card>
+
+        <div class="totals">
+          <button ion-button full (click)="calculateOverall()">SAVE</button>
+          <button style="background: rgb(138, 18, 18);" ion-button full (click)="presentAlertCancel()">CANCEL</button>
+          <!-- <button id="pdf" ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">DOWNLOAD PDF</button> -->
+        </div>
+      </div><!-- end of  -->
     </div>
-  </ion-card>
-
-  <div class="totals">
-    <button ion-button full (click)="calculateOverall()">SAVE</button>
-    <button style="background: rgb(138, 18, 18);" ion-button full (click)="presentAlertCancel()">CANCEL</button>
-    <!-- <button id="pdf" ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">DOWNLOAD PDF</button> -->
   </div>
-  </div><!-- end of  -->
-</div>
-</div>
 
 </ion-content>
