@@ -259,7 +259,7 @@
         </ion-slides>
 
         <ion-card *ngFor="let records  of recordinbounddisplays">
-          <p>time: {{records.time}}</p>
+          <p>time: {{records.time * 1000 | date:'MM-dd-yyyy HH-ss'}}</p>
           <div>
             <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
           </div>

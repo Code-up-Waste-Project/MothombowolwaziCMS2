@@ -187,31 +187,31 @@ export class InboundPage implements OnInit {
         this.PET003storagemassz = (String(PET003storagemass).substring(0, 6));
         PET005storagemass = this.PET005storagemass = element.data().inboundPET005;
         this.PET005storagemassz = (String(PET005storagemass).substring(0, 6));
-        console.log(this.GH001storagemass);
-        console.log(this.NFAL01storagemass);
-        console.log(this.PAP005storagemass);
-        console.log(this.PAP007storagemass);
-        console.log(this.PAP001storagemass);
-        console.log(this.PAP003storagemass);
-        console.log(this.HD001storagemass);
-        console.log(this.LD001storagemass);
-        console.log(this.LD003storagemass);
-        console.log(this.PET001storagemass);
-        console.log(this.PET003storagemass);
-        console.log(this.PET005storagemass);
+        // console.log(this.GH001storagemass);
+        // console.log(this.NFAL01storagemass);
+        // console.log(this.PAP005storagemass);
+        // console.log(this.PAP007storagemass);
+        // console.log(this.PAP001storagemass);
+        // console.log(this.PAP003storagemass);
+        // console.log(this.HD001storagemass);
+        // console.log(this.LD001storagemass);
+        // console.log(this.LD003storagemass);
+        // console.log(this.PET001storagemass);
+        // console.log(this.PET003storagemass);
+        // console.log(this.PET005storagemass);
 
-        console.log(this.GH001storagemassz);
-        console.log(this.NFAL01storagemassz);
-        console.log(this.PAP005storagemassz);
-        console.log(this.PAP007storagemassz);
-        console.log(this.PAP001storagemassz);
-        console.log(this.PAP003storagemassz);
-        console.log(this.HD001storagemassz);
-        console.log(this.LD001storagemassz);
-        console.log(this.LD003storagemassz);
-        console.log(this.PET001storagemassz);
-        console.log(this.PET003storagemassz);
-        console.log(this.PET005storagemassz);
+        // console.log(this.GH001storagemassz);
+        // console.log(this.NFAL01storagemassz);
+        // console.log(this.PAP005storagemassz);
+        // console.log(this.PAP007storagemassz);
+        // console.log(this.PAP001storagemassz);
+        // console.log(this.PAP003storagemassz);
+        // console.log(this.HD001storagemassz);
+        // console.log(this.LD001storagemassz);
+        // console.log(this.LD003storagemassz);
+        // console.log(this.PET001storagemassz);
+        // console.log(this.PET003storagemassz);
+        // console.log(this.PET005storagemassz);
 
         this.testArray.push({
           GH001storagemass: this.GH001storagemassz,
