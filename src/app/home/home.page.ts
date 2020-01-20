@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Chart } from 'chart.js';
 
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
 
@@ -12,6 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+
+  @ViewChild('barChart', {static: false}) barChart;
+  bars: any;
+  colorArray: any;
 
 // Reclaimer
 reclaimerID;
@@ -247,6 +252,35 @@ inovarallMass;
     });
   }
 
+  /* bar chart */
+  createBarChart() {
+    this.bars = new Chart(this.barChart.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)',
+        'Plastic(HD001)', 'Plastic(LD001)', 'Plastic(LD003)', 'Plastic(PET001)', 'Plastic(PET003)', 'Plastic(PET005)'],
+        // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
+        datasets: [{
+          label: 'Overall material ',
+          data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP003storagemass,
+          this.HD001storagemass, this.LD001storagemass, this.LD003storagemass, this.PET001storagemass, this.PET003storagemass, this.PET005storagemass],
+          // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+          backgroundColor: 'green', // array should have same number of elements as number of dataset
+          borderColor: 'green',  // array should have same number of elements as number of dataset
+          borderWidth: 0.2
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
 
 
   Logout() {
