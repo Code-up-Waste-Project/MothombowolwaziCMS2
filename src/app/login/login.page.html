@@ -73,9 +73,10 @@
         <div class="middle">
           <P>Welcome back, Please login to your account</P>
           <form>
+            
             <ion-input placeholder="Enter Input"></ion-input>
             <ion-input placeholder="Enter Input" ></ion-input>
-            <p id="password">Forgot Password</p>
+            <p id="password" (click)="forgetpassword()">Forgot Password</p>
 
             <button (click)="loginUser(loginForm)" ion-button>Login</button>
           </form>
