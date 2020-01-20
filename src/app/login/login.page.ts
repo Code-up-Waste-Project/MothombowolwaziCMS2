@@ -79,7 +79,6 @@ export class LoginPage implements OnInit {
         }
       );
     }
-   
   }
 
   forgetpassword() {
@@ -89,5 +88,12 @@ export class LoginPage implements OnInit {
   goToRegister() {
     this.router.navigate(['registers']);
   }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
 
+   ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menuCtrl.enable(true);
+  }
 }

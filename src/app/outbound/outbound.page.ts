@@ -382,7 +382,8 @@ export class OutboundPage implements OnInit {
       PET00: this.PET001mass,
       PET003: this.PET003mass,
       PET005: this.PET005mass,
-      ovarallMass: this.overallStorage
+      ovarallMass: this.overallStorage,
+      id: firebase.auth().currentUser.uid
     });
   }
 

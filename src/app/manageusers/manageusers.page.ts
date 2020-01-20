@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { AuthService } from '../../app/user/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-manageusers',

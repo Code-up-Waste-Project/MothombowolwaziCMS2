@@ -22,7 +22,7 @@ reclaimerDate;
 
 
 // inBound
-inid;
+InID;
 indate;
 inDriverName;
 inRegistarionNumberPlates;
@@ -188,7 +188,7 @@ inovarallMass;
           outovarallmass: outovarallMass,
         });
         // this.outbound.push(element.data());
-        console.log('outbound',this.outbound);
+        console.log('inboudsd',this.outbound);
       });
     });
 
@@ -258,26 +258,26 @@ inovarallMass;
     editprofile() {
       this.route.navigate(['profile']);
     }
-    ionViewWillEnter(){
+    // ionViewWillEnter(){
 
-      firebase.auth().onAuthStateChanged(user => {
-        firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot =>{
+    //   firebase.auth().onAuthStateChanged(user => {
+    //     firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot =>{
        
-          this.ActiveAcount =snapshot.data().ActiveAcount;
-          console.log('activateusers', this.ActiveAcount);
+    //       this.ActiveAcount =snapshot.data().ActiveAcount;
+    //       console.log('activateusers', this.ActiveAcount);
    
-          if (this.ActiveAcount == false){
+    //       if (this.ActiveAcount == false){
    
       
-             this.route.navigate(['contactmamager']);
+    //          this.route.navigate(['contactmamager']);
            
-          }
-          else if (this.ActiveAcount == true){
-            this.route.navigate(['home'])
-          }
-        })
-      })
-    }
+    //       }
+    //       else if (this.ActiveAcount == true){
+    //         this.route.navigate(['home'])
+    //       }
+    //     })
+    //   })
+    // }
 
     getreclamer() {
       let totalPaperz = 0;
