@@ -1,4 +1,4 @@
-<ion-content>
+<!-- <ion-content>
   <div class="container">
 <div class="form">
   <div class="top">
@@ -53,5 +53,41 @@
   </div>
 </div>
 
-  </ion-content>
+  </ion-content> -->
  
+  <!-- new code -->
+  
+<ion-content>
+  <div class="container">
+    <div class="leftwave">
+      <!-- <img id="wave" src="../../assets/loginwave.svg"> -->
+</div>
+    <img id="grocery" src="../../assets/grocery.svg">
+
+    <div class="login">
+
+      <div class="left">
+        <div class="logo">
+          <img src="../../assets/logo.svg"><span><h3>Mthombowolwazi</h3></span>
+        </div>
+        <div class="middle">
+          <P>Welcome back, Please login to your account</P>
+          <form>
+            <ion-input placeholder="Enter Input"></ion-input>
+            <ion-input placeholder="Enter Input" ></ion-input>
+            <p id="password">Forgot Password</p>
+
+            <button (click)="loginUser(loginForm)" ion-button>Login</button>
+          </form>
+        </div>
+
+      </div>
+
+
+      <div class="right">
+        <!-- <img src="../../assets/loginright.svg"> -->
+      </div>
+    </div>
+</div>
+
+  </ion-content>

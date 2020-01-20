@@ -1,5 +1,5 @@
 <ion-content>
-  <button (click)="createUser()">function</button>
+  <button (click)="createUser()">create users</button>
   <div class="header">
     <div class="nav">
       <h2>My Dashboard</h2>
@@ -46,9 +46,9 @@
           <div>
             <ion-icon id="user-icon" name="ios-briefcase" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
           </div>
-          <div>
+          <!-- <div>
             <input placeholder="Position" [(ngModel)]="profile.position">
-          </div>
+          </div> -->
         </div>
         <div class="user-inputs">
           <div>
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="user-input-button">
-          <button style="border-radius: 5px;width: 50%;" id="user-button" (click)="signupUser(signupForm)">REGISTER MEMBER</button>
+          <!-- <button style="border-radius: 5px;width: 50%;" id="user-button" (click)="signupUser(signupForm)">REGISTER MEMBER</button> -->
         </div>
       </div>
 
