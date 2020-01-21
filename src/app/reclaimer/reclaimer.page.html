@@ -6,7 +6,7 @@
 
 <ion-content>
 
-  <div class="Mother">
+  <div class="Mother" *ngIf="otherPopup === false">
     <div id="Son"> (click)="goAway()"</div>
     <div id="Daughter">
       <div id="Header">
@@ -101,7 +101,7 @@
           <div class="Button">
             <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
             <div class="TheButton">
-              <button clear>Next</button>
+              <button clear (click)="showOtherPopup()">Next</button>
             </div>
           </div>
 
@@ -164,7 +164,7 @@
             <div class="Button">
               <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
               <div class="TheButton">
-                <button clear>Next</button>
+                <button clear (click)="showOtherPopup()">Next</button>
               </div>
             </div>
   
@@ -230,7 +230,7 @@
             <div class="Button">
               <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
               <div class="TheButton">
-                <button clear>Next</button>
+                <button clear (click)="showOtherPopup()">Next</button>
               </div>
             </div>
         </div>
@@ -240,11 +240,11 @@
   </div>
 
 
-  <div class="Mother">
+  <div class="Mother" *ngIf="otherPopup === false">
     <div class="Son"></div>
     <div class="Mask">
       <div class="LEFT">
-        <ion-icon id="GO" (click)="showInputs()" name="arrow-dropleft-circle"></ion-icon>
+        <ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon>
       </div>
       <h3 class="Tittle"><b>Reclaimer Details</b></h3>
       <div class="Content">
