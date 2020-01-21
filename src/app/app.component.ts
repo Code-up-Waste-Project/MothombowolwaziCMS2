@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         // this.profile.email = snapshot.data().email;
 
-        console.log('users', snapshot.data().isAdmin);
+        // console.log('users', snapshot.data().isAdmin);
         this.admin = snapshot.data().isAdmin;
         this.appPages = [];
         if (this.admin == "true") {
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
       },
       );
     }
-            console.log(this.appPages);
+            // console.log(this.appPages);
           });
         });
       }

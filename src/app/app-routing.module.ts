@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'contactmamager',
     loadChildren: () => import('./contactmamager/contactmamager.module').then( m => m.ContactmamagerPageModule)
+  },
+  {
+    path: 'home2',
+    loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
   }
 
 ];
