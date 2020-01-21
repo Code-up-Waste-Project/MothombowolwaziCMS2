@@ -390,14 +390,14 @@ border-bottom-right-radius: 10px;
 }
 
 .graphs {
-  //border: 2px solid blue;
-  height: 35%;
+ // border: 2px solid blue;
+  height: 31%;
   display: flex;
   justify-content: space-around;
 }
 .graph {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-  width: 31.5%;
+  width: 31.8%;
   height: 100%;
   border-radius: 12px;
 }
@@ -473,9 +473,10 @@ canvas {
  
   h1 {
     font-size: 1.3vw;
-  // border: 5px solid green;
-    margin-top: -1%;
+   //border: 2px solid green;
+    //margin-top: -1%;
     padding-left: 10%;
+    width: 80%;
   }
   input {
     border-radius: 50px;
@@ -498,8 +499,20 @@ font-size: 1vw;
 background: #265902;
 color: white;
 }
-#close {
-  border: 1px solid red;
+.close {
+ // border: 1px solid red;
+  width: 15%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: right;
+  margin: 0;
+  padding: 0;
+  ion-icon {
+    font-size: 2vw;
+ text-align: right;
+  }
 }
 }
 #aluminium {
