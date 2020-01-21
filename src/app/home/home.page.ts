@@ -18,6 +18,14 @@ export class HomePage implements OnInit {
   bars: any;
   colorArray: any;
 
+/* Div */
+  opacityDiv: any = document.getElementsByClassName('editDiv');
+  opacity: boolean = false;
+  deleteDiv: any = document.getElementsByClassName('deleteDiv');
+  delete: boolean = false;
+  createDiv: any = document.getElementsByClassName('createDiv');
+  create: boolean = false;
+
 // Reclaimer
 reclaimerID;
 reclaimername;
@@ -89,10 +97,14 @@ inovarallMass;
   Totalplasticz: string;
   ActiveAcount: Boolean;
 
+
+
+
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
     public route: Router,
+
     ) {
       // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -201,6 +213,17 @@ inovarallMass;
 
     this.getMasses();
     console.log( this.getMasses());
+  }
+
+  HideandShowSave() {
+    this.opacity = !this.opacity;
+  }
+
+  HideandShowCreate () {
+    this.create = !this.create;
+  }
+  HideandShowDelete() {
+    this.delete = !this.delete
   }
 
   getMasses() {
