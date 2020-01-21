@@ -1,8 +1,17 @@
 <ion-header >
-  <ion-toolbar  class="header">
-    <ion-title>Refilwe Dikutle <span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
-    
+  <ion-toolbar class="header">
+   
+    <ion-title>Refilwe Dikutle</ion-title>
+    <ion-buttons  id="logout" slot="end">
+      <ion-button fill="clear" size="large" (click)="logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
+<!--   <ion-toolbar  class="header">
+    <ion-title>Refilwe Dikutle<span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
+    <p style="background: blue;"></p>
+    <p style="background: rgb(0, 0, 0);"></p>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content>
@@ -27,7 +36,7 @@
         <div class="small" style="background: #D12C6F;">
           <img src="../../assets/outbound.svg">
         </div>
-        <h3>Inbound</h3>
+        <h3>Outbound</h3>
         <p class="mass">234.87</p>
         <div class="updates">
           <p>Updated 56min ago</p>
@@ -40,7 +49,7 @@
         <div class="small" style="background: #0BCECE;">
           <img src="../../assets/reclaimer.svg">
         </div>
-        <h3>Inbound</h3>
+        <h3>Reclaimer</h3>
         <p class="mass">234.87</p>
         <div class="updates">
           <p>Updated 56min ago</p>
@@ -53,8 +62,162 @@
 
   <!-- material -->
   <div padding class="material">
+
+    <!-- paper -->
+    <div class="box" id="paper">
+      <div class="mat">
+        <img src="../../assets/Asset 8.svg">
+<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
+<div class="burgercontent">
+ <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+</div>     
+
+
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div class="addcategory">
+  <h1>Create New Category </h1>
+  <input placeholder="Enter Name of New Material">
+  <input placeholder="Enter Price">
+  <button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form (DELETE BUTTON) -->
+<!-- <div class="deletecategory">
+  <h1>Delete Material Here</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+
+</div>
+
+    
+
+      <div class="matnames">
+        <div class="codes">
+          <p>PAP005 <span>R0. 67</span></p>
+          <p>PAP005 <span>R0. 67</span></p>
+          <p>PAP005 <span>R0. 67</span></p>
+          <p>PAP005 <span>R0. 67</span></p>
+          </div>
+        <div class="manname">
+          PAPER
+        </div>
+      </div>
+    </div>
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- plastic -->
+    <div class="box" id="plastic">
+      <div class="mat">
+        <img src="../../assets/paper.svg">
+<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
+<div class="burgercontent">
+  <ion-icon name="create" style="color: rgb(51, 49, 49);"></ion-icon>
+  <ion-icon name="add-circle-outline" style="color:rgb(21, 139, 21);"></ion-icon>
+  <ion-icon name="trash" style="color: red;"></ion-icon>
+</div>     
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div  class="editform">
+  <h1>Edit Price Rates</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div class="addcategory">
+  <h1>Create New Category </h1>
+  <input placeholder="Enter Name of New Material">
+  <input placeholder="Enter Price">
+  <button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form (DELETE BUTTON) -->
+<!-- <div class="deletecategory">
+  <h1>Delete Material Here</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+
+</div>
+      <div class="matnames">
+        <div class="codes">
+          <p>PAP005 <span>R0. 67</span></p>
+          <p>PAP005 <span>R0. 67</span></p>
+          <p>PAP005 <span>R0. 67</span></p>
+          <p>PAP005 <span>R0. 67</span></p>
+    </div>
+        <div class="manname">
+          PAPER
+        </div>
+      </div>
+    </div>
+    
     <!-- <h4>All Time Material</h4> -->
-    <div class="box">
+    <!-- glass -->
+    <div class="box" id="glass">
+      <div class="mat">
+        <img src="../../assets/glassy.svg">
+<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
+<div class="burgercontent">
+  <ion-icon name="create" style="color: rgb(51, 49, 49);"></ion-icon>
+  <ion-icon name="add-circle-outline" style="color:rgb(21, 139, 21);"></ion-icon>
+  <ion-icon name="trash" style="color: red;"></ion-icon>
+</div>     
+
+
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div  class="editform">
+  <h1>Edit Price Rates</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div class="addcategory">
+  <h1>Create New Category </h1>
+  <input placeholder="Enter Name of New Material">
+  <input placeholder="Enter Price">
+  <button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form (DELETE BUTTON) -->
+<!-- <div class="deletecategory">
+  <h1>Delete Material Here</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+
+</div>
+
+<div class="matnames">
+  <div class="codes">
+    <p>PAP005 <span>R0. 67</span></p>
+    <p>PAP005 <span>R0. 67</span></p>
+    <p>PAP005 <span>R0. 67</span></p>
+    <p>PAP005 <span>R0. 67</span></p>
+    </div>
+  <div class="manname">
+    PAPER
+  </div>
+</div>
+    </div>
+<!-- aluminium -->
+    <div class="box" id="aluminium">
       <div class="mat">
         <img src="../../assets/Asset 8.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
@@ -64,17 +227,45 @@
   <ion-icon name="trash" style="color: red;"></ion-icon>
 </div>     
 
-<!-- div holding form -->
-<div  class="editform">
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div  class="editform">
   <h1>Edit Price Rates</h1>
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div class="addcategory">
+  <h1>Create New Category </h1>
+  <input placeholder="Enter Name of New Material">
+  <input placeholder="Enter Price">
+  <button ion-button>Save</button>
+</div> -->
+
+<!-- div holding form (DELETE BUTTON) -->
+<!-- <div class="deletecategory">
+  <h1>Delete Material Here</h1>
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
+</div> -->
+
 </div>
+
+
+<div class="matnames">
+  <div class="codes">
+    <p>PAP005 <span>R0. 67</span></p>
+    <p>PAP005 <span>R0. 67</span></p>
+    <p>PAP005 <span>R0. 67</span></p>
+    <p>PAP005 <span>R0. 67</span></p>
+    </div>
+  <div class="manname">
+    PAPER
+  </div>
 </div>
       <!-- <div class="matnames">
         <div class="codes">
@@ -93,6 +284,9 @@
         </div>
       </div> -->
     </div>
+    
+
+   
    
     <!-- <div class="mat">
       <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg"> </div>
@@ -104,7 +298,9 @@
 </div> -->
   </div>
   <!-- third box for graphs -->
+  <p id="secondborder"></p>
   <div padding class="graphs">
+   
     <div class="graph" style="background: #FFF3C2;">
       <canvas #barChart></canvas>
 
@@ -112,5 +308,44 @@
     <div class="graph" style="background: #FFCFE5;"></div>
     <div class="graph" style="background: #CCFFFE;"></div>
   </div>
+</div>
+
+<!-- boxes to appear when you perfom action on categori images -->
+<!-- edit form -->
+<div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
+<div padding class="editform2">
+  <h1>Edit Price Rates</h1>
+  <ion-button  fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon name="close"></ion-icon></ion-button>
+ 
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div>
+</div>
+<!-- create new material -->
+<div class="opacitydivs editDiv" [ngClass]="{'slideIn': opacity, 'slideOut': !opacity}">
+  <div padding class="editform2">
+    <ion-button id="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close"></ion-icon></ion-button>
+  <h1>Create New Material Here</h1>
+  <input placeholder="Enter Material Name/code">
+  <input placeholder="Enter Price">
+ 
+<button ion-button>Save</button>
+</div>
+</div>
+
+
+<!-- delete material -->
+<div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
+<div padding class="editform2" >
+  <h1>Delete Material Here</h1>
+  <ion-button  fill="clear" (click)="HideandShowDelete()" slot="icon-only"><ion-icon name="close"></ion-icon></ion-button>
+ 
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div>
 </div>
 </ion-content>
