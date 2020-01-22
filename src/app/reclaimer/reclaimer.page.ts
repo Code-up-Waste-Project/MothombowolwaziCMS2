@@ -2407,14 +2407,63 @@ Logout() {
       document.getElementById("Plastic").style.color = "black";
       
     } 
-    otherPopup: boolean = false
-    showOtherPopup(){
-      // alert("clicked")
-      this.otherPopup = true
-    }
-    showInputs(){
-      this.otherPopup = false
+    motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
 
-    }
+  goAway(){
 
+    this.motherDiv[0].style.display = "none"
+  }
+  coemBack(){
+    this.motherDiv[0].style.display = "block"
+
+  }
+
+  otherPopup: boolean = false
+  showOtherPopup(){
+    // alert("clicked")
+    this.otherPopup = true
+  }
+  showInputs(){
+    this.otherPopup = false
+
+  }
+  driverInformation: boolean = false;
+  wasteInformation: boolean = false;
+  showDriverInfo(){
+    this.driverInformation = true;
+    this.wasteInformation = false;
+  }
+  showWasteInfo(){
+    this.wasteInformation = true;
+    this.driverInformation = false;
+    this.coemBack()
+  }
+
+  
+  popOpOpen : boolean = false;
+  selectedCat="";
+  showPopUp(userCat){
+    this.popOpOpen = true;
+    this.selectedCat = userCat;
+    this.showDriverInfo();
+    alert(this.selectedCat)
+    setTimeout(() => {
+      
+
+    if(this.selectedCat == "paper"){
+      this.togglePaper()
+      console.log(this.selectedCat);
+    }
+    else if (this.selectedCat == "plastic"){
+      this.togglePlastic()
+    }
+    else if(this.selectedCat == "aluminium"){
+      this.toggleAluminium()
+    }
+    else if(this.selectedCat == "glass"){
+      this.toggleGlass()
+    }
+    }, 10);
+  }
+  
 }
