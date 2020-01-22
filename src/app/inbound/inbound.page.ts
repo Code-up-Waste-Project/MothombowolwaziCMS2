@@ -147,7 +147,6 @@ export class InboundPage implements OnInit {
   pdfmakerFirebase(id) {
     this.db.collection('inbounds').onSnapshot(element => {
       element.forEach(element => {
-        
         let time = [];
         let GH001storagemass = {};
         let NFAL01storagemass = {};
@@ -609,6 +608,35 @@ export class InboundPage implements OnInit {
       // On a browser simply use download!
       this.pdfObj.download();
     }
+  }
+
+  async presentAlertDelete(id) {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.deleteInbound(id);
+            this.route.navigateByUrl('/inbound');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  deleteInbound(id) {
+    this.db.collection('inbounds').doc(id).delete();
+    console.log('Record deleted');
   }
 
   async presentAlertupdate() {

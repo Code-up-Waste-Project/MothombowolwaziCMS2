@@ -188,9 +188,8 @@ export class ManageusersPage implements OnInit {
       //   });
       // });
       }
-     
+
     Logout() {
-      
       firebase.auth().signOut().then((res) => {
         console.log(res);
         this.router.navigateByUrl('/login');
