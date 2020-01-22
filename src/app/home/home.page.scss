@@ -6,10 +6,6 @@ ion-header {
 .header {
   --background: #265902 !important;
   display: flex;
-  // p {
-  //   border: 1px solid red;
-  //   width: 50%;
-  // }
 }
 ion-toolbar {
   display: flex;
@@ -177,7 +173,7 @@ h6 {
       margin-top: 0;
   }
   .mat {
-   //   border: 5px solid rgb(255, 11, 255);
+     // border: 5px solid rgb(255, 11, 255);
       height: 100%;
       width: 100%;
       border-radius: 7px;
@@ -190,26 +186,27 @@ h6 {
          //border: 2px solid white;
       }
       //short burger
-      // .burger {
-      //   background: white;
-      //   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-      //   width: 10%;
-      //   height: 15%;
-      //   position: relative;
-      //   right:-90%;
-      //   top: 30%;
-      //   border-bottom-left-radius: 50px;
-      //   border-top-left-radius: 50px;
-      //   display: flex;
-      //   justify-content: center;
-      //   align-content: center;
-      //   align-items: center;
-      //   ion-icon {
-      //     color: black;
-      //     font-size: 1vw;
-      //   }
-      // }
+      .burger {
+        background: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+        width: 10%;
+        height: 15%;
+        position: relative;
+        right:-90%;
+        top: 30%;
+        border-bottom-left-radius: 50px;
+        border-top-left-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        ion-icon {
+          color: black;
+          font-size: 1vw;
+        }
+      }
 
+      
       //long burger
       .burgercontent {
         background: white;
@@ -516,7 +513,7 @@ color: white;
 }
 }
 #aluminium {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/Hd\ plastic.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/cans.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -524,7 +521,7 @@ color: white;
 }
 
 #glass {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/Hd\ plastic.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/glass2.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -539,7 +536,7 @@ color: white;
   border-radius: 7px;
 }
 #paper {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/Hd\ plastic.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/flatnews.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
