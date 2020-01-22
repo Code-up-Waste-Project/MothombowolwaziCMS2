@@ -17,6 +17,11 @@
     margin-top: 50px;
 }
 
+.TheToolbar{
+    --background: #265902;
+    color: white;
+}
+
 .Block1{
     height: 100%;
     width: 24%;
@@ -112,6 +117,7 @@ img {
     // border: solid 2px red;
     margin-top: 5px;
     padding: 10px;  
+    overflow: scroll;
 }
 
 .History1{
