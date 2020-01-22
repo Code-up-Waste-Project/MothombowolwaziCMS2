@@ -89,21 +89,23 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
+      <div class="logo">
+        <img src="../assets/logo.svg">
+        <h1>Mthombowolwazi</h1>
+      </div>
       </ion-header>
-      <ion-content>
+      <ion-content id="sidemenu">
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <img slot="start" width="20px" src="../assets/{{p.icon}}.svg"/>
               <ion-label>
                 {{p.title}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
+        <img id="grocer" src="../assets/grocery.svg">
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
