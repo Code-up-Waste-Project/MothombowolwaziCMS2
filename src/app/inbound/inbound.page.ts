@@ -819,8 +819,29 @@ export class InboundPage implements OnInit {
     
 
     goAway(){
-      var motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
+      this.selectedCat="";
+    }
+    popOpOpen : boolean = false;
+    selectedCat="";
+    showPopUp(userCat){
+      this.popOpOpen = true;
+      this.selectedCat = userCat;
+      setTimeout(() => {
+        
 
-      motherDiv[0].style.display = "none"
+      if(this.selectedCat == "paper"){
+        this.togglePaper()
+        console.log(this.selectedCat);
+      }
+      else if (this.selectedCat == "plastic"){
+        this.togglePlastic()
+      }
+      else if(this.selectedCat == "aluminium"){
+        this.toggleAluminium()
+      }
+      else if(this.selectedCat == "glass"){
+        this.toggleGlass()
+      }
+      }, 10);
     }
 }

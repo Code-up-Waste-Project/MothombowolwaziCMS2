@@ -919,4 +919,14 @@ export class OutboundPage implements OnInit {
       this.otherPopup = false
 
     }
+    driverInformation: boolean = false;
+    wasteInformation: boolean = false;
+    showDriverInfo(){
+      this.driverInformation = true;
+      this.wasteInformation = false;
+    }
+    showWasteInfo(){
+      this.wasteInformation = true;
+      this.driverInformation = false;
+    }
 }

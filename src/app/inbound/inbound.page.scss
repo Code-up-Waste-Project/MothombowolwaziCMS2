@@ -244,6 +244,14 @@ h2{
     background-color: white;
 }
 
+@keyframes fadeInCustom {
+    0%{
+        opacity: 0
+    }
+    100%{
+        opacity: 1
+    }
+}
 
 .Mother{
     height: 100%;
@@ -254,6 +262,7 @@ h2{
     left: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 3000000000000000000000000000;
+    animation: fadeInCustom 300ms;
 }
 #Son{
     height: 100%;
@@ -321,10 +330,10 @@ h4{
     align-items: center;
 }
 #Aluminium{
-    background:#568C0B;
+    background:white;
     border-radius: 2px;
     height: 50%;
-    color: white;
+    color: black;
     width: 25%;    
     display: flex;
     flex-direction: column;

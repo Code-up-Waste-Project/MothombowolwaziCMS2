@@ -7,8 +7,8 @@
 
 
 <ion-content>
-
-  <div class="Mother"  *ngIf="otherPopup === false">
+<ion-button (click)="showDriverInfo()"></ion-button>
+  <div class="Mother" id="wasteInformation"  *ngIf="wasteInformation === true">
     <div id="Son"> (click)="goAway()"</div>
     <div id="Daughter">
       <div id="Header">
@@ -241,9 +241,14 @@
     </div>
   </div>
 
+<!-- End of the waste material Pop-over -->
 
 
-  <div class="Mother" *ngIf="otherPopup === true">
+
+<!-- Start of the driver's info Pop-over -->
+
+
+  <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
     <div class="Son"></div>
     <div class="Mask">
       <div class="LEFT">
@@ -291,7 +296,7 @@
         </div>
       </div>
       <div class="Finish">
-        <button id="FinishBTN" color="clear">Done</button>
+        <button id="FinishBTN" color="clear" (click)="showWasteInfo()">Done</button>
       </div>
     </div>
     <div class="Daughter">
