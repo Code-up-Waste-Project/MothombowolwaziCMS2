@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Router, ActivatedRoute  } from '@angular/router';
+import { ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
 import * as firebase from 'firebase';
-import { AlertController, LoadingController, ToastController, ModalController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { SelectMultipleControlValueAccessor, Validators } from '@angular/forms';
+import { MenuController } from '@ionic/angular';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -9,30 +11,24 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 
-
 @Component({
-  selector: 'app-inbound',
-  templateUrl: './inbound.page.html',
-  styleUrls: ['./inbound.page.scss'],
+  selector: 'app-inbound-pdf',
+  templateUrl: './inbound-pdf.page.html',
+  styleUrls: ['./inbound-pdf.page.scss'],
 })
-export class InboundPage implements OnInit {
-  
-  // start of Declaretions
-  // user infor
-  admin = [];
-  Newadmin = [];
+export class InboundPDFPage implements OnInit {
 
-  records;
-  recordinbounddisplays = [];
+  db = firebase.firestore();
 
+  dates = new Date();
+  ids;
+  Userid;
+  Inbound;
+  ViewInbound = [];
   testArray = [];
   PDFArray = {};
   PDFArrayPrint = [];
-  time;
   timez;
-  ids;
-
-  pdfObj = null;
 
   letterObj = {
     to: '',
@@ -40,46 +36,7 @@ export class InboundPage implements OnInit {
     text: ''
   };
 
-  db = firebase.firestore();
-
-  GH001;
-  NFAL01;
-  PAP005;
-  PAP007;
-  PAP001;
-  PAP003;
-  HD001;
-  LD001;
-  LD003;
-  PET001;
-  PET003;
-  PET005;
-
-  GH001mass;
-  NFAL01mass;
-  PAP005mass;
-  PAP007mass;
-  PAP001mass;
-  PAP003mass;
-  HD001mass;
-  LD001mass;
-  LD003mass;
-  PET001mass;
-  PET003mass;
-  PET005mass;
-
-  storageGH001;
-  storageNFAL01;
-  storagePAP005;
-  storagePAP007;
-  storagePAP001;
-  storagePAP003;
-  storageHD001;
-  storageLD001;
-  storageLD003;
-  storagePET001;
-  storagePET003;
-  storagePET005;
+  pdfObj = null;
 
   GH001storagemass;
   NFAL01storagemass;
@@ -107,51 +64,55 @@ export class InboundPage implements OnInit {
   PET003storagemassz;
   PET005storagemassz;
 
+  GH001 = 'GH001';
+  NFAL01 = 'NFAL01';
+  PAP005 = 'PAP005';
+  PAP007 = 'PAP007';
+  PAP001 = 'PAP001';
+  PAP003 = 'PAP003';
+  HD001 = 'HD001';
+  LD001 = 'LD001';
+  LD003 = 'LD003';
+  PET001 = 'PET001';
+  PET003 = 'PET003';
+  PET005 = 'PET005';
+  Mass = 'MASS';
+
   constructor(
+    public toastController: ToastController,
+    private modalcontroller: ModalController,
+    public loadingController: LoadingController,
+    public alertController: AlertController,
+    public activatedRoute: ActivatedRoute,
+    public menuCtrl: MenuController,
+    private content: ElementRef,
+    public rendered: Renderer2,
     private plt: Platform,
     private file: File,
-    private fileOpener: FileOpener,
-    public route: Router,
-    public loadingController: LoadingController,
-    public toastController: ToastController,
-    public alertController: AlertController,
+    private fileOpener: FileOpener
   ) {
-    // pulling for admin
-    this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin = [];
-      snapshot.forEach(Element => {
-        this.admin.push(Element.data());
-      });
-      this.admin.forEach(item => {
-        if (item.userid === firebase.auth().currentUser.uid) {
-          this.Newadmin.push(item);
-        }
-      });
-      console.log('Newadmins', this.Newadmin);
-    });
-    this.getMasses();
+    this.Userid = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.Userid);
 
-    // recordInboundsdisplay
-    this.records = this.db.collection('inbounds').onSnapshot(snapshot => {
-      this.recordinbounddisplays = [];
-      snapshot.forEach(element => {
-        // this.recordinbounddisplays = [];
-        // console.log(documentSnapshot.data());
-        // this.recordinbounddisplays.push(element.data());
-        // console.log(this.recordinbounddisplays);
-      });
-      });
-
-    this.pdfmakerFirebase();
+    this.getDataFirebase(this.Userid);
    }
 
   ngOnInit() {
   }
 
-  pdfmakerFirebase() {
-    this.db.collection('inbounds').onSnapshot(element => {
-      element.forEach(element => {
-        let time = {};
+  getDataFirebase(Userid) {
+    this.db.collection("inbounds").doc(Userid).onSnapshot(element => {
+      // snapshot.forEach(element => {
+        this.ViewInbound = [];
+        // console.log(element.data());
+        this.ViewInbound.push(element.data());
+        console.log(this.ViewInbound);
+      // });
+    });
+
+    this.db.collection('inbounds').doc(Userid).onSnapshot(DocumentSnapshot => {
+      // snapshot.forEach(element => {
+        let id = {};
         let GH001storagemass = {};
         let NFAL01storagemass = {};
         let PAP005storagemass = {};
@@ -165,33 +126,34 @@ export class InboundPage implements OnInit {
         let PET003storagemass = {};
         let PET005storagemass = {};
 
-        this.ids = element.id;
-        console.log(this.ids);
+        // this.timez = new Date(DocumentSnapshot.data().time);
+        // console.log(this.timez);
 
-        time = this.time = element.data().time;
-        GH001storagemass = this.GH001storagemass = element.data().inboundGH001;
+        this.ids = DocumentSnapshot.id;
+        console.log(this.ids);
+        GH001storagemass = this.GH001storagemass = DocumentSnapshot.data().inboundGH001;
         this.GH001storagemassz = (String(GH001storagemass).substring(0, 6));
-        NFAL01storagemass = this.NFAL01storagemass = element.data().inboundNFAL01;
+        NFAL01storagemass = this.NFAL01storagemass = DocumentSnapshot.data().inboundNFAL01;
         this.NFAL01storagemassz = (String(NFAL01storagemass).substring(0, 6));
-        PAP005storagemass = this.PAP005storagemass = element.data().inboundPAP005;
+        PAP005storagemass = this.PAP005storagemass = DocumentSnapshot.data().inboundPAP005;
         this.PAP005storagemassz = (String(PAP005storagemass).substring(0, 6));
-        PAP007storagemass = this.PAP007storagemass = element.data().inboundPAP007;
+        PAP007storagemass = this.PAP007storagemass = DocumentSnapshot.data().inboundPAP007;
         this.PAP007storagemassz = (String(PAP007storagemass).substring(0, 6));
-        PAP001storagemass = this.PAP001storagemass = element.data().inboundPAP001;
+        PAP001storagemass = this.PAP001storagemass = DocumentSnapshot.data().inboundPAP001;
         this.PAP001storagemassz = (String(PAP001storagemass).substring(0, 6));
-        PAP003storagemass = this.PAP003storagemass = element.data().inboundPAP003;
+        PAP003storagemass = this.PAP003storagemass = DocumentSnapshot.data().inboundPAP003;
         this.PAP003storagemassz = (String(PAP003storagemass).substring(0, 6));
-        HD001storagemass = this.HD001storagemass = element.data().inboundHD001;
+        HD001storagemass = this.HD001storagemass = DocumentSnapshot.data().inboundHD001;
         this.HD001storagemassz = (String(HD001storagemass).substring(0, 6));
-        LD001storagemass = this.LD001storagemass = element.data().inboundLD001;
+        LD001storagemass = this.LD001storagemass = DocumentSnapshot.data().inboundLD001;
         this.LD001storagemassz = (String(LD001storagemass).substring(0, 6));
-        LD003storagemass = this.LD003storagemass = element.data().inboundLD003;
+        LD003storagemass = this.LD003storagemass = DocumentSnapshot.data().inboundLD003;
         this.LD003storagemassz = (String(LD003storagemass).substring(0, 6));
-        PET001storagemass = this.PET001storagemass = element.data().inboundPET001;
+        PET001storagemass = this.PET001storagemass = DocumentSnapshot.data().inboundPET001;
         this.PET001storagemassz = (String(PET001storagemass).substring(0, 6));
-        PET003storagemass = this.PET003storagemass = element.data().inboundPET003;
+        PET003storagemass = this.PET003storagemass = DocumentSnapshot.data().inboundPET003;
         this.PET003storagemassz = (String(PET003storagemass).substring(0, 6));
-        PET005storagemass = this.PET005storagemass = element.data().inboundPET005;
+        PET005storagemass = this.PET005storagemass = DocumentSnapshot.data().inboundPET005;
         this.PET005storagemassz = (String(PET005storagemass).substring(0, 6));
         // console.log(this.GH001storagemass);
         // console.log(this.NFAL01storagemass);
@@ -205,7 +167,6 @@ export class InboundPage implements OnInit {
         // console.log(this.PET001storagemass);
         // console.log(this.PET003storagemass);
         // console.log(this.PET005storagemass);
-
         // console.log(this.GH001storagemassz);
         // console.log(this.NFAL01storagemassz);
         // console.log(this.PAP005storagemassz);
@@ -233,6 +194,7 @@ export class InboundPage implements OnInit {
           PET003storagemass: this.PET003storagemassz,
           PET005storagemass: this.PET005storagemassz,
         });
+        // console.log(this.testArray);
 
         this.PDFArray = {
           GH001: this.GH001storagemassz,
@@ -248,279 +210,57 @@ export class InboundPage implements OnInit {
           PET003: this.PET003storagemassz,
           PET005: this.PET005storagemassz,
         };
+        // console.log(this.PDFArray);
 
-        this.recordinbounddisplays.push({
-          id: this.ids,
-          time: this.time,
-          GH001storagemass: this.GH001storagemassz,
-          NFAL01storagemass: this.NFAL01storagemassz,
-          PAP005storagemass: this.PAP005storagemassz,
-          PAP007storagemass: this.PAP007storagemassz,
-          PAP001storagemass: this.PAP001storagemassz,
-          PAP003storagemass: this.PAP003storagemassz,
-          HD001storagemass: this.HD001storagemassz,
-          LD001storagemass: this.LD001storagemassz,
-          LD003storagemass: this.LD003storagemassz,
-          PET001storagemass: this.PET001storagemassz,
-          PET003storagemass: this.PET003storagemassz,
-          PET005storagemass: this.PET005storagemassz,
-        });
-        console.log(this.recordinbounddisplays);
+        // this.ViewInbound.push({
+        //   id: this.ids,
+        //   inboundGH001: this.GH001storagemassz,
+        //   inboundNFAL01: this.NFAL01storagemassz,
+        //   inboundPAP005: this.PAP005storagemassz,
+        //   inboundPAP007: this.PAP007storagemassz,
+        //   inboundPAP001: this.PAP001storagemassz,
+        //   inboundPAP003: this.PAP003storagemassz,
+        //   inboundHD001: this.HD001storagemassz,
+        //   inboundLD001: this.LD001storagemassz,
+        //   inboundLD003: this.LD003storagemassz,
+        //   inboundPET001: this.PET001storagemassz,
+        //   inboundPET003: this.PET003storagemassz,
+        //   inboundPET005: this.PET005storagemassz,
+        // });
+        // console.log(this.ViewInbound);
+
+      // });
 
       // create PDF
       this.ForLoop();
-      this.createPdf();
 
     });
-  });
   }
 
   ForLoop() {
-      // console.log(this.PDFArray);
+    // console.log(this.PDFArray);
 
-      // tslint:disable-next-line: forin
-      for (let key in this.PDFArray) {
-        console.log(key);
-        if (this.PDFArray[key] === '0') {
-          console.log('Skipped because its 0');
-        } else if (this.PDFArray[key] !== '0') {
-          this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
-        }
+    // tslint:disable-next-line: forin
+    for (let key in this.PDFArray) {
+      console.log(key);
+      if (this.PDFArray[key] === '0') {
+        console.log('Skipped because its 0');
+      } else if (this.PDFArray[key] !== '0') {
+        this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
       }
-      // console.log(this.PDFArrayPrint);
-
-      // create PDF
-      // this.createPdf();
-      // this.downloadPdf();
     }
+    // console.log(this.PDFArrayPrint);
 
-  getMasses() {
-    this.db.collection('storage').onSnapshot(snapshot => {
-      snapshot.forEach(element => {
-        this.GH001storagemass = element.data().GL001;
-        this.NFAL01storagemass = element.data().NFAL01;
-        this.PAP005storagemass = element.data().PAP005;
-        this.PAP007storagemass = element.data().PAP007;
-        this.PAP001storagemass = element.data().PAP001;
-        this.PAP003storagemass = element.data().PAP003;
-        this.HD001storagemass = element.data().HD001;
-        this.LD001storagemass = element.data().LD001;
-        this.LD003storagemass = element.data().LD003;
-        this.PET001storagemass = element.data().PET001;
-        this.PET003storagemass = element.data().PET003;
-        this.PET005storagemass = element.data().PEP005;
-        // console.log(element);
-      });
-      // console.log(this.GH001storagemass);
-      // console.log(this.NFAL01storagemass);
-      // console.log(this.PAP005storagemass);
-      // console.log(this.PAP007storagemass);
-      // console.log(this.PAP001storagemass);
-      // console.log(this.PAP003storagemass);
-      // console.log(this.HD001storagemass);
-      // console.log(this.LD001storagemass);
-      // console.log(this.LD003storagemass);
-      // console.log(this.PET001storagemass);
-      // console.log(this.PET003storagemass);
-      // console.log(this.PET005storagemass);
-    });
+    // create PDF
+    this.createPdf();
+    // this.downloadPdf();
   }
 
-  checkinputfields() {
-    // GH001mass
-    if (this.GH001mass === null) {
-      this.GH001mass = 0;
-    } else if (this.GH001mass === undefined) {
-      this.GH001mass = 0;
+  CloseModal() {
+    this.modalcontroller.dismiss();
     }
-    // console.log(this.GH001mass);
 
-    // NFAL01mass
-    if (this.NFAL01mass === null) {
-      this.NFAL01mass = 0;
-    }
-    if (this.NFAL01mass === undefined) {
-      this.NFAL01mass = 0;
-    }
-    // console.log(this.NFAL01mass);
-
-    // PAP005mass
-    if (this.PAP005mass === null) {
-      this.PAP005mass = 0;
-    }
-    if (this.PAP005mass === undefined) {
-      this.PAP005mass = 0;
-    }
-    // console.log(this.PAP005mass);
-
-    // PAP007mass
-    if (this.PAP007mass === null) {
-      this.PAP007mass = 0;
-    }
-    if (this.PAP007mass === undefined) {
-      this.PAP007mass = 0;
-    }
-    // console.log(this.PAP007mass);
-
-    // PAP001mass
-    if (this.PAP001mass === null) {
-      this.PAP001mass = 0;
-    }
-    if (this.PAP001mass === undefined) {
-      this.PAP001mass = 0;
-    }
-    // console.log(this.PAP001mass);
-
-    // PAP003mass
-    if (this.PAP003mass === null) {
-      this.PAP003mass = 0;
-    }
-    if (this.PAP003mass === undefined) {
-      this.PAP003mass = 0;
-    }
-    // console.log(this.PAP003mass);
-
-    // HD001mass
-    if (this.HD001mass === null) {
-      this.HD001mass = 0;
-    }
-    if (this.HD001mass === undefined) {
-      this.HD001mass = 0;
-    }
-    // console.log(this.HD001mass);
-
-    // LD001mass
-    if (this.LD001mass === null) {
-      this.LD001mass = 0;
-    }
-    if (this.LD001mass === undefined) {
-      this.LD001mass = 0;
-    }
-    // console.log(this.LD001mass);
-
-    // LD003mass
-    if (this.LD003mass === null) {
-      this.LD003mass = 0;
-    }
-    if (this.LD003mass === undefined) {
-      this.LD003mass = 0;
-    }
-    // console.log(this.LD003mass);
-
-    // PET001mass
-    if (this.PET001mass === null) {
-      this.PET001mass = 0;
-    }
-    if (this.PET001mass === undefined) {
-      this.PET001mass = 0;
-    }
-    // console.log(this.PET001mass);
-
-    // PET003mass
-    if (this.PET003mass === null) {
-      this.PET003mass = 0;
-    }
-    if (this.PET003mass === undefined) {
-      this.PET003mass = 0;
-    }
-    // console.log(this.PET003mass);
-
-    // PET005mass
-    if (this.PET005mass === null) {
-      this.PET005mass = 0;
-    }
-    if (this.PET005mass === undefined) {
-      this.PET005mass = 0;
-    }
-    // console.log(this.PET005mass);
-
-    this.presentAlertupdate();
-
-  }
-
-  saveDatafirebase() {
-    // storageGH001
-    this.storageGH001 = this.GH001storagemass + this.GH001mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({GL001: this.storageGH001});
-    // console.log(this.storageGH001);
-
-    // storage NFAL01;
-    this.storageNFAL01 = this.NFAL01storagemass + this.NFAL01mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({NFAL01: this.storageNFAL01});
-    // console.log(this.storageNFAL01);
-
-    // storage PAP005;
-    this.storagePAP005 = this.PAP005storagemass + this.PAP005mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP005: this.storagePAP005});
-    // console.log(this.storagePAP005);
-
-    // storage PAP007;
-    this.storagePAP007 = this.PAP007storagemass + this.PAP007mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP007: this.storagePAP007});
-    // console.log(this.storagePAP007);
-
-    // storage PAP001;
-    this.storagePAP001 = this.PAP001storagemass + this.PAP001mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP001: this.storagePAP001});
-    // console.log(this.storagePAP001);
-
-    // storage PAP003;
-    this.storagePAP003 = this.PAP003storagemass + this.PAP003mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP003: this.storagePAP003});
-    // console.log(this.storagePAP003);
-
-    // storage HD001;
-    this.storageHD001 = this.HD001storagemass + this.HD001mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({HD001: this.storageHD001});
-    // console.log(this.storageHD001);
-
-    // storage LD001;
-    this.storageLD001 = this.LD001storagemass + this.LD001mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({LD001: this.storageLD001});
-    // console.log(this.storageLD001);
-
-    // storage LD003;
-    this.storageLD003 = this.LD003storagemass + this.LD003mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({LD003: this.storageLD003});
-    // console.log(this.storageLD003);
-
-    // storage PET001;
-    this.storagePET001 = this.PET001storagemass + this.PET001mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PET001: this.storagePET001});
-    // console.log(this.storagePET001);
-
-    // storage PET003;
-    this.storagePET003 = this.PET003storagemass + this.PET003mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PET003: this.storagePET003});
-    // console.log(this.storagePET003);
-
-    // storage PET005;
-    this.storagePET005 = this.PET005storagemass + this.PET005mass;
-    this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PEP005: this.storagePET005});
-    // console.log(this.storagePET005);
-  }
-
-  recordInbounds() {
-    this.db.collection("inbounds").doc().set({
-      time: new Date(),
-      inboundGH001: this.GH001mass,
-      inboundNFAL01: this.NFAL01mass,
-      inboundPAP005: this.PAP005mass,
-      inboundPAP007: this.PAP007mass,
-      inboundPAP001: this.PAP001mass,
-      inboundPAP003: this.PAP003mass,
-      inboundHD001: this.HD001mass,
-      inboundLD001: this.LD001mass,
-      inboundLD003: this.LD003mass,
-      inboundPET001: this.PET001mass,
-      inboundPET003: this.PET003mass,
-      inboundPET005: this.PET005mass,
-      Userid: firebase.auth().currentUser.uid
-    });
-    console.log("inbound pushed");
-  }
-
-  createPdf() {
+    createPdf() {
     let printDataName = [];
     let printDataNumber = [];
 
@@ -547,21 +287,6 @@ export class InboundPage implements OnInit {
         { text: '', style: 'subheader' },
         this.letterObj.to,
 
-        // {
-        //   layout: 'lightHorizontalLines',
-        //   styles: Headers,
-        //   // color: 'green',
-        //   // background: 'red',
-        //   table: {
-        //     headerRows: 1,
-        //     widths: [ '35%', '35%' ],
-        //     body: [
-        //       [ 'CODE/NUMBER', 'MASS(KG)' ],
-        //       [ printDataName, printDataNumber]
-        //     ]
-        //   }
-        // },
-
         {
           style: 'tableExample',
           table: {
@@ -581,7 +306,7 @@ export class InboundPage implements OnInit {
       //     { text: new Date().toTimeString(), alignment: 'right' }
       //   ]
       // },
-      
+
         style: 'tableExample',
         table: {
           color:'red',
@@ -594,251 +319,26 @@ export class InboundPage implements OnInit {
             ['row 3', 'column B']
           ]
         }
-      
-      // styles: {
-      //   header: {
-      //     fontSize: 18,
-      //     bold: true,
-      //   },
-      //   subheader: {
-      //     fontSize: 13,
-      //     bold: true,
-      //     margin: [0, 15, 0, 0]
-      //   },
-      //   story: {
-      //     italic: true,
-      //     alignment: 'center',
-      //     width: '50%',
-      //   }, 
-      // }
+
     };
     this.pdfObj = pdfMake.createPdf(docDefinition);
-  }
-
-  async presentAlertDelete(id) {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.deleteInbound(id);
-            this.route.navigateByUrl('/inbound');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  deleteInbound(id) {
-    this.db.collection('inbounds').doc(id).delete();
-    console.log('Record deleted');
-  }
-
-  async presentAlertupdate() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to Save Masses?.</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.saveDatafirebase();
-            this.recordInbounds();
-            this.clearInputs();
-            this.route.navigateByUrl('/inbound');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  clearInputs() {
-    this.GH001mass = '';
-    this.NFAL01mass = '';
-    this.PAP005mass = '';
-    this.PAP007mass = '';
-    this.PAP001mass = '';
-    this.PAP003mass = '';
-    this.HD001mass = '';
-    this.LD001mass = '';
-    this.LD003mass = '';
-    this.PET001mass = '';
-    this.PET003mass = '';
-    this.PET005mass = '';
-  }
-
-  async presentAlertupdatedelete() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to Cancel, Data will not be saved.</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.clearInputs();
-            this.route.navigateByUrl('/analytics');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'Loading',
-    });
-    await loading.present();
-    loading.dismiss();
-  }
-
-  Logout() {
-    firebase.auth().signOut().then((res) => {
-      console.log(res);
-      this.route.navigateByUrl('/login');
-     });
     }
 
+    downloadPdf() {
+      if (this.plt.is('cordova')) {
+        this.pdfObj.getBuffer((buffer) => {
+          var blob = new Blob([buffer], { type: 'application/pdf' });
 
-    togglePlastic() {
-      // Changes the header tab
-      document.getElementById("toPaper").style.display = "none";
-      document.getElementById("toPlastic").style.display = "flex";
-      document.getElementById("toAluminium").style.display = "none";
-      document.getElementById("toGlass").style.display = "none";
-
-      // Changes the color of the Paper tab
-      document.getElementById("Paper").style.background = "white";
-      document.getElementById("Paper").style.color = "black";
-
-      // Changes the color of the Cans tab
-      document.getElementById("Aluminium").style.background = "white";
-      document.getElementById("Aluminium").style.color = "black";
-
-      // Changes the color of the Glass tab
-      document.getElementById("Glass").style.background = "white";
-      document.getElementById("Glass").style.color = "black";
-
-      // Changes the color of the Plastic tab
-      document.getElementById("Plastic").style.background = "#568C0B";
-      document.getElementById("Plastic").style.color = "white";
-    }
-    togglePaper() {
-      // Changes the header tab
-      document.getElementById("toPaper").style.display = "flex";
-      document.getElementById("toPlastic").style.display = "none";
-      document.getElementById("toAluminium").style.display = "none";
-      document.getElementById("toGlass").style.display = "none";
-
-      // Changes the color of the Paper tab
-      document.getElementById("Paper").style.background = "#568C0B";
-      document.getElementById("Paper").style.color = "white";
-
-      // Changes the color of the Cans tab
-      document.getElementById("Aluminium").style.background = "white";
-      document.getElementById("Aluminium").style.color = "black";
-
-      // Changes the color of the Glass tab
-      document.getElementById("Glass").style.background = "white";
-      document.getElementById("Glass").style.color = "black";
-
-      // Changes the color of the Plastic tab
-      document.getElementById("Plastic").style.background = "white";
-      document.getElementById("Plastic").style.color = "black";
-    }
-    toggleAluminium() {
-      // Changes the header tab
-      document.getElementById("toPaper").style.display = "none";
-      document.getElementById("toPlastic").style.display = "none";
-      document.getElementById("toAluminium").style.display = "flex";
-      document.getElementById("toGlass").style.display = "none";
-
-      // Changes the color of the Paper tab
-      document.getElementById("Paper").style.background = "white";
-      document.getElementById("Paper").style.color = "black";
-
-      // Changes the color of the Cans tab
-      document.getElementById("Aluminium").style.background = "#568C0B";
-      document.getElementById("Aluminium").style.color = "white";
-
-      // Changes the color of the Glass tab
-      document.getElementById("Glass").style.background = "white";
-      document.getElementById("Glass").style.color = "black";
-
-      // Changes the color of the Plastic tab
-      document.getElementById("Plastic").style.background = "white";
-      document.getElementById("Plastic").style.color = "black";
-    }
-    toggleGlass() {
-      // Changes the header tab
-      document.getElementById("toPaper").style.display = "none";
-      document.getElementById("toPlastic").style.display = "none";
-      document.getElementById("toAluminium").style.display = "none";
-      document.getElementById("toGlass").style.display = "flex";
-
-      // Changes the color of the Paper tab
-      document.getElementById("Paper").style.background = "white";
-      document.getElementById("Paper").style.color = "black";
-
-      // Changes the color of the Cans tab
-      document.getElementById("Aluminium").style.background = "white";
-      document.getElementById("Aluminium").style.color = "black";
-
-      // Changes the color of the Glass tab
-      document.getElementById("Glass").style.background = "#568C0B";
-      document.getElementById("Glass").style.color = "white";
-
-      // Changes the color of the Plastic tab
-      document.getElementById("Plastic").style.background = "white";
-      document.getElementById("Plastic").style.color = "black"; 
-    }
-
-    goAway() {
-      this.selectedCat = "";
-    }
-    popOpOpen: boolean = false;
-    selectedCat = "";
-    showPopUp(userCat) {
-      this.popOpOpen = true;
-      this.selectedCat = userCat;
-      setTimeout(() => {
-      if (this.selectedCat === "paper") {
-        this.togglePaper();
-        console.log(this.selectedCat);
-      } else if (this.selectedCat === "plastic"){
-        this.togglePlastic();
-      } else if (this.selectedCat === "aluminium") {
-        this.toggleAluminium();
-      } else if (this.selectedCat === "glass") {
-        this.toggleGlass();
+          // Save the PDF to the data Directory of our App
+          this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
+            // Open the PDf with the correct OS tools
+            this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+          });
+        });
+      } else {
+        // On a browser simply use download!
+        this.pdfObj.download();
       }
-      }, 10);
     }
+
 }

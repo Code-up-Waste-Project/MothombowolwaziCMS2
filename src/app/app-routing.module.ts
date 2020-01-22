@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },  {
+  },
+  {
     path: 'registers',
     loadChildren: () => import('./registers/registers.module').then( m => m.RegistersPageModule)
   },
@@ -51,13 +52,14 @@ const routes: Routes = [
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
-    path: 'contactmamager',
-    loadChildren: () => import('./contactmamager/contactmamager.module').then( m => m.ContactmamagerPageModule)
-  },
-  {
     path: 'home2',
     loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
+  },
+  {
+    path: 'inbound-pdf/:id',
+    loadChildren: () => import('./inbound-pdf/inbound-pdf.module').then( m => m.InboundPDFPageModule)
   }
+
 
 ];
 

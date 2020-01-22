@@ -43,12 +43,12 @@ export class AppComponent implements OnInit {
      
       title: 'Home',
       url: '/home',
-      icon: 'home2',
+      icon: 'home',
       admin:"hot"
     },
     {
       title: 'Inbounds',
-      url: '/analytics',
+      url: '/inbound',
       icon: 'inbound',
       admin:"cool"
     },
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
       {
         title: 'home',
         url: '/home',
-        icon: 'home2',
+        icon: 'home',
         admin:"cool"
       },
      {

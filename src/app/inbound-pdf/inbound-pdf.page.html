@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="Buttons">
+        <div class="PDFButton">
+          <ion-button (click)="downloadPdf()" color="clear" class="PDF">Download PDF</ion-button>
+        </div>
+        <div class="CancelBtn">
+          <ion-icon [routerLink]="['/inbound']" class="Cancel" name="close-circle"></ion-icon>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div  *ngFor="let In of ViewInbound">
+
+  <div class="Info">
+    <div class="div1"></div>
+    <!-- <div class="div2"><h2>Date:  {{ out.date }}</h2></div> -->
+  </div>
+
+  <h1>Purchases Per Product Summery</h1>
+
+  <table style="width:100%">
+  <tr>
+    <th>Waste Type</th>
+    <th>CODE/NUMBER</th>
+    <th>Mass(kg)</th>
+  </tr>
+  <tr>
+    <td><p>Glass</p></td>
+    <td><p>{{ GH001 }}</p></td>
+    <td><p>{{ In.inboundGH001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p>Non-Ferrous</p></td>
+    <td><p>NFAL01</p></td>
+    <td><p>{{ In.inboundNFAL01 }}</p></td>
+  </tr>
+  <tr>
+    <td><p>PAPER</p></td>
+    <td><p>PAP005</p></td>
+    <td><p>{{ In.inboundPAP005 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PAP007</p></td>
+    <td><p>{{ In.inboundPAP007 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PAP001</p></td>
+    <td><p>{{ In.inboundPAP001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PAP003</p></td>
+    <td><p>{{ In.inboundPAP003 }}</p></td>
+  </tr>
+  <tr>
+    <td><p>PLASTIC</p></td>
+    <td><p>HD001</p></td>
+    <td><p>{{ In.inboundHD001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>LD001</p></td>
+    <td><p>{{ In.inboundLD001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>LD003</p></td>
+    <td><p>{{ In.inboundLD003 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PET001</p></td>
+    <td><p>{{ In.inboundPET001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PET003</p></td>
+    <td><p>{{ In.inboundPET003 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PET005</p></td>
+    <td><p>{{ In.inboundPET005 }}</p></td>
+  </tr>
+  <!-- <tr>
+    <th></th>
+    <th></th>
+    <th>Overall Mass</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><p>{{ In.ovarallMass }}</p></td>
+  </tr> -->
+</table>
+</div>
+
+</ion-content>

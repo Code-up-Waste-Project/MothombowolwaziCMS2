@@ -3,9 +3,7 @@ import * as firebase from 'firebase';
 import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
-
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
-
 
 @Component({
   selector: 'app-home',
@@ -26,35 +24,33 @@ export class HomePage implements OnInit {
   createDiv: any = document.getElementsByClassName('createDiv');
   create: boolean = false;
 
-// Reclaimer
-reclaimerID;
-reclaimername;
-reclaimersurname;
-reclaimerDate;
+  // Reclaimer
+  reclaimerID;
+  reclaimername;
+  reclaimersurname;
+  reclaimerDate;
 
+  // inBound
+  InID;
+  indate;
+  inDriverName;
+  inRegistarionNumberPlates;
+  inovarallMass;
 
+   // OutBound
+   id;
+   outdate;
+   outDriverName;
+   outRegistarionNumberPlates;
+   outovarallMass;
 
-// inBound
-InID;
-indate;
-inDriverName;
-inRegistarionNumberPlates;
-inovarallMass;
+   newreclaimer = [];
+   outbound = [];
+   inbound = [];
 
- // OutBound
- id;
- outdate;
- outDriverName;
- outRegistarionNumberPlates;
- outovarallMass;
-
- newreclaimer = [];
- outbound = [];
- inbound = [];
-  
-// @ViewChild('barChart', {static: false}) barChart;
-// bars: any;
-// colorArray: any;
+  // @ViewChild('barChart', {static: false}) barChart;
+  // bars: any;
+  // colorArray: any;
 
   // user infor
   admin = [];
@@ -97,9 +93,6 @@ inovarallMass;
   Totalplasticz: string;
   ActiveAcount: Boolean;
 
-
-
-
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
@@ -120,11 +113,21 @@ inovarallMass;
       // console.log('Newadmins', this.Newadmin);
     });
 
+    // calling get functions
+    this.getReclaimers();
+    this.getOutbound();
+    this.getInbound();
+
     }
 
- 
   ngOnInit() {
-    
+    this.menuCtrl.enable(true); // or true
+
+    this.getMasses();
+    console.log(this.getMasses());
+  }
+
+  getReclaimers() {
     // pulling from reclaimers
     this.db.collection('reclaimers').onSnapshot(snapshot => {
       this.newreclaimer = [];
@@ -146,10 +149,12 @@ inovarallMass;
           reSurname: reclaimersurname,
           reDate: reclaimerDate,
         });
-        console.log('newreclaimer',this.newreclaimer);
+        console.log('newreclaimer', this.newreclaimer);
       });
     });
+  }
 
+  getOutbound() {
     // pulling from outbound
     this.db.collection('outbound').onSnapshot(snapshot => {
       this.outbound = [];
@@ -175,55 +180,35 @@ inovarallMass;
           outovarallmass: outovarallMass,
         });
         // this.outbound.push(element.data());
-        console.log('outbound',this.outbound);
+        console.log('outbound', this.outbound);
       });
     });
+  }
 
-
+  getInbound() {
     // pulling from inbounds
     this.db.collection('inbounds').onSnapshot(snapshot => {
       this.outbound = [];
       snapshot.forEach(element => {
-        let id = {};
-        let outdate = {};
-        let outDriverName = {};
-        let outRegistarionNumberPlates = {};
-        let outovarallMass = {};
-
-        id = this.id = element.id;
-        outdate = this.outdate = element.data().date;
-        outDriverName = this.outDriverName = element.data().DriverName;
-        outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        outovarallMass = this.outovarallMass = element.data().ovarallMass;
-
         // this.outbound = [];
         this.outbound.push({
-          id: id,
-          outDate: outdate,
-          outdriverName: outDriverName,
-          outRegistarionNo: outRegistarionNumberPlates,
-          outovarallmass: outovarallMass,
+          // data
         });
         // this.outbound.push(element.data());
-        console.log('inboudsd',this.outbound);
+        console.log('inboudsd', this.outbound);
       });
     });
-
-    this.menuCtrl.enable(true); // or true
-
-    this.getMasses();
-    console.log( this.getMasses());
   }
 
   HideandShowSave() {
     this.opacity = !this.opacity;
   }
 
-  HideandShowCreate () {
+  HideandShowCreate() {
     this.create = !this.create;
   }
   HideandShowDelete() {
-    this.delete = !this.delete
+    this.delete = !this.delete;
   }
 
   getMasses() {
@@ -315,32 +300,12 @@ inovarallMass;
     editprofile() {
       this.route.navigate(['profile']);
     }
-    // ionViewWillEnter(){
-
-    //   firebase.auth().onAuthStateChanged(user => {
-    //     firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot =>{
-       
-    //       this.ActiveAcount =snapshot.data().ActiveAcount;
-    //       console.log('activateusers', this.ActiveAcount);
-   
-    //       if (this.ActiveAcount == false){
-   
-      
-    //          this.route.navigate(['contactmamager']);
-           
-    //       }
-    //       else if (this.ActiveAcount == true){
-    //         this.route.navigate(['home'])
-    //       }
-    //     })
-    //   })
-    // }
 
     getreclamer() {
       let totalPaperz = 0;
       let GH001z;
       let NFAL01z;
-  
+
       this.db.collection('storage').onSnapshot(snapshot => {
         snapshot.forEach(element => {
           this.GH001storagemass = element.data().GL001;
@@ -369,15 +334,15 @@ inovarallMass;
         // console.log(this.PET001storagemass);
         // console.log(this.PET003storagemass);
         // console.log(this.PET005storagemass);
-  
+
         totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
         this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
-  
+
         this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
         +this.PET003storagemass + +this.PET005storagemass;
         this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
         String(this.Totalplastic).substring(0, 6);
-  
+
         GH001z = this.GH001storagemass;
         this.GH001 = (String(GH001z).substring(0, 6));
         NFAL01z = this.NFAL01storagemass;
@@ -390,7 +355,7 @@ inovarallMass;
 
     // onether way
     // Query query = mFirestore.collection("rootcollection").whereEqualTo("month", 3);
-    // 
+    //
     // Query query = mFirestore.collection("rootcollection")
     // .orderBy("timestamp", Query.Direction.DESCENDING)
     // .whereEqualTo("month", 3);

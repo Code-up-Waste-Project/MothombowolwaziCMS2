@@ -1,0 +1,107 @@
+.Cancel{
+    color: purple;
+    margin-left: 95%;
+    font-size: 150%;
+}
+
+.PDF{
+    // margin-right: 95%;
+    background: rgb(117, 24, 24);
+}
+
+table{
+    margin-top: 5%;
+}
+
+th, td {
+    border: 1px solid black;
+}
+p{
+    text-align: center;
+}
+
+.Info{
+    // border: solid 1px black;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.div1{
+    // border: solid 1px rgb(216, 0, 0);
+    width: 50%;
+    height: 100%;
+}
+.div2{
+    // border: solid 1px black;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+h2{
+    font-size: 15px;
+    text-align: rigt;
+}
+h1{
+    text-align: center;
+}
+
+// .Mother{
+//     background:#44474D;
+//     height: 100%;
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .itemDiv{
+//     // background: purpl e;
+//     height: 80%;
+//     width: 50%;
+// }
+
+// ion-item{
+//     border: solid 2px purple;
+//     margin-bottom: 10px;
+//     background-color: rgba(255, 255, 255, 0.308);
+
+// }
+
+// .theButton{
+//     // border: purple solid 2px;
+
+// }
+
+.Buttons{
+    // border: solid 2px purple;
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.CancelBtn{
+    // border: solid 2px rgb(19, 4, 19);
+    height: 15%;
+    width: 50%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+.PDFButton{
+    // border: solid 2px rgb(179, 255, 0);
+    height: 15%;
+    width: 50%;
+}
