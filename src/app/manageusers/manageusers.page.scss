@@ -8,6 +8,8 @@
    
   }
   ion-title {
+      font-family: 'Microsoft YaHei UI';
+      font-size: 15px;
     color: white;
   display: flex;
   flex-direction: row;
@@ -19,13 +21,14 @@
     border-radius: 50px;
     background: white;
   ion-button {
-    font-size: 0.7vw;
+    font-size: 10px;
     font-weight: bold;
   }
     ion-icon {
       color: brown;
-      font-size: 1.5vw;
+      font-size: 20px;
       font-weight: bold;
+      margin-left: 5px;
     }
   }
   ion-icon {
@@ -78,6 +81,7 @@
             h4 {
                 font-size: 15px;
                 font-weight: bold;
+                padding-top: 5px;
             }
         }
         .image {
@@ -170,7 +174,7 @@
                 margin-top: 3%;
                 border-radius: 50px;
                 background: #EAEAEA;
-                padding: 9px;
+                padding: 12px;
                 border: none !important;
                 outline: none;
                 font-size: 13px;
