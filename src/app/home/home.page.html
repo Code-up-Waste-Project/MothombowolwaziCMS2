@@ -5,13 +5,13 @@
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
-
+</ion-header>
 <!--   <ion-toolbar  class="header">
     <ion-title>Refilwe Dikutle<span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
     <p style="background: blue;"></p>
     <p style="background: rgb(0, 0, 0);"></p>
   </ion-toolbar> -->
-</ion-header>
+
 
 <ion-content>
 <div class="container">
@@ -113,10 +113,10 @@
         <img src="../../assets/paper.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
 <div class="burgercontent">
-  <ion-icon name="create" style="color: rgb(51, 49, 49);"></ion-icon>
-  <ion-icon name="add-circle-outline" style="color:rgb(21, 139, 21);"></ion-icon>
-  <ion-icon name="trash" style="color: red;"></ion-icon>
-</div>     
+  <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+ </div>      
 
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
@@ -153,7 +153,7 @@
           <p>PAP005 <span>R0. 67</span></p>
     </div>
         <div class="manname">
-          PAPER
+          Plastic
         </div>
       </div>
     </div>
@@ -165,10 +165,10 @@
         <img src="../../assets/glassy.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
 <div class="burgercontent">
-  <ion-icon name="create" style="color: rgb(51, 49, 49);"></ion-icon>
-  <ion-icon name="add-circle-outline" style="color:rgb(21, 139, 21);"></ion-icon>
-  <ion-icon name="trash" style="color: red;"></ion-icon>
-</div>     
+  <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+ </div>      
 
 
 
@@ -208,7 +208,7 @@
     <p>PAP005 <span>R0. 67</span></p>
     </div>
   <div class="manname">
-    PAPER
+    Glass
   </div>
 </div>
     </div>
@@ -218,10 +218,10 @@
         <img src="../../assets/Asset 8.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
 <div class="burgercontent">
-  <ion-icon name="create" style="color: rgb(51, 49, 49);"></ion-icon>
-  <ion-icon name="add-circle-outline" style="color:rgb(21, 139, 21);"></ion-icon>
-  <ion-icon name="trash" style="color: red;"></ion-icon>
-</div>     
+  <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+ </div>      
 
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
@@ -260,7 +260,7 @@
     <p>PAP005 <span>R0. 67</span></p>
     </div>
   <div class="manname">
-    PAPER
+    ALUMINIUM
   </div>
 </div>
       <!-- <div class="matnames">
@@ -310,8 +310,9 @@
 <!-- edit form -->
 <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
 <div padding class="editform2">
+  <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
+
   <h1>Edit Price Rates</h1>
-  <ion-button  fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon name="close"></ion-icon></ion-button>
  
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
@@ -322,7 +323,7 @@
 <!-- create new material -->
 <div class="opacitydivs editDiv" [ngClass]="{'slideIn': opacity, 'slideOut': !opacity}">
   <div padding class="editform2">
-    <ion-button id="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close"></ion-icon></ion-button>
+    <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Create New Material Here</h1>
   <input placeholder="Enter Material Name/code">
   <input placeholder="Enter Price">
@@ -335,8 +336,9 @@
 <!-- delete material -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >
+  <ion-button class="close"  fill="clear" (click)="HideandShowDelete()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+
   <h1>Delete Material Here</h1>
-  <ion-button  fill="clear" (click)="HideandShowDelete()" slot="icon-only"><ion-icon name="close"></ion-icon></ion-button>
  
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">

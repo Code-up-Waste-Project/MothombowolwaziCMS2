@@ -1,94 +1,70 @@
+<ion-header >
+  <ion-toolbar class="header">
+   
+    <ion-title>Refilwe Dikutle</ion-title>
+    <ion-buttons  id="logout" slot="end">
+      <ion-button fill="clear" size="large" (click)="logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
 <ion-content>
-  <button (click)="createUser()">create users</button>
-  <div class="header">
-    <div class="nav">
-      <h2>My Dashboard</h2>
-      <p id="theP">Manage Users</p>
+  <div padding class="container">
+    <div padding class="left">
+      <div padding class="profile">
+         <div class="names">
+          <h4>Thato Zondo</h4>
+          <p>Supervisor</p>
+          <div class="image">
+            <img src="../../assets/cans.jpg">
+          </div>
+        </div>
+        </div>
+
+        <div padding class="profile">
+          <div class="names">
+           <h4>Lebo Muenda</h4>
+           <p>Supervisor</p>
+           <div class="image">
+             <img src="../../assets/cans.jpg">
+           </div>
+         </div>
+         </div> 
     </div>
-    <div class="profiles" *ngFor="let item of Newadmin">
-      <div class="image">
-        <img src="{{item.image}}" height="400px" width="400px" >
+
+
+    <!-- <div class="right">
+      <div class="pic" padding>
+     <ion-avatar>
+      <img src="../../assets/cans.jpg">
+</ion-avatar>
+
+      
       </div>
-      <div class="names">
-          <H4>{{ item.name }}</H4>  
-          <P>{{ item.position }}</P>
+      <p id="borderb"></p>
+      <div padding class="info">
+        <h4>Lebogang Muenda</h4>
+        <p>060 486 9924</p>
+        <p style="font-weight: bold;padding-top: 3px;">Supervisor</p>
       </div>
-    </div>
-    <div class="logout" (click)="Logout()">
-      <ion-icon name="log-out" style="color:black"></ion-icon>
-    </div>
+
+      <ion-fab>
+        <ion-fab-button><ion-icon name="add"></ion-icon></ion-fab-button>
+      </ion-fab>
+  </div> -->
+
+<!-- this form appears when fab button is clicked -->
+  <div padding class="registerform"  class="right">
+    <h1>Register</h1>
+    <input class="inputs" placeholder="Enter Email">
+    <input class="inputs" placeholder="Enter Password">
+   <button ion-button>Register</button>
+   <div class="bottomdeco">
+  <img  src="../../assets/binsPopup  2.svg">
+
+   </div>
   </div>
 
-<div class="container">
-  
-  <div class="left" id="scroll" >
-    <div>
-      <input type="file" id="sthombe" accept="image/*" (change)="changeListener($event)">
-      <div class="myHead">
-          <img src="../../assets/wavy.png" id="wavey-image-bg" alt="">
-          <label for="sthombe" id="user-upload">
-        <div class="circle-thingy">
-          <ion-icon name="camera" id="sthombe-upload"></ion-icon>
-          <img src="../../assets/icon/userimage.png" alt="">
-        </div>
-      </label>
-      </div>
-      <div class="theInputs">
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-person" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Full Names"  type="text" [(ngModel)]="profile.name">
-          </div>
-        </div>
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-briefcase" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <!-- <div>
-            <input placeholder="Position" [(ngModel)]="profile.position">
-          </div> -->
-        </div>
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-mail" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Email Address" type="email">
-          </div>
-        </div>
-        <div class="user-inputs">
-          <div>
-            <ion-icon id="user-icon" name="ios-lock" [ngClass]="{'activeInputIcon': isLabelActive, 'inactiveInputIcon': !isLabelActive}"></ion-icon>
-          </div>
-          <div>
-            <input placeholder="Password" type="password">
-          </div>
-        </div>
-        <div class="user-input-button">
-          <!-- <button style="border-radius: 5px;width: 50%;" id="user-button" (click)="signupUser(signupForm)">REGISTER MEMBER</button> -->
-        </div>
-      </div>
-
-    </div>
-    </div>
-
-    <div class="right" style="overflow-y: scroll;">
-      <h1>All Your Registered Administrators</h1>
-      <ion-card *ngFor = "let myprofiles  of newuserprofile">
-          <ion-item >
-            <ion-thumbnail slot="start">
-              <img id="face" src="{{myprofiles.image}}">
-            </ion-thumbnail>
-            <ion-label>
-              <h2>{{myprofiles.name}} {{myprofiles.surname}}</h2>
-              <p>{{myprofiles.position}}</p>
-            </ion-label>
-            <ion-icon id="Icon5" name="trash" (click)="delete(myprofiles)"></ion-icon>
-          </ion-item>
-        </ion-card>
-    </div>
   </div>
-
 </ion-content>

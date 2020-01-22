@@ -43,48 +43,48 @@ export class AppComponent implements OnInit {
      
       title: 'Home',
       url: '/home',
-      icon: 'home',
+      icon: 'homeB',
       admin:"hot"
     },
     {
       title: 'Inbounds',
       url: '/inbound',
-      icon: 'inbound',
+      icon: 'inboundB',
       admin:"cool"
     },
     {
       title: 'Reclaimer',
       url: '/reclaimer',
-      icon: 'reclaimer2',
+      icon: 'reclaimerB',
       admin:"cool"
     });
     } else {
       this.appPages.push(
       {
-        title: 'home',
+        title: 'Home',
         url: '/home',
-        icon: 'home',
+        icon: 'homeB',
         admin:"cool"
       },
      {
         title: 'Inbound',
         url: '/inbound',
-        icon: 'inbound',
+        icon: 'inboundB',
         admin:"cool"
       }, {
         title: 'Outbound',
         url: '/outbound',
-        icon: 'dispatch',
+        icon: 'outboundB',
         admin:"cool"
       }, {
         title: 'Reclaimer',
         url: '/reclaimer',
-        icon: 'reclaimer2',
+        icon: 'reclaimerB',
         admin:"cool"
       }, {
         title: 'Manage Users',
         url: '/manageusers',
-        icon: 'people',
+        icon: 'manageUserzB',
         admin:"cool"
       },
       );
