@@ -722,7 +722,7 @@ export class InboundPage implements OnInit {
     }
 
 
-    togglePlastic(){
+    togglePlastic() {
       // Changes the header tab
       document.getElementById("toPaper").style.display = "none";
       document.getElementById("toPlastic").style.display = "flex";
