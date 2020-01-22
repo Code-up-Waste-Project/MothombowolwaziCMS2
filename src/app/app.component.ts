@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     } else {
       this.appPages.push(
       {
-        title: 'home',
+        title: 'Home',
         url: '/home',
         icon: 'homeB',
         admin:"cool"
