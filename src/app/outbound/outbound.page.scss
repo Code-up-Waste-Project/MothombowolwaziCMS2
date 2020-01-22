@@ -1,3 +1,126 @@
+#StuffInside{
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: solid 2px orange;
+}
+
+.Theblocks{
+    height: 35%;
+    width: 100%;
+    border: solid 2px blueviolet;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.Block1{
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+}
+.Waste{
+    height: 35px;
+    width: 200px;
+    z-index: 10;
+    background-color: #548D04;
+    position: absolute;
+    top: 22%;
+}
+
+#RecyleLogo1{
+    width: 13%;   
+    position: absolute;
+    bottom: 0;
+    top: 14%;
+    left: 11.5%;
+}
+h3{
+    font-family: 'Open Sans Condensed', sans-serif;  
+    color: white;
+    font-size: 240%;
+    position: absolute;
+    top: -22px;
+    right: 55px;
+}
+#H3{
+    font-family: 'Open Sans Condensed', sans-serif;  
+    color: white;
+    font-size: 240%;
+    position: absolute;
+    top: -22px;
+    right: 25px;
+}
+
+
+.Block2{
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+}
+#RecyleLogo2{
+    width: 13%;   
+    position: absolute;
+    bottom: 0;
+    top: 14%;
+    left: 84.5%;
+}
+
+.Block3{
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+}
+#RecyleLogo3{
+    width: 13%;   
+    position: absolute;
+    bottom: 0;
+    top: 14%;
+    left: 36%;
+}
+
+.Block4{
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+}
+#RecyleLogo4{
+    width: 13%;   
+    position: absolute;
+    bottom: 0;
+    top: 14%;
+    left: 60%;
+}
+
+
+
+.History{
+    height: 60%;
+    width: 100%;
+    border: solid 2px red;
+    margin-top: 5px;
+    padding: 10px;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .Mother{
     height: 100%;
     width: 100%;
@@ -300,11 +423,7 @@ h5{
 
 
 
-.TheCont{
-    overflow-y: scroll;
-    width: 100%;
-    height: 100%;
-}
+
 .Mother{
     height: 100%;
     width: 100%;

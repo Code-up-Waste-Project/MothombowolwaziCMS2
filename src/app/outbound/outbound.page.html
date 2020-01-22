@@ -7,8 +7,8 @@
 
 
 <ion-content>
-
-  <div class="Mother"  *ngIf="otherPopup === false">
+<!-- <ion-button (click)="showDriverInfo()"></ion-button>
+  <div class="Mother" id="wasteInformation"  *ngIf="wasteInformation === true">
     <div id="Son"> (click)="goAway()"</div>
     <div id="Daughter">
       <div id="Header">
@@ -85,19 +85,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="total-values">
-            <div><b>Paper Total: R400.00</b></div>
-            <div><b>Total: R400.00</b></div>
-          </div> -->
-
-          <!-- <ion-grid>
-            <ion-row>
-              <ion-col id="col1"></ion-col>
-              <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
-              <ion-col><b>Total: R400.00</b></ion-col>
-            </ion-row>
-          </ion-grid> -->
           </div>
 
           <div class="Button">
@@ -148,19 +135,7 @@
                   </b>
                 </div>
               </div>
-            </div>  
-            <!-- <div class="total-values">
-              <div><b>Paper Total: R400.00</b></div>
-              <div><b>Total: R400.00</b></div>
-            </div> -->
-  
-            <!-- <ion-grid>
-              <ion-row>
-                <ion-col id="col1"></ion-col>
-                <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
-                <ion-col><b>Total: R400.00</b></ion-col>
-              </ion-row>
-            </ion-grid> -->
+            </div>
             </div>
   
             <div class="Button">
@@ -185,19 +160,7 @@
                   </b>
                 </div>
               </div>
-            </div>  
-            <!-- <div class="total-values">
-              <div><b>Paper Total: R400.00</b></div>
-              <div><b>Total: R400.00</b></div>
-            </div> -->
-  
-            <!-- <ion-grid>
-              <ion-row>
-                <ion-col id="col1"></ion-col>
-                <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
-                <ion-col><b>Total: R400.00</b></ion-col>
-              </ion-row>
-            </ion-grid> -->
+            </div>
             </div>
   
             <div class="Button">
@@ -222,11 +185,6 @@
                 </div>
               </div>
             </div>  
-            <!-- <div class="total-values">
-              <div><b>Paper Total: R400.00</b></div>
-              <div><b>Total: R400.00</b></div>
-            </div> -->
-  
             </div>
   
             <div class="Button">
@@ -239,11 +197,16 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
+
+<!-- End of the waste material Pop-over -->
 
 
 
-  <div class="Mother" *ngIf="otherPopup === true">
+<!-- Start of the driver's info Pop-over -->
+<!-- 
+
+  <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
     <div class="Son"></div>
     <div class="Mask">
       <div class="LEFT">
@@ -291,7 +254,7 @@
         </div>
       </div>
       <div class="Finish">
-        <button id="FinishBTN" color="clear">Done</button>
+        <button id="FinishBTN" color="clear" (click)="showWasteInfo()">Done</button>
       </div>
     </div>
     <div class="Daughter">
@@ -308,11 +271,42 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+<!-- End of driver info Pop-over -->
+
+
+
+
+
+
+<!-- Start of everything outside -->
+
+  <div id="StuffInside">
+    <div class="Theblocks">
+      <div class="Block1" (click)="showPopUp('paper')">
+        <div class="Waste"><h3>PAPER</h3></div>
+        <img id="RecyleLogo1" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+      <div class="Block2" (click)="showPopUp('plastic')">
+        <div class="Waste"><h3>PLASTIC</h3></div>
+        <img id="RecyleLogo2" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+      <div class="Block3" (click)="showPopUp('aluminium')">
+        <div class="Waste"><h3 id="H3">ALUMINIUM</h3></div>
+        <img id="RecyleLogo3" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+      <div class="Block4" (click)="showPopUp('glass')">
+        <div class="Waste"><h3>GLASS</h3></div>
+        <img id="RecyleLogo4" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+    </div>
+    <div class="History">
+      
+    </div>
   </div>
 
-  <div class="TheCont">
-
-    <div class="header">
+    <!-- <div class="header">
       <div class="nav">
         <h2>My Dashboard</h2>
         <h3> Outbound</h3>
@@ -332,12 +326,10 @@
       </div>
     </div>
 
-    <!-- new code -->
     <div class="container" padding>
       <div class="slideContainer">
         <ion-slides #slides style=" overflow: visible;">
 
-          <!-- INFORMATIN ABOUT DISPATCHING -->
           <ion-slide id="form">
             <div class="wave">
               <img src="../../assets/wavy.png">
@@ -346,7 +338,7 @@
 
 
             <div class="form" style="width: 80%;margin-top: 15%">
-              <!-- <form padding  style="margin-left: 10px;margin-right: 10px;"> -->
+            
 
               <ion-item class="class-item"
                 style="border: 1px solid green;margin-top: 3%;   border-radius: 50px; font-size: 1.3vw;padding: 0 !important;">
@@ -384,11 +376,11 @@
                   style="margin-top: 4.5%;font-size: 2.2vw;"></ion-icon>
               </ion-item>
 
-              <!-- </form> -->
+            
             </div>
           </ion-slide>
 
-          <!-- paper -->
+        
           <ion-slide style=" border-radius: 20px !; overflow: hidden">
             <div class="lists" style="overflow: auto;">
               <h3 id="title">PAPER</h3>
@@ -431,8 +423,8 @@
                 <input style="font-size: 1vw;" type="number" [(ngModel)]="PAP003mass" placeholder="Enter Mass Here">
               </div>
             </div>
-          </ion-slide><!-- end of slide one -->
-          <!-- plastic -->
+          </ion-slide>
+          
           <ion-slide style=" border-radius: 20px !; overflow: hidden">
             <div class="lists" style="overflow: auto;">
               <h3 id="title">PLASTIC</h3>
@@ -491,8 +483,8 @@
                 <input style="font-size: 1vw;" type="number" [(ngModel)]="PET003mass" placeholder="Enter Mass Here">
               </div>
             </div>
-          </ion-slide><!-- end of slide two -->
-          <!-- NON-FERROUS/ ALLUMINIUM -->
+          </ion-slide>
+
           <ion-slide style=" border-radius: 20px !; overflow: hidden">
             <div class="lists">
               <h3 id="title">NON-FERROUS</h3>
@@ -506,7 +498,8 @@
                 <input style="font-size: 1vw;" type="number" [(ngModel)]=" NFAL01mass" placeholder="Enter Mass Here">
               </div>
             </div>
-          </ion-slide><!-- end of slide three -->
+          </ion-slide>
+
           <ion-slide style=" border-radius: 20px !; overflow: hidden">
             <div class="lists">
               <h3 id="title">GLASS</h3>
@@ -521,7 +514,7 @@
               </div>
 
             </div>
-          </ion-slide><!-- end of slide four   -->
+          </ion-slide>
         </ion-slides>
 
         <ion-card *ngFor="let records  of outbound">
@@ -534,10 +527,10 @@
         <div class="totals">
           <button ion-button full (click)="calculateOverall()">SAVE</button>
           <button style="background: rgb(138, 18, 18);" ion-button full (click)="presentAlertCancel()">CANCEL</button>
-          <!-- <button id="pdf" ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">DOWNLOAD PDF</button> -->
+        
         </div>
-      </div><!-- end of  -->
-    </div>
-  </div>
+      </div>
+    </div> -->
+  
 
 </ion-content>
