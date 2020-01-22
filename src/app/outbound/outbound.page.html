@@ -7,7 +7,7 @@
 
 
 <ion-content>
-<ion-button (click)="showDriverInfo()"></ion-button>
+<!-- <ion-button (click)="showDriverInfo()"></ion-button>
   <div class="Mother" id="wasteInformation"  *ngIf="wasteInformation === true">
     <div id="Son"> (click)="goAway()"</div>
     <div id="Daughter">
@@ -85,19 +85,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="total-values">
-            <div><b>Paper Total: R400.00</b></div>
-            <div><b>Total: R400.00</b></div>
-          </div> -->
-
-          <!-- <ion-grid>
-            <ion-row>
-              <ion-col id="col1"></ion-col>
-              <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
-              <ion-col><b>Total: R400.00</b></ion-col>
-            </ion-row>
-          </ion-grid> -->
           </div>
 
           <div class="Button">
@@ -148,19 +135,7 @@
                   </b>
                 </div>
               </div>
-            </div>  
-            <!-- <div class="total-values">
-              <div><b>Paper Total: R400.00</b></div>
-              <div><b>Total: R400.00</b></div>
-            </div> -->
-  
-            <!-- <ion-grid>
-              <ion-row>
-                <ion-col id="col1"></ion-col>
-                <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
-                <ion-col><b>Total: R400.00</b></ion-col>
-              </ion-row>
-            </ion-grid> -->
+            </div>
             </div>
   
             <div class="Button">
@@ -185,19 +160,7 @@
                   </b>
                 </div>
               </div>
-            </div>  
-            <!-- <div class="total-values">
-              <div><b>Paper Total: R400.00</b></div>
-              <div><b>Total: R400.00</b></div>
-            </div> -->
-  
-            <!-- <ion-grid>
-              <ion-row>
-                <ion-col id="col1"></ion-col>
-                <ion-col id="col2"><b>Paper Total: R400.00</b></ion-col>
-                <ion-col><b>Total: R400.00</b></ion-col>
-              </ion-row>
-            </ion-grid> -->
+            </div>
             </div>
   
             <div class="Button">
@@ -222,11 +185,6 @@
                 </div>
               </div>
             </div>  
-            <!-- <div class="total-values">
-              <div><b>Paper Total: R400.00</b></div>
-              <div><b>Total: R400.00</b></div>
-            </div> -->
-  
             </div>
   
             <div class="Button">
@@ -239,14 +197,14 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
 
 <!-- End of the waste material Pop-over -->
 
 
 
 <!-- Start of the driver's info Pop-over -->
-
+<!-- 
 
   <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
     <div class="Son"></div>
@@ -313,20 +271,42 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+<!-- End of driver info Pop-over -->
+
+
+
+
+
+
+<!-- Start of everything outside -->
+
+  <div id="StuffInside">
+    <div class="Theblocks">
+      <div class="Block1" (click)="showPopUp('paper')">
+        <div class="Waste"><h3>PAPER</h3></div>
+        <img id="RecyleLogo1" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+      <div class="Block2" (click)="showPopUp('plastic')">
+        <div class="Waste"><h3>PLASTIC</h3></div>
+        <img id="RecyleLogo2" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+      <div class="Block3" (click)="showPopUp('aluminium')">
+        <div class="Waste"><h3 id="H3">ALUMINIUM</h3></div>
+        <img id="RecyleLogo3" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+      <div class="Block4" (click)="showPopUp('glass')">
+        <div class="Waste"><h3>GLASS</h3></div>
+        <img id="RecyleLogo4" src="../../assets/icon/Asset 9.svg" alt="">
+      </div>
+    </div>
+    <div class="History">
+      
+    </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-  <div class="TheCont">
-
-    <div class="header">
+    <!-- <div class="header">
       <div class="nav">
         <h2>My Dashboard</h2>
         <h3> Outbound</h3>
@@ -550,7 +530,7 @@
         
         </div>
       </div>
-    </div>
-  </div>
+    </div> -->
+  
 
 </ion-content>
