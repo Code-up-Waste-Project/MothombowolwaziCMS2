@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -17,6 +17,13 @@ export class HomePage implements OnInit {
   @ViewChild('barChart', {static: false}) barChart;
   bars: any;
   colorArray: any;
+
+  burgercontent: any = document.getElementsByClassName('burgercontent');
+
+  
+  burger: boolean = false;
+  
+
 
 /* Div */
   opacityDiv: any = document.getElementsByClassName('editDiv');
@@ -104,8 +111,11 @@ inovarallMass;
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
     public route: Router,
+    private render: Renderer2
 
     ) {
+
+     /*  */
       // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
       // this.Newadmin = [];
@@ -217,6 +227,10 @@ inovarallMass;
 
   HideandShowSave() {
     this.opacity = !this.opacity;
+  }
+
+  burgerMan() {
+    this.burger = !this.burger;
   }
 
   HideandShowCreate () {
@@ -395,4 +409,16 @@ inovarallMass;
     // .orderBy("timestamp", Query.Direction.DESCENDING)
     // .whereEqualTo("month", 3);
 
+    moreState = 0;
+    showMoreBtn(){
+      if(this.moreState == 0){
+        this.moreState = 1
+
+        alert("this is open")
+      }
+      else {
+        this.moreState = 0
+        alert("this is closed")
+      }
+    }
 }
