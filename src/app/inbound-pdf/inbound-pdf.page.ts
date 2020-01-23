@@ -106,7 +106,7 @@ export class InboundPDFPage implements OnInit {
         this.ViewInbound = [];
         // console.log(element.data());
         this.ViewInbound.push(element.data());
-        console.log(this.ViewInbound);
+        // console.log(this.ViewInbound);
       // });
     });
 
@@ -130,7 +130,7 @@ export class InboundPDFPage implements OnInit {
         // console.log(this.timez);
 
         this.ids = DocumentSnapshot.id;
-        console.log(this.ids);
+        // console.log(this.ids);
         GH001storagemass = this.GH001storagemass = DocumentSnapshot.data().inboundGH001;
         this.GH001storagemassz = (String(GH001storagemass).substring(0, 6));
         NFAL01storagemass = this.NFAL01storagemass = DocumentSnapshot.data().inboundNFAL01;
@@ -242,9 +242,9 @@ export class InboundPDFPage implements OnInit {
 
     // tslint:disable-next-line: forin
     for (let key in this.PDFArray) {
-      console.log(key);
+      // console.log(key);
       if (this.PDFArray[key] === '0') {
-        console.log('Skipped because its 0');
+        // console.log('Skipped because its 0');
       } else if (this.PDFArray[key] !== '0') {
         this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
       }

@@ -97,15 +97,15 @@ export class ManageusersPage implements OnInit {
     console.log(id);
   }
 
-  changeSegmentTrue(id) {
-    this.db.collection('admin').doc(id).update({ActiveAcount: true});
-      this.getUsers();
-  }
+  // changeSegmentTrue(id) {
+  //   this.db.collection('admin').doc(id).update({ActiveAcount: true});
+  //     this.getUsers();
+  // }
 
-  changeSegmentFalse(id) {
-    this.db.collection('admin').doc(id).update({ActiveAcount: false});
-      this.getUsers();
-  }
+  // changeSegmentFalse(id) {
+  //   this.db.collection('admin').doc(id).update({ActiveAcount: false});
+  //     this.getUsers();
+  // }
 
   async presentAlertChangeStatusAccountTrue(id) {
     const alert = await this.alertCtrl.create({
@@ -122,7 +122,7 @@ export class ManageusersPage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            this.changeSegmentTrue(id);
+            // this.changeSegmentTrue(id);
             this.router.navigateByUrl('/manageusers');
             console.log('Confirm Okay');
           }
@@ -147,7 +147,7 @@ export class ManageusersPage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            this.changeSegmentFalse(id);
+            // this.changeSegmentFalse(id);
             this.router.navigateByUrl('/manageusers');
             console.log('Confirm Okay');
           }
@@ -198,6 +198,22 @@ export class ManageusersPage implements OnInit {
           password: this.password
         });
         console.log('user saved to cloud');
+
+        this.db.collection('Admin').add({
+          email: this.email,
+          password: this.password,
+          profile: 'no'
+        }).then(async res => {
+          let goodRes = await this.alertCtrl.create({
+            header: 'Created new User.',
+            message: 'They must use the credentials for this account to login to the CMS',
+            buttons: [{
+              text: 'Done',
+              role: 'cancel'
+            }]
+          });
+          goodRes.present();
+        });
       }
 
       async createUser() {
@@ -230,7 +246,7 @@ export class ManageusersPage implements OnInit {
                 this.db.collection('CMS_users').add({data, profile: 'no'}).then(async res => {
                   let goodRes = await this.alertCtrl.create({
                     header: 'Created new User.',
-                    message:'They must use the credentials for this account to login to the CMS',
+                    message: 'They must use the credentials for this account to login to the CMS',
                     buttons: [{
                       text: 'Done',
                       role: 'cancel'
@@ -245,6 +261,7 @@ export class ManageusersPage implements OnInit {
 
         await alert.present();
       }
+
       changeListener(admin): void {
         const i = admin.target.files[0];
         console.log(i);

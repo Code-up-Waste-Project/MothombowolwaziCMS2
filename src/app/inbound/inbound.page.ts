@@ -8,6 +8,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
+import { element } from 'protractor';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class InboundPage implements OnInit {
   // user infor
   admin = [];
   Newadmin = [];
+  Userz = [];
 
   records;
   recordinbounddisplays = [];
@@ -31,6 +33,9 @@ export class InboundPage implements OnInit {
   time;
   timez;
   ids;
+
+  name;
+  surname;
 
   pdfObj = null;
 
@@ -121,6 +126,7 @@ export class InboundPage implements OnInit {
       this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
+        // console.log(Element.data());
       });
       this.admin.forEach(item => {
         if (item.userid === firebase.auth().currentUser.uid) {
@@ -129,19 +135,8 @@ export class InboundPage implements OnInit {
       });
       console.log('Newadmins', this.Newadmin);
     });
+
     this.getMasses();
-
-    // recordInboundsdisplay
-    this.records = this.db.collection('inbounds').onSnapshot(snapshot => {
-      this.recordinbounddisplays = [];
-      snapshot.forEach(element => {
-        // this.recordinbounddisplays = [];
-        // console.log(documentSnapshot.data());
-        // this.recordinbounddisplays.push(element.data());
-        // console.log(this.recordinbounddisplays);
-      });
-      });
-
     this.pdfmakerFirebase();
    }
 
@@ -166,7 +161,7 @@ export class InboundPage implements OnInit {
         let PET005storagemass = {};
 
         this.ids = element.id;
-        console.log(this.ids);
+        // console.log(this.ids);
 
         time = this.time = element.data().time;
         GH001storagemass = this.GH001storagemass = element.data().inboundGH001;
@@ -268,8 +263,8 @@ export class InboundPage implements OnInit {
         console.log(this.recordinbounddisplays);
 
       // create PDF
-      this.ForLoop();
-      this.createPdf();
+        this.ForLoop();
+        this.createPdf();
 
     });
   });
@@ -280,9 +275,9 @@ export class InboundPage implements OnInit {
 
       // tslint:disable-next-line: forin
       for (let key in this.PDFArray) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFArray[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFArray[key] !== '0') {
           this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
         }
@@ -531,7 +526,6 @@ export class InboundPage implements OnInit {
 
     var docDefinition = {
       content: [
-        
         { text: 'Mothombowolwazi', style: 'header' },
         { text: new Date().toTimeString(), alignment: 'right' },
         {
@@ -540,27 +534,11 @@ export class InboundPage implements OnInit {
           height: 50,
           fit: [100, 100], alignment: "right", marginBottom: 10,
   		  },
-
         { text: '', style: 'subheader' },
         { text: this.letterObj.from },
 
         { text: '', style: 'subheader' },
         this.letterObj.to,
-
-        // {
-        //   layout: 'lightHorizontalLines',
-        //   styles: Headers,
-        //   // color: 'green',
-        //   // background: 'red',
-        //   table: {
-        //     headerRows: 1,
-        //     widths: [ '35%', '35%' ],
-        //     body: [
-        //       [ 'CODE/NUMBER', 'MASS(KG)' ],
-        //       [ printDataName, printDataNumber]
-        //     ]
-        //   }
-        // },
 
         {
           style: 'tableExample',
@@ -575,13 +553,6 @@ export class InboundPage implements OnInit {
 
       ],
 
-      // footer: {
-      //   columns: [
-      //     'Printed Date',
-      //     { text: new Date().toTimeString(), alignment: 'right' }
-      //   ]
-      // },
-      
         style: 'tableExample',
         table: {
           color:'red',
@@ -594,23 +565,6 @@ export class InboundPage implements OnInit {
             ['row 3', 'column B']
           ]
         }
-      
-      // styles: {
-      //   header: {
-      //     fontSize: 18,
-      //     bold: true,
-      //   },
-      //   subheader: {
-      //     fontSize: 13,
-      //     bold: true,
-      //     margin: [0, 15, 0, 0]
-      //   },
-      //   story: {
-      //     italic: true,
-      //     alignment: 'center',
-      //     width: '50%',
-      //   }, 
-      // }
     };
     this.pdfObj = pdfMake.createPdf(docDefinition);
   }
