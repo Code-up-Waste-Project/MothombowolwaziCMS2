@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
   admin;
   ActiveAcount: boolean;
 
+ 
+
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

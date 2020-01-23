@@ -113,11 +113,12 @@
       <div class="mat">
         <img src="../../assets/paper.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent">
-  <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
- </div>      
+<div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
+  <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
+ <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+</div>       
 
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
@@ -165,11 +166,12 @@
       <div class="mat">
         <img src="../../assets/glassy.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent">
-  <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
- </div>      
+<div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
+  <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
+ <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+</div>       
 
 
 
@@ -218,11 +220,12 @@
       <div class="mat">
         <img src="../../assets/Asset 8.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent">
-  <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
- </div>      
+<div class="burgercontent4" [ngClass]="{'hide': !burger, 'show': burger}">
+  <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
+ <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+</div>    
 
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
@@ -260,7 +263,7 @@
     <p>PAP005 <span>R0. 67</span></p>
     <p>PAP005 <span>R0. 67</span></p>
     </div>
-  <div class="manname">
+  <div class="manname" >
     ALUMINIUM
   </div>
 </div>

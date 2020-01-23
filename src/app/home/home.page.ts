@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
+import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-utils';
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
 
 @Component({
@@ -380,16 +381,66 @@ export class HomePage implements OnInit {
     // .whereEqualTo("month", 3);
 
     moreState = 0;
+    optsSlider = document.getElementsByClassName("burgercontent") as HTMLCollectionOf <HTMLElement>
     showMoreBtn(){
-    document.getElementsByClassName("") as HTMLCollectionOf <HTMLElement>
       if(this.moreState == 0){
         this.moreState = 1
-
-        alert("this is open")
+        this.optsSlider[0].style.width = "165px"
+        console.log("this is open")
       }
       else {
         this.moreState = 0
-        alert("this is closed")
+        this.optsSlider[0].style.width = "40px"
+        console.log("this is closed")
       }
     }
+
+    //testing
+    //burgercontent 2
+    moreState2 = 0;
+    optsSlider2 = document.getElementsByClassName("burgercontent2") as HTMLCollectionOf <HTMLElement>
+    showMoreBtn2(){
+      if(this.moreState2 == 0){
+        this.moreState2 = 1
+        this.optsSlider2[0].style.width = "165px"
+        console.log("this is open")
+      }
+      else {
+        this.moreState2 = 0
+        this.optsSlider2[0].style.width = "40px"
+        console.log("this is closed")
+      }
+    }
+
+      //burgercontent 3
+      moreState3 = 0;
+      optsSlider3 = document.getElementsByClassName("burgercontent3") as HTMLCollectionOf <HTMLElement>
+      showMoreBtn3(){
+        if(this.moreState3 == 0){
+          this.moreState3 = 1
+          this.optsSlider3[0].style.width = "165px"
+          console.log("this is open")
+        }
+        else {
+          this.moreState3 = 0
+          this.optsSlider3[0].style.width = "40px"
+          console.log("this is closed")
+        }
+      }
+
+       //burgercontent 3
+       moreState4 = 0;
+       optsSlider4 = document.getElementsByClassName("burgercontent4") as HTMLCollectionOf <HTMLElement>
+       showMoreBtn4(){
+         if(this.moreState4 == 0){
+           this.moreState4 = 1
+           this.optsSlider4[0].style.width = "165px"
+           console.log("this is open")
+         }
+         else {
+           this.moreState4 = 0
+           this.optsSlider4[0].style.width = "40px"
+           console.log("this is closed")
+         }
+       }
 }

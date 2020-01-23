@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { AuthService } from '../../app/user/auth.service';
 import { MenuController } from '@ionic/angular';
+import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 
 @Component({
   selector: 'app-manageusers',
@@ -12,6 +13,8 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./manageusers.page.scss'],
 })
 export class ManageusersPage implements OnInit {
+
+axe: any = document.getElementsByClassName('right');
 
   public signupForm: FormGroup;
   viewuser;
@@ -276,5 +279,18 @@ export class ManageusersPage implements OnInit {
             // this.profile.image = dwnURL;
           });
         });
+      }
+
+      //method o hide divs
+
+      hidediv(){
+       this.axe = document.getElementsByClassName("right");
+
+        if(this.axe.style.display === "none") {
+          this.axe.style.display = "block";
+        }
+        else{
+          this.axe.style.display = "none";
+        }
       }
 }

@@ -200,6 +200,7 @@ h6 {
       }
       //short burger
       .burger {
+    
         background: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
         width: 10%;
@@ -215,13 +216,15 @@ h6 {
         align-items: center;
         ion-icon {
           color: black;
-          font-size: 1vw;
+          font-size: 2vw;
         }
       }
 
       
       //long burger
       .burgercontent {
+       // border: 1px solid red;
+        transition: 300ms;
         background: white;
         //border: 2px solid red;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
@@ -229,7 +232,77 @@ h6 {
         height: 30px;
         position: absolute;
         right:0%;
-        bottom: 40px;
+        bottom: 50px;
+                border-bottom-left-radius: 50px;
+        border-top-left-radius: 50px;
+        display: flex;
+        overflow: hidden;
+        // ion-icon {
+        //   font-size: 1vw;
+        // }
+        ion-button{
+          margin: 0;
+          height: 30px;
+        }
+      }
+
+      .burgercontent2 {
+        transition: 300ms;
+        background: white;
+        //border: 2px solid red;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        bottom: 50px;
+        right:0%;
+      
+        border-bottom-left-radius: 50px;
+        border-top-left-radius: 50px;
+        display: flex;
+        overflow: hidden;
+        // ion-icon {
+        //   font-size: 1vw;
+        // }
+        ion-button{
+          margin: 0;
+          height: 30px;
+        }
+      }
+
+      .burgercontent3 {
+        transition: 300ms;
+        background: white;
+        //border: 2px solid red;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        right:0%;
+        bottom: 50px;
+        border-bottom-left-radius: 50px;
+        border-top-left-radius: 50px;
+        display: flex;
+        overflow: hidden;
+        // ion-icon {
+        //   font-size: 1vw;
+        // }
+        ion-button{
+          margin: 0;
+          height: 30px;
+        }
+      }
+
+      .burgercontent4 {
+        transition: 300ms;
+        background: white;
+        //border: 2px solid red;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        right:0%;
+        bottom: 50px;
         border-bottom-left-radius: 50px;
         border-top-left-radius: 50px;
         display: flex;
@@ -334,7 +407,7 @@ h6 {
 }
 .box {
   width: 24%;
-  border: 5px solid blue;
+ // border: 5px solid blue;
   height: 90%;
   position: relative;
   .matnames {
@@ -368,7 +441,7 @@ justify-content: center;
 align-content: center;
 align-items: center;
 background: white;
-font-size: 2vw;
+font-size: 1.5vw;
 font-family: 'SHKODER 1989';
 border-bottom-right-radius: 10px;
 
@@ -422,7 +495,7 @@ border-bottom-right-radius: 10px;
 //  border-radius: 12px;
 
 canvas {
-  border: 2px solid blue !important;
+ // border: 2px solid blue !important;
   height: 100% !important;
   width: 100% !important;
  background: white !important;

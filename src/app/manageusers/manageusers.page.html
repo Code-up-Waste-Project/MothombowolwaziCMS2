@@ -31,7 +31,7 @@
          </div> 
     </div>
 
-    <!-- <div class="right">
+    <div class="right">
       <div class="pic" padding>
      <ion-avatar>
       <img src="../../assets/cans.jpg">
@@ -46,13 +46,13 @@
         <p style="font-weight: bold;padding-top: 3px;">Supervisor</p>
       </div>
 
-      <ion-fab>
-        <ion-fab-button><ion-icon name="add"></ion-icon></ion-fab-button>
+      <ion-fab (click)="hidediv()">
+        <ion-fab-button ><ion-icon name="add"></ion-icon></ion-fab-button>
       </ion-fab>
-  </div> -->
+  </div>
 
     <!-- this form appears when fab button is clicked -->
-  <div padding class="registerform"  class="right">
+  <!-- <div padding class="registerform"  class="right">
     <h1>Register</h1>
     <input class="inputs" placeholder="Enter Email" [ngModel]="email">
     <input class="inputs" placeholder="Enter Password" [ngModel]="password">
@@ -61,7 +61,7 @@
   <img  src="../../assets/binsPopup  2.svg">
 
    </div>
-  </div>
+  </div> -->
 
   </div>
 </ion-content>

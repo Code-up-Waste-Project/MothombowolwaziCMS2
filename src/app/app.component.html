@@ -95,9 +95,9 @@
       </div>
       </ion-header>
       <ion-content id="sidemenu">
-        <ion-list>
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+        <ion-list >
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages" >
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" >
               <img slot="start" width="20px" src="../assets/{{p.icon}}.svg"/>
               <ion-label>
                 {{p.title}}
