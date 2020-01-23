@@ -45,6 +45,7 @@
 }
 
 .Block1{
+    position: relative;
     height: 100%;
     width: 24%;
     border-radius: 5px;
@@ -70,32 +71,36 @@
 }
 
 #RecyleLogo1{
-    width: 13%;   
+    width: 50%;   
     position: absolute;
-    bottom: 0;
-    top: 14%;
-    left: 11.5%;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
 }
 #RecyleLogo2{
-    width: 13%;   
+    width: 50%;   
     position: absolute;
-    bottom: 0;
-    top: 14%;
-    left: 36%;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
 }
 #RecyleLogo3{
-    width: 13%;   
+    width: 50%;   
     position: absolute;
-    bottom: 0;
-    top: 14%;
-    left: 60.5%;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
 }
 #RecyleLogo4{
-    width: 13%;   
+    width: 50%;   
     position: absolute;
-    bottom: 0;
-    top: 14%;
-    left: 85%;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
 }
 
 .Waste{
@@ -104,7 +109,8 @@
     z-index: 10;
     background-color: #548D04;
     position: absolute;
-    top: 22%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 h3{
@@ -143,29 +149,22 @@ img {
 }
 
 .History1{
-    height: 10%;
+    height: 50px;
     width: 100%;
     background-color: #548D04;
     display: flex;
-    justify-content: center;
+    // justify-content: center;x
     padding-left: 12px;
 }
 .History2{
-    height: 10%;
+    height: 43px;
     width: 100%;
     background-color: rgb(238, 234, 234);
     margin-top: 10px;
     display:flex;
     padding-left: 12px;
 }
-.History3{
-    height: 10%;
-    width: 100%;
-    background-color: rgb(201, 199, 199);
-    margin-top: 10px;
-    display:flex;
-    padding-left: 12px;
-}
+
 #Date{
     // border: salmon solid 2px;
     height: 100%;
@@ -242,8 +241,9 @@ img {
 h2{
     color: rgb(255, 255, 255);
     font-family: 'Open Sans Condensed', sans-serif;
-    position: absolute;
-    bottom: 51.3%;
+    // position: absolute;
+    margin-top: 10px
+    // bottom: 51.3%;
 }
 
 
@@ -615,4 +615,58 @@ button{
         // background-color: blue;
         right: 20px;
     }
+}
+
+
+@media screen and (max-width:1366px){
+    #logout {
+        border: 1px solid white;
+        padding: 1px;
+        border-radius: 50px;
+        background: white;
+        color: black;
+      ion-button {
+        font-size: 10px;
+        font-weight: bold;
+      }
+        ion-icon {
+          color: brown;
+          font-size: 20px;
+          font-weight: bold;
+          margin-left: 5px;
+        }
+      }
+      .header {
+        --background: #6fcc2c !important;
+        display: flex;
+        color: white;
+      }
+
+      
+.Theblocks{
+    height: 35%;
+    width: 100%;
+    // border: solid 2px blueviolet;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 50px;
+}
+.Block1{
+    position: relative;
+    height: 90%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+}
+.Waste{
+    height: 35px;
+    width: 170px;
+    z-index: 10;
+    background-color: #548D04;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
 }

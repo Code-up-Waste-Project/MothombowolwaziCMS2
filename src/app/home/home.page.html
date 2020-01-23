@@ -1,5 +1,5 @@
-<ion-header >
-  <ion-toolbar class="header" *ngFor="let user of Newadmin">
+<ion-header *ngFor="let user of Newadmin">
+  <ion-toolbar class="header" >
     <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
