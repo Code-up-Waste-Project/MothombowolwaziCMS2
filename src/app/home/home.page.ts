@@ -130,6 +130,12 @@ export class HomePage implements OnInit {
 
     }
 
+     //chart
+    ionViewDidEnter() {
+      this.createBarChart();
+    }
+
+
   ngOnInit() {
     this.menuCtrl.enable(true); // or true
 
@@ -279,8 +285,7 @@ export class HomePage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)',
-        'Plastic(HD001)', 'Plastic(LD001)', 'Plastic(LD003)', 'Plastic(PET001)', 'Plastic(PET003)', 'Plastic(PET005)'],
+        labels: [],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'Overall material ',
@@ -376,6 +381,7 @@ export class HomePage implements OnInit {
 
     moreState = 0;
     showMoreBtn(){
+    document.getElementsByClassName("") as HTMLCollectionOf <HTMLElement>
       if(this.moreState == 0){
         this.moreState = 1
 
