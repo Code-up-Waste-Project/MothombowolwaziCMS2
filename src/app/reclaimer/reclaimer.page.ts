@@ -289,6 +289,54 @@ export class ReclaimerPage implements OnInit {
 
   pdfObj = null;
 
+  ///////////////////////////////////////////////////////////////
+
+  otherPopup: boolean = false;
+  showOtherPopup() {
+    // alert("clicked")
+    this.otherPopup = true;
+  }
+
+  showInputs() {
+    this.otherPopup = false;
+  }
+
+  driverInformation: boolean = false;
+  wasteInformation: boolean = false;
+  showDriverInfo() {
+    this.driverInformation = true;
+    this.wasteInformation = false;
+  }
+
+  showWasteInfo() {
+    this.wasteInformation = true;
+    this.driverInformation = false;
+    this.coemBack();
+  }
+
+  popOpOpen: boolean = false;
+  selectedCat="";
+  showPopUp(userCat) {
+    this.popOpOpen = true;
+    this.selectedCat = userCat;
+    this.showDriverInfo();
+    // alert(this.selectedCat);
+    setTimeout(() => {
+    if (this.selectedCat === 'paper') {
+      this.togglePaper();
+    } else if (this.selectedCat === 'plastic') {
+      this.togglePlastic();
+    } else if (this.selectedCat === 'aluminium') {
+      this.toggleAluminium();
+    } else if (this.selectedCat === 'glass') {
+      this.toggleGlass();
+    }
+    }, 10);
+    console.log(this.selectedCat);
+  }
+
+  /////////////////////////////////////////////////////////////////
+
   constructor(
     private modalcontroller: ModalController,
     public route: Router,
@@ -2313,7 +2361,7 @@ Logout() {
     }
 
 
-    togglePlastic(){
+    togglePlastic() {
       // Changes the header tab
       document.getElementById("toPaper").style.display = "none";
       document.getElementById("toPlastic").style.display = "flex";
@@ -2334,56 +2382,78 @@ Logout() {
 
       // Changes the color of the Plastic tab
       document.getElementById("Plastic").style.background = "#568C0B";
-      document.getElementById("Plastic").style.color = "white";
+      document.getElementById("Plastic").style.color = "white";;
     }
-    togglePaper(){
-      // Changes the header tab
-      document.getElementById("toPaper").style.display = "flex";
-      document.getElementById("toPlastic").style.display = "none";
-      document.getElementById("toAluminium").style.display = "none";
-      document.getElementById("toGlass").style.display = "none";
+    togglePaper() {
+     // Changes the header tab
+     document.getElementById("toPaper").style.display = "flex";
+     document.getElementById("toPlastic").style.display = "none";
+     document.getElementById("toAluminium").style.display = "none";
+     document.getElementById("toGlass").style.display = "none";
 
-      // Changes the color of the Paper tab
-      document.getElementById("Paper").style.background = "#568C0B";
-      document.getElementById("Paper").style.color = "white";
+     // Changes the color of the Paper tab
+     document.getElementById("Paper").style.background = "#568C0B";
+     document.getElementById("Paper").style.color = "white";
 
-      // Changes the color of the Cans tab
-      document.getElementById("Aluminium").style.background = "white";
-      document.getElementById("Aluminium").style.color = "black";
+     // Changes the color of the Cans tab
+     document.getElementById("Aluminium").style.background = "white";
+     document.getElementById("Aluminium").style.color = "black";
 
-      // Changes the color of the Glass tab
-      document.getElementById("Glass").style.background = "white";
-      document.getElementById("Glass").style.color = "black";
+     // Changes the color of the Glass tab
+     document.getElementById("Glass").style.background = "white";
+     document.getElementById("Glass").style.color = "black";
 
-      // Changes the color of the Plastic tab
-      document.getElementById("Plastic").style.background = "white";
-      document.getElementById("Plastic").style.color = "black";
+     // Changes the color of the Plastic tab
+     document.getElementById("Plastic").style.background = "white";
+     document.getElementById("Plastic").style.color = "black";
     }
-    toggleAluminium(){
-      // Changes the header tab
-      document.getElementById("toPaper").style.display = "none";
-      document.getElementById("toPlastic").style.display = "none";
-      document.getElementById("toAluminium").style.display = "flex";
-      document.getElementById("toGlass").style.display = "none";
+    toggleAluminium() {
+       // Changes the header tab
+       document.getElementById("toPaper").style.display = "none";
+       document.getElementById("toPlastic").style.display = "none";
+       document.getElementById("toAluminium").style.display = "flex";
+       document.getElementById("toGlass").style.display = "none";
 
-      // Changes the color of the Paper tab
-      document.getElementById("Paper").style.background = "white";
-      document.getElementById("Paper").style.color = "black";
+       // Changes the color of the Paper tab
+       document.getElementById("Paper").style.background = "white";
+       document.getElementById("Paper").style.color = "black";
 
-      // Changes the color of the Cans tab
-      document.getElementById("Aluminium").style.background = "#568C0B";
-      document.getElementById("Aluminium").style.color = "white";
+       // Changes the color of the Cans tab
+       document.getElementById("Aluminium").style.background = "#568C0B";
+       document.getElementById("Aluminium").style.color = "white";
 
-      // Changes the color of the Glass tab
-      document.getElementById("Glass").style.background = "white";
-      document.getElementById("Glass").style.color = "black";
+       // Changes the color of the Glass tab
+       document.getElementById("Glass").style.background = "white";
+       document.getElementById("Glass").style.color = "black";
 
-      // Changes the color of the Plastic tab
-      document.getElementById("Plastic").style.background = "white";
-      document.getElementById("Plastic").style.color = "black";
+       // Changes the color of the Plastic tab
+       document.getElementById("Plastic").style.background = "white";
+       document.getElementById("Plastic").style.color = "black";
     }
-    toggleGlass(){
+    toggleGlass() {
+    // Changes the header tab
+    document.getElementById("toPaper").style.display = "none";
+    document.getElementById("toPlastic").style.display = "none";
+    document.getElementById("toAluminium").style.display = "none";
+    document.getElementById("toGlass").style.display = "flex";
 
+    // Changes the color of the Paper tab
+    document.getElementById("Paper").style.background = "white";
+    document.getElementById("Paper").style.color = "black";
+
+    // Changes the color of the Cans tab
+    document.getElementById("Aluminium").style.background = "white";
+    document.getElementById("Aluminium").style.color = "black";
+
+    // Changes the color of the Glass tab
+    document.getElementById("Glass").style.background = "#568C0B";
+    document.getElementById("Glass").style.color = "white";
+
+    // Changes the color of the Plastic tab
+    document.getElementById("Plastic").style.background = "white";
+    document.getElementById("Plastic").style.color = "black";
+    }
+    toggleReclaimer() {
       // Changes the header tab
       document.getElementById("toPaper").style.display = "none";
       document.getElementById("toPlastic").style.display = "none";
@@ -2405,65 +2475,16 @@ Logout() {
       // Changes the color of the Plastic tab
       document.getElementById("Plastic").style.background = "white";
       document.getElementById("Plastic").style.color = "black";
-      
-    } 
+      }
     motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
 
-  goAway(){
-
-    this.motherDiv[0].style.display = "none"
-  }
-  coemBack(){
-    this.motherDiv[0].style.display = "block"
-
+  goAway() {
+    // this.motherDiv[0].style.display = "none";
+    this.selectedCat = "";
   }
 
-  otherPopup: boolean = false
-  showOtherPopup(){
-    // alert("clicked")
-    this.otherPopup = true
-  }
-  showInputs(){
-    this.otherPopup = false
-
-  }
-  driverInformation: boolean = false;
-  wasteInformation: boolean = false;
-  showDriverInfo(){
-    this.driverInformation = true;
-    this.wasteInformation = false;
-  }
-  showWasteInfo(){
-    this.wasteInformation = true;
-    this.driverInformation = false;
-    this.coemBack()
+  coemBack() {
+    this.motherDiv[0].style.display = "block";
   }
 
-  
-  popOpOpen : boolean = false;
-  selectedCat="";
-  showPopUp(userCat){
-    this.popOpOpen = true;
-    this.selectedCat = userCat;
-    this.showDriverInfo();
-    alert(this.selectedCat)
-    setTimeout(() => {
-      
-
-    if(this.selectedCat == "paper"){
-      this.togglePaper()
-      console.log(this.selectedCat);
-    }
-    else if (this.selectedCat == "plastic"){
-      this.togglePlastic()
-    }
-    else if(this.selectedCat == "aluminium"){
-      this.toggleAluminium()
-    }
-    else if(this.selectedCat == "glass"){
-      this.toggleGlass()
-    }
-    }, 10);
-  }
-  
 }

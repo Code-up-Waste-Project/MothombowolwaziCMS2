@@ -771,12 +771,13 @@ export class InboundPage implements OnInit {
 
       // Changes the color of the Plastic tab
       document.getElementById("Plastic").style.background = "white";
-      document.getElementById("Plastic").style.color = "black"; 
+      document.getElementById("Plastic").style.color = "black";
     }
 
     goAway() {
       this.selectedCat = "";
     }
+
     popOpOpen: boolean = false;
     selectedCat = "";
     showPopUp(userCat) {
