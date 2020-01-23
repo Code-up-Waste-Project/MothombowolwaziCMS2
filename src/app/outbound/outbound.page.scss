@@ -1,15 +1,19 @@
+.TheToolbar{
+    --background: #265902;
+    color: white;
+}
 #StuffInside{
     overflow-y: scroll;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border: solid 2px orange;
+    // border: solid 2px orange;
 }
 
 .Theblocks{
     height: 35%;
     width: 100%;
-    border: solid 2px blueviolet;
+    // border: solid 2px blueviolet;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,6 +58,12 @@ h3{
     position: absolute;
     top: -22px;
     right: 25px;
+}
+h2{
+    font-family: 'Open Sans Condensed', sans-serif;  
+    color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: 51%;
 }
 
 
@@ -104,33 +114,119 @@ h3{
 .History{
     height: 60%;
     width: 100%;
-    border: solid 2px red;
+    // border: solid 2px red;
     margin-top: 5px;
     padding: 10px;  
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-.Mother{
-    height: 100%;
+.History1{
+    height: 10%;
     width: 100%;
-    border: solid 2px red;
+    background-color: #548D04;
+    display: flex;
+    justify-content: center;
+    padding-left: 12px;
 }
+#Date{
+    // border: salmon solid 2px;
+    height: 100%;
+    width:30%;
+}
+#Material{
+    // border: salmon solid 2px;
+    height: 100%;
+    width:70%;
+}
+.History2{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(238, 234, 234);
+    margin-top: 10px;
+    display:flex;
+    padding-left: 12px;
+}
+#Date1{
+    // border: solid 2px red;
+    height: 100%;
+    width: 30%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-top: 10px;
+}
+#Material1{
+    // border: solid 2px red;
+    height: 100%;
+    width: 50%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-top: 10px;
+}
+#Eye1{
+    // border: solid 2px red;
+    height: 100%;
+    width: 5%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-top: 15px;
+}
+#Trash1{
+    // border: solid 2px red;
+    height: 100%;
+    width: 15%;
+    padding-top: 15px;
+    color: red;
+}
+
+.History3{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(201, 199, 199);
+    margin-top: 10px;
+    display:flex;
+    padding-left: 12px;
+}
+#Date2{
+    // border: solid 2px red;
+    height: 100%;
+    width: 30%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-top: 10px;
+}
+#Material2{
+    // border: solid 2px red;
+    height: 100%;
+    width: 50%;
+    width: 50%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-top: 10px;
+}
+#Eye2{
+     // border: solid 2px red;
+     height: 100%;
+     width: 5%;
+     font-family: 'Open Sans Condensed', sans-serif;
+     padding-top: 15px;
+}
+#Trash2{
+    // border: solid 2px red;
+    height: 100%;
+    width: 15%;
+    padding-top: 15px;
+    color: red;
+}
+
+// End of evrything outside Pop-overs
+
+
+
+
+
+
+
+
+
 
 .Son{
     height: 100%;
     width:100%;
-    border: solid black;
+    // border: solid black;
     background-color: rgba(0, 0, 0, 0.521);
 }
 .Daughter{
@@ -330,7 +426,10 @@ h5{
 
 #theH3{
     font-weight: 700;
-    text-align: center;
+    position: absolute;
+    right: 30%;
+    color: black;
+    margin-top: 5%;
 }
 
 .DriverInputs{
@@ -427,17 +526,17 @@ h5{
 .Mother{
     height: 100%;
     width: 100%;
-    border: solid 2px red;
+    // border: solid 2px red;
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.301);
     z-index: 100000000000000000000000000000000000000000000000000000000000000000000;
 }
 #Son{
     height: 100%;
     width: 100%;
-    border: solid 2px black;
+    // border: solid 2px black;
 }
 #Daughter{
     height: 59%;
@@ -770,11 +869,9 @@ button{
 
 
 
-
-
-
-
-
+#wasteInformation{
+    // display: none;
+}
 
 
 
