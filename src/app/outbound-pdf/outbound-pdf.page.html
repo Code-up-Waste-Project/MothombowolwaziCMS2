@@ -1,0 +1,200 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="Buttons">
+        <div class="PDFButton">
+          <ion-button (click)="downloadPdf()" color="clear" class="PDF">Download PDF</ion-button>
+        </div>
+        <div class="CancelBtn">
+          <ion-icon [routerLink]="['/outbound']" class="Cancel" name="close-circle"></ion-icon>
+        </div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div  *ngFor="let out of ViewOutbound">
+
+  <div class="Info">
+    <div class="div1"></div>
+    <!-- <div class="div2"><h2>Date:  {{ out.date }}</h2></div> -->
+  </div>
+
+  <h1>Purchases Per Product Summery</h1>
+
+  <table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Reg No.</th>
+    <th>Source</th>
+    <th>Location</th>
+  </tr>
+  <tr>
+    <td><p>{{ out.DriverName }}</p></td>
+    <td><p>{{ out.RegistarionNumberPlates }}</p></td>
+    <td><p>{{ out.TruckSourcess }}</p></td>
+    <td><p>{{ out.Destination }}</p></td>
+  </tr>
+<br><br><br>
+  <tr>
+    <th>Waste Type</th>
+    <th>CODE/NUMBER</th>
+    <th>Mass(kg)</th>
+  </tr>
+  <tr>
+    <td><p>Glass</p></td>
+    <td><p>{{ GH001 }}</p></td>
+    <td><p>{{ out.GH001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p>Non-Ferrous</p></td>
+    <td><p>NFAL01</p></td>
+    <td><p>{{ out.NFAL01 }}</p></td>
+  </tr>
+  <tr>
+    <td><p>PAPER</p></td>
+    <td><p>PAP005</p></td>
+    <td><p>{{ out.PAP005 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PAP007</p></td>
+    <td><p>{{ out.PAP007 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PAP001</p></td>
+    <td><p>{{ out.PAP001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PAP003</p></td>
+    <td><p>{{ out.PAP003 }}</p></td>
+  </tr>
+  <tr>
+    <td><p>PLASTIC</p></td>
+    <td><p>HD001</p></td>
+    <td><p>{{ out.HD001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>LD001</p></td>
+    <td><p>{{ out.LD001 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>LD003</p></td>
+    <td><p>{{ out.LD003 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PET001</p></td>
+    <td><p>{{ out.PET00 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PET003</p></td>
+    <td><p>{{ out.PET003 }}</p></td>
+  </tr>
+  <tr>
+    <td><p></p></td>
+    <td><p>PET005</p></td>
+    <td><p>{{ out.PET005 }}</p></td>
+  </tr>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Overall Mass</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><p>{{ out.ovarallMass }}</p></td>
+  </tr>
+</table>
+</div>
+
+  <!-- <div class="Everything" *ngFor="let out of ViewOutbound">
+        <div class="Information1">
+          <div class="MotherInfo">
+          <div class="Info1"> 
+            Purchases Per Product Summery
+          </div>
+          <div class="Info2">
+            Date:  {{ out.date }}
+          </div>
+        </div>
+        <div class="FatherInfo">
+          <div class="Date">{{ dates }}</div>
+        </div>
+        </div>
+    
+        <div class="Heading">
+          <h2>Mthombowolwazi</h2>
+          <h5>{{ out.DriverName }}</h5>
+          <h5>{{ out.RegistarionNumberPlates }}</h5>
+          <h5>{{ out.TruckSourcess }}</h5>
+          <h5>{{ out.Destination }}</h5>
+        </div>
+    
+        <div class="Information2">
+          <div class="Subheads">
+            <div class="Sub1">GLASS</div>
+            <div class="Sub3">Mass</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">GH001</div>
+              <div class="Price3">{{ out.GH001 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">NFAL01</div>
+            <div class="Price3">{{ out.NFAL01 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PAP005</div>
+            <div class="Price3">{{ out.PAP005 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PAP007</div>
+              <div class="Price3">{{ out.PAP007 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PAP001</div>
+            <div class="Price3">{{ out.PAP001 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PAP003</div>
+            <div class="Price3">{{ out.PAP003 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">HD001</div>
+            <div class="Price3">{{ out.HD001 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">LD001</div>
+            <div class="Price3">{{ out.LD001 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">LD003</div>
+            <div class="Price3">{{ out.LD003 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PET001</div>
+            <div class="Price3">{{ out.PET00 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PET003</div>
+            <div class="Price3">{{ out.PET003 }}</div>
+          </div>
+          <div class="Prices">
+            <div class="Price1">PET005</div>
+            <div class="Price3">{{ out.PET005 }}</div>
+          </div>
+          <div class="Prices">
+              <div class="Price1">Overall Mass</div>
+              <div class="Price3">{{ out.ovarallMass }}</div>
+            </div>
+          </div>
+      </div> -->
+</ion-content>

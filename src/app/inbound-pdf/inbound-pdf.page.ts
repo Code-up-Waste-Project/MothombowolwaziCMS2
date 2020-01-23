@@ -268,6 +268,9 @@ export class InboundPDFPage implements OnInit {
       printDataName.push(item.name);
       printDataNumber.push(item.number);
     });
+    console.log(this.PDFArrayPrint);
+    console.log(printDataName);
+    console.log(printDataNumber);
 
     var docDefinition = {
       content: [

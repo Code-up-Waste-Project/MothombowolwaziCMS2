@@ -26,6 +26,7 @@ export class OutboundPage implements OnInit {
   // user infor
   admin = [];
   Newadmin = [];
+  recordoutbounddisplays = [];
 
   // outbound
   outbound = [];
@@ -34,6 +35,7 @@ export class OutboundPage implements OnInit {
   outDriverName;
   outRegistarionNumberPlates;
   outovarallMass;
+  ids;
 
   db = firebase.firestore();
 
@@ -43,6 +45,7 @@ export class OutboundPage implements OnInit {
   PDFArray = {};
   PDFArrayPrint = [];
   Outboundz;
+  time;
 
   prices;
   getprice;
@@ -53,6 +56,11 @@ export class OutboundPage implements OnInit {
   overallStoragez;
   TruckSourcess;
   Destination;
+
+  DriverNameInput;
+  RegistarionNumberPlatesInput;
+  TruckSourcessInput;
+  DestinationInput;
 
   isLabelActive;
 
@@ -126,6 +134,66 @@ export class OutboundPage implements OnInit {
 
   RegisterForm: FormGroup;
 
+  /////////////////////////////////////////////////////////////////////////////////////
+
+  motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
+
+    goAway() {
+      // alert("clicked")
+      this.motherDiv[0].style.display = "none"
+    }
+    coemBack() {
+      this.motherDiv[0].style.display = "block"
+    }
+
+    otherPopup: boolean = false;
+
+    showOtherPopup() {
+      // alert("clicked")
+      this.otherPopup = true;
+    }
+
+    showInputs() {
+      this.otherPopup = false;
+
+    }
+    driverInformation: boolean = false;
+    wasteInformation: boolean = false;
+
+    showDriverInfo() {
+      this.driverInformation = true;
+      this.wasteInformation = false;
+    }
+    showWasteInfo() {
+      this.wasteInformation = true;
+      this.driverInformation = false;
+      this.coemBack();
+    }
+
+    popOpOpen: boolean = false;
+    selectedCat = "";
+
+    showPopUp(userCat) {
+      this.popOpOpen = true;
+      this.selectedCat = userCat;
+      this.showDriverInfo();
+      // alert(this.selectedCat);
+      setTimeout(() => {
+      if (this.selectedCat === 'paper') {
+        this.togglePaper();
+      } else if (this.selectedCat === 'plastic') {
+        this.togglePlastic();
+      } else if (this.selectedCat === 'aluminium') {
+        this.toggleAluminium();
+      } else if (this.selectedCat === 'glass') {
+        this.toggleGlass();
+      }
+      }, 10);
+      // console.log(this.selectedCat);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
   constructor(
     private plt: Platform,
     private file: File,
@@ -150,13 +218,14 @@ export class OutboundPage implements OnInit {
       console.log('Newadmins', this.Newadmin);
     });
 
-    this.RegisterForm = formGroup.group({
-        DriverName : ['', [Validators.required, Validators.maxLength(15)]],
-        RegistarionNumberPlates : ['', [Validators.required, Validators.maxLength(10)]],
-        Destination : ['', [Validators.required, Validators.maxLength(25)]],
-      });
+    // this.RegisterForm = formGroup.group({
+    //     DriverName : ['', [Validators.required, Validators.maxLength(15)]],
+    //     RegistarionNumberPlates : ['', [Validators.required, Validators.maxLength(10)]],
+    //     Destination : ['', [Validators.required, Validators.maxLength(25)]],
+    //   });
 
     this.getMasses();
+    this.pdfmakerFirebase();
 
     this.db.collection('outbound').onSnapshot(snapshot => {
       this.outbound = [];
@@ -190,14 +259,16 @@ export class OutboundPage implements OnInit {
   ngOnInit() {
   }
 
-  pdfmakerFirebase(id) {
-    this.db.collection('outbound').doc(id).onSnapshot(element => {
-      // snapshot.forEach(element => {
+  pdfmakerFirebase() {
+    this.db.collection('outbound').onSnapshot(element => {
+      this.recordoutbounddisplays = [];
+      element.forEach(element => {
         let DriverName = {};
         let RegistarionNumberPlates = {};
         let overallStorage = {};
         let TruckSourcess = {};
         let Destination = {};
+        let time = {};
 
         let GH001storagemass = {};
         let NFAL01storagemass = {};
@@ -225,6 +296,10 @@ export class OutboundPage implements OnInit {
         // console.log(this.Destination);
         // console.log(this.overallStoragez);
 
+        this.ids = element.id;
+        // console.log(element.data());
+
+        time = this.time = element.data().date;
         GH001storagemass = this.GH001storagemass = element.data().GH001;
         this.GH001storagemassz = (String(GH001storagemass).substring(0, 6));
         NFAL01storagemass = this.NFAL01storagemass = element.data().NFAL01;
@@ -309,11 +384,34 @@ export class OutboundPage implements OnInit {
           PET005: this.PET005storagemassz,
         };
 
+        this.recordoutbounddisplays.push({
+          DriverName: this.DriverName,
+          RegistarionNumberPlates: this.RegistarionNumberPlates,
+          overallStorage: this.overallStorage,
+          TruckSourcess: this.TruckSourcess,
+          Destination: this.Destination,
+          GH001: this.GH001storagemassz,
+          NFAL01: this.NFAL01storagemassz,
+          PAP005: this.PAP005storagemassz,
+          PAP007: this.PAP007storagemassz,
+          PAP001: this.PAP001storagemassz,
+          PAP003: this.PAP003storagemassz,
+          HD001: this.HD001storagemassz,
+          LD001: this.LD001storagemassz,
+          LD003: this.LD003storagemassz,
+          PET001: this.PET001storagemassz,
+          PET003: this.PET003storagemassz,
+          PET005: this.PET005storagemassz,
+          id: this.ids,
+          time: this.time,
+        });
+        console.log(this.recordoutbounddisplays);
+
       // create PDF
-      this.ForLoop();
-      this.createPdf();
-      this.downloadPdf();
+        this.ForLoop();
+
     });
+  });
   }
 
   ForLoop() {
@@ -321,14 +419,14 @@ export class OutboundPage implements OnInit {
 
       // tslint:disable-next-line: forin
       for (let key in this.PDFArray) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFArray[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFArray[key] !== '0') {
           this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
         }
       }
-      console.log(this.PDFArrayPrint);
+      // console.log(this.PDFArrayPrint);
     }
 
   getMasses() {
@@ -366,10 +464,10 @@ export class OutboundPage implements OnInit {
   SaveOutbound() {
     this.db.collection('outbound').doc().set({
       date: new Date(),
-      DriverName: this.DriverName,
-      RegistarionNumberPlates: this.RegistarionNumberPlates,
-      TruckSourcess: this.TruckSourcess,
-      Destination: this.Destination,
+      DriverName: this.DriverNameInput,
+      RegistarionNumberPlates: this.RegistarionNumberPlatesInput,
+      TruckSourcess: this.TruckSourcessInput,
+      Destination: this.DestinationInput,
       GH001: this.GH001mass,
       NFAL01: this.NFAL01mass,
       PAP005: this.PAP005mass,
@@ -388,16 +486,12 @@ export class OutboundPage implements OnInit {
   }
 
   calculateOverall() {
-    this.checkinputfields();
-
-    this.overallStorage = this.GH001mass + this.HD001mass + this.LD001mass + this.LD003mass + this.NFAL01mass
-     + this.PAP001mass + this.PAP003mass + this.PAP005mass + this.PAP007mass + this.PET001mass +
-     this.PET003mass + this.PET005mass;
+    this.overallStorage = +this.GH001mass + +this.HD001mass + +this.LD001mass + +this.LD003mass + +this.NFAL01mass
+     + +this.PAP001mass + +this.PAP003mass + +this.PAP005mass + +this.PAP007mass + +this.PET001mass +
+     +this.PET003mass + +this.PET005mass;
     // console.log(this.overallStorage);
 
     this.SaveOutbound();
-    this.createPdf();
-    this.presentAlert();
 
   }
 
@@ -510,6 +604,7 @@ export class OutboundPage implements OnInit {
     // console.log(this.PET005mass);
 
     this.updateStorage();
+    this.calculateOverall();
 
   }
 
@@ -598,6 +693,32 @@ export class OutboundPage implements OnInit {
     // console.log('entered mass', this.PET005storagemass);
     // console.log('mass of database', this.PET005mass);
 
+  }
+
+  async presentAlertupdate() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to Save Masses?.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkinputfields();
+            this.clearInputs();
+            this.route.navigateByUrl('/outbound');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   createPdf() {
@@ -738,17 +859,33 @@ export class OutboundPage implements OnInit {
      });
     }
 
-    async presentAlert() {
-      // Perfom PayPal or Stripe checkout process
-      let alert = await this.alertController.create({
-        header: 'OutBound Information!',
-        message: 'OutBound Information saved. check history for records',
-        buttons: ['OK']
+    async presentAlertDelete(id) {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Okay',
+            handler: () => {
+              this.deleteOutbound(id);
+              this.route.navigateByUrl('/outbound');
+            }
+          }
+        ]
       });
-      alert.present().then(() => {
-        this.clearInputs();
-        this.route.navigateByUrl('/outbound');
-      });
+      await alert.present();
+    }
+
+    deleteOutbound(id) {
+      this.db.collection('outbound').doc(id).delete();
+      console.log('Record deleted');
     }
 
     clearInputs() {
@@ -805,10 +942,7 @@ export class OutboundPage implements OnInit {
       loading.dismiss();
     }
 
-
-    
-
-    togglePlastic(){
+    togglePlastic() {
       // Changes the header tab
       document.getElementById("toPaper").style.display = "none";
       document.getElementById("toPlastic").style.display = "flex";
@@ -831,7 +965,7 @@ export class OutboundPage implements OnInit {
       document.getElementById("Plastic").style.background = "#568C0B";
       document.getElementById("Plastic").style.color = "white";
     }
-    togglePaper(){
+    togglePaper() {
       // Changes the header tab
       document.getElementById("toPaper").style.display = "flex";
       document.getElementById("toPlastic").style.display = "none";
@@ -854,7 +988,7 @@ export class OutboundPage implements OnInit {
       document.getElementById("Plastic").style.background = "white";
       document.getElementById("Plastic").style.color = "black";
     }
-    toggleAluminium(){
+    toggleAluminium() {
       // Changes the header tab
       document.getElementById("toPaper").style.display = "none";
       document.getElementById("toPlastic").style.display = "none";
@@ -877,7 +1011,7 @@ export class OutboundPage implements OnInit {
       document.getElementById("Plastic").style.background = "white";
       document.getElementById("Plastic").style.color = "black";
     }
-    toggleGlass(){
+    toggleGlass() {
 
       // Changes the header tab
       document.getElementById("toPaper").style.display = "none";
@@ -900,65 +1034,6 @@ export class OutboundPage implements OnInit {
       // Changes the color of the Plastic tab
       document.getElementById("Plastic").style.background = "white";
       document.getElementById("Plastic").style.color = "black";
-      
-    } 
-    
-      motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
-
-    goAway(){
-      // alert("clicked")
-      this.motherDiv[0].style.display = "none"
-    }
-    coemBack(){
-      this.motherDiv[0].style.display = "block"
-
     }
 
-    otherPopup: boolean = false
-    showOtherPopup(){
-      // alert("clicked")
-      this.otherPopup = true
-    }
-    showInputs(){
-      this.otherPopup = false
-
-    }
-    driverInformation: boolean = false;
-    wasteInformation: boolean = false;
-    showDriverInfo(){
-      this.driverInformation = true;
-      this.wasteInformation = false;
-    }
-    showWasteInfo(){
-      this.wasteInformation = true;
-      this.driverInformation = false;
-      this.coemBack()
-    }
-
-    
-    popOpOpen : boolean = false;
-    selectedCat="";
-    showPopUp(userCat){
-      this.popOpOpen = true;
-      this.selectedCat = userCat;
-      this.showDriverInfo();
-      // alert(this.selectedCat)
-      setTimeout(() => {
-        
-
-      if(this.selectedCat == "paper"){
-        this.togglePaper()
-        console.log(this.selectedCat);
-      }
-      else if (this.selectedCat == "plastic"){
-        this.togglePlastic()
-      }
-      else if(this.selectedCat == "aluminium"){
-        this.toggleAluminium()
-      }
-      else if(this.selectedCat == "glass"){
-        this.toggleGlass()
-      }
-      }, 10);
-    }
 }
