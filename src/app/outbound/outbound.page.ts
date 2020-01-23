@@ -906,7 +906,7 @@ export class OutboundPage implements OnInit {
       motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
 
     goAway(){
-      alert("clicked")
+      // alert("clicked")
       this.motherDiv[0].style.display = "none"
     }
     coemBack(){
@@ -942,7 +942,7 @@ export class OutboundPage implements OnInit {
       this.popOpOpen = true;
       this.selectedCat = userCat;
       this.showDriverInfo();
-      alert(this.selectedCat)
+      // alert(this.selectedCat)
       setTimeout(() => {
         
 
