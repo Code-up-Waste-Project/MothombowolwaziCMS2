@@ -1,3 +1,25 @@
+#logout {
+    border: 1px solid white;
+    padding: 1px;
+    border-radius: 50px;
+    background: white;
+    color: black;
+  ion-button {
+    font-size: 10px;
+    font-weight: bold;
+  }
+    ion-icon {
+      color: brown;
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  }
+  .header {
+    --background: #265902 !important;
+    display: flex;
+    color: white;
+  }
 #StuffInside{
     overflow-y: scroll;
     width: 100%;
