@@ -58,7 +58,12 @@ const routes: Routes = [
   {
     path: 'inbound-pdf/:id',
     loadChildren: () => import('./inbound-pdf/inbound-pdf.module').then( m => m.InboundPDFPageModule)
+  },
+  {
+    path: 'outbound-pdf/:id',
+    loadChildren: () => import('./outbound-pdf/outbound-pdf.module').then( m => m.OutboundPDFPageModule)
   }
+
 
 
 ];
