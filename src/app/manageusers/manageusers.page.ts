@@ -28,12 +28,8 @@ export class ManageusersPage implements OnInit {
 
   public loading: any;
 
-  profile = {
-    image: 'https://firebasestorage.googleapis.com/v0/b/https://gs://mthombowolwazi-a7902.appspot.com/mthombologo (1).png',
-      name: null,
-      addres: null,
-      password: null,
-    };
+  email;
+  password;
 
   constructor(
     public platform: Platform,
@@ -195,6 +191,15 @@ export class ManageusersPage implements OnInit {
         this.router.navigateByUrl('/login');
        });
       }
+
+      saveNewUseer() {
+        this.db.collection('Admin').add({
+          email: this.email,
+          password: this.password
+        });
+        console.log('user saved to cloud');
+      }
+
       async createUser() {
         const alert = await this.alertCtrl.create({
           header: 'New CMS User',
@@ -221,8 +226,8 @@ export class ManageusersPage implements OnInit {
               text: 'Create User',
               handler: (data) => {
                 console.log('credentials', data);
-              
-                this.db.collection('CMS_users').add({data,profile: 'no'}).then(async res => {
+
+                this.db.collection('CMS_users').add({data, profile: 'no'}).then(async res => {
                   let goodRes = await this.alertCtrl.create({
                     header: 'Created new User.',
                     message:'They must use the credentials for this account to login to the CMS',
@@ -230,14 +235,14 @@ export class ManageusersPage implements OnInit {
                       text: 'Done',
                       role: 'cancel'
                     }]
-                  })
-                  goodRes.present()
+                  });
+                  goodRes.present();
                 });
               }
             }
           ]
         });
-    ​
+
         await alert.present();
       }
       changeListener(admin): void {
@@ -251,8 +256,8 @@ export class ManageusersPage implements OnInit {
         }, () => {
           upload.snapshot.ref.getDownloadURL().then(dwnURL => {
             console.log('File avail at: ', dwnURL);
-            this.profile.image = dwnURL;
+            // this.profile.image = dwnURL;
           });
         });
-      }   
+      }
 }

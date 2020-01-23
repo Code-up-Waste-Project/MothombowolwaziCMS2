@@ -195,7 +195,7 @@ export class HomePage implements OnInit {
           // data
         });
         // this.outbound.push(element.data());
-        console.log('inboudsd', this.outbound);
+        console.log('inbound', this.outbound);
       });
     });
   }

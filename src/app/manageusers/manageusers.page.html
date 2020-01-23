@@ -1,13 +1,11 @@
 <ion-header >
-  <ion-toolbar class="header">
-   
-    <ion-title>Refilwe Dikutle</ion-title>
+  <ion-toolbar class="header" *ngFor="let user of Newadmin">
+    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
     <ion-buttons  id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
   <div padding class="container">
@@ -33,12 +31,11 @@
          </div> 
     </div>
 
-
     <!-- <div class="right">
       <div class="pic" padding>
      <ion-avatar>
       <img src="../../assets/cans.jpg">
-</ion-avatar>
+      </ion-avatar>
 
       
       </div>
@@ -54,12 +51,12 @@
       </ion-fab>
   </div> -->
 
-<!-- this form appears when fab button is clicked -->
+    <!-- this form appears when fab button is clicked -->
   <div padding class="registerform"  class="right">
     <h1>Register</h1>
-    <input class="inputs" placeholder="Enter Email">
-    <input class="inputs" placeholder="Enter Password">
-   <button ion-button>Register</button>
+    <input class="inputs" placeholder="Enter Email" [ngModel]="email">
+    <input class="inputs" placeholder="Enter Password" [ngModel]="password">
+   <button ion-button (click)="saveNewUseer()">Register</button>
    <div class="bottomdeco">
   <img  src="../../assets/binsPopup  2.svg">
 
