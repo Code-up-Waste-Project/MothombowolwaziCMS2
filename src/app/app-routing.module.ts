@@ -62,7 +62,12 @@ const routes: Routes = [
   {
     path: 'outbound-pdf/:id',
     loadChildren: () => import('./outbound-pdf/outbound-pdf.module').then( m => m.OutboundPDFPageModule)
+  },
+  {
+    path: 'reclaimer-pdf/:id',
+    loadChildren: () => import('./reclaimer-pdf/reclaimer-pdf.module').then( m => m.ReclaimerPDFPageModule)
   }
+
 
 
 
