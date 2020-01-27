@@ -2344,8 +2344,6 @@ Logout() {
     this.motherDiv[0].style.display = "block";
   }
 
-
-  
   driverInfo: boolean = false;
   group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
   nextClick(){
@@ -2353,4 +2351,5 @@ Logout() {
     this.group1[0].style.left = "10px";
     this.group1[0].style.width = "40%"
   }
+
 }

@@ -90,6 +90,12 @@ export class OutboundPDFPage implements OnInit {
   PET005 = 'PET005';
   Mass = 'MASS';
 
+  printDriveName = [];
+  printNoPlates = [];
+  printDestination = [];
+  printTruckSource = [];
+  printOverallMass = [];
+
   constructor(
     public toastController: ToastController,
     private modalcontroller: ModalController,
@@ -110,6 +116,9 @@ export class OutboundPDFPage implements OnInit {
 
     this.getDatafirebase(this.id);
    }
+
+   ngOnInit() {
+  }
 
    getDatafirebase(id) {
     this.db.collection('outbound').doc(id).onSnapshot(element => {
@@ -219,7 +228,7 @@ export class OutboundPDFPage implements OnInit {
           PET003storagemass: this.PET003storagemassz,
           PET005storagemass: this.PET005storagemassz,
         });
-        // console.log(this.testArray);
+        console.log(this.testArray);
 
         this.PDFArray2 = {
           GH001: this.GH001storagemassz,
@@ -255,9 +264,6 @@ export class OutboundPDFPage implements OnInit {
     this.createPdf();
     // });
    }
-
-  ngOnInit() {
-  }
 
   calculateOverall() {
     this.overallStorage = this.GH001storagemassz + this.HD001storagemassz + this.LD001storagemassz + this.LD003storagemassz +
@@ -295,11 +301,11 @@ export class OutboundPDFPage implements OnInit {
     let printDataName = [];
     let printDataNumber = [];
 
-    console.log(this.PDFArrayPrint);
     this.PDFArrayPrint.forEach((item) => {
       printDataName.push(item.name);
       printDataNumber.push(item.number);
     });
+    console.log(this.PDFArrayPrint);
     console.log(printDataName);
     console.log(printDataNumber);
 
@@ -347,6 +353,7 @@ export class OutboundPDFPage implements OnInit {
             },
           ]
         },
+        
         {
           alignment: 'justify',
           columns: [
@@ -364,21 +371,32 @@ export class OutboundPDFPage implements OnInit {
 
         { text: '', style: 'subheader' },
         this.letterObj.to,
+        
+        // {
+        //   layout: 'lightHorizontalLines',
+        //   styles: Headers,
+        //   table: {
+        //     headerRows: 1,
+        //     widths: [ 'auto', 'auto', 'auto' ],
+        //     body: [
+        //       [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
+        //       ['', printDataName, printDataNumber],
+        //       [ 'Total Truck Load', '', this.overallStoragez ],
+        //     ]
+        //   }
+        // },
 
         {
-          layout: 'lightHorizontalLines',
-          styles: Headers,
+          style: 'tableExample',
           table: {
-            headerRows: 1,
-            widths: [ 'auto', 'auto', 'auto' ],
+            heights: [ 50, 70],
             body: [
-              [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
-              ['', printDataName, printDataNumber],
-
-              [ 'Total Truck Load', '', this.overallStorage ],
+              ['CODE/NUMBER', 'MASS(KG)'],
+              [printDataName, printDataNumber]
             ]
           }
         },
+        
       ],
 
       // footer: {

@@ -249,7 +249,7 @@ export class InboundPDFPage implements OnInit {
         this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
       }
     }
-    // console.log(this.PDFArrayPrint);
+    console.log(this.PDFArrayPrint);
 
     // create PDF
     this.createPdf();
