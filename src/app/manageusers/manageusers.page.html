@@ -1,77 +1,65 @@
-<ion-header>
+<ion-header >
     <ion-toolbar class="header" *ngFor="let user of Newadmin">
-        <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
-        <ion-buttons id="logout" slot="end">
-            <ion-button fill="clear" size="large" (click)="Logout()">Logout
-                <ion-icon name="log-out"></ion-icon>
-            </ion-button>
-        </ion-buttons>
+      <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+      <ion-buttons  id="logout" slot="end">
+        <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+      </ion-buttons>
     </ion-toolbar>
-</ion-header>
-
-<ion-content>
+  </ion-header>
+  
+  <ion-content>
     <div padding class="container">
-        <div padding class="left">
+      <div padding class="left">
+        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile">
 
-            <div padding class="profile" *ngFor="let records of newuserprofilezzzzz" (click)="viewprofile(records.id)">
-                <div class="names">
-                    <h4>{{ records.name }} {{ records.surname }}</h4>
-                    <p>Supervisor</p>
-                    <div class="image">
-                        <img src="../../assets/cans.jpg">
-                    </div>
-                </div>
+            <!-- let l=s[s.length-1]; -->
+
+         
+           <div class="names">
+            <h4>{{myprofiles.name}} {{myprofiles.surname}}</h4>
+            <p>{{myprofiles.position}}</p>
+            <div class="image">
+              <img src="{{myprofiles.image}}">
             </div>
-
-            <!-- <div padding class="profile">
-          <div class="names">
-           <h4>Lebo Muenda</h4>
-           <p>Supervisor</p>
-           <div class="image">
-             <img src="../../assets/cans.jpg">
-           </div>
-         </div>
-         </div> -->
+          </div>
+          </div>
+  
+       
+      </div>
+  
+      <!--  -->
+      <div class="right" *ngIf="!registerForm" >
+        <div class="pic" padding>
+       <ion-avatar>
+        <img src="{{oneprofile.image}}">
+        </ion-avatar>
+  
+        
         </div>
-
-        <div class="right">
-            <div class="pic" padding>
-                <ion-avatar>
-                    <img src="../../assets/cans.jpg">
-                </ion-avatar>
-
-    <!--  -->
-    <div class="right" *ngIf="!registerForm" >
-      <div class="pic" padding>
-     <ion-avatar>
-      <img src="../../assets/cans.jpg">
-      </ion-avatar>
-
-            </div>
-            <p id="borderb"></p>
-            <div padding class="info" *ngFor="let records of Newadmin">
-                <h4>{{ records.name }} {{ records.surname }}</h4>
-                <p>060 486 9924</p>
-                <p style="font-weight: bold;padding-top: 3px;">Supervisor</p>
-            </div>
-
-      <ion-fab >
-        <ion-fab-button (click)="showRegisterForm()" ><ion-icon name="add"></ion-icon></ion-fab-button>
-      </ion-fab>
-  </div>
-<!-- 
-    this form appears when fab button is clicked -->
-  <div padding class="registerform"  class="right" *ngIf="registerForm" >
-   <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-    <h1>Register</h1>
-    <input class="inputs" placeholder="Enter Email" [ngModel]="email">
-    <input class="inputs" placeholder="Enter Password" [ngModel]="password">
-   <button ion-button (click)="saveNewUseer()">Register</button>
-   <div class="bottomdeco">
-  <img  src="../../assets/binsPopup  2.svg">
-
-   </div>
-  </div>
-
+        <p id="borderb"></p>
+        <div padding class="info">
+          <h4>{{oneprofile.name}} {{oneprofile.surname}}</h4>
+          <p>060 486 9924</p>
+          <p style="font-weight: bold;padding-top: 3px;"> {{oneprofile.position}}</p>
+        </div>
+  
+        <ion-fab >
+          <ion-fab-button (click)="showRegisterForm()" ><ion-icon name="add"></ion-icon></ion-fab-button>
+        </ion-fab>
     </div>
-</ion-content>
+  <!-- 
+      this form appears when fab button is clicked -->
+    <div padding class="registerform"  class="right" *ngIf="registerForm" >
+     <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <h1>Register</h1>
+      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email">
+      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password">
+     <button ion-button (click)="saveNewUseer()">Register</button>
+     <div class="bottomdeco">
+    <img  src="../../assets/binsPopup  2.svg">
+  
+     </div>
+    </div>
+  
+    </div>
+  </ion-content>
