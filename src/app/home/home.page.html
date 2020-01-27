@@ -11,8 +11,6 @@
     <p style="background: blue;"></p>
     <p style="background: rgb(0, 0, 0);"></p>
   </ion-toolbar> -->
-
-
 <ion-content>
 <div class="container">
   <div padding class="alltime">
@@ -22,7 +20,7 @@
           <img src="../../assets/inbound.svg">
         </div>
         <h3>Inbound</h3>
-        <p class="mass">234.87</p>
+        <p class="mass">{{inboundweight}}</p>
         <div class="updates">
           <p>Updated 56min ago</p>
         </div>
@@ -36,7 +34,7 @@
           <img src="../../assets/outbound.svg">
         </div>
         <h3>Outbound</h3>
-        <p class="mass">234.87</p>
+        <p class="mass">{{Outboundweight}}</p>
         <div class="updates">
           <p>Updated 56min ago</p>
         </div>
@@ -49,19 +47,16 @@
           <img src="../../assets/reclaimer.svg">
         </div>
         <h3>Reclaimer</h3>
-        <p class="mass">234.87</p>
+        <p class="mass">{{Reclaimerweight}}</p>
         <div class="updates">
           <p>Updated 56min ago</p>
         </div>
       </div>
     </div>
   </div>
-
   <h6></h6>
-
   <!-- material -->
   <div padding class="material">
-
     <!-- paper -->
     <div class="box" id="paper">
       <div class="mat">
@@ -73,9 +68,6 @@
         </div>   
         <img src="../../assets/Asset 8.svg">
 <!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> -->  
-
-
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div class="addcategory">
   <h1>Create New Category </h1>
@@ -83,7 +75,6 @@
   <input placeholder="Enter Price">
   <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form (DELETE BUTTON) -->
 <!-- <div class="deletecategory">
   <h1>Delete Material Here</h1>
@@ -92,21 +83,16 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 </div>
       <div class="matnames">
         <div class="codes">
-          <p>PAP005 <span>R0. 70</span></p>
-          <p>PAP005 <span>R0. 70</span></p>
-          <p>PAP005 <span>R0. 70</span></p>
-          <p>PAP005 <span>R0. 70</span></p>
+         <p *ngFor ="let x of editprices">{{x.code}} <span>R{{x.price}}</span></p>
           </div>
         <div class="manname">
           PAPER
         </div>
       </div>
     </div>
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- plastic -->
     <div class="box" id="plastic">
@@ -119,7 +105,6 @@
   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
 </div>       
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
   <h1>Edit Price Rates</h1>
@@ -128,7 +113,6 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div class="addcategory">
   <h1>Create New Category </h1>
@@ -136,7 +120,6 @@
   <input placeholder="Enter Price">
   <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form (DELETE BUTTON) -->
 <!-- <div class="deletecategory">
   <h1>Delete Material Here</h1>
@@ -145,7 +128,6 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 </div>
       <div class="matnames">
         <div class="codes">
@@ -172,9 +154,6 @@
   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
 </div>       
-
-
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
   <h1>Edit Price Rates</h1>
@@ -183,7 +162,6 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div class="addcategory">
   <h1>Create New Category </h1>
@@ -191,7 +169,6 @@
   <input placeholder="Enter Price">
   <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form (DELETE BUTTON) -->
 <!-- <div class="deletecategory">
   <h1>Delete Material Here</h1>
@@ -200,9 +177,7 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 </div>
-
 <div class="matnames">
   <div class="codes">
     <p>PAP005 <span>R0. 67</span></p>
@@ -226,7 +201,6 @@
   <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
 </div>    
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
   <h1>Edit Price Rates</h1>
@@ -235,7 +209,6 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div class="addcategory">
   <h1>Create New Category </h1>
@@ -243,7 +216,6 @@
   <input placeholder="Enter Price">
   <button ion-button>Save</button>
 </div> -->
-
 <!-- div holding form (DELETE BUTTON) -->
 <!-- <div class="deletecategory">
   <h1>Delete Material Here</h1>
@@ -252,12 +224,9 @@
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
 </div> -->
-
 </div>
-
-
 <div class="matnames">
-  <div class="codes">
+  <div class="codes" >
     <p>PAP005 <span>R0. 67</span></p>
     <p>PAP005 <span>R0. 67</span></p>
     <p>PAP005 <span>R0. 67</span></p>
@@ -285,7 +254,6 @@
       </div> -->
     </div>
     
-
    
    
     <!-- <div class="mat">
@@ -306,20 +274,16 @@
    
     <div class="graph" >
       <canvas #barChart></canvas>
-
     </div>
-
     <div class="graph"><canvas #barChart></canvas></div>
     <div class="graph"><canvas #barChart></canvas></div>
   </div>
 </div>
-
 <!-- boxes to appear when you perfom action on categori images -->
 <!-- edit form -->
 <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
 <div padding class="editform2">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
-
   <h1>Edit Price Rates</h1>
  
   <input placeholder="mass pap005">
@@ -333,19 +297,16 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Create New Material Here</h1>
-  <input placeholder="Enter Material Name/code">
-  <input placeholder="Enter Price">
- 
-<button ion-button>Save</button>
+  <input placeholder="Enter Material Name" [(ngModel)] ="newmaterial.name">
+  <input placeholder="Enter Price" [(ngModel)] ="newmaterial.price" type ="number">
+ <input placeholder="Enter code"  [(ngModel)] ="newmaterial.code">
+<button ion-button (click) ='newmate(newmaterial)'>Save</button>
 </div>
 </div>
-
-
 <!-- delete material -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >
   <ion-button class="close"  fill="clear" (click)="HideandShowDelete()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-
   <h1>Delete Material Here</h1>
  
   <input placeholder="mass pap005">
