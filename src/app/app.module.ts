@@ -16,6 +16,8 @@ import * as firebase from 'firebase';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RegistersPipe } from './registers.pipe';
+import { ResetPasswordPage } from './reset-password/reset-password.page';
+import { ResetPasswordPageModule } from './reset-password/reset-password.module';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -42,7 +44,8 @@ firebase.analytics();
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    ResetPasswordPageModule
   ],
   providers: [
     StatusBar,

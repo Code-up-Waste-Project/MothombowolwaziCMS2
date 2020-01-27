@@ -1,59 +1,4 @@
-<!-- <ion-content>
-  <div class="container">
-<div class="form">
-  <div class="top">
-  
-    </div>
-    <div class="inputs">
-      <h1>WELCOME BACK</h1>
 
-    <form ng-submit="loginForm()" [formGroup]="loginForm" class="login" #form="ngForm">
-    <ion-item>
-        <ion-label position="floating" type="email" >Enter Your Email</ion-label>
-        <ion-input  formControlName="email" [class.invalid]="!loginForm.controls['email'].valid &&
-        loginForm.controls['email'].touched" >    </ion-input>
-            <ion-icon style="font-size: 2vw;" name="mail" slot="end" ></ion-icon>
-      </ion-item>
-      <div class="error" *ngIf="!loginForm.controls['email'].valid &&
-      loginForm.controls['email'].touched">
-  <div class="messages">
- <p class="errors">Please enter a valid email address.</p> 
-  </div>
-</div>
-
-<ion-item style="margin-top: 3% !important;">
-  <ion-label position="floating" type="password">Enter Your Password</ion-label>
-  <ion-input formControlName="password" type='password'
-  [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched"
-  >    </ion-input>
-      <ion-icon style="font-size: 2vw;" name="lock" slot="end" ></ion-icon>
-</ion-item>
-
-<div *ngIf="!loginForm.controls['password'].valid
-&& loginForm.controls['password'].touched" class="error">
-<div class="messages">
-<p class="errors">Your password is incorrect.</p>
-</div>
-</div>
-<div style="text-align: center;">
-   <P id="forgot" (click)="  forgetpassword()">Forgot Password?</P>
-</div>
-
-<button ion-button   [disabled]="!loginForm.valid"  (click)="loginUser(loginForm)">LOGIN</button><br>
-
-<button ion-button   [disabled]="!loginForm.valid"  (click)=" goToRegister()">REGISTER</button>
-
-    </form>
-    </div>
-  </div>
-  <div class="tree" >
-   <div id="tree">
-
-   </div>
-  </div>
-</div>
-
-  </ion-content> -->
  
   <!-- new code -->
   
@@ -85,7 +30,7 @@
 
             <ion-input placeholder="Enter password" formControlName="password" type='password'
             [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched" ></ion-input>
-            <p id="password" (click)="forgetpassword()">Forgot Password</p>
+            <p id="password" (click)="presentModal()">Forgot Password</p>
 
             <div *ngIf="!loginForm.controls['password'].valid
             && loginForm.controls['password'].touched" class="error">

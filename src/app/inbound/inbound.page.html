@@ -1,19 +1,15 @@
-<ion-header>
-  <ion-toolbar class="header" *ngFor="let user of Newadmin">
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+<ion-header *ngFor="let user of Newadmin">
+  <ion-toolbar class="header" >
+    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
-
-  <!-- <ion-toolbar>
-    <ion-title>Inbound</ion-title>
-  </ion-toolbar> -->
 </ion-header>
 
 <ion-content>
   <div class="Mother" *ngIf="selectedCat">
-    <div id="Son" (click)="goAway()"></div>
+    <!-- <div style="3px solid red" id="Son" (click)="goAway()"></div> -->
     <div id="Daughter">
       <div id="Header">
         <div id="Paper" (click)="togglePaper()">
@@ -28,9 +24,10 @@
         <div id="Glass" (click)="toggleGlass()">
           <h4>GLASS</h4>
         </div>
-        <div id="line"></div>
+       <!--  <div id="line"></div> -->
       </div>
-
+      <!--  -->
+<p id="border"></p>
       <div class="myInfo">
         <div class="for-plastic" id="toPlastic">
           <div id="toFlex">
@@ -209,25 +206,31 @@
 
   <div id="Everything">     
   <div id="StuffInside">
-    <div class="Theblocks">
+    <div padding class="Theblocks">
+      <!-- PAPER DIV -->
       <div class="Block1" (click)="showPopUp('paper')">
-        <div class="Waste"><h3>PAPER</h3></div>
-        <img id="RecyleLogo1" src="../../assets/icon/Asset 9.svg" alt="">
+        <h3>PAPER</h3>
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
+         <!-- PLASTIC DIV -->
       <div class="Block1" (click)="showPopUp('plastic')">
-        <div class="Waste"><h3>PLASTIC</h3></div>
-        <img id="RecyleLogo2" src="../../assets/icon/Asset 9.svg" alt="">
+      <h3>PLASTIC</h3>
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
+         <!-- ALUMINIUM DIV -->
       <div class="Block1" (click)="showPopUp('aluminium')">
-        <div class="Waste"><h3 id="H3">ALUMINIUM</h3></div>
-        <img id="RecyleLogo3" src="../../assets/icon/Asset 9.svg" alt="">
+        <h3>ALUMINIUM</h3>
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
+         <!-- GLASS DIV -->
       <div class="Block1" (click)="showPopUp('glass')">
-        <div class="Waste"><h3>GLASS</h3></div>
-        <img id="RecyleLogo4" src="../../assets/icon/Asset 9.svg" alt="">
+        <h3>GLASS</h3>
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
-    </div>
-    <div class="History">
+
+    </div><!-- END OF TOP DIV HOLDING MATERIAL -->
+    <!-- BOTTOM DIV HOLDING HISTORY -->
+    <div padding class="History">
       <div class="History1">
         <div id="Date"><h2>Date</h2></div>
         <div id="Material"><h2>Transaction Id</h2></div>
@@ -240,9 +243,8 @@
       </ion-card> -->
       <div class="History2" *ngFor="let records of recordinbounddisplays">
         <div id="Date1">{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div>
-        <div id="Material1" >{{ records.id }}</div>
-        <div id="Eye1"><ion-icon name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon></div>
-        <div id="Trash1"><ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon></div>
+        <div id="material" >{{ records.id }} <ion-icon class="eye" name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon>
+          <ion-icon name="trash" class="trash" (click)='presentAlertDelete(records.id)'></ion-icon> </div>
       </div>
     </div>
   </div>

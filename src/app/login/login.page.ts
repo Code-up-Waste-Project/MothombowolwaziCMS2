@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormsModule } from '@angular/forms';
-import { LoadingController, AlertController, MenuController} from '@ionic/angular';
+import { LoadingController, AlertController, MenuController, ModalController} from '@ionic/angular';
 import { AuthService } from '../../app/user/auth.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Directive, HostListener, Output, EventEmitter, ElementRef, Input } from '@angular/core';
+import { ResetPasswordPage } from '../reset-password/reset-password.page';
+
 
 @Component({
   selector: 'app-login',
@@ -29,6 +31,7 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private FormsModule: FormsModule,
     private menuCtrl: MenuController,
+    public modalController: ModalController
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -37,9 +40,26 @@ export class LoginPage implements OnInit {
     });
   }
 
+  //modal for reset password page
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ResetPasswordPage,
+      cssClass: 'resetModal'
+    });
+    return await modal.present();
+  }
+
   ngOnInit() {
     this.menuCtrl.enable(false); // or true
   }
+  // ionViewWillEnter() {
+  //   this.menuCtrl.enable(false);
+  //  }
+
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
+  // }
 
   async loginUser(loginForm: FormGroup): Promise<void> {
     if (!loginForm.valid) {
@@ -88,12 +108,5 @@ export class LoginPage implements OnInit {
   goToRegister() {
     this.router.navigate(['registers']);
   }
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-   }
-
-   ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menuCtrl.enable(true);
-  }
+ 
 }

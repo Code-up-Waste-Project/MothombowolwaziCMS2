@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../app/user/auth.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,8 +15,11 @@ export class ResetPasswordPage implements OnInit {
     private authService: AuthService,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    public menuCtrl: MenuController
   ) {
+  
+
     this.resetPasswordForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])]
     });
@@ -25,7 +28,20 @@ export class ResetPasswordPage implements OnInit {
     // ...
     // ...
   }
-  ngOnInit() {}
+  
+
+  ngOnInit() {
+    this.menuCtrl.enable(false); // or true
+  }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
+
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
+  // }
+
   goToLogin(){
     this.router.navigate(['login'])
   }
