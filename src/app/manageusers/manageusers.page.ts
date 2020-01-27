@@ -13,8 +13,7 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
   styleUrls: ['./manageusers.page.scss'],
 })
 export class ManageusersPage implements OnInit {
-
-axe: any = document.getElementsByClassName('right');
+registerForm = false;
 
   public signupForm: FormGroup;
   viewuser;
@@ -67,6 +66,10 @@ axe: any = document.getElementsByClassName('right');
   ngOnInit() {
     this.getUsers();
   }
+
+      showRegisterForm(){
+        this.registerForm = !this.registerForm;
+      }
 
   getUsers() {
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -281,16 +284,5 @@ axe: any = document.getElementsByClassName('right');
         });
       }
 
-      //method o hide divs
 
-      hidediv(){
-       this.axe = document.getElementsByClassName("right");
-
-        if(this.axe.style.display === "none") {
-          this.axe.style.display = "block";
-        }
-        else{
-          this.axe.style.display = "none";
-        }
-      }
 }
