@@ -20,8 +20,8 @@ export class HomePage implements OnInit {
   burger: boolean = false;
   
 /* Div */
-  opacityDiv: any = document.getElementsByClassName('editDiv');
-  opacity: boolean = false;
+  editDiv: any = document.getElementsByClassName('editDiv');
+  edit: boolean = false;
   deleteDiv: any = document.getElementsByClassName('deleteDiv');
   delete: boolean = false;
   createDiv: any = document.getElementsByClassName('createDiv');
@@ -230,13 +230,34 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
   }
   HideandShowSave() {
-    this.opacity = !this.opacity;
+    this.edit = !this.edit;
+    console.log(this.edit,this.editDiv[0]);
+    
+    if (this.edit) {
+      console.log('block');
+      this.render.setStyle(this.editDiv[0],'display','block')
+    } else {
+      console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.editDiv[0],'display','none')
+      }, 500);
+    }
   }
   burgerMan() {
     this.burger = !this.burger;
   }
   HideandShowCreate () {
     this.create = !this.create;
+        
+    if (this.create) {
+      console.log('block');
+      this.render.setStyle(this.createDiv[0],'display','block')
+    } else {
+      console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.createDiv[0],'display','none')
+      }, 500);
+    }
   }
   HideandShowDelete() {
     this.delete = !this.delete;
@@ -290,7 +311,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: [],
+        labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Plastic(PET001)',],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'Overall material ',
@@ -298,8 +319,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           this.HD001storagemass, this.LD001storagemass, this.LD003storagemass, this.PET001storagemass, this.PET003storagemass, this.PET005storagemass],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
-          borderColor: 'green',  // array should have same number of elements as number of dataset
-          borderWidth: 0.2
+          borderColor: 'red',  // array should have same number of elements as number of dataset
+          borderWidth: 0.1
         }]
       },
       options: {

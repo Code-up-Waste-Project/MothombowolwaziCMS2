@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   public appPages = [];
   admin;
   ActiveAcount: boolean;
-
+  active = 0
  
 
 
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.appPages = [];
-
+    
     firebase.auth().onAuthStateChanged(user => {
       firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         // this.profile.email = snapshot.data().email;
@@ -47,7 +47,8 @@ export class AppComponent implements OnInit {
       title: 'Home',
       url: '/home',
       icon: 'homeB',
-      admin:"hot"
+      admin:"hot",
+      
     },
     {
       title: 'Inbounds',
@@ -102,6 +103,10 @@ export class AppComponent implements OnInit {
           this.statusBar.styleDefault();
           this.splashScreen.hide();
         });
+      }
+
+      activate(i) {
+        this.active = i
       }
 
     getAuth() {
