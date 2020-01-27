@@ -4,6 +4,11 @@
     bottom: 0;
 }
 
+.active {
+    --background: #265902  !important;
+    color: white;
+}
+
 .logo {
     //border: 1px solid blue;
     height: 120px !important;
@@ -22,18 +27,11 @@
     }
 
     img {
-        border: 1px slid red;
+       // border: 1px slid red;
         width: 40px;
         margin-left: 3%;
     }
 }
 
-//practice
-ion-item{
-    border: 1px solid red;
-}
 
-ion-list {
-    border: 3px solid green;
-}
 
