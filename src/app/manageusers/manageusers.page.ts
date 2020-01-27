@@ -61,6 +61,7 @@ registerForm = false;
       });
       console.log('Newadmins', this.Newadmin);
     });
+
    }
 
   ngOnInit() {

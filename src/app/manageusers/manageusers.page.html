@@ -1,26 +1,29 @@
-<ion-header >
-  <ion-toolbar class="header" *ngFor="let user of Newadmin">
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
-    <ion-buttons  id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar class="header" *ngFor="let user of Newadmin">
+        <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+        <ion-buttons id="logout" slot="end">
+            <ion-button fill="clear" size="large" (click)="Logout()">Logout
+                <ion-icon name="log-out"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div padding class="container">
-    <div padding class="left">
-      <div padding class="profile">
-         <div class="names">
-          <h4>Thato Zondo</h4>
-          <p>Supervisor</p>
-          <div class="image">
-            <img src="../../assets/cans.jpg">
-          </div>
-        </div>
-        </div>
+    <div padding class="container">
+        <div padding class="left">
 
-        <div padding class="profile">
+            <div padding class="profile" *ngFor="let records of newuserprofilezzzzz" (click)="viewprofile(records.id)">
+                <div class="names">
+                    <h4>{{ records.name }} {{ records.surname }}</h4>
+                    <p>Supervisor</p>
+                    <div class="image">
+                        <img src="../../assets/cans.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div padding class="profile">
           <div class="names">
            <h4>Lebo Muenda</h4>
            <p>Supervisor</p>
@@ -28,8 +31,14 @@
              <img src="../../assets/cans.jpg">
            </div>
          </div>
-         </div> 
-    </div>
+         </div> -->
+        </div>
+
+        <div class="right">
+            <div class="pic" padding>
+                <ion-avatar>
+                    <img src="../../assets/cans.jpg">
+                </ion-avatar>
 
     <!--  -->
     <div class="right" *ngIf="!registerForm" >
@@ -38,14 +47,13 @@
       <img src="../../assets/cans.jpg">
       </ion-avatar>
 
-      
-      </div>
-      <p id="borderb"></p>
-      <div padding class="info">
-        <h4>Lebogang Muenda</h4>
-        <p>060 486 9924</p>
-        <p style="font-weight: bold;padding-top: 3px;">Supervisor</p>
-      </div>
+            </div>
+            <p id="borderb"></p>
+            <div padding class="info" *ngFor="let records of Newadmin">
+                <h4>{{ records.name }} {{ records.surname }}</h4>
+                <p>060 486 9924</p>
+                <p style="font-weight: bold;padding-top: 3px;">Supervisor</p>
+            </div>
 
       <ion-fab >
         <ion-fab-button (click)="showRegisterForm()" ><ion-icon name="add"></ion-icon></ion-fab-button>
@@ -65,5 +73,5 @@
    </div>
   </div>
 
-  </div>
+    </div>
 </ion-content>

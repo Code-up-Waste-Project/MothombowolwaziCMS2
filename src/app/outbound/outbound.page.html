@@ -213,11 +213,11 @@
             <div class="TheContent">
               <ion-card *ngFor="let records of recordoutbounddisplays">
                 <ion-card-content>
-                  <h5><b>Driver's Name</b></h5>
+                  <h5>Driver's Name</h5>
                   <p>{{ records.DriverName }}</p>
                 </ion-card-content>
                 <ion-card-content>
-                  <h5><b>Truck Plates</b></h5>
+                  <h5>Truck Plates</h5>
                   <p>{{ records.RegistarionNumberPlates }}</p>
                 </ion-card-content>
               </ion-card>
@@ -232,7 +232,7 @@
               <div class="Heading">
                 <h3 id="theH3">Driver Information</h3>
                 
-                <!-- <div class="DriverInputs"> -->
+                <div class="DriverInputs"> 
                   <input id="input" placeholder="Driver's Name" [(ngModel)]="DriverNameInput">
                   <input id="input" placeholder="Registarion No." [(ngModel)]="RegistarionNumberPlatesInput">
                   <input id="input" placeholder="Destination" [(ngModel)]="DestinationInput">
@@ -241,7 +241,7 @@
                   <input id="input" placeholder="Registarion No." [(ngModel)]="RegistarionNumberPlates" formControlName="RegistarionNumberPlates" type="text">
                   <input id="input" placeholder="Destination" formControlName="Destination" [(ngModel)]="Destination" type="text">
                   <input id="input" placeholder="Truck Source" [(ngModel)]="TruckSourcess" [ngModelOptions]="{standalone: true}"> -->
-                <!-- </div> -->
+                 </div> 
                 <!-- <div class="DoneBTN">
                   <ion-button id="Done" color="clear">N</ion-button>
                 </div> -->
@@ -262,7 +262,7 @@
         </div>
         <div class="SecIMG">
           <img id="PurpleBubbles"
-            src="../../assets/icon/outboundPOPup.svg"
+            src="../../assets/icon/outboundPOPup                                                                .svg"
             alt="">
           <div class="TheTruck">
             <img id="TruckIMG" src="../../assets/icon/outboundPopup.svg" alt="">
@@ -297,8 +297,8 @@
 
       <div class="History">
         <div class="History1">
-          <div id="Date"><h2>Drive Name</h2></div>
-          <div id="Material"><h2>Truck No Plate</h2></div>
+          <div id="Date"><h2>Driver's Name</h2></div>
+          <div id="Material"><h2>Registarion No.</h2></div>
           <div id="Material"><h2>Date</h2></div>
       </div>
       <div class="History2" *ngFor="let records of recordoutbounddisplays">

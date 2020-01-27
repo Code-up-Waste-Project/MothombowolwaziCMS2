@@ -15,6 +15,15 @@
       margin-left: 5px;
     }
   }
+  
+ion-title {
+    font-family: 'Microsoft YaHei UI';
+    font-size: 15px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  }
   .header {
     --background: #265902 !important;
     display: flex;
@@ -917,3 +926,99 @@ button{
 // </div>
 // </div> -->
   
+
+@media screen and (max-width:1366px){
+    #logout {
+        border: 1px solid white;
+        padding: 1px;
+        border-radius: 50px;
+        background: white;
+        color: black;
+      ion-button {
+        font-size: 10px;
+        font-weight: bold;
+      }
+        ion-icon {
+          color: brown;
+          font-size: 20px;
+          font-weight: bold;
+          margin-left: 5px;
+        }
+      }
+      .header {
+        --background: #265902 !important;
+        display: flex;
+        color: white;
+      }
+
+      
+.Theblocks{
+    height: 35%;
+    width: 100%;
+    // border: solid 2px blueviolet;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 50px;
+}
+.Block1{
+    position: relative;
+    height: 100%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+}
+.Waste{
+    height: 35px;
+    width: 170px;
+    z-index: 10;
+    background-color: #548D04;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#H3{
+    font-family: 'Open Sans Condensed', sans-serif;  
+    color: white;
+    font-size: 240%;
+    position: absolute;
+    top: -22px;
+    right: 9px;
+}
+
+
+
+#RecyleLogo1{
+    width:65%;   
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+#RecyleLogo2{
+    width: 65%;   
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+#RecyleLogo3{
+    width: 65%;   
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+#RecyleLogo4{
+    width: 65%;   
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+}
