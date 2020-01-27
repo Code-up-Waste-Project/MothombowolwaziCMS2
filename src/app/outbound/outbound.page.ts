@@ -1036,4 +1036,17 @@ export class OutboundPage implements OnInit {
       document.getElementById("Plastic").style.color = "black";
     }
 
+    driverInfo: boolean = false;
+    group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
+    nextClick(){
+      this.driverInfo = true;
+      this.group1[0].style.left = "10px";
+      this.group1[0].style.width = "40%"
+    }
+
+
+
+    showDriverDetails(){
+      
+    }
 }
