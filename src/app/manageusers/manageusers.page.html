@@ -39,7 +39,7 @@
         <p id="borderb"></p>
         <div padding class="info">
           <h4>{{oneprofile.name}} {{oneprofile.surname}}</h4>
-          <p>060 486 9924</p>
+          <p>{{oneprofile.number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{oneprofile.position}}</p>
         </div>
   
@@ -53,11 +53,10 @@
      <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
       <h1>Register</h1>
       <input class="inputs" placeholder="Enter Email" [(ngModel)]="email">
-      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password">
+      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password">
      <button ion-button (click)="saveNewUseer()">Register</button>
      <div class="bottomdeco">
     <img  src="../../assets/binsPopup  2.svg">
-  
      </div>
     </div>
   

@@ -20,11 +20,61 @@ export class HomePage implements OnInit {
   inboundweight=0;
  outboundweight=0;
  Reclaimerweight=0;
+
+ //graghdatainbound
+ inboundglass =0;
+ inboundpaper =0;
+ inboundAlum=0;
+ inboundplastic=0;
+
+//outboundgraphs
+outboundglass =0;
+ outboundpaper =0;
+ outboundAlum =0;
+ outboundplastic =0;
+
+ 
   
+ GH001price;
+ NFAL01price;
+ PAP005price;
+ PAP007price;
+ PAP001price;
+ PAP003price;
+ HD001price;
+ LD001price;
+ LD003price;
+ PET001price;
+ PET003price;
+ PET005price;
+
+ pricess = {
+   gl001: null ,
+   hd001: null,
+   pap005: null,
+   pap007: null,
+   pap001: null,
+   pap003: null,
+   ld003: null,
+   ld001: null,
+   nfalo1: null,
+   pet005: null,
+   pet003: null,
+   pet001: null,
+ };
+
+
+ price = [];
+  prices;
+
+
+
+
+
   bars: any;
   colorArray: any;
 
-  inbounds=[];
+  inboundss=[];
   newInbound=[];
 
   burgercontent: any = document.getElementsByClassName('burgercontent');
@@ -102,6 +152,35 @@ export class HomePage implements OnInit {
   inboundPET003;
   inboundPET005;
 
+
+  //Reclaomers
+  GH001Mass;
+  HD001Mass; 
+  LD001Mass; 
+  LD003Mass;
+  NFAL01Mass; 
+  PAP001Mass;
+  PAP003Mass;
+  PAP007Mass; 
+  PET001Mass;
+  PET003Mass;
+  PET005Mass;
+  PAP005Mass
+
+//outbound
+PAP005;
+        HD001;
+        LD001;
+        LD003;
+        NFAL01; 
+         PAP001; 
+        PAP003;
+       
+        PAP007;
+         PET001;
+        PET003;
+        PET005;
+
 //storage
   GH001storagemass;
   NFAL01storagemass;
@@ -119,18 +198,26 @@ export class HomePage implements OnInit {
   PET005storagemass;
 
   GH001: string;
-  NFAL01: string;
+  nFAL01: string;
+
+  Totalpaperinbound: number = 0;
+  Totalpapersinbound: string;
+Totalplasticinbound: number = 0;
+
   Totalpaper: number = 0;
   Totalplastic: number = 0;
+
   Totalplasticz: string;
   ActiveAcount: Boolean;
+  glass: boolean = false;
+  glassDiv: any = document.getElementsByClassName('glassDiv');
 
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
     public route: Router,
-    private render: Renderer2
-
+    private render: Renderer2,
+    public alertController: AlertController,
     ) {
 
      
@@ -138,7 +225,7 @@ export class HomePage implements OnInit {
      /*  */
       // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
-      // this.Newadmin = [];
+      this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
       });
@@ -150,23 +237,40 @@ export class HomePage implements OnInit {
       // console.log('Newadmins', this.Newadmin);
     });
 
-    // calling get functions
-    this.getReclaimers();
-    this.getOutbound();
-    this.getInbound();
+ //calling get functions
+//  this.getReclaimers();
+//  this.getOutbound();
+//  this.getInbound();
+
 
     }
 
      //chart
-    ionViewDidEnter() {
-      this.createBarChart();
-     this.createBarChart1();
-     this.createBarChart2();
+     updated
 
+     updatedoutbound
+     updateReclaimer
+
+    ionViewDidEnter() {
+
+      this.createBarChart();
+      this.createBarChart1();
+      this.createBarChart2();
+   
+      // this.Reclaimerdata();
+      // this.outbounddata();
+      // this.inbounddata();
+
+     
+   
 
 //pulling data
 //inbound
+this.inboundglass =0;
+this. inboundpaper =0;
+this.inboundAlum =0;
 this.inboundweight =0;
+this.inboundplastic =0;
 firebase.firestore().collection('inbounds').get().then(res=>{
   res.forEach(val=>{
     console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
@@ -183,10 +287,44 @@ firebase.firestore().collection('inbounds').get().then(res=>{
     +parseFloat(val.data().inboundPET001) +
     +parseFloat(val.data().inboundPET003) +
     +parseFloat(val.data().inboundPET005) ;
+    
+    console.log(new Date(val.data().time.seconds*1000))
+    this.updated =(new Date(val.data().time.seconds*1000)).toDateString();
+
+  this.inboundglass =this.inboundglass +parseFloat(val.data().inboundGH001)
+//paper
+this.inboundpaper = this.inboundpaper 
++parseFloat(val.data().inboundPAP005) 
++ parseFloat(val.data().inboundPAP007) 
++parseFloat(val.data().inboundPAP003) 
++parseFloat(val.data().inboundPAP001);
+
+//aluminium
+this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
+
+//plastic
+this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
++parseFloat(val.data().inboundHD001)
++parseFloat(val.data().inboundLD001)
++parseFloat(val.data().inboundLD003)
++parseFloat(val.data().inboundPET003)
++parseFloat(val.data().inboundPET001) 
+   
+
+
+    
+    
   })
+
 })
 
 //outbound
+
+this.outboundglass =0;
+ this.outboundpaper =0;
+ this.outboundAlum =0;
+ this.outboundplastic =0;
+
 this.outboundweight =0;
 firebase.firestore().collection('outbound').get().then(res=>{
   res.forEach(val=>{
@@ -204,6 +342,9 @@ firebase.firestore().collection('outbound').get().then(res=>{
     +parseFloat(val.data().PAP005)
     +parseFloat(val.data().PET003)
     +parseFloat(val.data().PET005);
+
+  console.log(new Date(val.data().date.seconds*1000))
+  this.updatedoutbound =(new Date(val.data().date.seconds*1000)).toDateString();
   })
 })
 
@@ -225,6 +366,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     +parseFloat(val.data().PEP005Mass)
     +parseFloat(val.data().PET001Mass)
     +parseFloat(val.data().PET003Mass);
+
+    console.log(new Date(val.data().date.seconds*1000))
+    this.updateReclaimer =(new Date(val.data().date.seconds*1000)).toDateString();
   })
 })
 
@@ -232,13 +376,47 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
 
   ngOnInit() {
+    // this.getreclamer();
+
+    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+    this.prices.get().then((documentSnapshot) => {
+      this.price = [];
+      console.log(documentSnapshot.data());
+      this.price.push(documentSnapshot.data());
+      console.log(this.price);
+      this.pricess.gl001 = documentSnapshot.data().gl001;
+      this.pricess.hd001 = documentSnapshot.data().hd001;
+      this.pricess.ld001 = documentSnapshot.data().ld001;
+      this.pricess.ld003 = documentSnapshot.data().ld003;
+      this.pricess.nfalo1 = documentSnapshot.data().nfalo1;
+      this.pricess.pap001 = documentSnapshot.data().pap001;
+      this.pricess.pap003 = documentSnapshot.data().pap003;
+      this.pricess.pap005 = documentSnapshot.data().pap005;
+      this.pricess.pap007 = documentSnapshot.data().pap007;
+      this.pricess.pet001 = documentSnapshot.data().pet001;
+      this.pricess.pet003 = documentSnapshot.data().pet003;
+      this.pricess.pet005 = documentSnapshot.data().pet005;
+    });
+    // console.log(this.pricess.gl001);
+    // console.log(this.pricess.hd001);
+    // console.log(this.pricess.ld001);
+    // console.log(this.pricess.ld003);
+    // console.log(this.pricess.nfalo1);
+    // console.log(this.pricess.pap001);
+    // console.log(this.pricess.pap003);
+    // console.log(this.pricess.pap005);
+    // console.log(this.pricess.pap007);
+    // console.log(this.pricess.pet001);
+    // console.log(this.pricess.pet003);
+    // console.log(this.pricess.pet005);
+
     this.menuCtrl.enable(true); // or true
   
 
-this. inbounddata();
-console.log('iboundssssssssssssssssssss',this.inbounddata())
-    this.getMasses();
-    console.log(this.getMasses());
+// this. inbounddata();
+// console.log('iboundssssssssssssssssssss',this.inbounddata())
+    // this.getMasses();
+    // console.log(this.getMasses());
   }
 
   getReclaimers() {
@@ -267,7 +445,202 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
       });
     });
   }
+  update() {
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      gl001: this.GH001price,
+      nfalo1: this.NFAL01price,
+      pap005: this.PAP005price,
+      pap007: this.PAP007price,
+      pap001: this.PAP001price,
+      pap003: this.PAP003price,
+      hd001: this.HD001price,
+      ld001: this.LD001price,
+      ld003: this.LD003price,
+      pet001: this.PET001price,
+      pet003: this.PET003price,
+      pet005: this.PET005price,
+    })
+    .then((data) => {
+      console.log("Document successfully updated!");
+    });
+    }
+  ionViewWillEnter() {
+    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+    this.prices.get().then((documentSnapshot) => {
+      this.price = [];
+      console.log(documentSnapshot.data());
+      this.price.push(documentSnapshot.data());
+      console.log('prices', this.price);
+    });
+   }
+   checkinputfields() {
+    // GH001price;
+    if (this.GH001price === null) {
+      this.GH001price = this.pricess.gl001;
+    } else if (this.GH001price === undefined) {
+      this.GH001price = this.pricess.gl001;
+    }
+    console.log(this.GH001price);
 
+    // NFAL01price;
+    if (this.NFAL01price === null) {
+      this.NFAL01price = this.pricess.nfalo1;
+    } else if (this.NFAL01price === undefined) {
+      this.NFAL01price = this.pricess.nfalo1;
+    }
+    console.log(this.NFAL01price);
+
+    // PAP005price;
+    if (this.PAP005price === null) {
+      this.PAP005price = this.pricess.pap005;
+    } else if (this.PAP005price === undefined) {
+      this.PAP005price = this.pricess.pap005;
+    }
+    console.log(this.PAP005price);
+
+    // PAP007price;
+    if (this.PAP007price === null) {
+      this.PAP007price = this.pricess.pap007;
+    } else if (this.PAP007price === undefined) {
+      this.PAP007price = this.pricess.pap007;
+    }
+    console.log(this.PAP007price);
+
+    // PAP001price;
+    if (this.PAP001price === null) {
+      this.PAP001price = this.pricess.pap001;
+    } else if (this.PAP001price === undefined) {
+      this.PAP001price = this.pricess.pap001;
+    }
+    console.log(this.PAP001price);
+
+    // PAP003price;
+    if (this.PAP003price === null) {
+      this.PAP003price = this.pricess.pap003;
+    } else if (this.PAP003price === undefined) {
+      this.PAP003price = this.pricess.pap003;
+    }
+    console.log(this.PAP003price);
+
+    // HD001price;
+    if (this.HD001price === null) {
+      this.HD001price = this.pricess.hd001;
+    } else if (this.HD001price === undefined) {
+      this.HD001price = this.pricess.hd001;
+    }
+    console.log(this.HD001price);
+
+    // LD001price;
+    if (this.LD001price === null) {
+      this.LD001price = this.pricess.ld001;
+    } else if (this.LD001price === undefined) {
+      this.LD001price = this.pricess.ld001;
+    }
+    console.log(this.LD001price);
+
+    // LD003price;
+    if (this.LD003price === null) {
+      this.LD003price = this.pricess.ld003;
+    } else if (this.LD003price === undefined) {
+      this.LD003price = this.pricess.ld003;
+    }
+    console.log(this.LD003price);
+
+    // PET001price;
+    if (this.PET001price === null) {
+      this.PET001price = this.pricess.pet001;
+    } else if (this.PET001price === undefined) {
+      this.PET001price = this.pricess.pet001;
+    }
+    console.log(this.PET001price);
+
+    // PET003price;
+    if (this.PET003price === null) {
+      this.PET003price = this.pricess.pet003;
+    } else if (this.PET003price === undefined) {
+      this.PET003price = this.pricess.pet003;
+    }
+    console.log(this.PET003price);
+
+    // PET005price;
+    if (this.PET005price === null) {
+      this.PET005price = this.pricess.pet005;
+    } else if (this.PET005price === undefined) {
+      this.PET005price = this.pricess.pet005;
+    }
+    console.log(this.PET005price);
+
+    this.presentAlertupdate();
+
+  }
+
+  async presentAlertupdate() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to update Prices?.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.update();
+            this.clearInputs();
+            this.route.navigateByUrl('/editprice');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  clearInputs() {
+    this.GH001price = '';
+    this.NFAL01price = '';
+    this.PAP005price = '';
+    this.PAP007price = '';
+    this.PAP001price = '';
+    this.PAP003price = '';
+    this.HD001price = '';
+    this.LD001price = '';
+    this.LD003price = '';
+    this.PET001price = '';
+    this.PET003price = '';
+    this.PET005price = '';
+    
+  }
+
+  async presentAlertupdatedelete() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to Cancel, Data will not be saved.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.clearInputs();
+            this.route.navigateByUrl('/editprice');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
   getOutbound() {
     // pulling from outbound
     this.db.collection('outbound').onSnapshot(snapshot => {
@@ -346,63 +719,152 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
       }, 500);
     }
   }
+  glassShow () {
+    this.glass = !this.glass;
+        
+    if (this.glass) {
+      console.log('block');
+      this.render.setStyle(this.glassDiv[0],'display','block')
+    } else {
+      console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.glassDiv[0],'display','none')
+      }, 500);
+    }
+  }
   HideandShowDelete() {
     this.delete = !this.delete;
+    if (this.delete) {
+      console.log('block');
+      this.render.setStyle(this.deleteDiv[0],'display','block')
+    } else {
+      console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.deleteDiv[0],'display','none')
+      }, 500);
+    }
   }
 
-  getMasses() {
-    let totalPaperz = 0;
-    let GH001z;
-    let NFAL01z;
+  // getMasses() {
+  //   let totalPaperz = 0;
+  //   let GH001z;
+  //   let NFAL01z;
 
-    this.db.collection('storage').onSnapshot(snapshot => {
-      snapshot.forEach(element => {
-        this.GH001storagemass = element.data().GL001;
-        this.NFAL01storagemass = element.data().NFAL01;
-        this.PAP005storagemass = element.data().PAP005;
-        this.PAP007storagemass = element.data().PAP007;
-        this.PAP001storagemass = element.data().PAP001;
-        this.PAP003storagemass = element.data().PAP003;
-        this.HD001storagemass = element.data().HD001;
-        this.LD001storagemass = element.data().LD001;
-        this.LD003storagemass = element.data().LD003;
-        this.PET001storagemass = element.data().PET001;
-        this.PET003storagemass = element.data().PET003;
-        this.PET005storagemass = element.data().PEP005;
-        console.log(element);
-      });
-      // console.log(this.GH001storagemass);
-      // console.log(this.NFAL01storagemass);
-      // console.log(this.PAP005storagemass);
-      // console.log(this.PAP007storagemass);
-      // console.log(this.PAP001storagemass);
-      // console.log(this.PAP003storagemass);
-      // console.log(this.HD001storagemass);
-      // console.log(this.LD001storagemass);
-      // console.log(this.LD003storagemass);
-      // console.log(this.PET001storagemass);
-      // console.log(this.PET003storagemass);
-      // console.log(this.PET005storagemass);
+  //   this.db.collection('reclaimers').onSnapshot(snapshot => {
+  //     snapshot.forEach(element => {
+  //       this.GH001storagemass = element.data().GL001;
+  //       this.NFAL01storagemass = element.data().NFAL01;
+  //       this.PAP005storagemass = element.data().PAP005;
+  //       this.PAP007storagemass = element.data().PAP007;
+  //       this.PAP001storagemass = element.data().PAP001;
+  //       this.PAP003storagemass = element.data().PAP003;
+  //       this.HD001storagemass = element.data().HD001;
+  //       this.LD001storagemass = element.data().LD001;
+  //       this.LD003storagemass = element.data().LD003;
+  //       this.PET001storagemass = element.data().PET001;
+  //       this.PET003storagemass = element.data().PET003;
+  //       this.PET005storagemass = element.data().PEP005;
+  //       console.log(element);
+  //     });
+  //     // console.log(this.GH001storagemass);
+  //     // console.log(this.NFAL01storagemass);
+  //     // console.log(this.PAP005storagemass);
+  //     // console.log(this.PAP007storagemass);
+  //     // console.log(this.PAP001storagemass);
+  //     // console.log(this.PAP003storagemass);
+  //     // console.log(this.HD001storagemass);
+  //     // console.log(this.LD001storagemass);
+  //     // console.log(this.LD003storagemass);
+  //     // console.log(this.PET001storagemass);
+  //     // console.log(this.PET003storagemass);
+  //     // console.log(this.PET005storagemass);
 
-      totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
-      this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
+  //     totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
+  //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
 
-      this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
-      +this.PET003storagemass + +this.PET005storagemass;
-      this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-      String(this.Totalplastic).substring(0, 6);
+  //     this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
+  //     +this.PET003storagemass + +this.PET005storagemass;
+  //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
+  //     String(this.Totalplastic).substring(0, 6);
 
-      GH001z = this.GH001storagemass;
-      this.GH001 = (String(GH001z).substring(0, 6));
-      NFAL01z = this.NFAL01storagemass;
-      this.NFAL01 = (String(NFAL01z).substring(0, 6));
-    });
-  }
+  //     GH001z = this.GH001storagemass;
+  //     this.GH001 = (String(GH001z).substring(0, 6));
+  //     NFAL01z = this.NFAL01storagemass;
+  //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
+  //   });
+  // }
 
-  inbounddata() {
-    let totalPaperz = 0;
-    let GH001z;
-    let NFAL01z;
+//   inbounddata() {
+//    let Totalpapersinbound = 0;
+//   //  Totalpaper: number = 0;
+//   //  Totalplastic: number = 0;
+//   //  Totalplasticz: string;
+//   //  Totalpaperinbound: number = 0;
+//   //  Totalpapersinbound: string;
+
+// //   Totalpaperinbound: number = 0;
+// //   Totalpapersinbound: string;
+// // Totalplasticinbound: number = 0;
+
+//     // let totalPaperz = 0;
+//     let GH001z;
+//     let NFAL01z;
+
+//   let totalpaperinbound = 0;
+
+
+
+
+
+    
+//     this.db.collection('inbounds').onSnapshot(snapshot => {
+//       snapshot.forEach(element => {
+//         this.inboundGH001 = element.data().inboundGH001;
+//         this.inboundHD001 = element.data().inboundHD001;
+//         this.inboundLD001 = element.data().inboundLD001;
+//         this.inboundLD003 = element.data().inboundLD003;
+//         this.inboundNFAL01 = element.data().inboundNFAL01;
+//         this. inboundPAP001 = element.data().inboundPAP001;
+//         this.inboundPAP003 = element.data().inboundPAP003;
+//         this. inboundPAP003 = element.data().inboundPAP003;
+//         this.inboundPAP007 = element.data().inboundPAP007;
+//         this. inboundPET001 = element.data().inboundPET001;
+//         this.inboundPET003 = element.data().inboundPET003;
+//         this.inboundPET005 = element.data().inboundPET005;
+//         console.log(element.data());
+//       });
+//       // console.log(this.GH001storagemass);
+//       // console.log(this.NFAL01storagemass);
+//       // console.log(this.PAP005storagemass);
+//       // console.log(this.PAP007storagemass);
+//       // console.log(this.PAP001storagemass);
+//       // console.log(this.PAP003storagemass);
+//       // console.log(this.HD001storagemass);
+//       // console.log(this.LD001storagemass);
+//       // console.log(this.LD003storagemass);
+//       // console.log(this.PET001storagemass);
+//       // console.log(this.PET003storagemass);
+//       // console.log(this.PET005storagemass);
+
+//       totalpaperinbound = +this.inboundPAP005 + +this.inboundPAP007 + +this.inboundPAP001 + +this.inboundPAP003;
+//       this.Totalpaperinbound = Number(String(totalpaperinbound).substring(0, 6));
+
+//       this.Totalplasticinbound = +this.inboundHD001 + +this.inboundLD001 + +this.inboundLD003 + +this.PET001 +
+//       +this.PET003 + +this.PET005;
+//       this.Totalpapersinbound = (String(this.Totalplasticinbound).substring(0, 6));
+//       String(this.Totalplasticinbound).substring(0, 6);
+
+//       GH001z = this.inboundGH001;
+//       this.GH001 = (String(GH001z).substring(0, 6));
+//       NFAL01z = this.NFAL01;
+//       this.NFAL01 = (String(NFAL01z).substring(0, 6));
+//     });
+//   }
+
+  // outbounddata() {
+  //   let totalPaperz = 0;
+  //   let GH001z;
+  //   let NFAL01z;
 
   
 
@@ -411,63 +873,131 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
 
 
     
-    this.db.collection('inbound').onSnapshot(snapshot => {
-      snapshot.forEach(element => {
-        this.inboundGH001 = element.data().inboundGH001;
-        this.inboundHD001 = element.data().inboundHD001;
-        this.inboundLD001 = element.data().inboundLD001;
-        this.inboundLD003 = element.data().inboundLD003;
-        this.inboundNFAL01 = element.data().inboundNFAL01;
-        this. inboundPAP001 = element.data().inboundPAP001;
-        this.inboundPAP003 = element.data().inboundPAP003;
-        this. inboundPAP003 = element.data().inboundPAP003;
-        this.inboundPAP007 = element.data().inboundPAP007;
-        this. inboundPET001 = element.data().inboundPET001;
-        this.inboundPET003 = element.data().inboundPET003;
-        this.inboundPET005 = element.data().inboundPET005;
-        console.log(element);
-      });
-      // console.log(this.GH001storagemass);
-      // console.log(this.NFAL01storagemass);
-      // console.log(this.PAP005storagemass);
-      // console.log(this.PAP007storagemass);
-      // console.log(this.PAP001storagemass);
-      // console.log(this.PAP003storagemass);
-      // console.log(this.HD001storagemass);
-      // console.log(this.LD001storagemass);
-      // console.log(this.LD003storagemass);
-      // console.log(this.PET001storagemass);
-      // console.log(this.PET003storagemass);
-      // console.log(this.PET005storagemass);
+  //   this.db.collection('outbound').onSnapshot(snapshot => {
+  //     snapshot.forEach(element => {
+  //       this.GH001 = element.data().GH001;
+  //       this.HD001 = element.data().HD001;
+  //       this.LD001 = element.data().LD001;
+  //       this.LD003 = element.data().LD003;
+  //       this.NFAL01 = element.data().NFAL01;
+  //       this. PAP001 = element.data().PAP001;
+  //       this.PAP003 = element.data().PAP003;
+  //       this. PAP003 = element.data().PAP003;
+  //       this.PAP007 = element.data().PAP007;
+  //       this. PET001 = element.data().PET001;
+  //       this.PET003 = element.data().PET003;
+  //       this.PET005 = element.data().PET005;
+  //       console.log(element);
+  //     });
+  //     // console.log(this.GH001storagemass);
+  //     // console.log(this.NFAL01storagemass);
+  //     // console.log(this.PAP005storagemass);
+  //     // console.log(this.PAP007storagemass);
+  //     // console.log(this.PAP001storagemass);
+  //     // console.log(this.PAP003storagemass);
+  //     // console.log(this.HD001storagemass);
+  //     // console.log(this.LD001storagemass);
+  //     // console.log(this.LD003storagemass);
+  //     // console.log(this.PET001storagemass);
+  //     // console.log(this.PET003storagemass);
+  //     // console.log(this.PET005storagemass);
 
-      totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
-      this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
+  //     totalPaperz = +this.PAP005 + +this.PAP007 + +this.PAP001 + +this.PAP003;
+  //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
 
-      this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
-      +this.PET003storagemass + +this.PET005storagemass;
-      this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-      String(this.Totalplastic).substring(0, 6);
+  //     this.Totalplastic = +this.HD001 + +this.LD001 + +this.LD003 + +this.PET001 +
+  //     +this.PET003 + +this.PET005;
+  //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
+  //     String(this.Totalplastic).substring(0, 6);
 
-      GH001z = this.GH001storagemass;
-      this.GH001 = (String(GH001z).substring(0, 6));
-      NFAL01z = this.NFAL01storagemass;
-      this.NFAL01 = (String(NFAL01z).substring(0, 6));
-    });
-  }
+  //     GH001z = this.GH001;
+  //     this.GH001 = (String(GH001z).substring(0, 6));
+  //     NFAL01z = this.NFAL01;
+  //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
+  //   });
+  // }
+
+  // Reclaimerdata() {
+  //   let totalPaperz = 0;
+  //   let GH001z;
+  //   let NFAL01z;
+
+  
+
+
+
+
+
+    
+  //   this.db.collection('reclaimers').onSnapshot(snapshot => {
+  //     snapshot.forEach(element => {
+  //       this.GH001Mass = element.data().GH001;
+  //       this.HD001Mass = element.data().HD001;
+  //       this.LD001Mass = element.data().LD001;
+  //       this.LD003Mass = element.data().LD003;
+  //       this.NFAL01Mass = element.data().NFAL01;
+  //       this. PAP001Mass = element.data().PAP001;
+  //       this.PAP003Mass = element.data().PAP003;
+  //       this. PAP003Mass = element.data().PAP003;
+  //       this.PAP007Mass = element.data().PAP007;
+  //       this. PET001Mass = element.data().PET001;
+  //       this.PET003Mass = element.data().PET003;
+  //       this.PET005Mass = element.data().PET005;
+  //       console.log(element);
+  //     });
+  //     // console.log(this.GH001storagemass);
+  //     // console.log(this.NFAL01storagemass);
+  //     // console.log(this.PAP005storagemass);
+  //     // console.log(this.PAP007storagemass);
+  //     // console.log(this.PAP001storagemass);
+  //     // console.log(this.PAP003storagemass);
+  //     // console.log(this.HD001storagemass);
+  //     // console.log(this.LD001storagemass);
+  //     // console.log(this.LD003storagemass);
+  //     // console.log(this.PET001storagemass);
+  //     // console.log(this.PET003storagemass);
+  //     // console.log(this.PET005storagemass);
+  //     console.log('paper',this.Totalpaper)
+  //     totalPaperz = +this.PAP005Mass + +this.PAP007Mass + +this.PAP001Mass + +this.PAP003Mass;
+  //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
+    
+  //     console.log('plastic',   this.Totalplastic )
+  //     this.Totalplastic = +this.HD001Mass + +this.LD001Mass + +this.LD003Mass + +this.PET001Mass +
+  //     +this.PET003 + +this.PET005;
+  //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
+  //     String(this.Totalplastic).substring(0, 6);
+
+  //     console.log('Glass',      this.GH001Mass )
+  //     GH001z = this.GH001Mass;
+  //     this.GH001Mass = (String(GH001z).substring(0, 6));
+      
+      
+  //     console.log('NFAL01z',      this.NFAL01 )
+  //     NFAL01z = this.NFAL01Mass;
+  //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
+  //   });
+  // }
+
+
+
+
+
+
 
 
 
   /* bar chart */
   createBarChart() {
+
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Plastic(PET001)',],
+        labels: ['Paper', 'Glass', 'Plastic', 'Aluminium',],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
-          label: 'Overall material ',
-          data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP003storagemass,
-          this.HD001storagemass, this.LD001storagemass, this.LD003storagemass, this.PET001storagemass, this.PET003storagemass, this.PET005storagemass],
+          label: 'inbound',
+          data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
+        ],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
@@ -492,12 +1022,12 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Plastic(PET001)',],
+        labels: ['Paper', 'Plastic', 'Glass', 'Aliminum',],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
-          label: 'Overall material ',
-          data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP003storagemass,
-          this.HD001storagemass, this.LD001storagemass, this.LD003storagemass, this.PET001storagemass, this.PET003storagemass, this.PET005storagemass],
+          label: 'outbound',
+          data: [this.Totalpaper, this.Totalplastic, this.GH001, this.NFAL01,],
+      
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
@@ -521,12 +1051,11 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
       this.bars = new Chart(this.barChart2.nativeElement, {
         type: 'bar',
         data: {
-          labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Plastic(PET001)',],
+          labels: ['Paper', 'Plastic', 'Glass', 'Aliminium',],
           // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
           datasets: [{
-            label: 'Overall material ',
-            data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP003storagemass,
-            this.HD001storagemass, this.LD001storagemass, this.LD003storagemass, this.PET001storagemass, this.PET003storagemass, this.PET005storagemass],
+            label: 'Reclaimers',
+            data: [this.Totalpaper, this.Totalplastic, this.GH001, this.NFAL01,],
             // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
             backgroundColor: 'green', // array should have same number of elements as number of dataset
             borderColor: 'red',  // array should have same number of elements as number of dataset
@@ -556,54 +1085,54 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
       this.route.navigate(['profile']);
     }
 
-    getreclamer() {
-      let totalPaperz = 0;
-      let GH001z;
-      let NFAL01z;
+    // getreclamer() {
+    //   let totalPaperz = 0;
+    //   let GH001z;
+    //   let NFAL01z;
 
-      this.db.collection('storage').onSnapshot(snapshot => {
-        snapshot.forEach(element => {
-          this.GH001storagemass = element.data().GL001;
-          this.NFAL01storagemass = element.data().NFAL01;
-          this.PAP005storagemass = element.data().PAP005;
-          this.PAP007storagemass = element.data().PAP007;
-          this.PAP001storagemass = element.data().PAP001;
-          this.PAP003storagemass = element.data().PAP003;
-          this.HD001storagemass = element.data().HD001;
-          this.LD001storagemass = element.data().LD001;
-          this.LD003storagemass = element.data().LD003;
-          this.PET001storagemass = element.data().PET001;
-          this.PET003storagemass = element.data().PET003;
-          this.PET005storagemass = element.data().PEP005;
-          // console.log(element);
-        });
-        // console.log(this.GH001storagemass);
-        // console.log(this.NFAL01storagemass);
-        // console.log(this.PAP005storagemass);
-        // console.log(this.PAP007storagemass);
-        // console.log(this.PAP001storagemass);
-        // console.log(this.PAP003storagemass);
-        // console.log(this.HD001storagemass);
-        // console.log(this.LD001storagemass);
-        // console.log(this.LD003storagemass);
-        // console.log(this.PET001storagemass);
-        // console.log(this.PET003storagemass);
-        // console.log(this.PET005storagemass);
+    //   this.db.collection('storage').onSnapshot(snapshot => {
+    //     snapshot.forEach(element => {
+    //       this.GH001storagemass = element.data().GL001;
+    //       this.NFAL01storagemass = element.data().NFAL01;
+    //       this.PAP005storagemass = element.data().PAP005;
+    //       this.PAP007storagemass = element.data().PAP007;
+    //       this.PAP001storagemass = element.data().PAP001;
+    //       this.PAP003storagemass = element.data().PAP003;
+    //       this.HD001storagemass = element.data().HD001;
+    //       this.LD001storagemass = element.data().LD001;
+    //       this.LD003storagemass = element.data().LD003;
+    //       this.PET001storagemass = element.data().PET001;
+    //       this.PET003storagemass = element.data().PET003;
+    //       this.PET005storagemass = element.data().PEP005;
+    //       // console.log(element);
+    //     });
+    //     // console.log(this.GH001storagemass);
+    //     // console.log(this.NFAL01storagemass);
+    //     // console.log(this.PAP005storagemass);
+    //     // console.log(this.PAP007storagemass);
+    //     // console.log(this.PAP001storagemass);
+    //     // console.log(this.PAP003storagemass);
+    //     // console.log(this.HD001storagemass);
+    //     // console.log(this.LD001storagemass);
+    //     // console.log(this.LD003storagemass);
+    //     // console.log(this.PET001storagemass);
+    //     // console.log(this.PET003storagemass);
+    //     // console.log(this.PET005storagemass);
 
-        totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
-        this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
+    //     totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
+    //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
 
-        this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
-        +this.PET003storagemass + +this.PET005storagemass;
-        this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-        String(this.Totalplastic).substring(0, 6);
+    //     this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
+    //     +this.PET003storagemass + +this.PET005storagemass;
+    //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
+    //     String(this.Totalplastic).substring(0, 6);
 
-        GH001z = this.GH001storagemass;
-        this.GH001 = (String(GH001z).substring(0, 6));
-        NFAL01z = this.NFAL01storagemass;
-        this.NFAL01 = (String(NFAL01z).substring(0, 6));
-      });
-    }
+    //     GH001z = this.GH001storagemass;
+    //     this.GH001 = (String(GH001z).substring(0, 6));
+    //     NFAL01z = this.NFAL01storagemass;
+    //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
+    //   });
+    // }
 
     // query for week and months
     // ref.where("timestamp", ">=", "2017-11").where("timestamp", "<", "2017-12")
@@ -679,19 +1208,25 @@ console.log('iboundssssssssssssssssssss',this.inbounddata())
          }
        }
        getinbound(){
-       /*  */
-      // pulling for admin
-    this.db.collection('inbounds').onSnapshot(snapshot => {
-      // this.Newadmin = [];
-      snapshot.forEach(Element => {
-        this.inbound.push(Element.data());
-      });
-      this.inbound.forEach(item => {
-        if (item.userid === firebase.auth().currentUser.uid) {
-          this.newInbound.push(item);
-        }
-      });
-      console.log('Newinbounds', this.newInbound);
-    });
-  }
+        this.db.collection('inbounds').onSnapshot(snapshot => {
+       
+          this.newInbound=[]
+         
+          snapshot.forEach(Element => {
+           
+                this.inboundss.push(Element.data());
+          });
+          this.inboundss.forEach(item => {
+          
+            if(item.Userid === firebase.auth().currentUser.uid){
+                     this.newInbound.push(item);
+                 
+                     
+                  }
+          })
+          
+          console.log('Newinbounds', this.newInbound);
+        
+        }); 
+      }
 }
