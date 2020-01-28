@@ -373,17 +373,15 @@ export class OutboundPDFPage implements OnInit {
         this.letterObj.to,
         
         // {
-        //   layout: 'lightHorizontalLines',
-        //   styles: Headers,
-        //   table: {
-        //     headerRows: 1,
+        //   // layout: 'lightHorizontalLines',
+        //   // styles: Headers,
+        //   headerRows: 1,
         //     widths: [ 'auto', 'auto', 'auto' ],
         //     body: [
         //       [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
         //       ['', printDataName, printDataNumber],
         //       [ 'Total Truck Load', '', this.overallStoragez ],
         //     ]
-        //   }
         // },
 
         {
