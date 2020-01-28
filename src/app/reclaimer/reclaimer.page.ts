@@ -320,7 +320,7 @@ export class ReclaimerPage implements OnInit {
   showPopUp(userCat) {
     this.popOpOpen = true;
     this.selectedCat = userCat;
-    this.showDriverInfo();
+    this.showOtherPopup();
     // alert(this.selectedCat);
     setTimeout(() => {
     if (this.selectedCat === 'paper') {
@@ -2342,6 +2342,14 @@ Logout() {
 
   coemBack() {
     this.motherDiv[0].style.display = "block";
+  }
+
+  driverInfo: boolean = false;
+  group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
+  nextClick(){
+    this.driverInfo = true;
+    this.group1[0].style.left = "10px";
+    this.group1[0].style.width = "40%"
   }
 
 }
