@@ -22,12 +22,12 @@ registerForm = false;
   Newadmin = [];
   userprofile;
   // storage;
-  newuserprofile = [];
+  newuserprofile;
   db = firebase.firestore();
   profiles;
   newuserprofilezzzzz = [];
   isLabelActive;
-
+oneprofile:any ={};
   public loading: any;
 
   email;
@@ -66,6 +66,24 @@ registerForm = false;
 
   ngOnInit() {
     this.getUsers();
+
+    this.db.collection('admin').onSnapshot(snapshot => {
+      // this.profile.name = snapshot.docs.name
+      // this.profile.email = snapshot.data().email;
+      // email: firebase.auth().currentUser.email,
+      // this.profile.name = snapshot.data().name;
+      // this.profile.surname = snapshot.data().surname;
+      // this.profile.position = snapshot.data().position;
+      // // this.profile.image = snapshot.data().image;
+      // console.log('users', this.userprofile);
+      
+      this.newuserprofile = [];
+      snapshot.forEach(item => {
+        this.newuserprofile.push({...{id:item.id},...item.data()});
+        console.log("user profile ", this.oneprofile = item.data());
+      });
+    });
+
   }
 
       showRegisterForm(){
@@ -83,6 +101,7 @@ registerForm = false;
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
 
+      // this.newuserprofile = [];
       snapshot.forEach(item => {
         this.newuserprofile = [];
         this.newuserprofile.push({...{id: item.id},...item.data()});
@@ -200,16 +219,17 @@ registerForm = false;
       }
 
       saveNewUseer() {
-        this.db.collection('Admin').add({
+        this.db.collection('admin').add({
           email: this.email,
           password: this.password
         });
         console.log('user saved to cloud');
 
-        this.db.collection('Admin').add({
+        this.db.collection('admin').add({
           email: this.email,
           password: this.password,
-          profile: 'no'
+          profile: 'no',
+         
         }).then(async res => {
           let goodRes = await this.alertCtrl.create({
             header: 'Created new User.',
@@ -285,5 +305,22 @@ registerForm = false;
         });
       }
 
-
+      adminprofile(){
+        this.db.collection('admin').onSnapshot(snapshot => {
+          // this.profile.name = snapshot.docs.name
+          // this.profile.email = snapshot.data().email;
+          // email: firebase.auth().currentUser.email,
+          // this.profile.name = snapshot.data().name;
+          // this.profile.surname = snapshot.data().surname;
+          // this.profile.position = snapshot.data().position;
+          // // this.profile.image = snapshot.data().image;
+          // console.log('users', this.userprofile);
+          
+          this.newuserprofile = [];
+          snapshot.forEach(item => {
+            this.newuserprofile.push({...{id:item.id},...item.data()});
+            console.log("admin profile ", this.newuserprofile);
+          });
+        });
+      }
 }

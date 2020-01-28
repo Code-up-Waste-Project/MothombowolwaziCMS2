@@ -25,4 +25,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-// @import "../../node_modules/ionic4-auto-complete/auto-complete";
+
+.resetModal .modal-wrapper {
+    --width: 40%;
+    --height: 40%;
+}

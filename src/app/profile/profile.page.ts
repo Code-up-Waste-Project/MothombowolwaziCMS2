@@ -25,6 +25,7 @@ export class ProfilePage implements OnInit {
   addres: null,
   surname: null,
   position: null,
+  number:null,
   // isAdmin: true,
   // ActiveAcount: false,
   userid: firebase.auth().currentUser.uid,
@@ -49,9 +50,14 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.menuCtrl.enable(false); // or true
+    
   }
 
+
   async users() {
+
+console.log('profile',this.profile )
+
     if (this.profile.name == "" || this.profile.name == undefined) {
       const toast = await this.toastController.create({
         message: 'Enter the name.',
@@ -63,12 +69,21 @@ export class ProfilePage implements OnInit {
         message: 'Enter the surname',
         duration: 2000
       });
-      toast.present();
+    } else if(this.profile.number == "" || this.profile.number == undefined || this.profile.number.toString().length <10){
+const toast = await this.toastController.create({
+  message:'Enter a cellphone number with 10 digits',
+  duration: 2000
+
+  
+});
+toast.present();
     } else {
     this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
+    
       name: this.profile.name,
       surname: this.profile.surname,
       email: this.profile.email,
+      number:this.profile.number,
       position: this.profile.position,
       userid: this.profile.userid,
       image: this.profile.image,

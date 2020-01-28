@@ -1,6 +1,6 @@
 <ion-header *ngFor="let user of Newadmin">
   <ion-toolbar class="header" >
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
@@ -34,7 +34,7 @@
           <img src="../../assets/outbound.svg">
         </div>
         <h3>Outbound</h3>
-        <p class="mass">{{Outboundweight}}</p>
+        <p class="mass">{{outboundweight}}</p>
         <div class="updates">
           <p>Updated 56min ago</p>
         </div>
@@ -275,8 +275,22 @@
     <div class="graph" >
       <canvas #barChart></canvas>
     </div>
+<<<<<<< HEAD
+
+    <div class="graph" >
+      <canvas #barChart1></canvas>
+
+    </div>
+    <div class="graph" >
+      <canvas #barChart2></canvas>
+
+    </div>
+    <!-- <div class="graph"><canvas #barChart></canvas></div>
+    <div class="graph"><canvas #barChart></canvas></div> -->
+=======
     <div class="graph"><canvas #barChart></canvas></div>
     <div class="graph"><canvas #barChart></canvas></div>
+>>>>>>> a5b89feaf748f9f5476c4da90f8ee931ffbc3792
   </div>
 </div>
 <!-- boxes to appear when you perfom action on categori images -->
