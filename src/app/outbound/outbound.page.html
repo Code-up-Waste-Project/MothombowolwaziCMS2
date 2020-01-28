@@ -207,23 +207,37 @@
         <div class="spacer"></div>
         <!-- <h3 class="Tittle"><b>Outbound Details</b></h3> -->
         <div class="Content">
-          
-          
           <div class="Group1">
-            <div class="theSearch">
+
+            <!-- <div class="theSearch">
               <input id="theSearchbar" type="text" placeholder="Search Driver">
-            </div>
+            </div> -->
+
             <div class="TheContent">
+
+              <!-- code for auto complete -->
+              <div class="results">
+                <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
+                <div class='count' *ngIf="searchResults.length > 0" >
+                  {{ searchResults.length }}
+                </div>
+              </div>
+               <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input>
+              <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+             
+              <ion-item no-lines>{{ userLocation }}</ion-item>
+
 
               <ion-card *ngFor="let records of recordoutbounddisplays">
                 <ion-card-content>
-                  <h5>Driver's Name</h5>
-                  <p>{{ records.DriverName }}</p>
-                </ion-card-content>
-                <ion-card-content>
-                  <h5>Truck Plates</h5>
+                  <h5>{{ records.DriverName }}</h5>
+                  <!-- <p>{{ records.DriverName }}</p> -->
                   <p>{{ records.RegistarionNumberPlates }}</p>
                 </ion-card-content>
+                <!-- <ion-card-content>
+                  <h5>Truck Plates</h5>
+                  <p>{{ records.RegistarionNumberPlates }}</p>
+                </ion-card-content> -->
               </ion-card>
             </div>
             <div class="Thebutton">
