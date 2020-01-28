@@ -1,4 +1,6 @@
 <ion-header *ngFor="let user of Newadmin">
+  
+<button (click)="getinbound()">inbound</button>
   <ion-toolbar class="header" >
     <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
     <ion-buttons  id="logout" slot="end">
@@ -86,7 +88,7 @@
 </div>
       <div class="matnames">
         <div class="codes">
-         <p *ngFor ="let x of editprices">{{x.code}} <span>R{{x.price}}</span></p>
+         <!-- <p *ngFor ="let x of editprices">{{x.code}} <span>R{{x.price}}</span></p> -->
           </div>
         <div class="manname">
           PAPER
@@ -275,7 +277,6 @@
     <div class="graph" >
       <canvas #barChart></canvas>
     </div>
-<<<<<<< HEAD
 
     <div class="graph" >
       <canvas #barChart1></canvas>
@@ -287,10 +288,6 @@
     </div>
     <!-- <div class="graph"><canvas #barChart></canvas></div>
     <div class="graph"><canvas #barChart></canvas></div> -->
-=======
-    <div class="graph"><canvas #barChart></canvas></div>
-    <div class="graph"><canvas #barChart></canvas></div>
->>>>>>> a5b89feaf748f9f5476c4da90f8ee931ffbc3792
   </div>
 </div>
 <!-- boxes to appear when you perfom action on categori images -->
@@ -311,10 +308,10 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Create New Material Here</h1>
-  <input placeholder="Enter Material Name" [(ngModel)] ="newmaterial.name">
-  <input placeholder="Enter Price" [(ngModel)] ="newmaterial.price" type ="number">
- <input placeholder="Enter code"  [(ngModel)] ="newmaterial.code">
-<button ion-button (click) ='newmate(newmaterial)'>Save</button>
+  <input placeholder="Enter Material Name" >
+  <input placeholder="Enter Price"  type ="number">
+ <input placeholder="Enter code"  >
+<button ion-button  >Save</button>
 </div>
 </div>
 <!-- delete material -->
@@ -327,6 +324,7 @@
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
+
 </div>
 </div>
 </ion-content>
