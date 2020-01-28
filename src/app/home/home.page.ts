@@ -73,7 +73,6 @@ export class HomePage implements OnInit {
   // email:firebase.auth().currentUser.email
     };
   isAdmin: any;
-<<<<<<< HEAD
 //inbound
   inboundGH001;
   inboundHD001;
@@ -89,8 +88,6 @@ export class HomePage implements OnInit {
   inboundPET005;
 
 //storage
-=======
->>>>>>> a5b89feaf748f9f5476c4da90f8ee931ffbc3792
   GH001storagemass;
   NFAL01storagemass;
   PAP005storagemass;
