@@ -7,9 +7,9 @@ import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
 
@@ -139,45 +139,72 @@ outboundglass =0;
     };
   isAdmin: any;
 //inbound
-  inboundGH001;
-  inboundHD001;
-  inboundLD001;
-  inboundLD003;
-  inboundNFAL01;
-  inboundPAP001;
-  inboundPAP003;
-  inboundPAP005;
-  inboundPAP007;
-  inboundPET001;
-  inboundPET003;
-  inboundPET005;
+  inboundGH001;
+  inboundHD001;
+  inboundLD001;
+  inboundLD003;
+  inboundNFAL01;
+  inboundPAP001;
+  inboundPAP003;
+  inboundPAP005;
+  inboundPAP007;
+  inboundPET001;
+  inboundPET003;
+  inboundPET005;
 
 
-  //Reclaomers
-  GH001Mass;
-  HD001Mass; 
-  LD001Mass; 
-  LD003Mass;
-  NFAL01Mass; 
-  PAP001Mass;
-  PAP003Mass;
-  PAP007Mass; 
-  PET001Mass;
-  PET003Mass;
-  PET005Mass;
-  PAP005Mass
+  //Reclaomers
+  GH001Mass;
+  HD001Mass; 
+  LD001Mass; 
+  LD003Mass;
+  NFAL01Mass; 
+  PAP001Mass;
+  PAP003Mass;
+  PAP007Mass; 
+  PET001Mass;
+  PET003Mass;
+  PET005Mass;
+  PAP005Mass
 
 //outbound
-PAP005;
+        PAP005;
+        HD001;
+        LD001;
+        LD003;
+        NFAL01; 
+         PAP001; 
+        PAP003;
+       
+        PAP007;
+         PET001;
+        PET003;
+        PET005;
+
+          //Reclaomers
+          GH001Mass;
+          HD001Mass; 
+          LD001Mass; 
+          LD003Mass;
+          NFAL01Mass; 
+          PAP001Mass;
+          PAP003Mass;
+          PAP007Mass; 
+          PET001Mass;
+          PET003Mass;
+          PET005Mass;
+          PAP005Mass
+
+        //outbound
+        PAP005;
         HD001;
         LD001;
         LD003;
         NFAL01; 
-         PAP001; 
+        PAP001; 
         PAP003;
-       
         PAP007;
-         PET001;
+        PET001;
         PET003;
         PET005;
 
@@ -374,7 +401,7 @@ firebase.firestore().collection('outbound').get().then(res=>{
 })
 
 //reclaimer
-this.Reclaimerweight =0;
+this.Reclaimerweight =0;
 firebase.firestore().collection('reclaimers').get().then(res=>{
   res.forEach(val=>{
     console.log(val.data().GH001Mass+val.data().HD001Mass)
