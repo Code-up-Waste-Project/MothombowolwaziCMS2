@@ -38,11 +38,6 @@
               {
                 "input": "src/global.scss"
               },
-              {
-                "glob": "**/*",
-                "input": "node_modules/ionic4-auto-complete/assets/",
-                "output": "./assets/"
-              }
               
             ],
             "scripts": []

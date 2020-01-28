@@ -16,7 +16,7 @@ import * as firebase from 'firebase';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RegistersPipe } from './registers.pipe';
-import { AutoCompleteModule } from 'ionic4-auto-complete';
+// import { AutoCompleteModule } from 'ionic4-auto-complete';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -44,7 +44,7 @@ firebase.analytics();
     FormsModule,
     ReactiveFormsModule,
     PdfViewerModule,
-    AutoCompleteModule
+    // AutoCompleteModule
   ],
   providers: [
     StatusBar,
