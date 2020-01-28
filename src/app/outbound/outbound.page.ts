@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-outbound',
@@ -284,6 +285,13 @@ export class OutboundPage implements OnInit {
         this.usersz.push(outDriverName)
 
       });
+    });
+
+    this.RegisterForm = formGroup.group({
+      DriverNameInput : ['', [Validators.required, Validators.maxLength(15)]],
+      RegistarionNumberPlatesInput : ['', [Validators.required, Validators.maxLength(15)]],
+      DestinationInput : ['', [Validators.required, Validators.maxLength(10)]],
+      TruckSourcessInput : ['', [Validators.required, , Validators.maxLength(40)]],
     });
 
     console.log(this.usersz);
@@ -1133,11 +1141,36 @@ export class OutboundPage implements OnInit {
       console.log(this.userLocation);
       console.log(location);
 
-      if (this.searchResults === location) {
-        this.db.collection('outbound').onSnapshot(snapshot => {
-          
+      this.db.collection('outbound').where("DriverName","==",location).onSnapshot(element => {
+        element.forEach(element => {
+        this.id = element.id;
+        this.DriverName = element.data().DriverName;
+        this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+        // this.overallStorage = element.data().ovarallMass;
+        this.TruckSourcess = element.data().TruckSourcess;
+        this.Destination = element.data().Destination;
+        console.log(element.data().DriverName);
+        console.log(element.data().RegistarionNumberPlates);
+        // console.log(element.data().overallStorage);
+        console.log(element.data().TruckSourcess);
+        console.log(element.data().Destination);
+        console.log(element.data());
+          })
+
+          // adding data to textboxes
+          this.DriverNameInput = this.DriverName;
+          this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
+          this.TruckSourcessInput = this.TruckSourcess;
+          this.DestinationInput = this.Destination
         })
-      }
+
     }
+
+    // angular.json  code (do not delete)
+    // {
+    //   "glob": "**/*",
+    //   "input": "node_modules/ionic4-auto-complete/assets/",
+    //   "output": "./assets/"
+    // }
 
 }

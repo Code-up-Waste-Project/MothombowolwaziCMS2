@@ -303,11 +303,12 @@ export class OutboundPDFPage implements OnInit {
 
     this.PDFArrayPrint.forEach((item) => {
       printDataName.push(item.name);
-      printDataNumber.push(item.number);
+      printDataNumber.push(String(item.number).substring(0, 4));
+      console.log(printDataName);
+      console.log(printDataNumber);
     });
     console.log(this.PDFArrayPrint);
-    console.log(printDataName);
-    console.log(printDataNumber);
+    console.log("im here baba");
 
     var docDefinition = {
       content: [
@@ -353,7 +354,6 @@ export class OutboundPDFPage implements OnInit {
             },
           ]
         },
-        
         {
           alignment: 'justify',
           columns: [
@@ -371,30 +371,21 @@ export class OutboundPDFPage implements OnInit {
 
         { text: '', style: 'subheader' },
         this.letterObj.to,
-        
-        // {
-        //   // layout: 'lightHorizontalLines',
-        //   // styles: Headers,
-        //   headerRows: 1,
-        //     widths: [ 'auto', 'auto', 'auto' ],
-        //     body: [
-        //       [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
-        //       ['', printDataName, printDataNumber],
-        //       [ 'Total Truck Load', '', this.overallStoragez ],
-        //     ]
-        // },
 
         {
-          style: 'tableExample',
+          layout: 'lightHorizontalLines',
+          styles: Headers,
           table: {
-            heights: [ 50, 70],
+            headerRows: 1,
+            widths: [ 'auto', 'auto', 'auto' ],
             body: [
-              ['CODE/NUMBER', 'MASS(KG)'],
-              [printDataName, printDataNumber]
+              [ 'WASTE TYPE', 'CODE/NUMBER', 'MASS(KG)' ],
+              ['', printDataName, printDataNumber],
+
+              [ 'Total Truck Load', this.Mass, this.overallStorage ],
             ]
           }
         },
-        
       ],
 
       // footer: {

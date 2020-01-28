@@ -9,6 +9,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 import { element } from 'protractor';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
@@ -112,6 +113,8 @@ export class InboundPage implements OnInit {
   PET003storagemassz;
   PET005storagemassz;
 
+  RegisterForm: FormGroup;
+
   constructor(
     private plt: Platform,
     private file: File,
@@ -120,6 +123,7 @@ export class InboundPage implements OnInit {
     public loadingController: LoadingController,
     public toastController: ToastController,
     public alertController: AlertController,
+    public formGroup: FormBuilder,
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -138,6 +142,7 @@ export class InboundPage implements OnInit {
 
     this.getMasses();
     this.pdfmakerFirebase();
+
    }
 
   ngOnInit() {
