@@ -56,7 +56,6 @@ ion-avatar {
   overflow: hidden;
   // border: solid 2px orange;
 }
-
 .Theblocks{
   height: 35%;
   width: 100%;
@@ -67,7 +66,6 @@ ion-avatar {
   padding: 20px;
   margin-top: 50px;
 }
-
 .Block1{
   position: relative;
   height: 100%;
@@ -84,7 +82,6 @@ ion-avatar {
   top: 50%;
   transform: translateY(-50%);
 }
-
 #RecyleLogo1{
   width: 50%;   
   position: absolute;
@@ -152,7 +149,6 @@ h2{
   padding: 10px;    
   overflow: scroll;
 }
-
 .History1{
   height: 50px;
   width: 100%;
@@ -171,6 +167,8 @@ h2{
   height: 100%;
   width:70%;
 }
+
+
 .History2{
   height: 42px;
   width: 100%;
@@ -207,6 +205,7 @@ h2{
   padding-top: 15px;
   color: red;
 }
+
 
 .History3{
   height: 10%;
@@ -260,15 +259,12 @@ h2{
 
 
 
-
-
-
-
-.Son{
+#Son{
   height: 100%;
   width:100%;
   // border: solid black;
-  background-color: rgba(0, 0, 0, 0.521);
+  background-color: rgba(0, 0, 0, 0.171);
+// background-color: gold;
 }
 .Daughter{
   height: 75%;
@@ -363,14 +359,12 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background-color: rgba(0, 0, 0, 0);
   z-index: 100000;
 }
 
 .TheTruck{
   position: absolute;
 }
-
 .Content{
   // border: purple solid 2px;
   height: 65%;
@@ -390,7 +384,6 @@ img {
   display: flex;
   align-items: center;
 }
-
 .Group1{
   width: 64%;
   height: 100%;
@@ -403,6 +396,7 @@ img {
   // z-index: 10;
   // overflow: scroll;
 }
+
 .Group1new{
   width: 40%;
   height: 100%;
@@ -503,6 +497,7 @@ h5{
 .spacer{
   height: 80px
 }
+
 .DriverInputs{
   height: 210px;
   width: 100%;
@@ -575,27 +570,11 @@ h5{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.TheCont{
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
 .Mother{
   height: 100%;
   width: 100%;
@@ -606,6 +585,11 @@ h5{
   background: rgba(0, 0, 0, 0.301);
   z-index: 100000000000000000000000000000000000000000000000000000000000000000000;
 }
+
+#wasteInformation{
+    // display: none;
+}
+
 #Son{
   height: 100%;
   width: 100%;
@@ -637,6 +621,9 @@ h5{
   position: relative;
   left: 50%;
   transform: translateX(-50%)
+}
+form{
+    margin: 0 auto;
 }
 #Header > div {
   cursor: pointer;
@@ -979,8 +966,6 @@ button{
 // <input placeholder="Full Names" type="text" >
 // </div>
 // </div> -->
-
-
 
 
 @media screen and (max-width:1366px){
