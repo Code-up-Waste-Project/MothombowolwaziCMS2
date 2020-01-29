@@ -101,9 +101,9 @@ export class LoginPage implements OnInit {
     }
   }
 
-  forgetpassword() {
-    this.router.navigate(['reset-password']);
-  }
+  // forgetpassword() {
+  //   this.router.navigate(['reset-password']);
+  // }
 
   goToRegister() {
     this.router.navigate(['registers']);

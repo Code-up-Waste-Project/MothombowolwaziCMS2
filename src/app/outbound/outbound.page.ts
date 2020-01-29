@@ -152,9 +152,12 @@ export class OutboundPage implements OnInit {
 
   motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
 
+
     goAway() {
       // alert("clicked")
+      this.selectedCat = "";
       this.motherDiv[0].style.display = "none"
+      this.driverInformation = false
     }
     coemBack() {
       this.motherDiv[0].style.display = "block"
@@ -220,11 +223,12 @@ export class OutboundPage implements OnInit {
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
-      // this.Newadmin = [];
+      this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
       });
       this.admin.forEach(item => {
+        
         if (item.userid === firebase.auth().currentUser.uid) {
           this.Newadmin = [];
           this.Newadmin.push(item);
@@ -1197,10 +1201,9 @@ export class OutboundPage implements OnInit {
     group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
     nextClick(){
       this.driverInfo = true;
-      this.group1[0].style.left = "10px";
-      this.group1[0].style.width = "40%"
+      this.group1[0].style.left = "30%";
+      this.group1[0].style.width = "50%"
     }
-
     getItems(ev: any) {
       // Reset items back to all of the items
       // set val to the value of the searchbar

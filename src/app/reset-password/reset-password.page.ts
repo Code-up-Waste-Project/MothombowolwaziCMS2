@@ -3,6 +3,8 @@ import { AuthService } from '../../app/user/auth.service';
 import { AlertController, MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {LoginPage} from '../login/login.page';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-reset-password',

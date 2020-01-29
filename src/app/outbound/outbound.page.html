@@ -202,10 +202,13 @@
   <!-- Start of the driver's info Pop-over -->
   
     <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
-      <div class="Son"></div>
-      <div class="Mask"><h3 id="Tittle"><b>Outbound details</b></h3>
+      <div id="Son" (click)="goAway()"></div>
+      <div class="Mask"> 
+        
+      
         <div class="spacer"></div>
-        <!-- <h3 class="Tittle"><b>Outbound Details</b></h3> -->
+        <!-- <h3 class="Tittle"><b>Outbound Details</b> <h3 id="Tittle"><b>Outbound details</b></h3></h3> -->
+        <h3 class="Tittle"><b>Outbound Details</b></h3>
         <div class="Content">
           <div class="Group1">
 
@@ -217,15 +220,15 @@
 
               <!-- code for auto complete -->
               <div class="results">
-                <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
-                <div class='count' *ngIf="searchResults.length > 0">
+                <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
+                <div class='count' *ngIf="searchResults.length > 0" >
                   {{ searchResults.length }}
                 </div>
               </div>
-               <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input>
+               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
               <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
              
-              <ion-item no-lines>{{ userLocation }}</ion-item>
+              <!-- <ion-item no-lines>{{ userLocation }}</ion-item> -->
 
 
               <ion-card *ngFor="let records of recordoutbounddisplays">
@@ -249,9 +252,10 @@
             <form padding [formGroup]="RegisterForm">
             <div class="Sub2">
               
-              <h3 id="OutBoundDetails"><b>Outbound details</b></h3>
+              <!-- <h3 id="OutBoundDetails"><b>Outbound details</b></h3> -->
               <div class="Heading">
                  <!-- -->
+              <h4 class="theH4">Outbound Information</h4>
                 
                 <div class="DriverInputs"> 
                   <input id="input" placeholder="Driver's Name" [(ngModel)]="DriverNameInput" formControlName="DriverNameInput" type="text">

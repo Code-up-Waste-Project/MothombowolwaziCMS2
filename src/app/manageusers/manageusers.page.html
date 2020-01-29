@@ -19,6 +19,7 @@
             <h4>{{myprofiles.name}} {{myprofiles.surname}}</h4>
             <p>{{myprofiles.position}}</p>
             <div class="image">
+
               <img src="{{myprofiles.image}}">
             </div>
           </div>
@@ -31,7 +32,12 @@
       <div class="right" *ngIf="!registerForm" >
         <div class="pic" padding>
        <ion-avatar>
-        <img src="{{oneprofile.image}}">
+        <img  *ngIf="oneprofile.image" src ="{{oneprofile.image}}">
+        <img  *ngIf="oneprofile.image" src ="{{oneprofile.image}}">
+
+        
+//
+        
         </ion-avatar>
   
         

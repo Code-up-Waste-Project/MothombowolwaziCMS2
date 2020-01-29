@@ -31,6 +31,7 @@
             <ion-input placeholder="Enter password" formControlName="password" type='password'
             [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched" ></ion-input>
             <p id="password" (click)="presentModal()">Forgot Password</p>
+            <!-- <button fill="clear" (click)="presentModal()" ion-button>Forgot Password</button> -->
 
             <div *ngIf="!loginForm.controls['password'].valid
             && loginForm.controls['password'].touched" class="error">
@@ -46,7 +47,7 @@
  
 
       <div class="right">
-        <!-- <img src="../../assets/loginright.svg"> -->
+ 
       </div>
  
   </form>

@@ -16,6 +16,9 @@ import * as firebase from 'firebase';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RegistersPipe } from './registers.pipe';
+import { ResetPasswordPageModule } from './reset-password/reset-password.module';
+
+// import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
 
 // Your web app's Firebase configuration
@@ -59,6 +62,9 @@ firebase.analytics();
     FormsModule,
     ReactiveFormsModule,
     PdfViewerModule,
+    ResetPasswordPageModule
+    
+  
     // AutoCompleteModule
   ],
   providers: [
