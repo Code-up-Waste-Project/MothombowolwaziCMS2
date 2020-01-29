@@ -1,12 +1,42 @@
+.header {
+    --background: #265902 !important;
+    display: flex;
+  }
+​
+​
+.Thecont{
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-image: url('../../assets/manageuser.svg');
+     background-repeat: no-repeat;
+     background-size: 130%;
+     background-position: -10% 40%;
+}
+​
+.Information{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 95%;
+  height: 95%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.719);
+  overflow-y: scroll;
+}
+​
+​
 .Cancel{
-    color: purple;
+    color: rgb(255, 255, 255);
     margin-left: 95%;
     font-size: 150%;
 }
 
 .PDF{
     // margin-right: 95%;
-    background: rgb(117, 24, 24);
+    background: rgb(255, 255, 255);
+    color: #265902;
+    border-radius: 2px;
+    font-weight: 600;
 }
 
 table{
