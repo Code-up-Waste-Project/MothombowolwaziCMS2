@@ -127,13 +127,14 @@ export class InboundPage implements OnInit {
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin = [];
+      // this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
         // console.log(Element.data());
       });
       this.admin.forEach(item => {
         if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin = [];
           this.Newadmin.push(item);
         }
       });
@@ -325,6 +326,48 @@ export class InboundPage implements OnInit {
       // console.log(this.PET003storagemass);
       // console.log(this.PET005storagemass);
     });
+  }
+
+  CheckInputsEmptyString() {
+    if (
+        this.GH001mass === undefined &&
+        this.NFAL01mass === undefined &&
+        this.PAP005mass === undefined &&
+        this.PAP007mass === undefined &&
+        this.PAP001mass === undefined &&
+        this.PAP003mass === undefined &&
+        this.HD001mass === undefined &&
+        this.LD001mass === undefined &&
+        this.LD003mass === undefined &&
+        this.PET001mass === undefined &&
+        this.PET003mass === undefined &&
+        this.PET005mass === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.checkinputfields();
+      }
+    //   textAreaEmpty(text:string){
+    //     if(text.length > 0)
+    //       console.log(text);
+    // }
+
+  }
+
+  async presentAlertcheckInputs() {
+    const alert = await this.alertController.create({
+      header: 'Warning!',
+      message: '<strong>No Data Was Input, Transaction will be Cancelled.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            this.route.navigateByUrl('/inbound');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   checkinputfields() {
