@@ -529,6 +529,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   update() {
     // To update price :
     this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      time: new Date(),
       gl001: this.GH001price,
       nfalo1: this.NFAL01price,
       pap005: this.PAP005price,
@@ -541,6 +542,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       pet001: this.PET001price,
       pet003: this.PET003price,
       pet005: this.PET005price,
+
     })
     .then((data) => {
       console.log("Document successfully updated!");
@@ -1002,64 +1004,7 @@ HideandShowHISTORYGLASS() {
       this.route.navigate(['profile']);
     }
 
-    // getreclamer() {
-    //   let totalPaperz = 0;
-    //   let GH001z;
-    //   let NFAL01z;
-
-    //   this.db.collection('storage').onSnapshot(snapshot => {
-    //     snapshot.forEach(element => {
-    //       this.GH001storagemass = element.data().GL001;
-    //       this.NFAL01storagemass = element.data().NFAL01;
-    //       this.PAP005storagemass = element.data().PAP005;
-    //       this.PAP007storagemass = element.data().PAP007;
-    //       this.PAP001storagemass = element.data().PAP001;
-    //       this.PAP003storagemass = element.data().PAP003;
-    //       this.HD001storagemass = element.data().HD001;
-    //       this.LD001storagemass = element.data().LD001;
-    //       this.LD003storagemass = element.data().LD003;
-    //       this.PET001storagemass = element.data().PET001;
-    //       this.PET003storagemass = element.data().PET003;
-    //       this.PET005storagemass = element.data().PEP005;
-    //       // console.log(element);
-    //     });
-    //     // console.log(this.GH001storagemass);
-    //     // console.log(this.NFAL01storagemass);
-    //     // console.log(this.PAP005storagemass);
-    //     // console.log(this.PAP007storagemass);
-    //     // console.log(this.PAP001storagemass);
-    //     // console.log(this.PAP003storagemass);
-    //     // console.log(this.HD001storagemass);
-    //     // console.log(this.LD001storagemass);
-    //     // console.log(this.LD003storagemass);
-    //     // console.log(this.PET001storagemass);
-    //     // console.log(this.PET003storagemass);
-    //     // console.log(this.PET005storagemass);
-
-    //     totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
-    //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
-
-    //     this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
-    //     +this.PET003storagemass + +this.PET005storagemass;
-    //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-    //     String(this.Totalplastic).substring(0, 6);
-
-    //     GH001z = this.GH001storagemass;
-    //     this.GH001 = (String(GH001z).substring(0, 6));
-    //     NFAL01z = this.NFAL01storagemass;
-    //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
-    //   });
-    // }
-
-    // query for week and months
-    // ref.where("timestamp", ">=", "2017-11").where("timestamp", "<", "2017-12")
-
-    // onether way
-    // Query query = mFirestore.collection("rootcollection").whereEqualTo("month", 3);
-    //
-    // Query query = mFirestore.collection("rootcollection")
-    // .orderBy("timestamp", Query.Direction.DESCENDING)
-    // .whereEqualTo("month", 3);
+   
 
     moreState = 0;
     optsSlider = document.getElementsByClassName("burgercontent") as HTMLCollectionOf <HTMLElement>
@@ -1146,4 +1091,79 @@ HideandShowHISTORYGLASS() {
         
         }); 
       }
+
+      CheckInputsEmptyStringPlastic() {
+        if (
+            this.HD001price === undefined &&
+            this.LD001price === undefined &&
+            this.LD003price === undefined &&
+            this.PET001price === undefined &&
+            this.PET003price === undefined &&
+            this.PET005price === undefined
+          ) {
+            this.presentAlertcheckInputs();
+          } else {
+            this.checkinputfields();
+          }
+      }
+    
+  
+    
+
+
+      CheckInputsEmptyStringPaper() {
+        if (
+            this.PAP005price === undefined &&
+            this.PAP007price === undefined &&
+            this.PAP001price === undefined &&
+            this.PET003price === undefined
+            
+          ) {
+            this.presentAlertcheckInputs();
+          } else {
+            this.checkinputfields();
+          }
+      }
+
+      CheckInputsEmptyStringGlass() {
+        if (
+            this.GH001price === undefined 
+          
+            
+          ) {
+            this.presentAlertcheckInputs();
+          } else {
+            this.checkinputfields();
+          }
+      }
+
+      CheckInputsEmptyStringAlu() {
+        if (
+            this.NFAL01price === undefined 
+          
+            
+          ) {
+            this.presentAlertcheckInputs();
+          } else {
+            this.checkinputfields();
+          }
+      }
+
+
+
+      async presentAlertcheckInputs() {
+        const alert = await this.alertController.create({
+          header: 'Warning!',
+          message: '<strong>field cannot be empty.</strong>!!!',
+          buttons: [
+            {
+              text: 'Okay',
+              handler: () => {
+                this.route.navigateByUrl('/home');
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }     
 }
