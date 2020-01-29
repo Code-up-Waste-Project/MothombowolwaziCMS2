@@ -93,10 +93,25 @@ reclaimerplastic =0;
 /* Div */
   editDiv: any = document.getElementsByClassName('editDiv');
   edit: boolean = false;
+
   deleteDiv: any = document.getElementsByClassName('deleteDiv');
   delete: boolean = false;
+
   createDiv: any = document.getElementsByClassName('createDiv');
   create: boolean = false;
+
+
+  paperDiv: any = document.getElementsByClassName('paperDiv');
+  paper: boolean = false;
+
+  glasshDiv: any = document.getElementsByClassName('glassDiv');
+  glassh: boolean = false;
+
+  plasticDiv: any = document.getElementsByClassName('plasticDiv');
+  plastic: boolean = false;
+
+  aluDiv: any = document.getElementsByClassName('aluDiv');
+  alu: boolean = false;
 
   // Reclaimer
   reclaimerID;
@@ -765,7 +780,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       });
     });
   }
-
+//EDIT PAPER
   HideandShowSave() {
     this.edit = !this.edit;
     console.log(this.edit,this.editDiv[0]);
@@ -784,7 +799,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   burgerMan() {
     this.burger = !this.burger;
   }
-
+//edit plastic div
   HideandShowCreate () {
     this.create = !this.create;
         
@@ -798,6 +813,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       }, 500);
     }
   }
+
+  //edit glass div
   glassShow () {
     this.glass = !this.glass;
         
@@ -811,6 +828,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       }, 500);
     }
   }
+
+  //edit aluminium
   HideandShowDelete() {
     this.delete = !this.delete;
     if (this.delete) {
@@ -824,6 +843,62 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     }
   }
 
+ //HISTORY FOR PAPER
+ HideandShowHISTORYPAPER() {
+  this.paper = !this.paper;
+  if (this.paper) {
+    console.log('block');
+    this.render.setStyle(this.paperDiv[0],'display','block')
+  } else {
+    console.log('none');
+    setTimeout(() => {
+      this.render.setStyle(this.paperDiv[0],'display','none')
+    }, 500);
+  }
+}
+
+ //HISTORY FOR PLASTIC
+ HideandShowHISTORYPPLASTIC() {
+  this.plastic = !this.plastic;
+  if (this.plastic) {
+    console.log('block');
+    this.render.setStyle(this.plasticDiv[0],'display','block')
+  } else {
+    console.log('none');
+    setTimeout(() => {
+      this.render.setStyle(this.plasticDiv[0],'display','none')
+    }, 500);
+  }
+}
+
+//HISTORY FOR ALUMINUM
+HideandShowHISTORYALUMINIUM() {
+
+  this.alu = !this.alu;
+  if (this.alu) {
+    console.log('block');
+    this.render.setStyle(this.aluDiv[0],'display','block')
+  } else {
+    console.log('none');
+    setTimeout(() => {
+      this.render.setStyle(this.aluDiv[0],'display','none')
+    }, 500);
+  }
+}
+
+//HISTORY FOR GLASS
+HideandShowHISTORYGLASS() {
+  this.glassh = !this.glassh;
+  if (this.glassh) {
+    console.log('block');
+    this.render.setStyle(this.glasshDiv[0],'display','block')
+  } else {
+    console.log('none');
+    setTimeout(() => {
+      this.render.setStyle(this.glasshDiv[0],'display','none')
+    }, 500);
+  }
+}
 
   /* bar chart */
 
@@ -864,7 +939,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   // this.outboundglass =0;
   // this.outboundpaper =0;
   // this.outboundAlum =0;
-  // this.outboundplastic =0;
+// this.outboundplastic =0;
   createBarChart1() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
