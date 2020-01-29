@@ -619,7 +619,7 @@ color: white;
   }
 }
 }
-#aluminium {
+#aluminium, #glass, #plastic, #paper {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/cans.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -629,29 +629,99 @@ color: white;
 
 #glass {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/glass2.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 7px;
 }
 
 #plastic {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/Hd\ plastic.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 7px;
 }
 #paper {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/flatnews.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 7px;
 }
 #secondborder {
 border: 1px solid gray;
 width: 96%;
 margin-left: 2%;
+
+}
+
+#history {
+//  border: 3px solid blue;
+  width: 70%;
+  h1 {
+   // color: red;
+   // border: 1px solid red;
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+
+  }
+  .data {
+   // border: 2px solid red;
+    height: 85%;
+    // overflow-y: scroll;
+    
+    .info2 {
+    //  border: 2px solid black;
+      // overflow-y: scroll;
+    }
+    .head {
+      background: green;
+     // border: 1px solid red;
+      height: 30px;
+      display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  
+    .date, .oldPrice, .newPrice {
+    //  border: 1px solid blue;
+      width: 33%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    
+    h3 {
+      color: white;
+      font-size: 17px;
+      font-family: 'Microsoft YaHei UI';
+      padding-left: 10px;
+      padding-bottom: 5px;
+    
+    }
+   p {
+     padding-left: 5px;
+   }
+    }
+
+    }
+    .info2 {
+    //  border: 3px solid black;
+      height: 25px;
+      display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    .date, .oldPrice, .newPrice {
+      width: 33%;
+      height: 100%;
+      display: flex;
+      align-content: center;
+      align-items: center;
+    }
+    p {
+      font-size: 13px;
+      font-family: 'Microsoft YaHei UI'; 
+      padding-left: 10px;
+      padding-bottom: 5px;
+    //  border: 1px solid blue;
+      width: 90%;
+    }
+    }
+    .info:nth-child(odd) {
+      background: white;
+  }
+  }
+
 
 }

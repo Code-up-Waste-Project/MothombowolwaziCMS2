@@ -252,11 +252,38 @@
 <!-- DELETE DIVS FOR MATERIAL -->
 <!-- history for paper -->
 <div class="opacitydivs paperDiv" [ngClass]="{'slideIn': paper, 'slideOut': !paper}">
-  <div padding class="editform2">
+  <div padding id="history" class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>history for Paper</h1>
-<p>date  old new <ion-icon name="trash"></ion-icon></p>
-<button ion-button  (click)="checkinputfields()">Save</button>
+  <div class="data">
+        <div class="head">
+    <div class="date"><h3>Date</h3></div>
+    <div class="oldPrice"><h3>Old Price</h3></div>
+    <div class="newPrice"><h3>New Price</h3></div>
+    </div>
+
+    <div class="content" style="height: 85%;overflow-y: scroll;">
+        <div class="info2">
+      <div class="date"><p>21 - 01- 2000</p></div>
+      <div class="oldPrice"><p>1.59</p></div>
+      <div class="newPrice"><p>2.67</p></div>
+    </div>
+    
+    </div>
+  
+    
+
+  </div>
+ 
+
+    <!-- record data heere -->
+    <!-- <div class="info">
+      <div class="date"><p>Date</p></div>
+      <div class="oldPrice"><p>Date</p></div>
+      <div class="newPrice"><p>Date</p></div>
+      </div> -->
+  
+
 </div>
 </div>
 
