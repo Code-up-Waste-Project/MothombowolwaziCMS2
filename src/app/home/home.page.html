@@ -1,7 +1,6 @@
 <ion-header >
   <ion-toolbar class="header" *ngFor="let user of Newadmin"  >
-  <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-    // <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
@@ -21,7 +20,7 @@
           <img src="../../assets/inbound.svg">
         </div>
         <h3>Inbound</h3>
-        <p class="mass">{{inboundweight}}</p>
+        <p class="mass">{{inboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
         <div class="updates">
         <p>updated {{updated}}</p>
         </div>
@@ -35,7 +34,7 @@
           <img src="../../assets/outbound.svg">
         </div>
         <h3>Outbound</h3>
-        <p class="mass">{{outboundweight}}</p>
+        <p class="mass">{{outboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
         <div class="updates">
           <p>Updated {{updatedoutbound}}</p>
         </div>
@@ -48,7 +47,7 @@
           <img src="../../assets/reclaimer.svg">
         </div>
         <h3>Reclaimer</h3>
-        <p class="mass">{{Reclaimerweight}}</p>
+        <p class="mass">{{Reclaimerweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
         <div class="updates">
           <p>Updated {{updateReclaimer}}</p>
         </div>
@@ -68,18 +67,14 @@
           <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
         </div>   
         <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> --> 
-
-
-
-
+<!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> -->  
 <!-- div holding form(EDIT PRICE) -->
-<div class="addcategory">
+<!-- <div class="addcategory">
   <h1>Create New Category </h1>
   <input placeholder="Enter Name of New Material">
   <input placeholder="Enter Price">
   <button ion-button>Save</button>
-</div>
+</div> -->
 <!-- div holding form (DELETE BUTTON) -->
 <!-- <div class="deletecategory">
   <h1>Delete Material Here</h1>
@@ -210,13 +205,13 @@
   <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
 </div>    
 <!-- div holding form(EDIT PRICE) -->
-<div  class="editform">
+<!-- <div  class="editform">
   <h1>Edit Price Rates</h1>
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
   <input placeholder="mass pap005">
 <button ion-button>Save</button>
-</div>
+</div> -->
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div class="addcategory">
   <h1>Create New Category </h1>

@@ -181,6 +181,33 @@ outboundglass =0;
         PET003;
         PET005;
 
+          //Reclaomers
+          // GH001Mass;
+          // HD001Mass; 
+          // LD001Mass; 
+          // LD003Mass;
+          // NFAL01Mass; 
+          // PAP001Mass;
+          // PAP003Mass;
+          // PAP007Mass; 
+          // PET001Mass;
+          // PET003Mass;
+          // PET005Mass;
+          // PAP005Mass
+
+        //outbound
+        // PAP005;
+        // HD001;
+        // LD001;
+        // LD003;
+        // NFAL01; 
+        // PAP001; 
+        // PAP003;
+        // PAP007;
+        // PET001;
+        // PET003;
+        // PET005;
+
 //storage
   GH001storagemass;
   NFAL01storagemass;
@@ -1026,7 +1053,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          borderWidth: 0.1,
+          display: 'false',
+          defaultFontSize: '5px'
         }]
       },
       options: {
@@ -1058,7 +1087,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          borderWidth: 0.1,
+         
+         
         }]
       },
       options: {
