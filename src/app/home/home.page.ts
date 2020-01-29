@@ -291,6 +291,7 @@ firebase.firestore().collection('inbounds').get().then(res=>{
     console.log(new Date(val.data().time.seconds*1000))
     this.updated =(new Date(val.data().time.seconds*1000)).toDateString();
 
+    //glass
   this.inboundglass =this.inboundglass +parseFloat(val.data().inboundGH001)
 //paper
 this.inboundpaper = this.inboundpaper 
@@ -345,6 +346,30 @@ firebase.firestore().collection('outbound').get().then(res=>{
 
   console.log(new Date(val.data().date.seconds*1000))
   this.updatedoutbound =(new Date(val.data().date.seconds*1000)).toDateString();
+
+
+
+    //glass
+    this.outboundglass =this.outboundglass +parseFloat(val.data().GH001)
+    //paper
+    this.outboundpaper = this.outboundpaper 
+    +parseFloat(val.data().PAP005) 
+    + parseFloat(val.data().PAP007) 
+    +parseFloat(val.data().PAP003) 
+    +parseFloat(val.data().PAP001);
+    
+    //aluminium
+    this.outboundAlum = this.outboundAlum  +parseFloat(val.data().NFAL01) 
+    
+    //plastic
+    this.outboundplastic =this.outboundplastic + +parseFloat(val.data().HD001) 
+    +parseFloat(val.data().HD001)
+    +parseFloat(val.data().LD001)
+    +parseFloat(val.data().LD003)
+    +parseFloat(val.data().PET003)
+    +parseFloat(val.data().PET001) 
+
+
   })
 })
 
@@ -1018,6 +1043,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
   
   /* bar chart */
+ 
+ 
   createBarChart1() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
@@ -1026,7 +1053,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'outbound',
-          data: [this.Totalpaper, this.Totalplastic, this.GH001, this.NFAL01,],
+          data: [this.outboundpaper,  this.outboundplastic,  this.outboundglass,  this.outboundAlum,],
       
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
