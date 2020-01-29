@@ -541,8 +541,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
    }
    checkinputfields() {
+
     // GH001price;
-    if (this.GH001price === null) {
+    if (this.GH001price === null ) {
       this.GH001price = this.pricess.gl001;
     } else if (this.GH001price === undefined) {
       this.GH001price = this.pricess.gl001;
@@ -827,6 +828,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
         ],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+          backgroundColor: 'green', // array should have same number of elements as number of dataset
           fillColor: 'blue', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
           borderWidth: 0.1
