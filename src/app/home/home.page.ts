@@ -1051,11 +1051,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
         ],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
+          fillColor: 'blue', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1,
-          display: 'false',
-          defaultFontSize: '5px'
+          borderWidth: 0.1
+        
         }]
       },
       options: {
