@@ -62,8 +62,7 @@
           <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
          <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
           <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-          <!-- <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button> -->
-          <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="trash"></ion-icon></ion-button>
         </div>   
         <img src="../../assets/Asset 8.svg">
 
@@ -91,7 +90,7 @@
   <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
   <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-  <!-- <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button> -->
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYPPLASTIC()"><ion-icon name="trash"></ion-icon></ion-button>
 </div>       
 
 </div>
@@ -118,8 +117,8 @@
 <div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button> -->
+  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYGLASS()" ><ion-icon name="trash"></ion-icon></ion-button>
 </div>       
 
 </div>
@@ -141,8 +140,8 @@
 <div class="burgercontent4" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success"  (click)="HideandShowDelete()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button> -->
+  <!-- <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="trash"></ion-icon></ion-button>
 </div>    
 </div>
 <div class="matnames">
@@ -223,7 +222,8 @@
 <!-- delete material -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >
-  <ion-button class="close"  fill="clear" (click)="HideandShowDelete()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+  <ion-button class="close"  fill="clear" 
+   slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>edit pprice for  Aluminum</h1>
  
   <input placeholder="Enter price" [(ngModel)]="NFAL01price">
@@ -231,4 +231,49 @@
 <button ion-button (click)="checkinputfields()">Save</button>
 </div>
 </div>
+
+<!-- DELETE DIVS FOR MATERIAL -->
+<!-- history for paper -->
+<div class="opacitydivs paperDiv" [ngClass]="{'slideIn': paper, 'slideOut': !paper}">
+  <div padding class="editform2">
+    <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+  <h1>history for Paper</h1>
+<p>date  old new <ion-icon name="trash"></ion-icon></p>
+<button ion-button  (click)="checkinputfields()">Save</button>
+</div>
+</div>
+
+<!-- history for plastic -->
+<div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
+  <div padding class="editform2">
+    <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+  <h1>history for plastic</h1>
+
+
+<button ion-button  (click)="checkinputfields()">Save</button>
+</div>
+</div>
+
+<!-- history for glass -->
+<div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
+  <div padding class="editform2">
+    <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+  <h1>history for glass</h1>
+
+
+<button ion-button  (click)="checkinputfields()">Save</button>
+</div>
+</div>
+
+<!-- history for alu -->
+<div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
+  <div padding class="editform2">
+    <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+  <h1>history for aluminium</h1>
+
+
+<button ion-button  (click)="checkinputfields()">Save</button>
+</div>
+</div>
+
 </ion-content>
