@@ -217,8 +217,8 @@
 
               <!-- code for auto complete -->
               <div class="results">
-                <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
-                <div class='count' *ngIf="searchResults.length > 0" >
+                <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
+                <div class='count' *ngIf="searchResults.length > 0">
                   {{ searchResults.length }}
                 </div>
               </div>
