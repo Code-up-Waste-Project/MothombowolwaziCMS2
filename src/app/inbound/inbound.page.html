@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="Mother" *ngIf="selectedCat">
-    <!-- <div style="3px solid red" id="Son" (click)="goAway()"></div> -->
+    <div id="Son" (click)="goAway()"></div>
     <div id="Daughter">
       <div id="Header">
         <div id="Paper" (click)="togglePaper()">
@@ -29,172 +29,64 @@
       <!--  -->
 <p id="border"></p>
       <div class="myInfo">
+        <!-- PLASTIC MATERIAL -->
         <div class="for-plastic" id="toPlastic">
-          <div id="toFlex">
-
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="HD001mass">
-                <div class="Amount">
-                  <b>
-                    <p>HD001</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="LD001mass">
-                <div class="Amount">
-                  <b>
-                    <p>LD001</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="LD003mass">
-                <div class="Amount">
-                  <b>
-                    <p>LD003</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PET005mass">
-                <div class="Amount">
-                  <b>
-                    <p>PET005</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PET001mass">
-                <div class="Amount">
-                  <b>
-                    <p>PET001</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PET003mass">
-                <div class="Amount">
-                  <b>
-                    <p>PET003</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)='toggleAluminium()'>Next</button>
-            </div>
-          </div>
+            <!-- new code -->
+              <div class="top">
+                <input type="text" placeholder="Mass for HD001" [(ngModel)]="HD001mass">        
+                <input type="text" placeholder="Mass for LB001" [(ngModel)]="LD001mass">
+               </div>
+               <div class="middle">
+                <input type="text" placeholder="Mass for LD003" [(ngModel)]="LD003mass">
+                <input type="text" placeholder="Mass for PET005" [(ngModel)]="PET005mass">
+               </div>
+               <div class="bottom">
+                <input type="text" placeholder="Mass for PET001" [(ngModel)]="PET001mass">
+                <input type="text" placeholder="Mass for PET003" [(ngModel)]="PET003mass">
+               </div>
+               <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
+               <button class="btn"  clear (click)='toggleAluminium()'>Next</button>
+         
 
         </div>
-
+        
+        <!-- PAPER MATERIAL -->
         <div class="for-paper" id="toPaper">
-
-          <div id="toFlex">
-
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP005</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP007</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP001</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP003</p>
-                  </b>
-                </div>
-              </div>
-            </div>
+          <div class="top">
+            <input type="text" placeholder="Mass for PAP005" [(ngModel)]="PAP005mass">
+            <input type="text" placeholder="Mass for PAP007" [(ngModel)]="PAP007mass">
+          </div>
+          <div class="top">
+            <input type="text" placeholder="Mass for PAP001" [(ngModel)]="PAP001mass">
+            <input type="text" placeholder="Mass for PAP003" [(ngModel)]="PAP003mass">
           </div>
 
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)='togglePlastic()'>Next</button>
-            </div>
-          </div>
+          <!-- button -->
+          <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
+          <button class="btn" clear (click)='togglePlastic()'>Next</button>
+        </div><!-- end of PAPER MATERIAL  -->
 
-        </div>
-
+        <!-- Aluminium MATERIAL  -->
         <div class="for-Aluminium" id="toAluminium">
+           <div class="top">
+           <input type="text" placeholder="Mass for NFAL01" [(ngModel)]="NFAL01mass">
+           </div>
+           <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
+           <button class="btn" clear (click)='toggleGlass()'>Next</button>
+          
+        </div><!--  end of Aluminium MATERIAL -->
 
-          <div id="toFlex">
-
-            <div class="FirstRow">
-              <div id="FirstCol-one-input">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="NFAL01mass">
-                <div class="Amount">
-                  <b>
-                    <p>NFAL01</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)='toggleGlass()'>Next</button>
-            </div>
-          </div>
-        </div>
-
+        
+        <!-- Glass MATERIAL  -->
         <div class="for-Glass" id="toGlass">
-
-          <div id="toFlex">
-
-            <div class="FirstRow">
-              <div id="FirstCol-one-input">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="GH001mass">
-                <div class="Amount">
-                  <b>
-                    <p>GL001</p>
-                  </b>
-                </div>
-              </div>
-            </div>
+          <div class="top">
+            <input type="text" placeholder="Mass for GH001" [(ngModel)]="GH001mass">
           </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)="checkinputfields()">Save</button>
-            </div>
-          </div>
+          <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
+          <button class="btn" clear (click)="checkinputfields()">Save</button>
         </div>
+
+        
       </div>
 
     </div>
@@ -229,6 +121,7 @@
       </div>
 
     </div><!-- END OF TOP DIV HOLDING MATERIAL -->
+    
     <!-- BOTTOM DIV HOLDING HISTORY -->
     <div padding class="History">
       <div class="History1">

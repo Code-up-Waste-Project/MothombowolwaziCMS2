@@ -33,6 +33,12 @@ outboundglass =0;
  outboundAlum =0;
  outboundplastic =0;
 
+ //outboundgraphs
+reclaimerglass =0;
+reclaimerpaper =0;
+reclaimerAlum =0;
+reclaimerplastic =0;
+
  
   
  GH001price;
@@ -181,32 +187,7 @@ outboundglass =0;
         PET003;
         PET005;
 
-          //Reclaomers
-          // GH001Mass;
-          // HD001Mass; 
-          // LD001Mass; 
-          // LD003Mass;
-          // NFAL01Mass; 
-          // PAP001Mass;
-          // PAP003Mass;
-          // PAP007Mass; 
-          // PET001Mass;
-          // PET003Mass;
-          // PET005Mass;
-          // PAP005Mass
-
-        //outbound
-        // PAP005;
-        // HD001;
-        // LD001;
-        // LD003;
-        // NFAL01; 
-        // PAP001; 
-        // PAP003;
-        // PAP007;
-        // PET001;
-        // PET003;
-        // PET005;
+        
 
 //storage
   GH001storagemass;
@@ -280,9 +261,7 @@ Totalplasticinbound: number = 0;
 
     ionViewDidEnter() {
 
-      this.createBarChart();
-      this.createBarChart1();
-      this.createBarChart2();
+      
    
       // this.Reclaimerdata();
       // this.outbounddata();
@@ -343,6 +322,8 @@ this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001)
     
     
   })
+  this.createBarChart();
+ 
 
 })
 
@@ -354,8 +335,11 @@ this.outboundglass =0;
  this.outboundplastic =0;
 
 this.outboundweight =0;
+
 firebase.firestore().collection('outbound').get().then(res=>{
   res.forEach(val=>{
+    this.createBarChart1();
+    
     console.log(val.data().GH001+val.data().GH001)
     this.outboundweight =this.outboundweight 
     +parseFloat(val.data().GH001)
@@ -377,8 +361,10 @@ firebase.firestore().collection('outbound').get().then(res=>{
 
 
     //glass
+    console.log('ountglass',  this.outboundglass)
     this.outboundglass =this.outboundglass +parseFloat(val.data().GH001)
     //paper
+    console.log('outboundpaper',this.outboundpaper)
     this.outboundpaper = this.outboundpaper 
     +parseFloat(val.data().PAP005) 
     + parseFloat(val.data().PAP007) 
@@ -386,9 +372,11 @@ firebase.firestore().collection('outbound').get().then(res=>{
     +parseFloat(val.data().PAP001);
     
     //aluminium
+    console.log('outboundAluminium', this.outboundAlum)
     this.outboundAlum = this.outboundAlum  +parseFloat(val.data().NFAL01) 
     
     //plastic
+    console.log('outplastic',this.outboundplastic)
     this.outboundplastic =this.outboundplastic + +parseFloat(val.data().HD001) 
     +parseFloat(val.data().HD001)
     +parseFloat(val.data().LD001)
@@ -401,9 +389,16 @@ firebase.firestore().collection('outbound').get().then(res=>{
 })
 
 //reclaimer
+this.reclaimerglass =0;
+this.reclaimerpaper =0;
+this.reclaimerAlum =0;
+this.reclaimerplastic =0;
 this.Reclaimerweight =0;
 firebase.firestore().collection('reclaimers').get().then(res=>{
   res.forEach(val=>{
+
+    this.createBarChart2();
+
     console.log(val.data().GH001Mass+val.data().HD001Mass)
     this.Reclaimerweight =this.Reclaimerweight 
     +parseFloat(val.data().GH001Mass)
@@ -421,6 +416,38 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
     console.log(new Date(val.data().date.seconds*1000))
     this.updateReclaimer =(new Date(val.data().date.seconds*1000)).toDateString();
+
+
+    this.reclaimerglass =0;
+    this.reclaimerpaper =0;
+    this.reclaimerAlum =0;
+    this.reclaimerplastic =0;
+
+    //glass
+    console.log('glassreclaimer',this.reclaimerglass)
+    this.reclaimerglass  = this.reclaimerglass  +parseFloat(val.data().GH001)
+    //paper
+    console.log('paperreclaimer',this.reclaimerpaper)
+    this.reclaimerpaper =   this.reclaimerpaper
+    +parseFloat(val.data().PAP005Mass) 
+    + parseFloat(val.data().PAP007Mass) 
+    +parseFloat(val.data().PAP003Mass) 
+    +parseFloat(val.data().PAP001Mass);
+    
+    //aluminium
+    console.log('aluminiumreclaimer',this.reclaimerAlum )
+    this.reclaimerAlum  = this.reclaimerAlum   +parseFloat(val.data().NFAL01) 
+    
+    //plastic
+    console.log('plasticreclaimer',    this.reclaimerplastic )
+    this.reclaimerplastic =this.reclaimerplastic + +parseFloat(val.data().HD001) 
+    +parseFloat(val.data().HD001Mass)
+    +parseFloat(val.data().LD001Mass)
+    +parseFloat(val.data().LD003Mass)
+    +parseFloat(val.data().PET003Mass)
+    +parseFloat(val.data().PET001Mass) 
+
+
   })
 })
 
@@ -797,248 +824,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     }
   }
 
-  // getMasses() {
-  //   let totalPaperz = 0;
-  //   let GH001z;
-  //   let NFAL01z;
-
-  //   this.db.collection('reclaimers').onSnapshot(snapshot => {
-  //     snapshot.forEach(element => {
-  //       this.GH001storagemass = element.data().GL001;
-  //       this.NFAL01storagemass = element.data().NFAL01;
-  //       this.PAP005storagemass = element.data().PAP005;
-  //       this.PAP007storagemass = element.data().PAP007;
-  //       this.PAP001storagemass = element.data().PAP001;
-  //       this.PAP003storagemass = element.data().PAP003;
-  //       this.HD001storagemass = element.data().HD001;
-  //       this.LD001storagemass = element.data().LD001;
-  //       this.LD003storagemass = element.data().LD003;
-  //       this.PET001storagemass = element.data().PET001;
-  //       this.PET003storagemass = element.data().PET003;
-  //       this.PET005storagemass = element.data().PEP005;
-  //       console.log(element);
-  //     });
-  //     // console.log(this.GH001storagemass);
-  //     // console.log(this.NFAL01storagemass);
-  //     // console.log(this.PAP005storagemass);
-  //     // console.log(this.PAP007storagemass);
-  //     // console.log(this.PAP001storagemass);
-  //     // console.log(this.PAP003storagemass);
-  //     // console.log(this.HD001storagemass);
-  //     // console.log(this.LD001storagemass);
-  //     // console.log(this.LD003storagemass);
-  //     // console.log(this.PET001storagemass);
-  //     // console.log(this.PET003storagemass);
-  //     // console.log(this.PET005storagemass);
-
-  //     totalPaperz = +this.PAP005storagemass + +this.PAP007storagemass + +this.PAP001storagemass + +this.PAP003storagemass;
-  //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
-
-  //     this.Totalplastic = +this.HD001storagemass + +this.LD001storagemass + +this.LD003storagemass + +this.PET001storagemass +
-  //     +this.PET003storagemass + +this.PET005storagemass;
-  //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-  //     String(this.Totalplastic).substring(0, 6);
-
-  //     GH001z = this.GH001storagemass;
-  //     this.GH001 = (String(GH001z).substring(0, 6));
-  //     NFAL01z = this.NFAL01storagemass;
-  //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
-  //   });
-  // }
-
-//   inbounddata() {
-//    let Totalpapersinbound = 0;
-//   //  Totalpaper: number = 0;
-//   //  Totalplastic: number = 0;
-//   //  Totalplasticz: string;
-//   //  Totalpaperinbound: number = 0;
-//   //  Totalpapersinbound: string;
-
-// //   Totalpaperinbound: number = 0;
-// //   Totalpapersinbound: string;
-// // Totalplasticinbound: number = 0;
-
-//     // let totalPaperz = 0;
-//     let GH001z;
-//     let NFAL01z;
-
-//   let totalpaperinbound = 0;
-
-
-
-
-
-    
-//     this.db.collection('inbounds').onSnapshot(snapshot => {
-//       snapshot.forEach(element => {
-//         this.inboundGH001 = element.data().inboundGH001;
-//         this.inboundHD001 = element.data().inboundHD001;
-//         this.inboundLD001 = element.data().inboundLD001;
-//         this.inboundLD003 = element.data().inboundLD003;
-//         this.inboundNFAL01 = element.data().inboundNFAL01;
-//         this. inboundPAP001 = element.data().inboundPAP001;
-//         this.inboundPAP003 = element.data().inboundPAP003;
-//         this. inboundPAP003 = element.data().inboundPAP003;
-//         this.inboundPAP007 = element.data().inboundPAP007;
-//         this. inboundPET001 = element.data().inboundPET001;
-//         this.inboundPET003 = element.data().inboundPET003;
-//         this.inboundPET005 = element.data().inboundPET005;
-//         console.log(element.data());
-//       });
-//       // console.log(this.GH001storagemass);
-//       // console.log(this.NFAL01storagemass);
-//       // console.log(this.PAP005storagemass);
-//       // console.log(this.PAP007storagemass);
-//       // console.log(this.PAP001storagemass);
-//       // console.log(this.PAP003storagemass);
-//       // console.log(this.HD001storagemass);
-//       // console.log(this.LD001storagemass);
-//       // console.log(this.LD003storagemass);
-//       // console.log(this.PET001storagemass);
-//       // console.log(this.PET003storagemass);
-//       // console.log(this.PET005storagemass);
-
-//       totalpaperinbound = +this.inboundPAP005 + +this.inboundPAP007 + +this.inboundPAP001 + +this.inboundPAP003;
-//       this.Totalpaperinbound = Number(String(totalpaperinbound).substring(0, 6));
-
-//       this.Totalplasticinbound = +this.inboundHD001 + +this.inboundLD001 + +this.inboundLD003 + +this.PET001 +
-//       +this.PET003 + +this.PET005;
-//       this.Totalpapersinbound = (String(this.Totalplasticinbound).substring(0, 6));
-//       String(this.Totalplasticinbound).substring(0, 6);
-
-//       GH001z = this.inboundGH001;
-//       this.GH001 = (String(GH001z).substring(0, 6));
-//       NFAL01z = this.NFAL01;
-//       this.NFAL01 = (String(NFAL01z).substring(0, 6));
-//     });
-//   }
-
-  // outbounddata() {
-  //   let totalPaperz = 0;
-  //   let GH001z;
-  //   let NFAL01z;
-
-  
-
-
-
-
-
-    
-  //   this.db.collection('outbound').onSnapshot(snapshot => {
-  //     snapshot.forEach(element => {
-  //       this.GH001 = element.data().GH001;
-  //       this.HD001 = element.data().HD001;
-  //       this.LD001 = element.data().LD001;
-  //       this.LD003 = element.data().LD003;
-  //       this.NFAL01 = element.data().NFAL01;
-  //       this. PAP001 = element.data().PAP001;
-  //       this.PAP003 = element.data().PAP003;
-  //       this. PAP003 = element.data().PAP003;
-  //       this.PAP007 = element.data().PAP007;
-  //       this. PET001 = element.data().PET001;
-  //       this.PET003 = element.data().PET003;
-  //       this.PET005 = element.data().PET005;
-  //       console.log(element);
-  //     });
-  //     // console.log(this.GH001storagemass);
-  //     // console.log(this.NFAL01storagemass);
-  //     // console.log(this.PAP005storagemass);
-  //     // console.log(this.PAP007storagemass);
-  //     // console.log(this.PAP001storagemass);
-  //     // console.log(this.PAP003storagemass);
-  //     // console.log(this.HD001storagemass);
-  //     // console.log(this.LD001storagemass);
-  //     // console.log(this.LD003storagemass);
-  //     // console.log(this.PET001storagemass);
-  //     // console.log(this.PET003storagemass);
-  //     // console.log(this.PET005storagemass);
-
-  //     totalPaperz = +this.PAP005 + +this.PAP007 + +this.PAP001 + +this.PAP003;
-  //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
-
-  //     this.Totalplastic = +this.HD001 + +this.LD001 + +this.LD003 + +this.PET001 +
-  //     +this.PET003 + +this.PET005;
-  //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-  //     String(this.Totalplastic).substring(0, 6);
-
-  //     GH001z = this.GH001;
-  //     this.GH001 = (String(GH001z).substring(0, 6));
-  //     NFAL01z = this.NFAL01;
-  //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
-  //   });
-  // }
-
-  // Reclaimerdata() {
-  //   let totalPaperz = 0;
-  //   let GH001z;
-  //   let NFAL01z;
-
-  
-
-
-
-
-
-    
-  //   this.db.collection('reclaimers').onSnapshot(snapshot => {
-  //     snapshot.forEach(element => {
-  //       this.GH001Mass = element.data().GH001;
-  //       this.HD001Mass = element.data().HD001;
-  //       this.LD001Mass = element.data().LD001;
-  //       this.LD003Mass = element.data().LD003;
-  //       this.NFAL01Mass = element.data().NFAL01;
-  //       this. PAP001Mass = element.data().PAP001;
-  //       this.PAP003Mass = element.data().PAP003;
-  //       this. PAP003Mass = element.data().PAP003;
-  //       this.PAP007Mass = element.data().PAP007;
-  //       this. PET001Mass = element.data().PET001;
-  //       this.PET003Mass = element.data().PET003;
-  //       this.PET005Mass = element.data().PET005;
-  //       console.log(element);
-  //     });
-  //     // console.log(this.GH001storagemass);
-  //     // console.log(this.NFAL01storagemass);
-  //     // console.log(this.PAP005storagemass);
-  //     // console.log(this.PAP007storagemass);
-  //     // console.log(this.PAP001storagemass);
-  //     // console.log(this.PAP003storagemass);
-  //     // console.log(this.HD001storagemass);
-  //     // console.log(this.LD001storagemass);
-  //     // console.log(this.LD003storagemass);
-  //     // console.log(this.PET001storagemass);
-  //     // console.log(this.PET003storagemass);
-  //     // console.log(this.PET005storagemass);
-  //     console.log('paper',this.Totalpaper)
-  //     totalPaperz = +this.PAP005Mass + +this.PAP007Mass + +this.PAP001Mass + +this.PAP003Mass;
-  //     this.Totalpaper = Number(String(totalPaperz).substring(0, 6));
-    
-  //     console.log('plastic',   this.Totalplastic )
-  //     this.Totalplastic = +this.HD001Mass + +this.LD001Mass + +this.LD003Mass + +this.PET001Mass +
-  //     +this.PET003 + +this.PET005;
-  //     this.Totalplasticz = (String(this.Totalplastic).substring(0, 6));
-  //     String(this.Totalplastic).substring(0, 6);
-
-  //     console.log('Glass',      this.GH001Mass )
-  //     GH001z = this.GH001Mass;
-  //     this.GH001Mass = (String(GH001z).substring(0, 6));
-      
-      
-  //     console.log('NFAL01z',      this.NFAL01 )
-  //     NFAL01z = this.NFAL01Mass;
-  //     this.NFAL01 = (String(NFAL01z).substring(0, 6));
-  //   });
-  // }
-
-
-
-
-
-
-
-
 
   /* bar chart */
+
+
   createBarChart() {
 
     this.bars = new Chart(this.barChart.nativeElement, {
@@ -1051,9 +840,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
         ],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
+          fillColor: 'blue', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
           borderWidth: 0.1
+        
         }]
       },
       options: {
@@ -1071,7 +861,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   
   /* bar chart */
  
- 
+  // this.outboundglass =0;
+  // this.outboundpaper =0;
+  // this.outboundAlum =0;
+  // this.outboundplastic =0;
   createBarChart1() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
@@ -1080,12 +873,14 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'outbound',
-          data: [this.outboundpaper,  this.outboundplastic,  this.outboundglass,  this.outboundAlum,],
+          data: [this.outboundpaper, this.outboundplastic,  this.outboundglass,  this.outboundAlum,],
       
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          borderWidth: 0.1,
+         
+         
         }]
       },
       options: {
@@ -1101,6 +896,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   }
 
     /* bar chart */
+   
+
+
+
     createBarChart2() {
       this.bars = new Chart(this.barChart2.nativeElement, {
         type: 'bar',
@@ -1109,7 +908,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
           datasets: [{
             label: 'Reclaimers',
-            data: [this.Totalpaper, this.Totalplastic, this.GH001, this.NFAL01,],
+            data: [ this.reclaimerglass, this.reclaimerpaper, this.reclaimerAlum,   this.reclaimerplastic,],
             // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
             backgroundColor: 'green', // array should have same number of elements as number of dataset
             borderColor: 'red',  // array should have same number of elements as number of dataset

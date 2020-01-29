@@ -152,9 +152,12 @@ export class OutboundPage implements OnInit {
 
   motherDiv = document.getElementsByClassName("Mother") as HTMLCollectionOf <HTMLElement>;
 
+
     goAway() {
       // alert("clicked")
+      this.selectedCat = "";
       this.motherDiv[0].style.display = "none"
+      this.driverInformation = false
     }
     coemBack() {
       this.motherDiv[0].style.display = "block"

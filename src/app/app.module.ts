@@ -20,18 +20,33 @@ import { RegistersPipe } from './registers.pipe';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyB5FpPISbzSmTxUH4IY5qk9cXtLnK2djy0",
-  authDomain: "mthombowolwazi-a7902.firebaseapp.com",
-  databaseURL: "https://mthombowolwazi-a7902.firebaseio.com",
-  projectId: "mthombowolwazi-a7902",
-  storageBucket: "gs://mthombowolwazi-a7902.appspot.com",
-  messagingSenderId: "600992256023",
-  appId: "1:600992256023:web:816994d446312af5020c52",
-  measurementId: "G-BM6WENYL3H"
+  apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
+  authDomain: "mothombowolwazicms.firebaseapp.com",
+  databaseURL: "https://mothombowolwazicms.firebaseio.com",
+  projectId: "mothombowolwazicms",
+  storageBucket: "mothombowolwazicms.appspot.com",
+  messagingSenderId: "341336075428",
+  appId: "1:341336075428:web:5ca270a91c3b7560840a31",
+  measurementId: "G-17SX6EWXGR"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
+// // Your web app's Firebase configuration
+// var firebaseConfig = {
+//   apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
+//   authDomain: "mothombowolwazicms.firebaseapp.com",
+//   databaseURL: "https://mothombowolwazicms.firebaseio.com",
+//   projectId: "mothombowolwazicms",
+//   storageBucket: "mothombowolwazicms.appspot.com",
+//   messagingSenderId: "341336075428",
+//   appId: "1:341336075428:web:5ca270a91c3b7560840a31",
+//   measurementId: "G-17SX6EWXGR"
+// };
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
 
 @NgModule({
   declarations: [AppComponent, RegistersPipe],

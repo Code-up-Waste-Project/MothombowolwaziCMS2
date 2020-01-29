@@ -46,7 +46,7 @@ ion-icon {
 }//END OF HEADER
 
 .container {
- //   border: 1px solid red;
+//  border: 1px solid red;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -60,14 +60,16 @@ ion-icon {
   width: 68%;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.719);
+ // border: 1px solid blue;
+  overflow-y: scroll;
 
   .profile {
-     // border: 1px solid blue;
+    // border: 3px solid rgb(255, 0, 212);
       height: 100px;
-      width: 400px;
+      width: 430px;
   margin-top: 3%;
       .names {
-         // border: 2px solid rgb(13, 184, 36);
+          //border: 2px solid rgb(13, 184, 36);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           height: 75px;
           width: 400px;
@@ -95,14 +97,13 @@ ion-icon {
       }
       .image {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.048), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
-
-          //border: 1px solid green;
+         // border: 1px solid red;
           width: 80px;
           height: 100%;
-         position: relative;
-   top: -80%;
-         left: 10%;
-         border-radius: 10px;
+          position: absolute;
+          top: -30%;
+          left: 10%;
+          border-radius: 10px;
          img {
              object-fit: cover;
              border-radius: 10px;
