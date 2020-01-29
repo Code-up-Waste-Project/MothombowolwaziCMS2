@@ -217,7 +217,7 @@
 
 
   <div class="Mother" id="wasteInformation" *ngIf="otherPopup === true">
-    <div class="Son"></div>
+    <div id="Son" (click)="goAway()"></div>
     <div class="Mask">
       <div class="LEFT">
         <ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon>
@@ -239,10 +239,10 @@
                 {{ searchResults.length }}
               </div>
             </div>
-             <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation" type="number"></ion-input>
+             <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation" type="number"></ion-input> --> 
             <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
            
-            <ion-item no-lines>{{ userLocation }}</ion-item>
+            <!-- <ion-item no-lines>{{ userLocation }}</ion-item> -->
 
             <ion-card *ngFor="let records of testArrays">
               <ion-card-content>
@@ -275,9 +275,9 @@
                 <input id="input" placeholder="contact" [(ngModel)]="contacts" formControlName="contacts" type="number">
                 <input id="input" placeholder="address" [(ngModel)]="addresss" formControlName="addresss" type="text">
               </div>
-              <div class="DoneBTN">
+              <!-- <div class="DoneBTN">
                 <ion-button id="Done" color="clear">Done</ion-button>
-              </div>
+              </div> -->
             </div>
           </div>
         </form>

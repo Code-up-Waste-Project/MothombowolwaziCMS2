@@ -1560,6 +1560,7 @@ Logout() {
   goAway() {
     // this.motherDiv[0].style.display = "none";
     this.selectedCat = "";
+    this.otherPopup = false;
   }
 
   coemBack() {
@@ -1570,8 +1571,8 @@ Logout() {
   group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
   nextClick(){
     this.driverInfo = true;
-    this.group1[0].style.left = "10px";
-    this.group1[0].style.width = "40%"
+    this.group1[0].style.left = "30%";
+    this.group1[0].style.width = "50%"
   }
 
   getItems(ev: any) {
