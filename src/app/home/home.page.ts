@@ -842,7 +842,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          borderWidth: 0.1,
+          display: 'false',
+          defaultFontSize: '5px'
         }]
       },
       options: {
@@ -877,7 +879,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'green', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          borderWidth: 0.1,
+         
+         
         }]
       },
       options: {
