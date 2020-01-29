@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-outbound',
@@ -16,6 +17,8 @@ import { AlertController, LoadingController, ToastController } from '@ionic/angu
   styleUrls: ['./outbound.page.scss'],
 })
 export class OutboundPage implements OnInit {
+
+  myControl = new FormControl();
 
   letterObj = {
     to: '',
@@ -46,6 +49,8 @@ export class OutboundPage implements OnInit {
   PDFArrayPrint = [];
   Outboundz;
   time;
+
+  UserArray = {};
 
   prices;
   getprice;
@@ -133,6 +138,15 @@ export class OutboundPage implements OnInit {
   pdfObj = null;
 
   RegisterForm: FormGroup;
+
+  options: string[] = ['One', 'Two', 'Three'];
+
+  userLocation = "";
+  searchQuery: string = "";
+  searchResults = [];
+  myLocation = "Search for Name";
+  usersz = [];
+  users = [];
 
   /////////////////////////////////////////////////////////////////////////////////////
 
@@ -235,12 +249,16 @@ export class OutboundPage implements OnInit {
         let outDriverName = {};
         let outRegistarionNumberPlates = {};
         let outovarallMass = {};
+        let Destination = {};
+        let TruckSourcess = {};
 
         id = this.id = element.id;
         outdate = this.outdate = element.data().date;
         outDriverName = this.outDriverName = element.data().DriverName;
         outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
         outovarallMass = this.outovarallMass = element.data().ovarallMass;
+        Destination = this.Destination = element.data().Destination;
+        TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
 
         // this.outbound = [];
         this.outbound.push({
@@ -249,14 +267,54 @@ export class OutboundPage implements OnInit {
           outdriverName: outDriverName,
           outRegistarionNo: outRegistarionNumberPlates,
           outovarallmass: outovarallMass,
+          outTrucksource: TruckSourcess
         });
         // this.outbound.push(element.data());
         // console.log(this.outbound);
+
+        
+        this.UserArray = {
+          DriverName: outDriverName,
+          RegistarionNumberPlates: outRegistarionNumberPlates,
+          overallStorage: outovarallMass,
+          TruckSourcess: TruckSourcess,
+          Destination: Destination,
+        }
+        console.log(this.UserArray);
+
+        this.usersz.push(outDriverName)
+
       });
     });
+
+    this.RegisterForm = formGroup.group({
+      DriverNameInput : ['', [Validators.required, Validators.maxLength(15)]],
+      RegistarionNumberPlatesInput : ['', [Validators.required, Validators.maxLength(15)]],
+      DestinationInput : ['', [Validators.required, Validators.maxLength(10)]],
+      TruckSourcessInput : ['', [Validators.required, , Validators.maxLength(40)]],
+    });
+
+    console.log(this.usersz);
+
+    this.LoopNames();
+    
    }
 
   ngOnInit() {
+  }
+
+  LoopNames() {
+    // auto complete
+      // tslint:disable-next-line: forin
+      for (let key in this.UserArray) {
+        // for (let item in this.usersz) {
+        //   this.users.push(item[key])
+        // }
+
+        // this.usersz.push(this.UserArray[key].DriverName);
+    }
+    console.log(this.usersz);
+    console.log(this.users);
   }
 
   pdfmakerFirebase() {
@@ -412,6 +470,13 @@ export class OutboundPage implements OnInit {
 
     });
   });
+
+    let UserName = [];
+
+    this.testArray.forEach((item) => {
+      UserName.push(item.number);
+    });
+
   }
 
   ForLoop() {
@@ -427,6 +492,7 @@ export class OutboundPage implements OnInit {
         }
       }
       // console.log(this.PDFArrayPrint);
+
     }
 
   getMasses() {
@@ -1044,9 +1110,67 @@ export class OutboundPage implements OnInit {
       this.group1[0].style.width = "40%"
     }
 
+    getItems(ev: any) {
+      // Reset items back to all of the items
+      // set val to the value of the searchbar
+      const val = ev.target.value;
+  
+      // if the value is an empty string don't filter the items
+      console.log(val);
+      if (val && val.trim() != "") {
+        this.searchResults = this.usersz.filter(item => {
+          return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
+        });
+        console.log('Results = ',this.searchResults);
+      } else if (val != " ") {
+        this.searchResults = this.usersz.filter(item => {
+          return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
+        });
+      } else if (val == "") {
+        this.searchResults = [];
+      }
 
-
-    showDriverDetails(){
+      console.log(this.usersz);
+      console.log(this.searchResults);
       
     }
+
+    selectLocation(location) {
+      this.userLocation = location;
+      this.searchResults = [];
+      console.log(this.userLocation);
+      console.log(location);
+
+      this.db.collection('outbound').where("DriverName","==",location).onSnapshot(element => {
+        element.forEach(element => {
+        this.id = element.id;
+        this.DriverName = element.data().DriverName;
+        this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+        // this.overallStorage = element.data().ovarallMass;
+        this.TruckSourcess = element.data().TruckSourcess;
+        this.Destination = element.data().Destination;
+        console.log(element.data().DriverName);
+        console.log(element.data().RegistarionNumberPlates);
+        // console.log(element.data().overallStorage);
+        console.log(element.data().TruckSourcess);
+        console.log(element.data().Destination);
+        console.log(element.data());
+          })
+
+          // adding data to textboxes
+          this.DriverNameInput = this.DriverName;
+          this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
+          this.TruckSourcessInput = this.TruckSourcess;
+          this.DestinationInput = this.Destination
+        })
+
+    }
+
+    // angular.json  code (do not delete)
+    // {
+    //   "glob": "**/*",
+    //   "input": "node_modules/ionic4-auto-complete/assets/",
+    //   "output": "./assets/"
+    // }
+
 }

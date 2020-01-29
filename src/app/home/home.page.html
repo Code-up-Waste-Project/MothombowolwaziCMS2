@@ -1,6 +1,7 @@
-<ion-header *ngFor="let user of Newadmin">
-  <ion-toolbar class="header" >
-    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+<ion-header >
+  <ion-toolbar class="header" *ngFor="let user of Newadmin"  >
+  <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    // <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
@@ -22,7 +23,7 @@
         <h3>Inbound</h3>
         <p class="mass">{{inboundweight}}</p>
         <div class="updates">
-          <p>Updated 56min ago</p>
+        <p>updated {{updated}}</p>
         </div>
       </div>
     
@@ -36,7 +37,7 @@
         <h3>Outbound</h3>
         <p class="mass">{{outboundweight}}</p>
         <div class="updates">
-          <p>Updated 56min ago</p>
+          <p>Updated {{updatedoutbound}}</p>
         </div>
       </div>
     </div>
@@ -49,7 +50,7 @@
         <h3>Reclaimer</h3>
         <p class="mass">{{Reclaimerweight}}</p>
         <div class="updates">
-          <p>Updated 56min ago</p>
+          <p>Updated {{updateReclaimer}}</p>
         </div>
       </div>
     </div>
@@ -90,7 +91,11 @@
 </div>
       <div class="matnames">
         <div class="codes">
-         <p *ngFor ="let x of editprices">{{x.code}} <span>R{{x.price}}</span></p>
+         <p>pap005 <span>R {{ pricess.pap005 }}</span></p>
+         <p>pap007 <span>R {{ pricess.pap007 }}</span></p>
+         <p>pap001 <span>R {{ pricess.pap001 }}</span></p>
+         <p>pap003 <span>R {{ pricess.pap003 }}</span></p>
+        
           </div>
         <div class="manname">
           PAPER
@@ -105,8 +110,8 @@
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
 <div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+ <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
 </div>       
 <!-- div holding form(EDIT PRICE) -->
@@ -135,10 +140,11 @@
 </div>
       <div class="matnames">
         <div class="codes">
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
+          <p>hd001 <span>R{{ pricess.hd001 }}</span></p>
+          <p>ld001 <span>R{{ pricess.ld001 }}</span></p>
+          <p>ld003 <span>R{{ pricess.ld003 }}</span></p>
+          <p>pet005 <span>R{{ pricess.pet005 }}</span></p>
+          <p>pet001 <span>R{{ pricess.pet001 }}</span></p>
     </div>
         <div class="manname">
           Plastic
@@ -154,9 +160,9 @@
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
 <div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+ <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
 </div>       
 <!-- div holding form(EDIT PRICE) -->
 <!-- <div  class="editform">
@@ -184,10 +190,8 @@
 </div>
 <div class="matnames">
   <div class="codes">
-    <p>PAP005 <span>R0. 67</span></p>
-    <p>PAP005 <span>R0. 67</span></p>
-    <p>PAP005 <span>R0. 67</span></p>
-    <p>PAP005 <span>R0. 67</span></p>
+    <p>gl001 <span>R {{ pricess.gl001 }}</span></p>
+   
     </div>
   <div class="manname">
     Glass
@@ -201,9 +205,9 @@
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
 <div class="burgercontent4" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+ <ion-button fill="clear" size="small" color="success"  (click)="HideandShowDelete()"><ion-icon name="create" ></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
 </div>    
 <!-- div holding form(EDIT PRICE) -->
 <div  class="editform">
@@ -231,10 +235,8 @@
 </div>
 <div class="matnames">
   <div class="codes" >
-    <p>PAP005 <span>R0. 67</span></p>
-    <p>PAP005 <span>R0. 67</span></p>
-    <p>PAP005 <span>R0. 67</span></p>
-    <p>PAP005 <span>R0. 67</span></p>
+    <p>nfalo1 <span>R {{ pricess.nfalo1 }}</span></p>
+    
     </div>
   <div class="manname" >
     ALUMINIUM
@@ -279,7 +281,6 @@
     <div class="graph" >
       <canvas #barChart></canvas>
     </div>
-<<<<<<< HEAD
 
     <div class="graph" >
       <canvas #barChart1></canvas>
@@ -291,10 +292,6 @@
     </div>
     <!-- <div class="graph"><canvas #barChart></canvas></div>
     <div class="graph"><canvas #barChart></canvas></div> -->
-=======
-    <div class="graph"><canvas #barChart></canvas></div>
-    <div class="graph"><canvas #barChart></canvas></div>
->>>>>>> a5b89feaf748f9f5476c4da90f8ee931ffbc3792
   </div>
 </div>
 <!-- boxes to appear when you perfom action on categori images -->
@@ -302,35 +299,53 @@
 <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
 <div padding class="editform2">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
-  <h1>Edit Price Rates</h1>
+  <h1>Edit Price for Plastic</h1>
  
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-<button ion-button>Save</button>
+  <input placeholder="Enter price" [(ngModel)]="HD001price">
+  <input placeholder="Enter price" [(ngModel)]="LD001price">
+  <input placeholder="Enter price" [(ngModel)]="LD003price">
+  <input placeholder="Enter price" [(ngModel)]="PET005price">
+  <input placeholder="Enter price" [(ngModel)]="PET001price">
+  
+  <input placeholder="mass pap005" [(ngModel)]="PET003price"> 
+ 
+
+<button ion-button (click)="checkinputfields()">Save</button>
 </div>
 </div>
+<div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
+  <div padding class="editform2">
+    <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
+    <h1>Edit Price for Glass </h1>
+   
+    <input placeholder="mass pap005" [(ngModel)]="GH001price">
+  
+    
+  <button ion-button (click)="checkinputfields()">Save</button>
+  </div>
+  </div>
 <!-- create new material -->
 <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>Create New Material Here</h1>
-  <input placeholder="Enter Material Name" [(ngModel)] ="newmaterial.name">
-  <input placeholder="Enter Price" [(ngModel)] ="newmaterial.price" type ="number">
- <input placeholder="Enter code"  [(ngModel)] ="newmaterial.code">
-<button ion-button (click) ='newmate(newmaterial)'>Save</button>
+  <h1>Edit price for Paper</h1>
+  <input placeholder="Enter price" [(ngModel)]="PAP005price" >
+  <input placeholder="Enter Price"  [(ngModel)]="PAP007price">
+ <input placeholder="Enter price"  [(ngModel)]="PAP001price">
+ <input placeholder="Enter price" [(ngModel)]="PAP003price">
+
+<button ion-button  (click)="checkinputfields()">Save</button>
 </div>
 </div>
 <!-- delete material -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >
   <ion-button class="close"  fill="clear" (click)="HideandShowDelete()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>Delete Material Here</h1>
+  <h1>edit pprice for  Aluminum</h1>
  
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-<button ion-button>Save</button>
+  <input placeholder="Enter price" [(ngModel)]="NFAL01price">
+  
+<button ion-button (click)="checkinputfields()">Save</button>
 </div>
 </div>
 </ion-content>

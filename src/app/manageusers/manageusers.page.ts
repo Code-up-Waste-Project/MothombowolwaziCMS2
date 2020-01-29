@@ -219,6 +219,9 @@ oneprofile:any ={};
       }
 
       saveNewUseer() {
+
+
+        
         this.db.collection('admin').add({
           email: this.email,
           password: this.password
