@@ -361,8 +361,10 @@ firebase.firestore().collection('outbound').get().then(res=>{
 
 
     //glass
+    console.log('ountglass',  this.outboundglass)
     this.outboundglass =this.outboundglass +parseFloat(val.data().GH001)
     //paper
+    console.log('outboundpaper',this.outboundpaper)
     this.outboundpaper = this.outboundpaper 
     +parseFloat(val.data().PAP005) 
     + parseFloat(val.data().PAP007) 
@@ -370,9 +372,11 @@ firebase.firestore().collection('outbound').get().then(res=>{
     +parseFloat(val.data().PAP001);
     
     //aluminium
+    console.log('outboundAluminium', this.outboundAlum)
     this.outboundAlum = this.outboundAlum  +parseFloat(val.data().NFAL01) 
     
     //plastic
+    console.log('outplastic',this.outboundplastic)
     this.outboundplastic =this.outboundplastic + +parseFloat(val.data().HD001) 
     +parseFloat(val.data().HD001)
     +parseFloat(val.data().LD001)
@@ -420,8 +424,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     this.reclaimerplastic =0;
 
     //glass
+    console.log('glassreclaimer',this.reclaimerglass)
     this.reclaimerglass  = this.reclaimerglass  +parseFloat(val.data().GH001)
     //paper
+    console.log('paperreclaimer',this.reclaimerpaper)
     this.reclaimerpaper =   this.reclaimerpaper
     +parseFloat(val.data().PAP005Mass) 
     + parseFloat(val.data().PAP007Mass) 
@@ -429,10 +435,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     +parseFloat(val.data().PAP001Mass);
     
     //aluminium
+    console.log('aluminiumreclaimer',this.reclaimerAlum )
     this.reclaimerAlum  = this.reclaimerAlum   +parseFloat(val.data().NFAL01) 
     
     //plastic
-    this.outboundplastic =this.outboundplastic + +parseFloat(val.data().HD001) 
+    console.log('plasticreclaimer',    this.reclaimerplastic )
+    this.reclaimerplastic =this.reclaimerplastic + +parseFloat(val.data().HD001) 
     +parseFloat(val.data().HD001Mass)
     +parseFloat(val.data().LD001Mass)
     +parseFloat(val.data().LD003Mass)
