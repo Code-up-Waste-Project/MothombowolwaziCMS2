@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar class="header" *ngFor="let user of Newadmin">
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <!-- <ion-title>{{ user.name }} {{ user.surname }}</ion-title> -->
     <ion-buttons id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon name="log-out"></ion-icon>
       </ion-button>
@@ -233,7 +234,7 @@
 
             <!-- code for auto complete -->
             <div class="results">
-              <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
+              <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
               <div class='count' *ngIf="searchResults.length > 0" >
                 {{ searchResults.length }}
               </div>

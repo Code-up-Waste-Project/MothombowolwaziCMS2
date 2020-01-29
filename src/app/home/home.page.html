@@ -1,6 +1,7 @@
 <ion-header >
   <ion-toolbar class="header" *ngFor="let user of Newadmin"  >
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+  <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    // <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
@@ -67,14 +68,18 @@
           <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
         </div>   
         <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> -->  
+<!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> --> 
+
+
+
+
 <!-- div holding form(EDIT PRICE) -->
-<!-- <div class="addcategory">
+<div class="addcategory">
   <h1>Create New Category </h1>
   <input placeholder="Enter Name of New Material">
   <input placeholder="Enter Price">
   <button ion-button>Save</button>
-</div> -->
+</div>
 <!-- div holding form (DELETE BUTTON) -->
 <!-- <div class="deletecategory">
   <h1>Delete Material Here</h1>
@@ -160,7 +165,33 @@
   <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
   <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
 </div>    
+<<<<<<< HEAD
 
+=======
+<!-- div holding form(EDIT PRICE) -->
+<div  class="editform">
+  <h1>Edit Price Rates</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div>
+<!-- div holding form(EDIT PRICE) -->
+<!-- <div class="addcategory">
+  <h1>Create New Category </h1>
+  <input placeholder="Enter Name of New Material">
+  <input placeholder="Enter Price">
+  <button ion-button>Save</button>
+</div> -->
+<!-- div holding form (DELETE BUTTON) -->
+<!-- <div class="deletecategory">
+  <h1>Delete Material Here</h1>
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+  <input placeholder="mass pap005">
+<button ion-button>Save</button>
+</div> -->
+>>>>>>> 394df79ea3b585193b65703261439aab0f0d9065
 </div>
 <div class="matnames">
   <div class="codes" >
