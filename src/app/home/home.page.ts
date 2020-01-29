@@ -187,90 +187,90 @@ reclaimerplastic =0;
         PET003;
         PET005;
 
-        
+        
 
 //storage
-  GH001storagemass;
-  NFAL01storagemass;
+  GH001storagemass;
+  NFAL01storagemass;
 
-  PAP005storagemass;
-  PAP007storagemass;
-  PAP001storagemass;
-  PAP003storagemass;
+  PAP005storagemass;
+  PAP007storagemass;
+  PAP001storagemass;
+  PAP003storagemass;
 
-  HD001storagemass;
-  LD001storagemass;
-  LD003storagemass;
-  PET001storagemass;
-  PET003storagemass;
-  PET005storagemass;
+  HD001storagemass;
+  LD001storagemass;
+  LD003storagemass;
+  PET001storagemass;
+  PET003storagemass;
+  PET005storagemass;
 
-  GH001: string;
-  nFAL01: string;
+  GH001: string;
+  nFAL01: string;
 
-  Totalpaperinbound: number = 0;
-  Totalpapersinbound: string;
-Totalplasticinbound: number = 0;
+  Totalpaperinbound: number = 0;
+  Totalpapersinbound: string;
+Totalplasticinbound: number = 0;
 
-  Totalpaper: number = 0;
-  Totalplastic: number = 0;
+  Totalpaper: number = 0;
+  Totalplastic: number = 0;
 
-  Totalplasticz: string;
-  ActiveAcount: Boolean;
-  glass: boolean = false;
-  glassDiv: any = document.getElementsByClassName('glassDiv');
+  Totalplasticz: string;
+  ActiveAcount: Boolean;
+  glass: boolean = false;
+  glassDiv: any = document.getElementsByClassName('glassDiv');
 
-  constructor(
-    private modalcontroller: ModalController,
-    private menuCtrl: MenuController,
-    public route: Router,
-    private render: Renderer2,
-    public alertController: AlertController,
-    ) {
+  constructor(
+    private modalcontroller: ModalController,
+    private menuCtrl: MenuController,
+    public route: Router,
+    private render: Renderer2,
+    public alertController: AlertController,
+    ) {
 
-     
+     
 
-     /*  */
-      // pulling for admin
-    this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin = [];
-      snapshot.forEach(Element => {
-        this.admin.push(Element.data());
-      });
-      this.admin.forEach(item => {
-        if (item.userid === firebase.auth().currentUser.uid) {
-          this.Newadmin.push(item);
-        }
-      });
-      // console.log('Newadmins', this.Newadmin);
-    });
+     /*  */
+      // pulling for admin
+    this.db.collection('admin').onSnapshot(snapshot => {
+      this.Newadmin = [];
+      snapshot.forEach(Element => {
+        this.admin.push(Element.data());
+      });
+      this.admin.forEach(item => {
+        if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin.push(item);
+        }
+      });
+      // console.log('Newadmins', this.Newadmin);
+    });
 
- //calling get functions
-//  this.getReclaimers();
-//  this.getOutbound();
-//  this.getInbound();
+ //calling get functions
+//  this.getReclaimers();
+//  this.getOutbound();
+//  this.getInbound();
 
 
-    }
+    }
 
-     //chart
-     updated
+     //chart
+     updated
 
-     updatedoutbound
-     updateReclaimer
+     updatedoutbound
+     updateReclaimer
 
-    ionViewDidEnter() {
+    ionViewDidEnter() {
 
-      
-   
-      // this.Reclaimerdata();
-      // this.outbounddata();
-      // this.inbounddata();
+      
+   
+      // this.Reclaimerdata();
+      // this.outbounddata();
+      // this.inbounddata();
 
-     
-   
+     
+   
 
-//pulling data
+//pulling data
 //inbound
 this.inboundglass =0;
 this. inboundpaper =0;
@@ -315,9 +315,9 @@ this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD00
 +parseFloat(val.data().inboundLD001)
 +parseFloat(val.data().inboundLD003)
 +parseFloat(val.data().inboundPET003)
-+parseFloat(val.data().inboundPET001) 
-  })
-  this.createBarChart();
++parseFloat(val.data().inboundPET001) 
+  })
+  this.createBarChart();
 })
 
 //outbound
