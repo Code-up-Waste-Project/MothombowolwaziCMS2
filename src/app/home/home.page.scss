@@ -224,23 +224,24 @@ h6 {
         ion-icon {
           color: black;
           font-size: 2vw;
+         
         }
       }
 
       
       //long burger
       .burgercontent {
-       // border: 1px solid red;
         transition: 300ms;
         background: white;
-        //border: 2px solid red;
+       // border: 2px solid red;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 50px;
+        width: 40px;
         height: 30px;
         position: absolute;
-        right:0%;
         bottom: 50px;
-                border-bottom-left-radius: 50px;
+        right:0%;
+        //border: 1px solid rgb(12, 12, 12);
+        border-bottom-left-radius: 50px;
         border-top-left-radius: 50px;
         display: flex;
         overflow: hidden;
@@ -256,14 +257,14 @@ h6 {
       .burgercontent2 {
         transition: 300ms;
         background: white;
-        //border: 2px solid red;
+       // border: 2px solid red;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 50px;
+        width: 40px;
         height: 30px;
         position: absolute;
         bottom: 50px;
         right:0%;
-      
+        //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
         border-top-left-radius: 50px;
         display: flex;
@@ -280,13 +281,14 @@ h6 {
       .burgercontent3 {
         transition: 300ms;
         background: white;
-        //border: 2px solid red;
+       // border: 2px solid red;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 50px;
+        width: 40px;
         height: 30px;
         position: absolute;
-        right:0%;
         bottom: 50px;
+        right:0%;
+        //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
         border-top-left-radius: 50px;
         display: flex;
@@ -303,13 +305,14 @@ h6 {
       .burgercontent4 {
         transition: 300ms;
         background: white;
-        //border: 2px solid red;
+       // border: 2px solid red;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 50px;
+        width: 40px;
         height: 30px;
         position: absolute;
-        right:0%;
         bottom: 50px;
+        right:0%;
+       // border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
         border-top-left-radius: 50px;
         display: flex;
@@ -625,7 +628,7 @@ color: white;
 }
 
 #glass {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/glass2.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/glass2.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -633,14 +636,14 @@ color: white;
 }
 
 #plastic {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/Hd\ plastic.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/Hd\ plastic.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 7px;
 }
 #paper {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.479)), url('../../assets/flatnews.jpg');
+  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/flatnews.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
