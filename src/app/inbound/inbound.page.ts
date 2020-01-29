@@ -127,7 +127,7 @@ export class InboundPage implements OnInit {
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin = [];
+      // this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
         // console.log(Element.data());

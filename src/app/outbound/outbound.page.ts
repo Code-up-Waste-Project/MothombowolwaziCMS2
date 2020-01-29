@@ -220,11 +220,12 @@ export class OutboundPage implements OnInit {
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
-      // this.Newadmin = [];
+      this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
       });
       this.admin.forEach(item => {
+        
         if (item.userid === firebase.auth().currentUser.uid) {
           this.Newadmin.push(item);
         }

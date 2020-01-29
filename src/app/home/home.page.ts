@@ -238,17 +238,15 @@ Totalplasticinbound: number = 0;
         this.admin.push(Element.data());
       });
       this.admin.forEach(item => {
+     
         if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin = [];
           this.Newadmin.push(item);
         }
       });
-      // console.log('Newadmins', this.Newadmin);
+      console.log('Newadmins', this.Newadmin);
     });
 
- //calling get functions
-//  this.getReclaimers();
-//  this.getOutbound();
-//  this.getInbound();
 
 
     }
@@ -261,15 +259,6 @@ Totalplasticinbound: number = 0;
 
     ionViewDidEnter() {
 
-      
-   
-      // this.Reclaimerdata();
-      // this.outbounddata();
-      // this.inbounddata();
-
-     
-   
-
 //pulling data
 //inbound
 this.inboundglass =0;
@@ -279,6 +268,7 @@ this.inboundweight =0;
 this.inboundplastic =0;
 firebase.firestore().collection('inbounds').get().then(res=>{
   res.forEach(val=>{
+  
     console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
     this.inboundweight =this.inboundweight 
     +parseFloat(val.data().inboundGH001)+
@@ -316,14 +306,9 @@ this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001)
 +parseFloat(val.data().inboundLD003)
 +parseFloat(val.data().inboundPET003)
 +parseFloat(val.data().inboundPET001) 
-   
-
-
-    
-    
+  
   })
   this.createBarChart();
- 
 
 })
 
@@ -338,7 +323,7 @@ this.outboundweight =0;
 
 firebase.firestore().collection('outbound').get().then(res=>{
   res.forEach(val=>{
-    this.createBarChart1();
+   
     
     console.log(val.data().GH001+val.data().GH001)
     this.outboundweight =this.outboundweight 
@@ -386,6 +371,7 @@ firebase.firestore().collection('outbound').get().then(res=>{
 
 
   })
+  this.createBarChart1();
 })
 
 //reclaimer
@@ -397,8 +383,7 @@ this.Reclaimerweight =0;
 firebase.firestore().collection('reclaimers').get().then(res=>{
   res.forEach(val=>{
 
-    this.createBarChart2();
-
+   
     console.log(val.data().GH001Mass+val.data().HD001Mass)
     this.Reclaimerweight =this.Reclaimerweight 
     +parseFloat(val.data().GH001Mass)
@@ -449,6 +434,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
 
   })
+  this.createBarChart2();
+
 })
 
     }

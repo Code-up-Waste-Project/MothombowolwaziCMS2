@@ -1,16 +1,14 @@
-<ion-header >
-  <ion-toolbar class="header" *ngFor="let user of Newadmin"  >
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+<ion-header *ngFor="let user of Newadmin">
+  <ion-toolbar class="header" >
+    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<!--   <ion-toolbar  class="header">
-    <ion-title>Refilwe Dikutle<span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
-    <p style="background: blue;"></p>
-    <p style="background: rgb(0, 0, 0);"></p>
-  </ion-toolbar> -->
+
+
+
 <ion-content>
 <div class="container">
   <div padding class="alltime">
@@ -63,26 +61,11 @@
         <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
           <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
          <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-          <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-          <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+          <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
+          <!-- <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button> -->
         </div>   
         <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> -->  
-<!-- div holding form(EDIT PRICE) -->
-<!-- <div class="addcategory">
-  <h1>Create New Category </h1>
-  <input placeholder="Enter Name of New Material">
-  <input placeholder="Enter Price">
-  <button ion-button>Save</button>
-</div> -->
-<!-- div holding form (DELETE BUTTON) -->
-<!-- <div class="deletecategory">
-  <h1>Delete Material Here</h1>
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-<button ion-button>Save</button>
-</div> -->
+
 </div>
       <div class="matnames">
         <div class="codes">
@@ -106,8 +89,8 @@
 <div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button>
+  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
+  <!-- <ion-button fill="clear" size="small" color="danger" (click)="HideandShowDelete()"><ion-icon name="trash"></ion-icon></ion-button> -->
 </div>       
 
 </div>
@@ -134,8 +117,8 @@
 <div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button> -->
 </div>       
 
 </div>
@@ -157,8 +140,8 @@
 <div class="burgercontent4" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success"  (click)="HideandShowDelete()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+  <!-- <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+  <ion-button fill="clear" size="small" color="danger"><ion-icon name="trash"></ion-icon></ion-button> -->
 </div>    
 </div>
 <div class="matnames">

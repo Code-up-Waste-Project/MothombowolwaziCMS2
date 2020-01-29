@@ -56,7 +56,9 @@ oneprofile:any ={};
         this.admin.push(Element.data());
       });
       this.admin.forEach(item => {
+        
         if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin = [];
           this.Newadmin.push(item);     }
       });
       console.log('Newadmins', this.Newadmin);
@@ -218,32 +220,51 @@ oneprofile:any ={};
        });
       }
 
-      saveNewUseer() {
+      async  saveNewUseer() {
+        const alert = await this.alertCtrl.create({
+          header: 'New CMS User',
+          message: 'This user will have access to your CMS',
+          backdropDismiss: false,
+        })
 
-
-        
-        this.db.collection('admin').add({
-          email: this.email,
-          password: this.password
-        });
-        console.log('user saved to cloud');
-
-        this.db.collection('admin').add({
-          email: this.email,
-          password: this.password,
-          profile: 'no',
-         
-        }).then(async res => {
-          let goodRes = await this.alertCtrl.create({
-            header: 'Created new User.',
-            message: 'They must use the credentials for this account to login to the CMS',
-            buttons: [{
-              text: 'Done',
-              role: 'cancel'
-            }]
-          });
-          goodRes.present();
-        });
+        this.db.collection('admin').where('email', '==',this.email).get().then(async (data) => {
+           if(data.size == 0) {
+            this.db.collection('admin').add({
+              email: this.email,
+              password: this.password
+            });
+            console.log('user saved to cloud');
+    
+            this.db.collection('admin').add({
+              email: this.email,
+              password: this.password,
+              profile: 'no',
+             
+            }).then(async res => {
+              let goodRes = await this.alertCtrl.create({
+                header: 'Created new User.',
+                message: 'They must use the credentials for this account to login to the CMS',
+                buttons: [{
+                  text: 'Done',
+                  role: 'cancel'
+                }]
+              });
+              
+            }); 
+           }else {
+            let alert = await this.alertCtrl.create({
+              message: 'the email is already  been used',
+              
+              buttons: [
+                {
+                  text: 'OK'
+                }
+              ]
+            });
+            alert.present();
+            console.log('This email has already been used already');
+           }
+        })
       }
 
       async createUser() {
