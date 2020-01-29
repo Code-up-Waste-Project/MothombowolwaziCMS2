@@ -827,11 +827,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
         ],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
+          fillColor: 'blue', // array should have same number of elements as number of dataset
           borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1,
-          display: 'false',
-          defaultFontSize: '5px'
+          borderWidth: 0.1
+        
         }]
       },
       options: {
@@ -990,12 +989,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     showMoreBtn(){
       if(this.moreState == 0){
         this.moreState = 1
-        this.optsSlider[0].style.width = "165px"
+        this.optsSlider[0].style.width = "105px"
         console.log("this is open")
       }
       else {
         this.moreState = 0
-        this.optsSlider[0].style.width = "40px"
+        this.optsSlider[0].style.width = "30px"
         console.log("this is closed")
       }
     }
@@ -1007,12 +1006,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     showMoreBtn2(){
       if(this.moreState2 == 0){
         this.moreState2 = 1
-        this.optsSlider2[0].style.width = "165px"
+        this.optsSlider2[0].style.width = "105px"
         console.log("this is open")
       }
       else {
         this.moreState2 = 0
-        this.optsSlider2[0].style.width = "40px"
+        this.optsSlider2[0].style.width = "30px"
         console.log("this is closed")
       }
     }
@@ -1023,12 +1022,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       showMoreBtn3(){
         if(this.moreState3 == 0){
           this.moreState3 = 1
-          this.optsSlider3[0].style.width = "165px"
+          this.optsSlider3[0].style.width = "105px"
           console.log("this is open")
         }
         else {
           this.moreState3 = 0
-          this.optsSlider3[0].style.width = "40px"
+          this.optsSlider3[0].style.width = "30px"
           console.log("this is closed")
         }
       }
@@ -1039,12 +1038,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
        showMoreBtn4(){
          if(this.moreState4 == 0){
            this.moreState4 = 1
-           this.optsSlider4[0].style.width = "165px"
+           this.optsSlider4[0].style.width = "105px"
            console.log("this is open")
          }
          else {
            this.moreState4 = 0
-           this.optsSlider4[0].style.width = "40px"
+           this.optsSlider4[0].style.width = "30px"
            console.log("this is closed")
          }
        }
