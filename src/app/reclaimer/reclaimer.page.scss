@@ -365,19 +365,20 @@ img {
     display:flex;
     flex-direction: row;
     position: relative;
-    margin-left: 5%;
+    // margin-left: 5%;
     margin-top: 15px;
 }
 
 
 .Group2{
-    width: 50%;
+    width: 60%;
     height: 100%;
     // background-color: rgb(35, 3, 65);
     display: flex;
     align-items: center;
     margin-top: 8%;
     // margin-left: 2%;;
+    // border: 2px solid red;
 }
 .Group1{
     width: 64%;
@@ -386,16 +387,19 @@ img {
     background-color: #F4F4F4;
     box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.589);
     position: absolute;
-    left: 13%;
+    left: 50%;
+    transform: translateX(-50%);
     top: 13%;
     transition: 700ms;
-    // z-index: 10;
+    z-index: 10;
     // overflow: scroll;
+    // border: 2px solid red;
 }
 
 .Group1new{
-    width: 40%;
+    width: 50%;
     height: 100%;
+    // border: 2px solid black;
 }
 
 .Sub2{
@@ -436,7 +440,7 @@ img {
 }
 
 .TheContent{
-    height: 68%;
+    height: calc(100% - 50px);
     width: 98%;
     //border: solid 2px blue;
     background-color: rgb(255, 255, 255);
@@ -603,6 +607,9 @@ h5{
     position: relative;
     left: 50%;
     transform: translateX(-50%)
+}
+form{
+    margin: 0 auto;
 }
 #Header > div {
     cursor: pointer;

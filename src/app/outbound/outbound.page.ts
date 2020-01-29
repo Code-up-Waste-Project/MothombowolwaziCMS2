@@ -1106,10 +1106,9 @@ export class OutboundPage implements OnInit {
     group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
     nextClick(){
       this.driverInfo = true;
-      this.group1[0].style.left = "10px";
-      this.group1[0].style.width = "40%"
+      this.group1[0].style.left = "30%";
+      this.group1[0].style.width = "50%"
     }
-
     getItems(ev: any) {
       // Reset items back to all of the items
       // set val to the value of the searchbar
