@@ -134,7 +134,7 @@
           <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
         </div>
       </ion-card> -->
-      <div class="History2" *ngFor="let records of recordinbounddisplays">
+      <div class="History2" *ngFor="let records of recordinbounddisplaysz">
         <div id="Date1">{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div>
         <div id="material" >{{ records.id }} 
           <ion-icon class="eye" name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon>

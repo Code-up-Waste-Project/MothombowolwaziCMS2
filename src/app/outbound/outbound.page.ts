@@ -30,6 +30,7 @@ export class OutboundPage implements OnInit {
   admin = [];
   Newadmin = [];
   recordoutbounddisplays = [];
+  recordoutbounddisplaysz = [];
 
   // outbound
   outbound = [];
@@ -306,6 +307,32 @@ export class OutboundPage implements OnInit {
    }
 
   ngOnInit() {
+    this.sortTable();
+  }
+
+  sortTable() {
+    this.db.collection('outbound').orderBy('date', "desc").onSnapshot(element => {
+      this.recordoutbounddisplaysz = [];
+      element.forEach(element => {
+        let time = {};
+        let DriverName = {};
+        let RegistarionNumberPlates = {};
+        let id = {};
+
+        DriverName = this.DriverName = element.data().DriverName;
+        RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+        this.ids = element.id;
+        time = this.time = element.data().date;
+
+        this.recordoutbounddisplaysz.push({
+          DriverName: this.DriverName,
+          RegistarionNumberPlates: this.RegistarionNumberPlates,
+          time: this.time,
+          id: this.ids
+        });
+        console.log(element.data());
+      })
+    })
   }
 
   LoopNames() {

@@ -28,6 +28,7 @@ export class InboundPage implements OnInit {
 
   records;
   recordinbounddisplays = [];
+  recordinbounddisplaysz = [];
 
   testArray = [];
   PDFArray = {};
@@ -148,10 +149,26 @@ export class InboundPage implements OnInit {
    }
 
   ngOnInit() {
-    this.recordinbounddisplays.sort(function(a, b) {
-      return parseFloat(a.time) - parseFloat(b.time);
-      // console.log(this.recordinbounddisplays);
-  });
+    this.sortTable()
+  }
+
+  sortTable() {
+    this.db.collection('inbounds').orderBy('time', "desc").onSnapshot(element => {
+      this.recordinbounddisplaysz = [];
+      element.forEach(element => {
+        let time = {};
+        let id = {};
+
+        id = this.ids = element.id;
+        time = this.time = element.data().time;
+
+        this.recordinbounddisplaysz.push({
+          id: this.ids,
+          time: this.time,
+        });
+        console.log(element.data());
+      })
+    })
   }
 
   pdfmakerFirebase() {
