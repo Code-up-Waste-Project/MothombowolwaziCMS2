@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -7,9 +7,9 @@
       List
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<!-- <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
@@ -18,10 +18,62 @@
         {{item.note}}
       </div>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
     </div>
-  -->
-</ion-content>
+</ion-content>  -->
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="container">
+    <div class="form">
+  
+    <!--   <div class="divitems" style="border: 1px solid red;">
+        <ion-item *ngIf="!profile.image" class="imageitem" lines="none" style="border: 1px solid rgb(47, 0, 255);">
+         <ion-label position="stacked" id="profile_image" color="primary"></ion-label>
+         <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
+       </ion-item>
+    <ion-item class="imageitem" lines="none" *ngIf="profile.image"><img  src="{{profile.image}}" height="400px" width="400px" ></ion-item>
+    </div --><!-- end of profile image -->
+
+    <!--   <div class="inputs">
+          <input placeholder="name" [(ngModel)]="profile.name">
+          <input placeholder="Surname"  [(ngModel)]="profile.surname">
+          <input  placeholder="Position" [(ngModel)]="profile.position" >
+          <input  placeholder="Email Address" [(ngModel)]="profile.email">
+          <input placeholder="phone number" [(ngModel)]="profile.number" type="number">
+        <ion-button color="clear" (click)="users()" type="submit">Create Profile</ion-button>
+       </div> -->
+    
+      
+   
+          <div class="profile" style="border: 1px solid red;">
+            <div class="ProPic">
+              <img src="../../assets/admin.jpg">
+            </div>
+            <!-- <div class="Name">
+              <h1> {{profile.name}} {{profile.surname}}</h1>
+            </div> -->
+          </div>
+  
+        <div class="inputs">
+          <input placeholder="name" >
+          <input placeholder="Surname" >
+          <input  placeholder="Position" >
+          <input  placeholder="Email Address" >
+          <input placeholder="phone number" >
+        <ion-button color="clear" >Create Profile</ion-button>
+       </div>
+           
+    </div>
+  </div>
+   
+  </ion-content>
+  
+  

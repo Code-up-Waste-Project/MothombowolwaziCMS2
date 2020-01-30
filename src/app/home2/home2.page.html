@@ -1,116 +1,30 @@
-<ion-header >
-  <ion-toolbar  class="header">
-    <ion-title>Refilwe Dikutle <span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
-    
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<div class="container">
-  <div padding class="alltime">
-    <div class="stats">
-      <div class="big">
-        <div class="small" style="background: #C5A60A;">
-          <img src="../../assets/inbound.svg">
-        </div>
-        <h3>Inbound</h3>
-        <p class="mass">234.87</p>
-        <div class="updates">
-          <p>Updated 56min ago</p>
-        </div>
-      </div>
-    
-    </div>
-    <!-- box 2 -->
-    <div class="stats">
-      <div class="big">
-        <div class="small" style="background: #D12C6F;">
-          <img src="../../assets/outbound.svg">
-        </div>
-        <h3>Inbound</h3>
-        <p class="mass">234.87</p>
-        <div class="updates">
-          <p>Updated 56min ago</p>
-        </div>
-      </div>
-    </div>
-    <!-- box 3 -->
-    <div class="stats">
-      <div class="big">
-        <div class="small" style="background: #0BCECE;">
-          <img src="../../assets/reclaimer.svg">
-        </div>
-        <h3>Inbound</h3>
-        <p class="mass">234.87</p>
-        <div class="updates">
-          <p>Updated 56min ago</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h6></h6>
-
-  <!-- material -->
-  <div padding class="material">
-    <!-- <h4>All Time Material</h4> -->
-    <div class="box">
-      <div class="mat">
-        <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent">
-  <ion-icon name="create" style="color: rgb(51, 49, 49);"></ion-icon>
-  <ion-icon name="add-circle-outline" style="color:rgb(21, 139, 21);"></ion-icon>
-  <ion-icon name="trash" style="color: red;"></ion-icon>
-</div>     
-
-<!-- div holding form -->
-<div  class="editform">
-  <h1>Edit Price Rates</h1>
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-<button ion-button (click)="btns()" >Save</button>
-</div>
-</div>
-      <!-- <div class="matnames">
-        <div class="codes">
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          <p>PAP005 <span>R0. 67</span></p>
-          </div>
-        <div class="manname">
-          PAPER
-        </div>
-      </div> -->
-    </div>
+  <div class="container">
    
-    <!-- <div class="mat">
-      <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg"> </div>
-    <div class="mat">
-      <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg">
-</div>
-    <div class="mat">
-      <img src="../../assets/matheus-ferrero-7EM79VNJsx4-unsplash.jpg">
-</div> -->
+    <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
+    <img id="people" src="../../assets/ReclaimerPopup.svg">
+    <img id="bins" src="../../assets/binsPopup  2.svg">
+    <div class="form">
+      <h3>Create Your Profile Here</h3>
+      <div class="profile" >
+        <div class="ProPic">
+          <img  src="../../assets/boxes.jpg">
+        </div>
+        <!-- <div class="Name">
+          <h1> {{profile.name}} {{profile.surname}}</h1>
+        </div> -->
+      </div>
+  
+    <div class="inputs">
+      <input placeholder="name" >
+      <input placeholder="Surname" >
+      <input  placeholder="Position" >
+      <input  placeholder="Email Address" >
+      <input placeholder="phone number" >
+    <ion-button color="clear" >Create Profile</ion-button>
+   </div>
+       
   </div>
-  <!-- third box for graphs -->
-  <div padding class="graphs">
-    <div class="graph" style="background: #FFF3C2;">
-      <canvas #barChart></canvas>
-
-    </div>
-    <div class="graph" style="background: #FFCFE5;"></div>
-    <div class="graph" style="background: #CCFFFE;"></div>
   </div>
-</div>
-</ion-content>
+  
+  </ion-content>
