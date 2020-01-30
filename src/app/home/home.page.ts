@@ -17,6 +17,9 @@ export class HomePage implements OnInit {
   @ViewChild('barChart', {static: false}) barChart;
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
+
+//store element into a variable
+imgGraph = document.getElementById('inbgraph');
   
   inboundweight=0;
  outboundweight=0;
@@ -268,6 +271,10 @@ Totalplasticinbound: number = 0;
 
     }
 
+    //increase the size of clicked graph
+    transformGraph() {
+      this.render.setStyle(this.imgGraph,'moz-transform', 'scale(5,7 5,7)')
+    }
      //chart
      updated
 
