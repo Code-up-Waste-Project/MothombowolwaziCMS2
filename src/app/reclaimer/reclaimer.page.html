@@ -301,62 +301,54 @@
   </div>
 
   <!-- Bottom part LIST -->
-
+<div id="Everything">
   <div id="StuffInside">
-    <div class="Theblocks">
+    <div padding class="Theblocks">
+      <!-- PAPER DIV -->
       <div class="Block1" (click)="showPopUp('paper')">
-        <div class="Waste">
           <h3>PAPER</h3>
-        </div>
-        <img id="RecyleLogo1" src="../../assets/icon/Asset 9.svg" alt="">
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
+      <!-- PLASTIC DIV -->
       <div class="Block1" (click)="showPopUp('plastic')">
-        <div class="Waste">
           <h3>PLASTIC</h3>
-        </div>
-        <img id="RecyleLogo2" src="../../assets/icon/Asset 9.svg" alt="">
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
+      <!-- ALUMINIUM DIV -->
       <div class="Block1" (click)="showPopUp('aluminium')">
-        <div class="Waste">
-          <h3 id="H3">ALUMINIUM</h3>
-        </div>
-        <img id="RecyleLogo3" src="../../assets/icon/Asset 9.svg" alt="">
+          <h3>ALUMINIUM</h3>
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
+      <!-- GLASS DIV -->
       <div class="Block1" (click)="showPopUp('glass')">
-        <div class="Waste">
           <h3>GLASS</h3>
-        </div>
-        <img id="RecyleLogo4" src="../../assets/icon/Asset 9.svg" alt="">
+        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
       </div>
-    </div>
-    <div class="History">
+    </div> <!-- END OF TOP DIV HOLDING MATERIAL -->
+   
+    <div padding class="History">
       <div class="History1">
         <div id="Date">
             <h2>Full Name</h2>
         </div>
         <div id="Material">
-            <h2>Material</h2>
+            <h2>Phone Number</h2>
         </div>
         <div id="Material">
             <h2>Amount</h2>
         </div>
-        <!-- <div id="Material">
-            <h2>Date</h2>
-        </div> -->
     </div>
       <div class="History2" *ngFor="let records of testArrays">
         <div id="Date1">{{ records.name }} {{ records.surname }}</div>
-        <div id="Material1">{{ records.contact }}</div>
-        <div id="Material1">R{{ records.OverallGrandTotal }}</div>
+        <div id="material">{{ records.contact }}</div>
+        <div id="material">R{{ records.OverallGrandTotal }}</div>
         <!-- <div id="Material1">R{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div> -->
-        <div id="Eye1">
-          <ion-icon name="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
-        </div>
-        <div id="Trash1">
-          <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-        </div>
+          <ion-icon name="eye" class="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
+          <ion-icon name="trash" class="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
+        
       </div>
     </div>
+  </div>
   </div>
 
 </ion-content>
