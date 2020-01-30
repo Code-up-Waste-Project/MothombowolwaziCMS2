@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Directive, HostListener, Output, EventEmitter, ElementRef, Input } from '@angular/core';
 import { ResetPasswordPage } from '../reset-password/reset-password.page';
+import {ProfilePage} from '../profile/profile.page'
 
 
 @Component({
@@ -48,6 +49,14 @@ export class LoginPage implements OnInit {
     });
     return await modal.present();
   }
+ //modal for profile page
+ async presentProfileModal() {
+  const modal = await this.modalController.create({
+    component: ProfilePage,
+    cssClass: 'profileModal'
+  });
+  return await modal.present();
+}
 
   ngOnInit() {
     this.menuCtrl.enable(false); // or true
