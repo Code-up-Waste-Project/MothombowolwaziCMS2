@@ -20,7 +20,7 @@ export class ProfilePage implements OnInit {
   isAdmin: string = 'true';
 
   profile = {
-  image: null,
+  image: '',
   name: null,
   addres: null,
   surname: null,

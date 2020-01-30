@@ -10,43 +10,34 @@
   <ion-content>
     <div padding class="container">
       <div padding class="left">
-        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile">
-
-            <!-- let l=s[s.length-1]; -->
-
-         
+        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)'>
            <div class="names">
-            <h4>{{myprofiles.name}} {{myprofiles.surname}}</h4>
+            <h4>{{myprofiles.name}} {{myprofiles.surname}}</h4> 
+            <p>{{myprofiles.email}}</p>
             <p>{{myprofiles.position}}</p>
             <div class="image">
-
-              <img src="{{myprofiles.image}}">
+              <button (click)='presentAlertDelete(myprofiles.id)'>delete user</button>
+              <img *ngIf="!myprofiles.image" src="../../assets/mthombologo (1).png" alt=""> 
+              <img  *ngIf="myprofiles.image" src="{{myprofiles.image}}" alt="">
             </div>
           </div>
           </div>
-  
-       
       </div>
   
       <!--  -->
       <div class="right" *ngIf="!registerForm" >
-        <div class="pic" padding>
+        <div class="pic" padding >
        <ion-avatar>
-        <img  *ngIf="oneprofile.image" src ="{{oneprofile.image}}">
-        <img  *ngIf="oneprofile.image" src ="{{oneprofile.image}}">
-
-        
-//
-        
+        <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+        <img  *ngIf="image" src="{{image}}" alt="">
         </ion-avatar>
-  
-        
         </div>
         <p id="borderb"></p>
-        <div padding class="info">
-          <h4>{{oneprofile.name}} {{oneprofile.surname}}</h4>
-          <p>{{oneprofile.number}}</p>
-          <p style="font-weight: bold;padding-top: 3px;"> {{oneprofile.position}}</p>
+        <div padding class="info" >
+          <h4>{{name}} {{surname}}</h4>
+          <p>{{number}}</p>
+          <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
+          
         </div>
   
         <ion-fab >
@@ -67,4 +58,5 @@
     </div>
   
     </div>
+    <!-- <button (click)="AddUser(id)">view</button> -->
   </ion-content>

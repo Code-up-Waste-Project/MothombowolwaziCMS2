@@ -1,4 +1,5 @@
 <ion-header *ngFor="let user of Newadmin">
+  <button (click)="editprofile()">profile</button>
   <ion-toolbar class="header" >
     <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
@@ -161,16 +162,23 @@
 
   <p id="secondborder"></p>
   <div padding class="graphs">
-   
-    <div class="graph" >
-      <canvas #barChart></canvas>
+    <ion-fab id="daily"  >
+      <ion-fab-button size="small" >D</ion-fab-button>    </ion-fab>
+    <ion-fab id="weekly">
+      <ion-fab-button size="small" >W</ion-fab-button>
+    </ion-fab>
+    <ion-fab id="montly">
+      <ion-fab-button size="small" >M</ion-fab-button>    </ion-fab>
+
+    <div class="graph" style="background: #FFF3C2;" >
+      <canvas #barChart ></canvas>
     </div>
 
-    <div class="graph" >
+    <div class="graph"  style="background: #FFCFE5;">
       <canvas #barChart1></canvas>
 
     </div>
-    <div class="graph" >
+    <div class="graph" style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
 
     </div>
@@ -196,7 +204,7 @@
   <input placeholder="R{{ pricess.pet003 }}" [(ngModel)]="PET003price"> 
  
 
-<button ion-button (click)="CheckInputsEmptyStringPlastic()">Save</button>
+<button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
 </div>
 </div>
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -204,10 +212,10 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price for Glass </h1>
    
-    <input placeholder="mass pap005" [(ngModel)]="GH001price">
+    <input placeholder="{{pricess.gl001}}" [(ngModel)]="GH001price">
   
     
-  <button ion-button (click)="CheckInputsEmptyStringGlass()">Save</button>
+  <button ion-button (click)="CheckInputsEmptyStringGlasss()">Save</button>
   </div>
   </div>
 <!-- create new material -->
@@ -215,10 +223,10 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit price for Paper</h1>
-  <input placeholder="Enter price" [(ngModel)]="PAP005price" >
-  <input placeholder="Enter Price"  [(ngModel)]="PAP007price">
- <input placeholder="Enter price"  [(ngModel)]="PAP001price">
- <input placeholder="Enter price" [(ngModel)]="PAP003price">
+  <input placeholder="{{pricess.pap005}}" [(ngModel)]="PAP005price" >
+  <input placeholder="{{pricess.pap007}}"  [(ngModel)]="PAP007price">
+ <input placeholder="{{pricess.pap001}}"  [(ngModel)]="PAP001price">
+ <input placeholder="{{pricess.pap003}}" [(ngModel)]="PAP003price">
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
@@ -232,17 +240,21 @@
  
   <input placeholder="R {{pricess.nfalo1}}" [(ngModel)]="NFAL01price">
   
-<button ion-button (click)="CheckInputsEmptyStringAlu()">Save</button>
+<button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>
 </div>
 
 <!-- DELETE DIVS FOR MATERIAL -->
 <!-- history for paper -->
 <div class="opacitydivs paperDiv" [ngClass]="{'slideIn': paper, 'slideOut': !paper}">
-  <div padding class="editform2">
+  <div padding id="history" class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>history for Paper</h1>
 <p>date  old new <ion-icon name="trash"></ion-icon></p>
+<p>date <span>R {{ pricess.pap005 }}</span></p>
+<p>date <span>R {{ pricess.pap007 }}</span></p>
+<p>date <span>R {{ pricess.pap001 }}</span></p>
+<p>date <span>R {{ pricess.pap003 }}</span></p>
 <button ion-button  (click)="checkinputfields()">Save</button>
 </div>
 </div>
@@ -252,9 +264,14 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>history for plastic</h1>
+          <p>Date updated:{{pricess.time}} 
+          <p>R{{ pricess.hd001 }}</p>
+          <p>Date <span>R{{ pricess.ld001 }}</span></p>
+          <p>Date <span>R{{ pricess.ld003 }}</span></p>
+          <p>Date <span>R{{ pricess.pet005 }}</span></p>
+          <p>Date <span>R{{ pricess.pet001 }}</span></p>
 
-
-<button ion-button  (click)="checkinputfields()">Save</button>
+<button ion-button  (click)="CheckInputsEmptyStringPlastic()">Save</button>
 </div>
 </div>
 
@@ -274,7 +291,7 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>history for aluminium</h1>
-
+  <p>Date updated:{{pricess.time}} 
 
 <button ion-button  (click)="checkinputfields()">Save</button>
 </div>

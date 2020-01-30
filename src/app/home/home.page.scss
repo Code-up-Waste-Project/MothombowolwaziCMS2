@@ -98,7 +98,7 @@ ion-icon {
 //  overflow-x: scroll;
 }
 .alltime {
-  //border-bottom: 2px solid black;
+ // border-bottom: 2px solid black;
   height: 30%;
   display: flex;
   justify-content: space-between;
@@ -238,7 +238,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
         //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -262,7 +262,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
         //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -286,7 +286,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
         //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -310,7 +310,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
        // border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -422,13 +422,15 @@ h6 {
     //border: 1px solid purple;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.322);
     width: 90%;
-    height: 55px;
+    height: 80px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
      z-index: 9;
      position: relative;
-     top: -20%;
-     left: 10%;
+     top: -40%;
+     left: 10%; 
+      display: flex;
   }
 }
 .matnames {
@@ -436,34 +438,35 @@ h6 {
 //  position: relative;
 //  left: -225%;
 //  top: 18%;
- border-top-left-radius: 7px;
- border-bottom-left-radius: 7px;
+//  border-top-left-radius: 7px;
+//  border-bottom-left-radius: 7px;
   z-index: 9;
  // background: red;
-  display: flex;
+
   // justify-content: center;
 }
 .manname {
-  width: 50%;
+  width: 40%;
 display: flex;
 justify-content: center;
 align-content: center;
 align-items: center;
 background: white;
-font-size: 1.5vw;
+font-size: 1.2vw;
 font-family: 'SHKODER 1989';
-border-bottom-right-radius: 10px;
+border-bottom-right-radius: 5px;
+//border: 1px solid red;
 
 }
 .codes {
-  width: 50%;
+  width: 60%;
   max-height: 80px;
 padding: 1%;
   overflow-y: scroll;
 //border: 1px solid blue;
   background: #EAEAEA;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 
   display: flex;
   justify-content: center;
@@ -488,11 +491,27 @@ padding: 1%;
 }
 
 .graphs {
- // border: 2px solid blue;
+
+
+// border: 2px solid blue;
   height: 31%;
   display: flex;
   justify-content: space-around;
+
+  #daily, #weekly, #montly {
+    position: absolute;
+    bottom: 28%;
+    right: 16%;
+  }
+  #weekly {
+    right: 9%;
+  }
+  #montly {
+    right: 2%;
+  }
+
 }
+
 .graph {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
   width: 31.8%;
@@ -619,7 +638,7 @@ color: white;
   }
 }
 }
-#aluminium {
+#aluminium, #glass, #plastic, #paper {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/cans.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -629,29 +648,99 @@ color: white;
 
 #glass {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/glass2.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 7px;
 }
 
 #plastic {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/Hd\ plastic.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 7px;
 }
 #paper {
   background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/flatnews.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 7px;
 }
 #secondborder {
 border: 1px solid gray;
-width: 96%;
+width: 74%;
 margin-left: 2%;
+
+}
+
+#history {
+//  border: 3px solid blue;
+  width: 70%;
+  h1 {
+   // color: red;
+   // border: 1px solid red;
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+
+  }
+  .data {
+   // border: 2px solid red;
+    height: 85%;
+    // overflow-y: scroll;
+    
+    .info2 {
+    //  border: 2px solid black;
+      // overflow-y: scroll;
+    }
+    .head {
+      background: green;
+     // border: 1px solid red;
+      height: 30px;
+      display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  
+    .date, .oldPrice, .newPrice {
+    //  border: 1px solid blue;
+      width: 33%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    
+    h3 {
+      color: white;
+      font-size: 17px;
+      font-family: 'Microsoft YaHei UI';
+      padding-left: 10px;
+      padding-bottom: 5px;
+    
+    }
+   p {
+     padding-left: 5px;
+   }
+    }
+
+    }
+    .info2 {
+    //  border: 3px solid black;
+      height: 25px;
+      display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    .date, .oldPrice, .newPrice {
+      width: 33%;
+      height: 100%;
+      display: flex;
+      align-content: center;
+      align-items: center;
+    }
+    p {
+      font-size: 13px;
+      font-family: 'Microsoft YaHei UI'; 
+      padding-left: 10px;
+      padding-bottom: 5px;
+    //  border: 1px solid blue;
+      width: 90%;
+    }
+    }
+    .info:nth-child(odd) {
+      background: white;
+  }
+  }
+
 
 }

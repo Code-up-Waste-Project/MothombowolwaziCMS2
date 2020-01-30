@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
-import * as firebase from 'firebase';
-import { AlertController, ModalController, MenuController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { Chart } from 'chart.js';
-import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-utils';
-// import { ModalpopupPage } from '../modalpopup/modalpopup.page';
+import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
+import * as firebase from 'firebase';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Chart } from 'chart.js';
+import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-utils';
+// import { ModalpopupPage } from '../modalpopup/modalpopup.page';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-home',
@@ -67,6 +68,7 @@ reclaimerplastic =0;
    pet005: null,
    pet003: null,
    pet001: null,
+   time:null
  };
 
 
@@ -459,12 +461,21 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   ngOnInit() {
     // this.getreclamer();
 
+    this.db.collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot(data => {
+      console.log("DATA EEE, ", data.data().time);
+      
+    })
+
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
     this.prices.get().then((documentSnapshot) => {
       this.price = [];
       console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
-      console.log(this.price);
+      console.log('my pricess', documentSnapshot.data().time);
+
+    
+  
+      this.pricess.time = documentSnapshot.data().time
       this.pricess.gl001 = documentSnapshot.data().gl001;
       this.pricess.hd001 = documentSnapshot.data().hd001;
       this.pricess.ld001 = documentSnapshot.data().ld001;
@@ -526,28 +537,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       });
     });
   }
-  update() {
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      time: new Date(),
-      gl001: this.GH001price,
-      nfalo1: this.NFAL01price,
-      pap005: this.PAP005price,
-      pap007: this.PAP007price,
-      pap001: this.PAP001price,
-      pap003: this.PAP003price,
-      hd001: this.HD001price,
-      ld001: this.LD001price,
-      ld003: this.LD003price,
-      pet001: this.PET001price,
-      pet003: this.PET003price,
-      pet005: this.PET005price,
-
-    })
-    .then((data) => {
-      console.log("Document successfully updated!");
-    });
-    }
+  // 
+  
   ionViewWillEnter() {
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
     this.prices.get().then((documentSnapshot) => {
@@ -674,9 +665,9 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
         }, {
           text: 'Okay',
           handler: () => {
-            this.update();
+            // this.update();
             this.clearInputs();
-            this.route.navigateByUrl('/editprice');
+            this.route.navigateByUrl('/home');
             console.log('Confirm Okay');
           }
         }
@@ -701,10 +692,64 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     
   }
 
-  async presentAlertupdatedelete() {
+  CheckInputsEmptyStringPaper() {
+    if (
+        this.PAP005price === undefined &&
+        this.PAP007price === undefined &&
+        this.PAP001price === undefined &&
+        this.PET003price === undefined
+        
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertUpdatePaper();
+        
+      }
+  }
+
+
+
+
+
+  CheckInputsEmptyStringPlastics() {
+    if (
+         this.HD001price  === undefined &&
+         this.LD001price === undefined &&
+        this.LD003price  === undefined &&
+        this.PET005price === undefined &&
+        this.PET001price === undefined
+        
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertUpdatePlastic();
+      }
+  }
+
+  CheckInputsEmptyStringGlasss() {
+    if (
+      this.GH001price === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertUpdateGlass();
+      }
+  }
+
+  CheckInputsEmptyStringAlum() {
+    if (
+      this.NFAL01price === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertUpdateAlum();
+      }
+  }
+ 
+  async presentAlertUpdatePaper() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to Cancel, Data will not be saved.</strong>!!!',
+      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -716,8 +761,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
         }, {
           text: 'Okay',
           handler: () => {
-            this.clearInputs();
-            this.route.navigateByUrl('/editprice');
+            this.checkPaperInputs();
+            this.route.navigateByUrl('/home');
             console.log('Confirm Okay');
           }
         }
@@ -725,6 +770,286 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     await alert.present();
   }
+  async presentAlertUpdatePlastic() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkPlasticInputs();
+            this.route.navigateByUrl('/home');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+async presentAlertUpdateGlass() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkGlassInputs();
+            this.route.navigateByUrl('/home');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async presentAlertUpdateAlum() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkAlumInputs();
+            this.route.navigateByUrl('/home');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  checkPaperInputs() {
+    // PAP005price;
+    if (this.PAP005price === null) {
+      this.PAP005price = this.pricess.pap005;
+    } else if (this.PAP005price === undefined) {
+      this.PAP005price = this.pricess.pap005;
+    }
+    console.log(this.PAP005price);
+
+    // PAP007price;
+    if (this.PAP007price === null) {
+      this.PAP007price = this.pricess.pap007;
+    } else if (this.PAP007price === undefined) {
+      this.PAP007price = this.pricess.pap007;
+    }
+    console.log(this.PAP007price);
+
+    // PAP001price;
+    if (this.PAP001price === null) {
+      this.PAP001price = this.pricess.pap001;
+    } else if (this.PAP001price === undefined) {
+      this.PAP001price = this.pricess.pap001;
+    }
+    console.log(this.PAP001price);
+
+    // PAP003price;
+    if (this.PAP003price === null) {
+      this.PAP003price = this.pricess.pap003;
+    } else if (this.PAP003price === undefined) {
+      this.PAP003price = this.pricess.pap003;
+    }
+    console.log(this.PAP003price);
+
+    this.UpdatePaper()
+
+  }
+
+  checkPlasticInputs() {
+    // HD001price;
+    if (this.HD001price === null) {
+      this.HD001price = this.pricess.hd001;
+    } else if (this.HD001price === undefined) {
+      this.HD001price = this.pricess.hd001;
+    }
+    console.log(this.HD001price);
+
+    // LD001price;
+    if (this.LD001price === null) {
+      this.LD001price = this.pricess.ld001;
+    } else if (this.LD001price === undefined) {
+      this.LD001price = this.pricess.ld001;
+    }
+    console.log(this.LD001price);
+
+    // LD003price;
+    if (this.LD003price === null) {
+      this.LD003price = this.pricess.ld003;
+    } else if (this.LD003price === undefined) {
+      this.LD003price = this.pricess.ld003;
+    }
+    console.log(this.LD003price);
+
+    // PET001price;
+    if (this.PET001price === null) {
+      this.PET001price = this.pricess.pet001;
+    } else if (this.PET001price === undefined) {
+      this.PET001price = this.pricess.pet001;
+    }
+    console.log(this.PET001price);
+
+    // PET003price;
+    if (this.PET003price === null) {
+      this.PET003price = this.pricess.pet003;
+    } else if (this.PET003price === undefined) {
+      this.PET003price = this.pricess.pet003;
+    }
+    console.log(this.PET003price);
+
+    // PET005price;
+    if (this.PET005price === null) {
+      this.PET005price = this.pricess.pet005;
+    } else if (this.PET005price === undefined) {
+      this.PET005price = this.pricess.pet005;
+    }
+    console.log(this.PET005price);
+
+    this.UpdatePlastic()
+
+  }
+
+  checkAlumInputs() {
+    // nFAL01;
+    if (this.NFAL01price === null) {
+      this.NFAL01price = this.pricess.nfalo1;
+    } else if (this.NFAL01price === undefined) {
+      this.nFAL01 = this.pricess.nfalo1;
+    }
+    console.log(this.nFAL01);
+
+
+    this.UpdateAlum()
+
+  }
+  checkGlassInputs(){
+     // GH001price;
+     if (this.GH001price === null) {
+      this.GH001price = this.pricess.gl001;
+    } else if (this.GH001price === undefined) {
+      this.GH001price = this.pricess.gl001;
+    }
+    console.log(this.GH001price);
+
+
+    this.UpdateGlass()
+  }
+
+  UpdatePaper() {
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      pap005: this.PAP005price,
+      pap007: this.PAP007price,
+      pap001: this.PAP001price,
+      pap003: this.PAP003price,
+    }).then((data) => {
+      console.log("Paper successfully updated!");
+    });
+    this.clearInputsPaper();
+  }
+  UpdatePlastic() {
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      hd001: this.HD001price,
+      ld001: this.LD001price,
+      ld003: this.LD003price,
+      pet001: this.PET001price,
+      pet003: this.PET003price,
+      pet005: this.PET005price,
+    }).then((data) => {
+      console.log("Paper successfully updated!");
+    });
+    this.clearInputsPlastic();
+  }
+
+  UpdateGlass() {
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      gl001: this.GH001price,
+     
+    }).then((data) => {
+      console.log("Paper successfully updated!");
+    });
+    this.checkGlassInputs();
+  }
+
+  
+  UpdateAlum() {
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      nfalo1: this.NFAL01price,
+     
+    }).then((data) => {
+      console.log("Paper successfully updated!");
+    });
+    this.clearInputsAlum();
+  }
+  // gl001: this.GH001price,
+  //     nfalo1: this.NFAL01price,
+  //     pap005: this.PAP005price,
+  //     pap007: this.PAP007price,
+  //     pap001: this.PAP001price,
+  //     pap003: this.PAP003price,
+  //     hd001: this.HD001price,
+  //     ld001: this.LD001price,
+  //     ld003: this.LD003price,
+  //     pet001: this.PET001price,
+  //     pet003: this.PET003price,
+  //     pet005: this.PET005price,
+
+  clearInputsPaper() {
+    this.PAP005price = '';
+    this.PAP007price = '';
+    this.PAP001price = '';
+    this.PAP003price = '';
+  }
+  clearInputsAlum() {
+    this.NFAL01price ='';
+  
+  }
+
+  clearInputsGlass() {
+    this.GH001price ='';
+  
+  }
+  
+
+  clearInputsPlastic() {
+    this.HD001price = '';
+    this.LD001price = '';
+    this.LD003price = '';
+    this.PET001price = '';
+    this.PET003price = '';
+    this.PET005price = '';
+  }
+
   getOutbound() {
     // pulling from outbound
     this.db.collection('outbound').onSnapshot(snapshot => {
@@ -891,34 +1216,72 @@ HideandShowHISTORYGLASS() {
 }
 
   /* bar chart */
+/*    this.inboundweight =this.inboundweight 
+    +parseFloat(val.data().inboundGH001)+
+    +parseFloat(val.data().inboundHD001) +
+    +parseFloat(val.data().inboundLD001) +
+    +parseFloat(val.data().inboundLD003) +
+    +parseFloat(val.data().inboundNFAL01) +
+    +parseFloat(val.data().inboundPAP001) +
+    +parseFloat(val.data().inboundPAP003) +
+    +parseFloat(val.data().inboundPAP005) +
+    +parseFloat(val.data().inboundPAP007) +
+    +parseFloat(val.data().inboundPET001) +
+    +parseFloat(val.data().inboundPET003) +
+    +parseFloat(val.data().inboundPET005) ; */
 
+    /*   inboundGH001;
+  inboundHD001;
+  inboundLD001;
+  inboundLD003;
+  inboundNFAL01;
+  inboundPAP001;
+  inboundPAP003;
+  inboundPAP005;
+  inboundPAP007;
+  inboundPET001;
+  inboundPET003;
+  inboundPET005; */
 
   createBarChart() {
+
+    Chart.defaults.global.defaultFontSize = 4;
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
 
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Paper', 'Glass', 'Plastic', 'Aluminium',],
+        labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
+     
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
-          label: 'inbound',
-          data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
-        ],
+          label: 'INBOUND',
+          data: [ this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
-          fillColor: 'blue', // array should have same number of elements as number of dataset
-          borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          backgroundColor: 'rgb(90, 78, 31)', // array should have same number of elements as number of dataset
+          borderColor: 'rgb(90, 78, 31)',  // array should have same number of elements as number of dataset
+          borderWidth: 0.1,
         
         }]
       },
       options: {
         scales: {
           yAxes: [{
-            ticks: {
-              beginAtZero: true
+            stacked: true,
+            gridLines: {
+              display: false,
+           
+              
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
             }
           }]
+        },
+        labels: {
+          defaultFontSize: 5
         }
       }
     });
@@ -935,15 +1298,15 @@ HideandShowHISTORYGLASS() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Paper', 'Plastic', 'Glass', 'Aliminum',],
+        labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
-          label: 'outbound',
-          data: [this.outboundpaper, this.outboundplastic,  this.outboundglass,  this.outboundAlum,],
+          label: 'OUTBOUND',
+          data: [this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,],
       
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
-          borderColor: 'red',  // array should have same number of elements as number of dataset
+          backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
+          borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
           borderWidth: 0.1,
          
          
@@ -952,10 +1315,21 @@ HideandShowHISTORYGLASS() {
       options: {
         scales: {
           yAxes: [{
-            ticks: {
-              beginAtZero: true
+            stacked: true,
+            gridLines: {
+              display: false,
+           
+              
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
             }
           }]
+        },
+        labels: {
+          defaultFontSize: 5
         }
       }
     });
@@ -970,24 +1344,35 @@ HideandShowHISTORYGLASS() {
       this.bars = new Chart(this.barChart2.nativeElement, {
         type: 'bar',
         data: {
-          labels: ['Paper', 'Plastic', 'Glass', 'Aliminium',],
+          labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
           // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
           datasets: [{
-            label: 'Reclaimers',
-            data: [ this.reclaimerglass, this.reclaimerpaper, this.reclaimerAlum,   this.reclaimerplastic,],
+            label: 'RECLAIMER',
+            data: [ this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper,this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper,this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper],
             // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-            backgroundColor: 'green', // array should have same number of elements as number of dataset
-            borderColor: 'red',  // array should have same number of elements as number of dataset
+            backgroundColor: 'rgb(29, 61, 61)', // array should have same number of elements as number of dataset
+            borderColor: 'rgb(29, 61, 61)',  // array should have same number of elements as number of dataset
             borderWidth: 0.1
           }]
         },
         options: {
           scales: {
             yAxes: [{
-              ticks: {
-                beginAtZero: true
+              stacked: true,
+              gridLines: {
+                display: false,
+             
+                
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false
               }
             }]
+          },
+          labels: {
+            defaultFontSize: 5
           }
         }
       });
@@ -1100,24 +1485,6 @@ HideandShowHISTORYGLASS() {
             this.PET001price === undefined &&
             this.PET003price === undefined &&
             this.PET005price === undefined
-          ) {
-            this.presentAlertcheckInputs();
-          } else {
-            this.checkinputfields();
-          }
-      }
-    
-  
-    
-
-
-      CheckInputsEmptyStringPaper() {
-        if (
-            this.PAP005price === undefined &&
-            this.PAP007price === undefined &&
-            this.PAP001price === undefined &&
-            this.PET003price === undefined
-            
           ) {
             this.presentAlertcheckInputs();
           } else {
