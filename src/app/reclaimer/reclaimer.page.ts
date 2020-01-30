@@ -401,7 +401,6 @@ export class ReclaimerPage implements OnInit {
 
     // pulling from reclaimers
     this.db.collection('reclaimers').onSnapshot(snapshot => {
-      this.newreclaimer = [];
       this.testArrays = [];
       snapshot.forEach(element => {
         let id = {};
@@ -427,7 +426,7 @@ export class ReclaimerPage implements OnInit {
 
         this.usersz.push(contact)
 
-        // this.newreclaimer = [];
+        this.newreclaimer = [];
         this.newreclaimer.push({
           id: id,
           reName: reclaimername,
@@ -460,15 +459,56 @@ export class ReclaimerPage implements OnInit {
     this.RegisterForm = formGroup.group({
       names : ['', [Validators.required, Validators.maxLength(15)]],
       surnames : ['', [Validators.required, Validators.maxLength(15)]],
-      contacts : ['', [Validators.required, Validators.maxLength(10)]],
+      // contacts : ['', [Validators.required, Validators.maxLength(10)]],
       addresss : ['', [Validators.required, , Validators.maxLength(40)]],
     });
-
-    // calling firebase
-
    }
 
   ngOnInit() {
+  }
+
+  checkPhoneInput() {
+    // calling firebase
+    // this.contact[0] == '0'
+    if (this.contacts[0] != '0') {
+      this.presentAlertPhoneValidation();
+    } else {
+      this.showInputs()
+    }
+    // .then((data) => {
+    //   console.log(data);
+    // }).catch((error) => {
+    //   var errorCode = error.code;
+    //   var errorCode = error.message;
+    //   return errorCode;
+    // });
+
+  }
+
+  async presentAlertPhoneValidation() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Phone Numbers must start with a number: 0.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.clearForm();
+            console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  clearForm() {
+    this.names = '';
+    this.surnames = '';
+    this.contacts = '';
+    this.addresss = ''
   }
 
   async presentAlertDelete(id) {
@@ -501,6 +541,99 @@ export class ReclaimerPage implements OnInit {
   }
 
   // /////////////////////////////////////////////////////////////////
+
+  // presentAlertAddUser
+  async presentAlertAddUser(id) {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want add clicked user to form?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.AddUserToForm(id);
+            // this.route.navigateByUrl('/reclaimer');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  AddUserToForm(id) {
+    this.db.collection('reclaimers').doc(id).onSnapshot(element => {
+      // element.forEach(element => {
+        let name = {};
+        let surname = {};
+        let contact = {};
+        let address = {};
+
+        name = this.names = element.data().name;
+        surname = this.surnames = element.data().surname;
+        contact = this.contacts = element.data().contact;
+        address = this.addresss = element.data().address;
+        // })
+
+        console.log(this.names);
+        console.log(this.surnames);
+        console.log(this.contacts);
+        console.log(this.addresss);
+
+        // adding data to textboxes
+        this.names = this.names;
+        this.surnames = this.surnames;
+        this.contacts = this.contacts;
+        this.addresss = this.addresss
+      // })
+  })
+
+  this.nextClick()
+
+  }
+
+  CheckInputsEmptyString() {
+    if (
+        this.GH001massz === undefined &&
+        this.NFAL01massz === undefined &&
+        this.PAP005massz === undefined &&
+        this.PAP007massz === undefined &&
+        this.PAP001massz === undefined &&
+        this.PAP003massz === undefined &&
+        this.HD001massz === undefined &&
+        this.LD001massz === undefined &&
+        this.LD003massz === undefined &&
+        this.PET001massz === undefined &&
+        this.PET003massz === undefined &&
+        this.PET005massz === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.checkinputfields();
+      }
+  }
+
+  async presentAlertcheckInputs() {
+    const alert = await this.alertController.create({
+      header: 'Warning!',
+      message: '<strong>No Data Was Input, Transaction will be Cancelled.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            this.route.navigateByUrl('/reclaimer');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 
   checkinputfields() {
     // GH001mass
@@ -633,7 +766,7 @@ export class ReclaimerPage implements OnInit {
 
     this.GH001price = +this.GH001massz * +this.GH001;
     this.GH001pricez = (String(this.GH001price).substring(0, 6));
-    console.log(this.GH001pricez);
+    // console.log(this.GH001pricez);
   }
 
   //   GH001 Total;
@@ -652,13 +785,13 @@ export class ReclaimerPage implements OnInit {
 
     this.NFAL01price = +this.NFAL01massz * +this.NFAL01;
     this.NFAL01pricez = (String(this.NFAL01price).substring(0, 6));
-    console.log(this.NFAL01pricez);
+    // console.log(this.NFAL01pricez);
   }
 
   //   NFAL01 Total NFAL01Total
   onChangeTotalNFAL01(): void {
     this.NFAL01Total = this.NFAL01price;
-    console.log(this.NFAL01Total);
+    // console.log(this.NFAL01Total);
   }
 
   //   PAP005;
@@ -722,7 +855,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP005massz === undefined) {
       this.PAP005massz = 0;
     }
-    console.log(this.PAP005massz);
+    // console.log(this.PAP005massz);
 
     // PAP007mass
     if (this.PAP007massz === null) {
@@ -731,7 +864,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP007massz === undefined) {
       this.PAP007massz = 0;
     }
-    console.log(this.PAP007massz);
+    // console.log(this.PAP007massz);
 
     // PAP001mass
     if (this.PAP001massz === null) {
@@ -740,7 +873,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP001massz === undefined) {
       this.PAP001massz = 0;
     }
-    console.log(this.PAP001massz);
+    // console.log(this.PAP001massz);
 
     // PAP003mass
     if (this.PAP003massz === null) {
@@ -749,7 +882,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP003massz === undefined) {
       this.PAP003massz = 0;
     }
-    console.log(this.PAP003massz);
+    // console.log(this.PAP003massz);
 
     // get prices //////////////////////////////////////////////////////////////
     // PAP005price
@@ -759,7 +892,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP005pricez === undefined) {
       this.PAP005pricez = 0;
     }
-    console.log(this.PAP005pricez);
+    // console.log(this.PAP005pricez);
 
     // PAP007price
     if (this.PAP007pricez === null) {
@@ -768,7 +901,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP007pricez === undefined) {
       this.PAP007pricez = 0;
     }
-    console.log(this.PAP007pricez);
+    // console.log(this.PAP007pricez);
 
     // PAP001price
     if (this.PAP001pricez === null) {
@@ -777,7 +910,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP001pricez === undefined) {
       this.PAP001pricez = 0;
     }
-    console.log(this.PAP001pricez);
+    // console.log(this.PAP001pricez);
 
     // PAP003price
     if (this.PAP003pricez === null) {
@@ -786,10 +919,10 @@ export class ReclaimerPage implements OnInit {
     if (this.PAP003pricez === undefined) {
       this.PAP003pricez = 0;
     }
-    console.log(this.PAP003massz);
+    // console.log(this.PAP003massz);
 
     this.PaperTotal = +this.PAP001pricez + +this.PAP007pricez + +this.PAP005pricez + +this.PAP003pricez;
-    console.log(this.PaperTotal);
+    // console.log(this.PaperTotal);
   }
 
   //   HD001;
@@ -798,11 +931,11 @@ export class ReclaimerPage implements OnInit {
     // console.log(data);
 
     this.HD001GrandTotal = +this.HD001massz * +this.HD001;
-    console.log(this.HD001GrandTotalz);
+    // console.log(this.HD001GrandTotalz);
 
     this.HD001price = +this.HD001massz * +this.HD001;
     this.HD001pricez = (String(this.HD001price).substring(0, 6));
-    console.log(this.HD001pricez);
+    // console.log(this.HD001pricez);
   }
 
   //   LD001;
@@ -815,7 +948,7 @@ export class ReclaimerPage implements OnInit {
 
     this.LD001price = +this.LD001massz * +this.LD001;
     this.LD001pricez = (String(this.LD001price).substring(0, 6));
-    console.log(this.LD001pricez);
+    // console.log(this.LD001pricez);
   }
 
   //   LD003;
@@ -824,11 +957,11 @@ export class ReclaimerPage implements OnInit {
     // console.log(data);
 
     this.LD003GrandTotal = +this.LD003massz * +this.LD003;
-    console.log(this.LD003GrandTotalz);
+    // console.log(this.LD003GrandTotalz);
 
     this.LD003price = +this.LD003massz * +this.LD003;
     this.LD003pricez = (String(this.LD003price).substring(0, 6));
-    console.log(this.LD003pricez);
+    // console.log(this.LD003pricez);
   }
 
   //   PET001;
@@ -837,11 +970,11 @@ export class ReclaimerPage implements OnInit {
     // console.log(data);
 
     this.PET001GrandTotal = +this.PET001massz * +this.PET001;
-    console.log(this.PET001GrandTotalz);
+    // console.log(this.PET001GrandTotalz);
 
     this.PET001price = +this.PET001massz * +this.PET001;
     this.PET001pricez = (String(this.PET001price).substring(0, 6));
-    console.log(this.PET001pricez);
+    // console.log(this.PET001pricez);
   }
 
   //   PET003;
@@ -850,11 +983,11 @@ export class ReclaimerPage implements OnInit {
     // console.log(data);
 
     this.PET003GrandTotal = +this.PET003massz * +this.PET003;
-    console.log(this.PET003GrandTotalz);
+    // console.log(this.PET003GrandTotalz);
 
     this.PET003price = +this.PET003massz * +this.PET003;
     this.PET003pricez = (String(this.PET003price).substring(0, 6));
-    console.log(this.PET003pricez);
+    // console.log(this.PET003pricez);
   }
 
   //   PET005;
@@ -863,11 +996,11 @@ export class ReclaimerPage implements OnInit {
     // console.log(data);
 
     this.PET005GrandTotal = +this.PET005massz * +this.PET005;
-    console.log(this.PET005GrandTotalz);
+    // console.log(this.PET005GrandTotalz);
 
     this.PET005price = +this.PET005massz * +this.PET005;
     this.PET005pricez = (String(this.PET005price).substring(0, 6));
-    console.log(this.PET005pricez);
+    // console.log(this.PET005pricez);
   }
 
   //   Plastic Total;
@@ -879,7 +1012,7 @@ export class ReclaimerPage implements OnInit {
     if (this.HD001massz === undefined) {
       this.HD001massz = 0;
     }
-    console.log(this.HD001massz);
+    // console.log(this.HD001massz);
 
     // LD001mass
     if (this.LD001massz === null) {
@@ -888,7 +1021,7 @@ export class ReclaimerPage implements OnInit {
     if (this.LD001massz === undefined) {
       this.LD001massz = 0;
     }
-    console.log(this.LD001massz);
+    // console.log(this.LD001massz);
 
     // LD003mass
     if (this.LD003massz === null) {
@@ -897,7 +1030,7 @@ export class ReclaimerPage implements OnInit {
     if (this.LD003massz === undefined) {
       this.LD003massz = 0;
     }
-    console.log(this.LD003massz);
+    // console.log(this.LD003massz);
 
     // PET001mass
     if (this.PET001massz === null) {
@@ -906,7 +1039,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PET001massz === undefined) {
       this.PET001massz = 0;
     }
-    console.log(this.PET001massz);
+    // console.log(this.PET001massz);
 
     // PET003mass
     if (this.PET003massz === null) {
@@ -915,7 +1048,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PET003massz === undefined) {
       this.PET003massz = 0;
     }
-    console.log(this.PET003massz);
+    // console.log(this.PET003massz);
 
     // PET005mass
     if (this.PET005massz === null) {
@@ -924,7 +1057,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PET005massz === undefined) {
       this.PET005massz = 0;
     }
-    console.log(this.PET005massz);
+    // console.log(this.PET005massz);
 
     // check prices ///////////////////////////////////////////////////////////
     // HD001price
@@ -934,7 +1067,7 @@ export class ReclaimerPage implements OnInit {
     if (this.HD001pricez === undefined) {
       this.HD001pricez = 0;
     }
-    console.log(this.HD001pricez);
+    // console.log(this.HD001pricez);
 
     // LD001price
     if (this.LD001pricez === null) {
@@ -943,7 +1076,7 @@ export class ReclaimerPage implements OnInit {
     if (this.LD001pricez === undefined) {
       this.LD001pricez = 0;
     }
-    console.log(this.LD001pricez);
+    // console.log(this.LD001pricez);
 
     // LD003price
     if (this.LD003pricez === null) {
@@ -952,7 +1085,7 @@ export class ReclaimerPage implements OnInit {
     if (this.LD003pricez === undefined) {
       this.LD003pricez = 0;
     }
-    console.log(this.LD003pricez);
+    // console.log(this.LD003pricez);
 
     // PET001price
     if (this.PET001pricez === null) {
@@ -961,7 +1094,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PET001pricez === undefined) {
       this.PET001pricez = 0;
     }
-    console.log(this.PET001pricez);
+    // console.log(this.PET001pricez);
 
     // PET003mass
     if (this.PET003pricez === null) {
@@ -970,7 +1103,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PET003pricez === undefined) {
       this.PET003pricez = 0;
     }
-    console.log(this.PET003pricez);
+    // console.log(this.PET003pricez);
 
     // PET005price
     if (this.PET005pricez === null) {
@@ -979,7 +1112,7 @@ export class ReclaimerPage implements OnInit {
     if (this.PET005pricez === undefined) {
       this.PET005pricez = 0;
     }
-    console.log(this.PET005pricez);
+    // console.log(this.PET005pricez);
 
     this.PlasticTotals = +this.HD001pricez + +this.LD001pricez + +this.LD003pricez + +this.PET001pricez + +this.PET003pricez + +this.PET005pricez;
     // console.log(this.PlasticTotals);
@@ -994,102 +1127,102 @@ export class ReclaimerPage implements OnInit {
     this.GH001GrandTotal = +this.GH001massz * +this.GH001;
     this.GH001Vat = +this.GH001GrandTotal / 1.15;
     this.GH001SubTotal = +this.GH001GrandTotal - +this.GH001Vat;
-    console.log(this.GH001GrandTotal);
-    console.log(this.GH001Vat);
-    console.log(this.GH001SubTotal);
+    // console.log(this.GH001GrandTotal);
+    // console.log(this.GH001Vat);
+    // console.log(this.GH001SubTotal);
 
     // NFAL01
     this.NFAL01GrandTotal = +this.NFAL01massz * +this.NFAL01;
     this.NFAL01Vat = +this.NFAL01GrandTotal / 1.15;
     this.NFAL01SubTotal = +this.NFAL01GrandTotal - +this.NFAL01Vat;
-    console.log(this.NFAL01GrandTotal);
-    console.log(this.NFAL01Vat);
-    console.log(this.NFAL01SubTotal);
+    // console.log(this.NFAL01GrandTotal);
+    // console.log(this.NFAL01Vat);
+    // console.log(this.NFAL01SubTotal);
 
     //   PAP005;
     this.PAP005GrandTotal = +this.PAP005massz * +this.PAP005;
     this.PAP005Vat = +this.PAP005GrandTotal / 1.15;
     this.PAP005SubTotal = +this.PAP005GrandTotal - +this.PAP005Vat;
-    console.log(this.PAP005GrandTotal);
-    console.log(this.PAP005Vat);
-    console.log(this.PAP005SubTotal);
+    // console.log(this.PAP005GrandTotal);
+    // console.log(this.PAP005Vat);
+    // console.log(this.PAP005SubTotal);
 
     // PAP007
     this.PAP007GrandTotal = +this.PAP007massz * +this.PAP007;
     this.PAP007Vat = +this.PAP007GrandTotal / 1.15;
     this.PAP007SubTotal = +this.PAP007GrandTotal - +this.PAP007Vat;
-    console.log(this.PAP007GrandTotal);
-    console.log(this.PAP007Vat);
-    console.log(this.PAP007SubTotal);
+    // console.log(this.PAP007GrandTotal);
+    // console.log(this.PAP007Vat);
+    // console.log(this.PAP007SubTotal);
 
     // PAP001
     this.PAP001GrandTotal = +this.PAP001massz * +this.PAP001;
     this.PAP001Vat = +this.PAP001GrandTotal / 1.15;
     this.PAP001SubTotal = +this.PAP001GrandTotal - +this.PAP001Vat;
-    console.log(this.PAP001GrandTotal);
-    console.log(this.PAP001Vat);
-    console.log(this.PAP001SubTotal);
+    // console.log(this.PAP001GrandTotal);
+    // console.log(this.PAP001Vat);
+    // console.log(this.PAP001SubTotal);
 
     // PAP003
     this.PAP003GrandTotal = +this.PAP003massz * +this.PAP003;
     this.PAP003Vat = +this.PAP003GrandTotal / 1.15;
     this.PAP003SubTotal = +this.PAP003GrandTotal - +this.PAP003Vat;
-    console.log(this.PAP003GrandTotal);
-    console.log(this.PAP003Vat);
-    console.log(this.PAP003SubTotal);
+    // console.log(this.PAP003GrandTotal);
+    // console.log(this.PAP003Vat);
+    // console.log(this.PAP003SubTotal);
 
     // HD001
     this.HD001GrandTotal = +this.HD001massz * +this.HD001;
     this.HD001Vat = +this.HD001GrandTotal / 1.15;
     this.HD001SubTotal = +this.HD001GrandTotal - +this.HD001Vat;
-    console.log(this.HD001GrandTotal);
-    console.log(this.HD001Vat);
-    console.log(this.HD001SubTotal);
+    // console.log(this.HD001GrandTotal);
+    // console.log(this.HD001Vat);
+    // console.log(this.HD001SubTotal);
 
     // LD001
     this.LD001GrandTotal = +this.LD001massz * +this.LD001;
     this.LD001Vat = +this.LD001GrandTotal / 1.15;
     this.LD001SubTotal = +this.LD001GrandTotal - +this.LD001Vat;
-    console.log(this.LD001GrandTotal);
-    console.log(this.LD001Vat);
-    console.log(this.LD001SubTotal);
+    // console.log(this.LD001GrandTotal);
+    // console.log(this.LD001Vat);
+    // console.log(this.LD001SubTotal);
 
     // LD003
     this.LD003GrandTotal = +this.LD003massz * +this.LD003;
     this.LD003Vat = +this.LD003GrandTotal / 1.15;
     this.LD003SubTotal = +this.LD003GrandTotal - +this.LD003Vat;
-    console.log(this.LD003GrandTotal);
-    console.log(this.LD003Vat);
-    console.log(this.LD003SubTotal);
+    // console.log(this.LD003GrandTotal);
+    // console.log(this.LD003Vat);
+    // console.log(this.LD003SubTotal);
 
     // PET005
     this.PET005GrandTotal = +this.PET005massz * +this.PET005;
     this.PET005Vat = +this.PET005GrandTotal / 1.15;
     this.PET005SubTotal = +this.PET005GrandTotal - +this.PET005Vat;
-    console.log(this.PET005GrandTotal);
-    console.log(this.PET005Vat);
-    console.log(this.PET005SubTotal);
+    // console.log(this.PET005GrandTotal);
+    // console.log(this.PET005Vat);
+    // console.log(this.PET005SubTotal);
 
     // PET001
     this.PET001GrandTotal = +this.PET001massz * +this.PET001;
     this.PET001Vat = +this.PET001GrandTotal / 1.15;
     this.PET001SubTotal = +this.PET001GrandTotal - +this.PET001Vat;
-    console.log(this.PET001GrandTotal);
-    console.log(this.PET001Vat);
-    console.log(this.PET001SubTotal);
+    // console.log(this.PET001GrandTotal);
+    // console.log(this.PET001Vat);
+    // console.log(this.PET001SubTotal);
 
     // PET003
     this.PET003GrandTotal = +this.PET003massz * +this.PET003;
     this.PET003Vat = +this.PET003GrandTotal / 1.15;
     this.PET003SubTotal = +this.PET003GrandTotal - +this.PET003Vat;
-    console.log(this.PET003GrandTotal);
-    console.log(this.PET003Vat);
-    console.log(this.PET003SubTotal);
+    // console.log(this.PET003GrandTotal);
+    // console.log(this.PET003Vat);
+    // console.log(this.PET003SubTotal);
 
     // overallMass
     this.overallMass = +this.GH001massz + +this.NFAL01massz + +this.PAP005massz + +this.PAP007massz + +this.PAP001massz + +this.PAP003massz +
     +this.HD001massz + +this.LD001massz + +this.LD003massz + +this.PET005massz + +this.PET001massz + +this.PET003massz;
-    console.log(this.overallMass);
+    // console.log(this.overallMass);
 
     // calculate overall prices
     this.calculateOverall();
@@ -1119,16 +1252,16 @@ export class ReclaimerPage implements OnInit {
         this.PET005 = element.data().pet005;
         // console.log(element);
       });
-      console.log(this.GH001);
-      console.log(this.HD001);
-      console.log(this.LD003);
-      console.log(this.NFAL01);
-      console.log(this.PAP001);
-      console.log(this.PAP003);
-      console.log(this.PAP005);
-      console.log(this.PET001);
-      console.log(this.PET003);
-      console.log(this.PET005);
+      // console.log(this.GH001);
+      // console.log(this.HD001);
+      // console.log(this.LD003);
+      // console.log(this.NFAL01);
+      // console.log(this.PAP001);
+      // console.log(this.PAP003);
+      // console.log(this.PAP005);
+      // console.log(this.PET001);
+      // console.log(this.PET003);
+      // console.log(this.PET005);
     });
   }
 
@@ -1595,8 +1728,8 @@ Logout() {
       this.searchResults = [];
     }
 
-    console.log(this.usersz);
-    console.log(this.searchResults);
+    // console.log(this.usersz);
+    // console.log(this.searchResults);
     
   }
 
@@ -1619,10 +1752,10 @@ Logout() {
         address = this.addresss = element.data().address;
         })
 
-        console.log(this.names);
-        console.log(this.surnames);
-        console.log(this.contacts);
-        console.log(this.addresss);
+        // console.log(this.names);
+        // console.log(this.surnames);
+        // console.log(this.contacts);
+        // console.log(this.addresss);
 
         // adding data to textboxes
         this.names = this.names;

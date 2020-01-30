@@ -12,21 +12,21 @@ import * as moment from 'moment'
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit {
 
-  @ViewChild('barChart', {static: false}) barChart;
-  @ViewChild('barChart1', {static: false}) barChart1;
-  @ViewChild('barChart2', {static: false}) barChart2;
-  
-  inboundweight=0;
- outboundweight=0;
- Reclaimerweight=0;
+  @ViewChild('barChart', {static: false}) barChart;
+  @ViewChild('barChart1', {static: false}) barChart1;
+  @ViewChild('barChart2', {static: false}) barChart2;
+  
+  inboundweight=0;
+ outboundweight=0;
+ Reclaimerweight=0;
 
- //graghdatainbound
- inboundglass =0;
- inboundpaper =0;
- inboundAlum=0;
- inboundplastic=0;
+ //graghdatainbound
+ inboundglass =0;
+ inboundpaper =0;
+ inboundAlum=0;
+ inboundplastic=0;
 
 //outboundgraphs
 outboundglass =0;
@@ -191,7 +191,7 @@ reclaimerplastic =0;
   PAP005Mass
 
 //outbound
-        PAP005;
+        PAP005;
         HD001;
         LD001;
         LD003;
@@ -278,11 +278,11 @@ Totalplasticinbound: number = 0;
 
 //pulling data
 //inbound
-this.inboundglass =0;
-this. inboundpaper =0;
-this.inboundAlum =0;
-this.inboundweight =0;
-this.inboundplastic =0;
+this.inboundglass =0;
+this. inboundpaper =0;
+this.inboundAlum =0;
+this.inboundweight =0;
+this.inboundplastic =0;
 firebase.firestore().collection('inbounds').get().then(res=>{
   res.forEach(val=>{
   
@@ -307,17 +307,17 @@ firebase.firestore().collection('inbounds').get().then(res=>{
     //glass
   this.inboundglass =this.inboundglass +parseFloat(val.data().inboundGH001)
 //paper
-this.inboundpaper = this.inboundpaper 
-+parseFloat(val.data().inboundPAP005) 
-+ parseFloat(val.data().inboundPAP007) 
-+parseFloat(val.data().inboundPAP003) 
+this.inboundpaper = this.inboundpaper 
++parseFloat(val.data().inboundPAP005) 
++ parseFloat(val.data().inboundPAP007) 
++parseFloat(val.data().inboundPAP003) 
 +parseFloat(val.data().inboundPAP001);
 
 //aluminium
-this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
+this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
 
 //plastic
-this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
+this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
 +parseFloat(val.data().inboundHD001)
 +parseFloat(val.data().inboundLD001)
 +parseFloat(val.data().inboundLD003)
@@ -331,12 +331,12 @@ this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001)
 
 //outbound
 
-this.outboundglass =0;
- this.outboundpaper =0;
- this.outboundAlum =0;
- this.outboundplastic =0;
+this.outboundglass =0;
+ this.outboundpaper =0;
+ this.outboundAlum =0;
+ this.outboundplastic =0;
 
-this.outboundweight =0;
+this.outboundweight =0;
 
 firebase.firestore().collection('outbound').get().then(res=>{
   res.forEach(val=>{
@@ -392,10 +392,10 @@ firebase.firestore().collection('outbound').get().then(res=>{
 })
 
 //reclaimer
-this.reclaimerglass =0;
-this.reclaimerpaper =0;
-this.reclaimerAlum =0;
-this.reclaimerplastic =0;
+this.reclaimerglass =0;
+this.reclaimerpaper =0;
+this.reclaimerAlum =0;
+this.reclaimerplastic =0;
 this.Reclaimerweight =0;
 firebase.firestore().collection('reclaimers').get().then(res=>{
   res.forEach(val=>{
