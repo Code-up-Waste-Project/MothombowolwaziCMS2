@@ -161,16 +161,23 @@
 
   <p id="secondborder"></p>
   <div padding class="graphs">
-   
-    <div class="graph" >
-      <canvas #barChart></canvas>
+    <ion-fab id="daily"  >
+      <ion-fab-button size="small" >D</ion-fab-button>    </ion-fab>
+    <ion-fab id="weekly">
+      <ion-fab-button size="small" >W</ion-fab-button>
+    </ion-fab>
+    <ion-fab id="montly">
+      <ion-fab-button size="small" >M</ion-fab-button>    </ion-fab>
+
+    <div class="graph" style="background: #FFF3C2;" >
+      <canvas #barChart ></canvas>
     </div>
 
-    <div class="graph" >
+    <div class="graph"  style="background: #FFCFE5;">
       <canvas #barChart1></canvas>
 
     </div>
-    <div class="graph" >
+    <div class="graph" style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
 
     </div>
