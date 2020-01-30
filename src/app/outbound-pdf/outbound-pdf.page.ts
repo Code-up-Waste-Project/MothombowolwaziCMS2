@@ -294,8 +294,7 @@ export class OutboundPDFPage implements OnInit {
       // console.log(documentSnapshot.data());
       this.ViewOutbound.push(documentSnapshot.data());
       // console.log(this.ViewOutbound);
-    });
-  }
+    });  }
 
   createPdf() {
     let printDataName = [];

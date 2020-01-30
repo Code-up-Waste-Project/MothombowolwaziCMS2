@@ -230,6 +230,7 @@ export class OutboundPage implements OnInit {
       this.admin.forEach(item => {
         
         if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin = [];
           this.Newadmin.push(item);
         }
       });
@@ -529,6 +530,96 @@ export class OutboundPage implements OnInit {
       // console.log(this.PET003storagemass);
       // console.log(this.PET005storagemass);
     });
+  }
+
+  CheckInputsEmptyString() {
+    if (
+        this.GH001mass === undefined &&
+        this.NFAL01mass === undefined &&
+        this.PAP005mass === undefined &&
+        this.PAP007mass === undefined &&
+        this.PAP001mass === undefined &&
+        this.PAP003mass === undefined &&
+        this.HD001mass === undefined &&
+        this.LD001mass === undefined &&
+        this.LD003mass === undefined &&
+        this.PET001mass === undefined &&
+        this.PET003mass === undefined &&
+        this.PET005mass === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertupdate();
+      }
+  }
+
+  async presentAlertcheckInputs() {
+    const alert = await this.alertController.create({
+      header: 'Warning!',
+      message: '<strong>No Data Was Input, Transaction will be Cancelled.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            this.route.navigateByUrl('/outbound');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  // presentAlertAddUser
+  async presentAlertAddUser(id) {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want add clicked user to form?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.AddUserToForm(id);
+            // this.route.navigateByUrl('/reclaimer');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  AddUserToForm(id) {
+    this.db.collection('outbound').doc(id).onSnapshot(element => {
+      // element.forEach(element => {
+      this.id = element.id;
+      this.DriverName = element.data().DriverName;
+      this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+      // this.overallStorage = element.data().ovarallMass;
+      this.TruckSourcess = element.data().TruckSourcess;
+      this.Destination = element.data().Destination;
+      console.log(element.data().DriverName);
+      console.log(element.data().RegistarionNumberPlates);
+      // console.log(element.data().overallStorage);
+      console.log(element.data().TruckSourcess);
+      console.log(element.data().Destination);
+      console.log(element.data());
+        // })
+
+        // adding data to textboxes
+        this.DriverNameInput = this.DriverName;
+        this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
+        this.TruckSourcessInput = this.TruckSourcess;
+        this.DestinationInput = this.Destination
+      })
+
+  this.nextClick()
+
   }
 
   SaveOutbound() {
