@@ -17,6 +17,7 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
   templateUrl: './inbound.page.html',
   styleUrls: ['./inbound.page.scss'],
 })
+
 export class InboundPage implements OnInit {
 
   // start of Declaretions
@@ -147,6 +148,10 @@ export class InboundPage implements OnInit {
    }
 
   ngOnInit() {
+    this.recordinbounddisplays.sort(function(a, b) {
+      return parseFloat(a.time) - parseFloat(b.time);
+      // console.log(this.recordinbounddisplays);
+  });
   }
 
   pdfmakerFirebase() {
@@ -845,4 +850,5 @@ export class InboundPage implements OnInit {
       }
       }, 10);
     }
+
 }

@@ -52,7 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
-    path: 'home2',
+    path: 'home2/:id',
     loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
   },
   {
