@@ -17,6 +17,9 @@ export class HomePage implements OnInit {
   @ViewChild('barChart', {static: false}) barChart;
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
+
+//store element into a variable
+imgGraph = document.getElementById('inbgraph');
   
   inboundweight=0;
  outboundweight=0;
@@ -268,6 +271,10 @@ Totalplasticinbound: number = 0;
 
     }
 
+    //increase the size of clicked graph
+    transformGraph() {
+      this.render.setStyle(this.imgGraph,'moz-transform', 'scale(5,7 5,7)')
+    }
      //chart
      updated
 
@@ -1216,35 +1223,72 @@ HideandShowHISTORYGLASS() {
 }
 
   /* bar chart */
+/*    this.inboundweight =this.inboundweight 
+    +parseFloat(val.data().inboundGH001)+
+    +parseFloat(val.data().inboundHD001) +
+    +parseFloat(val.data().inboundLD001) +
+    +parseFloat(val.data().inboundLD003) +
+    +parseFloat(val.data().inboundNFAL01) +
+    +parseFloat(val.data().inboundPAP001) +
+    +parseFloat(val.data().inboundPAP003) +
+    +parseFloat(val.data().inboundPAP005) +
+    +parseFloat(val.data().inboundPAP007) +
+    +parseFloat(val.data().inboundPET001) +
+    +parseFloat(val.data().inboundPET003) +
+    +parseFloat(val.data().inboundPET005) ; */
 
+    /*   inboundGH001;
+  inboundHD001;
+  inboundLD001;
+  inboundLD003;
+  inboundNFAL01;
+  inboundPAP001;
+  inboundPAP003;
+  inboundPAP005;
+  inboundPAP007;
+  inboundPET001;
+  inboundPET003;
+  inboundPET005; */
 
   createBarChart() {
+
+    Chart.defaults.global.defaultFontSize = 4;
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
 
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Paper', 'Glass', 'Plastic', 'Aluminium',, 'Glass', 'Plastic', 'Aluminium',, 'Glass', 'Plastic', 'Aluminium',],
-        fontsize:'20px',
+        labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
+     
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
-          label: 'inbound',
-          data: [ this.inboundpaper, this.inboundglass ,  this.inboundplastic, this.inboundAlum, 
-        ],
+          label: 'INBOUND',
+          data: [ this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
-          fillColor: 'blue', // array should have same number of elements as number of dataset
-          borderColor: 'red',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1
+          backgroundColor: 'rgb(90, 78, 31)', // array should have same number of elements as number of dataset
+          borderColor: 'rgb(90, 78, 31)',  // array should have same number of elements as number of dataset
+          borderWidth: 0.1,
         
         }]
       },
       options: {
         scales: {
           yAxes: [{
-            ticks: {
-              beginAtZero: true
+            stacked: true,
+            gridLines: {
+              display: false,
+           
+              
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
             }
           }]
+        },
+        labels: {
+          defaultFontSize: 5
         }
       }
     });
@@ -1261,15 +1305,15 @@ HideandShowHISTORYGLASS() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Paper', 'Plastic', 'Glass', 'Aliminum',],
+        labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
-          label: 'outbound',
-          data: [this.outboundpaper, this.outboundplastic,  this.outboundglass,  this.outboundAlum,],
+          label: 'OUTBOUND',
+          data: [this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,],
       
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'green', // array should have same number of elements as number of dataset
-          borderColor: 'red',  // array should have same number of elements as number of dataset
+          backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
+          borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
           borderWidth: 0.1,
          
          
@@ -1278,10 +1322,21 @@ HideandShowHISTORYGLASS() {
       options: {
         scales: {
           yAxes: [{
-            ticks: {
-              beginAtZero: true
+            stacked: true,
+            gridLines: {
+              display: false,
+           
+              
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
             }
           }]
+        },
+        labels: {
+          defaultFontSize: 5
         }
       }
     });
@@ -1296,24 +1351,35 @@ HideandShowHISTORYGLASS() {
       this.bars = new Chart(this.barChart2.nativeElement, {
         type: 'bar',
         data: {
-          labels: ['Paper', 'Plastic', 'Glass', 'Aliminium',],
+          labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
           // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
           datasets: [{
-            label: 'Reclaimers',
-            data: [ this.reclaimerglass, this.reclaimerpaper, this.reclaimerAlum,   this.reclaimerplastic,],
+            label: 'RECLAIMER',
+            data: [ this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper,this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper,this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper],
             // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-            backgroundColor: 'green', // array should have same number of elements as number of dataset
-            borderColor: 'red',  // array should have same number of elements as number of dataset
+            backgroundColor: 'rgb(29, 61, 61)', // array should have same number of elements as number of dataset
+            borderColor: 'rgb(29, 61, 61)',  // array should have same number of elements as number of dataset
             borderWidth: 0.1
           }]
         },
         options: {
           scales: {
             yAxes: [{
-              ticks: {
-                beginAtZero: true
+              stacked: true,
+              gridLines: {
+                display: false,
+             
+                
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false
               }
             }]
+          },
+          labels: {
+            defaultFontSize: 5
           }
         }
       });

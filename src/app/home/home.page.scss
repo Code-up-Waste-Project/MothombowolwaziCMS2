@@ -98,7 +98,7 @@ ion-icon {
 //  overflow-x: scroll;
 }
 .alltime {
-  //border-bottom: 2px solid black;
+ // border-bottom: 2px solid black;
   height: 30%;
   display: flex;
   justify-content: space-between;
@@ -238,7 +238,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
         //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -262,7 +262,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
         //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -286,7 +286,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
         //border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -310,7 +310,7 @@ h6 {
         width: 40px;
         height: 30px;
         position: absolute;
-        bottom: 50px;
+        bottom: 90px;
         right:0%;
        // border: 1px solid rgb(12, 12, 12);
         border-bottom-left-radius: 50px;
@@ -422,13 +422,15 @@ h6 {
     //border: 1px solid purple;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.322);
     width: 90%;
-    height: 55px;
+    height: 80px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
      z-index: 9;
      position: relative;
-     top: -20%;
-     left: 10%;
+     top: -40%;
+     left: 10%; 
+      display: flex;
   }
 }
 .matnames {
@@ -436,34 +438,35 @@ h6 {
 //  position: relative;
 //  left: -225%;
 //  top: 18%;
- border-top-left-radius: 7px;
- border-bottom-left-radius: 7px;
+//  border-top-left-radius: 7px;
+//  border-bottom-left-radius: 7px;
   z-index: 9;
  // background: red;
-  display: flex;
+
   // justify-content: center;
 }
 .manname {
-  width: 50%;
+  width: 40%;
 display: flex;
 justify-content: center;
 align-content: center;
 align-items: center;
 background: white;
-font-size: 1.5vw;
+font-size: 1.2vw;
 font-family: 'SHKODER 1989';
-border-bottom-right-radius: 10px;
+border-bottom-right-radius: 5px;
+//border: 1px solid red;
 
 }
 .codes {
-  width: 50%;
+  width: 60%;
   max-height: 80px;
 padding: 1%;
   overflow-y: scroll;
 //border: 1px solid blue;
   background: #EAEAEA;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 
   display: flex;
   justify-content: center;
@@ -488,11 +491,28 @@ padding: 1%;
 }
 
 .graphs {
- // border: 2px solid blue;
+
+
+// border: 2px solid blue;
   height: 31%;
   display: flex;
   justify-content: space-around;
+
+  #daily, #weekly, #montly {
+    position: absolute;
+    bottom: 28%;
+    right: 16%;
+  }
+  #weekly {
+    right: 9%;
+    --background: #FFBA00;
+  }
+  #montly {
+    right: 2%;
+  }
+
 }
+
 .graph {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
   width: 31.8%;
@@ -639,7 +659,7 @@ color: white;
 }
 #secondborder {
 border: 1px solid gray;
-width: 96%;
+width: 74%;
 margin-left: 2%;
 
 }
