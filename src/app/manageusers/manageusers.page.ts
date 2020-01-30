@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController, Platform, ToastController  } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -6,6 +7,7 @@ import * as firebase from 'firebase';
 import { AuthService } from '../../app/user/auth.service';
 import { MenuController } from '@ionic/angular';
 import { AbstractExtendedWebDriver } from 'protractor/built/browser';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-manageusers',
@@ -14,6 +16,21 @@ import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 })
 export class ManageusersPage implements OnInit {
 registerForm = false;
+ //admin
+ name;
+ surname;
+ position;
+ image;
+
+ number;
+
+  Userids;
+  Username;
+  Usersurname;
+  Useremail;
+  UseractiveAccount;
+  Userposition;
+  UserImage;
 
   public signupForm: FormGroup;
   viewuser;
@@ -201,11 +218,11 @@ console.log(this.selectedUser)
       });
   }
 
-      delete(userUid) {
-        console.log(userUid);
+      delete(userid) {
+        console.log(userid);
         // let email = x.email;
         // this.Booking = [];
-        this.db.collection("admin").doc(userUid.id).delete().then(function() {
+        this.db.collection("admin").doc(userid.id).delete().then(function() {
           console.log("Document successfully deleted!");
       }).catch(function(error) {
           console.error("Error removing document: ", error);
@@ -217,6 +234,35 @@ console.log(this.selectedUser)
       //   });
       // });
       }
+      deleteuser(id) {
+        this.db.collection('admin').doc(id).delete();
+        console.log('user  deleted');
+      }
+
+      async presentAlertDelete(id) {
+        const alert = await this.alertCtrl.create({
+          header: 'Confirm!',
+          message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: (blah) => {
+                console.log('Confirm Cancel: blah');
+              }
+            }, {
+              text: 'Okay',
+              handler: () => {
+                this.deleteuser(id);
+                this.router.navigateByUrl('/manageusers');
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
+
 
     Logout() {
       firebase.auth().signOut().then((res) => {
@@ -232,20 +278,13 @@ console.log(this.selectedUser)
           backdropDismiss: false,
         })
 
-        this.db.collection('admin').where('email', '==',this.email).get().then(async (data) => {
+        this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
            if(data.size == 0) {
-            this.db.collection('admin').add({
-              email: this.email,
-              password: this.password
-            });
-            console.log('user saved to cloud');
-    
-            this.db.collection('admin').add({
+            this.db.collection('userprofiles').add({
               email: this.email,
               password: this.password,
-              profile: 'no',
-             
-            }).then(async res => {
+              profile:'no'
+            }).then(async res =>{
               let goodRes = await this.alertCtrl.create({
                 header: 'Created new User.',
                 message: 'They must use the credentials for this account to login to the CMS',
@@ -254,8 +293,21 @@ console.log(this.selectedUser)
                   role: 'cancel'
                 }]
               });
+            })
+            console.log('user saved to cloud');
+    
+          
+            // }).then(async res => {
+            //   let goodRes = await this.alertCtrl.create({
+            //     header: 'Created new User.',
+            //     message: 'They must use the credentials for this account to login to the CMS',
+            //     buttons: [{
+            //       text: 'Done',
+            //       role: 'cancel'
+            //     }]
+            //   });
               
-            }); 
+            // }); 
            }else {
             let alert = await this.alertCtrl.create({
               message: 'the email is already  been used',
@@ -272,51 +324,7 @@ console.log(this.selectedUser)
         })
       }
 
-      async createUser() {
-        const alert = await this.alertCtrl.create({
-          header: 'New CMS User',
-          message: 'This user will have access to your CMS',
-          backdropDismiss: false,
-          inputs: [{
-            name: 'email',
-            type: 'email',
-            placeholder: 'Email'
-          }, {
-            name: 'password',
-            type: 'password',
-            placeholder: 'Password'
-          }],
-          buttons: [
-            {
-              text: 'Cancel',
-              role: 'cancel',
-              cssClass: 'secondary',
-              handler: (blah) => {
-                console.log('Confirm Cancel: blah');
-              }
-            }, {
-              text: 'Create User',
-              handler: (data) => {
-                console.log('credentials', data);
-
-                this.db.collection('CMS_users').add({data, profile: 'no'}).then(async res => {
-                  let goodRes = await this.alertCtrl.create({
-                    header: 'Created new User.',
-                    message: 'They must use the credentials for this account to login to the CMS',
-                    buttons: [{
-                      text: 'Done',
-                      role: 'cancel'
-                    }]
-                  });
-                  goodRes.present();
-                });
-              }
-            }
-          ]
-        });
-
-        await alert.present();
-      }
+     
 
       changeListener(admin): void {
         const i = admin.target.files[0];
@@ -352,4 +360,62 @@ console.log(this.selectedUser)
           });
         });
       }
+
+      AddUserToForm(id) {
+        this.db.collection('admin').doc(id).onSnapshot(element => {
+          // element.forEach(element => {
+            let name = {};
+            let surname = {};
+            let number = {};
+            let address = {};
+            let image={};
+    
+            name = this.name = element.data().name;
+            surname = this.surname = element.data().surname;
+            number = this.number = element.data().number;
+            this.position = this.position = element.data().position;
+            this.image =this.image= element.data().image;
+            // })
+    
+            console.log(this.name);
+            console.log(this.surname);
+            console.log(this.number);
+            console.log(this.position);
+            console.log(this.image);
+            // adding data to textboxes
+            this.name = this.name;
+            this.surname = this.surname;
+            this.number = this.number;
+            this.position = this.position;
+            this.image = this.image
+          // })
+      })
+    }
+
+  //   Userids;
+  // Username;
+  // Usersurname;
+  // Useremail;
+  // UseractiveAccount;
+  // Userposition;
+
+    AddUser(id) {
+      this.db.collection('admin').doc(id).onSnapshot(element => {
+        let id = {};
+        let name = {};
+        let surname = {};
+        let email = {};
+        let activeAccount = {};
+        let position = {};
+        let image = {};
+
+        id = this.Userids = element.data().userid;
+        name = this.name = element.data().name;
+        surname = this.surname = element.data().surname;
+        this.number = this.number = element.data().number;
+        this.position = this.position = element.data().position;
+        this.image =this.image= element.data().image;
+      });
+    }
+     
 }
