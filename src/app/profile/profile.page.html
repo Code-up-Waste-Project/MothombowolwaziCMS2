@@ -1,72 +1,59 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>profile</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<!-- <ion-content>
+<div class="container">
+  <div class="form"> -->
 
-  <div class="divitems">
-    <ion-item *ngIf="!profile.image" class="imageitem" lines="none" >
-     <ion-label position="stacked" id="profile_image" color="primary"></ion-label>
-     <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
-   </ion-item>
-<ion-item class="imageitem" lines="none" *ngIf="profile.image"><img  src="{{profile.image}}" height="400px" width="400px" ></ion-item>
-</div>
+  <!--   <div class="divitems" style="border: 1px solid red;">
+      <ion-item *ngIf="!profile.image" class="imageitem" lines="none" style="border: 1px solid rgb(47, 0, 255);">
+       <ion-label position="stacked" id="profile_image" color="primary"></ion-label>
+       <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
+     </ion-item>
+  <ion-item class="imageitem" lines="none" *ngIf="profile.image"><img  src="{{profile.image}}" height="400px" width="400px" ></ion-item>
+  </div --><!-- end of profile image -->
 
-  <div class="everything">
-    <div class="TheContent">
-      <div class="profile">
-        <div class="ProPic">
-          <img src="../../assets/admin.jpg">
+   <!--   <div class="inputs">
+          <input placeholder="name" [(ngModel)]="profile.name">
+          <input placeholder="Surname"  [(ngModel)]="profile.surname">
+          <input  placeholder="Position" [(ngModel)]="profile.position" >
+          <input  placeholder="Email Address" [(ngModel)]="profile.email">
+          <input placeholder="phone number" [(ngModel)]="profile.number" type="number">
+        <ion-button color="clear" (click)="users()" type="submit">Create Profile</ion-button>
+       </div> -->
+  
+    
+       <ion-content>
+        <div class="container">
+         
+          <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
+          <img id="people" src="../../assets/ReclaimerPopup.svg">
+          <img id="bins" src="../../assets/binsPopup  2.svg">
+          <div class="form">
+            <h3>Create Your Profile Here</h3>
+            <div class="profile" >
+              <div class="ProPic">
+                <img  src="../../assets/boxes.jpg">
+              </div>
+              <!-- <div class="Name">
+                <h1> {{profile.name}} {{profile.surname}}</h1>
+              </div> -->
+            </div>
+        
+          <div class="inputs">
+            <input placeholder="name"[(ngModel)]="profile.name">
+            <input placeholder="Surname" [(ngModel)]="profile.surname">
+            <input  placeholder="Position" [(ngModel)]="profile.position" >
+            <input  placeholder="Email Address"  [(ngModel)]="profile.email">
+            <input placeholder="phone number" [(ngModel)]="profile.number" type="number">
+          <ion-button color="clear" (click)="users()" type="submit" >Create Profile</ion-button>
+         </div>
+             
         </div>
-        <div class="Name">
-          <h1> {{profile.name}} {{profile.surname}}</h1>
         </div>
-      </div>
-      <div class="InfoItems">
-        <div>
-        <div class="theITEMS">
-          <div class="labels"><img class="Iconnn" src="../../assets/icon/user (3).svg" alt=""></div>
-          <div class="theplaceholder">
-          <ion-input placeholder="Name" [(ngModel)]="profile.name"></ion-input>
-        </div>
-        </div><br>
-        <div class="theITEMS">
-          <div class="labels"><img class="Iconnn" src="../../assets/icon/user (3).svg" alt=""></div>
-          <div class="theplaceholder">
-          <ion-input placeholder="Surname"  [(ngModel)]="profile.surname"></ion-input>
-        </div>
-       
-      </div><br>
-      <div class="theITEMS">
-        <div class="labels"><img class="Iconnn" src="../../assets/icon/user (3).svg" alt=""></div>
-        <div class="theplaceholder">
-        <ion-input placeholder="Position" [(ngModel)]="profile.position"></ion-input>
-      </div>
-      </div><br>
-       
-        <div class="theITEMS">
-          <div class="labels"><img class="Iconnn" src="../../assets/icon/email.svg" alt=""></div>
-          <div class="placeholder">
-          <ion-input placeholder="Email Address" [(ngModel)]="profile.email"></ion-input>
-        </div>
-      </div><br>
-
-      <div class="theITEMS">
-        <div class="labels"><img class="Iconnn" src="../../assets/icon/email.svg" alt=""></div>
-        <div class="placeholder">
-        <ion-input placeholder="phone number" [(ngModel)]="profile.number" type="number"></ion-input>
-      </div>
-    </div><br>
-      
-        <div class="theButton">
-        <ion-button color="clear" (click)="users()" type="submit">submit</ion-button>
-      </div>
-​
-        </div>
-      </div>
-    </div>
-  </div>
-</ion-content>
+        
+        </ion-content>
 

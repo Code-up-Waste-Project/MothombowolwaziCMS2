@@ -1223,7 +1223,8 @@ HideandShowHISTORYGLASS() {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Paper', 'Glass', 'Plastic', 'Aluminium',],
+        labels: ['Paper', 'Glass', 'Plastic', 'Aluminium',, 'Glass', 'Plastic', 'Aluminium',, 'Glass', 'Plastic', 'Aluminium',],
+        fontsize:'20px',
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'inbound',

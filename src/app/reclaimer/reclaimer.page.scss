@@ -49,27 +49,24 @@
     color: white;
 }
 #StuffInside{
-    overflow-y: scroll;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    // border: solid 2px orange;
+  //  border: solid 2px rgb(255, 0, 64);
 }
 .Theblocks{
     height: 35%;
     width: 100%;
-    // border: solid 2px blueviolet;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
-    margin-top: 50px;
 }
 .Block1{
+    //border: 1px solid red;
     position: relative;
-    height: 100%;
+    height: 110%;
     width: 24%;
     border-radius: 5px;
+    // background: purple;
     box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
 }
 .Waste{
@@ -89,22 +86,22 @@
     right: 0;
     transform: translateY(-50%);
 } 
-h3{
-    font-family: 'Open Sans Condensed', sans-serif;  
-    color: white;
-    font-size: 240%;
-    position: absolute;
-    top: -22px;
-    right: 55px;
-}
-#H3{
-    font-family: 'Open Sans Condensed', sans-serif;  
-    color: white;
-    font-size: 240%;
-    position: absolute;
-    top: -22px;
-    right: 25px;
-}
+// h3{
+//     font-family: 'Open Sans Condensed', sans-serif;  
+//     color: white;
+//     font-size: 240%;
+//     position: absolute;
+//     top: -22px;
+//     right: 55px;
+// }
+// #H3{
+//     font-family: 'Open Sans Condensed', sans-serif;  
+//     color: white;
+//     font-size: 240%;
+//     position: absolute;
+//     top: -22px;
+//     right: 25px;
+// }
 h2{
     font-family: 'Open Sans Condensed', sans-serif;  
     color: rgb(255, 255, 255);
@@ -140,42 +137,7 @@ h2{
 
 
 
-.History{
-    height: 60%;
-    width: 100%;
-    // border: solid 2px red;
-    margin-top: 5px;
-    padding: 10px;    
-    overflow: scroll;
-}
-.History1{
-    height: 50px;
-    width: 100%;
-    background-color: #548D04;
-    display: flex;
-    justify-content: center;
-    padding-left: 12px;
-}
-#Date{
-    // border: salmon solid 2px;
-    height: 100%;
-    width:30%;
-}
-#Material{
-    // border: salmon solid 2px;
-    height: 100%;
-    width:70%;
-}
 
-
-.History2{
-    height: 42px;
-    width: 100%;
-    background-color: rgb(238, 234, 234);
-    margin-top: 10px;
-    display:flex;
-    padding-left: 12px;
-}
 #Date1{
     // border: solid 2px red;
     height: 100%;
@@ -903,37 +865,133 @@ button{
     }
 }
 
+#Everything{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
 
-// .user-inputs{
-//     height: 40px;
-//     width: 100%;
-//     width: calc(100% - 50px);
-//     margin: 10px auto;
-//     border: 1px solid green;
-//     // padding: 5px;
-//     border-radius: 50px;
-//     overflow: hidden;
-//     display: flex;
+.logoright{
+    // border: 1px solid black;
+     width: 60%;   
+     position: absolute;
+     // bottom: 0;
+     top: 50%;
+     right: 2%;
+     transform: translateY(-50%);
+ }
+
+ 
+h3{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 80%;
+    height: 40px;
+    z-index: 10;
+    margin-top: 45%;
+    text-align: right;
+    background: #558C03;
+    position: relative;
+    padding-right: 2%;
+    color: white;
+    font-size: 20px;
+   padding: 10px;
+    border-top-right-radius:4px ;
+    border-bottom-right-radius:4px ;
   
-//   }
-//   #user-icon{
-//     color: grey;
-//   }
-//   input{
-//     width: 100%;
-//     height: 100%;
-//     padding-left: 10px;
-//     padding-right: 10px;
-//     border: 0
-//   }<!-- <div class="user-inputs">
-// <div>
-// <ion-icon id="user-icon" name="ios-person"></ion-icon>
-// </div>
-// <div>
-// <input placeholder="Full Names" type="text" >
-// </div>
-// </div> -->
-  
+}
+
+.History{
+    height: 60%;
+    width: 100%;
+  //  border: solid 2px red;
+      padding-top: 25px !important;
+   // overflow: scroll;
+}
+
+.History1{
+    height: 35px;
+    width: 100%;
+    background-color: #548D04;
+    display: flex;
+
+    h2 {
+        width: 100%;
+        font-size: 25px;
+       // border: 1px solid red;
+     text-align: left;
+     margin: 0 !important;
+     padding-left: 8px;
+    }
+    #Date{
+        // border: salmon solid 2px;
+       height: 100%;
+       width:40%;
+   }
+   #Material{
+    //  border: salmon solid 2px;
+         height: 100%;
+         width:60%;
+     
+     }
+}
+
+.History2{
+    height: 35px;
+     width: 100%;
+    background-color: rgb(238, 234, 234);
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    #Date1 {
+        
+        width: 40%;
+        font-size: 15px;
+     
+    }
+    #material {
+    
+        width: 60%;
+        font-size: 15px;
+        padding-left: 5px;
+    }
+        .eye {
+           // border: 1px solid green;
+           position: absolute;
+           right: 10% !important;
+           font-size: 20px;
+        }
+        .trash {
+          //  border: 1px solid green;
+           position: absolute;
+           right: 5% !important;
+           font-size: 20px;
+           color: brown;
+        }
+
+}
+
+.History2:nth-child(odd) {
+    background: white;
+}
+h2{
+    color: rgb(255, 255, 255);
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-top: 10px
+}
+#Everything{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+
+
+
+
+
+
 
 @media screen and (max-width:1366px){
     #logout {
@@ -960,16 +1018,16 @@ button{
       }
 
       
-.Theblocks{
-    height: 35%;
-    width: 100%;
-    // border: solid 2px blueviolet;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 20px;
-    margin-top: 50px;
-}
+// .Theblocks{
+//     height: 35%;
+//     width: 100%;
+//     // border: solid 2px blueviolet;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     padding: 20px;
+//     margin-top: 50px;
+// }
 .Block1{
     position: relative;
     height: 100%;
@@ -986,14 +1044,14 @@ button{
     top: 50%;
     transform: translateY(-50%);
 }
-#H3{
-    font-family: 'Open Sans Condensed', sans-serif;  
-    color: white;
-    font-size: 240%;
-    position: absolute;
-    top: -22px;
-    right: 9px;
-}
+// #H3{
+//     font-family: 'Open Sans Condensed', sans-serif;  
+//     color: white;
+//     font-size: 240%;
+//     position: absolute;
+//     top: -22px;
+//     right: 9px;
+// }
 
 
 
