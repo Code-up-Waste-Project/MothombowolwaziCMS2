@@ -273,7 +273,7 @@ export class InboundPDFPage implements OnInit {
     console.log(printDataNumber);
 
     var docDefinition = {
-      header:  { text: 'Mthombowolwazi', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 20, margin: [ 35, 25, 20, -150 ] },
+      header:  { text: 'Mthombowolwazi', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 20, margin: [ 35, 15, 20, 7 ] },
 
 
         footer: {
