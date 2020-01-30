@@ -10,7 +10,7 @@
   <ion-content>
     <div padding class="container">
       <div padding class="left">
-        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile">
+        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile" (click)="(myprofiles)">
 
             <!-- let l=s[s.length-1]; -->
 
@@ -30,23 +30,21 @@
   
       <!--  -->
       <div class="right" *ngIf="!registerForm" >
-        <div class="pic" padding>
+        <div class="pic" padding *ngFor = "let myprofiles  of newuserprofile">
        <ion-avatar>
-        <img  *ngIf="oneprofile.image" src ="{{oneprofile.image}}">
-        <img  *ngIf="oneprofile.image" src ="{{oneprofile.image}}">
+        <img   src ="{{myprofiles.image}}">
+      
 
-        
-//
-        
+
         </ion-avatar>
   
         
         </div>
         <p id="borderb"></p>
-        <div padding class="info">
-          <h4>{{oneprofile.name}} {{oneprofile.surname}}</h4>
-          <p>{{oneprofile.number}}</p>
-          <p style="font-weight: bold;padding-top: 3px;"> {{oneprofile.position}}</p>
+        <div padding class="info" *ngFor = "let myprofiles  of newuserprofile">
+          <h4>{{myprofiles.name}} {{myprofiles.surname}}</h4>
+          <p>{{myprofiles.number}}</p>
+          <p style="font-weight: bold;padding-top: 3px;"> {{myprofiles.position}}</p>
         </div>
   
         <ion-fab >

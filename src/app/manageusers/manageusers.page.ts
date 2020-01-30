@@ -32,7 +32,7 @@ oneprofile:any ={};
 
   email;
   password;
-
+  selectedUser ={}
   constructor(
     public platform: Platform,
     public authService: AuthService,
@@ -91,7 +91,12 @@ oneprofile:any ={};
       showRegisterForm(){
         this.registerForm = !this.registerForm;
       }
-
+      
+      seeprofile(profile){
+        
+this.selectedUser = profile
+console.log(this.selectedUser)
+      }
   getUsers() {
     this.db.collection('admin').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name

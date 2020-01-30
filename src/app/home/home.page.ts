@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
 import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-utils';
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-home',
@@ -67,6 +68,7 @@ reclaimerplastic =0;
    pet005: null,
    pet003: null,
    pet001: null,
+   time:null
  };
 
 
@@ -459,12 +461,21 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   ngOnInit() {
     // this.getreclamer();
 
+    this.db.collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot(data => {
+      console.log("DATA EEE, ", data.data().time);
+      
+    })
+
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
     this.prices.get().then((documentSnapshot) => {
       this.price = [];
       console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
-      console.log(this.price);
+      console.log('my pricess', documentSnapshot.data().time);
+
+    
+  
+      this.pricess.time = documentSnapshot.data().time
       this.pricess.gl001 = documentSnapshot.data().gl001;
       this.pricess.hd001 = documentSnapshot.data().hd001;
       this.pricess.ld001 = documentSnapshot.data().ld001;
@@ -529,7 +540,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   update() {
     // To update price :
     this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      time: new Date(),
+      time:moment().format('MMMM Do YYYY, h:mm:ss a'),
       gl001: this.GH001price,
       nfalo1: this.NFAL01price,
       pap005: this.PAP005price,
