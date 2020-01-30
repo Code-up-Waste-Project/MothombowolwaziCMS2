@@ -1,9 +1,32 @@
+// .Mother{
+//     background:#44474D;
+//     height: 100%;
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .itemDiv{
+//     // background: purpl e;
+//     height: 80%;
+//     width: 50%;
+// }
+// ion-item{
+//     border: solid 2px purple;
+//     margin-bottom: 10px;
+//     background-color: rgba(255, 255, 255, 0.308);
+// }
+// .theButton{
+//     // border: purple solid 2px;
+// }
+
 .header {
     --background: #265902 !important;
     display: flex;
   }
-​
-​
+
+
 .Thecont{
      height: 100%;
      display: flex;
@@ -14,7 +37,7 @@
      background-size: 130%;
      background-position: -10% 40%;
 }
-​
+
 .Information{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 95%;
@@ -23,15 +46,16 @@
   background: rgba(255, 255, 255, 0.719);
   overflow-y: scroll;
 }
-​
-​
-.Cancel{
+
+
+
+.Cancel {
     color: rgb(255, 255, 255);
     margin-left: 95%;
     font-size: 150%;
 }
 
-.PDF{
+.PDF {
     // margin-right: 95%;
     background: rgb(255, 255, 255);
     color: #265902;
@@ -39,18 +63,7 @@
     font-weight: 600;
 }
 
-table{
-    margin-top: 5%;
-}
-
-th, td {
-    border: 1px solid black;
-}
-p{
-    text-align: center;
-}
-
-.Info{
+.Info {
     // border: solid 1px black;
     height: 10vh;
     width: 100%;
@@ -58,14 +71,15 @@ p{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
 }
-.div1{
+
+.div1 {
     // border: solid 1px rgb(216, 0, 0);
     width: 50%;
     height: 100%;
 }
-.div2{
+
+.div2 {
     // border: solid 1px black;
     width: 50%;
     height: 100%;
@@ -75,43 +89,21 @@ p{
     justify-content: center;
 }
 
-h2{
-    font-size: 15px;
-    text-align: rigt;
-}
-h1{
+p {
     text-align: center;
 }
 
-// .Mother{
-//     background:#44474D;
-//     height: 100%;
-//     width: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-// }
+th,
+td {
+    border: solid 1px black;
+}
 
-// .itemDiv{
-//     // background: purpl e;
-//     height: 80%;
-//     width: 50%;
-// }
+h1 {
+    text-align: center;
+    margin-bottom: 5%;
+}
 
-// ion-item{
-//     border: solid 2px purple;
-//     margin-bottom: 10px;
-//     background-color: rgba(255, 255, 255, 0.308);
-
-// }
-
-// .theButton{
-//     // border: purple solid 2px;
-
-// }
-
-.Buttons{
+.Buttons {
     // border: solid 2px purple;
     height: 15%;
     width: 100%;
@@ -121,7 +113,7 @@ h1{
     justify-content: center;
 }
 
-.CancelBtn{
+.CancelBtn {
     // border: solid 2px rgb(19, 4, 19);
     height: 15%;
     width: 50%;
@@ -130,8 +122,246 @@ h1{
     justify-content: left;
 }
 
-.PDFButton{
+.PDFButton {
     // border: solid 2px rgb(179, 255, 0);
     height: 15%;
     width: 50%;
 }
+
+// h1{
+//     text-align: center;
+//     color: white;
+// }
+// .Everything{
+//     height: 100%;
+//     width: 100%;
+//     border: solid 1px rgb(0, 0, 0);
+//     overflow-y: scroll;
+// }
+// .Information1{
+//     // border: solid 2px purple;
+//     width: 100%;
+//     height: 20%;
+//     display: flex;
+//     flex-direction: row;
+// }
+// .MotherInfo{
+//     width: 70%;
+//     height: 100%;
+//     border: solid 1px black;
+// }
+// .FatherInfo{
+//     border: solid 1px rgb(0, 0, 0);
+//     height: 100%;
+//     width: 30%;
+//     display:flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .Info1{
+//     border: solid 1px rgb(0, 0, 0);
+//     height: 50%;
+//     width: 100%;
+//     display:flex;
+//     justify-content: right;
+//     align-items: center;
+// }
+// .Info2{
+//     border: solid 1px rgb(0, 0, 0);
+//     height: 50%;
+//     width: 100%;
+//     display:flex;
+//     justify-content: right;
+//     align-items: center;
+// }
+// .Heading{
+//     // border: yellowgreen solid 2px;
+//     width: 100%;
+//     height: 10%;
+// }
+// .Information2{
+//     // border: solid 2px brown;
+//     width: 100%;
+//     height: 30%;
+// }
+// .Subheads{
+//     // border: cadetblue solid 2px;
+//     width: 100%;
+//     height: 20%;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     // align-items: center;
+//     text-align: center;
+// }
+// .Credentials{
+//     // border: cadetblue solid 2px;
+//     width: 100%;
+//     height: 8%;
+//     display: flex;
+//     flex-direction: row;
+//     // justify-content: center;
+//     // align-items: center;
+//     // text-align: center;
+//     .Names{
+//         // border: purple solid 2px;
+//         height: 100%;
+//         width: 50%;
+//     }
+//     .Number{
+//         // border: purple solid 2px;
+//         height: 100%;
+//         width: 20%;;
+//     }
+//     .Address{
+//         // border: purple solid 2px;
+//         height: 100%;
+//         width: 20%;;
+//     }
+// }
+// .Sub1{
+//     border: solid 2px rgb(0, 0, 0);
+//     width: 30%;
+//     height: 100%;
+// }
+// .Sub2{
+//     border: solid 2px rgb(0, 0, 0);
+//     width: 20%;
+//     height: 100%;
+// }
+// .Sub3{
+//     border: solid 2px rgb(0, 0, 0);
+//     width: 20%;
+//     height: 100%;
+// }
+// .Sub4{
+//     border: solid 2px rgb(0, 0, 0);
+//     width: 20%;
+//     height: 100%;
+// }
+// .Sub5{
+//     border: solid 2px rgb(0, 0, 0);
+//     width: 20%;
+//     height: 100%;
+// }
+// .Sub6{
+//     border: solid 2px rgb(0, 0, 0);
+//     width: 20%;
+//     height: 100%;
+// }
+// .Prices{
+//     // border: cadetblue solid 2px;
+//     width: 100%;
+//     height: 25%;
+//     display: flex;
+//     flex-direction: row;
+//     text-align: center;
+//     .Price1{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 30%;
+//         height: 1005;
+//     }
+//     .Price2{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price3{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price4{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price5{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price6{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price7{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price8{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 25%;
+//         height: 100%;
+//     }
+//     .Price9{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 25%;
+//         height: 100%;
+//     }
+//     .Price10{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price11{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price12{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+//     .Price13{
+//         border: solid 2px rgb(0, 0, 0);
+//         width: 20%;
+//         height: 100%;
+//     }
+// }
+// .totals{
+//     border: rgb(160, 10, 147) solid 2px;
+//     width: 100%;
+//     height: 25%;
+//     display: flex;
+//     flex-direction: row;
+//     .Total1{
+//         border: solid 2px rgb(255, 0, 0);
+//         width: 50%;
+//         height: 1005;
+//     }
+//     .Total2{
+//         border: solid 2px rgb(255, 0, 0);
+//         width: 20%;
+//         height: 1005;
+//     }
+//     .Total3{
+//         border: solid 2px rgb(255, 0, 0);
+//         width: 20%;
+//         height: 1005;
+//     }
+//     .Total4{
+//         border: solid 2px rgb(255, 0, 0);
+//         width: 20%;
+//         height: 1005;
+//     }
+//     .Total5{
+//         border: solid 2px rgb(255, 0, 0);
+//         width: 20%;
+//         height: 1005;
+//     }
+// }
+// p{
+//     text-align: center;
+//     border-bottom: black solid 1px;
+// }
+// h4{
+//     text-align: center;
+//     font-weight: bold;
+// }
+// h2{
+//     font-weight: bold;
+// }
