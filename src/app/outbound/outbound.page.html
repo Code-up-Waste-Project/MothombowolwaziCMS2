@@ -188,7 +188,7 @@
               <div class="Button">
                 <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
                 <div class="TheButton">
-                  <button clear (click)="presentAlertupdate()">Save</button>
+                  <button clear (click)="CheckInputsEmptyString()">Save</button>
                 </div>
               </div>
           </div>
@@ -232,7 +232,7 @@
 
 
               <ion-card *ngFor="let records of recordoutbounddisplays">
-                <ion-card-content>
+                <ion-card-content (click)='presentAlertAddUser(records.id)'>
                   <h5>{{ records.DriverName }}</h5>
                   <!-- <p>{{ records.DriverName }}</p> -->
                   <p>{{ records.RegistarionNumberPlates }}</p>

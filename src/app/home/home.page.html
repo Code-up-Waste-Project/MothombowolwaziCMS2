@@ -1,16 +1,14 @@
-<ion-header >
-  <ion-toolbar class="header" *ngFor="let user of Newadmin"  >
-    <ion-title>{{ user.name }} {{ user.surname }}</ion-title>
+<ion-header *ngFor="let user of Newadmin">
+  <ion-toolbar class="header" >
+    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<!--   <ion-toolbar  class="header">
-    <ion-title>Refilwe Dikutle<span id="logout">logout<ion-icon name="person"></ion-icon></span></ion-title>
-    <p style="background: blue;"></p>
-    <p style="background: rgb(0, 0, 0);"></p>
-  </ion-toolbar> -->
+
+
+
 <ion-content>
 <div class="container">
   <div padding class="alltime">
@@ -67,22 +65,7 @@
           <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="trash"></ion-icon></ion-button>
         </div>   
         <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger" (click)=burgerMan()><ion-icon name="more"></ion-icon></div> -->  
-<!-- div holding form(EDIT PRICE) -->
-<!-- <div class="addcategory">
-  <h1>Create New Category </h1>
-  <input placeholder="Enter Name of New Material">
-  <input placeholder="Enter Price">
-  <button ion-button>Save</button>
-</div> -->
-<!-- div holding form (DELETE BUTTON) -->
-<!-- <div class="deletecategory">
-  <h1>Delete Material Here</h1>
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-  <input placeholder="mass pap005">
-<button ion-button>Save</button>
-</div> -->
+
 </div>
       <div class="matnames">
         <div class="codes">
@@ -200,16 +183,20 @@
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
  
-  <input placeholder="Enter price" [(ngModel)]="HD001price">
-  <input placeholder="Enter price" [(ngModel)]="LD001price">
-  <input placeholder="Enter price" [(ngModel)]="LD003price">
-  <input placeholder="Enter price" [(ngModel)]="PET005price">
-  <input placeholder="Enter price" [(ngModel)]="PET001price">
+
+
+
+
+  <input placeholder="R{{ pricess.hd001 }}" [(ngModel)]="HD001price">
+  <input placeholder="R{{ pricess.ld001 }}" [(ngModel)]="LD001price">
+  <input placeholder="R{{ pricess.ld003 }}" [(ngModel)]="LD003price">
+  <input placeholder="R{{ pricess.pet005 }}" [(ngModel)]="PET005price">
+  <input placeholder="R{{ pricess.pet001 }}" [(ngModel)]="PET001price">
   
-  <input placeholder="mass pap005" [(ngModel)]="PET003price"> 
+  <input placeholder="R{{ pricess.pet003 }}" [(ngModel)]="PET003price"> 
  
 
-<button ion-button (click)="checkinputfields()">Save</button>
+<button ion-button (click)="CheckInputsEmptyStringPlastic()">Save</button>
 </div>
 </div>
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -220,7 +207,7 @@
     <input placeholder="mass pap005" [(ngModel)]="GH001price">
   
     
-  <button ion-button (click)="checkinputfields()">Save</button>
+  <button ion-button (click)="CheckInputsEmptyStringGlass()">Save</button>
   </div>
   </div>
 <!-- create new material -->
@@ -233,7 +220,7 @@
  <input placeholder="Enter price"  [(ngModel)]="PAP001price">
  <input placeholder="Enter price" [(ngModel)]="PAP003price">
 
-<button ion-button  (click)="checkinputfields()">Save</button>
+<button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
 </div>
 <!-- delete material -->
@@ -243,9 +230,9 @@
    slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>edit pprice for  Aluminum</h1>
  
-  <input placeholder="Enter price" [(ngModel)]="NFAL01price">
+  <input placeholder="R {{pricess.nfalo1}}" [(ngModel)]="NFAL01price">
   
-<button ion-button (click)="checkinputfields()">Save</button>
+<button ion-button (click)="CheckInputsEmptyStringAlu()">Save</button>
 </div>
 </div>
 
