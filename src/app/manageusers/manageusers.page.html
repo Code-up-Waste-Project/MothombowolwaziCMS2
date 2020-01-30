@@ -16,7 +16,7 @@
             <p>{{myprofiles.email}}</p>
             <p>{{myprofiles.position}}</p>
             <div class="image">
-              <button (click)='presentAlertDelete(myprofiles.id)'>delete user</button>
+              
               <img *ngIf="!myprofiles.image" src="../../assets/mthombologo (1).png" alt=""> 
               <img  *ngIf="myprofiles.image" src="{{myprofiles.image}}" alt="">
             </div>
@@ -37,7 +37,7 @@
           <h4>{{name}} {{surname}}</h4>
           <p>{{number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
-          
+          <button (click)='presentAlertDelete(oneprofile.id)'>delete user</button>
         </div>
   
         <ion-fab >

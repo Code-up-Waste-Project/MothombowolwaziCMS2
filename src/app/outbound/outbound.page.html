@@ -212,7 +212,16 @@
         <div class="Content">
           <div class="Group1">
 
-            <!-- <div class="theSearch">
+  <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
+    <div id="Son" (click)="goAway()"></div>
+    <div class="Mask">
+      <div class="spacer"></div>
+      <!-- <h3 class="Tittle"><b>Outbound Details</b> <h3 id="Tittle"><b>Outbound details</b></h3></h3> -->
+      <h6 class="Tittle"><b>Outbound Details</b></h6>
+      <div class="Content">
+        <div class="Group1">
+
+          <!-- <div class="theSearch">
               <input id="theSearchbar" type="text" placeholder="Search Driver">
             </div> -->
 
@@ -254,14 +263,18 @@
               
               <!-- <h3 id="OutBoundDetails"><b>Outbound details</b></h3> -->
               <div class="Heading">
-                 <!-- -->
-              <h4 class="theH4">Outbound Information</h4>
-                
-                <div class="DriverInputs"> 
-                  <input id="input" placeholder="Driver's Name" [(ngModel)]="DriverNameInput" formControlName="DriverNameInput" type="text">
-                  <input id="input" placeholder="Registarion No." [(ngModel)]="RegistarionNumberPlatesInput" formControlName="RegistarionNumberPlatesInput" type="text">
-                  <input id="input" placeholder="Destination" [(ngModel)]="DestinationInput" formControlName="DestinationInput" type="text">
-                  <input id="input" placeholder="Truck Source" [(ngModel)]="TruckSourcessInput" formControlName="TruckSourcessInput" type="text">
+                <!-- -->
+                <h1>Outbound Information</h1>
+
+                <div class="DriverInputs">
+                  <input id="input" placeholder="Driver's Name" [(ngModel)]="DriverNameInput"
+                    formControlName="DriverNameInput" type="text">
+                  <input id="input" placeholder="Registarion No." [(ngModel)]="RegistarionNumberPlatesInput"
+                    formControlName="RegistarionNumberPlatesInput" type="text">
+                  <input id="input" placeholder="Destination" [(ngModel)]="DestinationInput"
+                    formControlName="DestinationInput" type="text">
+                  <input id="input" placeholder="Truck Source" [(ngModel)]="TruckSourcessInput"
+                    formControlName="TruckSourcessInput" type="text">
                   <!-- <input id="input" placeholder="Driver's Name" formControlName="DriverName" type="text" [(ngModel)]="DriverName">
                   <input id="input" placeholder="Registarion No." [(ngModel)]="RegistarionNumberPlates" formControlName="RegistarionNumberPlates" type="text">
                   <input id="input" placeholder="Destination" formControlName="Destination" [(ngModel)]="Destination" type="text">

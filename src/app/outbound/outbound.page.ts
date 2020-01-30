@@ -1228,8 +1228,9 @@ export class OutboundPage implements OnInit {
     group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
     nextClick(){
       this.driverInfo = true;
-      this.group1[0].style.left = "30%";
-      this.group1[0].style.width = "50%"
+      this.group1[0].style.left = "8%";
+      this.group1[0].style.transform = "translateX(0)";
+      this.group1[0].style.width = "40%"
     }
     getItems(ev: any) {
       // Reset items back to all of the items
