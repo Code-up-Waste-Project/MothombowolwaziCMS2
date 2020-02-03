@@ -26,7 +26,24 @@ imgGraph = document.getElementById('inbgraph');
  Reclaimerweight=0;
 
  //graghdatainbound
- inboundglass =0;
+inboundgh001=0;
+inboundpap005=0;
+
+
+inboundnfalo1 =0;
+inboundhd001 =0;
+
+inboundpet001 =0;
+
+
+inboundpet0001=0;
+inboundpap007 =0;
+inboundpap003 =0;
+inboundpap001 =0;
+inboundld001 =0;
+inboundld003 =0;
+inboundpet003 =0;
+
  inboundpaper =0;
  inboundAlum=0;
  inboundplastic=0;
@@ -37,7 +54,34 @@ outboundglass =0;
  outboundAlum =0;
  outboundplastic =0;
 
+
+ //reclaimer
+ reclaimergh001mass  = 0;
+ reclaimerpap005mass=0;
+ reclaimerpap007Mass  =0;
+ reclaimerpap003mass  =0;
+ reclaimerpap001mass  =0;
+
+ reclaimernfa01Mass  = 0;
+ reclaimerhd001mass  = 0;
+ reclaimerld003mass  = 0;
+ reclaimernfa01mass  = 0;
+ reclaimerpet003mass  = 0;
+reclaimerpet001mass  = 0;
  //outboundgraphs
+
+
+ outboundgh001 =0;
+ outboundpap005 =0;
+ outboundpap007=0;
+ outboundpap003 =0;
+ outboundpap001 =0;
+ outboundhd001 =0;
+ outboundld001 =0;
+ outboundld003 =0;
+ outboundpet003 =0;
+outboundpet001 =0;
+
 reclaimerglass =0;
 reclaimerpaper =0;
 reclaimerAlum =0;
@@ -285,8 +329,8 @@ Totalplasticinbound: number = 0;
 
 //pulling data
 //inbound
-this.inboundglass =0;
-this. inboundpaper =0;
+this.inboundgh001=0;
+this.inboundpap005=0;
 this.inboundAlum =0;
 this.inboundweight =0;
 this.inboundplastic =0;
@@ -312,7 +356,25 @@ firebase.firestore().collection('inbounds').get().then(res=>{
     this.updated =(new Date(val.data().time.seconds*1000)).toDateString();
 
     //glass
-  this.inboundglass =this.inboundglass +parseFloat(val.data().inboundGH001)
+  this.inboundgh001 =this.inboundgh001 +parseFloat(val.data().inboundGH001)
+
+  this.inboundpap005 =this.inboundpap005 +parseFloat(val.data().inboundPAP005)
+  this.inboundpap007 =this.inboundpap007  +parseFloat(val.data().inboundPAP007)
+  this.inboundpap003 =this.inboundpap003 +parseFloat(val.data().inboundPAP003)
+  
+  this.inboundpap001 =this.inboundpap001 +parseFloat(val.data().inboundPAP001)
+  this.inboundpap007 =this.inboundpap007 +parseFloat(val.data().inboundPAP007)
+  this.inboundld001 =this.inboundld001 +parseFloat(val.data().inboundLD001)
+  this.inboundld003 =this.inboundld003 +parseFloat(val.data().inboundLD003)
+  this.inboundpet003 =this.inboundpet003 +parseFloat(val.data().inboundPET003)
+  this.inboundpet0001 =this.inboundpet0001 +parseFloat(val.data().inboundPET001)
+
+  this.inboundnfalo1 =this.inboundpet003 +parseFloat(val.data().inboundNFAL01)
+  this.inboundhd001 =this.inboundpet0001 +parseFloat(val.data().inboundHD001)
+  this.inboundld001 =this.inboundpet003 +parseFloat(val.data().inboundLD001)
+  this.inboundld003 =this.inboundpet0001 +parseFloat(val.data().inboundLD003)
+  this.inboundpet001 =this.inboundpet0001 +parseFloat(val.data().inboundPET001)
+
 //paper
 this.inboundpaper = this.inboundpaper 
 +parseFloat(val.data().inboundPAP005) 
@@ -371,7 +433,17 @@ firebase.firestore().collection('outbound').get().then(res=>{
 
     //glass
     console.log('ountglass',  this.outboundglass)
-    this.outboundglass =this.outboundglass +parseFloat(val.data().GH001)
+    this.outboundgh001 =this.outboundgh001 +parseFloat(val.data().GH001)
+    this.outboundpap005 =this.outboundpap005 +parseFloat(val.data().PAP005)
+    this.outboundpap007=this.outboundpap007 +parseFloat(val.data().PAP007)
+    this.outboundpap003 =this.outboundpap003 +parseFloat(val.data().PAP003)
+    this.outboundpap001 =this.outboundpap001 +parseFloat(val.data().PAP001)
+    this.outboundhd001 =this.outboundhd001 +parseFloat(val.data().HD001)
+    this.outboundld001 =this.outboundld001 +parseFloat(val.data().LD001)
+    this.outboundld003 =this.outboundld003 +parseFloat(val.data().LD003)
+    this.outboundpet003 =this.outboundpet003 +parseFloat(val.data().PET003)
+    this.outboundpet001 =this.outboundpet001 +parseFloat(val.data().PET001)
+  
     //paper
     console.log('outboundpaper',this.outboundpaper)
     this.outboundpaper = this.outboundpaper 
@@ -434,7 +506,18 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
     //glass
     console.log('glassreclaimer',this.reclaimerglass)
-    this.reclaimerglass  = this.reclaimerglass  +parseFloat(val.data().GH001)
+    this.reclaimergh001mass  = this.reclaimergh001mass  +parseFloat(val.data().GH001)
+    this.reclaimerpap005mass  = this.reclaimerpap005mass  +parseFloat(val.data().PAP005Mass)
+    this.reclaimerpap007Mass  = this.reclaimerpap007Mass  +parseFloat(val.data().PAP007Mass)
+    this.reclaimerpap003mass  = this.reclaimerpap003mass  +parseFloat(val.data().PAP003Mass)
+    this.reclaimerpap001mass  = this.reclaimerpap001mass  +parseFloat(val.data().PAP001Mass)
+
+    this. reclaimernfa01mass  = this. reclaimernfa01mass  +parseFloat(val.data().NFAL01Mass)
+    this.reclaimerhd001mass  = this.reclaimerhd001mass  +parseFloat(val.data().HD001Mass)
+    this.reclaimerld003mass  = this.reclaimerld003mass  +parseFloat(val.data().LD003Mass)
+    this.reclaimernfa01Mass  = this.reclaimernfa01Mass  +parseFloat(val.data().NFAL01Mass)
+    this.reclaimerpet003mass  = this.reclaimerpet003mass  +parseFloat(val.data().PET003Mass)
+    this.reclaimerpet001mass  = this.reclaimerpet001mass  +parseFloat(val.data().PET001Mass)
     //paper
     console.log('paperreclaimer',this.reclaimerpaper)
     this.reclaimerpaper =   this.reclaimerpaper
@@ -1258,12 +1341,12 @@ HideandShowHISTORYGLASS() {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
-     
+        labels: ['GH001', 'HD001', 'LD003', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
+      
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'INBOUND',
-          data: [ this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,],
+          data: [ this.inboundgh001, this.inboundpap005, this.inboundpap007, this.inboundpap003,this.inboundpap001, this.inboundld001, this.inboundld003, this.inboundpet0001,this.inboundnfalo1, this.inboundhd001, this.inboundld003,  this.inboundpet001,],
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'rgb(90, 78, 31)', // array should have same number of elements as number of dataset
           borderColor: 'rgb(90, 78, 31)',  // array should have same number of elements as number of dataset
@@ -1297,19 +1380,18 @@ HideandShowHISTORYGLASS() {
   
   /* bar chart */
  
-  // this.outboundglass =0;
-  // this.outboundpaper =0;
-  // this.outboundAlum =0;
-// this.outboundplastic =0;
+
+
+
   createBarChart1() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
+        labels: ['Poutboundgh001ap1', 'Papoutboundpap0051', 'Poutboundpap007ap1', 'Poutboundpap003p1', 'outboundpap001', 'outboundhd001', 'Paoutboundld003', 'Pap1', 'Pap1', 'Pap1', 'Pap1', 'Pap1'],
         // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
         datasets: [{
           label: 'OUTBOUND',
-          data: [this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper, this.outboundpaper, this.outboundglass,  this.outboundAlum,],
+          data: [this.outboundgh001, this.outboundpap005, this.outboundpap007,  this.outboundpap003,this.outboundpap001, this.outboundhd001, this.outboundld003,  this.outboundpet003,this.outboundpet001, this.outboundpet001, this.outboundpet001,  this.outboundpet001,],
       
           // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
           backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
@@ -1348,6 +1430,9 @@ HideandShowHISTORYGLASS() {
 
 
     createBarChart2() {
+
+     
+
       this.bars = new Chart(this.barChart2.nativeElement, {
         type: 'bar',
         data: {
@@ -1355,7 +1440,8 @@ HideandShowHISTORYGLASS() {
           // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
           datasets: [{
             label: 'RECLAIMER',
-            data: [ this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper,this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper,this.outboundpaper, this.outboundglass,  this.outboundAlum,this.outboundpaper],
+   
+      data: [ this.reclaimergh001mass, this.reclaimerpap005mass,  this.reclaimerpap007Mass,this.reclaimerpap003mass,this.reclaimerpap001mass, this.reclaimernfa01mass,  this.reclaimerhd001mass,this.reclaimerld003mass,this.reclaimerpet003mass, this.reclaimerpet003mass, this.reclaimerpet001mass],
             // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
             backgroundColor: 'rgb(29, 61, 61)', // array should have same number of elements as number of dataset
             borderColor: 'rgb(29, 61, 61)',  // array should have same number of elements as number of dataset
@@ -1539,5 +1625,7 @@ HideandShowHISTORYGLASS() {
           ]
         });
         await alert.present();
-      }     
+      } 
+  
+      
 }

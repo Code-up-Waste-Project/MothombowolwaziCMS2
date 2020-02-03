@@ -15,6 +15,19 @@
   
   }
   #people {
+    #sthombe-upload {
+      color: black;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      opacity: 0;
+      padding: 40px;
+    }
+    #sthombe-upload:hover{
+      opacity: 1;
+    }
     //border: 1px solid green;
     width: 15%;
     position: absolute;

@@ -867,5 +867,8 @@ export class InboundPage implements OnInit {
       }
       }, 10);
     }
-
+    
+    editprofile() {
+      this.route.navigate(['profile']);
+    }
 }

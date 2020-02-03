@@ -1288,11 +1288,7 @@ export class OutboundPage implements OnInit {
 
     }
 
-    // angular.json  code (do not delete)
-    // {
-    //   "glob": "**/*",
-    //   "input": "node_modules/ionic4-auto-complete/assets/",
-    //   "output": "./assets/"
-    // }
-
+    editprofile() {
+      this.route.navigate(['profile']);
+    }
 }
