@@ -21,7 +21,7 @@ registerForm = false;
  surname;
  position;
  image;
-
+ ActiveAcount;
  number;
 
   Userids;
@@ -44,12 +44,14 @@ registerForm = false;
   profiles;
   newuserprofilezzzzz = [];
   isLabelActive;
-oneprofile:any ={};
+  oneprofile:any ={};
   public loading: any;
 
   email;
   password;
+
   selectedUser ={}
+
   constructor(
     public platform: Platform,
     public authService: AuthService,
@@ -287,29 +289,23 @@ console.log(this.selectedUser)
               password: this.password,
               profile:'no'
             }).then(async res =>{
-              let goodRes = await this.alertCtrl.create({
-                header: 'Created new User.',
-                message: 'They must use the credentials for this account to login to the CMS',
-                buttons: [{
-                  text: 'Done',
-                  role: 'cancel'
-                }]
+              let alert = await this.alertCtrl.create({
+              message:'Created users',
+                
+              buttons: [
+                {
+                  text: 'OK'
+                }
+              ]
+
               });
+          alert.present();
+          console.log('user addded to cloud ')
             })
+            
             console.log('user saved to cloud');
     
-          
-            // }).then(async res => {
-            //   let goodRes = await this.alertCtrl.create({
-            //     header: 'Created new User.',
-            //     message: 'They must use the credentials for this account to login to the CMS',
-            //     buttons: [{
-            //       text: 'Done',
-            //       role: 'cancel'
-            //     }]
-            //   });
-              
-            // }); 
+        
            }else {
             let alert = await this.alertCtrl.create({
               message: 'the email is already  been used',
@@ -326,7 +322,6 @@ console.log(this.selectedUser)
         })
       }
 
-     
 
       changeListener(admin): void {
         const i = admin.target.files[0];
@@ -342,6 +337,9 @@ console.log(this.selectedUser)
             // this.profile.image = dwnURL;
           });
         });
+      }
+      editprofile() {
+        this.router.navigate(['profile']);
       }
 
       adminprofile(){
@@ -365,18 +363,20 @@ console.log(this.selectedUser)
 
       AddUserToForm(id) {
         this.db.collection('admin').doc(id).onSnapshot(element => {
-          // element.forEach(element => {
+          // element.forEach(element => { ActiveAcount
             let name = {};
             let surname = {};
             let number = {};
             let address = {};
-            let image={};
+            let image = {};
+            let ActiveAcount = {};
     
             name = this.name = element.data().name;
             surname = this.surname = element.data().surname;
             number = this.number = element.data().number;
             this.position = this.position = element.data().position;
             this.image =this.image= element.data().image;
+            ActiveAcount = this.ActiveAcount = element.data().ActiveAcount;
             // })
     
             console.log(this.name);
@@ -384,12 +384,14 @@ console.log(this.selectedUser)
             console.log(this.number);
             console.log(this.position);
             console.log(this.image);
+            console.log(this.ActiveAcount);
             // adding data to textboxes
             this.name = this.name;
             this.surname = this.surname;
             this.number = this.number;
             this.position = this.position;
-            this.image = this.image
+            this.image = this.image;
+            this.ActiveAcount = this.ActiveAcount;
           // })
       })
     }

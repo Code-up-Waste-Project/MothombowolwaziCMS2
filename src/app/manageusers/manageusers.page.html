@@ -1,6 +1,6 @@
 <ion-header *ngFor="let user of Newadmin">
   <ion-toolbar class="header" >
-    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title><ion-avatar (click)="editprofile()"><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
@@ -12,9 +12,10 @@
       <div padding class="left">
         <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)'>
            <div class="names">
-            <h4>{{myprofiles.name}} {{myprofiles.surname}}</h4> 
-            <p>{{myprofiles.email}}</p>
-            <p>{{myprofiles.position}}</p>
+            <h4>{{oneprofile.name}} {{oneprofile.surname}}</h4> 
+            <p>{{oneprofile.email}}</p>
+            <p>{{position}}</p>
+            
             <div class="image">
               
               <img *ngIf="!myprofiles.image" src="../../assets/mthombologo (1).png" alt=""> 
@@ -35,6 +36,8 @@
         <p id="borderb"></p>
         <div padding class="info" >
           <h4>{{name}} {{surname}}</h4>
+          <p>{{position}}</p>
+          <p>{{email}}</p>
           <p>{{number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
           <button (click)='presentAlertDelete(oneprofile.id)'>delete user</button>

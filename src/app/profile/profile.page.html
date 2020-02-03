@@ -29,18 +29,21 @@
        <ion-content>
         <div class="container">
          
+
+
           <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
           <img id="people" src="../../assets/ReclaimerPopup.svg">
           <img id="bins" src="../../assets/binsPopup  2.svg">
           <div class="form">
             <h3>Create Your Profile Here</h3>
             <div class="profile" >
+              <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
               <div class="ProPic">
-                <img  src="../../assets/boxes.jpg">
+            
+              <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt=""> 
+              <img *ngIf="profile.image" src="{{profile.image}}" alt="">
               </div>
-              <!-- <div class="Name">
-                <h1> {{profile.name}} {{profile.surname}}</h1>
-              </div> -->
+             
             </div>
         
           <div class="inputs">
