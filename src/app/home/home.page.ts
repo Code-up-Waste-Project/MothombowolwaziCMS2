@@ -42,9 +42,7 @@ reclaimerglass =0;
 reclaimerpaper =0;
 reclaimerAlum =0;
 reclaimerplastic =0;
-
  
-  
  GH001price;
  NFAL01price;
  PAP005price;
@@ -74,13 +72,8 @@ reclaimerplastic =0;
    time:null
  };
 
-
  price = [];
   prices;
-
-
-
-
 
   bars: any;
   colorArray: any;
@@ -89,11 +82,9 @@ reclaimerplastic =0;
   newInbound=[];
 
   burgercontent: any = document.getElementsByClassName('burgercontent');
-
-  
   burger: boolean = false;
   
-
+  
 
 /* Div */
   editDiv: any = document.getElementsByClassName('editDiv');
@@ -240,6 +231,10 @@ Totalplasticinbound: number = 0;
   glass: boolean = false;
   glassDiv: any = document.getElementsByClassName('glassDiv');
 
+  // code added by nathi 3 feb
+  // beginningDate = Date.now() - 604800000;
+  // beginningDateObject = new Date(this.beginningDate);
+
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
@@ -247,10 +242,6 @@ Totalplasticinbound: number = 0;
     private render: Renderer2,
     public alertController: AlertController,
     ) {
-
-     
-
-     /*  */
       // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
       this.Newadmin = [];
@@ -264,10 +255,11 @@ Totalplasticinbound: number = 0;
           this.Newadmin.push(item);
         }
       });
-      console.log('Newadmins', this.Newadmin);
+      // console.log('Newadmins', this.Newadmin);
     });
 
-
+    // code by nathi 3 feb
+    this.pullWeeklyInbound();
 
     }
 
@@ -294,7 +286,7 @@ this.inboundplastic =0;
 firebase.firestore().collection('inbounds').get().then(res=>{
   res.forEach(val=>{
   
-    console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
+    // console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
     this.inboundweight =this.inboundweight 
     +parseFloat(val.data().inboundGH001)+
     +parseFloat(val.data().inboundHD001) +
@@ -309,7 +301,7 @@ firebase.firestore().collection('inbounds').get().then(res=>{
     +parseFloat(val.data().inboundPET003) +
     +parseFloat(val.data().inboundPET005) ;
     
-    console.log(new Date(val.data().time.seconds*1000))
+    // console.log(new Date(val.data().time.seconds*1000))
     this.updated =(new Date(val.data().time.seconds*1000)).toDateString();
 
     //glass
@@ -349,8 +341,7 @@ this.outboundweight =0;
 firebase.firestore().collection('outbound').get().then(res=>{
   res.forEach(val=>{
    
-    
-    console.log(val.data().GH001+val.data().GH001)
+    // console.log(val.data().GH001+val.data().GH001)
     this.outboundweight =this.outboundweight 
     +parseFloat(val.data().GH001)
     +parseFloat(val.data().HD001)
@@ -365,16 +356,16 @@ firebase.firestore().collection('outbound').get().then(res=>{
     +parseFloat(val.data().PET003)
     +parseFloat(val.data().PET005);
 
-  console.log(new Date(val.data().date.seconds*1000))
+  // console.log(new Date(val.data().date.seconds*1000))
   this.updatedoutbound =(new Date(val.data().date.seconds*1000)).toDateString();
 
 
 
     //glass
-    console.log('ountglass',  this.outboundglass)
+    // console.log('ountglass',  this.outboundglass)
     this.outboundglass =this.outboundglass +parseFloat(val.data().GH001)
     //paper
-    console.log('outboundpaper',this.outboundpaper)
+    // console.log('outboundpaper',this.outboundpaper)
     this.outboundpaper = this.outboundpaper 
     +parseFloat(val.data().PAP005) 
     + parseFloat(val.data().PAP007) 
@@ -386,7 +377,7 @@ firebase.firestore().collection('outbound').get().then(res=>{
     this.outboundAlum = this.outboundAlum  +parseFloat(val.data().NFAL01) 
     
     //plastic
-    console.log('outplastic',this.outboundplastic)
+    // console.log('outplastic',this.outboundplastic)
     this.outboundplastic =this.outboundplastic + +parseFloat(val.data().HD001) 
     +parseFloat(val.data().HD001)
     +parseFloat(val.data().LD001)
@@ -409,7 +400,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   res.forEach(val=>{
 
    
-    console.log(val.data().GH001Mass+val.data().HD001Mass)
+    // console.log(val.data().GH001Mass+val.data().HD001Mass)
     this.Reclaimerweight =this.Reclaimerweight 
     +parseFloat(val.data().GH001Mass)
     +parseFloat(val.data().HD001Mass)
@@ -424,7 +415,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     +parseFloat(val.data().PET001Mass)
     +parseFloat(val.data().PET003Mass);
 
-    console.log(new Date(val.data().date.seconds*1000))
+    // console.log(new Date(val.data().date.seconds*1000))
     this.updateReclaimer =(new Date(val.data().date.seconds*1000)).toDateString();
 
 
@@ -434,10 +425,10 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     this.reclaimerplastic =0;
 
     //glass
-    console.log('glassreclaimer',this.reclaimerglass)
+    // console.log('glassreclaimer',this.reclaimerglass)
     this.reclaimerglass  = this.reclaimerglass  +parseFloat(val.data().GH001)
     //paper
-    console.log('paperreclaimer',this.reclaimerpaper)
+    // console.log('paperreclaimer',this.reclaimerpaper)
     this.reclaimerpaper =   this.reclaimerpaper
     +parseFloat(val.data().PAP005Mass) 
     + parseFloat(val.data().PAP007Mass) 
@@ -445,43 +436,36 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     +parseFloat(val.data().PAP001Mass);
     
     //aluminium
-    console.log('aluminiumreclaimer',this.reclaimerAlum )
+    // console.log('aluminiumreclaimer',this.reclaimerAlum )
     this.reclaimerAlum  = this.reclaimerAlum   +parseFloat(val.data().NFAL01) 
     
     //plastic
-    console.log('plasticreclaimer',    this.reclaimerplastic )
+    // console.log('plasticreclaimer',    this.reclaimerplastic )
     this.reclaimerplastic =this.reclaimerplastic + +parseFloat(val.data().HD001) 
     +parseFloat(val.data().HD001Mass)
     +parseFloat(val.data().LD001Mass)
     +parseFloat(val.data().LD003Mass)
     +parseFloat(val.data().PET003Mass)
     +parseFloat(val.data().PET001Mass) 
-
-
   })
   this.createBarChart2();
-
 })
-
     }
-
 
   ngOnInit() {
     // this.getreclamer();
 
     this.db.collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot(data => {
-      console.log("DATA EEE, ", data.data().time);
+      // console.log("DATA EEE, ", data.data().time);
       
     })
 
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
     this.prices.get().then((documentSnapshot) => {
       this.price = [];
-      console.log(documentSnapshot.data());
+      // console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
-      console.log('my pricess', documentSnapshot.data().time);
-
-    
+      // console.log('my pricess', documentSnapshot.data().time);
   
       this.pricess.time = documentSnapshot.data().time
       this.pricess.gl001 = documentSnapshot.data().gl001;
@@ -541,7 +525,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           reSurname: reclaimersurname,
           reDate: reclaimerDate,
         });
-        console.log('newreclaimer', this.newreclaimer);
+        // console.log('newreclaimer', this.newreclaimer);
       });
     });
   }
@@ -551,11 +535,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
     this.prices.get().then((documentSnapshot) => {
       this.price = [];
-      console.log(documentSnapshot.data());
+      // console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
-      console.log('prices', this.price);
+      // console.log('prices', this.price);
     });
    }
+
    checkinputfields() {
 
     // GH001price;
@@ -564,7 +549,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.GH001price === undefined) {
       this.GH001price = this.pricess.gl001;
     }
-    console.log(this.GH001price);
+    // console.log(this.GH001price);
 
     // NFAL01price;
     if (this.NFAL01price === null) {
@@ -572,7 +557,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.NFAL01price === undefined) {
       this.NFAL01price = this.pricess.nfalo1;
     }
-    console.log(this.NFAL01price);
+    // console.log(this.NFAL01price);
 
     // PAP005price;
     if (this.PAP005price === null) {
@@ -580,7 +565,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PAP005price === undefined) {
       this.PAP005price = this.pricess.pap005;
     }
-    console.log(this.PAP005price);
+    // console.log(this.PAP005price);
 
     // PAP007price;
     if (this.PAP007price === null) {
@@ -588,7 +573,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PAP007price === undefined) {
       this.PAP007price = this.pricess.pap007;
     }
-    console.log(this.PAP007price);
+    // console.log(this.PAP007price);
 
     // PAP001price;
     if (this.PAP001price === null) {
@@ -596,7 +581,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PAP001price === undefined) {
       this.PAP001price = this.pricess.pap001;
     }
-    console.log(this.PAP001price);
+    // console.log(this.PAP001price);
 
     // PAP003price;
     if (this.PAP003price === null) {
@@ -604,7 +589,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PAP003price === undefined) {
       this.PAP003price = this.pricess.pap003;
     }
-    console.log(this.PAP003price);
+    // console.log(this.PAP003price);
 
     // HD001price;
     if (this.HD001price === null) {
@@ -612,7 +597,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.HD001price === undefined) {
       this.HD001price = this.pricess.hd001;
     }
-    console.log(this.HD001price);
+    // console.log(this.HD001price);
 
     // LD001price;
     if (this.LD001price === null) {
@@ -620,7 +605,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.LD001price === undefined) {
       this.LD001price = this.pricess.ld001;
     }
-    console.log(this.LD001price);
+    // console.log(this.LD001price);
 
     // LD003price;
     if (this.LD003price === null) {
@@ -628,7 +613,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.LD003price === undefined) {
       this.LD003price = this.pricess.ld003;
     }
-    console.log(this.LD003price);
+    // console.log(this.LD003price);
 
     // PET001price;
     if (this.PET001price === null) {
@@ -636,7 +621,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PET001price === undefined) {
       this.PET001price = this.pricess.pet001;
     }
-    console.log(this.PET001price);
+    // console.log(this.PET001price);
 
     // PET003price;
     if (this.PET003price === null) {
@@ -644,7 +629,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PET003price === undefined) {
       this.PET003price = this.pricess.pet003;
     }
-    console.log(this.PET003price);
+    // console.log(this.PET003price);
 
     // PET005price;
     if (this.PET005price === null) {
@@ -652,7 +637,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     } else if (this.PET005price === undefined) {
       this.PET005price = this.pricess.pet005;
     }
-    console.log(this.PET005price);
+    // console.log(this.PET005price);
 
     this.presentAlertupdate();
 
@@ -668,7 +653,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Okay',
@@ -676,7 +661,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
             // this.update();
             this.clearInputs();
             this.route.navigateByUrl('/home');
-            console.log('Confirm Okay');
+            // console.log('Confirm Okay');
           }
         }
       ]
@@ -697,7 +682,6 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     this.PET001price = '';
     this.PET003price = '';
     this.PET005price = '';
-    
   }
 
   CheckInputsEmptyStringPaper() {
@@ -714,10 +698,6 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
         
       }
   }
-
-
-
-
 
   CheckInputsEmptyStringPlastics() {
     if (
@@ -861,7 +841,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PAP005price === undefined) {
       this.PAP005price = this.pricess.pap005;
     }
-    console.log(this.PAP005price);
+    // console.log(this.PAP005price);
 
     // PAP007price;
     if (this.PAP007price === null) {
@@ -869,7 +849,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PAP007price === undefined) {
       this.PAP007price = this.pricess.pap007;
     }
-    console.log(this.PAP007price);
+    // console.log(this.PAP007price);
 
     // PAP001price;
     if (this.PAP001price === null) {
@@ -877,7 +857,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PAP001price === undefined) {
       this.PAP001price = this.pricess.pap001;
     }
-    console.log(this.PAP001price);
+    // console.log(this.PAP001price);
 
     // PAP003price;
     if (this.PAP003price === null) {
@@ -885,7 +865,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PAP003price === undefined) {
       this.PAP003price = this.pricess.pap003;
     }
-    console.log(this.PAP003price);
+    // console.log(this.PAP003price);
 
     this.UpdatePaper()
 
@@ -898,7 +878,7 @@ async presentAlertUpdateGlass() {
     } else if (this.HD001price === undefined) {
       this.HD001price = this.pricess.hd001;
     }
-    console.log(this.HD001price);
+    // console.log(this.HD001price);
 
     // LD001price;
     if (this.LD001price === null) {
@@ -906,7 +886,7 @@ async presentAlertUpdateGlass() {
     } else if (this.LD001price === undefined) {
       this.LD001price = this.pricess.ld001;
     }
-    console.log(this.LD001price);
+    // console.log(this.LD001price);
 
     // LD003price;
     if (this.LD003price === null) {
@@ -914,7 +894,7 @@ async presentAlertUpdateGlass() {
     } else if (this.LD003price === undefined) {
       this.LD003price = this.pricess.ld003;
     }
-    console.log(this.LD003price);
+    // console.log(this.LD003price);
 
     // PET001price;
     if (this.PET001price === null) {
@@ -922,7 +902,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PET001price === undefined) {
       this.PET001price = this.pricess.pet001;
     }
-    console.log(this.PET001price);
+    // console.log(this.PET001price);
 
     // PET003price;
     if (this.PET003price === null) {
@@ -930,7 +910,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PET003price === undefined) {
       this.PET003price = this.pricess.pet003;
     }
-    console.log(this.PET003price);
+    // console.log(this.PET003price);
 
     // PET005price;
     if (this.PET005price === null) {
@@ -938,7 +918,7 @@ async presentAlertUpdateGlass() {
     } else if (this.PET005price === undefined) {
       this.PET005price = this.pricess.pet005;
     }
-    console.log(this.PET005price);
+    // console.log(this.PET005price);
 
     this.UpdatePlastic()
 
@@ -951,7 +931,7 @@ async presentAlertUpdateGlass() {
     } else if (this.NFAL01price === undefined) {
       this.nFAL01 = this.pricess.nfalo1;
     }
-    console.log(this.nFAL01);
+    // console.log(this.nFAL01);
 
 
     this.UpdateAlum()
@@ -964,7 +944,7 @@ async presentAlertUpdateGlass() {
     } else if (this.GH001price === undefined) {
       this.GH001price = this.pricess.gl001;
     }
-    console.log(this.GH001price);
+    // console.log(this.GH001price);
 
 
     this.UpdateGlass()
@@ -978,7 +958,7 @@ async presentAlertUpdateGlass() {
       pap001: this.PAP001price,
       pap003: this.PAP003price,
     }).then((data) => {
-      console.log("Paper successfully updated!");
+      // console.log("Paper successfully updated!");
     });
     this.clearInputsPaper();
   }
@@ -992,7 +972,7 @@ async presentAlertUpdateGlass() {
       pet003: this.PET003price,
       pet005: this.PET005price,
     }).then((data) => {
-      console.log("Paper successfully updated!");
+      // console.log("Paper successfully updated!");
     });
     this.clearInputsPlastic();
   }
@@ -1003,7 +983,7 @@ async presentAlertUpdateGlass() {
       gl001: this.GH001price,
      
     }).then((data) => {
-      console.log("Paper successfully updated!");
+      // console.log("Paper successfully updated!");
     });
     this.checkGlassInputs();
   }
@@ -1015,7 +995,7 @@ async presentAlertUpdateGlass() {
       nfalo1: this.NFAL01price,
      
     }).then((data) => {
-      console.log("Paper successfully updated!");
+      // console.log("Paper successfully updated!");
     });
     this.clearInputsAlum();
   }
@@ -1084,7 +1064,7 @@ async presentAlertUpdateGlass() {
           outovarallmass: outovarallMass,
         });
         // this.outbound.push(element.data());
-        console.log('outbound', this.outbound);
+        // console.log('outbound', this.outbound);
       });
     });
   }
@@ -1099,20 +1079,49 @@ async presentAlertUpdateGlass() {
           // data
         });
         // this.outbound.push(element.data());
-        console.log('inbound', this.outbound);
+        // console.log('inbound', this.outbound);
       });
     });
   }
+
+  pullWeeklyInbound() {
+    // code added by nathi
+    let currentTime = new Date();
+    // let month = currentTime.getMonth();
+    // let year = currentTime.getFullYear();
+    // let date = currentTime.getTime();
+
+    // console.log(month, year, date);
+    // console.log(currentTime);
+    // console.log(currentTime);
+    // console.log(currentTime);
+    firebase.firestore()
+                  .collection('outbound')
+                  .where('date', '<=', currentTime)
+                  .limit(25).onSnapshot(snapshot => {
+                    console.log(snapshot);
+                    snapshot.forEach(key => {
+                      console.log(key.data());
+                    })
+                  });
+    // code added by nathi
+    // this.db.collection('inbounds').where('createdAt', '>', this.beginningDateObject).get().then(querySnapshot => {
+    //   querySnapshot.forEach(key => {
+    //     console.log(key);
+    //   })
+    // })
+  }
+
 //EDIT PAPER
   HideandShowSave() {
     this.edit = !this.edit;
     console.log(this.edit,this.editDiv[0]);
     
     if (this.edit) {
-      console.log('block');
+      // console.log('block');
       this.render.setStyle(this.editDiv[0],'display','block')
     } else {
-      console.log('none');
+      // console.log('none');
       setTimeout(() => {
         this.render.setStyle(this.editDiv[0],'display','none')
       }, 500);
@@ -1127,10 +1136,10 @@ async presentAlertUpdateGlass() {
     this.create = !this.create;
         
     if (this.create) {
-      console.log('block');
+      // console.log('block');
       this.render.setStyle(this.createDiv[0],'display','block')
     } else {
-      console.log('none');
+      // console.log('none');
       setTimeout(() => {
         this.render.setStyle(this.createDiv[0],'display','none')
       }, 500);
@@ -1142,10 +1151,10 @@ async presentAlertUpdateGlass() {
     this.glass = !this.glass;
         
     if (this.glass) {
-      console.log('block');
+      // console.log('block');
       this.render.setStyle(this.glassDiv[0],'display','block')
     } else {
-      console.log('none');
+      // console.log('none');
       setTimeout(() => {
         this.render.setStyle(this.glassDiv[0],'display','none')
       }, 500);
@@ -1156,10 +1165,10 @@ async presentAlertUpdateGlass() {
   HideandShowDelete() {
     this.delete = !this.delete;
     if (this.delete) {
-      console.log('block');
+      // console.log('block');
       this.render.setStyle(this.deleteDiv[0],'display','block')
     } else {
-      console.log('none');
+      // console.log('none');
       setTimeout(() => {
         this.render.setStyle(this.deleteDiv[0],'display','none')
       }, 500);
@@ -1170,10 +1179,10 @@ async presentAlertUpdateGlass() {
  HideandShowHISTORYPAPER() {
   this.paper = !this.paper;
   if (this.paper) {
-    console.log('block');
+    // console.log('block');
     this.render.setStyle(this.paperDiv[0],'display','block')
   } else {
-    console.log('none');
+    // console.log('none');
     setTimeout(() => {
       this.render.setStyle(this.paperDiv[0],'display','none')
     }, 500);
@@ -1184,10 +1193,10 @@ async presentAlertUpdateGlass() {
  HideandShowHISTORYPPLASTIC() {
   this.plastic = !this.plastic;
   if (this.plastic) {
-    console.log('block');
+    // console.log('block');
     this.render.setStyle(this.plasticDiv[0],'display','block')
   } else {
-    console.log('none');
+    // console.log('none');
     setTimeout(() => {
       this.render.setStyle(this.plasticDiv[0],'display','none')
     }, 500);
@@ -1199,10 +1208,10 @@ HideandShowHISTORYALUMINIUM() {
 
   this.alu = !this.alu;
   if (this.alu) {
-    console.log('block');
+    // console.log('block');
     this.render.setStyle(this.aluDiv[0],'display','block')
   } else {
-    console.log('none');
+    // console.log('none');
     setTimeout(() => {
       this.render.setStyle(this.aluDiv[0],'display','none')
     }, 500);
@@ -1213,10 +1222,10 @@ HideandShowHISTORYALUMINIUM() {
 HideandShowHISTORYGLASS() {
   this.glassh = !this.glassh;
   if (this.glassh) {
-    console.log('block');
+    // console.log('block');
     this.render.setStyle(this.glasshDiv[0],'display','block')
   } else {
-    console.log('none');
+    // console.log('none');
     setTimeout(() => {
       this.render.setStyle(this.glasshDiv[0],'display','none')
     }, 500);
@@ -1389,7 +1398,7 @@ HideandShowHISTORYGLASS() {
 
   Logout() {
     firebase.auth().signOut().then((res) => {
-      console.log(res);
+      // console.log(res);
       this.route.navigateByUrl('/login');
      });
     }
@@ -1405,12 +1414,12 @@ HideandShowHISTORYGLASS() {
       if(this.moreState == 0){
         this.moreState = 1
         this.optsSlider[0].style.width = "105px"
-        console.log("this is open")
+        // console.log("this is open")
       }
       else {
         this.moreState = 0
         this.optsSlider[0].style.width = "30px"
-        console.log("this is closed")
+        // console.log("this is closed")
       }
     }
 
@@ -1422,12 +1431,12 @@ HideandShowHISTORYGLASS() {
       if(this.moreState2 == 0){
         this.moreState2 = 1
         this.optsSlider2[0].style.width = "105px"
-        console.log("this is open")
+        // console.log("this is open")
       }
       else {
         this.moreState2 = 0
         this.optsSlider2[0].style.width = "30px"
-        console.log("this is closed")
+        // console.log("this is closed")
       }
     }
 
@@ -1438,12 +1447,12 @@ HideandShowHISTORYGLASS() {
         if(this.moreState3 == 0){
           this.moreState3 = 1
           this.optsSlider3[0].style.width = "105px"
-          console.log("this is open")
+          // console.log("this is open")
         }
         else {
           this.moreState3 = 0
           this.optsSlider3[0].style.width = "30px"
-          console.log("this is closed")
+          // console.log("this is closed")
         }
       }
 
@@ -1454,12 +1463,12 @@ HideandShowHISTORYGLASS() {
          if(this.moreState4 == 0){
            this.moreState4 = 1
            this.optsSlider4[0].style.width = "105px"
-           console.log("this is open")
+          //  console.log("this is open")
          }
          else {
            this.moreState4 = 0
            this.optsSlider4[0].style.width = "30px"
-           console.log("this is closed")
+          //  console.log("this is closed")
          }
        }
        getinbound(){
@@ -1480,7 +1489,7 @@ HideandShowHISTORYGLASS() {
                   }
           })
           
-          console.log('Newinbounds', this.newInbound);
+          // console.log('Newinbounds', this.newInbound);
         
         }); 
       }
