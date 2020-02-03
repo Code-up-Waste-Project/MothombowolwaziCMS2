@@ -34,6 +34,7 @@ export class OutboundPDFPage implements OnInit {
 
   PDFArray2 = {};
   PDFArrayPrint = [];
+  outBoundPDFPrint = [];
 
   letterObj = {
     to: '',
@@ -149,12 +150,12 @@ export class OutboundPDFPage implements OnInit {
         this.overallStoragez = (String(overallStorage).substring(0, 6));
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
         Destination = this.Destination = element.data().Destination;
-        console.log(this.DriverName);
-        console.log(this.RegistarionNumberPlates);
-        console.log(this.overallStorage);
-        console.log(this.TruckSourcess);
-        console.log(this.Destination);
-        console.log(this.overallStoragez);
+        // console.log(this.DriverName);
+        // console.log(this.RegistarionNumberPlates);
+        // console.log(this.overallStorage);
+        // console.log(this.TruckSourcess);
+        // console.log(this.Destination);
+        // console.log(this.overallStoragez);
 
         this.ids = element.id;
         console.log(this.ids);
@@ -253,7 +254,8 @@ export class OutboundPDFPage implements OnInit {
         if (this.PDFArray2[key] === '0') {
           // console.log('Skipped because its 0');
         } else if (this.PDFArray2[key] !== '0') {
-          this.PDFArrayPrint.push({name : key, number : this.PDFArray2[key]});
+          this.PDFArrayPrint.push({name: key, number: this.PDFArray2[key]});
+          this.outBoundPDFPrint.push({name: key, number: this.PDFArray2[key]})
         }
       }
         // console.log(this.PDFArrayPrint);
@@ -287,27 +289,26 @@ export class OutboundPDFPage implements OnInit {
 
   createPdf() {
     
-    let printDataName = [];
-    let printDataNumber = [];
+    let printDataNamezz = [];
+    let printDataNumberzz = [];
 
-    this.PDFArrayPrint.forEach((item) => {
-      printDataName.push(item.name);
-      printDataNumber.push(item.number);
+    // this.PDFArrayPrint.forEach((item) => {
+    //   printDataName.push(item.name);
+    //   printDataNumber.push(String(item.number).substring(0, 4));
+    //   console.log(printDataName);
+    //   console.log(printDataNumber);
+    // });
+    // console.log(this.PDFArrayPrint);
+    // console.log("im here baba");
+
+    this.outBoundPDFPrint.forEach(item => {
+      printDataNamezz.push(item.name);
+      printDataNumberzz.push(String(item.number).substring(0, 4));
     });
-
-    for (let key in this.PDFArrayPrint) {
-      console.log(key);
-      // printDataName.push(key.name);
-      // this.printDataName(x).pipe(map(item => arr.push(item)));
-    }
-
-    // for (const x of visitantes) {
-    //   this.getVisitante(org, x).pipe(map(item => arr.push(item)));
-    // }
-
-    console.log(this.PDFArrayPrint);
-    console.log(printDataName);
-    console.log(printDataNumber);
+    console.log(printDataNamezz);
+    console.log(printDataNumberzz);
+    console.log(this.outBoundPDFPrint);
+    console.log("im here baba kayi 2");
 
     var docDefinition = {
       header:  { text: 'Mthombowolwazi', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 20, margin: [ 5, 2, 10, 20 ] },
@@ -326,26 +327,28 @@ export class OutboundPDFPage implements OnInit {
       fit: [100, 100], alignment: "right", marginBottom: 20,
     },
 
-    { text: 'Date Of Purchase: ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
-    { text: '20 December 2019 ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 12, },
+    // { text: 'Date Of Purchase: ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
+    // { text: '20 December 2019 ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 12, },
     {
 
       layout: 'noBorders',
       table: {
-
         widths: ['33%', '33%', '33%'],
-
         body: [
-
-
           ["Bill To", "Ship To", "invoice #",],
 
-          [{ text: '123 Soweto, Orlando East', color: 'gray' }, '123 Soweto, Orlando East', { text: '12 February 2012', color: 'gray', Border: false }],
-
+          [{ text: this.DriverName, color: 'gray' }, '123 Soweto, Orlando East', { text: this.Destination, color: 'gray', Border: false }],
         ]
       }
-
     },
+
+        // console.log(this.DriverName);
+        // console.log(this.RegistarionNumberPlates);
+        // console.log(this.overallStorage);
+        // console.log(this.TruckSourcess);
+        // console.log(this.Destination);
+        // console.log(this.overallStoragez);
+
     { text: '', style: 'subheader' },
     {
 
@@ -356,7 +359,7 @@ export class OutboundPDFPage implements OnInit {
 
         body: [
           ["name", "quantity", "Mass",],
-          [ printDataName, '', printDataNumber ],
+          [ printDataNamezz, '', printDataNumberzz ],
           // [{ text: printDataName, color: 'gray' }, '', { text: printDataNumber, color: 'gray', Border: false }],
           // [{ text: 'Item 3', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           // [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],

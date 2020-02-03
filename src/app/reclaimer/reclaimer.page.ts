@@ -367,7 +367,7 @@ export class ReclaimerPage implements OnInit {
       this.toggleGlass();
     }
     }, 10);
-    console.log(this.selectedCat);
+    // console.log(this.selectedCat);
   }
 
   /////////////////////////////////////////////////////////////////
@@ -637,10 +637,10 @@ export class ReclaimerPage implements OnInit {
         address = this.addresss = element.data().address;
         // })
 
-        console.log(this.names);
-        console.log(this.surnames);
-        console.log(this.contacts);
-        console.log(this.addresss);
+        // console.log(this.names);
+        // console.log(this.surnames);
+        // console.log(this.contacts);
+        // console.log(this.addresss);
 
         // adding data to textboxes
         this.names = this.names;
@@ -1771,12 +1771,12 @@ Logout() {
     const val = ev.target.value;
 
     // if the value is an empty string don't filter the items
-    console.log(val);
+    // console.log(val);
     if (val && val.trim() != "") {
       this.searchResults = this.usersz.filter(item => {
         return item.toString().indexOf(val.toString().toLowerCase()) > -1;
       });
-      console.log('Results = ',this.searchResults);
+      // console.log('Results = ',this.searchResults);
     } else if (val != " ") {
       this.searchResults = this.usersz.filter(item => {
         return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
@@ -1793,8 +1793,8 @@ Logout() {
   selectLocation(location) {
     this.userLocation = location;
     this.searchResults = [];
-    console.log(this.userLocation);
-    console.log(location);
+    // console.log(this.userLocation);
+    // console.log(location);
 
     this.db.collection('reclaimers').where("contact","==",location).onSnapshot(element => {
       element.forEach(element => {
@@ -1809,10 +1809,10 @@ Logout() {
         address = this.addresss = element.data().address;
         })
 
-        console.log(this.names);
-        console.log(this.surnames);
-        console.log(this.contacts);
-        console.log(this.addresss);
+        // console.log(this.names);
+        // console.log(this.surnames);
+        // console.log(this.contacts);
+        // console.log(this.addresss);
 
         // adding data to textboxes
         // this.names = this.names;
