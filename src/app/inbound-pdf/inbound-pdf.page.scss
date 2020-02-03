@@ -21,6 +21,13 @@
 //     // border: purple solid 2px;
 // }
 
+h1{
+    font-size: 50px;
+    text-align: center;
+    text-decoration: underline;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .header {
     --background: #265902 !important;
     display: flex;
@@ -36,6 +43,9 @@
      background-repeat: no-repeat;
      background-size: 130%;
      background-position: -10% 40%;
+     display: flex;
+     flex-direction: column;
+
 }
 
 .Information{
