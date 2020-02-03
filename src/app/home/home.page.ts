@@ -364,16 +364,13 @@ firebase.firestore().collection('inbounds').get().then(res=>{
   this.inboundpap003 =this.inboundpap003 +parseFloat(val.data().inboundPAP003)
   
   this.inboundpap001 =this.inboundpap001 +parseFloat(val.data().inboundPAP001)
-  this.inboundpap007 =this.inboundpap007 +parseFloat(val.data().inboundPAP007)
+  
   this.inboundld001 =this.inboundld001 +parseFloat(val.data().inboundLD001)
   this.inboundld003 =this.inboundld003 +parseFloat(val.data().inboundLD003)
   this.inboundpet003 =this.inboundpet003 +parseFloat(val.data().inboundPET003)
-  this.inboundpet0001 =this.inboundpet0001 +parseFloat(val.data().inboundPET001)
-
   this.inboundnfalo1 =this.inboundpet003 +parseFloat(val.data().inboundNFAL01)
   this.inboundhd001 =this.inboundpet0001 +parseFloat(val.data().inboundHD001)
   this.inboundld001 =this.inboundpet003 +parseFloat(val.data().inboundLD001)
-  this.inboundld003 =this.inboundpet0001 +parseFloat(val.data().inboundLD003)
   this.inboundpet001 =this.inboundpet0001 +parseFloat(val.data().inboundPET001)
 
 //paper
@@ -507,7 +504,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
     //glass
     console.log('glassreclaimer',this.reclaimerglass)
-    this.reclaimergh001mass  = this.reclaimergh001mass  +parseFloat(val.data().GH001)
+    this.reclaimergh001mass  = this.reclaimergh001mass  +parseFloat(val.data().GH001Mass)
     this.reclaimerpap005mass  = this.reclaimerpap005mass  +parseFloat(val.data().PAP005Mass)
     this.reclaimerpap007Mass  = this.reclaimerpap007Mass  +parseFloat(val.data().PAP007Mass)
     this.reclaimerpap003mass  = this.reclaimerpap003mass  +parseFloat(val.data().PAP003Mass)
@@ -515,10 +512,11 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
     this. reclaimernfa01mass  = this. reclaimernfa01mass  +parseFloat(val.data().NFAL01Mass)
     this.reclaimerhd001mass  = this.reclaimerhd001mass  +parseFloat(val.data().HD001Mass)
-    this.reclaimerld003mass  = this.reclaimerld003mass  +parseFloat(val.data().LD003Mass)
-    this.reclaimernfa01Mass  = this.reclaimernfa01Mass  +parseFloat(val.data().NFAL01Mass)
-    this.reclaimerpet003mass  = this.reclaimerpet003mass  +parseFloat(val.data().PET003Mass)
+    this.reclaimerld003mass  = this.reclaimerld003mass  +parseFloat(val.data().PAP005Mass)
+    this.reclaimernfa01Mass  = this.reclaimernfa01Mass  +parseFloat(val.data().PAP007Mass)
+    this.reclaimerpet003mass  = this.reclaimerpet003mass  +parseFloat(val.data().PEP005Mass)
     this.reclaimerpet001mass  = this.reclaimerpet001mass  +parseFloat(val.data().PET001Mass)
+    this.reclaimerpet001mass  = this.reclaimerpet001mass  +parseFloat(val.data().PET003Mass)
     //paper
     console.log('paperreclaimer',this.reclaimerpaper)
     this.reclaimerpaper =   this.reclaimerpaper
