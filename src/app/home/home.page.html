@@ -1,7 +1,7 @@
 <ion-header *ngFor="let user of Newadmin">
   <!-- <button (click)="editprofile()">profile</button> -->
   <ion-toolbar class="header" >
-    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title><ion-avatar (click)="editprofile()"><img src="../../assets/boxes.jpg" ></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
@@ -202,13 +202,13 @@
 
 
 
-  <input placeholder="R{{ pricess.hd001 }}" [(ngModel)]="HD001price">
-  <input placeholder="R{{ pricess.ld001 }}" [(ngModel)]="LD001price">
-  <input placeholder="R{{ pricess.ld003 }}" [(ngModel)]="LD003price">
-  <input placeholder="R{{ pricess.pet005 }}" [(ngModel)]="PET005price">
-  <input placeholder="R{{ pricess.pet001 }}" [(ngModel)]="PET001price">
+  <input placeholder="HD001" [(ngModel)]="HD001price">
+  <input placeholder="LD001" [(ngModel)]="LD001price">
+  <input placeholder="LD003" [(ngModel)]="LD003price">
+  <input placeholder="PET005" [(ngModel)]="PET005price">
+  <input placeholder="PET001" [(ngModel)]="PET001price">
   
-  <input placeholder="R{{ pricess.pet003 }}" [(ngModel)]="PET003price"> 
+  <input placeholder="PET003price" [(ngModel)]="PET003price"> 
  
 
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
@@ -219,7 +219,7 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price for Glass </h1>
    
-    <input placeholder="{{pricess.gl001}}" [(ngModel)]="GH001price">
+    <input placeholder="GH001" [(ngModel)]="GH001price">
   
     
   <button ion-button (click)="CheckInputsEmptyStringGlasss()">Save</button>
@@ -230,10 +230,10 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit price for Paper</h1>
-  <input placeholder="{{pricess.pap005}}" [(ngModel)]="PAP005price" >
-  <input placeholder="{{pricess.pap007}}"  [(ngModel)]="PAP007price">
- <input placeholder="{{pricess.pap001}}"  [(ngModel)]="PAP001price">
- <input placeholder="{{pricess.pap003}}" [(ngModel)]="PAP003price">
+  <input placeholder="PAP005" [(ngModel)]="PAP005price" >
+  <input placeholder="PAP007" [(ngModel)]="PAP007price">
+ <input placeholder="PAP001"  [(ngModel)]="PAP001price">
+ <input placeholder="PAP003"  [(ngModel)]="PAP003price">
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
@@ -245,7 +245,7 @@
    slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>edit pprice for  Aluminum</h1>
  
-  <input placeholder="R {{pricess.nfalo1}}" [(ngModel)]="NFAL01price">
+  <input placeholder="NFAL01" [(ngModel)]="NFAL01price">
   
 <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>
@@ -287,7 +287,8 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>history for glass</h1>
-
+  <p>Date updated:{{pricess.time}} 
+  R {{ pricess.gl001 }}
 
 <button ion-button  (click)="checkinputfields()">Save</button>
 </div>
@@ -297,8 +298,11 @@
 <div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+
+
   <h1>history for aluminium</h1>
   <p>Date updated:{{pricess.time}} 
+  <p>R {{ pricess.nfalo1 }}</p>
 
 <button ion-button  (click)="checkinputfields()">Save</button>
 </div>
