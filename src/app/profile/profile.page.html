@@ -47,11 +47,11 @@
             </div>
         
           <div class="inputs">
-            <input placeholder="name" [(ngModel)]="profile.name">
+            <input placeholder="Name"[(ngModel)]="profile.name">
             <input placeholder="Surname" [(ngModel)]="profile.surname">
             <input  placeholder="Position" [(ngModel)]="profile.position" >
             <input  placeholder="Email Address"  [(ngModel)]="profile.email">
-            <input placeholder="phone number" [(ngModel)]="profile.number" type="text">
+            <input placeholder="Phone Number" [(ngModel)]="profile.number" type="number">
           <ion-button color="clear" (click)="users()" type="submit" >Create Profile</ion-button>
          </div>
              
