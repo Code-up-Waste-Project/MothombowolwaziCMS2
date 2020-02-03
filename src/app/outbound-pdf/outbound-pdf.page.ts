@@ -10,6 +10,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-outbound-pdf',
@@ -36,6 +37,9 @@ export class OutboundPDFPage implements OnInit {
   PDFArrayPrint = [];
   outBoundPDFPrint = [];
 
+  printDataNamezz = [];
+  printDataNumberzz = [];
+
   letterObj = {
     to: '',
     from: '',
@@ -44,12 +48,20 @@ export class OutboundPDFPage implements OnInit {
 
   pdfObj = null;
 
+  awe = 'kanti manje ungenza nje'
+
   DriverName;
   RegistarionNumberPlates;
   overallStorage;
   overallStoragez;
   TruckSourcess;
   Destination;
+
+  OutName = this.DriverName;
+  OutNumberPlates = this.RegistarionNumberPlates;
+  Outstorage = this.overallStorage;
+  OutTruckSource = this.TruckSourcess;
+  OutDestination = this.Destination;
 
   GH001storagemass;
   NFAL01storagemass;
@@ -116,6 +128,29 @@ export class OutboundPDFPage implements OnInit {
       // console.log(this.getOutBound);
 
     this.getDatafirebase(this.id);
+
+    // this.db.collection('outbound').doc(this.id).onSnapshot(element => {
+    //   let DriverName = {};
+    //   let RegistarionNumberPlates = {};
+    //   let overallStorage = {};
+    //   let TruckSourcess = {};
+    //   let Destination = {};
+    //   let time = {};
+
+    //   DriverName = this.OutName = element.data().DriverName;
+    //   RegistarionNumberPlates = this.OutNumberPlates = element.data().RegistarionNumberPlates;
+    //   overallStorage = this.Outstorage = element.data().ovarallMass;
+    //   TruckSourcess = this.OutTruckSource = element.data().TruckSourcess;
+    //   Destination = this.OutDestination = element.data().Destination;
+
+    //   console.log(this.OutName);
+    //   console.log(this.OutNumberPlates);
+    //   console.log(this.Outstorage);
+    //   console.log(this.OutTruckSource);
+    //   console.log(this.OutDestination);
+
+    // })
+
    }
 
    ngOnInit() {
@@ -150,7 +185,7 @@ export class OutboundPDFPage implements OnInit {
         this.overallStoragez = (String(overallStorage).substring(0, 6));
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
         Destination = this.Destination = element.data().Destination;
-        // console.log(this.DriverName);
+        console.log(this.DriverName);
         // console.log(this.RegistarionNumberPlates);
         // console.log(this.overallStorage);
         // console.log(this.TruckSourcess);
@@ -254,15 +289,14 @@ export class OutboundPDFPage implements OnInit {
         if (this.PDFArray2[key] === '0') {
           // console.log('Skipped because its 0');
         } else if (this.PDFArray2[key] !== '0') {
-          this.PDFArrayPrint.push({name: key, number: this.PDFArray2[key]});
+          // this.PDFArrayPrint.push({name: key, number: this.PDFArray2[key]});
           this.outBoundPDFPrint.push({name: key, number: this.PDFArray2[key]})
         }
       }
+       this.createPdf();
         // console.log(this.PDFArrayPrint);
       });
-      // create PDF
-    this.createPdf();
-    // });
+
    }
 
   calculateOverall() {
@@ -288,10 +322,7 @@ export class OutboundPDFPage implements OnInit {
   }
 
   createPdf() {
-    
-    let printDataNamezz = [];
-    let printDataNumberzz = [];
-
+  
     // this.PDFArrayPrint.forEach((item) => {
     //   printDataName.push(item.name);
     //   printDataNumber.push(String(item.number).substring(0, 4));
@@ -302,13 +333,14 @@ export class OutboundPDFPage implements OnInit {
     // console.log("im here baba");
 
     this.outBoundPDFPrint.forEach(item => {
-      printDataNamezz.push(item.name);
-      printDataNumberzz.push(String(item.number).substring(0, 4));
-    });
-    console.log(printDataNamezz);
-    console.log(printDataNumberzz);
-    console.log(this.outBoundPDFPrint);
-    console.log("im here baba kayi 2");
+        this.printDataNamezz.push(item.name);
+        this.printDataNumberzz.push(String(item.number).substring(0, 4));
+      });
+      console.log(this.outBoundPDFPrint);
+      console.log(this.printDataNamezz);
+      console.log(this.printDataNumberzz);
+      console.log("im here baba kayi 2");
+      console.log(this.DriverName);
 
     var docDefinition = {
       header:  { text: 'Mthombowolwazi', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 20, margin: [ 5, 2, 10, 20 ] },
@@ -337,17 +369,16 @@ export class OutboundPDFPage implements OnInit {
         body: [
           ["Bill To", "Ship To", "invoice #",],
 
-          [{ text: this.DriverName, color: 'gray' }, '123 Soweto, Orlando East', { text: this.Destination, color: 'gray', Border: false }],
+          [{ text: this.DriverName, color: 'gray' }, this.awe, { text: this.OutDestination, color: 'gray', Border: false }],
         ]
       }
     },
 
-        // console.log(this.DriverName);
-        // console.log(this.RegistarionNumberPlates);
-        // console.log(this.overallStorage);
-        // console.log(this.TruckSourcess);
-        // console.log(this.Destination);
-        // console.log(this.overallStoragez);
+        // OutName;
+      // OutNumberPlates;
+      // Outstorage;
+      // OutTruckSource;
+      // OutDestination;
 
     { text: '', style: 'subheader' },
     {
@@ -359,7 +390,7 @@ export class OutboundPDFPage implements OnInit {
 
         body: [
           ["name", "quantity", "Mass",],
-          [ printDataNamezz, '', printDataNumberzz ],
+          [ this.printDataNamezz, '', this.printDataNumberzz ],
           // [{ text: printDataName, color: 'gray' }, '', { text: printDataNumber, color: 'gray', Border: false }],
           // [{ text: 'Item 3', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           // [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
