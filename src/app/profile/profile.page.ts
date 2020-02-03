@@ -69,7 +69,7 @@ console.log('profile',this.profile )
         message: 'Enter the surname',
         duration: 2000
       });
-    } else if(this.profile.number == "" || this.profile.number == undefined || this.profile.number.toString().length <10){
+    } else if(this.profile.number == "" || this.profile.number == undefined || this.profile.number.length <10){
 const toast = await this.toastController.create({
   message:'Enter a cellphone number with 10 digits',
   duration: 2000
@@ -77,7 +77,19 @@ const toast = await this.toastController.create({
   
 });
 toast.present();
-    } else {
+    }
+    else if(this.profile.number[0]!= '0'){
+      const toast = await this.toastController.create({
+        message:'The phone number must start with a zero',
+        duration: 2000
+      
+        
+      });
+      toast.present();
+          }
+    
+    
+    else {
     this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
     
       name: this.profile.name,
