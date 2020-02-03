@@ -1,47 +1,43 @@
 <ion-header *ngFor="let user of Newadmin">
-  <ion-toolbar class="header">
-    <ion-title>
-      <ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar>
-      <p>{{ user.name }} {{ user.surname }}</p>
-    </ion-title>
-    <ion-buttons id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon name="log-out"></ion-icon>
-      </ion-button>
+  <ion-toolbar class="header" >
+    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-buttons  id="logout" slot="end">
+      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <!-- <ion-button (click)="showDriverInfo()"></ion-button> -->
-  <div class="Mother" id="wasteInformation" *ngIf="selectedCat">
-    <div id="Son" (click)="goAway()"></div>
-    <div id="Daughter">
-      <div class="LEFT">
-        <ion-icon id="GO" (click)="showInputs()" name="arrow-dropleft-circle"></ion-icon>
-      </div>
-      <div id="Header">
-        <div id="Paper" (click)="togglePaper()">
-          <h4>PAPER</h4>
+    <div class="Mother" id="wasteInformation" *ngIf="selectedCat">
+      <div id="Son" (click)="goAway()"></div>
+      <div id="Daughter">
+        <div class="LEFT">
+          <ion-icon id="GO" (click)="showInputs()" name="arrow-dropleft-circle"></ion-icon>
         </div>
-        <div id="Plastic" (click)="togglePlastic()">
-          <h4>PLASTIC</h4>
+        <div id="Header">
+          <div id="Paper" (click)="togglePaper()">
+            <h4>PAPER</h4>
+          </div>
+          <div id="Plastic" (click)="togglePlastic()">
+            <h4>PLASTIC</h4>
+          </div>
+          <div id="Aluminium" (click)="toggleAluminium()">
+            <h4>ALUMINIUM</h4>
+          </div>
+          <div id="Glass" (click)="toggleGlass()">
+            <h4>GLASS</h4>
+          </div>
+          <div id="line"></div>
         </div>
-        <div id="Aluminium" (click)="toggleAluminium()">
-          <h4>ALUMINIUM</h4>
-        </div>
-        <div id="Glass" (click)="toggleGlass()">
-          <h4>GLASS</h4>
-        </div>
-        <div id="line"></div>
-      </div>
-
-      <div class="myInfo">
-        <div class="for-plastic" id="toPlastic">
-          <div id="toFlex">
-
+  
+        <div class="myInfo">
+          <div class="for-plastic" id="toPlastic">
+            <div id="toFlex">
+              
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="HD001mass">
+                <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="HD001mass">
                 <div class="Amount">
                   <b>
                     <p>HD001</p>
@@ -49,7 +45,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="LD001mass">
+                <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="LD001mass">
                 <div class="Amount">
                   <b>
                     <p>LD001</p>
@@ -59,7 +55,7 @@
             </div>
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="LD003mass">
+                <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="LD003mass">
                 <div class="Amount">
                   <b>
                     <p>LD003</p>
@@ -67,7 +63,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PET005mass">
+                <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="PET005mass">
                 <div class="Amount">
                   <b>
                     <p>PET005</p>
@@ -77,7 +73,7 @@
             </div>
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass">
+                <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass">
                 <div class="Amount">
                   <b>
                     <p>PET001</p>
@@ -85,7 +81,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PET003mass">
+                <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="PET003mass">
                 <div class="Amount">
                   <b>
                     <p>PET003</p>
@@ -93,124 +89,135 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)="toggleAluminium()">Next</button>
             </div>
+  
+            <div class="Button">
+              <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+              <div class="TheButton">
+                <button clear (click)="toggleAluminium()">Next</button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="for-paper" id="toPaper">
+            <div id="toFlex">
+              <div class="FirstRow">
+                <div id="FirstCol">
+                  <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass">
+                  <div class="Amount">
+                    <b>
+                      <p>PAP005</p>
+                    </b>
+                  </div>
+                </div>
+                <div id="SecondCol">
+                  <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass">
+                  <div class="Amount">
+                    <b>
+                      <p>PAP007</p>
+                    </b>
+                  </div>
+                </div>
+              </div>
+              <div class="FirstRow">
+                <div id="FirstCol">
+                  <input type="number" placeholder="Weight in Kilograms">
+                  <div class="Amount">
+                    <b>
+                      <p>PAP001</p>
+                    </b>
+                  </div>
+                </div>
+                <div id="SecondCol">
+                  <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass">
+                  <div class="Amount">
+                    <b>
+                      <p>PAP003</p>
+                    </b>
+                  </div>
+                </div>
+              </div>
+              </div>
+    
+              <div class="Button">
+                <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+                <div class="TheButton">
+                  <button clear  (click)="togglePlastic()">Next</button>
+                </div>
+              </div>
+          </div>
+  
+          <div class="for-Aluminium" id="toAluminium">
+            <div id="toFlex">
+              <div class="FirstRow">
+                <div id="FirstCol-one-input">
+                  <input type="number"  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass" >
+                  <div class="Amount">
+                    <b>
+                      <p>NFAL01</p>
+                    </b>
+                  </div>
+                </div>
+              </div>
+              </div>
+    
+              <div class="Button">
+                <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+                <div class="TheButton">
+                  <button clear  (click)="toggleGlass()">Next</button>
+                </div>
+              </div>
+          </div>
+          
+          <div class="for-Glass" id="toGlass">
+  
+            <div id="toFlex">
+              
+              <div class="FirstRow">
+                <div id="FirstCol-one-input">
+                  <input type="number" placeholder="Weight in Kilograms" [(ngModel)]="GH001mass">
+                  <div class="Amount">
+                    <b>
+                      <p>GL001</p>
+                    </b>
+                  </div>
+                </div>
+              </div>  
+              </div>
+    
+              <div class="Button">
+                <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
+                <div class="TheButton">
+                  <button clear (click)="CheckInputsEmptyString()">Save</button>
+                </div>
+              </div>
           </div>
         </div>
-
-        <div class="for-paper" id="toPaper">
-          <div id="toFlex">
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP005</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP007</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-            <div class="FirstRow">
-              <div id="FirstCol">
-                <input type="text" placeholder="Weight in Kilograms">
-                <div class="Amount">
-                  <b>
-                    <p>PAP001</p>
-                  </b>
-                </div>
-              </div>
-              <div id="SecondCol">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass">
-                <div class="Amount">
-                  <b>
-                    <p>PAP003</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)="togglePlastic()">Next</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="for-Aluminium" id="toAluminium">
-          <div id="toFlex">
-            <div class="FirstRow">
-              <div id="FirstCol-one-input">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass">
-                <div class="Amount">
-                  <b>
-                    <p>NFAL01</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)="toggleGlass()">Next</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="for-Glass" id="toGlass">
-
-          <div id="toFlex">
-
-            <div class="FirstRow">
-              <div id="FirstCol-one-input">
-                <input type="text" placeholder="Weight in Kilograms" [(ngModel)]="GH001mass">
-                <div class="Amount">
-                  <b>
-                    <p>GL001</p>
-                  </b>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="Button">
-            <div class="Pic"><img id="image" src="../../assets/icon/binsPopup  2.svg" alt=""></div>
-            <div class="TheButton">
-              <button clear (click)="CheckInputsEmptyString()">Save</button>
-            </div>
-          </div>
-        </div>
+        
       </div>
-
     </div>
-  </div>
-
+  
   <!-- End of the waste material Pop-over -->
-
+  
   <!-- Start of the driver's info Pop-over -->
+  
+    <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
+      <div id="Son" (click)="goAway()"></div>
+      <div class="Mask"> 
+        
+      
+        <div class="spacer"></div>
+        <!-- <h3 class="Tittle"><b>Outbound Details</b> <h3 id="Tittle"><b>Outbound details</b></h3></h3> -->
+        <h3 class="Tittle"><b>Outbound Details</b></h3>
+        <div class="Content">
+          <div class="Group1">
 
   <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
     <div id="Son" (click)="goAway()"></div>
     <div class="Mask">
       <div class="spacer"></div>
       <!-- <h3 class="Tittle"><b>Outbound Details</b> <h3 id="Tittle"><b>Outbound details</b></h3></h3> -->
-      <h3 class="Tittle"><b>Outbound Details</b></h3>
+      <h6 class="Tittle"><b>Outbound Details</b></h6>
       <div class="Content">
         <div class="Group1">
 
@@ -218,48 +225,46 @@
               <input id="theSearchbar" type="text" placeholder="Search Driver">
             </div> -->
 
-          <div class="TheContent">
+            <div class="TheContent">
 
-            <!-- code for auto complete -->
-            <div class="results">
-              <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
-              <div class='count' *ngIf="searchResults.length > 0">
-                {{ searchResults.length }}
+              <!-- code for auto complete -->
+              <div class="results">
+                <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
+                <div class='count' *ngIf="searchResults.length > 0" >
+                  {{ searchResults.length }}
+                </div>
               </div>
-            </div>
-            <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
-            <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
+              <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+             
+              <!-- <ion-item no-lines>{{ userLocation }}</ion-item> -->
 
-            <!-- <ion-item no-lines>{{ userLocation }}</ion-item> -->
 
-
-            <ion-card *ngFor="let records of recordoutbounddisplays">
-              <ion-card-content (click)='presentAlertAddUser(records.id)'>
-                <h5>{{ records.DriverName }}</h5>
-                <!-- <p>{{ records.DriverName }}</p> -->
-                <p>{{ records.RegistarionNumberPlates }}</p>
-              </ion-card-content>
-              <!-- <ion-card-content>
+              <ion-card *ngFor="let records of recordoutbounddisplays">
+                <ion-card-content (click)='presentAlertAddUser(records.id)'>
+                  <h5>{{ records.DriverName }}</h5>
+                  <!-- <p>{{ records.DriverName }}</p> -->
+                  <p>{{ records.RegistarionNumberPlates }}</p>
+                </ion-card-content>
+                <!-- <ion-card-content>
                   <h5>Truck Plates</h5>
                   <p>{{ records.RegistarionNumberPlates }}</p>
                 </ion-card-content> -->
-            </ion-card>
+              </ion-card>
+            </div>
+            <div class="Thebutton">
+              <ion-button class="AddDriver" color="clear" (click)="nextClick()"><ion-icon name="add"></ion-icon> New Driver</ion-button>
+            </div>
           </div>
-          <div class="Thebutton">
-            <ion-button class="AddDriver" color="clear" (click)="nextClick()">
-              <ion-icon name="add"></ion-icon> New Driver
-            </ion-button>
-          </div>
-        </div>
-        <div class="Group1new"></div>
-        <div class="Group2" *ngIf="driverInfo === true">
-          <form padding [formGroup]="RegisterForm">
+          <div class="Group1new"></div>
+          <div class="Group2" *ngIf="driverInfo === true">
+            <form padding [formGroup]="RegisterForm">
             <div class="Sub2">
-
+              
               <!-- <h3 id="OutBoundDetails"><b>Outbound details</b></h3> -->
               <div class="Heading">
                 <!-- -->
-                <h4 class="theH4">Outbound Information</h4>
+                <h1>Outbound Information</h1>
 
                 <div class="DriverInputs">
                   <input id="input" placeholder="Driver's Name" [(ngModel)]="DriverNameInput"
@@ -274,91 +279,80 @@
                   <input id="input" placeholder="Registarion No." [(ngModel)]="RegistarionNumberPlates" formControlName="RegistarionNumberPlates" type="text">
                   <input id="input" placeholder="Destination" formControlName="Destination" [(ngModel)]="Destination" type="text">
                   <input id="input" placeholder="Truck Source" [(ngModel)]="TruckSourcess" [ngModelOptions]="{standalone: true}"> -->
-                </div>
+                 </div> 
                 <!-- <div class="DoneBTN">
                   <ion-button id="Done" color="clear">Done</ion-button>
                 </div>  -->
-
+              
               </div>
             </div>
           </form>
+          </div>
+        </div>
+        <div class="Finish">
+          <button id="FinishBTN" color="clear" (click)="showWasteInfo()" [disabled]="!RegisterForm.valid">Next</button>
         </div>
       </div>
-      <div class="Finish">
-        <button id="FinishBTN" color="clear" (click)="showWasteInfo()" [disabled]="!RegisterForm.valid">Next</button>
-      </div>
-    </div>
-    <div class="Daughter">
-
-      <div class="FirstIMG">
-        <img id="RecyleIMG" src="../../assets/icon/Asset 10.svg" alt="">
-      </div>
-      <div class="SecIMG">
-        <img id="PurpleBubbles"
-          src="../../assets/icon/outboundPOPup                                                                .svg"
-          alt="">
-        <div class="TheTruck">
-          <img id="TruckIMG" src="../../assets/icon/outboundPopup.svg" alt="">
+      <div class="Daughter">
+  
+        <div class="FirstIMG">
+          <img id="RecyleIMG" src="../../assets/icon/Asset 10.svg" alt="">
+        </div>
+        <div class="SecIMG">
+          <img id="PurpleBubbles"
+            src="../../assets/icon/outboundPOPup                                                                .svg"
+            alt="">
+          <div class="TheTruck">
+            <img id="TruckIMG" src="../../assets/icon/outboundPopup.svg" alt="">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
+  
   <!-- End of driver info Pop-over -->
-
+  
   <!-- Start of everything outside -->
-  <div id="Everything">
+  
     <div id="StuffInside">
-      <div padding class="Theblocks">
-        <!-- PAPER DIV -->
+      <div class="Theblocks">
         <div class="Block1" (click)="showPopUp('paper')">
-          <h3>PAPER</h3>
-          <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
+          <div class="Waste"><h3>PAPER</h3></div>
+          <img id="RecyleLogo1" src="../../assets/icon/Asset 9.svg" alt="">
         </div>
-        <!-- PLASTIC DIV -->
         <div class="Block1" (click)="showPopUp('plastic')">
-          <h3>PLASTIC</h3>
-          <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
+          <div class="Waste"><h3>PLASTIC</h3></div>
+          <img id="RecyleLogo2" src="../../assets/icon/Asset 9.svg" alt="">
         </div>
-        <!-- ALUMINIUM DIVE -->
         <div class="Block1" (click)="showPopUp('aluminium')">
-          <h3>ALUMINIUM</h3>
-          <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
+          <div class="Waste"><h3 id="H3">ALUMINIUM</h3></div>
+          <img id="RecyleLogo3" src="../../assets/icon/Asset 9.svg" alt="">
         </div>
-        <!-- GLASS DIV -->
         <div class="Block1" (click)="showPopUp('glass')">
-          <h3>GLASS</h3>
-          <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
+          <div class="Waste"><h3>GLASS</h3></div>
+          <img id="RecyleLogo4" src="../../assets/icon/Asset 9.svg" alt="">
         </div>
-      </div><!-- END OF TOP DIV HOLDING MATERIAL -->
+      </div>
 
-      <div padding class="History">
+      <div class="History">
         <div class="History1">
-          <div id="Date">
-            <h2>Driver's Name</h2>
-          </div>
-          <div id="Material">
-            <h2>Registretion No.</h2>
-          </div>
-          <div id="Material">
-            <h2>Date</h2>
-          </div>
-        </div>
-        <div class="History2" *ngFor="let records of recordoutbounddisplays">
-          <div id="Date1">{{ records.DriverName }}</div>
-          <div id="material">{{ records.RegistarionNumberPlates }}</div>
-          <div id="material">{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div>
-          <ion-icon name="eye" class="eye" [routerLink]="['/outbound-pdf', records.id]"></ion-icon>
-          <ion-icon name="trash" class="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-        </div>
-        <!-- <div class="History3">
+          <div id="Date"><h2>Driver's Name</h2></div>
+          <div id="Material"><h2>Registarion No.</h2></div>
+          <div id="Material"><h2>Date</h2></div>
+      </div>
+      <div class="History2" *ngFor="let records of recordoutbounddisplays">
+        <div id="Date1">{{ records.DriverName }}</div>
+        <div id="Material1">{{ records.RegistarionNumberPlates }}</div>
+        <div id="Material1">{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div>
+        <div id="Eye1"><ion-icon name="eye" [routerLink]="['/home2', records.id]"></ion-icon></div>
+        <div id="Trash1"><ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon></div>
+      </div>
+      <!-- <div class="History3">
         <div id="Date2">27 July 2019</div>
         <div id="Material2">Glass</div>
         <div id="Eye2"><ion-icon name="eye"></ion-icon></div>
         <div id="Trash2"><ion-icon name="trash"></ion-icon></div>
       </div> -->
-      </div>
     </div>
-  </div>
-
-</ion-content>
+    </div>
+  
+  </ion-content>

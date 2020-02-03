@@ -84,6 +84,8 @@ oneprofile:any ={};
    }
 
   ngOnInit() {
+  
+
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {

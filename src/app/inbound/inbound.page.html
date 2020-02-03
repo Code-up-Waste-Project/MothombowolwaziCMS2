@@ -33,16 +33,16 @@
         <div class="for-plastic" id="toPlastic">
             <!-- new code -->
               <div class="top">
-                <input type="text" placeholder="Mass for HD001" [(ngModel)]="HD001mass">        
-                <input type="text" placeholder="Mass for LB001" [(ngModel)]="LD001mass">
+                <input type="number" placeholder="Mass for HD001" [(ngModel)]="HD001mass">        
+                <input type="number" placeholder="Mass for LB001" [(ngModel)]="LD001mass">
                </div>
                <div class="middle">
-                <input type="text" placeholder="Mass for LD003" [(ngModel)]="LD003mass">
-                <input type="text" placeholder="Mass for PET005" [(ngModel)]="PET005mass">
+                <input type="number" placeholder="Mass for LD003" [(ngModel)]="LD003mass">
+                <input type="number" placeholder="Mass for PET005" [(ngModel)]="PET005mass">
                </div>
                <div class="bottom">
-                <input type="text" placeholder="Mass for PET001" [(ngModel)]="PET001mass">
-                <input type="text" placeholder="Mass for PET003" [(ngModel)]="PET003mass">
+                <input type="number" placeholder="Mass for PET001" [(ngModel)]="PET001mass">
+                <input type="number" placeholder="Mass for PET003" [(ngModel)]="PET003mass">
                </div>
                <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
                <button class="btn"  clear (click)='toggleAluminium()'>Next</button>
@@ -53,12 +53,12 @@
         <!-- PAPER MATERIAL -->
         <div class="for-paper" id="toPaper">
           <div class="top">
-            <input type="text" placeholder="Mass for PAP005" [(ngModel)]="PAP005mass">
-            <input type="text" placeholder="Mass for PAP007" [(ngModel)]="PAP007mass">
+            <input type="number" placeholder="Mass for PAP005" [(ngModel)]="PAP005mass">
+            <input type="number" placeholder="Mass for PAP007" [(ngModel)]="PAP007mass">
           </div>
           <div class="top">
-            <input type="text" placeholder="Mass for PAP001" [(ngModel)]="PAP001mass">
-            <input type="text" placeholder="Mass for PAP003" [(ngModel)]="PAP003mass">
+            <input type="number" placeholder="Mass for PAP001" [(ngModel)]="PAP001mass">
+            <input type="number" placeholder="Mass for PAP003" [(ngModel)]="PAP003mass">
           </div>
 
           <!-- button -->
@@ -69,7 +69,7 @@
         <!-- Aluminium MATERIAL  -->
         <div class="for-Aluminium" id="toAluminium">
            <div class="top">
-           <input type="text" placeholder="Mass for NFAL01" [(ngModel)]="NFAL01mass">
+           <input type="number" placeholder="Mass for NFAL01" [(ngModel)]="NFAL01mass">
            </div>
            <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
            <button class="btn" clear (click)='toggleGlass()'>Next</button>
@@ -80,7 +80,7 @@
         <!-- Glass MATERIAL  -->
         <div class="for-Glass" id="toGlass">
           <div class="top">
-            <input type="text" placeholder="Mass for GH001" [(ngModel)]="GH001mass">
+            <input type="number" placeholder="Mass for GH001" [(ngModel)]="GH001mass">
           </div>
           <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
           <button class="btn" clear (click)="CheckInputsEmptyString()">Save</button>
@@ -134,7 +134,7 @@
           <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
         </div>
       </ion-card> -->
-      <div class="History2" *ngFor="let records of recordinbounddisplays">
+      <div class="History2" *ngFor="let records of recordinbounddisplaysz">
         <div id="Date1">{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div>
         <div id="material" >{{ records.id }} 
           <ion-icon class="eye" name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon>

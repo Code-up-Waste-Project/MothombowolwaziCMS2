@@ -17,6 +17,7 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
   templateUrl: './inbound.page.html',
   styleUrls: ['./inbound.page.scss'],
 })
+
 export class InboundPage implements OnInit {
 
   // start of Declaretions
@@ -27,6 +28,7 @@ export class InboundPage implements OnInit {
 
   records;
   recordinbounddisplays = [];
+  recordinbounddisplaysz = [];
 
   testArray = [];
   PDFArray = {};
@@ -147,6 +149,26 @@ export class InboundPage implements OnInit {
    }
 
   ngOnInit() {
+    this.sortTable()
+  }
+
+  sortTable() {
+    this.db.collection('inbounds').orderBy('time', "desc").onSnapshot(element => {
+      this.recordinbounddisplaysz = [];
+      element.forEach(element => {
+        let time = {};
+        let id = {};
+
+        id = this.ids = element.id;
+        time = this.time = element.data().time;
+
+        this.recordinbounddisplaysz.push({
+          id: this.ids,
+          time: this.time,
+        });
+        console.log(element.data());
+      })
+    })
   }
 
   pdfmakerFirebase() {
@@ -845,4 +867,5 @@ export class InboundPage implements OnInit {
       }
       }, 10);
     }
+
 }

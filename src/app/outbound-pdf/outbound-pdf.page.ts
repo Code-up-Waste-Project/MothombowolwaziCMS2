@@ -256,9 +256,7 @@ export class OutboundPDFPage implements OnInit {
           this.PDFArrayPrint.push({name : key, number : this.PDFArray2[key]});
         }
       }
-        console.log(this.PDFArrayPrint);
-
-
+        // console.log(this.PDFArrayPrint);
       });
       // create PDF
     this.createPdf();
@@ -287,16 +285,8 @@ export class OutboundPDFPage implements OnInit {
 
   }
 
-  getOutBound(id) {
-    this.Outbound = this.db.collection('outbound').doc(id);
-    this.Outbound.get().then((documentSnapshot) => {
-      this.ViewOutbound = [];
-      // console.log(documentSnapshot.data());
-      this.ViewOutbound.push(documentSnapshot.data());
-      // console.log(this.ViewOutbound);
-    });  }
-
   createPdf() {
+    
     let printDataName = [];
     let printDataNumber = [];
 
@@ -304,6 +294,17 @@ export class OutboundPDFPage implements OnInit {
       printDataName.push(item.name);
       printDataNumber.push(item.number);
     });
+
+    for (let key in this.PDFArrayPrint) {
+      console.log(key);
+      // printDataName.push(key.name);
+      // this.printDataName(x).pipe(map(item => arr.push(item)));
+    }
+
+    // for (const x of visitantes) {
+    //   this.getVisitante(org, x).pipe(map(item => arr.push(item)));
+    // }
+
     console.log(this.PDFArrayPrint);
     console.log(printDataName);
     console.log(printDataNumber);
@@ -354,14 +355,13 @@ export class OutboundPDFPage implements OnInit {
         widths: ['33%', '33%', '33%'],
 
         body: [
-
-
-          ["name", "quantity", "cost",],
-          [{ text: 'Item 1', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-          [{ text: 'Item 3', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-          [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-          [{ text: 'Status', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-          [{ text: 'Item 45', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
+          ["name", "quantity", "Mass",],
+          [ printDataName, '', printDataNumber ],
+          // [{ text: printDataName, color: 'gray' }, '', { text: printDataNumber, color: 'gray', Border: false }],
+          // [{ text: 'Item 3', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
+          // [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
+          // [{ text: 'Status', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
+          // [{ text: 'Item 45', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           [{ text: 'TOTAL', bold: true, color: 'gray', lineHeight: 2, marginTop: 10, },
             { text: 'R', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
             { text: 'Total', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },]
@@ -425,5 +425,14 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
       this.pdfObj.download();
     }
   }
+
+  getOutBound(id) {
+    this.Outbound = this.db.collection('outbound').doc(id);
+    this.Outbound.get().then((documentSnapshot) => {
+      this.ViewOutbound = [];
+      // console.log(documentSnapshot.data());
+      this.ViewOutbound.push(documentSnapshot.data());
+      // console.log(this.ViewOutbound);
+    });  }
 
 }

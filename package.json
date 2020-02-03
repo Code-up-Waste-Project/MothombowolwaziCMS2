@@ -31,6 +31,7 @@
     "cordova-plugin-file-opener2": "^3.0.0",
     "core-js": "^2.5.4",
     "firebase": "^7.6.2",
+    "firebase-functions": "^3.3.0",
     "ionic4-auto-complete": "^2.5.1",
     "moment": "^2.24.0",
     "ng2-pdf-viewer": "^6.0.2",

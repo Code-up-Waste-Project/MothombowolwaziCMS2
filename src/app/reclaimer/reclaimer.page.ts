@@ -10,6 +10,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
+import { analyzeFileForInjectables } from '@angular/compiler';
 
 
 @Component({
@@ -32,6 +33,8 @@ export class ReclaimerPage implements OnInit {
   surnames;
   contacts;
   addresss;
+
+  phoneVal;
 
   prices;
   getprice;
@@ -389,6 +392,7 @@ export class ReclaimerPage implements OnInit {
     this.db.collection('admin').onSnapshot(snapshot => {
       // this.Newadmin = [];
       snapshot.forEach(Element => {
+        this.Newadmin = [];
         this.admin.push(Element.data());
       });
       this.admin.forEach(item => {
@@ -467,22 +471,31 @@ export class ReclaimerPage implements OnInit {
   ngOnInit() {
   }
 
-  checkPhoneInput() {
+  getMaxMin() {
+    if (this.contacts.lenght >= 10) {
+      this.presentAlertPhoneMaxLenght();
+      console.log('Number is greater than 10 or equeal to 10');
+    }  else {
+      this.showInputs();
+      console.log('Number is okay');
+    }
+  }
+
+  getPhoneInput(ev: any) {
+    this.contacts = ev.target.value;
+
     // calling firebase
     // this.contact[0] == '0'
-    if (this.contacts[0] != '0') {
+    if (this.contacts[0] !== '0') {
       this.presentAlertPhoneValidation();
     } else {
-      this.showInputs()
+      // this.showInputs()
+      // console.log('im working');
+      this.contacts = this.contacts;
     }
-    // .then((data) => {
-    //   console.log(data);
-    // }).catch((error) => {
-    //   var errorCode = error.code;
-    //   var errorCode = error.message;
-    //   return errorCode;
-    // });
-
+      // console.log(this.phoneVal);
+      // console.log(this.contacts);
+    
   }
 
   async presentAlertPhoneValidation() {
@@ -495,13 +508,55 @@ export class ReclaimerPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            this.clearForm();
+            this.erasedToContact();
             console.log('Confirm Cancel: blah');
           }
         }
       ]
     });
     await alert.present();
+  }
+
+  async presentAlertPhoneMaxLenght() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Phone Numbers must have 10 numbers.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.erasedToContact();
+            // console.log('im working');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertPhoneMinLenght() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Phone Numbers has less than 10 numbers.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.erasedToContact();
+            console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  erasedToContact() {
+    this.contacts = '';
   }
 
   clearForm() {
@@ -559,6 +614,7 @@ export class ReclaimerPage implements OnInit {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
+            this.allocate();
             // this.route.navigateByUrl('/reclaimer');
           }
         }
@@ -594,7 +650,7 @@ export class ReclaimerPage implements OnInit {
       // })
   })
 
-  this.nextClick()
+  this.nextClick();
 
   }
 
@@ -1704,8 +1760,9 @@ Logout() {
   group1 = document.getElementsByClassName("Group1") as HTMLCollectionOf <HTMLElement>
   nextClick(){
     this.driverInfo = true;
-    this.group1[0].style.left = "30%";
-    this.group1[0].style.width = "50%"
+    this.group1[0].style.left = "8%";
+    this.group1[0].style.transform = "translateX(0)";
+    this.group1[0].style.width = "40%"
   }
 
   getItems(ev: any) {
@@ -1752,19 +1809,21 @@ Logout() {
         address = this.addresss = element.data().address;
         })
 
-        // console.log(this.names);
-        // console.log(this.surnames);
-        // console.log(this.contacts);
-        // console.log(this.addresss);
+        console.log(this.names);
+        console.log(this.surnames);
+        console.log(this.contacts);
+        console.log(this.addresss);
 
         // adding data to textboxes
-        this.names = this.names;
-        this.surnames = this.surnames;
-        this.contacts = this.contacts;
-        this.addresss = this.addresss
+        // this.names = this.names;
+        // this.surnames = this.surnames;
+        // this.phoneVal = this.contacts;
+        // this.addresss = this.addresss
       // })
 
   })
+
+  // this.allocate();
 
   // angular.json  code (do not delete)
   // {
@@ -1774,4 +1833,14 @@ Logout() {
   // }
 
 }
+
+allocate() {
+    // adding data to textboxes
+    // this.names = this.names;
+    // this.surnames = this.surnames;
+    // this.phoneVal = this.contacts;
+    // this.addresss = this.addresss
+    // console.log('im clicked');
+}
+
 }

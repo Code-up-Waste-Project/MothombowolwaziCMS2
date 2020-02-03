@@ -317,10 +317,9 @@ export class InboundPDFPage implements OnInit {
         widths: ['33%', '33%', '33%'],
 
         body: [
-
-
-          ["name", "quantity", "cost",],
-          [{ text: printDataName, color: 'gray' }, '', { text: printDataNumber, color: 'gray', Border: false }],
+          ["name", "quantity", "Mass",],
+          [ printDataName, '', printDataNumber ],
+          // [{ text: printDataName, color: 'gray' }, '', { text: printDataNumber, color: 'gray', Border: false }],
           // [{ text: 'Item 3', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           // [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           // [{ text: 'Status', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
