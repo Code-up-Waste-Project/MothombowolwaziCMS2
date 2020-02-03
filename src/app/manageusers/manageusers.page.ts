@@ -21,7 +21,7 @@ registerForm = false;
  surname;
  position;
  image;
-
+ ActiveAcount;
  number;
 
   Userids;
@@ -363,18 +363,20 @@ console.log(this.selectedUser)
 
       AddUserToForm(id) {
         this.db.collection('admin').doc(id).onSnapshot(element => {
-          // element.forEach(element => {
+          // element.forEach(element => { ActiveAcount
             let name = {};
             let surname = {};
             let number = {};
             let address = {};
-            let image={};
+            let image = {};
+            let ActiveAcount = {};
     
             name = this.name = element.data().name;
             surname = this.surname = element.data().surname;
             number = this.number = element.data().number;
             this.position = this.position = element.data().position;
             this.image =this.image= element.data().image;
+            ActiveAcount = this.ActiveAcount = element.data().ActiveAcount;
             // })
     
             console.log(this.name);
@@ -382,12 +384,14 @@ console.log(this.selectedUser)
             console.log(this.number);
             console.log(this.position);
             console.log(this.image);
+            console.log(this.ActiveAcount);
             // adding data to textboxes
             this.name = this.name;
             this.surname = this.surname;
             this.number = this.number;
             this.position = this.position;
-            this.image = this.image
+            this.image = this.image;
+            this.ActiveAcount = this.ActiveAcount;
           // })
       })
     }

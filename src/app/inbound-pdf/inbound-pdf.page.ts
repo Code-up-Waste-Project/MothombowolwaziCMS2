@@ -92,7 +92,7 @@ export class InboundPDFPage implements OnInit {
     private fileOpener: FileOpener
   ) {
     this.Userid = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.Userid);
+    // console.log(this.Userid);
 
     this.getDataFirebase(this.Userid);
   }
@@ -249,7 +249,7 @@ export class InboundPDFPage implements OnInit {
         this.PDFArrayPrint.push({ name: key, number: this.PDFArray[key] });
       }
     }
-    console.log(this.PDFArrayPrint);
+    // console.log(this.PDFArrayPrint);
 
     // create PDF
     this.createPdf();
@@ -268,9 +268,9 @@ export class InboundPDFPage implements OnInit {
       printDataName.push(item.name);
       printDataNumber.push(item.number);
     });
-    console.log(this.PDFArrayPrint);
-    console.log(printDataName);
-    console.log(printDataNumber);
+    // console.log(this.PDFArrayPrint);
+    // console.log(printDataName);
+    // console.log(printDataNumber);
 
     var docDefinition = {
       header:  { text: 'Mthombowolwazi', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 20, margin: [ 35, 15, 20, 7 ] },

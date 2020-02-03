@@ -302,7 +302,7 @@ export class ReclaimerPDFPage implements OnInit {
   ) {
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
+    // console.log(this.id);
 
     this.pdfmakerFirebase(this.id);
     this.getprices();
@@ -847,7 +847,7 @@ export class ReclaimerPDFPage implements OnInit {
           PET005Vat: PET005Vat,
           PET005GrandTotal: PET005GrandTotal,
         });
-        console.log(this.testArray);
+        // console.log(this.testArray);
 
         this.PDFArray = {
           overallMass: overallMass,
@@ -1055,129 +1055,129 @@ export class ReclaimerPDFPage implements OnInit {
     }
 
     ForLoop() {
-      console.log(this.PDFArray);
-      console.log(this.PDFCodes);
-      console.log(this.PDFPrices);
-      console.log(this.PDFMass);
-      console.log(this.PDFSubTotals);
-      console.log(this.PDFVats);
-      console.log(this.PDFGrandTotal);
+      // console.log(this.PDFArray);
+      // console.log(this.PDFCodes);
+      // console.log(this.PDFPrices);
+      // console.log(this.PDFMass);
+      // console.log(this.PDFSubTotals);
+      // console.log(this.PDFVats);
+      // console.log(this.PDFGrandTotal);
 
       // all (old pdf)
       // tslint:disable-next-line: forin
       for (let key in this.PDFArray) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFArray[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFArray[key] !== '0') {
           this.PDFArrayPrint.push({name : key, number : this.PDFArray[key]});
         }
       }
-      console.log(this.PDFArrayPrint);
+      // console.log(this.PDFArrayPrint);
 
       // PDFCodes
       // tslint:disable-next-line: forin
       for (let key in this.PDFCodes) {
-        console.log(key);
+        // console.log(key);
         // if (this.PDFCodes[key] === '0') {
         //   console.log('Skipped because its 0');
         // } else if (this.PDFCodes[key] !== '0') {
           this.PDFCodesPrint.push({name : key, number : this.PDFCodes[key]});
         // }
       }
-      console.log(this.PDFCodesPrint);
+      // console.log(this.PDFCodesPrint);
 
       // PDFPrices
       // tslint:disable-next-line: forin
       for (let key in this.PDFPrices) {
-        console.log(key);
+        // console.log(key);
         // if (this.PDFPrices[key] === '0') {
         //   console.log('Skipped because its 0');
         // } else if (this.PDFPrices[key] !== '0') {
           this.PDFPricesPrint.push({name : key, number : this.PDFPrices[key]});
         // }
       }
-      console.log(this.PDFPricesPrint);
+      // console.log(this.PDFPricesPrint);
 
       // PDFMass
       // tslint:disable-next-line: forin
       for (let key in this.PDFMass) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFMass[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFMass[key] !== '0') {
           this.PDFMassPrint.push({name : key, number : this.PDFMass[key]});
         }
       }
-      console.log(this.PDFMassPrint);
+      // console.log(this.PDFMassPrint);
 
       // PDFSubTotals
       // tslint:disable-next-line: forin
       for (let key in this.PDFSubTotals) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFSubTotals[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFSubTotals[key] !== '0') {
           this.PDFSubTotalsPrint.push({name : key, number : this.PDFSubTotals[key]});
         }
       }
-      console.log(this.PDFSubTotalsPrint);
+      // console.log(this.PDFSubTotalsPrint);
 
       // PDFVats
       // tslint:disable-next-line: forin
       for (let key in this.PDFVats) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFVats[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFVats[key] !== '0') {
           this.PDFVatsPrint.push({name : key, number : this.PDFVats[key]});
         }
       }
-      console.log(this.PDFVatsPrint);
+      // console.log(this.PDFVatsPrint);
 
       // PDFGrandTotal
       // tslint:disable-next-line: forin
       for (let key in this.PDFGrandTotal) {
-        console.log(key);
+        // console.log(key);
         if (this.PDFGrandTotal[key] === '0') {
-          console.log('Skipped because its 0');
+          // console.log('Skipped because its 0');
         } else if (this.PDFGrandTotal[key] !== '0') {
           this.PDFGrandTotalPrint.push({name : key, number : this.PDFGrandTotal[key]});
         }
       }
-      console.log(this.PDFGrandTotalPrint);
+      // console.log(this.PDFGrandTotalPrint);
 
       // PDFOverall Mass
       // tslint:disable-next-line: forin
       for (let key in this.PDFOverallMass) {
-        console.log(key);
+        // console.log(key);
         this.PDFOverallMassPrint.push({name : key, number : this.PDFOverallMass[key]});
       }
-      console.log(this.PDFOverallMassPrint);
+      // console.log(this.PDFOverallMassPrint);
 
       // PDFOverall SubTotal
       // tslint:disable-next-line: forin
       for (let key in this.PDFOverallSubTotal) {
-        console.log(key);
+        // console.log(key);
         this.PDFOverallSubTotalPrint.push({name : key, number : this.PDFOverallSubTotal[key]});
       }
-      console.log(this.PDFOverallSubTotalPrint);
+      // console.log(this.PDFOverallSubTotalPrint);
 
       // PDFOverall Vat
       // tslint:disable-next-line: forin
       for (let key in this.PDFOverallVat) {
-        console.log(key);
+        // console.log(key);
         this.PDFOverallVatPrint.push({name : key, number : this.PDFOverallVat[key]});
       }
-      console.log(this.PDFOverallVatPrint);
+      // console.log(this.PDFOverallVatPrint);
 
       // PDFOverall Grand Total
       // tslint:disable-next-line: forin
       for (let key in this.PDFOverallGrandTotal) {
-        console.log(key);
+        // console.log(key);
         this.PDFOverallGrandTotalPrint.push({name : key, number : this.PDFOverallGrandTotal[key]});
       }
-      console.log(this.PDFOverallGrandTotalPrint);
+      // console.log(this.PDFOverallGrandTotalPrint);
 
       // create PDF for Download
       this.createPdf();

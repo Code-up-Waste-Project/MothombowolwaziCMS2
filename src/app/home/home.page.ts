@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
   @ViewChild('barChart2', {static: false}) barChart2;
 
 //store element into a variable
-imgGraph = document.getElementById('inbgraph');
+imgGraph = document.getElementsByClassName('inbgraph');
   
   inboundweight=0;
  outboundweight=0;
@@ -317,7 +317,8 @@ Totalplasticinbound: number = 0;
 
     //increase the size of clicked graph
     transformGraph() {
-      this.render.setStyle(this.imgGraph,'moz-transform', 'scale(5,7 5,7)')
+      this.render.setStyle(this.imgGraph[0],'transform', 'scale(1.5)');
+      this.render.setStyle(this.imgGraph[0],'z-index', '1000');
     }
      //chart
      updated
