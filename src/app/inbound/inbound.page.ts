@@ -140,7 +140,7 @@ export class InboundPage implements OnInit {
           this.Newadmin.push(item);
         }
       });
-      console.log('Newadmins', this.Newadmin);
+      // console.log('Newadmins', this.Newadmin);
     });
 
     this.getMasses();
@@ -166,7 +166,7 @@ export class InboundPage implements OnInit {
           id: this.ids,
           time: this.time,
         });
-        console.log(element.data());
+        // console.log(element.data());
       })
     })
   }
@@ -289,7 +289,7 @@ export class InboundPage implements OnInit {
           PET003storagemass: this.PET003storagemassz,
           PET005storagemass: this.PET005storagemassz,
         });
-        console.log(this.recordinbounddisplays);
+        // console.log(this.recordinbounddisplays);
 
       // create PDF
         this.ForLoop();
@@ -583,7 +583,7 @@ export class InboundPage implements OnInit {
       inboundPET005: this.PET005mass,
       Userid: firebase.auth().currentUser.uid
     });
-    console.log("inbound pushed");
+    // console.log("inbound pushed");
   }
 
   createPdf() {
