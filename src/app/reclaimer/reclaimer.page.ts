@@ -1749,7 +1749,8 @@ Logout() {
   goAway() {
     // this.motherDiv[0].style.display = "none";
     this.selectedCat = "";
-    this.otherPopup = false    this.driverInfo = false;
+    this.otherPopup = false;
+    this.driverInfo = false;
   }
 
   coemBack() {
