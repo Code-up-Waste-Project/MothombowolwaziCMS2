@@ -21,7 +21,7 @@
         <h3>Inbound</h3>
         <p class="mass">{{inboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
         <div class="updates">
-        <p>updated {{updated}}</p>
+        <p>Updated {{updated}}</p>
         </div>
       </div>
     
@@ -163,26 +163,29 @@
   <p id="secondborder"></p>
   <div padding class="graphs">
     <ion-fab id="daily" >
-      <ion-fab-button size="small" >D</ion-fab-button>   
+      <ion-fab-button size="small" color="warning">D</ion-fab-button>   
      </ion-fab>
 
-    <ion-fab id="weekly">
-      <ion-fab-button size="small" >W</ion-fab-button>
+    <ion-fab  id="weekly">
+      <ion-fab-button size="small" color="secondary">W</ion-fab-button>
     </ion-fab>
 
     <ion-fab id="montly">
-      <ion-fab-button size="small" >M</ion-fab-button> 
+      <ion-fab-button size="small" color="tertiary">M</ion-fab-button> 
        </ion-fab>
 
-    <div  class="graph" style="background: #FFF3C2;" >
+
+<!-- graph 1 -->
+    <div  class="graph inbgraph" (click)="transformGraph()" style="background: #FFF3C2;" >
       <canvas #barChart ></canvas>
     </div>
-
-    <div class="graph"  style="background: #FFCFE5;">
+<!-- graph 2 -->
+    <div class="graph inbgraph2" (click)="transformGraph2()"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
 
     </div>
-    <div class="graph inbgraph"  (click)="transformGraph()" style="background: #CCFFFE;">
+<!-- graph 3 -->
+    <div class="graph inbgraph3" (click)="transformGraph3()"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
 
     </div>
@@ -217,7 +220,7 @@
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
   <div padding class="editform2">
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
-    <h1>Edit Price for Glass </h1>
+    <h1>Edit Price For Glass </h1>
    
     <input placeholder="GH001" [(ngModel)]="GH001price">
   
@@ -226,10 +229,10 @@
   </div>
   </div>
 <!-- create new material -->
-<div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
+<div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
   <div padding class="editform2">
-    <ion-button class="close"  fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>Edit price for Paper</h1>
+    <ion-button class="close"  fill="clear" (click)=" HideandShowDelete()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+  <h1>Edit Price For Paper</h1>
   <input placeholder="PAP005" [(ngModel)]="PAP005price" >
   <input placeholder="PAP007" [(ngModel)]="PAP007price">
  <input placeholder="PAP001"  [(ngModel)]="PAP001price">
@@ -241,9 +244,9 @@
 <!-- delete material -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >
-  <ion-button class="close"  fill="clear" 
-   slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>edit pprice for  Aluminum</h1>
+  <ion-button class="close"  fill="clear" (click)="HideandShowDelete()"
+   slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
+  <h1>Edit Price For  AluminIum</h1>
  
   <input placeholder="NFAL01" [(ngModel)]="NFAL01price">
   

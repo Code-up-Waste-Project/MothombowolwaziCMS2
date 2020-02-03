@@ -20,6 +20,8 @@ export class HomePage implements OnInit {
 
 //store element into a variable
 imgGraph = document.getElementsByClassName('inbgraph');
+imgGraph2 = document.getElementsByClassName('inbgraph2');
+imgGraph3 = document.getElementsByClassName('inbgraph3');
   
   inboundweight=0;
  outboundweight=0;
@@ -317,9 +319,29 @@ Totalplasticinbound: number = 0;
 
     //increase the size of clicked graph
     transformGraph() {
-      this.render.setStyle(this.imgGraph[0],'transform', 'scale(1.5)');
+      Chart.defaults.global.defaultFontSize = 13;
+      this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
       this.render.setStyle(this.imgGraph[0],'z-index', '1000');
+      this.render.setStyle(this.imgGraph[0],'position', 'absolute');
+      this.render.setStyle(this.imgGraph[0],'left', '0%');
+      this.render.setStyle(this.imgGraph[0],'top', '0%');
+      this.render.setStyle(this.imgGraph[0],'width', '80%');
+      this.render.setStyle(this.imgGraph[0],'height', '80%');
+      this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
     }
+
+    transformGraph2() {
+      Chart.defaults.global.defaultFontSize = 13;
+      this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
+      this.render.setStyle(this.imgGraph[0],'z-index', '1000');
+      this.render.setStyle(this.imgGraph[0],'position', 'absolute');
+      this.render.setStyle(this.imgGraph[0],'left', '0%');
+      this.render.setStyle(this.imgGraph[0],'top', '0%');
+      this.render.setStyle(this.imgGraph[0],'width', '80%');
+      this.render.setStyle(this.imgGraph[0],'height', '80%');
+      this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
+    }
+
      //chart
      updated
 
