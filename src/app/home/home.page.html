@@ -63,7 +63,7 @@
           <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
          <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
           <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
         </div>   
         <img src="../../assets/Asset 8.svg">
 
@@ -91,7 +91,7 @@
   <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
   <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYPPLASTIC()"><ion-icon name="trash"></ion-icon></ion-button>
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYPPLASTIC()"><ion-icon name="folder"></ion-icon></ion-button>
 </div>       
 
 </div>
@@ -119,7 +119,7 @@
   <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
   <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYGLASS()" ><ion-icon name="trash"></ion-icon></ion-button>
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYGLASS()" ><ion-icon name="folder"></ion-icon></ion-button>
 </div>       
 
 </div>
@@ -142,7 +142,7 @@
   <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success"  (click)="HideandShowDelete()"><ion-icon name="create" ></ion-icon></ion-button> 
   <!-- <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="trash"></ion-icon></ion-button>
+  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="folder"></ion-icon></ion-button>
 </div>    
 </div>
 <div class="matnames">
@@ -254,57 +254,168 @@
 <!-- DELETE DIVS FOR MATERIAL -->
 <!-- history for paper -->
 <div class="opacitydivs paperDiv" [ngClass]="{'slideIn': paper, 'slideOut': !paper}">
-  <div padding id="history" class="editform2">
+  <div padding id="history" class="editform2 test">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>history for Paper</h1>
-<p>date  old new <ion-icon name="trash"></ion-icon></p>
+  <h1>Keeping Track Of All Your Updates</h1>
+  <div class="headers">
+    <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+    <div class="one"><h2 >Old Pricing</h2></div>
+    <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+  </div>
+
+  <div class="historydata">
+    <div class="historydata2">
+      <div class="two">25 / 02 / 2020</div>
+      <div class="two">1, 98</div>
+      <div class="two">2.03</div>
+    </div>
+
+
+    <div class="historydata2">
+      <div class="two">25 / 02 / 2020</div>
+      <div class="two">1, 98</div>
+      <div class="two">2.03</div>
+    </div>
+
+    <div class="historydata2">
+      <div class="two">25 / 02 / 2020</div>
+      <div class="two">1, 98</div>
+      <div class="two">2.03</div>
+    </div>
+
+    <div class="historydata2">
+      <div class="two">25 / 02 / 2020</div>
+      <div class="two">1, 98</div>
+      <div class="two">2.03</div>
+    </div>
+  </div>
+ </div>
+<!-- <p>date  old new <ion-icon name="trash"></ion-icon></p>
 <p>date <span>R {{ pricess.pap005 }}</span></p>
 <p>date <span>R {{ pricess.pap007 }}</span></p>
 <p>date <span>R {{ pricess.pap001 }}</span></p>
-<p>date <span>R {{ pricess.pap003 }}</span></p>
-<button ion-button  (click)="checkinputfields()">Save</button>
-</div>
+<p>date <span>R {{ pricess.pap003 }}</span></p> -->
+<!-- <button ion-button  (click)="checkinputfields()">Save</button> -->
+
 </div>
 
 <!-- history for plastic -->
 <div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
-  <div padding class="editform2">
+  <div padding class="editform2 test">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>history for plastic</h1>
-          <p>Date updated:{{pricess.time}} 
-          <p>R{{ pricess.hd001 }}</p>
-          <p>Date <span>R{{ pricess.ld001 }}</span></p>
-          <p>Date <span>R{{ pricess.ld003 }}</span></p>
-          <p>Date <span>R{{ pricess.pet005 }}</span></p>
-          <p>Date <span>R{{ pricess.pet001 }}</span></p>
-
-<button ion-button  (click)="CheckInputsEmptyStringPlastic()">Save</button>
+    <h1>Keeping Track Of All Your Updates</h1>
+    <div class="headers">
+      <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+      <div class="one"><h2 >Old Pricing</h2></div>
+      <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+    </div>
+  
+    <div class="historydata">
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+    </div>
 </div>
 </div>
 
 <!-- history for glass -->
-<div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
-  <div padding class="editform2">
+<div class="opacitydivs glassDiv " [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
+  <div padding class="editform2 test">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-  <h1>history for glass</h1>
-  <p>Date updated:{{pricess.time}} 
-  R {{ pricess.gl001 }}
-
-<button ion-button  (click)="checkinputfields()">Save</button>
+    <h1>Keeping Track Of All Your Updates</h1>
+    <div class="headers">
+      <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+      <div class="one"><h2 >Old Pricing</h2></div>
+      <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+    </div>
+  
+    <div class="historydata">
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+    </div>
 </div>
 </div>
 
 <!-- history for alu -->
 <div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
-  <div padding class="editform2">
+  <div padding class="editform2 test">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-
-
-  <h1>history for aluminium</h1>
-  <p>Date updated:{{pricess.time}} 
-  <p>R {{ pricess.nfalo1 }}</p>
-
-<button ion-button  (click)="checkinputfields()">Save</button>
+    <h1>Keeping Track Of All Your Updates</h1>
+    <div class="headers">
+      <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+      <div class="one"><h2 >Old Pricing</h2></div>
+      <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+    </div>
+  
+    <div class="historydata">
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+  
+      <div class="historydata2">
+        <div class="two">25 / 02 / 2020</div>
+        <div class="two">1, 98</div>
+        <div class="two">2.03</div>
+      </div>
+    </div>
 </div>
 </div>
 
