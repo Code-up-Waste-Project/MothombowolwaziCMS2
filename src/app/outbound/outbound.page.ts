@@ -236,7 +236,7 @@ export class OutboundPage implements OnInit {
           this.Newadmin.push(item);
         }
       });
-      console.log('Newadmins', this.Newadmin);
+      // console.log('Newadmins', this.Newadmin);
     });
 
     // this.RegisterForm = formGroup.group({
@@ -287,7 +287,7 @@ export class OutboundPage implements OnInit {
           TruckSourcess: TruckSourcess,
           Destination: Destination,
         }
-        console.log(this.UserArray);
+        // console.log(this.UserArray);
 
         this.usersz.push(outDriverName)
 
@@ -301,7 +301,7 @@ export class OutboundPage implements OnInit {
       TruckSourcessInput : ['', [Validators.required, , Validators.maxLength(40)]],
     });
 
-    console.log(this.usersz);
+    // console.log(this.usersz);
 
     this.LoopNames();
     
@@ -331,7 +331,7 @@ export class OutboundPage implements OnInit {
           time: this.time,
           id: this.ids
         });
-        console.log(element.data());
+        // console.log(element.data());
       })
     })
   }
@@ -346,8 +346,8 @@ export class OutboundPage implements OnInit {
 
         // this.usersz.push(this.UserArray[key].DriverName);
     }
-    console.log(this.usersz);
-    console.log(this.users);
+    // console.log(this.usersz);
+    // console.log(this.users);
   }
 
   pdfmakerFirebase() {
@@ -496,7 +496,7 @@ export class OutboundPage implements OnInit {
           id: this.ids,
           time: this.time,
         });
-        console.log(this.recordoutbounddisplays);
+        // console.log(this.recordoutbounddisplays);
 
       // create PDF
         this.ForLoop();

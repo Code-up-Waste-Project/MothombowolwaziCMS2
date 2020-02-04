@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="header" *ngFor="let user of Newadmin">
-    <ion-title><ion-avatar><img src="../../assets/boxes.jpg"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title><ion-avatar (click)="editprofile()"><img src="{{user.image}}"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <!-- <ion-title>{{ user.name }} {{ user.surname }}</ion-title> -->
     <ion-buttons id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon name="log-out"></ion-icon>
@@ -272,7 +272,7 @@
               <div class="DriverInputs">
                 <input id="input" placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
                 <input id="input" placeholder="Surname" [(ngModel)]="surnames" formControlName="surnames" type="text">
-                <input id="input" placeholder="contact" [(ngModel)]="contacts" [ngModelOptions]="{standalone: true}" type="number">
+                <input id="input" placeholder="contact" [(ngModel)]="contacts" type="number" maxlength="10" minlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="number">
                 <input id="input" placeholder="address" [(ngModel)]="addresss" formControlName="addresss" type="text">
               </div>
               <!-- <div class="DoneBTN">

@@ -36,6 +36,7 @@ export class ProfilePage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private menuCtrl: MenuController,
+    public alertController: AlertController,
     ) {
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
@@ -50,13 +51,10 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.menuCtrl.enable(false); // or true
-    
   }
 
-
   async users() {
-
-console.log('profile',this.profile )
+  console.log('profile',this.profile )
 
     if (this.profile.name == "" || this.profile.name == undefined) {
       const toast = await this.toastController.create({
@@ -73,8 +71,6 @@ console.log('profile',this.profile )
 const toast = await this.toastController.create({
   message:'Enter a cellphone number with 10 digits',
   duration: 2000
-
-  
 });
 toast.present();
     }
@@ -82,16 +78,10 @@ toast.present();
       const toast = await this.toastController.create({
         message:'The phone number must start with a zero',
         duration: 2000
-      
-        
       });
       toast.present();
-          }
-    
-    
-    else {
+      } else {
     this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
-    
       name: this.profile.name,
       surname: this.profile.surname,
       email: this.profile.email,
@@ -101,7 +91,6 @@ toast.present();
       image: this.profile.image,
       isAdmin: this.isAdmin,
       ActiveAcount: this.ActiveAcount,
-
     })
     .then(function() {
       console.log("Document successfully written!");
@@ -127,6 +116,84 @@ toast.present();
         this.profile.image = dwnURL;
       });
     });
+  }
+
+  getPhoneInput(ev: any) {
+    this.profile.number = ev.target.value;
+
+    // calling firebase
+    // this.contact[0] == '0'
+    if (this.profile.number[0] !== '0') {
+      this.presentAlertPhoneValidation();
+    } else {
+      // this.showInputs()
+      console.log('im working');
+      this.profile.number = this.profile.number;
+    }
+      // console.log(this.phoneVal);
+      console.log(this.profile.number);
+    
+  }
+
+  async presentAlertPhoneValidation() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Phone Numbers must start with a number: 0.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.erasedToContact();
+            console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertPhoneMaxLenght() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Phone Numbers must have 10 numbers.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.erasedToContact();
+            // console.log('im working');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertPhoneMinLenght() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Phone Numbers has less than 10 numbers.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.erasedToContact();
+            console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  erasedToContact() {
+    this.profile.number = '';
   }
 
   ionViewWillEnter() {
