@@ -202,13 +202,13 @@
 
 
 
-  <input placeholder="HD001" [(ngModel)]="HD001price">
-  <input placeholder="LD001" [(ngModel)]="LD001price">
-  <input placeholder="LD003" [(ngModel)]="LD003price">
-  <input placeholder="PET005" [(ngModel)]="PET005price">
-  <input placeholder="PET001" [(ngModel)]="PET001price">
+  <input type="number" placeholder="HD001" [(ngModel)]="HD001price">
+  <input type="number" placeholder="LD001" [(ngModel)]="LD001price">
+  <input type="number" placeholder="LD003" [(ngModel)]="LD003price">
+  <input type="number" placeholder="PET005" [(ngModel)]="PET005price">
+  <input type="number" placeholder="PET001" [(ngModel)]="PET001price">
   
-  <input placeholder="PET003price" [(ngModel)]="PET003price"> 
+  <input placeholder="PET003" [(ngModel)]="PET003price"> 
  
 
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
@@ -219,7 +219,7 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input placeholder="GH001" [(ngModel)]="GH001price">
+    <input type="number" placeholder="GH001" [(ngModel)]="GH001price">
   
     
   <button ion-button (click)="CheckInputsEmptyStringGlasss()">Save</button>
@@ -245,7 +245,7 @@
    slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
   <h1>Edit Price For  AluminIum</h1>
  
-  <input placeholder="NFAL01" [(ngModel)]="NFAL01price">
+  <input type="number" placeholder="NFAL01" [(ngModel)]="NFAL01price">
   
 <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>
