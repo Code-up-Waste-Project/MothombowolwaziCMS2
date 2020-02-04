@@ -1159,23 +1159,25 @@ async presentAlertUpdateGlass() {
   pullWeeklyInbound() {
     // code added by nathi
     let currentTime = new Date();
-    // let month = currentTime.getMonth();
-    // let year = currentTime.getFullYear();
-    // let date = currentTime.getTime();
+    let month = currentTime.getMonth();
+    let year = currentTime.getFullYear();
+    let date = currentTime.getTime();
 
-    // console.log(month, year, date);
+    console.log(month, year, date);
+    console.log(currentTime);
     // console.log(currentTime);
     // console.log(currentTime);
-    // console.log(currentTime);
-    firebase.firestore()
-                  .collection('outbound')
-                  .where('date', '<=', currentTime)
-                  .limit(25).onSnapshot(snapshot => {
-                    console.log(snapshot);
-                    snapshot.forEach(key => {
-                      console.log(key.data());
-                    })
-                  });
+    // firebase.firestore()
+    //               .collection('outbound')
+    //               .where('date', '<=', currentTime)
+                      // .where("startTime", ">=", "1506816000").where("startTime", "<=", "1507593600")
+    //               .orderBy('week').startAt(1514184967000).endAt(1514271367000)
+    //               .limit(25).onSnapshot(snapshot => {
+    //                 console.log(snapshot);
+    //                 snapshot.forEach(key => {
+    //                   console.log(key.data());
+    //                 })
+    //               });
     // code added by nathi
     // this.db.collection('inbounds').where('createdAt', '>', this.beginningDateObject).get().then(querySnapshot => {
     //   querySnapshot.forEach(key => {
