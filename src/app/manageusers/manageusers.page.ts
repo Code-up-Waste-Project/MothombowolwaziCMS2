@@ -23,6 +23,7 @@ registerForm = false;
  image;
  ActiveAcount;
  number;
+ id;
 
   Userids;
   Username;
@@ -43,6 +44,7 @@ registerForm = false;
   db = firebase.firestore();
   profiles;
   newuserprofilezzzzz = [];
+  Snapprofile = [];
   isLabelActive;
   oneprofile:any ={};
   public loading: any;
@@ -80,14 +82,12 @@ registerForm = false;
           this.Newadmin = [];
           this.Newadmin.push(item);     }
       });
-      console.log('Newadmins', this.Newadmin);
+      // console.log('Newadmins', this.Newadmin);
     });
 
    }
 
   ngOnInit() {
-  
-
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -103,21 +103,20 @@ registerForm = false;
       this.newuserprofile = [];
       snapshot.forEach(item => {
         this.newuserprofile.push({...{id:item.id},...item.data()});
-        console.log("user profile ", this.oneprofile = item.data());
+        // console.log("user profile ", this.oneprofile = item.data());
       });
     });
-
   }
 
-      showRegisterForm(){
-        this.registerForm = !this.registerForm;
-      }
+    showRegisterForm(){
+      this.registerForm = !this.registerForm;
+    }
       
       seeprofile(profile){
-        
-this.selectedUser = profile
-console.log(this.selectedUser)
+        this.selectedUser = profile
+        console.log(this.selectedUser)
       }
+      
   getUsers() {
     this.db.collection('admin').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
@@ -133,7 +132,7 @@ console.log(this.selectedUser)
       snapshot.forEach(item => {
         this.newuserprofile = [];
         this.newuserprofile.push({...{id: item.id},...item.data()});
-        console.log("user profile ", this.newuserprofile);
+        // console.log("user profile ", this.newuserprofile);
       });
     });
   }
@@ -364,13 +363,15 @@ console.log(this.selectedUser)
       AddUserToForm(id) {
         this.db.collection('admin').doc(id).onSnapshot(element => {
           // element.forEach(element => { ActiveAcount
+            let id = {};
             let name = {};
             let surname = {};
             let number = {};
             let address = {};
             let image = {};
             let ActiveAcount = {};
-    
+
+            id = this.id = element.data().userid;
             name = this.name = element.data().name;
             surname = this.surname = element.data().surname;
             number = this.number = element.data().number;
@@ -378,7 +379,8 @@ console.log(this.selectedUser)
             this.image =this.image= element.data().image;
             ActiveAcount = this.ActiveAcount = element.data().ActiveAcount;
             // })
-    
+
+            console.log(this.id);
             console.log(this.name);
             console.log(this.surname);
             console.log(this.number);
@@ -386,6 +388,7 @@ console.log(this.selectedUser)
             console.log(this.image);
             console.log(this.ActiveAcount);
             // adding data to textboxes
+            this.id = this.id;
             this.name = this.name;
             this.surname = this.surname;
             this.number = this.number;
@@ -406,19 +409,30 @@ console.log(this.selectedUser)
     AddUser(id) {
       this.db.collection('admin').doc(id).onSnapshot(element => {
         let id = {};
-        let name = {};
-        let surname = {};
-        let email = {};
-        let activeAccount = {};
-        let position = {};
-        let image = {};
+      let name = {};
+      let surname = {};
+      let email = {};
+      let activeAccount = {};
+      let position = {};
+      let image = {};
 
-        id = this.Userids = element.data().userid;
-        name = this.name = element.data().name;
-        surname = this.surname = element.data().surname;
-        this.number = this.number = element.data().number;
-        this.position = this.position = element.data().position;
-        this.image =this.image= element.data().image;
+      id = this.Userids = element.data().userid;
+      name = this.name = element.data().name;
+      surname = this.surname = element.data().surname;
+      this.number = this.number = element.data().number;
+      this.position = this.position = element.data().position;
+      this.image =this.image= element.data().image;
+
+        this.Snapprofile.push({
+          id: this.Userids,
+          name: this.name,
+          surname: this.surname,
+          number: this.number,
+          position: this.position,
+          image: this.image,
+          activeAccount: this.ActiveAcount
+        })
+        console.log(this.Snapprofile);
       });
     }
      

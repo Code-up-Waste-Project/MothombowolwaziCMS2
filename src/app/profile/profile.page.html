@@ -1,57 +1,25 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
-<!-- <ion-content>
-<div class="container">
-  <div class="form"> -->
-
-  <!--   <div class="divitems" style="border: 1px solid red;">
-      <ion-item *ngIf="!profile.image" class="imageitem" lines="none" style="border: 1px solid rgb(47, 0, 255);">
-       <ion-label position="stacked" id="profile_image" color="primary"></ion-label>
-       <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
-     </ion-item>
-  <ion-item class="imageitem" lines="none" *ngIf="profile.image"><img  src="{{profile.image}}" height="400px" width="400px" ></ion-item>
-  </div --><!-- end of profile image -->
-
-   <!--   <div class="inputs">
-          <input placeholder="name" [(ngModel)]="profile.name">
-          <input placeholder="Surname"  [(ngModel)]="profile.surname">
-          <input  placeholder="Position" [(ngModel)]="profile.position" >
-          <input  placeholder="Email Address" [(ngModel)]="profile.email">
-          <input placeholder="phone number" [(ngModel)]="profile.number" type="number">
-        <ion-button color="clear" (click)="users()" type="submit">Create Profile</ion-button>
-       </div> -->
-  
-    
-       <ion-content>
-        <div class="container">
-         
-
-
-          <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
-          <img id="people" src="../../assets/ReclaimerPopup.svg">
-          <img id="bins" src="../../assets/binsPopup  2.svg">
-          <div class="form">
-            <h3>Create Your Profile Here</h3>
-            <div class="profile" >
-              <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
-              <div class="ProPic">
+<ion-content>
+  <div class="container">      
+    <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
+    <img id="people" src="../../assets/ReclaimerPopup.svg">
+      <img id="bins" src="../../assets/binsPopup  2.svg">
+      <div class="form">
+      <h3>Create Your Profile Here</h3>
+        <div class="profile" >
+          <ion-input class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)"></ion-input>
+          <div class="ProPic">
             
-              <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt=""> 
-              <img *ngIf="profile.image" src="{{profile.image}}" alt="">
-              </div>
-             
-            </div>
+          <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt=""> 
+          <img *ngIf="profile.image" src="{{profile.image}}" alt="">
+        </div>     
+      </div>
         
-          <div class="inputs">
-            <input placeholder="Name"[(ngModel)]="profile.name">
-            <input placeholder="Surname" [(ngModel)]="profile.surname">
+       <div class="inputs">
+         <input placeholder="Name"[(ngModel)]="profile.name">
+          <input placeholder="Surname" [(ngModel)]="profile.surname">
             <input  placeholder="Position" [(ngModel)]="profile.position" >
             <input  placeholder="Email Address"  [(ngModel)]="profile.email">
-            <input placeholder="Phone Number" [(ngModel)]="profile.number" type="number">
+            <input placeholder="Phone Number" [(ngModel)]="profile.number" type="number" maxlength="10" minlength="10" (keyup)="getPhoneInput($event)">
           <ion-button color="clear" (click)="users()" type="submit" >Create Profile</ion-button>
          </div>
              
@@ -59,4 +27,3 @@
         </div>
         
         </ion-content>
-

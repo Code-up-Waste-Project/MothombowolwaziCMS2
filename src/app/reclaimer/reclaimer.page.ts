@@ -469,6 +469,7 @@ export class ReclaimerPage implements OnInit {
    }
 
   ngOnInit() {
+    // this.getMaxMin();
   }
 
   getMaxMin() {
@@ -490,11 +491,11 @@ export class ReclaimerPage implements OnInit {
       this.presentAlertPhoneValidation();
     } else {
       // this.showInputs()
-      // console.log('im working');
+      console.log('im working');
       this.contacts = this.contacts;
     }
       // console.log(this.phoneVal);
-      // console.log(this.contacts);
+      console.log(this.contacts);
     
   }
 

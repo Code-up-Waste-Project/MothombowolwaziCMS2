@@ -1,14 +1,12 @@
 <ion-header *ngFor="let user of Newadmin">
   <!-- <button (click)="editprofile()">profile</button> -->
   <ion-toolbar class="header" >
-    <ion-title><ion-avatar (click)="editprofile()"><img src="../../assets/boxes.jpg" ></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title><ion-avatar (click)="editprofile()"><img src="{{user.image}}" ></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-
 
 <ion-content>
 <div class="container">
@@ -66,8 +64,8 @@
           <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
         </div>   
         <img src="../../assets/Asset 8.svg">
-
-</div>
+    </div>
+    
       <div class="matnames">
         <div class="codes">
          <p>pap005 <span>R {{ pricess.pap005 }}</span></p>

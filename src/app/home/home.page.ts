@@ -6,6 +6,7 @@ import { Chart } from 'chart.js';
 import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-utils';
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
 import * as moment from 'moment'
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -23,28 +24,23 @@ imgGraph = document.getElementsByClassName('inbgraph');
 imgGraph2 = document.getElementsByClassName('inbgraph2');
 imgGraph3 = document.getElementsByClassName('inbgraph3');
   
-  inboundweight=0;
- outboundweight=0;
- Reclaimerweight=0;
+ inboundweight = 0;
+ outboundweight = 0;
+ Reclaimerweight = 0;
 
  //graghdatainbound
-inboundgh001=0;
-inboundpap005=0;
-
-
-inboundnfalo1 =0;
-inboundhd001 =0;
-
-inboundpet001 =0;
-
-
-inboundpet0001=0;
-inboundpap007 =0;
-inboundpap003 =0;
-inboundpap001 =0;
-inboundld001 =0;
-inboundld003 =0;
-inboundpet003 =0;
+inboundgh001 = 0;
+inboundpap005 = 0;
+inboundnfalo1 = 0;
+inboundhd001 = 0;
+inboundpet001 = 0;
+inboundpet0001= 0;
+inboundpap007 = 0;
+inboundpap003 = 0;
+inboundpap001 = 0;
+inboundld001 = 0;
+inboundld003 = 0;
+inboundpet003 = 0;
 
  inboundpaper =0;
  inboundAlum=0;
@@ -129,8 +125,6 @@ reclaimerplastic =0;
 
   burgercontent: any = document.getElementsByClassName('burgercontent');
   burger: boolean = false;
-  
-  
 
 /* Div */
   editDiv: any = document.getElementsByClassName('editDiv');
@@ -231,20 +225,17 @@ reclaimerplastic =0;
   PAP005Mass
 
 //outbound
-        PAP005;
-        HD001;
-        LD001;
-        LD003;
-        NFAL01; 
-         PAP001; 
-        PAP003;
-       
-        PAP007;
-         PET001;
-        PET003;
-        PET005;
-
-        
+  PAP005;
+  HD001;
+  LD001;
+  LD003;
+  NFAL01; 
+  PAP001; 
+  PAP003;
+  PAP007;
+  PET001;
+  PET003;
+  PET005;
 
 //storage
   GH001storagemass;
@@ -278,8 +269,14 @@ Totalplasticinbound: number = 0;
   glassDiv: any = document.getElementsByClassName('glassDiv');
 
   // code added by nathi 3 feb
-  // beginningDate = Date.now() - 604800000;
+  // beginningDate = Date.now() - 1514184967000;
   // beginningDateObject = new Date(this.beginningDate);
+
+  InboundGraph = [];
+  outBoundGraph = [];
+  outGH001 = [];
+  ReclaimerGraph = [];
+  date;
 
   constructor(
     private modalcontroller: ModalController,
@@ -305,7 +302,7 @@ Totalplasticinbound: number = 0;
     });
 
     // code by nathi 3 feb
-    this.pullWeeklyInbound();
+    // this.pullWeeklyInbound();
 
     }
 
@@ -443,7 +440,7 @@ firebase.firestore().collection('outbound').get().then(res=>{
 
 
     //glass
-    console.log('ountglass',  this.outboundglass)
+    // console.log('ountglass',  this.outboundglass)
     this.outboundgh001 =this.outboundgh001 +parseFloat(val.data().GH001)
     this.outboundpap005 =this.outboundpap005 +parseFloat(val.data().PAP005)
     this.outboundpap007=this.outboundpap007 +parseFloat(val.data().PAP007)
@@ -464,7 +461,7 @@ firebase.firestore().collection('outbound').get().then(res=>{
     +parseFloat(val.data().PAP001);
     
     //aluminium
-    console.log('outboundAluminium', this.outboundAlum)
+    // console.log('outboundAluminium', this.outboundAlum)
     this.outboundAlum = this.outboundAlum  +parseFloat(val.data().NFAL01) 
     
     //plastic
@@ -1151,6 +1148,7 @@ async presentAlertUpdateGlass() {
         let outDriverName = {};
         let outRegistarionNumberPlates = {};
         let outovarallMass = {};
+        let date = {};
 
         id = this.id = element.id;
         outdate = this.outdate = element.data().date;
@@ -1167,9 +1165,10 @@ async presentAlertUpdateGlass() {
           outovarallmass: outovarallMass,
         });
         // this.outbound.push(element.data());
-        // console.log('outbound', this.outbound);
+        console.log('outbound', this.outbound);
       });
     });
+
   }
 
   getInbound() {
@@ -1187,38 +1186,149 @@ async presentAlertUpdateGlass() {
     });
   }
 
-  pullWeeklyInbound() {
-    // code added by nathi
-    let currentTime = new Date();
-    // let month = currentTime.getMonth();
-    // let year = currentTime.getFullYear();
-    // let date = currentTime.getTime();
+  // pullWeeklyInbound() {
+  //   // code added by nathi
+  //   let currentTime = new Date();
+  //   let month = currentTime.getMonth();
+  //   let year = currentTime.getFullYear();
+  //   let date = currentTime.getTime();
+  //   let TodaysDate;
 
-    // console.log(month, year, date);
-    // console.log(currentTime);
-    // console.log(currentTime);
-    // console.log(currentTime);
-    firebase.firestore()
-                  .collection('outbound')
-                  .where('date', '<=', currentTime)
-                  .limit(25).onSnapshot(snapshot => {
-                    console.log(snapshot);
-                    snapshot.forEach(key => {
-                      console.log(key.data());
-                    })
-                  });
-    // code added by nathi
-    // this.db.collection('inbounds').where('createdAt', '>', this.beginningDateObject).get().then(querySnapshot => {
-    //   querySnapshot.forEach(key => {
-    //     console.log(key);
-    //   })
-    // })
-  }
+  //   console.log(month, year, date);
+  //   console.log(currentTime);
+
+  //   let dates = new Date()
+  //   let day1 = dates.setTime(dates.getTime() - (1 * 24 * 60 * 60 * 1000))
+  //   let day2 = dates.setTime(dates.getTime() - (2 * 24 * 60 * 60 * 1000))
+  //   let day3 = dates.setTime(dates.getTime() - (3 * 24 * 60 * 60 * 1000))
+  //   let day4 = dates.setTime(dates.getTime() - (4 * 24 * 60 * 60 * 1000))
+  //   let day5 = dates.setTime(dates.getTime() - (5 * 24 * 60 * 60 * 1000))
+  //   let day6 = dates.setTime(dates.getTime() - (6 * 24 * 60 * 60 * 1000))
+  //   let day7 = dates.setTime(dates.getTime() - (7 * 24 * 60 * 60 * 1000))
+  //   console.log(day7);
+  //   this.db.collection('outbound').onSnapshot(element => {
+  //     // console.log(element);
+  //     element.forEach(snap => {
+  //       // console.log(snap);
+  //       console.log(snap.data());
+
+  //       let timess = {};
+  //       let GH001 = {};
+  //       let NFAL01 = {};
+  //       let HD001 = {};
+  //       let PAP005 = {};
+  //       let PAP007 = {};
+  //       let PAP001 = {};
+  //       let PAP003 = {};
+  //       let LD003 = {};
+  //       let LD001 = {};
+  //       let PET005 = {};
+  //       let PET003 = {};
+  //       let PET00 = {};
+
+  //       // GH001
+  //       // NFAL01
+  //       // HD001
+  //       // PAP005
+  //       // PAP007
+  //       // PAP001
+  //       // PAP003
+  //       // LD003
+  //       // LD001
+  //       // PET005
+  //       // PET003
+  //       // PET00
+
+  //       timess = snap.data().date;
+  //       GH001 = snap.data().GH001;
+  //       NFAL01 = snap.data().NFAL01;
+  //       HD001 = snap.data().HD001;
+  //       PAP005 = snap.data().PAP005;
+  //       PAP007 = snap.data().PAP007;
+  //       PAP001 = snap.data().PAP001;
+  //       PAP003 = snap.data().PAP003;
+  //       LD003 = snap.data().LD003;
+  //       LD001 = snap.data().LD001;
+  //       PET005 = snap.data().PET005;
+  //       PET003 = snap.data().PET003;
+  //       PET00 = snap.data().PET00;
+
+  //       this.outBoundGraph.push({
+  //         time: timess,
+  //         GH001: GH001,
+  //         NFAL01: NFAL01,
+  //         HD001: HD001,
+  //         PAP005: PAP005,
+  //         PAP007: PAP007,
+  //         PAP001: PAP001,
+  //         PAP003: PAP003,
+  //         LD003: LD003,
+  //         LD001: LD001,
+  //         PET005: PET005,
+  //         PET003: PET003,
+  //         PET001: PET00,
+  //       })
+
+  //       this.outGH001.push({GH001: GH001})
+  //     });
+  //     console.log(this.outGH001);
+  //   });
+
+  //   console.log(this.outBoundGraph);
+
+  //   for (let key in this.outGH001) {
+  //     let x,
+  //     for (x = 0, x < this.outGH001[key], x++) {
+
+  //     }
+  //   }
+
+  //   for (let key in this.outBoundGraph) {
+  //     console.log(key)
+  //     console.log(this.outBoundGraph[key])
+  //   }
+
+  //   // inboundgh001
+  //   // inboundpap005
+  //   // inboundnfalo1
+  //   // inboundhd001
+  //   // inboundpet001
+  //   // inboundpet0001
+  //   // inboundpap007
+  //   // inboundpap003
+  //   // inboundpap001
+  //   // inboundld001
+  //   // inboundld003
+  //   // inboundpet003
+
+  //   // TodaysDate = date.setTime(date.getTime() - (7 * 24 * 60 * 60 * 1000))
+
+  //   // console.log(currentTime);
+  //   // console.log(currentTime);
+  //   // firebase.firestore()
+  //   //               .collection('outbound')
+  //   //               .where('date', '<=', currentTime)
+  //   //                   .where("startTime", ">", "1506816000").where("startTime", "<", "1507593600")
+  //   //               .orderBy('week').startAt(1514184967000).endAt(1514271367000)
+  //   //               .limit(25).onSnapshot(snapshot => {
+  //   //                 console.log(snapshot);
+  //   //                 snapshot.forEach(key => {
+  //   //                   console.log(key.data());
+  //   //                   // this.outBoundGraph.push(key.data())
+  //   //                 })
+  //   //               });
+  //   // code added by nathi
+  //   // this.db.collection('inbounds').where('createdAt', '>', this.beginningDateObject).get().then(querySnapshot => {
+  //   //   querySnapshot.forEach(key => {
+  //   //     console.log(key);
+  //   //   })
+  //   // })
+  // }
 
 //EDIT PAPER
   HideandShowSave() {
     this.edit = !this.edit;
-    console.log(this.edit,this.editDiv[0]);
+    // console.log(this.edit,this.editDiv[0]);
     
     if (this.edit) {
       // console.log('block');
@@ -1335,36 +1445,7 @@ HideandShowHISTORYGLASS() {
   }
 }
 
-  /* bar chart */
-/*    this.inboundweight =this.inboundweight 
-    +parseFloat(val.data().inboundGH001)+
-    +parseFloat(val.data().inboundHD001) +
-    +parseFloat(val.data().inboundLD001) +
-    +parseFloat(val.data().inboundLD003) +
-    +parseFloat(val.data().inboundNFAL01) +
-    +parseFloat(val.data().inboundPAP001) +
-    +parseFloat(val.data().inboundPAP003) +
-    +parseFloat(val.data().inboundPAP005) +
-    +parseFloat(val.data().inboundPAP007) +
-    +parseFloat(val.data().inboundPET001) +
-    +parseFloat(val.data().inboundPET003) +
-    +parseFloat(val.data().inboundPET005) ; */
-
-    /*   inboundGH001;
-  inboundHD001;
-  inboundLD001;
-  inboundLD003;
-  inboundNFAL01;
-  inboundPAP001;
-  inboundPAP003;
-  inboundPAP005;
-  inboundPAP007;
-  inboundPET001;
-  inboundPET003;
-  inboundPET005; */
-
   createBarChart() {
-
     Chart.defaults.global.defaultFontSize = 4;
     Chart.defaults.global.defaultFontFamily = 'Roboto';
 
@@ -1406,13 +1487,8 @@ HideandShowHISTORYGLASS() {
       }
     });
   }
-
   
   /* bar chart */
- 
-
-
-
   createBarChart1() {
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
@@ -1428,7 +1504,6 @@ HideandShowHISTORYGLASS() {
           borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
           borderWidth: 0.1,
          
-         
         }]
       },
       options: {
@@ -1438,7 +1513,6 @@ HideandShowHISTORYGLASS() {
             gridLines: {
               display: false,
            
-              
             }
           }],
           xAxes: [{
@@ -1456,13 +1530,7 @@ HideandShowHISTORYGLASS() {
 
     /* bar chart */
    
-
-
-
     createBarChart2() {
-
-     
-
       this.bars = new Chart(this.barChart2.nativeElement, {
         type: 'bar',
         data: {
@@ -1485,7 +1553,6 @@ HideandShowHISTORYGLASS() {
               gridLines: {
                 display: false,
              
-                
               }
             }],
             xAxes: [{
@@ -1501,7 +1568,6 @@ HideandShowHISTORYGLASS() {
       });
     }
 
-
   Logout() {
     firebase.auth().signOut().then((res) => {
       // console.log(res);
@@ -1511,8 +1577,6 @@ HideandShowHISTORYGLASS() {
     editprofile() {
       this.route.navigate(['profile']);
     }
-
-   
 
     moreState = 0;
     optsSlider = document.getElementsByClassName("burgercontent") as HTMLCollectionOf <HTMLElement>
@@ -1590,13 +1654,9 @@ HideandShowHISTORYGLASS() {
           
             if(item.Userid === firebase.auth().currentUser.uid){
                      this.newInbound.push(item);
-                 
-                     
-                  }
+            }
           })
-          
           // console.log('Newinbounds', this.newInbound);
-        
         }); 
       }
 
@@ -1618,8 +1678,6 @@ HideandShowHISTORYGLASS() {
       CheckInputsEmptyStringGlass() {
         if (
             this.GH001price === undefined 
-          
-            
           ) {
             this.presentAlertcheckInputs();
           } else {
@@ -1639,8 +1697,6 @@ HideandShowHISTORYGLASS() {
           }
       }
 
-
-
       async presentAlertcheckInputs() {
         const alert = await this.alertController.create({
           header: 'Warning!',
@@ -1656,6 +1712,6 @@ HideandShowHISTORYGLASS() {
         });
         await alert.present();
       } 
-  
+
       
 }

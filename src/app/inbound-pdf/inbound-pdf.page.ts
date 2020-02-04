@@ -274,8 +274,6 @@ export class InboundPDFPage implements OnInit {
 
     var docDefinition = {
       header:  { text: 'Mthombowolwazi', style: 'header', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 20, margin: [ 35, 15, 20, 7 ] },
-
-
         footer: {
           columns: [
           { text: 'Page 1/1', alignment: 'right',  }
@@ -288,25 +286,19 @@ export class InboundPDFPage implements OnInit {
       fit: [100, 100], alignment: "right", margin:[ 5, -50 , 20, 80 ], width: 20
     },
 
-    { text: 'Date Of Purchase: ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
-    { text: '20 December 2019 ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 12, },
+    // { text: 'Date Of Purchase: ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
+    // { text: '20 December 2019 ', style: 'subheader', color: "gray", bold: true, alignment: "left", fontFamily: 'Roboto', fontSize: 12, },
     {
-
       layout: 'noBorders',
       table: {
-
         widths: ['33%', '33%', '33%'],
-
         body: [
 
-
-          ["Bill To", "Ship To", "invoice #"], 
-
-          [{ text: '123 Soweto, Orlando East', color: 'gray' }, {text: '123 Soweto, Orlando East', color: 'gray'}, { text: '12 February 2012', color: 'gray', Border: false }],
+          ["", "", "invoice #"], 
+          [{ text: '', color: 'gray' }, {text: '', color: 'gray'}, { text: this.ids, color: 'gray', Border: false }],
 
         ]
       }
-
     },
     { text: '', style: 'subheader'},
     {
@@ -324,27 +316,21 @@ export class InboundPDFPage implements OnInit {
           // [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           // [{ text: 'Status', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
           // [{ text: 'Item 45', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-          [{ text: 'TOTAL', bold: true, color: 'gray', lineHeight: 2, marginTop: 10, },
-            { text: 'R', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
-            { text: 'Total', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },]
+          // [{ text: 'TOTAL', bold: true, color: 'gray', lineHeight: 2, marginTop: 10, },
+          //   { text: 'R', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },
+          //   { text: 'Total', bold: true, color: 'gray', lineHeight: 2, marginTop: 10 },]
         ]
       }
 
     //   let printDataName = [];
     // let printDataNumber = [];
-
     },
 
-
-    { text: 'Order Type: Delivery', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
-
-    { text: 'Order Address: ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
-    { text: '123 Orlando East', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 10, },
-
-
-    { text: 'Order Status: Delivered', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
+    // { text: 'Order Type: Delivery', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+    // { text: 'Order Address: ', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 11, },
+    // { text: '123 Orlando East', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 10, },
+    // { text: 'Order Status: Delivered', style: 'story', margin: [5, 2], color: "gray", italic: true, alignment: "left", fontFamily: 'Roboto', fontSize: 13, },
   ],
-
 
   styles: {
     header: {
@@ -362,15 +348,10 @@ export class InboundPDFPage implements OnInit {
       width: '50%',
       lineHeight: 1.5,
     },
-
-
-
   },
-
   pageSize: 'A4',
   pageOrientation: 'portrait'
 };
-
 this.pdfObj = pdfMake.createPdf(docDefinition);
     }
 
