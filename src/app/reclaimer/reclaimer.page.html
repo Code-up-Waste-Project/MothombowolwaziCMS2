@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar class="header" *ngFor="let user of Newadmin">
-    <ion-title><ion-avatar (click)="editprofile()"><img src="{{user.image}}"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title><ion-avatar [routerLink]="['/profile']"><img src="{{user.image}}"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <!-- <ion-title>{{ user.name }} {{ user.surname }}</ion-title> -->
     <ion-buttons id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon name="log-out"></ion-icon>
