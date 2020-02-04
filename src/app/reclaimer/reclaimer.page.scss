@@ -102,6 +102,7 @@
 //     top: -22px;
 //     right: 25px;
 // }
+
 h2{
     font-family: 'Open Sans Condensed', sans-serif;  
     color: rgb(255, 255, 255);
@@ -294,10 +295,9 @@ h2{
 
 #PurpleBubbles{
     position: absolute;
-  bottom: -40%;
-  right: -19%;
-  height: 880px;
-
+    bottom: -43%;
+    right: -19%;
+    height: 750px;
 }
 img {
     max-width: 1000px;
@@ -507,9 +507,9 @@ h5{
 
 
 #TruckIMG{
-    height: 118px;
+    height: 100px;
     position: absolute;
-    top: 234px;
+    top: 195px;
     left: 50px;
 }
 
@@ -920,11 +920,11 @@ h3{
 }
 
 .History{
-    height: 60%;
-    width: 100%;
+   height: 60%;
+   width: 100%;
   //  border: solid 2px red;
-      padding-top: 25px !important;
-   // overflow: scroll;
+   padding-top: 25px !important;
+   overflow-y: scroll;
 }
 
 .History1{

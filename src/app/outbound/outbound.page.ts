@@ -158,7 +158,8 @@ export class OutboundPage implements OnInit {
       // alert("clicked")
       this.selectedCat = "";
       this.motherDiv[0].style.display = "none"
-      this.driverInformation = false
+      this.driverInformation = false;
+      this.driverInfo = false;
     }
     coemBack() {
       this.motherDiv[0].style.display = "block"
