@@ -1337,7 +1337,7 @@ async presentAlertUpdateGlass() {
     this.edit = !this.edit;
     // console.log(this.edit,this.editDiv[0]);
     
-    if (this.edit) {
+    if (this.create) {
       // console.log('block');
       this.render.setStyle(this.editDiv[0],'display','block')
     } else {
