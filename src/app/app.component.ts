@@ -46,20 +46,20 @@ export class AppComponent implements OnInit {
      
       title: 'Home',
       url: '/home',
-      icon: 'homeB',
+      icon: 'homeW',
       admin:"hot",
       
     },
     {
       title: 'Inbounds',
       url: '/inbound',
-      icon: 'inboundB',
+      icon: 'inboundW',
       admin:"cool"
     },
     {
       title: 'Reclaimer',
       url: '/reclaimer',
-      icon: 'reclaimerB',
+      icon: 'reclaimerW',
       admin:"cool"
     });
     } else {
@@ -67,28 +67,28 @@ export class AppComponent implements OnInit {
       {
         title: 'Home',
         url: '/home',
-        icon: 'homeB',
+        icon: 'homeW',
         admin:"cool"
       },
      {
         title: 'Inbound',
         url: '/inbound',
-        icon: 'inboundB',
+        icon: 'inboundW',
         admin:"cool"
       }, {
         title: 'Outbound',
         url: '/outbound',
-        icon: 'outboundB',
+        icon: 'outboundW',
         admin:"cool"
       }, {
         title: 'Reclaimer',
         url: '/reclaimer',
-        icon: 'reclaimerB',
+        icon: 'reclaimerW',
         admin:"cool"
       }, {
         title: 'Manage Users',
         url: '/manageusers',
-        icon: 'manageUserzB',
+        icon: 'manageUserz',
         admin:"cool"
       },
       );
