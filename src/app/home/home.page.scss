@@ -332,7 +332,7 @@ h6 {
   .editform, .deletecategory {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
    width: 100%;
-    border: 3px solid blue;
+    //border: 3px solid blue;
     border-radius: 10px;
     background: white;
     display: flex;
@@ -520,6 +520,16 @@ padding: 1%;
   width: 31.8%;
   height: 100%;
   border-radius: 12px;
+  position: relative;
+
+
+  .fix {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
+  }
+
 }
 
 /* chart */
@@ -830,20 +840,83 @@ margin-left: 2%;
       padding: 4px;
       width: 31%;
       border-radius: 4px;
-      border: 1px solid green;
+    //  border: 1px solid green;
       text-align: center;
     }
   }
 }
 
 //all media queries
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 1366px) {
   .alltime {
-    border: 2px solid red;
+  //  border: 2px solid red;
     height: 27%;
+
+    .small {
+     // border: 2px solid red;
+       height: 55%;
+    }
+    .mass {
+    //  border: 2px solid red;
+      position: absolute;
+      top: 8%;
+    }
+    .updates {
+     // border: 1px solid green;
+     margin-top: 10px;
+    }
+    .big {
+      height: 80%;
+    }
   }
   .stats {
-    border: 2px solid blue;
+  //  border: 2px solid blue;
   
   }
+  h6 {
+    margin-top: -5px;
+  }
+.material {
+ // border: 2px solid red;
+
+  .matnames {
+  //  border: 2px solid blue;
+    margin-top: 40px;
+  }
+  .burgercontent3,.burgercontent4, .burgercontent2, .burgercontent {
+    //border: 2px solid blue;
+    margin-bottom: 30%;
+  }
+}
+.chartbuttons {
+  p {
+    border: 1px solid gray;
+    width: 65%;
+    margin-right: 2%;
+   
+  }
+  //border: 2px solid red;
+  margin-top: -1.5%;
+  .dynamicBtns {
+   // border: 1px solid blue;
+    margin-right: 1.8%;
+    margin-top: -1%;
+      ion-button {
+    font-size: 15px;
+    padding: 5px;
+   // border: 2px solid red;
+  }
+  }
+
+}
+.graphs {
+  //border: 2px solid blue;
+  height: 34%;
+  margin: 0;
+  margin-top: -3% !important;
+  .graph {
+    //border: 1px solid red;
+    height: 105%;
+  }
+}
 }
