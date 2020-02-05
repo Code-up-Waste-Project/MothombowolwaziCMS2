@@ -44,12 +44,15 @@ export class ProfilePage implements OnInit {
         this.profile.surname = snapshot.data().surname;
         this.profile.image = snapshot.data().image;
         this.profile.position= snapshot.data().position;
+        this.profile.number = snapshot.data().number;
         console.log('admin', this.userprofile);
       });
   }
 
   ngOnInit() {
+    // this.menuCtrl.enable(false, 'main-content')
     this.menuCtrl.enable(false); // or true
+    // this.menuCtrl.enable(false, 'main-content');
   }
 
   async users() {
@@ -191,11 +194,11 @@ toast.present();
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
-   }
-
-   ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menuCtrl.enable(true);
   }
-  
+
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menuCtrl.enable(false);
+  }
+ 
   }
