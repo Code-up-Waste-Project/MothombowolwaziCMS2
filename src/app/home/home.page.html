@@ -1,7 +1,8 @@
 <ion-header *ngFor="let user of Newadmin">
   <ion-toolbar class="header" >
-    <ion-title><ion-avatar [routerLink]="['/profile']"><img src="{{user.image}}"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
+     
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -211,13 +212,13 @@
 
 
 
-  <input type="number" placeholder="HD001" [(ngModel)]="HD001price">
-  <input type="number" placeholder="LD001" [(ngModel)]="LD001price">
-  <input type="number" placeholder="LD003" [(ngModel)]="LD003price">
-  <input type="number" placeholder="PET005" [(ngModel)]="PET005price">
-  <input type="number" placeholder="PET001" [(ngModel)]="PET001price">
+  <input placeholder="HD001" [(ngModel)]="HD001price">
+  <input placeholder="LD001" [(ngModel)]="LD001price">
+  <input placeholder="LD003" [(ngModel)]="LD003price">
+  <input placeholder="PET005" [(ngModel)]="PET005price">
+  <input placeholder="PET001" [(ngModel)]="PET001price">
   
-  <input placeholder="PET003" [(ngModel)]="PET003price"> 
+  <input placeholder="PET003price" [(ngModel)]="PET003price"> 
  
 
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
@@ -228,16 +229,16 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input type="number" placeholder="GH001" [(ngModel)]="GH001price">
+    <input placeholder="GH001" [(ngModel)]="GH001price">
   
     
   <button ion-button (click)="CheckInputsEmptyStringGlasss()">Save</button>
   </div>
   </div>
 <!-- create new material -->
-<div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
+<div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
   <div padding class="editform2">
-    <ion-button class="close"  fill="clear" (click)=" HideandShowDelete()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+    <ion-button class="close"  fill="clear" (click)=" HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
   <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" >
   <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price">
@@ -254,7 +255,7 @@
    slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
   <h1>Edit Price For  AluminIum</h1>
  
-  <input type="number" placeholder="NFAL01" [(ngModel)]="NFAL01price">
+  <input placeholder="NFAL01" [(ngModel)]="NFAL01price">
   
 <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>
@@ -268,35 +269,18 @@
   <h1>Keeping Track Of All Your Updates</h1>
   <div class="headers">
     <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
-    <div class="one"><h2 >Old Pricing</h2></div>
+    <div class="one"><h2 >Material</h2></div>
     <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
   </div>
 
   <div class="historydata">
-    <div class="historydata2">
+    <div class="historydata2" >
       <div class="two">25 / 02 / 2020</div>
       <div class="two">1, 98</div>
       <div class="two">2.03</div>
     </div>
 
 
-    <div class="historydata2">
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
-    </div>
-
-    <div class="historydata2">
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
-    </div>
-
-    <div class="historydata2">
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
-    </div>
   </div>
  </div>
 <!-- <p>date  old new <ion-icon name="trash"></ion-icon></p>
