@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { element } from 'protractor';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-outbound',
@@ -652,7 +653,7 @@ export class OutboundPage implements OnInit {
 
   SaveOutbound() {
     this.db.collection('outbound').doc().set({
-      date: new Date(),
+      date: moment(new Date()).format('MMMM DD YYYY'),
       DriverName: this.DriverNameInput,
       RegistarionNumberPlates: this.RegistarionNumberPlatesInput,
       TruckSourcess: this.TruckSourcessInput,

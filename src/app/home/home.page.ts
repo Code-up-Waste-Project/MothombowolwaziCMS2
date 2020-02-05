@@ -7,6 +7,7 @@ import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-
 // import { ModalpopupPage } from '../modalpopup/modalpopup.page';
 import * as moment from 'moment'
 import { element } from 'protractor';
+import { format } from 'url';
 
 @Component({
   selector: 'app-home',
@@ -276,9 +277,22 @@ Totalplasticinbound: number = 0;
 
   InboundGraph = [];
   outBoundGraph = [];
+  outBoundGraphDisplayDay = [];
+  outBoundGraphDisplayWeek = [];
+  outBoundGraphDisplayMonth = [];
   outGH001 = [];
   ReclaimerGraph = [];
-  date;
+  datesss;
+  dateq;
+  dateqq;
+  datez;
+
+  weekTime;
+
+  outboundDay;
+  outboundWeek;
+  outboundMonth;
+  outboundYear;
 
   constructor(
     private modalcontroller: ModalController,
@@ -304,7 +318,7 @@ Totalplasticinbound: number = 0;
     });
 
     // code by nathi 3 feb
-    // this.pullWeeklyInbound();
+    this.pullWeeklyInbound();
 
     }
 
@@ -1280,144 +1294,293 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
   }
 
-  // pullWeeklyInbound() {
-  //   // code added by nathi
-  //   let currentTime = new Date();
-  //   let month = currentTime.getMonth();
-  //   let year = currentTime.getFullYear();
-  //   let date = currentTime.getTime();
-  //   let TodaysDate;
+  pullWeeklyInbound() {
+    // code added by nathi
+    let currentTime = new Date();
+    let month = currentTime.getMonth();
+    let year = currentTime.getFullYear();
+    let date = currentTime.getTime();
+    let TodaysDate;
 
-  //   console.log(month, year, date);
-  //   console.log(currentTime);
+    console.log(month, year, date);
+    console.log(currentTime);
 
-  //   let dates = new Date()
-  //   let day1 = dates.setTime(dates.getTime() - (1 * 24 * 60 * 60 * 1000))
-  //   let day2 = dates.setTime(dates.getTime() - (2 * 24 * 60 * 60 * 1000))
-  //   let day3 = dates.setTime(dates.getTime() - (3 * 24 * 60 * 60 * 1000))
-  //   let day4 = dates.setTime(dates.getTime() - (4 * 24 * 60 * 60 * 1000))
-  //   let day5 = dates.setTime(dates.getTime() - (5 * 24 * 60 * 60 * 1000))
-  //   let day6 = dates.setTime(dates.getTime() - (6 * 24 * 60 * 60 * 1000))
-  //   let day7 = dates.setTime(dates.getTime() - (7 * 24 * 60 * 60 * 1000))
-  //   console.log(day7);
-  //   this.db.collection('outbound').onSnapshot(element => {
-  //     // console.log(element);
-  //     element.forEach(snap => {
-  //       // console.log(snap);
-  //       console.log(snap.data());
+    // console.log(day7);
+    this.db.collection('outbound').onSnapshot(element => {
+      // console.log(element);
+      element.forEach(snap => {
+        console.log(snap);
+        console.log(snap.data());
 
-  //       let timess = {};
-  //       let GH001 = {};
-  //       let NFAL01 = {};
-  //       let HD001 = {};
-  //       let PAP005 = {};
-  //       let PAP007 = {};
-  //       let PAP001 = {};
-  //       let PAP003 = {};
-  //       let LD003 = {};
-  //       let LD001 = {};
-  //       let PET005 = {};
-  //       let PET003 = {};
-  //       let PET00 = {};
+        let timess = {};
+        let GH001 = {};
+        let NFAL01 = {};
+        let HD001 = {};
+        let PAP005 = {};
+        let PAP007 = {};
+        let PAP001 = {};
+        let PAP003 = {};
+        let LD003 = {};
+        let LD001 = {};
+        let PET005 = {};
+        let PET003 = {};
+        let PET00 = {};
+        let Mass = {};
 
-  //       // GH001
-  //       // NFAL01
-  //       // HD001
-  //       // PAP005
-  //       // PAP007
-  //       // PAP001
-  //       // PAP003
-  //       // LD003
-  //       // LD001
-  //       // PET005
-  //       // PET003
-  //       // PET00
+        this.datesss = snap.data().date;
+        // this.datez = this.datesss.toDate();
+        GH001 = snap.data().GH001;
+        NFAL01 = snap.data().NFAL01;
+        HD001 = snap.data().HD001;
+        PAP005 = snap.data().PAP005;
+        PAP007 = snap.data().PAP007;
+        PAP001 = snap.data().PAP001;
+        PAP003 = snap.data().PAP003;
+        LD003 = snap.data().LD003;
+        LD001 = snap.data().LD001;
+        PET005 = snap.data().PET005;
+        PET003 = snap.data().PET003;
+        PET00 = snap.data().PET00;
+        Mass = snap.data().ovarallMass;
 
-  //       timess = snap.data().date;
-  //       GH001 = snap.data().GH001;
-  //       NFAL01 = snap.data().NFAL01;
-  //       HD001 = snap.data().HD001;
-  //       PAP005 = snap.data().PAP005;
-  //       PAP007 = snap.data().PAP007;
-  //       PAP001 = snap.data().PAP001;
-  //       PAP003 = snap.data().PAP003;
-  //       LD003 = snap.data().LD003;
-  //       LD001 = snap.data().LD001;
-  //       PET005 = snap.data().PET005;
-  //       PET003 = snap.data().PET003;
-  //       PET00 = snap.data().PET00;
+        this.outBoundGraph.push({
+          time: this.datez,
+          GH001: GH001,
+          NFAL01: NFAL01,
+          HD001: HD001,
+          PAP005: PAP005,
+          PAP007: PAP007,
+          PAP001: PAP001,
+          PAP003: PAP003,
+          LD003: LD003,
+          LD001: LD001,
+          PET005: PET005,
+          PET003: PET003,
+          PET001: PET00,
+          Mass: Mass
+        })
 
-  //       this.outBoundGraph.push({
-  //         time: timess,
-  //         GH001: GH001,
-  //         NFAL01: NFAL01,
-  //         HD001: HD001,
-  //         PAP005: PAP005,
-  //         PAP007: PAP007,
-  //         PAP001: PAP001,
-  //         PAP003: PAP003,
-  //         LD003: LD003,
-  //         LD001: LD001,
-  //         PET005: PET005,
-  //         PET003: PET003,
-  //         PET001: PET00,
-  //       })
+        this.outGH001.push({GH001: GH001})
+      });
+      console.log(this.outGH001);
 
-  //       this.outGH001.push({GH001: GH001})
-  //     });
-  //     console.log(this.outGH001);
-  //   });
+      console.log(this.outBoundGraph);
 
-  //   console.log(this.outBoundGraph);
+    let dat = this.datez
 
-  //   for (let key in this.outGH001) {
-  //     let x,
-  //     for (x = 0, x < this.outGH001[key], x++) {
+    // let time = dat.setTime(dat.getTime() - (1 * 24 * 60 * 60 * 1000))
 
-  //     }
-  //   }
+    // let newdate = new Date(time)
+    let today = new Date()
+    let todayMonth = Number(moment(today).format('MM'))
+    let todayDay = Number(moment(today).format('DD'))
+    let todayYear = Number(moment(today).format('YYYY'))
+    this.datez = moment().format('LLLL');
+    // this.dateq = moment(String(this.datesss)).format('LLLL');
+    this.dateq = this.datesss.toDate();
+    this.dateqq = new Date(this.dateq).getMonth()
 
-  //   for (let key in this.outBoundGraph) {
-  //     console.log(key)
-  //     console.log(this.outBoundGraph[key])
-  //   }
+    this.outboundDay = Number(moment(this.dateq).format('DD'))
+    this.outboundWeek = new Date(this.dateq).getHours()
+    this.outboundMonth = Number(moment(this.dateq).format('MM'))
+    this.outboundYear = Number(moment(this.dateq).format('YYYY'))
+    if((todayYear - this.outboundYear) < 2){
+      console.log('yeha yeah');
+      if((todayYear - this.outboundYear) === 1) {
+        console.log('last year to check is 2019');
+        
+        if((todayMonth - this.outboundMonth) === 0){
+          console.log('zero');
+          console.log((todayMonth - this.outboundMonth));
+          
+        }else if((todayMonth - this.outboundMonth) < 0){
+          console.log('lower than zero');
+          console.log((todayMonth - this.outboundMonth));
+          
+        }else{
+          console.log('greater than zero');
+          console.log((todayMonth - this.outboundMonth));
+  
+        }
+      }else if((todayYear - this.outboundYear) === 0){
+        console.log('last year to check is 2020');
+        
+      }
+    }
+    if((todayDay - this.outboundDay) < 7){
+      console.log('sdfdsfds');
+      console.log((todayDay - this.outboundDay));
+      let monthDiff = todayMonth - 1
+      console.log(monthDiff);
+      if(monthDiff < 0){
+        
+      }
+    }else{
+      console.log((todayDay - this.outboundDay));
+    }
+    console.log(this.datez);
+    console.log(this.outboundDay);
+    console.log(this.outboundWeek);
+    console.log(this.outboundMonth);
+    console.log(todayMonth);
+    console.log(this.outboundYear)
+    });
+  }
 
-  //   // inboundgh001
-  //   // inboundpap005
-  //   // inboundnfalo1
-  //   // inboundhd001
-  //   // inboundpet001
-  //   // inboundpet0001
-  //   // inboundpap007
-  //   // inboundpap003
-  //   // inboundpap001
-  //   // inboundld001
-  //   // inboundld003
-  //   // inboundpet003
+  PullDayData() {
+    for(let key in this.outBoundGraph) {
+      let date = moment(new Date()).format('MMMM DD YYYY');
+      let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
 
-  //   // TodaysDate = date.setTime(date.getTime() - (7 * 24 * 60 * 60 * 1000))
+      let yearDiff = Number(moment(date).format('YYYY')) - Number(moment(this.outBoundGraph[key].time).format('YYYY'));
+      let monthDiff = Number(moment(date).format('MM')) - Number(moment(this.outBoundGraph[key].time).format('MM'))
+      let dateDiff = Number(moment(date).format('DD')) - Number(moment(this.outBoundGraph[key].time).format('DD'))
+      //if(this.outBoundGraph[key].)    Number(moment(today).format('MM'))
 
-  //   // console.log(currentTime);
-  //   // console.log(currentTime);
-  //   // firebase.firestore()
-  //   //               .collection('outbound')
-  //   //               .where('date', '<=', currentTime)
-  //   //                   .where("startTime", ">", "1506816000").where("startTime", "<", "1507593600")
-  //   //               .orderBy('week').startAt(1514184967000).endAt(1514271367000)
-  //   //               .limit(25).onSnapshot(snapshot => {
-  //   //                 console.log(snapshot);
-  //   //                 snapshot.forEach(key => {
-  //   //                   console.log(key.data());
-  //   //                   // this.outBoundGraph.push(key.data())
-  //   //                 })
-  //   //               });
-  //   // code added by nathi
-  //   // this.db.collection('inbounds').where('createdAt', '>', this.beginningDateObject).get().then(querySnapshot => {
-  //   //   querySnapshot.forEach(key => {
-  //   //     console.log(key);
-  //   //   })
-  //   // })
-  // }
+      console.log(date);
+      console.log(newdate);
+
+      this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+        // this.outBoundGraphDisplayDay.push(Snapshot);
+        console.log(Snapshot);
+        Snapshot.forEach(element => {
+          let time = {};
+          let gl001 = {};
+          let nfalo1 = {};
+          let pap005 = {};
+          let pap007 = {};
+          let pap001 = {};
+          let pap003 = {};
+          let hd001 = {};
+          let ld003 = {};
+          let ld001 = {};
+          let pet005 = {};
+          let pet003 = {};
+          let pet001 = {};
+
+          time = element.data().date;
+          gl001 = element.data().GH001;
+          nfalo1 = element.data().NFAL01;
+          pap005 = element.data().PAP005;
+          pap007 = element.data().PAP007;
+          pap001 = element.data().PAP001;
+          pap003 = element.data().PAP003;
+          hd001 = element.data().HD001;
+          ld003 = element.data().LD003;
+          ld001 = element.data().LD001;
+          pet005 = element.data().PET005;
+          pet003 = element.data().PET003;
+          pet001 = element.data().PET001;
+
+
+          this.outBoundGraphDisplayDay.push({
+            time: time,
+            gl001: gl001,
+            nfalo1: nfalo1,
+            pap005: pap005,
+            pap007: pap007,
+            pap001: pap001,
+            pap003: pap003,
+            hd001: hd001,
+            ld003: ld003,
+            ld001: ld001,
+            pet005: pet005,
+            pet003: pet003,
+            pet001: pet001
+          })
+          console.log(element.data());
+          
+        })
+      })
+
+      // this.outBoundGraphDisplayDay.push(date)
+      console.log(this.outBoundGraphDisplayDay);
+
+    }
+  }
+
+  PullWeekData() {
+    
+  }
+
+  PullMonthData() {
+    console.log(this.outBoundGraph);
+    // let date = moment(new Date()).format('LLLL');
+    // let newdate = moment(date).subtract(30, 'days').format('LLLL')
+    // let currentYear = moment(date).format('YYYY');
+    // let currentMonth = moment(date).format('MM');
+    // let currentDate = moment(date).format('DD');
+
+    // console.log(date);
+    // console.log(newdate);
+    
+    // if () {
+
+    // }
+
+    // code for 1 week query
+    for(let key in this.outBoundGraph){
+      let date = moment(new Date(this.outBoundGraph[key].time)).format('LLLL');
+      let newdate = moment(date).subtract(7, 'days').format('LLLL')
+
+      let yearDiff = Number(moment(date).format('YYYY')) - Number(moment(this.outBoundGraph[key].time).format('YYYY'));
+      let monthDiff = Number(moment(date).format('MM')) - Number(moment(this.outBoundGraph[key].time).format('MM'))
+      let dateDiff = Number(moment(date).format('DD')) - Number(moment(this.outBoundGraph[key].time).format('DD'))
+      //if(this.outBoundGraph[key].)    Number(moment(today).format('MM'))
+
+      console.log(date);
+      console.log(newdate);
+
+      if((yearDiff === 0) && (monthDiff === 0) && (dateDiff === 2)){
+        console.log(this.outBoundGraph[key]);
+        this.outBoundGraphDisplayWeek.push(this.outBoundGraph[key])
+      }
+
+      let gl001outweek = {};
+      let nfalo1outweek = {};
+      let pap005outweek = {};
+      let pap007outweek = {};
+      let pap001outweek = {};
+      let pap003outweek = {};
+      let hd001outweek = {};
+      let ld003outweek = {};
+      let ld001outweek = {};
+      let pet005outweek = {};
+      let pet003outweek = {};
+      let pet001outweek = {};
+
+      gl001outweek = this.outBoundGraph[key].GH001;
+      nfalo1outweek = this.outBoundGraph[key].NFALO01;
+      pap005outweek = this.outBoundGraph[key].PAP005;
+      pap007outweek = this.outBoundGraph[key].PAP005;
+      pap001outweek = this.outBoundGraph[key].PAP005;
+      pap003outweek = this.outBoundGraph[key].PAP005;
+      hd001outweek = this.outBoundGraph[key].HD001;
+      ld003outweek = this.outBoundGraph[key].LD003;
+      ld001outweek = this.outBoundGraph[key].LD001;
+      pet005outweek = this.outBoundGraph[key].PET005;
+      pet003outweek = this.outBoundGraph[key].PET003;
+      pet001outweek = this.outBoundGraph[key].PET001;
+
+    }
+    console.log(this.outBoundGraphDisplayWeek);
+
+    // gl001
+      // nfalo1
+      // pap005
+      // pap007
+      // pap001
+      // pap003
+      // hd001
+      // ld003
+      // ld001
+      // pet005
+      // pet003
+      // pet001
+
+  }
+
+
 
 //EDIT PAPER
   HideandShowSave() {

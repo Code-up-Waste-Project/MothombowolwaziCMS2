@@ -198,7 +198,7 @@ toast.present();
 
   ionViewDidLeave() {
     // enable the root left menu when leaving the tutorial page
-    this.menuCtrl.enable(true);
+    this.menuCtrl.enable(false);
   }
  
   }
