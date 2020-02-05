@@ -1,3 +1,22 @@
+#disapear{
+  display: none;
+
+}
+
+#camera{
+  // border: solid purple 2px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+  text-shadow: 0px 0px 10px black;
+}
+
+#asd{
+  // border: 2px solid red;
+}
+
 .container {
     //border: 3px solid blue;
     width: 100%;
@@ -60,7 +79,6 @@
     text-align: center;
   }
   .profile {
-   //border: 3px solid rgb(76, 0, 255);
     height: 20%;
    
     display: flex;
@@ -71,6 +89,8 @@
   
     .ProPic {
     
+  //  border: 3px solid rgb(76, 0, 255);
+   position: relative;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.123), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
      margin-top: 10px;
       width: 90px;
