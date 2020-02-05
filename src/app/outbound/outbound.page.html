@@ -347,13 +347,13 @@
         <div class="History2" *ngFor="let records of recordoutbounddisplaysz">
           <div id="Date1">{{ records.DriverName }}</div>
           <div id="material">{{ records.RegistarionNumberPlates }}</div>
-          <div id="material">{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div>
+          <div id="material">{{ records.time }}</div>
           <ion-icon name="eye" class="eye" [routerLink]="['/outbound-pdf', records.id]"></ion-icon>
           <ion-icon name="trash" class="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
         </div>
         <!-- <div class="History3">
         <div id="Date2">27 July 2019</div>
-        <div id="Material2">Glass</div>
+        <div id="Material2">Glass</div>    <.seconds * 1000 | date:'dd-MM-yyyy HH-ss'> 
         <div id="Eye2"><ion-icon name="eye"></ion-icon></div>
         <div id="Trash2"><ion-icon name="trash"></ion-icon></div>
       </div> -->

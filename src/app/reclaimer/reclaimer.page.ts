@@ -11,6 +11,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 import { analyzeFileForInjectables } from '@angular/compiler';
+import * as moment from 'moment'
 
 
 @Component({
@@ -1435,7 +1436,7 @@ export class ReclaimerPage implements OnInit {
 
   Addreclaimer() {
     this.db.collection('reclaimers').doc().set({
-      date: new Date(),
+      date: moment(new Date()).format('MMMM DD YYYY'),
       name: this.names,
       surname: this.surnames,
       address: this.addresss,

@@ -2008,6 +2008,71 @@ HideandShowHISTORYGLASS() {
         });
         await alert.present();
       } 
+//highlighting the navigation of the daily weekly
+toggleDaily() {
+  // Changes the header tab
+  document.getElementById("daily").style.display = "flex";
+  document.getElementById("weekly").style.display = "flex";
+  document.getElementById("monthly").style.display = "flex";
 
+
+  // Changes the color of the daily tab
+  // document.getElementById("daily").style.background = "white";
+  // document.getElementById("daily").style.color = "black";
+
+  // Changes the color of the weekly tab
+  document.getElementById("weekly").style.background = "white";
+  document.getElementById("weekly").style.color = "black";
+
+  // Changes the color of the monthly tab
+  document.getElementById("monthly").style.background = "white";
+  document.getElementById("monthly").style.color = "black";
+
+  // Changes the color of the Plastic tab
+  document.getElementById("daily").style.background = "#568C0B";
+  document.getElementById("daily").style.color = "white";
+}
+
+toggleWeekly() {                        
+  // Changes the header tab
+  document.getElementById("weekly").style.display = "flex";
+  document.getElementById("monthly").style.display = "flex";
+  document.getElementById("daily").style.display = "flex";
+
+
+  // Changes the color of the Paper tab
+  document.getElementById("weekly").style.background = "#568C0B";
+  document.getElementById("weekly").style.color = "white";
+
+  // Changes the color of the Cans tab
+  document.getElementById("monthly").style.background = "white";
+  document.getElementById("monthly").style.color = "black";
+
+  // Changes the color of the Glass tab
+  document.getElementById("daily").style.background = "white";
+  document.getElementById("daily").style.color = "black";
+
+}
+
+toggleMonthly() {                        
+  // Changes the header tab
+  document.getElementById("monthly").style.display = "flex";
+  document.getElementById("weekly").style.display = "flex";
+  document.getElementById("daily").style.display = "flex";
+
+
+  // Changes the color of the Paper tab
+  document.getElementById("monthly").style.background = "#568C0B";
+  document.getElementById("monthly").style.color = "white";
+
+  // Changes the color of the Cans tab
+  document.getElementById("weekly").style.background = "white";
+  document.getElementById("weekly").style.color = "black";
+
+  // Changes the color of the Glass tab
+  document.getElementById("daily").style.background = "white";
+  document.getElementById("daily").style.color = "black";
+
+}
       
 }
