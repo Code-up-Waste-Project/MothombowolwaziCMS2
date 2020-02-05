@@ -753,7 +753,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertupdate() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to update Prices?</strong>',
+      message: '<strong>Are you sure you want to update Prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -775,6 +775,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     await alert.present();
   }
+
+  
 
   clearInputs() {
     this.GH001price = '';
@@ -821,15 +823,15 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       }
   }
 
-  CheckInputsEmptyStringGlasss() {
-    if (
-      this.GH001price === undefined
-      ) {
-        this.presentAlertcheckInputs();
-      } else {
-        this.presentAlertUpdateGlass();
-      }
-  }
+  // CheckInputsEmptyStringGlasss() {
+  //   if (
+  //     this.GH001price === undefined
+  //     ) {
+  //       this.presentAlertcheckInputs();
+  //     } else {
+  //       this.presentAlertUpdateGlass();
+  //     }
+  // }
 
   CheckInputsEmptyStringAlum() {
     if (
@@ -844,7 +846,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertUpdatePaper() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -865,10 +867,94 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     await alert.present();
   }
+
+  async presentAlertUpdateGlass() {
+        const alert = await this.alertController.create({
+          header: 'Confirm!',
+          message: '<strong>Are you sure you want to change prices?</strong>',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: (blah) => {
+                console.log('Confirm Cancel: blah');
+              }
+            }, {
+              text: 'Okay',
+              handler: () => {
+                this.checkAlumInputs();
+                this.route.navigateByUrl('/home');
+                console.log('Confirm Okay');
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
+
+     UpdateGlass() {
+          // To update price :
+          this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+            gl001: this.GH001price,
+           
+          }).then((data) => {
+            // console.log("Paper successfully updated!");
+          });
+          this.checkGlassInputs();
+        }
+
+       checkGlassInputs(){
+             // GH001price;
+             if (this.GH001price === null) {
+              this.GH001price = this.pricess.gl001;
+            } else if (this.GH001price === undefined) {
+              this.GH001price = this.pricess.gl001;
+            }
+            // console.log(this.GH001price);
+        
+        
+            this.UpdateGlass()
+          }
+
+          CheckInputsEmptyStringGlasss() {
+              if (
+                this.GH001price === undefined
+                ) {
+                  this.presentAlertcheckInputs();
+                } else {
+                  this.presentAlertUpdateGlass();
+                }
+            }
+  async presentAlertUpdateglass() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkPaperInputs();
+            this.route.navigateByUrl('/home');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   async presentAlertUpdatePlastic() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -890,36 +976,36 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     await alert.present();
   }
 
-async presentAlertUpdateGlass() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.checkGlassInputs();
-            this.route.navigateByUrl('/home');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
+// async presentAlertUpdateGlass() {
+//     const alert = await this.alertController.create({
+//       header: 'Confirm!',
+//       message: '<strong>Are you sure you want to change prices?</strong>!!!',
+//       buttons: [
+//         {
+//           text: 'Cancel',
+//           role: 'cancel',
+//           cssClass: 'secondary',
+//           handler: (blah) => {
+//             console.log('Confirm Cancel: blah');
+//           }
+//         }, {
+//           text: 'Okay',
+//           handler: () => {
+//             this.checkGlassInputs();
+//             this.route.navigateByUrl('/home');
+//             console.log('Confirm Okay');
+//           }
+//         }
+//       ]
+//     });
+//     await alert.present();
+//   }
 
 
   async presentAlertUpdateAlum() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -1044,18 +1130,18 @@ async presentAlertUpdateGlass() {
     this.UpdateAlum()
 
   }
-  checkGlassInputs(){
-     // GH001price;
-     if (this.GH001price === null) {
-      this.GH001price = this.pricess.gl001;
-    } else if (this.GH001price === undefined) {
-      this.GH001price = this.pricess.gl001;
-    }
-    // console.log(this.GH001price);
+  // checkGlassInputs(){
+  //    // GH001price;
+  //    if (this.GH001price === null) {
+  //     this.GH001price = this.pricess.gl001;
+  //   } else if (this.GH001price === undefined) {
+  //     this.GH001price = this.pricess.gl001;
+  //   }
+  //   // console.log(this.GH001price);
 
 
-    this.UpdateGlass()
-  }
+  //   this.UpdateGlass()
+  // }
 
   UpdatePaper() {
     // To update price :
@@ -1084,16 +1170,16 @@ async presentAlertUpdateGlass() {
     this.clearInputsPlastic();
   }
 
-  UpdateGlass() {
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      gl001: this.GH001price,
+  // UpdateGlass() {
+  //   // To update price :
+  //   this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+  //     gl001: this.GH001price,
      
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
-    this.checkGlassInputs();
-  }
+  //   }).then((data) => {
+  //     // console.log("Paper successfully updated!");
+  //   });
+  //   this.checkGlassInputs();
+  // }
 
   
   UpdateAlum() {
@@ -1337,7 +1423,7 @@ async presentAlertUpdateGlass() {
     this.edit = !this.edit;
     // console.log(this.edit,this.editDiv[0]);
     
-    if (this.create) {
+    if (this.edit) {
       // console.log('block');
       this.render.setStyle(this.editDiv[0],'display','block')
     } else {
@@ -1744,7 +1830,7 @@ HideandShowHISTORYGLASS() {
       async presentAlertcheckInputs() {
         const alert = await this.alertController.create({
           header: 'Warning!',
-          message: '<strong>Field cannot be empty.</strong>',
+          message: '<strong>Field cannot be empty.</strong>!!!',
           buttons: [
             {
               text: 'Okay',
