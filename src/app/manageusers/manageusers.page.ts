@@ -435,5 +435,9 @@ registerForm = false;
         console.log(this.Snapprofile);
       });
     }
+
+    // myFunction() {
+    //   document.getElementById("fifi").classList.add('animation')
+    // }
      
 }

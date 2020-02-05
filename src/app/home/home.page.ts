@@ -337,23 +337,24 @@ Totalplasticinbound: number = 0;
 
     transformGraph2() {
       Chart.defaults.global.defaultFontSize = 10;
-      this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
-      this.render.setStyle(this.imgGraph[0],'z-index', '1000');
-      this.render.setStyle(this.imgGraph[0],'position', 'absolute');
-      this.render.setStyle(this.imgGraph[0],'left', '0%');
-      this.render.setStyle(this.imgGraph[0],'top', '0%');
-      this.render.setStyle(this.imgGraph[0],'width', '80%');
-      this.render.setStyle(this.imgGraph[0],'height', '80%');
-      this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
+      this.render.setStyle(this.imgGraph2[0],'transform', 'translate(10%, 10%)');
+      this.render.setStyle(this.imgGraph2[0],'z-index', '1000');
+      this.render.setStyle(this.imgGraph2[0],'position', 'absolute');
+      this.render.setStyle(this.imgGraph2[0],'left', '0%');
+      this.render.setStyle(this.imgGraph2[0],'top', '0%');
+      this.render.setStyle(this.imgGraph2[0],'width', '80%');
+      this.render.setStyle(this.imgGraph2[0],'height', '80%');
+      this.render.setStyle(this.imgGraph2[0], 'font-size', '10% !important');
+      this.render.setStyle(this.imgGraph2[0], 'border', '3px solid red !important');
     }
 
     transformGraph3() {
       Chart.defaults.global.defaultFontSize = 10;
-      this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
-      this.render.setStyle(this.imgGraph[0],'z-index', '1000');
-      this.render.setStyle(this.imgGraph[0],'position', 'absolute');
-      this.render.setStyle(this.imgGraph[0],'left', '0%');
-      this.render.setStyle(this.imgGraph[0],'top', '0%');
+      this.render.setStyle(this.imgGraph3[0],'transform', 'translate(10%, 10%)');
+      this.render.setStyle(this.imgGraph3[0],'z-index', '1000');
+      this.render.setStyle(this.imgGraph3[0],'position', 'absolute');
+      this.render.setStyle(this.imgGraph3[0],'left', '0%');
+      this.render.setStyle(this.imgGraph3[0],'top', '0%');
       this.render.setStyle(this.imgGraph[0],'width', '80%');
       this.render.setStyle(this.imgGraph[0],'height', '80%');
       this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
@@ -1672,6 +1673,8 @@ HideandShowHISTORYGLASS() {
   
   /* bar chart */
   createBarChart1() {
+    Chart.defaults.global.defaultFontSize = 3;
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
     this.bars = new Chart(this.barChart1.nativeElement, {
       type: 'bar',
       data: {
