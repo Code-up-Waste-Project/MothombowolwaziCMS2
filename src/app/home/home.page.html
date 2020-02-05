@@ -101,7 +101,7 @@
           <p>pet001 <span>R{{ pricess.pet001 }}</span></p>
     </div>
         <div class="manname">
-          Plastic
+          PLASTIC
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@
    
     </div>
   <div class="manname">
-    Glass
+    GLASS
   </div>
 </div>
     </div>
@@ -153,13 +153,22 @@
 </div>
      
     </div>
-    
+    <!--<ion-button fill="clear" size="small" color="success"></ion-button> 
+ -->
 
   </div>
+<div class="chartbuttons" padding>
+<p></p>
+<div class="dynamicBtns" padding>
+  <ion-button id="daily" fill="clear" size="small" color="success" (click)="toggleDaily()">Daily</ion-button>
+  <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="toggleWeekly()">Weekly</ion-button>
+  <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="toggleMonthly()">Monthly</ion-button>
 
-  <p id="secondborder"></p>
+</div>
+</div>
+  <!-- <p id="secondborder"></p> -->
   <div padding class="graphs">
-    <ion-fab id="daily" >
+    <!-- <ion-fab id="daily" >
       <ion-fab-button size="small" color="warning">D</ion-fab-button>   
      </ion-fab>
 
@@ -169,7 +178,7 @@
 
     <ion-fab id="montly">
       <ion-fab-button size="small" color="tertiary">M</ion-fab-button> 
-       </ion-fab>
+       </ion-fab> -->
 
 
 <!-- graph 1 -->

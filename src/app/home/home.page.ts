@@ -310,7 +310,7 @@ Totalplasticinbound: number = 0;
 
     //increase the size of clicked graph
     transformGraph() {
-      Chart.defaults.global.defaultFontSize = 13;
+      Chart.defaults.global.defaultFontSize = 10;
       this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
       this.render.setStyle(this.imgGraph[0],'z-index', '1000');
       this.render.setStyle(this.imgGraph[0],'position', 'absolute');
@@ -322,7 +322,7 @@ Totalplasticinbound: number = 0;
     }
 
     transformGraph2() {
-      Chart.defaults.global.defaultFontSize = 13;
+      Chart.defaults.global.defaultFontSize = 10;
       this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
       this.render.setStyle(this.imgGraph[0],'z-index', '1000');
       this.render.setStyle(this.imgGraph[0],'position', 'absolute');
@@ -334,7 +334,7 @@ Totalplasticinbound: number = 0;
     }
 
     transformGraph3() {
-      Chart.defaults.global.defaultFontSize = 13;
+      Chart.defaults.global.defaultFontSize = 10;
       this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
       this.render.setStyle(this.imgGraph[0],'z-index', '1000');
       this.render.setStyle(this.imgGraph[0],'position', 'absolute');
@@ -1539,7 +1539,7 @@ HideandShowHISTORYGLASS() {
 }
 
   createBarChart() {
-    Chart.defaults.global.defaultFontSize = 4;
+    Chart.defaults.global.defaultFontSize = 3;
     Chart.defaults.global.defaultFontFamily = 'Roboto';
 
     this.bars = new Chart(this.barChart.nativeElement, {
@@ -1841,7 +1841,72 @@ HideandShowHISTORYGLASS() {
           ]
         });
         await alert.present();
-      } 
-
+      }
       
+      //highlighting the navigation of the daily weekly
+      toggleDaily() {
+        // Changes the header tab
+        document.getElementById("daily").style.display = "flex";
+        document.getElementById("weekly").style.display = "flex";
+        document.getElementById("monthly").style.display = "flex";
+      
+  
+        // Changes the color of the daily tab
+        // document.getElementById("daily").style.background = "white";
+        // document.getElementById("daily").style.color = "black";
+  
+        // Changes the color of the weekly tab
+        document.getElementById("weekly").style.background = "white";
+        document.getElementById("weekly").style.color = "black";
+  
+        // Changes the color of the monthly tab
+        document.getElementById("monthly").style.background = "white";
+        document.getElementById("monthly").style.color = "black";
+  
+        // Changes the color of the Plastic tab
+        document.getElementById("daily").style.background = "#568C0B";
+        document.getElementById("daily").style.color = "white";
+      }
+
+      toggleWeekly() {                        
+        // Changes the header tab
+        document.getElementById("weekly").style.display = "flex";
+        document.getElementById("monthly").style.display = "flex";
+        document.getElementById("daily").style.display = "flex";
+    
+  
+        // Changes the color of the Paper tab
+        document.getElementById("weekly").style.background = "#568C0B";
+        document.getElementById("weekly").style.color = "white";
+  
+        // Changes the color of the Cans tab
+        document.getElementById("monthly").style.background = "white";
+        document.getElementById("monthly").style.color = "black";
+  
+        // Changes the color of the Glass tab
+        document.getElementById("daily").style.background = "white";
+        document.getElementById("daily").style.color = "black";
+  
+      }
+      
+      toggleMonthly() {                        
+        // Changes the header tab
+        document.getElementById("monthly").style.display = "flex";
+        document.getElementById("weekly").style.display = "flex";
+        document.getElementById("daily").style.display = "flex";
+    
+  
+        // Changes the color of the Paper tab
+        document.getElementById("monthly").style.background = "#568C0B";
+        document.getElementById("monthly").style.color = "white";
+  
+        // Changes the color of the Cans tab
+        document.getElementById("weekly").style.background = "white";
+        document.getElementById("weekly").style.color = "black";
+  
+        // Changes the color of the Glass tab
+        document.getElementById("daily").style.background = "white";
+        document.getElementById("daily").style.color = "black";
+  
+      }
 }
