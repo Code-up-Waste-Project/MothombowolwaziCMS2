@@ -245,10 +245,10 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)=" HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
-  <input placeholder="PAP005" [(ngModel)]="PAP005price" >
-  <input placeholder="PAP007" [(ngModel)]="PAP007price">
- <input placeholder="PAP001"  [(ngModel)]="PAP001price">
- <input placeholder="PAP003"  [(ngModel)]="PAP003price">
+  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" >
+  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price">
+ <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price">
+ <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price">
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
