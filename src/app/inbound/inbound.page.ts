@@ -775,7 +775,7 @@ export class InboundPage implements OnInit {
       document.getElementById("Plastic").style.background = "#568C0B";
       document.getElementById("Plastic").style.color = "white";
     }
-    togglePaper() {
+    togglePaper() {                        
       // Changes the header tab
       document.getElementById("toPaper").style.display = "flex";
       document.getElementById("toPlastic").style.display = "none";

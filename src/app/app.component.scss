@@ -5,8 +5,15 @@
 }
 
 .active {
-    --background: #265902  !important;
+    --background: #558c03  !important;
+   // border: 1px solid blue;
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+    width: 96%;
+
+    margin-left: 2% !important;
+    margin-top: 0;
+    border-radius: 5px;
 ion-icon {
     color: white;
 }
@@ -14,31 +21,44 @@ ion-icon {
 
 .logo {
     //border: 1px solid blue;
-    height: 120px !important;
+    height: 55px !important;
     display: flex;
 
     h1 {
       //  border: 1px solid blue;
         font-family: 'Brandish Regular';
-        font-size: 2.2vw;
+        font-size: 20px;
         text-align: center;
         width: auto;
         display: flex;
         justify-content: center;
         align-items: center;
         padding-left: 1%;
+        color: white;
+        letter-spacing: 0.5px;
     }
 
     img {
        // border: 1px slid red;
-        width: 40px;
+        width: 30px;
         margin-left: 3%;
     }
 }
 
 
 
-// ion-header {
-//     border: 2px solid red;
+ion-header {
+  background: #1d3f04;
+}
+// ion-split-pane  {
+//     border:#265902;
 // }
+ion-item {
+    //border: 2px solid red;
+    // height: 100px;
+}
+ion-menu-toggle {
+    // border: 2px solid white;
+}
+
 

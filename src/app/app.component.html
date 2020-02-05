@@ -1,21 +1,21 @@
 
 
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-header>
-      <div class="logo">
+  <ion-split-pane  contentId="main-content" >
+    <ion-menu  contentId="main-content" type="overlay" >
+      <ion-header >
+      <div class="logo" >
         <img src="../assets/logo.svg">
         <h1>Mthombowolwazi</h1>
       </div>
       </ion-header>
       <ion-content id="sidemenu">
-        <ion-list >
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages;let i = index"  (click)="activate(i)" >
-            <ion-item [routerDirection]="'root'" [ngClass]="{'active':active==i}" [routerLink]="[p.url]" [routerLinkActive]="['active']">
+        <ion-list style="margin: 0 !important;height: 100%;background: rgba(0, 0, 0, 0.801);" >
+        <ion-menu-toggle  no-lines   auto-hide="false" *ngFor="let p of appPages;let i = index"  (click)="activate(i)" >
+            <ion-item no-lines [routerDirection]="'root'" [ngClass]="{'active':active==i}" [routerLink]="[p.url]" [routerLinkActive]="['active']">
               <ion-icon style="color: white;" slot="start" width="20px" src="../assets/{{p.icon}}.svg"></ion-icon>
               
-              <ion-label>
+              <ion-label >
                 {{p.title}}
               </ion-label>
             </ion-item>
