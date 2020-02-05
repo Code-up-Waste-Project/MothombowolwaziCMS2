@@ -277,12 +277,17 @@ Totalplasticinbound: number = 0;
 
   InboundGraph = [];
   outBoundGraph = [];
+  outBoundGraphDisplayDay = [];
+  outBoundGraphDisplayWeek = [];
+  outBoundGraphDisplayMonth = [];
   outGH001 = [];
   ReclaimerGraph = [];
   datesss;
   dateq;
   dateqq;
   datez;
+
+  weekTime;
 
   outboundDay;
   outboundWeek;
@@ -1233,9 +1238,10 @@ async presentAlertUpdateGlass() {
         let PET005 = {};
         let PET003 = {};
         let PET00 = {};
+        let Mass = {};
 
         this.datesss = snap.data().date;
-        this.datez = this.datesss.toDate();
+        // this.datez = this.datesss.toDate();
         GH001 = snap.data().GH001;
         NFAL01 = snap.data().NFAL01;
         HD001 = snap.data().HD001;
@@ -1248,6 +1254,7 @@ async presentAlertUpdateGlass() {
         PET005 = snap.data().PET005;
         PET003 = snap.data().PET003;
         PET00 = snap.data().PET00;
+        Mass = snap.data().ovarallMass;
 
         this.outBoundGraph.push({
           time: this.datez,
@@ -1263,6 +1270,7 @@ async presentAlertUpdateGlass() {
           PET005: PET005,
           PET003: PET003,
           PET001: PET00,
+          Mass: Mass
         })
 
         this.outGH001.push({GH001: GH001})
@@ -1311,8 +1319,6 @@ async presentAlertUpdateGlass() {
         console.log('last year to check is 2020');
         
       }
-
-
     }
     if((todayDay - this.outboundDay) < 7){
       console.log('sdfdsfds');
@@ -1332,28 +1338,162 @@ async presentAlertUpdateGlass() {
     console.log(todayMonth);
     console.log(this.outboundYear)
     });
-
-
-
   }
 
-  outBoundDay() {
+  PullDayData() {
+    for(let key in this.outBoundGraph) {
+      let date = moment(new Date()).format('MMMM DD YYYY');
+      let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
+
+      let yearDiff = Number(moment(date).format('YYYY')) - Number(moment(this.outBoundGraph[key].time).format('YYYY'));
+      let monthDiff = Number(moment(date).format('MM')) - Number(moment(this.outBoundGraph[key].time).format('MM'))
+      let dateDiff = Number(moment(date).format('DD')) - Number(moment(this.outBoundGraph[key].time).format('DD'))
+      //if(this.outBoundGraph[key].)    Number(moment(today).format('MM'))
+
+      console.log(date);
+      console.log(newdate);
+
+      this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+        // this.outBoundGraphDisplayDay.push(Snapshot);
+        console.log(Snapshot);
+        Snapshot.forEach(element => {
+          let time = {};
+          let gl001 = {};
+          let nfalo1 = {};
+          let pap005 = {};
+          let pap007 = {};
+          let pap001 = {};
+          let pap003 = {};
+          let hd001 = {};
+          let ld003 = {};
+          let ld001 = {};
+          let pet005 = {};
+          let pet003 = {};
+          let pet001 = {};
+
+          time = element.data().date;
+          gl001 = element.data().GH001;
+          nfalo1 = element.data().NFAL01;
+          pap005 = element.data().PAP005;
+          pap007 = element.data().PAP007;
+          pap001 = element.data().PAP001;
+          pap003 = element.data().PAP003;
+          hd001 = element.data().HD001;
+          ld003 = element.data().LD003;
+          ld001 = element.data().LD001;
+          pet005 = element.data().PET005;
+          pet003 = element.data().PET003;
+          pet001 = element.data().PET001;
+
+
+          this.outBoundGraphDisplayDay.push({
+            time: time,
+            gl001: gl001,
+            nfalo1: nfalo1,
+            pap005: pap005,
+            pap007: pap007,
+            pap001: pap001,
+            pap003: pap003,
+            hd001: hd001,
+            ld003: ld003,
+            ld001: ld001,
+            pet005: pet005,
+            pet003: pet003,
+            pet001: pet001
+          })
+          console.log(element.data());
+          
+        })
+      })
+
+      // this.outBoundGraphDisplayDay.push(date)
+      console.log(this.outBoundGraphDisplayDay);
+
+    }
+  }
+
+  PullWeekData() {
+    
+  }
+
+  PullMonthData() {
     console.log(this.outBoundGraph);
-    let date = new Date()
-    let currentYear = moment(date).format('YYYY')
-    let currentMonth = moment(date).format('MM')
-    let currentDate = moment(date).format('DD')
-    // for(let key in this.outBoundGraph){
-    //   let yearDiff = moment(date).format('YYYY') - moment(this.outBoundGraph[key].time).format('YYYY')
-    //   let monthDiff = moment(date).format('MM') - moment(this.outBoundGraph[key].time).format('MM')
-    //   let dateDiff = moment(date).format('DD') - moment(this.outBoundGraph[key].time).format('DD')
-    //   //if(this.outBoundGraph[key].)
-    //   if((yearDiff === 0) && (monthDiff === 0) && (dateDiff === 0)){
-    //     console.log(this.outBoundGraph[key]);
-        
-    //   }
+    // let date = moment(new Date()).format('LLLL');
+    // let newdate = moment(date).subtract(30, 'days').format('LLLL')
+    // let currentYear = moment(date).format('YYYY');
+    // let currentMonth = moment(date).format('MM');
+    // let currentDate = moment(date).format('DD');
+
+    // console.log(date);
+    // console.log(newdate);
+    
+    // if () {
+
     // }
+
+    // code for 1 week query
+    for(let key in this.outBoundGraph){
+      let date = moment(new Date(this.outBoundGraph[key].time)).format('LLLL');
+      let newdate = moment(date).subtract(7, 'days').format('LLLL')
+
+      let yearDiff = Number(moment(date).format('YYYY')) - Number(moment(this.outBoundGraph[key].time).format('YYYY'));
+      let monthDiff = Number(moment(date).format('MM')) - Number(moment(this.outBoundGraph[key].time).format('MM'))
+      let dateDiff = Number(moment(date).format('DD')) - Number(moment(this.outBoundGraph[key].time).format('DD'))
+      //if(this.outBoundGraph[key].)    Number(moment(today).format('MM'))
+
+      console.log(date);
+      console.log(newdate);
+
+      if((yearDiff === 0) && (monthDiff === 0) && (dateDiff === 2)){
+        console.log(this.outBoundGraph[key]);
+        this.outBoundGraphDisplayWeek.push(this.outBoundGraph[key])
+      }
+
+      let gl001outweek = {};
+      let nfalo1outweek = {};
+      let pap005outweek = {};
+      let pap007outweek = {};
+      let pap001outweek = {};
+      let pap003outweek = {};
+      let hd001outweek = {};
+      let ld003outweek = {};
+      let ld001outweek = {};
+      let pet005outweek = {};
+      let pet003outweek = {};
+      let pet001outweek = {};
+
+      gl001outweek = this.outBoundGraph[key].GH001;
+      nfalo1outweek = this.outBoundGraph[key].NFALO01;
+      pap005outweek = this.outBoundGraph[key].PAP005;
+      pap007outweek = this.outBoundGraph[key].PAP005;
+      pap001outweek = this.outBoundGraph[key].PAP005;
+      pap003outweek = this.outBoundGraph[key].PAP005;
+      hd001outweek = this.outBoundGraph[key].HD001;
+      ld003outweek = this.outBoundGraph[key].LD003;
+      ld001outweek = this.outBoundGraph[key].LD001;
+      pet005outweek = this.outBoundGraph[key].PET005;
+      pet003outweek = this.outBoundGraph[key].PET003;
+      pet001outweek = this.outBoundGraph[key].PET001;
+
+    }
+    console.log(this.outBoundGraphDisplayWeek);
+
+    // gl001
+      // nfalo1
+      // pap005
+      // pap007
+      // pap001
+      // pap003
+      // hd001
+      // ld003
+      // ld001
+      // pet005
+      // pet003
+      // pet001
+
   }
+
+
 
 //EDIT PAPER
   HideandShowSave() {

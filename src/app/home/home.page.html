@@ -160,15 +160,15 @@
   <p id="secondborder"></p>
   <div padding class="graphs">
     <ion-fab id="daily" >
-      <ion-fab-button size="small" color="warning" (click)="outBoundDay()">D</ion-fab-button>   
+      <ion-fab-button size="small" color="warning" (click)="PullDayData()">D</ion-fab-button>   
      </ion-fab>
 
     <ion-fab  id="weekly">
-      <ion-fab-button size="small" color="secondary">W</ion-fab-button>
+      <ion-fab-button size="small" color="secondary" (click)="PullWeekData()">W</ion-fab-button>
     </ion-fab>
 
     <ion-fab id="montly">
-      <ion-fab-button size="small" color="tertiary">M</ion-fab-button> 
+      <ion-fab-button size="small" color="tertiary" (click)="PullMonthData()">M</ion-fab-button> 
        </ion-fab>
 
 

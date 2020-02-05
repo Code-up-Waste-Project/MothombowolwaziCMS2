@@ -37,21 +37,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-// // Your web app's Firebase configuration
-// var firebaseConfig = {
-//   apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
-//   authDomain: "mothombowolwazicms.firebaseapp.com",
-//   databaseURL: "https://mothombowolwazicms.firebaseio.com",
-//   projectId: "mothombowolwazicms",
-//   storageBucket: "mothombowolwazicms.appspot.com",
-//   messagingSenderId: "341336075428",
-//   appId: "1:341336075428:web:5ca270a91c3b7560840a31",
-//   measurementId: "G-17SX6EWXGR"
-// };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
-
 @NgModule({
   declarations: [AppComponent, RegistersPipe],
   entryComponents: [],
