@@ -168,18 +168,8 @@
 </div>
 </div>
   <!-- <p id="secondborder"></p> -->
-  <div padding class="graphs">
-    <!-- <ion-fab id="daily" >
-      <ion-fab-button size="small" color="warning">D</ion-fab-button>   
-     </ion-fab>
-
-    <ion-fab  id="weekly">
-      <ion-fab-button size="small" color="secondary">W</ion-fab-button>
-    </ion-fab>
-
-    <ion-fab id="montly">
-      <ion-fab-button size="small" color="tertiary">M</ion-fab-button> 
-       </ion-fab> -->
+  <div padding class="graphs" (click)="dismissDiv()">
+  
 
 
 <!-- graph 1 -->
@@ -187,12 +177,12 @@
       <canvas #barChart ></canvas>
     </div>
 <!-- graph 2 -->
-    <div class="graph inbgraph2" (click)="transformGraph2()"  style="background: #FFCFE5;">
+    <div class="graph2 inbgraph2"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
 
     </div>
 <!-- graph 3 -->
-    <div class="graph inbgraph3" (click)="transformGraph3()"   style="background: #CCFFFE;">
+    <div class="graph3 inbgraph3"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
 
     </div>

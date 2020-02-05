@@ -455,5 +455,9 @@ this.surname=obj.surname
         console.log(this.Snapprofile);
       });
     }
- 
+
+    // myFunction() {
+    //   document.getElementById("fifi").classList.add('animation')
+    // }
+     
 }
