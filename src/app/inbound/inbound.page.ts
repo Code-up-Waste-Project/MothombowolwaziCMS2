@@ -379,7 +379,7 @@ export class InboundPage implements OnInit {
   async presentAlertcheckInputs() {
     const alert = await this.alertController.create({
       header: 'Warning!',
-      message: '<strong>No Data Was Input, Transaction will be Cancelled.</strong>!!!',
+      message: '<strong>Please fill in the blank spaces.</strong>!!!',
       buttons: [
         {
           text: 'Okay',
@@ -643,7 +643,7 @@ export class InboundPage implements OnInit {
   async presentAlertDelete(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
+      message: '<strong>Are you sure you want to delete this record, your information will not be saved.</strong>!!!',
       buttons: [
         {
           text: 'Cancel',

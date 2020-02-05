@@ -762,7 +762,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertupdate() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to update Prices?.</strong>!!!',
+      message: '<strong>Are you sure you want to update Prices?</strong>',
       buttons: [
         {
           text: 'Cancel',
@@ -853,7 +853,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertUpdatePaper() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      message: '<strong>Are you sure you want to change prices?</strong>',
       buttons: [
         {
           text: 'Cancel',
@@ -877,7 +877,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertUpdatePlastic() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      message: '<strong>Are you sure you want to change prices?</strong>',
       buttons: [
         {
           text: 'Cancel',
@@ -902,7 +902,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 async presentAlertUpdateGlass() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      message: '<strong>Are you sure you want to change prices?</strong>',
       buttons: [
         {
           text: 'Cancel',
@@ -928,7 +928,7 @@ async presentAlertUpdateGlass() {
   async presentAlertUpdateAlum() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want Change Paper Pices</strong>!!!',
+      message: '<strong>Are you sure you want to change prices?</strong>',
       buttons: [
         {
           text: 'Cancel',
@@ -1360,7 +1360,7 @@ async presentAlertUpdateGlass() {
     this.edit = !this.edit;
     // console.log(this.edit,this.editDiv[0]);
     
-    if (this.edit) {
+    if (this.create) {
       // console.log('block');
       this.render.setStyle(this.editDiv[0],'display','block')
     } else {
@@ -1767,7 +1767,7 @@ HideandShowHISTORYGLASS() {
       async presentAlertcheckInputs() {
         const alert = await this.alertController.create({
           header: 'Warning!',
-          message: '<strong>field cannot be empty.</strong>!!!',
+          message: '<strong>Field cannot be empty.</strong>',
           buttons: [
             {
               text: 'Okay',

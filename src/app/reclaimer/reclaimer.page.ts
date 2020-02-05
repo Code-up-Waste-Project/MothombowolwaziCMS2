@@ -521,7 +521,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertPhoneMaxLenght() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Phone Numbers must have 10 numbers.</strong>!!!',
+      message: '<strong>Phone Numbers must have 10 digits.</strong>!!!',
       buttons: [
         {
           text: 'Okay',
@@ -540,7 +540,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertPhoneMinLenght() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Phone Numbers has less than 10 numbers.</strong>!!!',
+      message: '<strong>Phone Numbers has less than 10 digits.</strong>!!!',
       buttons: [
         {
           text: 'Okay',
@@ -570,7 +570,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertDelete(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
+      message: '<strong>Are you sure you want to delete this record, your information will not be saved.</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -602,7 +602,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertAddUser(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want add clicked user to form?</strong>!!!',
+      message: '<strong>Are you sure you want add this user to your form?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -679,7 +679,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertcheckInputs() {
     const alert = await this.alertController.create({
       header: 'Warning!',
-      message: '<strong>No Data Was Input, Transaction will be Cancelled.</strong>!!!',
+      message: '<strong>Please fill in the blank spaces.</strong>!!!',
       buttons: [
         {
           text: 'Okay',
@@ -1600,7 +1600,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertCancel() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to erase data? data will not be saved.</strong>!!!',
+      message: '<strong>Are you sure you want to delete this record, your information will not be saved.</strong>!!!',
       buttons: [
         {
           text: 'Cancel',

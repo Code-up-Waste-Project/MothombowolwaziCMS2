@@ -18,7 +18,6 @@ export class ProfilePage implements OnInit {
 
   ActiveAcount: boolean = false;
   isAdmin: string = 'true';
-
   profile = {
   image: '',
   name: null,
@@ -67,6 +66,7 @@ export class ProfilePage implements OnInit {
         message: 'Enter the surname',
         duration: 2000
       });
+      toast.present();
     } else if(this.profile.number == "" || this.profile.number == undefined || this.profile.number.length <10){
 const toast = await this.toastController.create({
   message:'Enter a cellphone number with 10 digits',
@@ -74,23 +74,16 @@ const toast = await this.toastController.create({
 });
 toast.present();
     }
-    else if(this.profile.number[0]!= '0'){
-      const toast = await this.toastController.create({
-        message:'The phone number must start with a zero',
-        duration: 2000
-      });
-      toast.present();
-      } else {
+     else {
     this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
       name: this.profile.name,
       surname: this.profile.surname,
       email: this.profile.email,
       number:this.profile.number,
       position: this.profile.position,
-      userid: this.profile.userid,
       image: this.profile.image,
       isAdmin: this.isAdmin,
-      ActiveAcount: this.ActiveAcount,
+      userid: this.profile.userid,
     })
     .then(function() {
       console.log("Document successfully written!");
