@@ -202,7 +202,7 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
 
   Totalpaperinbound: number = 0;
   Totalpapersinbound: string;
-Totalplasticinbound: number = 0;
+  Totalplasticinbound: number = 0;
 
   Totalpaper: number = 0;
   Totalplastic: number = 0;
