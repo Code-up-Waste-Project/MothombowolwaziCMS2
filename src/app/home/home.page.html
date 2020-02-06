@@ -154,14 +154,13 @@
 </div>
      
     </div>
-    <!--<ion-button fill="clear" size="small" color="success"></ion-button> 
- -->
+    <!--<ion-button fill="clear" size="small" color="success"></ion-button> -->
 
   </div>
 <div class="chartbuttons" padding>
 <p></p>
 <div class="dynamicBtns" padding>
-  <ion-button id="daily" fill="clear" size="small" color="success" (click)="toggleDaily()">Daily</ion-button>
+  <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
   <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="toggleWeekly()">Weekly</ion-button>
   <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="toggleMonthly()">Monthly</ion-button>
 
@@ -181,7 +180,6 @@
       <ion-fab-button size="small" color="tertiary">M</ion-fab-button> 
        </ion-fab> -->
 
-
 <!-- graph 1 -->
     <div  class="graph inbgraph" (click)="transformGraph()" style="background: #FFF3C2;" >
       <canvas #barChart ></canvas>
@@ -189,17 +187,12 @@
 <!-- graph 2 -->
     <div class="graph inbgraph2" (click)="transformGraph2()"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
-
     </div>
 <!-- graph 3 -->
     <div class="graph inbgraph3" (click)="transformGraph3()"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
-
     </div>
-  
   </div>
-
-
 
 </div>
 
@@ -207,20 +200,12 @@
 <div padding class="editform2">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
- 
-
-
-
-
   <input placeholder="HD001" [(ngModel)]="HD001price">
   <input placeholder="LD001" [(ngModel)]="LD001price">
   <input placeholder="LD003" [(ngModel)]="LD003price">
   <input placeholder="PET005" [(ngModel)]="PET005price">
   <input placeholder="PET001" [(ngModel)]="PET001price">
-  
   <input placeholder="PET003price" [(ngModel)]="PET003price"> 
- 
-
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
 </div>
 </div>
@@ -230,7 +215,6 @@
     <h1>Edit Price For Glass </h1>
    
     <input placeholder="GH001" [(ngModel)]="GH001price">
-  
     
   <button ion-button (click)="CheckInputsEmptyStringGlasss()">Save</button>
   </div>
