@@ -87,6 +87,7 @@ export class ReclaimerPage implements OnInit {
   isLabelActive;
 
   GH001;
+  GH001sss;
   NFAL01;
   PAP005;
   PAP007;
@@ -820,7 +821,8 @@ export class ReclaimerPage implements OnInit {
     // console.log(data);
 
     this.GH001GrandTotal = +this.GH001massz * +this.GH001;
-    // console.log(this.GH001GrandTotal);
+    console.log(this.GH001);
+    console.log(this.GH001GrandTotal);
 
     this.GH001price = +this.GH001massz * +this.GH001;
     this.GH001pricez = (String(this.GH001price).substring(0, 6));
@@ -1294,9 +1296,13 @@ export class ReclaimerPage implements OnInit {
   }
 
   getprices() {
-    this.getprice = this.db.collection('price').onSnapshot(snapshot => {
-      snapshot.forEach(element => {
+    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+    console.log('prices firestore', this.prices);
+      this.prices.get().then(element => {
+        console.log(element.data());
         this.GH001 = element.data().gl001;
+        this.GH001sss = element.data().gl001;
+        console.log(this.GH001sss);
         this.HD001 = element.data().hd001;
         this.LD001 = element.data().ld001;
         this.LD003 = element.data().ld003;
@@ -1309,18 +1315,20 @@ export class ReclaimerPage implements OnInit {
         this.PET003 = element.data().pet003;
         this.PET005 = element.data().pet005;
         // console.log(element);
+
+        console.log(this.GH001);
+        console.log(this.HD001);
+        console.log(this.LD003);
+        console.log(this.NFAL01);
+        console.log(this.PAP001);
+        console.log(this.PAP003);
+        console.log(this.PAP005);
+        console.log(this.PET001);
+        console.log(this.PET003);
+        console.log(this.PET005);
       });
-      // console.log(this.GH001);
-      // console.log(this.HD001);
-      // console.log(this.LD003);
-      // console.log(this.NFAL01);
-      // console.log(this.PAP001);
-      // console.log(this.PAP003);
-      // console.log(this.PAP005);
-      // console.log(this.PET001);
-      // console.log(this.PET003);
-      // console.log(this.PET005);
-    });
+      
+
   }
 
   getMasses() {
