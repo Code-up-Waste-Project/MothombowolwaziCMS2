@@ -161,8 +161,8 @@
 <p></p>
 <div class="dynamicBtns" padding>
   <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
-  <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="toggleWeekly()">Weekly</ion-button>
-  <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="toggleMonthly()">Monthly</ion-button>
+  <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="PullWeekData()" (click)="toggleWeekly()">Weekly</ion-button>
+  <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="PullMonthData()" (click)="toggleMonthly()">Monthly</ion-button>
 
 </div>
 </div>
@@ -295,6 +295,12 @@
     <div class="two">{{paper.newpap007}}</div>
     
     </div>
+
+    <div class="historydata2">
+      <div class="two">25 / 02 / 2020</div>
+      <div class="two">1, 98</div>
+      <div class="two">2.03</div>
+    </div> -->
 
   </div>
  </div>

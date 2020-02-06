@@ -333,6 +333,7 @@ export class OutboundPage implements OnInit {
           id: this.ids
         });
         // console.log(element.data());
+        // console.log(this.recordoutbounddisplaysz);
       })
     })
   }

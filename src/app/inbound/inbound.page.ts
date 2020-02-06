@@ -168,6 +168,7 @@ export class InboundPage implements OnInit {
           time: this.time,
         });
         // console.log(element.data());
+        // console.log(this.recordinbounddisplaysz);
       })
     })
   }

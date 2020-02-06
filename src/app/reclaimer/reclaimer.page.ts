@@ -476,10 +476,10 @@ export class ReclaimerPage implements OnInit {
   getMaxMin() {
     if (this.contacts.lenght >= 10) {
       this.presentAlertPhoneMaxLenght();
-      console.log('Number is greater than 10 or equeal to 10');
+      // console.log('Number is greater than 10 or equeal to 10');
     }  else {
       this.showInputs();
-      console.log('Number is okay');
+      // console.log('Number is okay');
     }
   }
 
@@ -492,11 +492,11 @@ export class ReclaimerPage implements OnInit {
       this.presentAlertPhoneValidation();
     } else {
       // this.showInputs()
-      console.log('im working');
+      // console.log('im working');
       this.contacts = this.contacts;
     }
       // console.log(this.phoneVal);
-      console.log(this.contacts);
+      // console.log(this.contacts);
     
   }
 
@@ -511,7 +511,7 @@ export class ReclaimerPage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             this.erasedToContact();
-            console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }
       ]
@@ -549,7 +549,7 @@ export class ReclaimerPage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             this.erasedToContact();
-            console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }
       ]
@@ -578,7 +578,7 @@ export class ReclaimerPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            // console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Okay',
