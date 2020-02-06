@@ -384,3 +384,34 @@ margin: 0 !important;
   height:100%;
   // background: red;
 }
+@media screen and (min-width: 1366px) {
+  .header {
+    ion-title {
+    p {
+   text-align: left;;
+         margin-left: -2%;
+       }
+      }
+      ion-avatar {
+       margin-left: 0 !important;
+       position: absolute;
+       left: 1% !important;
+       top: 3.5px;
+       width: 35px;
+       height: 35px;
+   }
+      #logout {
+        //border: 1px solid red;
+        height: 10px !important;
+        width: auto;
+        }
+   }
+
+  .Block1 {
+  //  border: 1px solid blue;
+    h3 {
+     // border: 1px solid red;
+      margin-top: 60%;
+    }
+  }
+}

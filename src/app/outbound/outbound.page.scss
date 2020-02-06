@@ -83,6 +83,7 @@ ion-title {
 #RecyleLogo1 {
   width: 50%;
   position: absolute;
+  
   // bottom: 0;
   top: 50%;
   right: 0;
@@ -617,9 +618,7 @@ h5 {
   z-index: 100000000000000000000000000000000000000000000000000000000000000000000;
 }
 
-#wasteInformation {
-  // display: none;
-}
+
 
 #Son {
   height: 100%;
@@ -1179,7 +1178,7 @@ h1{
   .Block1 {
     position: relative;
     height: 100%;
-    max-height: 250px;
+    // max-height: 250px;
     width: 24%;
     border-radius: 5px;
     box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
@@ -1339,4 +1338,50 @@ button[ion-fab] {
 }
 
   
+}
+// fifi media queries
+@media screen and (min-width: 1366px) {
+  .header {
+    ion-title {
+    p {
+   text-align: left;;
+         margin-left: -2%;
+       }
+      }
+      ion-avatar {
+       margin-left: 0 !important;
+       position: absolute;
+       left: 1% !important;
+       top: 3.5px;
+       width: 35px;
+       height: 35px;
+   }
+      #logout {
+        //border: 1px solid red;
+        height: 10px !important;
+        width: auto;
+        }
+   }
+.Theblocks {
+  border: 1px solid red;
+  // margin: 0 !important;
+  // padding: 0 !important;
+  height: 35%;
+  //background: black;
+  .Block1 {
+    border: 1px solid blue;
+     height:100%;
+  
+     h3 {
+      // border: 1px solid red;
+       margin-top: 60%;
+     }
+   }
+}
+
+  .History {
+    border: 2px solid green;
+    height: 65%;
+// margin-top: 7%;
+  }
 }

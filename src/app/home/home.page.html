@@ -9,6 +9,12 @@
 </ion-header>
 
 <ion-content>
+<div class="backdrop" *ngIf="viewBackdrop">
+  <ion-button (click)="backdrop()">
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+  </ion-button>
+ 
+</div>
 <div class="container">
   <div padding class="alltime">
     <div class="stats">
@@ -168,7 +174,7 @@
 </div>
 </div>
   <!-- <p id="secondborder"></p> -->
-  <div padding class="graphs">
+  <div padding class="graphs"  >
     <!-- <ion-fab id="daily" >
       <ion-fab-button size="small" color="warning">D</ion-fab-button>   
      </ion-fab>
@@ -183,19 +189,19 @@
 
 
 <!-- graph 1 -->
-    <div  class="graph inbgraph" (click)="transformGraph()" style="background: #FFF3C2;" >
+    <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
       <canvas #barChart >
    
       </canvas>
       
     </div>
 <!-- graph 2 -->
-    <div class="graph inbgraph2" (click)="transformGraph2()"  style="background: #FFCFE5;">
+    <div class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
 
     </div>
 <!-- graph 3 -->
-    <div class="graph inbgraph3" (click)="transformGraph3()"   style="background: #CCFFFE;">
+    <div class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
       <!-- <ion-button class="" fill="solid">
         <ion-icon name="close"></ion-icon>
