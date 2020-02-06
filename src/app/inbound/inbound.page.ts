@@ -10,6 +10,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 import { element } from 'protractor';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import * as moment from 'moment'
 
 
 @Component({
@@ -568,7 +569,7 @@ export class InboundPage implements OnInit {
 
   recordInbounds() {
     this.db.collection("inbounds").doc().set({
-      time: new Date(),
+      time: moment(new Date()).format('MMMM DD YYYY'),
       inboundGH001: this.GH001mass,
       inboundNFAL01: this.NFAL01mass,
       inboundPAP005: this.PAP005mass,

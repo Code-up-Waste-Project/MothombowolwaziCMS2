@@ -87,6 +87,21 @@ registerForm = false;
 
    }
 
+firsttem(obj:any ={})
+{
+ console.log(obj)
+
+
+ 
+this.name =obj.name
+this.surname=obj.surname
+ this.number=obj.number
+ this.position=obj.position
+ this.image=obj.image
+ this.ActiveAcount=obj.ActiveAcount
+}
+
+
   ngOnInit() {
     this.getUsers();
 
@@ -103,9 +118,14 @@ registerForm = false;
       this.newuserprofile = [];
       snapshot.forEach(item => {
         this.newuserprofile.push({...{id:item.id},...item.data()});
-        // console.log("user profile ", this.oneprofile = item.data());
+       this.firsttem(item.data())
+         console.log("user profile ", this.oneprofile = item.data());
+      
       });
     });
+
+    this.firsttem()
+
   }
 
     showRegisterForm(){

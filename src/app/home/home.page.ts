@@ -24,69 +24,6 @@ export class HomePage implements OnInit {
 imgGraph = document.getElementsByClassName('inbgraph');
 imgGraph2 = document.getElementsByClassName('inbgraph2');
 imgGraph3 = document.getElementsByClassName('inbgraph3');
-  
- inboundweight = 0;
- outboundweight = 0;
- Reclaimerweight = 0;
-
- //graghdatainbound
-inboundgh001 = 0;
-inboundnfalo1 = 0;
-inboundpap005 = 0;
-inboundpap007 = 0;
-inboundpap001 = 0;
-inboundpap003 = 0;
-inboundhd001 = 0;
-inboundld001 = 0;
-inboundld003 = 0;
-inboundpet001 = 0;
-inboundpet003 = 0;
-inboundpet005 = 0;
-
- inboundpaper = 0;
- inboundAlum = 0;
- inboundplastic = 0;
-
-//outboundgraphs
-outboundglass = 0;
-outboundpaper = 0;
-outboundAlum = 0;
-outboundplastic = 0;
-
-
- //reclaimer
- reclaimergh001mass = 0;
- reclaimernfa01Mass = 0;
- reclaimerpap005mass = 0;
- reclaimerpap007Mass = 0;
- reclaimerpap001mass = 0;
- reclaimerpap003mass = 0;
- reclaimerhd001mass = 0;
- reclaimerld001mass = 0;
- reclaimerld003mass = 0;
- reclaimerpet001mass = 0;
- reclaimerpet003mass = 0;
- reclaimerpet005mass = 0;
- //outboundgraphs
-
-
- outboundgh001 = 0;
- outboundnfal01 = 0;
- outboundpap005 = 0;
- outboundpap007 = 0;
- outboundpap003 = 0;
- outboundpap001 = 0;
- outboundhd001 = 0;
- outboundld001 = 0;
- outboundld003 = 0;
- outboundpet003 = 0;
- outboundpet001 = 0;
- outboundpet005 = 0;
-
-reclaimerglass =0;
-reclaimerpaper =0;
-reclaimerAlum =0;
-reclaimerplastic =0;
  
  GH001price;
  NFAL01price;
@@ -151,6 +88,9 @@ reclaimerplastic =0;
 
   aluDiv: any = document.getElementsByClassName('aluDiv');
   alu: boolean = false;
+
+
+  fix: any = document.getElementsByClassName('fix');
 
   // Reclaimer
   reclaimerID;
@@ -228,15 +168,16 @@ reclaimerplastic =0;
   PAP005Mass
 
 //outbound
+  GL001
+  NFAL01;
   PAP005;
+  PAP007;
+  PAP003;
+  PAP001;
   HD001;
   LD001;
   LD003;
-  NFAL01; 
-  PAP001; 
-  PAP003;
-  PAP007;
-  PET001;
+  PET001;
   PET003;
   PET005;
 
@@ -294,6 +235,96 @@ Totalplasticinbound: number = 0;
   outboundMonth;
   outboundYear;
 
+  // variebles for graphs
+  totaloutBoundDayGL001 = 0;
+  totaloutBoundDayNFAL01 = 0;
+  totaloutBoundDayPAP005 = 0;
+  totaloutBoundDayPAP007 = 0;
+  totaloutBoundDayPAP003 = 0;
+  totaloutBoundDayPAP001 = 0;
+  totaloutBoundDayHD001 = 0;
+  totaloutBoundDayLD001 = 0;
+  totaloutBoundDayLD003 = 0;
+  totaloutBoundDayPET001 = 0;
+  totaloutBoundDayPET003 = 0;
+  totaloutBoundDayPET005 = 0;
+
+//   GL001
+//   NFAL01;
+//   PAP005;
+//   PAP007;
+//   PAP003;
+//   PAP001;
+//   HD001;
+//   LD001;
+//   LD003;
+//   PET001;
+//   PET003;
+//   PET005;
+
+inboundweight = 0;
+ outboundweight = 0;
+ Reclaimerweight = 0;
+
+ //graghdatainbound
+inboundgh001 = 0;
+inboundnfalo1 = 0;
+inboundpap005 = 0;
+inboundpap007 = 0;
+inboundpap001 = 0;
+inboundpap003 = 0;
+inboundhd001 = 0;
+inboundld001 = 0;
+inboundld003 = 0;
+inboundpet001 = 0;
+inboundpet003 = 0;
+inboundpet005 = 0;
+
+ inboundpaper = 0;
+ inboundAlum = 0;
+ inboundplastic = 0;
+
+//outboundgraphs
+outboundglass = 0;
+outboundpaper = 0;
+outboundAlum = 0;
+outboundplastic = 0;
+
+
+ //reclaimer
+ reclaimergh001mass = 0;
+ reclaimernfa01Mass = 0;
+ reclaimerpap005mass = 0;
+ reclaimerpap007Mass = 0;
+ reclaimerpap001mass = 0;
+ reclaimerpap003mass = 0;
+ reclaimerhd001mass = 0;
+ reclaimerld001mass = 0;
+ reclaimerld003mass = 0;
+ reclaimerpet001mass = 0;
+ reclaimerpet003mass = 0;
+ reclaimerpet005mass = 0;
+ //outboundgraphs
+
+
+ outboundgh001 = 0;
+ outboundnfal01 = 0;
+ outboundpap005 = 0;
+ outboundpap007 = 0;
+ outboundpap003 = 0;
+ outboundpap001 = 0;
+ outboundhd001 = 0;
+ outboundld001 = 0;
+ outboundld003 = 0;
+ outboundpet003 = 0;
+ outboundpet001 = 0;
+ outboundpet005 = 0;
+
+reclaimerglass =0;
+reclaimerpaper =0;
+reclaimerAlum =0;
+reclaimerplastic =0;
+
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
@@ -324,7 +355,7 @@ Totalplasticinbound: number = 0;
 
     //increase the size of clicked graph
     transformGraph() {
-      Chart.defaults.global.defaultFontSize = 10;
+      Chart.defaults.global.defaultFontSize = 13;
       this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
       this.render.setStyle(this.imgGraph[0],'z-index', '1000');
       this.render.setStyle(this.imgGraph[0],'position', 'absolute');
@@ -333,6 +364,7 @@ Totalplasticinbound: number = 0;
       this.render.setStyle(this.imgGraph[0],'width', '80%');
       this.render.setStyle(this.imgGraph[0],'height', '80%');
       this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
+     
     }
 
     transformGraph2() {
@@ -358,7 +390,11 @@ Totalplasticinbound: number = 0;
       this.render.setStyle(this.imgGraph[0],'width', '80%');
       this.render.setStyle(this.imgGraph[0],'height', '80%');
       this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
+      this.render.setStyle(this.fix, 'display', 'block')
+    
     }
+
+    
 
      //chart
      updated
@@ -370,7 +406,7 @@ Totalplasticinbound: number = 0;
 
 //pulling data
 //inbound
-this.inboundgh001=0;
+// this.inboundgh001=0;
 this.inboundpap005=0;
 this.inboundAlum =0;
 this.inboundweight =0;
@@ -768,7 +804,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertupdate() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to update Prices?</strong>',
+      message: '<strong>Are you sure you want to update Prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -790,6 +826,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     await alert.present();
   }
+
+  
 
   clearInputs() {
     this.GH001price = '';
@@ -836,15 +874,15 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       }
   }
 
-  CheckInputsEmptyStringGlasss() {
-    if (
-      this.GH001price === undefined
-      ) {
-        this.presentAlertcheckInputs();
-      } else {
-        this.presentAlertUpdateGlass();
-      }
-  }
+  // CheckInputsEmptyStringGlasss() {
+  //   if (
+  //     this.GH001price === undefined
+  //     ) {
+  //       this.presentAlertcheckInputs();
+  //     } else {
+  //       this.presentAlertUpdateGlass();
+  //     }
+  // }
 
   CheckInputsEmptyStringAlum() {
     if (
@@ -859,7 +897,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   async presentAlertUpdatePaper() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -880,10 +918,94 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     await alert.present();
   }
+
+  async presentAlertUpdateGlass() {
+        const alert = await this.alertController.create({
+          header: 'Confirm!',
+          message: '<strong>Are you sure you want to change prices?</strong>',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: (blah) => {
+                console.log('Confirm Cancel: blah');
+              }
+            }, {
+              text: 'Okay',
+              handler: () => {
+                this.checkAlumInputs();
+                this.route.navigateByUrl('/home');
+                console.log('Confirm Okay');
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
+
+     UpdateGlass() {
+          // To update price :
+          this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+            gl001: this.GH001price,
+           
+          }).then((data) => {
+            // console.log("Paper successfully updated!");
+          });
+          this.checkGlassInputs();
+        }
+
+       checkGlassInputs(){
+             // GH001price;
+             if (this.GH001price === null) {
+              this.GH001price = this.pricess.gl001;
+            } else if (this.GH001price === undefined) {
+              this.GH001price = this.pricess.gl001;
+            }
+            // console.log(this.GH001price);
+        
+        
+            this.UpdateGlass()
+          }
+
+  CheckInputsEmptyStringGlasss() {
+    if (
+      this.GH001price === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertUpdateGlass();
+      }
+  }
+  async presentAlertUpdateglass() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkPaperInputs();
+            this.route.navigateByUrl('/home');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   async presentAlertUpdatePlastic() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -905,36 +1027,36 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     await alert.present();
   }
 
-async presentAlertUpdateGlass() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.checkGlassInputs();
-            this.route.navigateByUrl('/home');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
+// async presentAlertUpdateGlass() {
+//     const alert = await this.alertController.create({
+//       header: 'Confirm!',
+//       message: '<strong>Are you sure you want to change prices?</strong>!!!',
+//       buttons: [
+//         {
+//           text: 'Cancel',
+//           role: 'cancel',
+//           cssClass: 'secondary',
+//           handler: (blah) => {
+//             console.log('Confirm Cancel: blah');
+//           }
+//         }, {
+//           text: 'Okay',
+//           handler: () => {
+//             this.checkGlassInputs();
+//             this.route.navigateByUrl('/home');
+//             console.log('Confirm Okay');
+//           }
+//         }
+//       ]
+//     });
+//     await alert.present();
+//   }
 
 
   async presentAlertUpdateAlum() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -1059,22 +1181,23 @@ async presentAlertUpdateGlass() {
     this.UpdateAlum()
 
   }
-  checkGlassInputs(){
-     // GH001price;
-     if (this.GH001price === null) {
-      this.GH001price = this.pricess.gl001;
-    } else if (this.GH001price === undefined) {
-      this.GH001price = this.pricess.gl001;
-    }
-    // console.log(this.GH001price);
+  // checkGlassInputs(){
+  //    // GH001price;
+  //    if (this.GH001price === null) {
+  //     this.GH001price = this.pricess.gl001;
+  //   } else if (this.GH001price === undefined) {
+  //     this.GH001price = this.pricess.gl001;
+  //   }
+  //   // console.log(this.GH001price);
 
 
-    this.UpdateGlass()
-  }
+  //   this.UpdateGlass()
+  // }
 
   UpdatePaper() {
     // To update price :
     this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      timePaper:moment().format('MMMM Do YYYY, h:mm:ss a'),
       pap005: this.PAP005price,
       pap007: this.PAP007price,
       pap001: this.PAP001price,
@@ -1087,6 +1210,7 @@ async presentAlertUpdateGlass() {
   UpdatePlastic() {
     // To update price :
     this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    
       hd001: this.HD001price,
       ld001: this.LD001price,
       ld003: this.LD003price,
@@ -1099,16 +1223,16 @@ async presentAlertUpdateGlass() {
     this.clearInputsPlastic();
   }
 
-  UpdateGlass() {
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      gl001: this.GH001price,
+  // UpdateGlass() {
+  //   // To update price :
+  //   this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+  //     gl001: this.GH001price,
      
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
-    this.checkGlassInputs();
-  }
+  //   }).then((data) => {
+  //     // console.log("Paper successfully updated!");
+  //   });
+  //   this.checkGlassInputs();
+  // }
 
   
   UpdateAlum() {
@@ -1346,17 +1470,12 @@ async presentAlertUpdateGlass() {
       let date = moment(new Date()).format('MMMM DD YYYY');
       let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
 
-      let yearDiff = Number(moment(date).format('YYYY')) - Number(moment(this.outBoundGraph[key].time).format('YYYY'));
-      let monthDiff = Number(moment(date).format('MM')) - Number(moment(this.outBoundGraph[key].time).format('MM'))
-      let dateDiff = Number(moment(date).format('DD')) - Number(moment(this.outBoundGraph[key].time).format('DD'))
-      //if(this.outBoundGraph[key].)    Number(moment(today).format('MM'))
-
-      console.log(date);
+      // console.log(date);
       console.log(newdate);
 
       this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
-        console.log(Snapshot);
+        // console.log(Snapshot);
         Snapshot.forEach(element => {
           let time = {};
           let gl001 = {};
@@ -1384,8 +1503,7 @@ async presentAlertUpdateGlass() {
           ld001 = element.data().LD001;
           pet005 = element.data().PET005;
           pet003 = element.data().PET003;
-          pet001 = element.data().PET001;
-
+          pet001 = element.data().PET00;
 
           this.outBoundGraphDisplayDay.push({
             time: time,
@@ -1402,15 +1520,48 @@ async presentAlertUpdateGlass() {
             pet003: pet003,
             pet001: pet001
           })
-          console.log(element.data());
+          // console.log(element.data());
+
+          this.totaloutBoundDayGL001 = +this.totaloutBoundDayGL001 + +gl001;
+          this.totaloutBoundDayNFAL01 = +this.totaloutBoundDayNFAL01 + +nfalo1;
+          this.totaloutBoundDayPAP005 = +this.totaloutBoundDayPAP005 + +pap005;
+          this.totaloutBoundDayPAP007 = +this.totaloutBoundDayPAP007 + +pap007;
+          this.totaloutBoundDayPAP003 = +this.totaloutBoundDayPAP003 + +pap001;
+          this.totaloutBoundDayPAP001 = +this.totaloutBoundDayPAP001 + +pap003;
+          this.totaloutBoundDayHD001 = +this.totaloutBoundDayHD001 + +hd001;
+          this.totaloutBoundDayLD001 = +this.totaloutBoundDayLD001 + +ld003;
+          this.totaloutBoundDayLD003 = +this.totaloutBoundDayLD003 + +ld001;
+          this.totaloutBoundDayPET001 = +this.totaloutBoundDayPET001 + +pet005;
+          this.totaloutBoundDayPET003 = +this.totaloutBoundDayPET003 + +pet003;
+          this.totaloutBoundDayPET005 = +this.totaloutBoundDayGL001 + +pet001;
+
+          this.outboundgh001 = this.totaloutBoundDayGL001;
+          this.outboundnfal01 = this.totaloutBoundDayNFAL01;
+          this.outboundpap005 = this.totaloutBoundDayPAP005;
+          this.outboundpap007 = this.totaloutBoundDayPAP007;
+          this.outboundpap003 = this.totaloutBoundDayPAP003;
+          this.outboundpap001 = this.totaloutBoundDayPAP001;
+          this.outboundhd001 = this.totaloutBoundDayHD001;
+          this.outboundld001 = this.totaloutBoundDayLD001;
+          this.outboundld003 = this.totaloutBoundDayLD003;
+          this.outboundpet003 = this.totaloutBoundDayPET001;
+          this.outboundpet001 = this.totaloutBoundDayPET003;
+          this.outboundpet005 = this.totaloutBoundDayPET005;
+
+      console.log(this.outBoundGraphDisplayDay[key].gl001);
+      console.log(this.outBoundGraphDisplayDay[key].nfalo1);
+      console.log(this.totaloutBoundDayGL001);
           
         })
       })
-
       // this.outBoundGraphDisplayDay.push(date)
       console.log(this.outBoundGraphDisplayDay);
 
+      console.log(this.inboundgh001)
+      console.log(this.inboundnfalo1)
+
     }
+
   }
 
   SumUpMasses() {
@@ -1507,7 +1658,7 @@ async presentAlertUpdateGlass() {
     this.edit = !this.edit;
     // console.log(this.edit,this.editDiv[0]);
     
-    if (this.create) {
+    if (this.edit) {
       // console.log('block');
       this.render.setStyle(this.editDiv[0],'display','block')
     } else {
@@ -1623,7 +1774,7 @@ HideandShowHISTORYGLASS() {
 }
 
   createBarChart() {
-    Chart.defaults.global.defaultFontSize = 3;
+    Chart.defaults.global.defaultFontSize = 4;
     Chart.defaults.global.defaultFontFamily = 'Roboto';
 
     this.bars = new Chart(this.barChart.nativeElement, {
@@ -1678,6 +1829,72 @@ HideandShowHISTORYGLASS() {
   }
   
   /* bar chart */
+  // createBarChart1() {
+  //   Chart.defaults.global.defaultFontSize = 3;
+  //   Chart.defaults.global.defaultFontFamily = 'Roboto';
+  //   this.bars = new Chart(this.barChart1.nativeElement, {
+  //     type: 'bar',
+  //     data: {
+  //       labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+  //       // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
+  //       datasets: [{
+  //         label: 'OUTBOUND',
+  //         data: [
+  //           this.totaloutBoundDayGL001,
+  //           this.totaloutBoundDayNFAL01,
+  //           this.totaloutBoundDayPAP005,
+  //           this.totaloutBoundDayPAP007,
+  //           this.totaloutBoundDayPAP003,
+  //           this.totaloutBoundDayPAP001,
+  //           this.totaloutBoundDayHD001,
+  //           this.totaloutBoundDayLD001,
+  //           this.totaloutBoundDayLD003,
+  //           this.totaloutBoundDayPET001,
+  //           this.totaloutBoundDayPET003,
+  //           this.totaloutBoundDayPET005
+  //         ],
+
+  //           // this.outboundgh001,
+  //           // this.outboundnfal01,
+  //           // this.outboundpap005,
+  //           // this.outboundpap007,
+  //           // this.outboundpap001,
+  //           // this.outboundpap003,
+  //           // this.outboundhd001,
+  //           // this.outboundld001,
+  //           // this.outboundld003,
+  //           // this.outboundpet001,
+  //           // this.outboundpet003,
+  //           // this.outboundpet005
+      
+  //         // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+  //         backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
+  //         borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
+  //         borderWidth: 0.1,
+  //       }]
+  //     },
+  //     options: {
+  //       scales: {
+  //         yAxes: [{
+  //           stacked: true,
+  //           gridLines: {
+  //             display: false,
+           
+  //           }
+  //         }],
+  //         xAxes: [{
+  //           gridLines: {
+  //             display: false
+  //           }
+  //         }]
+  //       },
+  //       labels: {
+  //         defaultFontSize: 5
+  //       }
+  //     }
+  //   });
+  // }
+
   createBarChart1() {
     Chart.defaults.global.defaultFontSize = 3;
     Chart.defaults.global.defaultFontFamily = 'Roboto';
@@ -1916,7 +2133,7 @@ HideandShowHISTORYGLASS() {
       async presentAlertcheckInputs() {
         const alert = await this.alertController.create({
           header: 'Warning!',
-          message: '<strong>Field cannot be empty.</strong>',
+          message: '<strong>Field cannot be empty.</strong>!!!',
           buttons: [
             {
               text: 'Okay',
@@ -1927,72 +2144,72 @@ HideandShowHISTORYGLASS() {
           ]
         });
         await alert.present();
-      }
-      
-      //highlighting the navigation of the daily weekly
-      toggleDaily() {
-        // Changes the header tab
-        document.getElementById("daily").style.display = "flex";
-        document.getElementById("weekly").style.display = "flex";
-        document.getElementById("monthly").style.display = "flex";
-      
-  
-        // Changes the color of the daily tab
-        // document.getElementById("daily").style.background = "white";
-        // document.getElementById("daily").style.color = "black";
-  
-        // Changes the color of the weekly tab
-        document.getElementById("weekly").style.background = "white";
-        document.getElementById("weekly").style.color = "black";
-  
-        // Changes the color of the monthly tab
-        document.getElementById("monthly").style.background = "white";
-        document.getElementById("monthly").style.color = "black";
-  
-        // Changes the color of the Plastic tab
-        document.getElementById("daily").style.background = "#568C0B";
-        document.getElementById("daily").style.color = "white";
-      }
+      } 
+//highlighting the navigation of the daily weekly
+toggleDaily() {
+  // Changes the header tab
+  document.getElementById("daily").style.display = "flex";
+  document.getElementById("weekly").style.display = "flex";
+  document.getElementById("monthly").style.display = "flex";
 
-      toggleWeekly() {                        
-        // Changes the header tab
-        document.getElementById("weekly").style.display = "flex";
-        document.getElementById("monthly").style.display = "flex";
-        document.getElementById("daily").style.display = "flex";
-    
-  
-        // Changes the color of the Paper tab
-        document.getElementById("weekly").style.background = "#568C0B";
-        document.getElementById("weekly").style.color = "white";
-  
-        // Changes the color of the Cans tab
-        document.getElementById("monthly").style.background = "white";
-        document.getElementById("monthly").style.color = "black";
-  
-        // Changes the color of the Glass tab
-        document.getElementById("daily").style.background = "white";
-        document.getElementById("daily").style.color = "black";
-  
-      }
+
+  // Changes the color of the daily tab
+  // document.getElementById("daily").style.background = "white";
+  // document.getElementById("daily").style.color = "black";
+
+  // Changes the color of the weekly tab
+  document.getElementById("weekly").style.background = "white";
+  document.getElementById("weekly").style.color = "black";
+
+  // Changes the color of the monthly tab
+  document.getElementById("monthly").style.background = "white";
+  document.getElementById("monthly").style.color = "black";
+
+  // Changes the color of the Plastic tab
+  document.getElementById("daily").style.background = "#568C0B";
+  document.getElementById("daily").style.color = "white";
+}
+
+toggleWeekly() {                        
+  // Changes the header tab
+  document.getElementById("weekly").style.display = "flex";
+  document.getElementById("monthly").style.display = "flex";
+  document.getElementById("daily").style.display = "flex";
+
+
+  // Changes the color of the Paper tab
+  document.getElementById("weekly").style.background = "#568C0B";
+  document.getElementById("weekly").style.color = "white";
+
+  // Changes the color of the Cans tab
+  document.getElementById("monthly").style.background = "white";
+  document.getElementById("monthly").style.color = "black";
+
+  // Changes the color of the Glass tab
+  document.getElementById("daily").style.background = "white";
+  document.getElementById("daily").style.color = "black";
+
+}
+
+toggleMonthly() {                        
+  // Changes the header tab
+  document.getElementById("monthly").style.display = "flex";
+  document.getElementById("weekly").style.display = "flex";
+  document.getElementById("daily").style.display = "flex";
+
+
+  // Changes the color of the Paper tab
+  document.getElementById("monthly").style.background = "#568C0B";
+  document.getElementById("monthly").style.color = "white";
+
+  // Changes the color of the Cans tab
+  document.getElementById("weekly").style.background = "white";
+  document.getElementById("weekly").style.color = "black";
+
+  // Changes the color of the Glass tab
+  document.getElementById("daily").style.background = "white";
+  document.getElementById("daily").style.color = "black";
+
+}
       
-      toggleMonthly() {                        
-        // Changes the header tab
-        document.getElementById("monthly").style.display = "flex";
-        document.getElementById("weekly").style.display = "flex";
-        document.getElementById("daily").style.display = "flex";
-    
-  
-        // Changes the color of the Paper tab
-        document.getElementById("monthly").style.background = "#568C0B";
-        document.getElementById("monthly").style.color = "white";
-  
-        // Changes the color of the Cans tab
-        document.getElementById("weekly").style.background = "white";
-        document.getElementById("weekly").style.color = "black";
-  
-        // Changes the color of the Glass tab
-        document.getElementById("daily").style.background = "white";
-        document.getElementById("daily").style.color = "black";
-  
-      }
 }
