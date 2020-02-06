@@ -25,18 +25,18 @@ imgGraph = document.getElementsByClassName('inbgraph');
 imgGraph2 = document.getElementsByClassName('inbgraph2');
 imgGraph3 = document.getElementsByClassName('inbgraph3');
  
- GH001price;
- NFAL01price;
- PAP005price;
- PAP007price;
- PAP001price;
- PAP003price;
- HD001price;
- LD001price;
- LD003price;
- PET001price;
- PET003price;
- PET005price;
+  GH001price;
+  NFAL01price;
+  PAP005price;
+  PAP007price;
+  PAP001price;
+  PAP003price;
+  HD001price;
+  LD001price;
+  LD003price;
+  PET001price;
+  PET003price;
+  PET005price;
 
  pricess = {
    gl001: null ,
@@ -54,6 +54,22 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
    time:null
  };
 
+ oldpriceNFAL01;
+ oldpriceglass;
+
+ oldpricehd001;
+ oldpriceld001;
+ oldpriceld003;
+ oldpricepet003;
+ oldpricepet001;
+ oldpricepet005;
+
+
+ oldpricepap001;
+ oldpricepap005;
+ oldpricepap003;
+ oldpricepap007;
+ 
  price = [];
   prices;
 
@@ -324,6 +340,13 @@ reclaimerglass =0;
 reclaimerpaper =0;
 reclaimerAlum =0;
 reclaimerplastic =0;
+
+// storage Variebles
+NFAL001Array = [];
+plasticarray= [];
+PaperArray =[];
+glassArray=[];
+
 
   constructor(
     private modalcontroller: ModalController,
@@ -611,22 +634,18 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   this.createBarChart2();
 })
     }
-
+   
   ngOnInit() {
-    // this.getreclamer();
 
-    this.db.collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot(data => {
-      // console.log("DATA EEE, ", data.data().time);
-    })
 
+    // all Storage (DNT)
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
     this.prices.get().then((documentSnapshot) => {
       this.price = [];
       // console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
-      // console.log('my pricess', documentSnapshot.data().time);
-  
-      this.pricess.time = documentSnapshot.data().time
+      console.log('my pricess', documentSnapshot.data().time);
+
       this.pricess.gl001 = documentSnapshot.data().gl001;
       this.pricess.hd001 = documentSnapshot.data().hd001;
       this.pricess.ld001 = documentSnapshot.data().ld001;
@@ -639,6 +658,24 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       this.pricess.pet001 = documentSnapshot.data().pet001;
       this.pricess.pet003 = documentSnapshot.data().pet003;
       this.pricess.pet005 = documentSnapshot.data().pet005;
+
+    
+
+    
+      this.oldpricepap003 = documentSnapshot.data().pap003;
+      this.oldpricepap001 = documentSnapshot.data().pap001;
+      this.oldpricepap005 = documentSnapshot.data().pap005;
+      this.oldpricepap007 = documentSnapshot.data().pap007;
+
+      this.oldpricepet005 = documentSnapshot.data().pet005;
+      this.oldpricepet001 = documentSnapshot.data().pet001;
+      this.oldpricepet003 = documentSnapshot.data().pet003;
+      this.oldpriceld003 = documentSnapshot.data().ld003;
+      this.oldpriceld001 = documentSnapshot.data().ld001;
+     this.oldpricehd001 = documentSnapshot.data().hd001;
+      this.oldpriceNFAL01 = documentSnapshot.data().nfalo1;
+      this.oldpriceglass = documentSnapshot.data().gl001;
+
     });
     // console.log(this.pricess.gl001);
     // console.log(this.pricess.hd001);
@@ -655,10 +692,38 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
     this.menuCtrl.enable(true); // or true
 
-// this. inbounddata();
-// console.log('iboundssssssssssssssssssss',this.inbounddata())
-    // this.getMasses();
-    // console.log(this.getMasses());
+//plastic
+//glasss
+ // Plastic Storage update
+ this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
+   
+ this.prices.get().then(Document => {
+   this.glassArray.push(Document.data())
+ });
+ console.log(this.glassArray)
+// paper
+this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
+   
+this.prices.get().then(Document => {
+  this.PaperArray.push(Document.data())
+});
+console.log(this.PaperArray)
+
+    // Plastic Storage update
+    this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
+
+    this.prices.get().then(Document => {
+      this.plasticarray.push(Document.data())
+    });
+    console.log(this.plasticarray)
+
+
+    // NFAL01 Storage update
+    this.prices = this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE");
+    this.prices.get().then(Document => {
+      this.NFAL001Array.push(Document.data())
+    });
+    console.log(this.NFAL001Array);
   }
 
   getReclaimers() {
@@ -874,15 +939,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       }
   }
 
-  // CheckInputsEmptyStringGlasss() {
-  //   if (
-  //     this.GH001price === undefined
-  //     ) {
-  //       this.presentAlertcheckInputs();
-  //     } else {
-  //       this.presentAlertUpdateGlass();
-  //     }
-  // }
+  
 
   CheckInputsEmptyStringAlum() {
     if (
@@ -893,7 +950,83 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
         this.presentAlertUpdateAlum();
       }
   }
+
+  CheckInputsEmptyStringglass() {
+    if (
+      this.GH001price === undefined
+      ) {
+        this.presentAlertcheckInputs();
+      } else {
+        this.presentAlertUpdateglass();
+      }
+  }
+  
  
+  async presentAlertUpdateglass() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkglassInputs();
+            this.route.navigateByUrl('/home');
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  checkglassInputs() {
+    // nFAL01;
+    if (this.GH001price === null) {
+      this.GH001price = this.pricess.gl001;
+    } else if (this.GH001price === undefined) {
+      this.GH001 = this.pricess.gl001;
+    }
+    // console.log(this.nFAL01);
+
+
+    this.Updateglass()
+
+  }
+
+  Updateglass() {
+
+        // To update price :
+        this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
+          timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+          newgl001: this.GH001price,
+          oldgl001: this.oldpriceglass,
+    
+         
+
+        }).then((data) => {
+          console.log("Paper old storage successfully updated!");
+        });
+
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      timeAlum:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      gl001: this.GH001price,
+     
+    }).then((data) => {
+      // console.log("Paper successfully updated!");
+    });
+    this.clearInputsGlass();
+  }
+  // gl001: this.GH001price,
+
   async presentAlertUpdatePaper() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
@@ -919,88 +1052,12 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     await alert.present();
   }
 
-  async presentAlertUpdateGlass() {
-        const alert = await this.alertController.create({
-          header: 'Confirm!',
-          message: '<strong>Are you sure you want to change prices?</strong>',
-          buttons: [
-            {
-              text: 'Cancel',
-              role: 'cancel',
-              cssClass: 'secondary',
-              handler: (blah) => {
-                console.log('Confirm Cancel: blah');
-              }
-            }, {
-              text: 'Okay',
-              handler: () => {
-                this.checkAlumInputs();
-                this.route.navigateByUrl('/home');
-                console.log('Confirm Okay');
-              }
-            }
-          ]
-        });
-        await alert.present();
-      }
+ 
+    
 
-     UpdateGlass() {
-          // To update price :
-          this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-            gl001: this.GH001price,
-           
-          }).then((data) => {
-            // console.log("Paper successfully updated!");
-          });
-          this.checkGlassInputs();
-        }
+     
 
-       checkGlassInputs(){
-             // GH001price;
-             if (this.GH001price === null) {
-              this.GH001price = this.pricess.gl001;
-            } else if (this.GH001price === undefined) {
-              this.GH001price = this.pricess.gl001;
-            }
-            // console.log(this.GH001price);
-        
-        
-            this.UpdateGlass()
-          }
-
-  CheckInputsEmptyStringGlasss() {
-    if (
-      this.GH001price === undefined
-      ) {
-        this.presentAlertcheckInputs();
-      } else {
-        this.presentAlertUpdateGlass();
-      }
-  }
-  async presentAlertUpdateglass() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: '<strong>Are you sure you want to change prices?</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            this.checkPaperInputs();
-            this.route.navigateByUrl('/home');
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
+ 
 
   async presentAlertUpdatePlastic() {
     const alert = await this.alertController.create({
@@ -1026,31 +1083,6 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     await alert.present();
   }
-
-// async presentAlertUpdateGlass() {
-//     const alert = await this.alertController.create({
-//       header: 'Confirm!',
-//       message: '<strong>Are you sure you want to change prices?</strong>!!!',
-//       buttons: [
-//         {
-//           text: 'Cancel',
-//           role: 'cancel',
-//           cssClass: 'secondary',
-//           handler: (blah) => {
-//             console.log('Confirm Cancel: blah');
-//           }
-//         }, {
-//           text: 'Okay',
-//           handler: () => {
-//             this.checkGlassInputs();
-//             this.route.navigateByUrl('/home');
-//             console.log('Confirm Okay');
-//           }
-//         }
-//       ]
-//     });
-//     await alert.present();
-//   }
 
 
   async presentAlertUpdateAlum() {
@@ -1115,6 +1147,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
   }
 
+  
+
   checkPlasticInputs() {
     // HD001price;
     if (this.HD001price === null) {
@@ -1163,9 +1197,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       this.PET005price = this.pricess.pet005;
     }
     // console.log(this.PET005price);
-
     this.UpdatePlastic()
-
   }
 
   checkAlumInputs() {
@@ -1177,24 +1209,31 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     }
     // console.log(this.nFAL01);
 
-
     this.UpdateAlum()
-
   }
-  // checkGlassInputs(){
-  //    // GH001price;
-  //    if (this.GH001price === null) {
-  //     this.GH001price = this.pricess.gl001;
-  //   } else if (this.GH001price === undefined) {
-  //     this.GH001price = this.pricess.gl001;
-  //   }
-  //   // console.log(this.GH001price);
-
-
-  //   this.UpdateGlass()
-  // }
 
   UpdatePaper() {
+        // To update price :
+        this.db.collection("price").doc("uk3Rla3tt9xgd8NivPJ6").update({
+          timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
+     
+          newpap005: this.PAP005price,
+          newpap007: this.PAP007price,
+          newpap001: this.PAP001price,
+          newpap003: this.PAP003price,
+          
+          oldpap005: this.oldpricepap005,
+          oldpap007: this.oldpricepap007,
+          oldpap001: this.oldpricepap001,
+          oldpap003: this.oldpricepap003,
+
+          
+
+
+    
+        }).then((data) => {
+          console.log("Paper old storage successfully updated!");
+        });
     // To update price :
     this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
       timePaper:moment().format('MMMM Do YYYY, h:mm:ss a'),
@@ -1202,6 +1241,8 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
       pap007: this.PAP007price,
       pap001: this.PAP001price,
       pap003: this.PAP003price,
+
+
     }).then((data) => {
       // console.log("Paper successfully updated!");
     });
@@ -1209,8 +1250,29 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   }
   UpdatePlastic() {
     // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    this.db.collection("price").doc("7O6KqClxLD780ltfC6i5").update({
+      timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
+ 
+      newhd001: this.HD001price,
+      newld001: this.LD001price,
+      newld003: this.LD003price,
+      newpet001: this.PET001price,
+      newpet003: this.PET003price,
+      newpet005: this.PET005price,
     
+      oldhd001: this.oldpricehd001,
+      oldld001: this.oldpricehd001,
+      oldld003: this.oldpriceld003,
+      oldpet001: this.oldpricepet001,
+      oldpet003: this.oldpricepet003,
+      oldpet005: this.oldpricepet005,
+
+    }).then((data) => {
+      console.log("Paper old storage successfully updated!");
+    });
+    // To update price :
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      timePlastic:moment().format('MMMM Do YYYY, h:mm:ss a'),
       hd001: this.HD001price,
       ld001: this.LD001price,
       ld003: this.LD003price,
@@ -1222,41 +1284,25 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
     });
     this.clearInputsPlastic();
   }
-
-  // UpdateGlass() {
-  //   // To update price :
-  //   this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-  //     gl001: this.GH001price,
-     
-  //   }).then((data) => {
-  //     // console.log("Paper successfully updated!");
-  //   });
-  //   this.checkGlassInputs();
-  // }
-
   
   UpdateAlum() {
     // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      nfalo1: this.NFAL01price,
-     
+    this.db.collection("price").doc("ChHHlFcUFzucHOzPpEgE").update({
+      timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      oldnfal01: this.oldpriceNFAL01,
+      newnfal01: this.NFAL01price
     }).then((data) => {
-      // console.log("Paper successfully updated!");
+      console.log("Paper old storage successfully updated!");
+    });
+
+    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      nfalo1: this.NFAL01price,
+    }).then((data) => {
+      console.log("Paper successfully updated!");
     });
     this.clearInputsAlum();
   }
-  // gl001: this.GH001price,
-  //     nfalo1: this.NFAL01price,
-  //     pap005: this.PAP005price,
-  //     pap007: this.PAP007price,
-  //     pap001: this.PAP001price,
-  //     pap003: this.PAP003price,
-  //     hd001: this.HD001price,
-  //     ld001: this.LD001price,
-  //     ld003: this.LD003price,
-  //     pet001: this.PET001price,
-  //     pet003: this.PET003price,
-  //     pet005: this.PET005price,
 
   clearInputsPaper() {
     this.PAP005price = '';
@@ -1266,14 +1312,11 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
   }
   clearInputsAlum() {
     this.NFAL01price ='';
-  
   }
 
   clearInputsGlass() {
     this.GH001price ='';
-  
   }
-  
 
   clearInputsPlastic() {
     this.HD001price = '';
@@ -1404,7 +1447,7 @@ firebase.firestore().collection('reclaimers').get().then(res=>{
 
       console.log(this.outBoundGraph);
 
-    let dat = this.datez
+    // let dat = this.datez
 
     // let time = dat.setTime(dat.getTime() - (1 * 24 * 60 * 60 * 1000))
 
@@ -2205,5 +2248,46 @@ toggleMonthly() {
   document.getElementById("daily").style.color = "black";
 
 }
-      
+async presentAlertDelete(id) {
+  const alert = await this.alertController.create({
+    header: 'Confirm!',
+    message: '<strong>Are you sure you want to delete this record, your information will not be saved.</strong>!!!',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Okay',
+        handler: () => {
+          this.deleteprice(id);
+          this.route.navigateByUrl('/home');
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+deleteprice(id) {
+  this.db.collection('price').doc('SinUfRNnbB073KZiDIZE').delete();
+  console.log('Record deleted');
+}  
+deletehd001(v){
+  console.log('aaaa',v);
+  firebase.firestore().collection('price').doc('SinUfRNnbB073KZiDIZE').update({
+    v : firebase.firestore.FieldValue.delete()
+  }).catch( err => {
+    console.log(err);
+    
+  })
+  
+}
+
+
+
+
 }
