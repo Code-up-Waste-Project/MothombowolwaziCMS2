@@ -89,6 +89,9 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   aluDiv: any = document.getElementsByClassName('aluDiv');
   alu: boolean = false;
 
+
+  fix: any = document.getElementsByClassName('fix');
+
   // Reclaimer
   reclaimerID;
   reclaimername;
@@ -361,6 +364,7 @@ reclaimerplastic =0;
       this.render.setStyle(this.imgGraph[0],'width', '80%');
       this.render.setStyle(this.imgGraph[0],'height', '80%');
       this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
+     
     }
 
     transformGraph2() {
@@ -386,7 +390,11 @@ reclaimerplastic =0;
       this.render.setStyle(this.imgGraph[0],'width', '80%');
       this.render.setStyle(this.imgGraph[0],'height', '80%');
       this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
+      this.render.setStyle(this.fix, 'display', 'block')
+    
     }
+
+    
 
      //chart
      updated

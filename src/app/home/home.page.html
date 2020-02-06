@@ -182,7 +182,10 @@
 
 <!-- graph 1 -->
     <div  class="graph inbgraph" (click)="transformGraph()" style="background: #FFF3C2;" >
-      <canvas #barChart ></canvas>
+      <canvas #barChart >
+   
+      </canvas>
+      
     </div>
 <!-- graph 2 -->
     <div class="graph inbgraph2" (click)="transformGraph2()"  style="background: #FFCFE5;">
@@ -191,6 +194,9 @@
 <!-- graph 3 -->
     <div class="graph inbgraph3" (click)="transformGraph3()"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
+      <!-- <ion-button class="" fill="solid">
+        <ion-icon name="close"></ion-icon>
+      </ion-button> -->
     </div>
   </div>
 
@@ -224,10 +230,10 @@
   <div padding class="editform2">
     <ion-button class="close"  fill="clear" (click)=" HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
-  <input placeholder="PAP005" [(ngModel)]="PAP005price" >
-  <input placeholder="PAP007" [(ngModel)]="PAP007price">
- <input placeholder="PAP001"  [(ngModel)]="PAP001price">
- <input placeholder="PAP003"  [(ngModel)]="PAP003price">
+  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" >
+  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price">
+ <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price">
+ <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price">
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
@@ -253,35 +259,18 @@
   <h1>Keeping Track Of All Your Updates</h1>
   <div class="headers">
     <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
-    <div class="one"><h2 >Old Pricing</h2></div>
+    <div class="one"><h2 >Material</h2></div>
     <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
   </div>
 
   <div class="historydata">
-    <div class="historydata2">
+    <div class="historydata2" >
       <div class="two">25 / 02 / 2020</div>
       <div class="two">1, 98</div>
       <div class="two">2.03</div>
     </div>
 
 
-    <div class="historydata2">
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
-    </div>
-
-    <div class="historydata2">
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
-    </div>
-
-    <div class="historydata2">
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
-    </div>
   </div>
  </div>
 <!-- <p>date  old new <ion-icon name="trash"></ion-icon></p>
