@@ -1413,6 +1413,12 @@ async presentAlertUpdateGlass() {
     }
   }
 
+  SumUpMasses() {
+    for(let key in this.outBoundGraphDisplayDay) {
+      
+    }
+  }
+
   PullWeekData() {
     
   }
