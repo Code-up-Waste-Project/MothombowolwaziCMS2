@@ -617,7 +617,7 @@ glassArray=[];
         +parseFloat(val.data().PET003)
         +parseFloat(val.data().PET005);
     
-      // console.log(new Date(val.data().date.seconds*1000))
+      console.log(new Date(val.data().date.seconds*1000))
       this.updatedoutbound =(new Date(val.data().date.seconds*1000)).toDateString();
         // console.log('ountglass',  this.outboundglass)
         this.outboundgh001 =this.outboundgh001 +parseFloat(val.data().GH001)
