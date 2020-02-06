@@ -14,47 +14,112 @@ import { format } from 'url';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit {
 
-  @ViewChild('barChart', {static: false}) barChart;
-  @ViewChild('barChart1', {static: false}) barChart1;
-  @ViewChild('barChart2', {static: false}) barChart2;
+  viewBackdrop = false
 
-//store element into a variable
-imgGraph = document.getElementsByClassName('inbgraph');
-imgGraph2 = document.getElementsByClassName('inbgraph2');
-imgGraph3 = document.getElementsByClassName('inbgraph3');
- 
- GH001price;
- NFAL01price;
- PAP005price;
- PAP007price;
- PAP001price;
- PAP003price;
- HD001price;
- LD001price;
- LD003price;
- PET001price;
- PET003price;
- PET005price;
+  @ViewChild('barChart', { static: false }) barChart;
+  @ViewChild('barChart1', { static: false }) barChart1;
+  @ViewChild('barChart2', { static: false }) barChart2;
 
- pricess = {
-   gl001: null ,
-   hd001: null,
-   pap005: null,
-   pap007: null,
-   pap001: null,
-   pap003: null,
-   ld003: null,
-   ld001: null,
-   nfalo1: null,
-   pet005: null,
-   pet003: null,
-   pet001: null,
-   time:null
- };
+  //store element into a variable
+  imgGraph = document.getElementsByClassName('inbgraph');
+  imgGraph2 = document.getElementsByClassName('inbgraph2');
+  imgGraph3 = document.getElementsByClassName('inbgraph3');
 
- price = [];
+  inboundweight = 0;
+  outboundweight = 0;
+  Reclaimerweight = 0;
+
+  //graghdatainbound
+  inboundgh001 = 0;
+  inboundnfalo1 = 0;
+  inboundpap005 = 0;
+  inboundpap007 = 0;
+  inboundpap001 = 0;
+  inboundpap003 = 0;
+  inboundhd001 = 0;
+  inboundld001 = 0;
+  inboundld003 = 0;
+  inboundpet001 = 0;
+  inboundpet003 = 0;
+  inboundpet005 = 0;
+
+  inboundpaper = 0;
+  inboundAlum = 0;
+  inboundplastic = 0;
+
+  //outboundgraphs
+  outboundglass = 0;
+  outboundpaper = 0;
+  outboundAlum = 0;
+  outboundplastic = 0;
+
+
+  //reclaimer
+  reclaimergh001mass = 0;
+  reclaimernfa01Mass = 0;
+  reclaimerpap005mass = 0;
+  reclaimerpap007Mass = 0;
+  reclaimerpap001mass = 0;
+  reclaimerpap003mass = 0;
+  reclaimerhd001mass = 0;
+  reclaimerld001mass = 0;
+  reclaimerld003mass = 0;
+  reclaimerpet001mass = 0;
+  reclaimerpet003mass = 0;
+  reclaimerpet005mass = 0;
+  //outboundgraphs
+
+
+  outboundgh001 = 0;
+  outboundnfal01 = 0;
+  outboundpap005 = 0;
+  outboundpap007 = 0;
+  outboundpap003 = 0;
+  outboundpap001 = 0;
+  outboundhd001 = 0;
+  outboundld001 = 0;
+  outboundld003 = 0;
+  outboundpet003 = 0;
+  outboundpet001 = 0;
+  outboundpet005 = 0;
+
+  reclaimerglass = 0;
+  reclaimerpaper = 0;
+  reclaimerAlum = 0;
+  reclaimerplastic = 0;
+
+  GH001price;
+  NFAL01price;
+  PAP005price;
+  PAP007price;
+  PAP001price;
+  PAP003price;
+  HD001price;
+  LD001price;
+  LD003price;
+  PET001price;
+  PET003price;
+  PET005price;
+
+  pricess = {
+    gl001: null,
+    hd001: null,
+    pap005: null,
+    pap007: null,
+    pap001: null,
+    pap003: null,
+    ld003: null,
+    ld001: null,
+    nfalo1: null,
+    pet005: null,
+    pet003: null,
+    pet001: null,
+    time: null
+  };
+
+  price = [];
   prices;
 
   bars: any;
@@ -138,50 +203,49 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
     // email:firebase.auth().currentUser.email
   };
   isAdmin: any;
-//inbound
-  inboundGH001;
-  inboundHD001;
-  inboundLD001;
-  inboundLD003;
-  inboundNFAL01;
-  inboundPAP001;
-  inboundPAP003;
-  inboundPAP005;
-  inboundPAP007;
-  inboundPET001;
-  inboundPET003;
-  inboundPET005;
+  //inbound
+  inboundGH001;
+  inboundHD001;
+  inboundLD001;
+  inboundLD003;
+  inboundNFAL01;
+  inboundPAP001;
+  inboundPAP003;
+  inboundPAP005;
+  inboundPAP007;
+  inboundPET001;
+  inboundPET003;
+  inboundPET005;
 
 
-  //Reclaomers
-  GH001Mass;
-  HD001Mass; 
-  LD001Mass; 
-  LD003Mass;
-  NFAL01Mass; 
-  PAP001Mass;
-  PAP003Mass;
-  PAP007Mass; 
-  PET001Mass;
-  PET003Mass;
-  PET005Mass;
-  PAP005Mass
+  //Reclaomers
+  GH001Mass;
+  HD001Mass;
+  LD001Mass;
+  LD003Mass;
+  NFAL01Mass;
+  PAP001Mass;
+  PAP003Mass;
+  PAP007Mass;
+  PET001Mass;
+  PET003Mass;
+  PET005Mass;
+  PAP005Mass
 
-//outbound
-  GL001
+  //outbound
+  PAP005;
+  HD001;
+  LD001;
+  LD003;
   NFAL01;
-  PAP005;
-  PAP007;
+  PAP001;
   PAP003;
-  PAP001;
-  HD001;
-  LD001;
-  LD003;
+  PAP007;
   PET001;
-  PET003;
-  PET005;
+  PET003;
+  PET005;
 
-//storage
+  //storage
   GH001storagemass;
   NFAL01storagemass;
 
@@ -234,101 +298,9 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   outboundWeek;
   outboundMonth;
   outboundYear;
-
   viewingGraph = ''
   xAxisSize = 5
   yAxisSize = 3
-
-  // variebles for graphs
-  totaloutBoundDayGL001 = 0;
-  totaloutBoundDayNFAL01 = 0;
-  totaloutBoundDayPAP005 = 0;
-  totaloutBoundDayPAP007 = 0;
-  totaloutBoundDayPAP003 = 0;
-  totaloutBoundDayPAP001 = 0;
-  totaloutBoundDayHD001 = 0;
-  totaloutBoundDayLD001 = 0;
-  totaloutBoundDayLD003 = 0;
-  totaloutBoundDayPET001 = 0;
-  totaloutBoundDayPET003 = 0;
-  totaloutBoundDayPET005 = 0;
-
-//   GL001
-//   NFAL01;
-//   PAP005;
-//   PAP007;
-//   PAP003;
-//   PAP001;
-//   HD001;
-//   LD001;
-//   LD003;
-//   PET001;
-//   PET003;
-//   PET005;
-
-inboundweight = 0;
- outboundweight = 0;
- Reclaimerweight = 0;
-
- //graghdatainbound
-inboundgh001 = 0;
-inboundnfalo1 = 0;
-inboundpap005 = 0;
-inboundpap007 = 0;
-inboundpap001 = 0;
-inboundpap003 = 0;
-inboundhd001 = 0;
-inboundld001 = 0;
-inboundld003 = 0;
-inboundpet001 = 0;
-inboundpet003 = 0;
-inboundpet005 = 0;
-
- inboundpaper = 0;
- inboundAlum = 0;
- inboundplastic = 0;
-
-//outboundgraphs
-outboundglass = 0;
-outboundpaper = 0;
-outboundAlum = 0;
-outboundplastic = 0;
-
-
- //reclaimer
- reclaimergh001mass = 0;
- reclaimernfa01Mass = 0;
- reclaimerpap005mass = 0;
- reclaimerpap007Mass = 0;
- reclaimerpap001mass = 0;
- reclaimerpap003mass = 0;
- reclaimerhd001mass = 0;
- reclaimerld001mass = 0;
- reclaimerld003mass = 0;
- reclaimerpet001mass = 0;
- reclaimerpet003mass = 0;
- reclaimerpet005mass = 0;
- //outboundgraphs
-
-
- outboundgh001 = 0;
- outboundnfal01 = 0;
- outboundpap005 = 0;
- outboundpap007 = 0;
- outboundpap003 = 0;
- outboundpap001 = 0;
- outboundhd001 = 0;
- outboundld001 = 0;
- outboundld003 = 0;
- outboundpet003 = 0;
- outboundpet001 = 0;
- outboundpet005 = 0;
-
-reclaimerglass =0;
-reclaimerpaper =0;
-reclaimerAlum =0;
-reclaimerplastic =0;
-
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
@@ -537,68 +509,78 @@ backdrop() {
 
 
 
-//pulling data
-//inbound
-// this.inboundgh001=0;
-this.inboundpap005=0;
-this.inboundAlum =0;
-this.inboundweight =0;
-this.inboundplastic =0;
-firebase.firestore().collection('inbounds').get().then(res=>{
-  res.forEach(val=>{
-  
-    // console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
-    this.inboundweight =this.inboundweight 
-    +parseFloat(val.data().inboundGH001) +
-    +parseFloat(val.data().inboundNFAL01) +
+//chart
+updated
 
-    +parseFloat(val.data().inboundPAP001) +
-    +parseFloat(val.data().inboundPAP003) +
-    +parseFloat(val.data().inboundPAP005) +
-    +parseFloat(val.data().inboundPAP007) +
+updatedoutbound
+updateReclaimer
 
-    +parseFloat(val.data().inboundHD001) +
-    +parseFloat(val.data().inboundLD001) +
-    +parseFloat(val.data().inboundLD003) +
-    +parseFloat(val.data().inboundPET001) +
-    +parseFloat(val.data().inboundPET003) +
-    +parseFloat(val.data().inboundPET005) ;
-    
-    // console.log(new Date(val.data().time.seconds*1000))
-    this.updated =(new Date(val.data().time.seconds*1000)).toDateString();
+ionViewDidEnter() {
 
-  this.inboundgh001 =this.inboundgh001 +parseFloat(val.data().inboundGH001)
-  this.inboundnfalo1 =this.inboundnfalo1 +parseFloat(val.data().inboundNFAL01)
+  //pulling data
+  //inbound
+  this.inboundgh001 = 0;
+  this.inboundpap005 = 0;
+  this.inboundAlum = 0;
+  this.inboundweight = 0;
+  this.inboundplastic = 0;
+  firebase.firestore().collection('inbounds').get().then(res => {
+    res.forEach(val => {
 
-  this.inboundpap005 =this.inboundpap005 +parseFloat(val.data().inboundPAP005)
-  this.inboundpap007 =this.inboundpap007  +parseFloat(val.data().inboundPAP007)
-  this.inboundpap001 =this.inboundpap001 +parseFloat(val.data().inboundPAP001)
-  this.inboundpap003 =this.inboundpap003 +parseFloat(val.data().inboundPAP003)
+      // console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
+      this.inboundweight = this.inboundweight
+        + parseFloat(val.data().inboundGH001) +
+        +parseFloat(val.data().inboundNFAL01) +
 
-  this.inboundhd001 =this.inboundhd001 +parseFloat(val.data().inboundHD001)
-  this.inboundld001 =this.inboundld001 +parseFloat(val.data().inboundLD001)
-  this.inboundld003 =this.inboundld003 +parseFloat(val.data().inboundLD003)
-  this.inboundpet001 =this.inboundpet001 +parseFloat(val.data().inboundPET001)
-  this.inboundpet003 =this.inboundpet003 +parseFloat(val.data().inboundPET003)
-  this.inboundpet005 =this.inboundpet005 +parseFloat(val.data().inboundPET005)
+        +parseFloat(val.data().inboundPAP001) +
+        +parseFloat(val.data().inboundPAP003) +
+        +parseFloat(val.data().inboundPAP005) +
+        +parseFloat(val.data().inboundPAP007) +
 
-//paper
-this.inboundpaper = this.inboundpaper 
-+parseFloat(val.data().inboundPAP005) 
-+parseFloat(val.data().inboundPAP007) 
-+parseFloat(val.data().inboundPAP003) 
-+parseFloat(val.data().inboundPAP001);
+        +parseFloat(val.data().inboundHD001) +
+        +parseFloat(val.data().inboundLD001) +
+        +parseFloat(val.data().inboundLD003) +
+        +parseFloat(val.data().inboundPET001) +
+        +parseFloat(val.data().inboundPET003) +
+        +parseFloat(val.data().inboundPET005);
 
-//aluminium
-this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
+      // console.log(new Date(val.data().time.seconds*1000))
+      this.updated = (new Date(val.data().time.seconds * 1000)).toDateString();
 
-//plastic
-this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
-+parseFloat(val.data().inboundHD001)
-+parseFloat(val.data().inboundLD001)
-+parseFloat(val.data().inboundLD003)
-+parseFloat(val.data().inboundPET003)
-+parseFloat(val.data().inboundPET001) 
+      this.inboundgh001 = this.inboundgh001 + parseFloat(val.data().inboundGH001)
+      this.inboundnfalo1 = this.inboundnfalo1 + parseFloat(val.data().inboundNFAL01)
+
+      this.inboundpap005 = this.inboundpap005 + parseFloat(val.data().inboundPAP005)
+      this.inboundpap007 = this.inboundpap007 + parseFloat(val.data().inboundPAP007)
+      this.inboundpap001 = this.inboundpap001 + parseFloat(val.data().inboundPAP001)
+      this.inboundpap003 = this.inboundpap003 + parseFloat(val.data().inboundPAP003)
+
+      this.inboundhd001 = this.inboundhd001 + parseFloat(val.data().inboundHD001)
+      this.inboundld001 = this.inboundld001 + parseFloat(val.data().inboundLD001)
+      this.inboundld003 = this.inboundld003 + parseFloat(val.data().inboundLD003)
+      this.inboundpet001 = this.inboundpet001 + parseFloat(val.data().inboundPET001)
+      this.inboundpet003 = this.inboundpet003 + parseFloat(val.data().inboundPET003)
+      this.inboundpet005 = this.inboundpet005 + parseFloat(val.data().inboundPET005)
+
+      //paper
+      this.inboundpaper = this.inboundpaper
+        + parseFloat(val.data().inboundPAP005)
+        + parseFloat(val.data().inboundPAP007)
+        + parseFloat(val.data().inboundPAP003)
+        + parseFloat(val.data().inboundPAP001);
+
+      //aluminium
+      this.inboundAlum = this.inboundAlum + parseFloat(val.data().inboundNFAL01)
+
+      //plastic
+      this.inboundplastic = this.inboundplastic + +parseFloat(val.data().inboundHD001)
+        + parseFloat(val.data().inboundHD001)
+        + parseFloat(val.data().inboundLD001)
+        + parseFloat(val.data().inboundLD003)
+        + parseFloat(val.data().inboundPET003)
+        + parseFloat(val.data().inboundPET001)
+    })
+    this.createBarChart();
   })
 
   //outbound
@@ -1364,35 +1346,10 @@ UpdatePlastic() {
 // }
 
 
-  UpdatePaper() {
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      timePaper:moment().format('MMMM Do YYYY, h:mm:ss a'),
-      pap005: this.PAP005price,
-      pap007: this.PAP007price,
-      pap001: this.PAP001price,
-      pap003: this.PAP003price,
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
-    this.clearInputsPaper();
-  }
-  
-  UpdatePlastic() {
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-    
-      hd001: this.HD001price,
-      ld001: this.LD001price,
-      ld003: this.LD003price,
-      pet001: this.PET001price,
-      pet003: this.PET003price,
-      pet005: this.PET005price,
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
-    this.clearInputsPlastic();
-  }
+UpdateAlum() {
+  // To update price :
+  this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    nfalo1: this.NFAL01price,
 
   }).then((data) => {
     // console.log("Paper successfully updated!");
@@ -1619,104 +1576,74 @@ pullWeeklyInbound() {
   });
 }
 
-  PullDayData() {
-    for(let key in this.outBoundGraph) {
-      let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
+PullDayData() {
+  for (let key in this.outBoundGraph) {
+    let date = moment(new Date()).format('MMMM DD YYYY');
+    let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
 
-      // console.log(date);
-      console.log(newdate);
+    let yearDiff = Number(moment(date).format('YYYY')) - Number(moment(this.outBoundGraph[key].time).format('YYYY'));
+    let monthDiff = Number(moment(date).format('MM')) - Number(moment(this.outBoundGraph[key].time).format('MM'))
+    let dateDiff = Number(moment(date).format('DD')) - Number(moment(this.outBoundGraph[key].time).format('DD'))
+    //if(this.outBoundGraph[key].)    Number(moment(today).format('MM'))
 
-      this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
-        // this.outBoundGraphDisplayDay.push(Snapshot);
-        // console.log(Snapshot);
-        Snapshot.forEach(element => {
-          let time = {};
-          let gl001 = {};
-          let nfalo1 = {};
-          let pap005 = {};
-          let pap007 = {};
-          let pap001 = {};
-          let pap003 = {};
-          let hd001 = {};
-          let ld003 = {};
-          let ld001 = {};
-          let pet005 = {};
-          let pet003 = {};
-          let pet001 = {};
+    console.log(date);
+    console.log(newdate);
 
-          time = element.data().date;
-          gl001 = element.data().GH001;
-          nfalo1 = element.data().NFAL01;
-          pap005 = element.data().PAP005;
-          pap007 = element.data().PAP007;
-          pap001 = element.data().PAP001;
-          pap003 = element.data().PAP003;
-          hd001 = element.data().HD001;
-          ld003 = element.data().LD003;
-          ld001 = element.data().LD001;
-          pet005 = element.data().PET005;
-          pet003 = element.data().PET003;
-          pet001 = element.data().PET00;
+    this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      // this.outBoundGraphDisplayDay.push(Snapshot);
+      console.log(Snapshot);
+      Snapshot.forEach(element => {
+        let time = {};
+        let gl001 = {};
+        let nfalo1 = {};
+        let pap005 = {};
+        let pap007 = {};
+        let pap001 = {};
+        let pap003 = {};
+        let hd001 = {};
+        let ld003 = {};
+        let ld001 = {};
+        let pet005 = {};
+        let pet003 = {};
+        let pet001 = {};
 
-          this.outBoundGraphDisplayDay.push({
-            time: time,
-            gl001: gl001,
-            nfalo1: nfalo1,
-            pap005: pap005,
-            pap007: pap007,
-            pap001: pap001,
-            pap003: pap003,
-            hd001: hd001,
-            ld003: ld003,
-            ld001: ld001,
-            pet005: pet005,
-            pet003: pet003,
-            pet001: pet001
-          })
-          // console.log(element.data());
+        time = element.data().date;
+        gl001 = element.data().GH001;
+        nfalo1 = element.data().NFAL01;
+        pap005 = element.data().PAP005;
+        pap007 = element.data().PAP007;
+        pap001 = element.data().PAP001;
+        pap003 = element.data().PAP003;
+        hd001 = element.data().HD001;
+        ld003 = element.data().LD003;
+        ld001 = element.data().LD001;
+        pet005 = element.data().PET005;
+        pet003 = element.data().PET003;
+        pet001 = element.data().PET001;
 
-          this.totaloutBoundDayGL001 = +this.totaloutBoundDayGL001 + +gl001;
-          this.totaloutBoundDayNFAL01 = +this.totaloutBoundDayNFAL01 + +nfalo1;
-          this.totaloutBoundDayPAP005 = +this.totaloutBoundDayPAP005 + +pap005;
-          this.totaloutBoundDayPAP007 = +this.totaloutBoundDayPAP007 + +pap007;
-          this.totaloutBoundDayPAP003 = +this.totaloutBoundDayPAP003 + +pap001;
-          this.totaloutBoundDayPAP001 = +this.totaloutBoundDayPAP001 + +pap003;
-          this.totaloutBoundDayHD001 = +this.totaloutBoundDayHD001 + +hd001;
-          this.totaloutBoundDayLD001 = +this.totaloutBoundDayLD001 + +ld003;
-          this.totaloutBoundDayLD003 = +this.totaloutBoundDayLD003 + +ld001;
-          this.totaloutBoundDayPET001 = +this.totaloutBoundDayPET001 + +pet005;
-          this.totaloutBoundDayPET003 = +this.totaloutBoundDayPET003 + +pet003;
-          this.totaloutBoundDayPET005 = +this.totaloutBoundDayGL001 + +pet001;
 
-          this.outboundgh001 = this.totaloutBoundDayGL001;
-          this.outboundnfal01 = this.totaloutBoundDayNFAL01;
-          this.outboundpap005 = this.totaloutBoundDayPAP005;
-          this.outboundpap007 = this.totaloutBoundDayPAP007;
-          this.outboundpap003 = this.totaloutBoundDayPAP003;
-          this.outboundpap001 = this.totaloutBoundDayPAP001;
-          this.outboundhd001 = this.totaloutBoundDayHD001;
-          this.outboundld001 = this.totaloutBoundDayLD001;
-          this.outboundld003 = this.totaloutBoundDayLD003;
-          this.outboundpet003 = this.totaloutBoundDayPET001;
-          this.outboundpet001 = this.totaloutBoundDayPET003;
-          this.outboundpet005 = this.totaloutBoundDayPET005;
-
-      console.log(this.outBoundGraphDisplayDay[key].gl001);
-      console.log(this.outBoundGraphDisplayDay[key].nfalo1);
-      console.log(this.totaloutBoundDayGL001);
-          
+        this.outBoundGraphDisplayDay.push({
+          time: time,
+          gl001: gl001,
+          nfalo1: nfalo1,
+          pap005: pap005,
+          pap007: pap007,
+          pap001: pap001,
+          pap003: pap003,
+          hd001: hd001,
+          ld003: ld003,
+          ld001: ld001,
+          pet005: pet005,
+          pet003: pet003,
+          pet001: pet001
         })
         console.log(element.data());
 
       })
-      // this.outBoundGraphDisplayDay.push(date)
-      console.log(this.outBoundGraphDisplayDay);
+    })
 
-      console.log(this.inboundgh001)
-      console.log(this.inboundnfalo1)
-
-    }
+    // this.outBoundGraphDisplayDay.push(date)
+    console.log(this.outBoundGraphDisplayDay);
 
   }
 }
@@ -1960,125 +1887,10 @@ showMoreBtn2() {
     this.optsSlider2[0].style.width = "105px"
     // console.log("this is open")
   }
-  
-  /* bar chart */
-  // createBarChart1() {
-  //   Chart.defaults.global.defaultFontSize = 3;
-  //   Chart.defaults.global.defaultFontFamily = 'Roboto';
-  //   this.bars = new Chart(this.barChart1.nativeElement, {
-  //     type: 'bar',
-  //     data: {
-  //       labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
-  //       // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
-  //       datasets: [{
-  //         label: 'OUTBOUND',
-  //         data: [
-  //           this.totaloutBoundDayGL001,
-  //           this.totaloutBoundDayNFAL01,
-  //           this.totaloutBoundDayPAP005,
-  //           this.totaloutBoundDayPAP007,
-  //           this.totaloutBoundDayPAP003,
-  //           this.totaloutBoundDayPAP001,
-  //           this.totaloutBoundDayHD001,
-  //           this.totaloutBoundDayLD001,
-  //           this.totaloutBoundDayLD003,
-  //           this.totaloutBoundDayPET001,
-  //           this.totaloutBoundDayPET003,
-  //           this.totaloutBoundDayPET005
-  //         ],
-
-  //           // this.outboundgh001,
-  //           // this.outboundnfal01,
-  //           // this.outboundpap005,
-  //           // this.outboundpap007,
-  //           // this.outboundpap001,
-  //           // this.outboundpap003,
-  //           // this.outboundhd001,
-  //           // this.outboundld001,
-  //           // this.outboundld003,
-  //           // this.outboundpet001,
-  //           // this.outboundpet003,
-  //           // this.outboundpet005
-      
-  //         // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-  //         backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
-  //         borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
-  //         borderWidth: 0.1,
-  //       }]
-  //     },
-  //     options: {
-  //       scales: {
-  //         yAxes: [{
-  //           stacked: true,
-  //           gridLines: {
-  //             display: false,
-           
-  //           }
-  //         }],
-  //         xAxes: [{
-  //           gridLines: {
-  //             display: false
-  //           }
-  //         }]
-  //       },
-  //       labels: {
-  //         defaultFontSize: 5
-  //       }
-  //     }
-  //   });
-  // }
-
-  createBarChart1() {
-    Chart.defaults.global.defaultFontSize = 3;
-    Chart.defaults.global.defaultFontFamily = 'Roboto';
-    this.bars = new Chart(this.barChart1.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
-        // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
-        datasets: [{
-          label: 'OUTBOUND',
-          data: [
-            this.outboundgh001,
-            this.outboundnfal01,
-            this.outboundpap005,
-            this.outboundpap007,
-            this.outboundpap001,
-            this.outboundpap003,
-            this.outboundhd001,
-            this.outboundld001,
-            this.outboundld003,
-            this.outboundpet001,
-            this.outboundpet003,
-            this.outboundpet005
-          ],
-      
-          // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
-          backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
-          borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
-          borderWidth: 0.1,
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            stacked: true,
-            gridLines: {
-              display: false,
-           
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              display: false
-            }
-          }]
-        },
-        labels: {
-          defaultFontSize: 5
-        }
-      }
-    });
+  else {
+    this.moreState2 = 0
+    this.optsSlider2[0].style.width = "30px"
+    // console.log("this is closed")
   }
 }
 
