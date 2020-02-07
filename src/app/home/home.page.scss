@@ -1069,9 +1069,9 @@ p {
   }
   }
  .container {
- //  border: 2px solid red;
+  // border: 2px solid red;
  .close {
-  border: 2px solid red;
+ // border: 2px solid red;
  }
   .alltime {
     //border: 2px solid blue;
@@ -1108,9 +1108,11 @@ p {
     }
   }
   .material {
-   border: 2px solid blue;
-   .burgercontent {
-     border: 1px solid red;
+ //  border: 2px solid blue;
+   .burgercontent, .burgercontent2, .burgercontent3, .burgercontent4 {
+     //border: 1px solid red;
+     position: absolute;
+     bottom: 10%;
   
    }
     .matnames {
