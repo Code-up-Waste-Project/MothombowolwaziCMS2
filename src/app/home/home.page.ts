@@ -1197,7 +1197,7 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkAlumInputs();
-            this.route.navigateByUrl('/home');
+            
             console.log('Confirm Okay');
           }
         }
@@ -1306,6 +1306,7 @@ console.log(this.PaperArray)
     // console.log(this.nFAL01);
 
     this.UpdateAlum()
+    
   }
 
   UpdatePaper() {

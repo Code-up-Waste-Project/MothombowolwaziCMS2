@@ -103,6 +103,8 @@ this.surname=obj.surname
 
 
   ngOnInit() {
+    this.email = ""
+    this.password = ""
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -338,11 +340,16 @@ this.surname=obj.surname
             alert.present();
             console.log('This email has already been used already');
            }
+           
         })
-        this.email=''
-        this.password=''
+       
       }
 
+      ionViewWillLeave(){
+        this.email = ""
+        this.password = ""
+      }
+     
 
       changeListener(admin): void {
         const i = admin.target.files[0];

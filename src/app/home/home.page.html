@@ -206,12 +206,12 @@
 <div padding class="editform2">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
-  <input placeholder="HD001" [(ngModel)]="HD001price">
-  <input placeholder="LD001" [(ngModel)]="LD001price">
-  <input placeholder="LD003" [(ngModel)]="LD003price">
-  <input placeholder="PET005" [(ngModel)]="PET005price">
-  <input placeholder="PET001" [(ngModel)]="PET001price">
-  <input placeholder="PET003price" [(ngModel)]="PET003price"> 
+  <input placeholder="HD001" [(ngModel)]="HD001price" type="number">
+  <input placeholder="LD001" [(ngModel)]="LD001price" type="number">
+  <input placeholder="LD003" [(ngModel)]="LD003price" type="number">
+  <input placeholder="PET005" [(ngModel)]="PET005price" type="number">
+  <input placeholder="PET001" [(ngModel)]="PET001price" type="number">
+  <input placeholder="PET003price" [(ngModel)]="PET003price" type="number"> 
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
 </div>
 </div>
@@ -220,7 +220,7 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input placeholder="GH001" [(ngModel)]="GH001price">
+    <input placeholder="GH001" [(ngModel)]="GH001price" type="number">
     
   <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
   </div>
@@ -228,12 +228,12 @@
 <!-- create new material -->
 <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
   <div padding class="editform2">
-    <ion-button class="close"  fill="clear" (click)=" HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+    <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
-  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" >
-  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price">
- <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price">
- <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price">
+  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" type="number">
+  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price" type="number">
+ <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price" type="number">
+ <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price" type="number">
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
@@ -245,7 +245,7 @@
    slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
   <h1>Edit Price For  AluminIum</h1>
  
-  <input placeholder="NFAL01" [(ngModel)]="NFAL01price">
+  <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number">
   
 <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>

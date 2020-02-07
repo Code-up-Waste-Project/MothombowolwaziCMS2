@@ -23,6 +23,8 @@ export class LoginPage implements OnInit {
 
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
+  email: string;
+  password: string;
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -59,6 +61,9 @@ export class LoginPage implements OnInit {
 }
 
   ngOnInit() {
+
+
+
     this.menuCtrl.enable(false); // or true
   }
   // ionViewWillEnter() {
@@ -107,7 +112,9 @@ export class LoginPage implements OnInit {
           await alert.present();
         }
       );
+ 
     }
+    this.loginForm.reset()
   }
 
   // forgetpassword() {
