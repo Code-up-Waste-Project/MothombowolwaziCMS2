@@ -339,6 +339,8 @@ this.surname=obj.surname
             console.log('This email has already been used already');
            }
         })
+        this.email=''
+        this.password=''
       }
 
 
