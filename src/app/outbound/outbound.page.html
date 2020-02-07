@@ -208,7 +208,13 @@
   <div class="Mother" id="driverInfo" *ngIf="driverInformation === true">
     <div id="Son" (click)="goAway()"></div>
     <div class="Mask">
-      <div class="spacer"></div>
+      <ion-button icon-only fill="clear" id="backButton">
+      <ion-icon id="BAckbtn" name="arrow-back"></ion-icon>
+    </ion-button>
+      <div class="spacer">
+      </div>
+      
+      <ion-icon name="arrow-back-outline"></ion-icon>
       <!-- <h3 class="Tittle"><b>Outbound Details</b> <h3 id="Tittle"><b>Outbound details</b></h3></h3> -->
       <h6 class="Tittle"><b>Outbound Details</b></h6>
       <div class="Content">
@@ -296,9 +302,7 @@
         <img id="PurpleBubbles"
           src="../../assets/icon/outboundPOPup                                                                .svg"
           alt="">
-        <div class="TheTruck">
           <img id="TruckIMG" src="../../assets/icon/outboundPopup.svg" alt="">
-        </div>
       </div>
     </div>
   </div>
