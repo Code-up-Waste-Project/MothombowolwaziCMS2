@@ -1139,6 +1139,7 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkPaperInputs();
+            
             this.route.navigateByUrl('/home');
             console.log('Confirm Okay');
           }

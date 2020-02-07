@@ -340,14 +340,15 @@ this.surname=obj.surname
             alert.present();
             console.log('This email has already been used already');
            }
-           
+        
         })
        
+        this.email = "";
+        this.password ="";
       }
 
       ionViewWillLeave(){
-        this.email = ""
-        this.password = ""
+       
       }
      
 
