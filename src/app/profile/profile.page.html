@@ -24,7 +24,7 @@
           <input placeholder="Surname" [(ngModel)]="profile.surname">
             <input  placeholder="Position" [(ngModel)]="profile.position" >
             <input  placeholder="Email Address"  [(ngModel)]="profile.email">
-            <input placeholder="Phone Number" [(ngModel)]="profile.number"  maxlength="10" minlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}">
+            <input placeholder="Phone Number" [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
           <ion-button color="clear" (click)="users()" type="submit" >save</ion-button>
          </div>
              

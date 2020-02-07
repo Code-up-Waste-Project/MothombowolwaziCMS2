@@ -551,7 +551,7 @@ glassArray=[];
     +parseFloat(val.data().inboundPET005) ;
     
     // console.log(new Date(val.data().time.seconds*1000))
-    this.updated =(new Date(val.data().time.seconds*1000)).toDateString();
+    this.updated =(new Date(val.data().time)).toDateString();
 
     this.inboundgh001 =this.inboundgh001 +parseFloat(val.data().inboundGH001)
     this.inboundnfalo1 =this.inboundnfalo1 +parseFloat(val.data().inboundNFAL01)
@@ -617,8 +617,8 @@ glassArray=[];
         +parseFloat(val.data().PET003)
         +parseFloat(val.data().PET005);
     
-      // console.log(new Date(val.data().date.seconds*1000))
-      this.updatedoutbound =(new Date(val.data().date.seconds*1000)).toDateString();
+      console.log(new Date(val.data().date.seconds*1000))
+      this.updatedoutbound =(new Date(val.data().date)).toDateString();
         // console.log('ountglass',  this.outboundglass)
         this.outboundgh001 =this.outboundgh001 +parseFloat(val.data().GH001)
         this.outboundnfal01 =this.outboundnfal01 +parseFloat(val.data().NFAL01)
@@ -1197,7 +1197,7 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkAlumInputs();
-            this.route.navigateByUrl('/home');
+            
             console.log('Confirm Okay');
           }
         }
@@ -1306,6 +1306,7 @@ console.log(this.PaperArray)
     // console.log(this.nFAL01);
 
     this.UpdateAlum()
+    
   }
 
   UpdatePaper() {
