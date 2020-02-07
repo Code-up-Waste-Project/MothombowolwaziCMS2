@@ -282,6 +282,7 @@ export class HomePage implements OnInit {
 
   InboundGraph = [];
   outBoundGraph = [];
+  inboundGraphDisplay = [];
   outBoundGraphDisplayDay = [];
   outBoundGraphDisplayWeek = [];
   outBoundGraphDisplayMonth = [];
@@ -298,9 +299,134 @@ export class HomePage implements OnInit {
   outboundWeek;
   outboundMonth;
   outboundYear;
+
   viewingGraph = ''
   xAxisSize = 5
   yAxisSize = 3
+
+  // variebles for graphs                                     inbound
+  // day
+  totalInBoundDayGL001 = 0;
+  totalInBoundDayNFAL01 = 0;
+  totalInBoundDayPAP005 = 0;
+  totalInBoundDayPAP007 = 0;
+  totalInBoundDayPAP003 = 0;
+  totalInBoundDayPAP001 = 0;
+  totalInBoundDayHD001 = 0;
+  totalInBoundDayLD001 = 0;
+  totalInBoundDayLD003 = 0;
+  totalInBoundDayPET001 = 0;
+  totalInBoundDayPET003 = 0;
+  totalInBoundDayPET005 = 0;
+  // week
+  totalInBoundWeekGL001 = 0;
+  totalInBoundWeekNFAL01 = 0;
+  totalInBoundWeekPAP005 = 0;
+  totalInBoundWeekPAP007 = 0;
+  totalInBoundWeekPAP003 = 0;
+  totalInBoundWeekPAP001 = 0;
+  totalInBoundWeekHD001 = 0;
+  totalInBoundWeekLD001 = 0;
+  totalInBoundWeekLD003 = 0;
+  totalInBoundWeekPET001 = 0;
+  totalInBoundWeekPET003 = 0;
+  totalInBoundWeekPET005 = 0;
+  // Month
+  totalInBoundMonthGL001 = 0;
+  totalInBoundMonthNFAL01 = 0;
+  totalInBoundMonthPAP005 = 0;
+  totalInBoundMonthPAP007 = 0;
+  totalInBoundMonthPAP003 = 0;
+  totalInBoundMonthPAP001 = 0;
+  totalInBoundMonthHD001 = 0;
+  totalInBoundMonthLD001 = 0;
+  totalInBoundMonthLD003 = 0;
+  totalInBoundMonthPET001 = 0;
+  totalInBoundMonthPET003 = 0;
+  totalInBoundMonthPET005 = 0;
+
+  // variebles for graphs                                   outbound
+  // day
+  totaloutBoundDayGL001 = 0;
+  totaloutBoundDayNFAL01 = 0;
+  totaloutBoundDayPAP005 = 0;
+  totaloutBoundDayPAP007 = 0;
+  totaloutBoundDayPAP003 = 0;
+  totaloutBoundDayPAP001 = 0;
+  totaloutBoundDayHD001 = 0;
+  totaloutBoundDayLD001 = 0;
+  totaloutBoundDayLD003 = 0;
+  totaloutBoundDayPET001 = 0;
+  totaloutBoundDayPET003 = 0;
+  totaloutBoundDayPET005 = 0;
+  // week
+  totaloutBoundWeekGL001 = 0;
+  totaloutBoundWeekNFAL01 = 0;
+  totaloutBoundWeekPAP005 = 0;
+  totaloutBoundWeekPAP007 = 0;
+  totaloutBoundWeekPAP003 = 0;
+  totaloutBoundWeekPAP001 = 0;
+  totaloutBoundWeekHD001 = 0;
+  totaloutBoundWeekLD001 = 0;
+  totaloutBoundWeekLD003 = 0;
+  totaloutBoundWeekPET001 = 0;
+  totaloutBoundWeekPET003 = 0;
+  totaloutBoundWeekPET005 = 0;
+  // Month
+  totaloutBoundMonthGL001 = 0;
+  totaloutBoundMonthNFAL01 = 0;
+  totaloutBoundMonthPAP005 = 0;
+  totaloutBoundMonthPAP007 = 0;
+  totaloutBoundMonthPAP003 = 0;
+  totaloutBoundMonthPAP001 = 0;
+  totaloutBoundMonthHD001 = 0;
+  totaloutBoundMonthLD001 = 0;
+  totaloutBoundMonthLD003 = 0;
+  totaloutBoundMonthPET001 = 0;
+  totaloutBoundMonthPET003 = 0;
+  totaloutBoundMonthPET005 = 0;
+
+  // variebles for graphs                                     Reclaimers
+  // day
+  totalReclaimerDayGL001 = 0;
+  totalReclaimerDayNFAL01 = 0;
+  totalReclaimerDayPAP005 = 0;
+  totalReclaimerDayPAP007 = 0;
+  totalReclaimerDayPAP003 = 0;
+  totalReclaimerDayPAP001 = 0;
+  totalReclaimerDayHD001 = 0;
+  totalReclaimerDayLD001 = 0;
+  totalReclaimerDayLD003 = 0;
+  totalReclaimerDayPET001 = 0;
+  totalReclaimerDayPET003 = 0;
+  totalReclaimerDayPET005 = 0;
+  // week
+  totalReclaimerWeekGL001 = 0;
+  totalReclaimerWeekNFAL01 = 0;
+  totalReclaimerWeekPAP005 = 0;
+  totalReclaimerWeekPAP007 = 0;
+  totalReclaimerWeekPAP003 = 0;
+  totalReclaimerWeekPAP001 = 0;
+  totalReclaimerWeekHD001 = 0;
+  totalReclaimerWeekLD001 = 0;
+  totalReclaimerWeekLD003 = 0;
+  totalReclaimerWeekPET001 = 0;
+  totalReclaimerWeekPET003 = 0;
+  totalReclaimerWeekPET005 = 0;
+  // Month
+  totalReclaimerMonthGL001 = 0;
+  totalReclaimerMonthNFAL01 = 0;
+  totalReclaimerMonthPAP005 = 0;
+  totalReclaimerMonthPAP007 = 0;
+  totalReclaimerMonthPAP003 = 0;
+  totalReclaimerMonthPAP001 = 0;
+  totalReclaimerMonthHD001 = 0;
+  totalReclaimerMonthLD001 = 0;
+  totalReclaimerMonthLD003 = 0;
+  totalReclaimerMonthPET001 = 0;
+  totalReclaimerMonthPET003 = 0;
+  totalReclaimerMonthPET005 = 0;
+  bD = document.getElementsByClassName('bD')
   constructor(
     private modalcontroller: ModalController,
     private menuCtrl: MenuController,
@@ -326,6 +452,8 @@ export class HomePage implements OnInit {
 
     // code by nathi 3 feb
     this.pullWeeklyInbound();
+    this.PullDayData();
+    // console.log("im working ninja");
 
   }
 
@@ -498,13 +626,23 @@ export class HomePage implements OnInit {
 
     if (this.viewingGraph == graph) {
       this.viewingGraph = ''
+      this.viewBackdrop = false
     } else {
       this.viewingGraph = graph
+      this.viewBackdrop = true;
     }
-    this.viewBackdrop = !this.viewBackdrop
+    if (this.viewBackdrop) {
+      this.render.setStyle(this.bD[0],'display','block')
+    } else {
+      setTimeout(() => {
+        console.log('çloses');
+        
+        this.render.setStyle(this.bD[0],'display','none')
+      }, 500);
+    }
   }
 backdrop() {
-  this.viewBackdrop = !this.viewBackdrop
+
 }
 
 
@@ -1443,79 +1581,79 @@ getInbound() {
   });
 }
 
-pullWeeklyInbound() {
-  // code added by nathi
-  let currentTime = new Date();
-  let month = currentTime.getMonth();
-  let year = currentTime.getFullYear();
-  let date = currentTime.getTime();
-  let TodaysDate;
+  pullWeeklyInbound() {
+    // code added by nathi
+    let currentTime = new Date();
+    let month = currentTime.getMonth();
+    let year = currentTime.getFullYear();
+    let date = currentTime.getTime();
+    let TodaysDate;
 
-  console.log(month, year, date);
-  console.log(currentTime);
+    // console.log(month, year, date);
+    // console.log(currentTime);
 
-  // console.log(day7);
-  this.db.collection('outbound').onSnapshot(element => {
-    // console.log(element);
-    element.forEach(snap => {
-      console.log(snap);
-      console.log(snap.data());
+    // console.log(day7);
+    this.db.collection('outbound').onSnapshot(element => {
+      // console.log(element);
+      element.forEach(snap => {
+        // console.log(snap);
+        // console.log(snap.data());
 
-      let timess = {};
-      let GH001 = {};
-      let NFAL01 = {};
-      let HD001 = {};
-      let PAP005 = {};
-      let PAP007 = {};
-      let PAP001 = {};
-      let PAP003 = {};
-      let LD003 = {};
-      let LD001 = {};
-      let PET005 = {};
-      let PET003 = {};
-      let PET00 = {};
-      let Mass = {};
+        let timess = {};
+        let GH001 = {};
+        let NFAL01 = {};
+        let HD001 = {};
+        let PAP005 = {};
+        let PAP007 = {};
+        let PAP001 = {};
+        let PAP003 = {};
+        let LD003 = {};
+        let LD001 = {};
+        let PET005 = {};
+        let PET003 = {};
+        let PET00 = {};
+        let Mass = {};
 
-      this.datesss = snap.data().date;
-      // this.datez = this.datesss.toDate();
-      GH001 = snap.data().GH001;
-      NFAL01 = snap.data().NFAL01;
-      HD001 = snap.data().HD001;
-      PAP005 = snap.data().PAP005;
-      PAP007 = snap.data().PAP007;
-      PAP001 = snap.data().PAP001;
-      PAP003 = snap.data().PAP003;
-      LD003 = snap.data().LD003;
-      LD001 = snap.data().LD001;
-      PET005 = snap.data().PET005;
-      PET003 = snap.data().PET003;
-      PET00 = snap.data().PET00;
-      Mass = snap.data().ovarallMass;
+        this.datesss = snap.data().date;
+        // this.datez = this.datesss.toDate();
+        GH001 = snap.data().GH001;
+        NFAL01 = snap.data().NFAL01;
+        HD001 = snap.data().HD001;
+        PAP005 = snap.data().PAP005;
+        PAP007 = snap.data().PAP007;
+        PAP001 = snap.data().PAP001;
+        PAP003 = snap.data().PAP003;
+        LD003 = snap.data().LD003;
+        LD001 = snap.data().LD001;
+        PET005 = snap.data().PET005;
+        PET003 = snap.data().PET003;
+        PET00 = snap.data().PET00;
+        Mass = snap.data().ovarallMass;
 
-      this.outBoundGraph.push({
-        time: this.datez,
-        GH001: GH001,
-        NFAL01: NFAL01,
-        HD001: HD001,
-        PAP005: PAP005,
-        PAP007: PAP007,
-        PAP001: PAP001,
-        PAP003: PAP003,
-        LD003: LD003,
-        LD001: LD001,
-        PET005: PET005,
-        PET003: PET003,
-        PET001: PET00,
-        Mass: Mass
-      })
+        this.outBoundGraph.push({
+          time: this.datez,
+          GH001: GH001,
+          NFAL01: NFAL01,
+          HD001: HD001,
+          PAP005: PAP005,
+          PAP007: PAP007,
+          PAP001: PAP001,
+          PAP003: PAP003,
+          LD003: LD003,
+          LD001: LD001,
+          PET005: PET005,
+          PET003: PET003,
+          PET001: PET00,
+          Mass: Mass
+        })
 
-      this.outGH001.push({ GH001: GH001 })
-    });
-    console.log(this.outGH001);
+        this.outGH001.push({GH001: GH001})
+      });
+      // console.log(this.outGH001);
 
-    console.log(this.outBoundGraph);
+      // console.log(this.outBoundGraph);
 
-    let dat = this.datez
+    // let dat = this.datez
 
     // let time = dat.setTime(dat.getTime() - (1 * 24 * 60 * 60 * 1000))
 

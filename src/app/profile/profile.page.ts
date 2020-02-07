@@ -51,7 +51,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     // this.menuCtrl.enable(false, 'main-content')
-    this.menuCtrl.enable(false); // or true
+    // this.menuCtrl.enable(false); // or true
     // this.menuCtrl.enable(false, 'main-content');
   }
 
@@ -128,7 +128,6 @@ toast.present();
     }
       // console.log(this.phoneVal);
       console.log(this.profile.number);
-    
   }
 
   async presentAlertPhoneValidation() {
@@ -192,13 +191,13 @@ toast.present();
     this.profile.number = '';
   }
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
+  // ionViewWillEnter() {
+  //   this.menuCtrl.enable(false);
+  // }
 
-  ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menuCtrl.enable(false);
-  }
+  // ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(false);
+  // }
  
   }

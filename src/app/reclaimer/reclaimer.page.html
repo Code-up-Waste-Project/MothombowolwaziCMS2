@@ -35,7 +35,7 @@
 
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="HD001 (Kg)" [(ngModel)]="HD001massz" (change)='onChangeHD001($event.target.value)'>
+                <input type="number" placeholder="HD001 (Kg)" [(ngModel)]="HD001massz" (change)='onChangeHD001($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ HD001pricez }}</p>
@@ -43,7 +43,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="LD001 (Kg)" [(ngModel)]="LD001massz" (change)='onChangeLD001($event.target.value)'>
+                <input type="number" placeholder="LD001 (Kg)" [(ngModel)]="LD001massz" (change)='onChangeLD001($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ LD001pricez }}</p>
@@ -53,7 +53,7 @@
             </div>
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="LD003 (Kg)" [(ngModel)]="LD003massz" (change)='onChangeLD003($event.target.value)'>
+                <input type="number" placeholder="LD003 (Kg)" [(ngModel)]="LD003massz" (change)='onChangeLD003($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ LD003pricez }}</p>
@@ -61,7 +61,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="PET005 (Kg)" [(ngModel)]="PET005massz" (change)='onChangePET005($event.target.value)'>
+                <input type="number" placeholder="PET005 (Kg)" [(ngModel)]="PET005massz" (change)='onChangePET005($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PET005pricez }}</p>
@@ -71,7 +71,7 @@
             </div>
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="PET001 (Kg)" [(ngModel)]="PET001massz" (change)='onChangePET001($event.target.value)'>
+                <input type="number" placeholder="PET001 (Kg)" [(ngModel)]="PET001massz" (change)='onChangePET001($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PET001pricez }}</p>
@@ -79,7 +79,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="PET003 (Kg)" [(ngModel)]="PET003massz" (change)='onChangePET003($event.target.value)'>
+                <input type="number" placeholder="PET003 (Kg)" [(ngModel)]="PET003massz" (change)='onChangePET003($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PET003pricez }}</p>
@@ -108,7 +108,7 @@
           <div id="toFlex">
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="PAP005 (Kg)" [(ngModel)]="PAP005massz" (change)='onChangePAP005($event.target.value)'>
+                <input type="number" placeholder="PAP005 (Kg)" [(ngModel)]="PAP005massz" (change)='onChangePAP005($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PAP005pricez }}</p>
@@ -116,7 +116,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="PAP007 (Kg)" [(ngModel)]="PAP007massz" (change)='onChangePAP007($event.target.value)'>
+                <input type="number" placeholder="PAP007 (Kg)" [(ngModel)]="PAP007massz" (change)='onChangePAP007($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PAP007pricez }}</p>
@@ -127,7 +127,7 @@
 
             <div class="FirstRow">
               <div id="FirstCol">
-                <input type="text" placeholder="PAP001 (Kg)" [(ngModel)]="PAP001massz" (change)='onChangePAP001($event.target.value)'>
+                <input type="number" placeholder="PAP001 (Kg)" [(ngModel)]="PAP001massz" (change)='onChangePAP001($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PAP001pricez }}</p>
@@ -135,7 +135,7 @@
                 </div>
               </div>
               <div id="SecondCol">
-                <input type="text" placeholder="PAP003 (Kg)" [(ngModel)]="PAP003massz" (change)='onChangePAP003($event.target.value)'>
+                <input type="number" placeholder="PAP003 (Kg)" [(ngModel)]="PAP003massz" (change)='onChangePAP003($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ PAP003pricez }}</p>
@@ -163,7 +163,7 @@
           <div id="toFlex">
             <div class="FirstRow">
               <div id="FirstCol-one-input">
-                <input type="text" placeholder="NFAL01 (Kg)" [(ngModel)]="NFAL01massz" (change)='onChangeNFAL01($event.target.value)'>
+                <input type="number" placeholder="NFAL01 (Kg)" [(ngModel)]="NFAL01massz" (change)='onChangeNFAL01($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>{{ NFAL01pricez }}</p>
@@ -189,7 +189,7 @@
           <div id="toFlex">
             <div class="FirstRow">
               <div id="FirstCol-one-input">
-                <input type="text" placeholder="GL001 (Kg)" [(ngModel)]="GH001massz" (change)='onChangeGH001($event.target.value)'>
+                <input type="number" placeholder="GL001 (Kg)" [(ngModel)]="GH001massz" (change)='onChangeGH001($event.target.value)'>
                 <div class="Amount">
                   <b>
                     <p>R {{ GH001pricez }}</p>
@@ -215,10 +215,12 @@
   </div>
   <!-- End of Pop-up div -->
 
-
   <div class="Mother" id="wasteInformation" *ngIf="otherPopup === true">
     <div id="Son" (click)="goAway()"></div>
     <div class="Mask">
+      <ion-button icon-only fill="clear" id="backButton">
+      <ion-icon id="BAckbtn" name="arrow-back"></ion-icon>
+    </ion-button>
       <div class="LEFT">
         <!-- <ion-icon id="GO" name="arrow-dropleft-circle"></ion-icon> -->
       </div>
@@ -272,7 +274,7 @@
               <div class="DriverInputs">
                 <input id="input" placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
                 <input id="input" placeholder="Surname" [(ngModel)]="surnames" formControlName="surnames" type="text">
-                <input id="input" placeholder="contact" [(ngModel)]="contacts" type="number" maxlength="10" minlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="number">
+                <input id="input" placeholder="contact" [(ngModel)]="contacts" type="number" maxlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
                 <input id="input" placeholder="address" [(ngModel)]="addresss" formControlName="addresss" type="text">
               </div>
               <!-- <div class="DoneBTN">

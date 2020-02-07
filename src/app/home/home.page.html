@@ -9,11 +9,11 @@
 </ion-header>
 
 <ion-content>
-<div class="backdrop" *ngIf="viewBackdrop">
-  <ion-button (click)="backdrop()">
+<div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
+  <!-- <ion-button (click)="backdrop()">
     <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
- 
+  -->
 </div>
 <div class="container">
   <div padding class="alltime">
@@ -167,8 +167,8 @@
 <p></p>
 <div class="dynamicBtns" padding>
   <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
-  <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="toggleWeekly()">Weekly</ion-button>
-  <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="toggleMonthly()">Monthly</ion-button>
+  <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="PullWeekData()" (click)="toggleWeekly()">Weekly</ion-button>
+  <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="PullMonthData()" (click)="toggleMonthly()">Monthly</ion-button>
 
 </div>
 </div>
@@ -187,18 +187,18 @@
        </ion-fab> -->
 
 <!-- graph 1 -->
-    <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
+    <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
       <canvas #barChart >
    
       </canvas>
       
     </div>
 <!-- graph 2 -->
-    <div class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
+    <div class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
     </div>
 <!-- graph 3 -->
-    <div class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
+    <div class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
       <!-- <ion-button class="" fill="solid">
         <ion-icon name="close"></ion-icon>
@@ -212,12 +212,12 @@
 <div padding class="editform2">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
-  <input placeholder="HD001" [(ngModel)]="HD001price">
-  <input placeholder="LD001" [(ngModel)]="LD001price">
-  <input placeholder="LD003" [(ngModel)]="LD003price">
-  <input placeholder="PET005" [(ngModel)]="PET005price">
-  <input placeholder="PET001" [(ngModel)]="PET001price">
-  <input placeholder="PET003price" [(ngModel)]="PET003price"> 
+  <input placeholder="HD001" [(ngModel)]="HD001price" type="number">
+  <input placeholder="LD001" [(ngModel)]="LD001price" type="number">
+  <input placeholder="LD003" [(ngModel)]="LD003price" type="number">
+  <input placeholder="PET005" [(ngModel)]="PET005price" type="number">
+  <input placeholder="PET001" [(ngModel)]="PET001price" type="number">
+  <input placeholder="PET003price" [(ngModel)]="PET003price" type="number"> 
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
 </div>
 </div>
@@ -226,20 +226,20 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input placeholder="GH001" [(ngModel)]="GH001price">
+    <input placeholder="GH001" [(ngModel)]="GH001price" type="number">
     
-  <button ion-button (click)="CheckInputsEmptyStringGlasss()">Save</button>
+  <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
   </div>
   </div>
 <!-- create new material -->
 <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
   <div padding class="editform2">
-    <ion-button class="close"  fill="clear" (click)=" HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+    <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
-  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" >
-  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price">
- <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price">
- <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price">
+  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" type="number">
+  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price" type="number">
+ <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price" type="number">
+ <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price" type="number">
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
@@ -251,7 +251,7 @@
    slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
   <h1>Edit Price For  AluminIum</h1>
  
-  <input placeholder="NFAL01" [(ngModel)]="NFAL01price">
+  <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number">
   
 <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>
@@ -265,17 +265,44 @@
   <h1>Keeping Track Of All Your Updates</h1>
   <div class="headers">
     <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
-    <div class="one"><h2 >Material</h2></div>
+    <div class="one"><h2 >Old Pricing </h2></div>
     <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
   </div>
 
-  <div class="historydata">
-    <div class="historydata2" >
-      <div class="two">25 / 02 / 2020</div>
-      <div class="two">1, 98</div>
-      <div class="two">2.03</div>
+  <div class="historydata" *ngFor="let paper of PaperArray">
+    <div class="historydata2">
+      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+    <div class="two">{{paper.timePaper}}</div>
+    
+    <div class="two">{{paper.newpap001}}</div>
+    <div class="two">{{paper.newpap001}}</div>
+    
+    </div>
+    <div class="historydata2">
+      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+    <div class="two">{{paper.timePaper}}</div>
+    <div class="two">{{paper.oldpap003}}</div>
+    <div class="two">{{paper.newpap003}}</div>
+    
     </div>
 
+    <div class="historydata2">
+      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+    <div class="two">{{paper.timePaper}}</div>
+    <div class="two">{{paper.oldpap005}}</div>
+    <div class="two">{{paper.newpap005}}</div>
+    
+    </div>
+
+    <div class="historydata2">
+      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+    <div class="two">{{paper.timePaper}}</div>
+    <div class="two">{{paper.oldpap007}}</div>
+    <div class="two">{{paper.newpap007}}</div>
+    
+    </div>
+
+    
 
   </div>
  </div>
@@ -299,38 +326,64 @@
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
   
-    <div class="historydata">
+    <div class="historydata" *ngFor="let plastics of plasticarray">
       <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
+        <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+      <div class="two">R{{plastics.timePlastic2}}</div>
+      
+      <div class="two">{{plastics.oldhd001}}</div>
+      <div class="two">{{plastics.newhd001}}</div>
+      
       </div>
   
   
+     
       <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
+        <div class="two">R{{plastics.timePlastic2}}</div>
+        <div class="two">{{plastics.oldld001}}</div>
+        <div class="two">{{plastics.newld001}}</div>
       </div>
+
   
       <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
+        <div class="two">{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.oldld003}}</div>
+      <div class="two">{{plastics.newld003}}</div>
       </div>
-  
+     
       <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
+        <div class="two">{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.oldpet003}}</div>
+      <div class="two">{{plastics.newpet003}}</div>
       </div>
+
+
+      <div class="historydata2">
+        <div class="two">{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.oldpet001}}</div>
+      <div class="two">{{plastics.newpet001}}</div>
+      </div>
+
+      <div class="historydata2">
+        <div class="two">R{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.oldpet005}}</div>
+      <div class="two">{{plastics.newpet005}}</div>
+      </div>
+
+
+      <!-- <div class="historydata2">
+        <div class="two">R{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.oldpet005}}</div>
+      <div class="two">{{plastics.newpet005}}</div>
+      </div> -->
+
     </div>
 </div>
 </div>
 
 <!-- history for glass -->
 <div class="opacitydivs glassDiv " [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
-  <div padding class="editform2 test">
+  <div padding class="editform2 test"  >
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
     <h1>Keeping Track Of All Your Updates</h1>
     <div class="headers">
@@ -339,38 +392,21 @@
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
   
-    <div class="historydata">
+    <div class="historydata" *ngFor="let glass of glassArray" >
       <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
+        <div class="two">{{glass.timeglass}}</div>
+        <div class="two">R{{glass.newgl001}}</div>
+        <div class="two">R{{glass .oldgl001}}</div>
       </div>
   
-  
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
-      </div>
-  
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
-      </div>
-  
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
-      </div>
+
     </div>
 </div>
 </div>
 
 <!-- history for alu -->
 <div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
-  <div padding class="editform2 test">
+  <div padding class="editform2 test" *ngFor="let p of price">
     <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
     <h1>Keeping Track Of All Your Updates</h1>
     <div class="headers">
@@ -380,30 +416,12 @@
     </div>
   
     <div class="historydata">
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
+      <div class="historydata2" *ngFor="let nfal001 of NFAL001Array">
+        <div class="two">{{ nfal001.timePlastic }}</div>
+        <div class="two">{{ nfal001.oldnfal01 }}</div>
+        <div class="two">{{ nfal001.newnfal01 }}</div>
       </div>
   
-  
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
-      </div>
-  
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
-      </div>
-  
-      <div class="historydata2">
-        <div class="two">25 / 02 / 2020</div>
-        <div class="two">1, 98</div>
-        <div class="two">2.03</div>
-      </div>
     </div>
 </div>
 </div>

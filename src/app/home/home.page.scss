@@ -1,3 +1,4 @@
+
 .header {
   --background: #265902 !important;
   display: flex;
@@ -6,6 +7,9 @@
 ion-toolbar {
   display: flex;
   flex-direction: row;
+}
+.bD {
+  display: none;
 }
 .graph1 {
   transform: translate(21vw, -34vh) scale(2.5);
@@ -28,6 +32,27 @@ ion-toolbar {
   transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
   height: 57% !important;
 }
+.graph1-h {
+  transform: translate(0vw, 0vh) scale(1);
+    z-index: 179;
+    transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 100% !important;
+}
+.graph2-h {
+  transform: translate(0vw, 0vh) scale(1);
+  z-index: 179;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 100% !important;
+}
+.graph3-h {
+  transform: translate(0vw, 0vh) scale(1);
+  z-index: 179;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 100% !important;
+}
 .backdrop {
   width: 100%;
   height: 100%;
@@ -35,6 +60,16 @@ ion-toolbar {
   opacity: 0.5;
   position: fixed;
   z-index: 150;
+  transition: 0.3s;
+}
+.backdrop-h {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  position: fixed;
+  z-index: 150;
+  transition: 0.3s;
 }
 ion-title {
   // border: 1px solid red;
@@ -953,4 +988,153 @@ h6 {
       height: 105%;
     }
   }
+}
+@media screen and (max-width: 1024px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+        margin-left: -4%;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: 3.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+      width: auto;
+    }
+  }
+ 
+  .container {
+    //border: 2px solid red;
+    .small {
+    //  border: 2px solid red;
+      height: 60%; 
+    }
+.alltime {
+ //
+height: 25%;
+.updates {
+ //  border: 2px solid rgb(0, 68, 255);
+   height: 25%;
+   margin-top: 5%;
+}
+
+}
+.burgercontent , .burgercontent2, .burgercontent3, .burgercontent4{
+  // border: 2px solid rgb(0, 68, 255);
+  margin-bottom: 15%;
+}
+.chartbuttons {
+ // border: 2px solid rgb(176, 235, 16);
+p {
+  width: 70%;
+}
+  .dynamicBtns {
+   // border: 2px solid rgb(0, 68, 255);
+    margin-right: 2%;
+  }
+}
+  }
+}
+@media screen and (min-width: 1920px) {
+ 
+  .header {
+   // border: 1px solid red;
+    ion-title {
+    //  border: 2px solid blue;
+      height: 40px;
+    }
+    ion-avatar {
+     // border: 1px solid red;
+      height: 40px;
+      width: 40px;
+      margin-top: -5px;
+    }
+    p {
+    //  border: 1px solid white;
+      position: absolute;
+      left: 6.4%;
+     top: -5px;
+    }
+    #logout {
+   // border: 1px solid red;
+     height: 40%; 
+     padding: 1% !important;
+  }
+  }
+ .container {
+ //  border: 2px solid red;
+ .close {
+  border: 2px solid red;
+ }
+  .alltime {
+    //border: 2px solid blue;
+    height: 25%;
+    .stats {
+     // border: 2px solid green;
+      margin-top: -0.4%;
+h3 {
+ // border: 1px solid red;
+  padding: 0 !important;
+  position: absolute;
+  top: 4%;
+  padding-right: 10px !important;
+  font-size: 45px;
+}
+.updates {
+  border-top: 1.5px solid gray;
+  margin-top: -3%;
+p {
+//  border: 1px solid red;
+  font-size: 15px;
+}
+}
+.mass {
+ // border: 1px solid black;
+  font-size: 35px;
+ position: absolute;
+ margin-top: 20px;
+}
+      .small {
+       // border: 2px solid blue;
+        height: 80%;
+      }
+    }
+  }
+  .material {
+   border: 2px solid blue;
+   .burgercontent {
+     border: 1px solid red;
+  
+   }
+    .matnames {
+     // border: 1px solid green;
+      position: relative;
+      top: -45%;
+    }
+  }
+  .graphs {
+    //border: 2px solid red;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .chartbuttons {
+    //border: 2px solid rgb(238, 198, 19);
+    margin-top: 0.7%;
+    .dynamicBtns {
+     // border: 1px solid blue;
+    }
+
+    p {
+      margin-top: 1.8%;
+    }
+  }
+ }
 }
