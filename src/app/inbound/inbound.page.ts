@@ -296,14 +296,11 @@ export class InboundPage implements OnInit {
       // create PDF
         this.ForLoop();
         this.createPdf();
-
     });
   });
   }
 
   ForLoop() {
-      // console.log(this.PDFArray);
-
       // tslint:disable-next-line: forin
       for (let key in this.PDFArray) {
         // console.log(key);
