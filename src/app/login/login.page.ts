@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
 }
 
   ngOnInit() {
-
+    this.loginForm.reset()
 
 
     this.menuCtrl.enable(false); // or true
