@@ -77,3 +77,59 @@
 
   --ion-color-daily:#80056f;
 }
+.resetModal .modal-wrapper {
+  --width: 40%;
+  --height: 40%;
+}
+$fab-size: 36px !default;
+
+ion-split-pane{ 
+  --border: red !important;
+  ion-menu{
+   --background: var(--ion-color-secondary) !important; 
+      ion-content{            
+          --background: var(--ion-color-secondary) !important; 
+          ion-list-header{ 
+              --background: var(--ion-color-secondary) !important;
+              --color: #FFFFFF !important;   
+          }
+          ion-item{
+              --background: transparent !important;
+               --color: #FFFFFF !important;
+               ion-icon{ padding-right: 10px !important; }
+          }
+      }
+  }
+}
+
+//FONTS
+
+
+@font-face {
+   font-family: 'SkarpaLT';
+//    font-style: normal;
+//    font-weight:normal;
+    src: url('../assets/fonts/SkarpaLt.ttf');
+  
+  }
+  @font-face {
+    font-family: 'Brandish';
+    // font-style: bold;
+    // font-weight:bold;
+     src: url('../assets/fonts/Brand__.ttf');
+   
+   }
+   @font-face {
+    font-family: 'Microsoft YaHei';
+    // font-style: bold;
+    // font-weight:bold;
+     src: url('../assets/fonts/MSYH.TTC');
+   
+   }
+   @font-face {
+    font-family: 'SHKODER 1989';
+    // font-style: lighter;
+    // font-weight:lighter;
+     src: url('../assets/fonts/Shkoder_1989_Black.otf');
+   
+   }

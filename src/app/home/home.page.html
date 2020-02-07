@@ -9,6 +9,12 @@
 </ion-header>
 
 <ion-content>
+<div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
+  <!-- <ion-button (click)="backdrop()">
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+  </ion-button>
+  -->
+</div>
 <div class="container">
   <div padding class="alltime">
     <div class="stats">
@@ -167,7 +173,7 @@
 </div>
 </div>
   <!-- <p id="secondborder"></p> -->
-  <div padding class="graphs">
+  <div padding class="graphs"  >
     <!-- <ion-fab id="daily" >
       <ion-fab-button size="small" color="warning">D</ion-fab-button>   
      </ion-fab>
@@ -181,18 +187,18 @@
        </ion-fab> -->
 
 <!-- graph 1 -->
-    <div  class="graph inbgraph" (click)="transformGraph()" style="background: #FFF3C2;" >
+    <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
       <canvas #barChart >
    
       </canvas>
       
     </div>
 <!-- graph 2 -->
-    <div class="graph inbgraph2" (click)="transformGraph2()"  style="background: #FFCFE5;">
+    <div class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
     </div>
 <!-- graph 3 -->
-    <div class="graph inbgraph3" (click)="transformGraph3()"   style="background: #CCFFFE;">
+    <div class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
       <!-- <ion-button class="" fill="solid">
         <ion-icon name="close"></ion-icon>
@@ -206,12 +212,12 @@
 <div padding class="editform2">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
-  <input placeholder="HD001" [(ngModel)]="HD001price" type="number">
-  <input placeholder="LD001" [(ngModel)]="LD001price" type="number">
-  <input placeholder="LD003" [(ngModel)]="LD003price" type="number">
-  <input placeholder="PET005" [(ngModel)]="PET005price" type="number">
-  <input placeholder="PET001" [(ngModel)]="PET001price" type="number">
-  <input placeholder="PET003price" [(ngModel)]="PET003price" type="number"> 
+  <input placeholder="HD001" [(ngModel)]="HD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  <input placeholder="LD001" [(ngModel)]="LD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  <input placeholder="LD003" [(ngModel)]="LD003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  <input placeholder="PET005" [(ngModel)]="PET005price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
 <button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
 </div>
 </div>
@@ -220,7 +226,7 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input placeholder="GH001" [(ngModel)]="GH001price" type="number">
+    <input placeholder="GH001" [(ngModel)]="GH001price" type="tel" maxlength="4">
     
   <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
   </div>
@@ -230,10 +236,10 @@
   <div padding class="editform2">
     <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
-  <input type="number" placeholder="PAP005" [(ngModel)]="PAP005price" type="number">
-  <input type="number" placeholder="PAP007" [(ngModel)]="PAP007price" type="number">
- <input type="number" placeholder="PAP001"  [(ngModel)]="PAP001price" type="number">
- <input type="number" placeholder="PAP003"  [(ngModel)]="PAP003price" type="number">
+  <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP005" [(ngModel)]="PAP005price"  >
+  <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP007" [(ngModel)]="PAP007price" >
+ <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP001"  [(ngModel)]="PAP001price"  >
+ <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP003"  [(ngModel)]="PAP003price" >
 
 <button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
 </div>
@@ -245,7 +251,7 @@
    slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
   <h1>Edit Price For  AluminIum</h1>
  
-  <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number">
+  <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   
 <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
 </div>

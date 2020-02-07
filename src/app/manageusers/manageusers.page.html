@@ -74,7 +74,7 @@
     <div padding class="registerform"  class="right" *ngIf="registerForm" >
      <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
       <h1>Register</h1>
-      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email">
+      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" >
       <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password">
      <button ion-button (click)="saveNewUseer()">Register</button>
      <div class="bottomdeco">
