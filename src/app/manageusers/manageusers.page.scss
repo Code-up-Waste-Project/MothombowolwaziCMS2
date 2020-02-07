@@ -260,3 +260,87 @@ margin: 0;
     width: 100%;
   }
 }
+
+// fifi media queries
+@media screen and (min-width: 1366px) {
+  .header {
+    ion-title {
+    p {
+      //border: 1px solid white;
+   text-align: left;;
+         margin-left: -2%;
+         margin-top: 8px;
+       }
+      }
+      ion-avatar {
+       margin-left: 0 !important;
+       position: absolute;
+       left: 1% !important;
+       top: 3.5px;
+       width: 35px;
+       height: 35px;
+   }
+      #logout {
+        //border: 1px solid red;
+        height: 10px !important;
+        width: auto;
+        }
+   }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    ion-title {
+      display: grid;
+      align-items: center;
+      p {
+        text-align: left;
+        margin-left: -4%;
+        margin-top: 7px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: 3.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+      width: auto;
+    }
+  }
+
+
+}
+@media screen and (min-width: 1920px) {
+ 
+  .header {
+   // border: 1px solid red;
+    ion-title {
+    //  border: 2px solid blue;
+      height: 40px;
+    }
+    ion-avatar {
+     // border: 1px solid red;
+      height: 40px;
+      width: 40px;
+      margin-top: -5px;
+    }
+    p {
+    //  border: 1px solid white;
+      position: absolute;
+      left: 6.9%;
+     top: 2px;
+    }
+    #logout {
+   // border: 1px solid red;
+     height: 40%; 
+     padding: 1% !important;
+  }
+  }
+
+}
+

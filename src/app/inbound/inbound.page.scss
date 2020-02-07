@@ -385,29 +385,124 @@ margin: 0 !important;
   // background: red;
 }
 
-
-@media screen and (max-width: 900px){
-  .Theblocks {
-    height: 27%;
-    width: 100%;
-    // border: solid 2px blueviolet;
-    display: flex;
-    justify-content: space-between;
+//fifi's media queries
+@media screen and (min-width: 1366px) {
+  .header {
+    ion-title {
+    p {
+      //border: 1px solid white;
+   text-align: left;;
+         margin-left: -2.5%;
+         margin-top: 8px;
+       }
+      }
+      ion-avatar {
+       margin-left: 0 !important;
+       position: absolute;
+       left: 1% !important;
+       top: 3.5px;
+       width: 35px;
+       height: 35px;
+   }
+      #logout {
+        //border: 1px solid red;
+        height: 10px !important;
+        width: auto;
+        }
+   }
+.Theblocks {
+ // border: 1px solid blue;
+  margin-top: 10px;
+}
+  .Block1 {
+    //border: 1px solid blue;
+    h3 {
+     // border: 1px solid red;
+      margin-top: 60%;
+    }
   }
   .History {
-    height: 73%;
-    width: 100%;
-    //  border: solid 2px red;
-    padding-top: 0 !important;
-    overflow-y: scroll;
+   // border: 2px solid black;
+     margin-top: 4%;
   }
-  .Block1 {
-    // border: 1px solid red;
-    position: relative;
-    height: 89%;
-    width: 24%;
-    border-radius: 5px;
-    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
-  }
+}
 
+@media screen and (max-width: 1024px) {
+  .header {
+    ion-title {
+      display: grid;
+      align-items: center;
+      p {
+        text-align: left;
+        margin-left: -4%;
+        margin-top: 7px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: 3.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+      width: auto;
+    }
+  }
+  h3 {
+   // border: 1px solid red;
+    margin-top: 51%;
+  }
+  .History1{
+    //border: 1px solid red;
+    margin-top: 2%;
+  }
+ 
+}
+
+@media screen and (min-width: 1920px) {
+ 
+  .header {
+   // border: 1px solid red;
+    ion-title {
+
+      height: 40px;
+    }
+    ion-avatar {
+     // border: 1px solid red;
+      height: 40px;
+      width: 40px;
+      margin-top: -5px;
+    }
+    p {
+    //  border: 1px solid white;
+      position: absolute;
+      left: 6.9%;
+     top: 2px;
+    }
+    #logout {
+   // border: 1px solid red;
+     height: 40%; 
+     padding: 1% !important;
+  }
+  }
+#Everything {
+    // border: 2px solid blue;
+     height: 100%;
+
+     .Theblocks {
+   //   border: 2px solid rgb(17, 223, 110);
+      margin-top: 0;
+
+      h3 {
+       // border: 1px solid red;
+        margin-top: 45%;
+      }
+     }
+     .History {
+     // border: 2px solid red;
+      margin-top: 0;
+     }
+}
 }

@@ -16,6 +16,8 @@ import { format } from 'url';
 })
 export class HomePage implements OnInit {
 
+  viewBackdrop = false
+
   @ViewChild('barChart', {static: false}) barChart;
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
@@ -252,6 +254,10 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   outboundMonth;
   outboundYear;
 
+  viewingGraph = ''
+  xAxisSize = 5
+  yAxisSize = 3
+
   // variebles for graphs                                     inbound
   // day
   totalInBoundDayGL001 = 0;
@@ -444,6 +450,7 @@ plasticarray= [];
 PaperArray =[];
 glassArray=[];
 
+bD = document.getElementsByClassName('bD')
 
   constructor(
     private modalcontroller: ModalController,
@@ -476,44 +483,27 @@ glassArray=[];
     }
 
     //increase the size of clicked graph
-    transformGraph() {
-      Chart.defaults.global.defaultFontSize = 13;
-      this.render.setStyle(this.imgGraph[0],'transform', 'translate(10%, 10%)');
-      this.render.setStyle(this.imgGraph[0],'z-index', '1000');
-      this.render.setStyle(this.imgGraph[0],'position', 'absolute');
-      this.render.setStyle(this.imgGraph[0],'left', '0%');
-      this.render.setStyle(this.imgGraph[0],'top', '0%');
-      this.render.setStyle(this.imgGraph[0],'width', '80%');
-      this.render.setStyle(this.imgGraph[0],'height', '80%');
-      this.render.setStyle(this.imgGraph[0], 'font-size', '10% !important');
-     
+    transformGraph(graph) {
+      if (this.viewingGraph == graph) {
+        this.viewingGraph = ''
+        this.viewBackdrop = false
+      } else {
+        this.viewingGraph = graph
+        this.viewBackdrop = true;
+      }
+      if (this.viewBackdrop) {
+        this.render.setStyle(this.bD[0],'display','block')
+      } else {
+        setTimeout(() => {
+          console.log('çloses');
+          
+          this.render.setStyle(this.bD[0],'display','none')
+        }, 500);
+      }
     }
-
-    transformGraph2() {
-      Chart.defaults.global.defaultFontSize = 10;
-      this.render.setStyle(this.imgGraph2[0],'transform', 'translate(10%, 10%)');
-      this.render.setStyle(this.imgGraph2[0],'z-index', '1000');
-      this.render.setStyle(this.imgGraph2[0],'position', 'absolute');
-      this.render.setStyle(this.imgGraph2[0],'left', '0%');
-      this.render.setStyle(this.imgGraph2[0],'top', '0%');
-      this.render.setStyle(this.imgGraph2[0],'width', '80%');
-      this.render.setStyle(this.imgGraph2[0],'height', '80%');
-      this.render.setStyle(this.imgGraph2[0], 'font-size', '10% !important');
-      this.render.setStyle(this.imgGraph2[0], 'border', '3px solid red !important');
-    }
-
-    transformGraph3() {
-      Chart.defaults.global.defaultFontSize = 10;
-      this.render.setStyle(this.imgGraph3[0],'transform', 'translate(10%, 10%)');
-      this.render.setStyle(this.imgGraph3[0],'z-index', '1000');
-      this.render.setStyle(this.imgGraph3[0],'position', 'absolute');
-      this.render.setStyle(this.imgGraph3[0],'left', '0%');
-      this.render.setStyle(this.imgGraph3[0],'top', '0%');
-      this.render.setStyle(this.imgGraph3[0],'width', '80%');
-      this.render.setStyle(this.imgGraph3[0],'height', '80%');
-      this.render.setStyle(this.imgGraph3[0], 'font-size', '10% !important');
-      this.render.setStyle(this.fix, 'display', 'block')
-    }
+  backdrop() {
+  
+  }
 
      //chart
      updated
@@ -754,9 +744,6 @@ glassArray=[];
       this.pricess.pet001 = documentSnapshot.data().pet001;
       this.pricess.pet003 = documentSnapshot.data().pet003;
       this.pricess.pet005 = documentSnapshot.data().pet005;
-
-    
-
     
       this.oldpricepap003 = documentSnapshot.data().pap003;
       this.oldpricepap001 = documentSnapshot.data().pap001;
@@ -1139,7 +1126,6 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkPaperInputs();
-            
             this.route.navigateByUrl('/home');
             console.log('Confirm Okay');
           }
@@ -1148,13 +1134,6 @@ console.log(this.PaperArray)
     });
     await alert.present();
   }
-
- 
-    
-
-     
-
- 
 
   async presentAlertUpdatePlastic() {
     const alert = await this.alertController.create({
@@ -1324,11 +1303,6 @@ console.log(this.PaperArray)
           oldpap007: this.oldpricepap007,
           oldpap001: this.oldpricepap001,
           oldpap003: this.oldpricepap003,
-
-          
-
-
-    
         }).then((data) => {
           console.log("Paper old storage successfully updated!");
         });
@@ -3067,8 +3041,6 @@ deletehd001(v){
   })
   
 }
-
-
 
 
 }

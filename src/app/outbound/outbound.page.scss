@@ -83,6 +83,7 @@ ion-title {
 #RecyleLogo1 {
   width: 50%;
   position: absolute;
+  
   // bottom: 0;
   top: 50%;
   right: 0;
@@ -618,9 +619,7 @@ h5 {
   z-index: 100000000000000000000000000000000000000000000000000000000000000000000;
 }
 
-#wasteInformation {
-  // display: none;
-}
+
 
 #Son {
   height: 100%;
@@ -1181,185 +1180,71 @@ h1{
 //   //   }
   
 
-//   // @media screen and (max-width:1366){
-//   //   #PurpleBubbles {
-//   //     position: absolute;
-//   //     bottom: 0px;
-//   //     right: -11%;
-//   //     height: 900px;
-//   //     border: solid 2px yellow;
-//   //   }
-//   //   #TruckIMG {
-//   //     height: 120px;
-//   //     position: absolute;
-//   //     top: 550px;
-//   //     left: 50px;
-//   //   }
-//   //   .DriverInputs {
-//   //     height: 311px;
-//   //     width: 100%;
-//   //     // border: solid 2px purple;
-//   //     display: flex;
-//   //     flex-direction: column;
-//   //     align-items: center;
-//   //     margin-top: 100px;
-//   //     margin-left: 0px;
-//   //     position: relative;
-//   //     bottom: 40px;
-//   //   }
-//   //   #FinishBTN {
-//   //     // border: blueviolet solid 2px;
-//   //     width: 10 0%;
-//   //     height: 54%;
-//   //     border-right: 0px;
-//   //     border-top-left-radius: 50px;
-//   //     border-bottom-left-radius: 50px;
-//   //     background: linear-gradient(to left, rgb(196, 170, 211) 10%, #a571c3 100%);
-//   //     position: absolute;
-//   //     right: 0%;
-//   //     bottom: 0%;
-//   //     color: white;
-//   //     font-weight: 600;
-//   //     font-size: 34px;
-//   //   } 
-//   //   .AddDriver {
-//   //     background-color: #558703;
-//   //     height: 60px;
-//   //     width: 100px;
-//   //     border-radius: 3px;
-//   //     font-size: 20px;
-//   //   }
-//   //   #input {
-//   //     // border: blueviolet solid 2px;
-//   //     width: 90%;
-//   //     margin-bottom: 10px;
-//   //     height: 100px;
-//   //     background: #eaeaea;
-//   //     border-radius: 5px;
-//   //     border-left: 0px;
-//   //     border-top: 0px;
-//   //     font-size: 25px;
-//   //   }
-//   // }
+  .Theblocks {
+    height: 40%;
+    width: 100%;
+    // border: solid 2px blueviolet;
+    display: flex;
+    justify-content: space-between;
+  }
+  .Block1 {
+    position: relative;
+    height: 100%;
+    // max-height: 250px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+  }
+  .Waste {
+    height: 35px;
+    width: 170px;
+    z-index: 10;
+    background-color: #548d04;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  // #H3{
+  //   font-family: 'Open Sans Condensed', sans-serif;
+  //   color: white;
+  //   font-size: 240%;
+  //   position: absolute;
+  //   top: -22px;
+  //   right: 9px;
+  // }
 
-//   // }
-
-//   // End of Ipad-Pro--not rotated
-  
-//   h3 {
-//     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//     width: 80%;
-//     height: 40px;
-//     z-index: 10;
-//     margin-top: 45%;
-//     text-align: right;
-//     background: #558c03;
-//     position: relative;
-//     padding-right: 2%;
-//     color: white;
-//     font-size: 20px;
-//     padding: 10px;
-//     border-top-right-radius: 4px;
-//     border-bottom-right-radius: 4px;
-//   }
-//   .logoright {
-//     // border: 1px solid black;
-//     width: 60%;
-//     position: absolute;
-//     // bottom: 0;
-//     top: 50%;
-//     right: 2%;
-//     transform: translateY(-50%);
-//   }
-//   #logout {
-//     border: 1px solid white;
-//     padding: 1px;
-//     border-radius: 50px;
-//     background: white;
-//     color: black;
-//     ion-button {
-//       font-size: 10px;
-//       font-weight: bold;
-//     }
-//     ion-icon {
-//       color: brown;
-//       font-size: 20px;
-//       font-weight: bold;
-//       margin-left: 5px;
-//     }
-//   }
-//   .header {
-//     --background: #265902 !important;
-//     display: flex;
-//     color: white;
-//   }
-
-//   .Theblocks {
-//     height: 40%;
-//     width: 100%;
-//     // border: solid 2px blueviolet;
-//     display: flex;
-//     justify-content: space-between;
-//   }
-//   .Block1 {
-//     position: relative;
-//     height: 100%;
-//     max-height: 250px;
-//     width: 24%;
-//     border-radius: 5px;
-//     box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
-//   }
-//   .Waste {
-//     height: 35px;
-//     width: 170px;
-//     z-index: 10;
-//     background-color: #548d04;
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//   }
-//   // #H3{
-//   //   font-family: 'Open Sans Condensed', sans-serif;
-//   //   color: white;
-//   //   font-size: 240%;
-//   //   position: absolute;
-//   //   top: -22px;
-//   //   right: 9px;
-//   // }
-
-//   #RecyleLogo1 {
-//     width: 65%;
-//     position: absolute;
-//     // bottom: 0;
-//     top: 50%;
-//     right: 0;
-//     transform: translateY(-50%);
-//   }
-//   #RecyleLogo2 {
-//     width: 65%;
-//     position: absolute;
-//     // bottom: 0;
-//     top: 50%;
-//     right: 0;
-//     transform: translateY(-50%);
-//   }
-//   #RecyleLogo3 {
-//     width: 65%;
-//     position: absolute;
-//     // bottom: 0;
-//     top: 50%;
-//     right: 0;
-//     transform: translateY(-50%);
-//   }
-//   #RecyleLogo4 {
-//     width: 65%;
-//     position: absolute;
-//     // bottom: 0;
-//     top: 50%;
-//     right: 0;
-//     transform: translateY(-50%);
-//   }
-// }
+  #RecyleLogo1 {
+    width: 65%;
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  #RecyleLogo2 {
+    width: 65%;
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  #RecyleLogo3 {
+    width: 65%;
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  #RecyleLogo4 {
+    width: 65%;
+    position: absolute;
+    // bottom: 0;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
 
 // code added by nathi
 ion-item {
@@ -1583,5 +1468,136 @@ h6{
   position: absolute;
   top: 40px;
   right: -5px;
+}
+// fifi media queries
+@media screen and (min-width: 1366px) {
+  .header {
+    ion-title {
+    p {
+      //border: 1px solid white;
+   text-align: left;;
+         margin-left: -2.5%;
+         margin-top: 8px;
+       }
+      }
+      ion-avatar {
+       margin-left: 0 !important;
+       position: absolute;
+       left: 1% !important;
+       top: 3.5px;
+       width: 35px;
+       height: 35px;
+   }
+      #logout {
+        //border: 1px solid red;
+        height: 10px !important;
+        width: auto;
+        }
+   }
+.Theblocks {
+ // border: 1px solid blue;
+  margin-top: 10px;
+  height: 35%;
+}
+  .Block1 {
+    //border: 1px solid blue;
+    h3 {
+     // border: 1px solid red;
+      margin-top: 60%;
+    }
+  }
+  .History {
+   // border: 2px solid black;
+     margin-top: 4%;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .header {
+    ion-title {
+      display: grid;
+      align-items: center;
+      p {
+        text-align: left;
+        margin-left: -4%;
+        margin-top: 7px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: 3.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+      width: auto;
+    }
+  }
+  .Theblocks {
+//border: 1px solid red;
+height: 35%;
+  }
+  h3 {
+   
+    margin-top: 51%;
+  }
+  .History1{
+    //border: 1px solid red;
+    margin-top: 2%;
+  }
+  #Daughter {
+   // border: 2px solid red;
+   width: 60%;
+   height: 70%;
+  }
+}
+@media screen and (min-width: 1920px) {
+ 
+  .header {
+   // border: 1px solid red;
+    ion-title {
+
+      height: 40px;
+    }
+    ion-avatar {
+     // border: 1px solid red;
+      height: 40px;
+      width: 40px;
+      margin-top: -5px;
+    }
+    p {
+    //  border: 1px solid white;
+      position: absolute;
+      left: 6.9%;
+     top: 2px;
+    }
+    #logout {
+   // border: 1px solid red;
+     height: 40%; 
+     padding: 1% !important;
+  }
+  }
+#Everything {
+  //  border: 2px solid blue;
+     height: 100%;
+
+     .Theblocks {
+    // border: 2px solid rgb(17, 223, 110);
+      margin-top: 0;
+      height: 40%;
+
+      h3 {
+     //   border: 1px solid red;
+        margin-top: 45%;
+      }
+     }
+     .History {
+      //border: 2px solid red;
+      margin-top: 0;
+     }
+}
 }
 }

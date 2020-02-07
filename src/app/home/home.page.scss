@@ -1,44 +1,107 @@
+
 .header {
   --background: #265902 !important;
   display: flex;
- // border: 2px solid rgb(17, 0, 255);
+  // border: 2px solid rgb(17, 0, 255);
 }
 ion-toolbar {
   display: flex;
   flex-direction: row;
- 
+}
+.bD {
+  display: none;
+}
+.graph1 {
+  transform: translate(21vw, -34vh) scale(2.5);
+    z-index: 200;
+    transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 57% !important;
+}
+.graph2 {
+  transform: translateY(-34vh) scale(2.5);
+  z-index: 200;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 57% !important;
+}
+.graph3 {
+  transform: translate(-21vw, -34vh) scale(2.5);
+  z-index: 200;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 57% !important;
+}
+.graph1-h {
+  transform: translate(0vw, 0vh) scale(1);
+    z-index: 179;
+    transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 100% !important;
+}
+.graph2-h {
+  transform: translate(0vw, 0vh) scale(1);
+  z-index: 179;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 100% !important;
+}
+.graph3-h {
+  transform: translate(0vw, 0vh) scale(1);
+  z-index: 179;
+  transition: 0.3s;
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  height: 100% !important;
+}
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  position: fixed;
+  z-index: 150;
+  transition: 0.3s;
+}
+.backdrop-h {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  position: fixed;
+  z-index: 150;
+  transition: 0.3s;
 }
 ion-title {
- // border: 1px solid red;
-  font-family: 'Microsoft YaHei UI';
+  // border: 1px solid red;
+  font-family: "Microsoft YaHei UI";
   font-size: 15px;
-color: white;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-p {
- // border: 1px solid red;
-  width: 50%;
-  position: absolute;
-  left: 75px;
-  top:-3px ;
-}
-ion-avatar {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    // border: 1px solid red;
+    width: 50%;
+    position: absolute;
+    left: 75px;
+    top: -3px;
+  }
+  ion-avatar {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
 
-  width: 40px;
-  height: 40px;
-}
+    width: 40px;
+    height: 40px;
+  }
 }
 #logout {
   border: 1px solid white;
   padding: 1px;
   border-radius: 50px;
   background: white;
-ion-button {
-  font-size: 10px;
-  font-weight: bold;
-}
+  ion-button {
+    font-size: 10px;
+    font-weight: bold;
+  }
   ion-icon {
     color: brown;
     font-size: 20px;
@@ -54,7 +117,6 @@ ion-icon {
   display: block;
   animation-name: slideIn;
   animation-duration: 500ms;
- 
 }
 @keyframes slideIn {
   0% {
@@ -65,15 +127,12 @@ ion-icon {
   }
 }
 .slideOut {
-  
   animation-name: slideOut;
-  animation-duration: 500ms;
+  animation-duration: 5s;
   animation-fill-mode: forwards;
-
 }
 
 .hide {
-
   display: none;
 }
 
@@ -91,14 +150,13 @@ ion-icon {
   }
 }
 
-
 .container {
- // border: 1px solid red;
- height: 100%;
-//  overflow-x: scroll;
+  // border: 1px solid red;
+  height: 100%;
+  //  overflow-x: scroll;
 }
 .alltime {
- // border-bottom: 2px solid black;
+  // border-bottom: 2px solid black;
   height: 30%;
   display: flex;
   justify-content: space-between;
@@ -111,37 +169,35 @@ ion-icon {
 }
 
 .big {
- // border: 1px solid green;
+  // border: 1px solid green;
   height: 86%;
   margin-top: 7%;
   border-radius: 7px;
-  background: #EAEAEA;
+  background: #eaeaea;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
   h3 {
-     // border: 1px solid red;
-      position: absolute;
-      top: 5%;
-      width: 31%;
-      text-align: right;
-      padding: 1%;
-      font-size: 2.8vw;
-
+    // border: 1px solid red;
+    position: absolute;
+    top: 5%;
+    width: 31%;
+    text-align: right;
+    padding: 1%;
+    font-size: 2.8vw;
   }
   .mass {
     //  border: 1px solid red;
-      position: absolute;
-      top: 10%; 
-      width: 30%;
-      text-align: right;
-     // padding: 1%;
-      font-size: 2.4vw;
-        font-family: 'Poiret One', cursive;
-      font-weight: 200;
+    position: absolute;
+    top: 10%;
+    width: 30%;
+    text-align: right;
+    // padding: 1%;
+    font-size: 2.4vw;
+    font-family: "Poiret One", cursive;
+    font-weight: 200;
   }
-
 }
 .small {
-//  border: 1px solid blue;
+  //  border: 1px solid blue;
   // background: #C5A60A;
   border-radius: 7px;
   width: 30%;
@@ -153,9 +209,8 @@ ion-icon {
   display: flex;
   justify-content: center;
 
-
   img {
-      width: 60%;
+    width: 60%;
   }
 }
 .updates {
@@ -166,11 +221,11 @@ ion-icon {
   display: flex;
   align-items: center;
   p {
-      font-size: 1vw;
-     // border: 1px solid red;
-     font-family: 'Pompiere', cursive;
-     font-weight: 600;
-     color: rgb(63, 61, 61);
+    font-size: 1vw;
+    // border: 1px solid red;
+    font-family: "Pompiere", cursive;
+    font-weight: 600;
+    color: rgb(63, 61, 61);
   }
 }
 h6 {
@@ -180,158 +235,156 @@ h6 {
 }
 /* material or second row */
 .material {
-//border: 2px solid rgb(235, 17, 17);
+  //border: 2px solid rgb(235, 17, 17);
   width: 100%;
- // margin-left: 2%;
+  // margin-left: 2%;
   margin-top: 1%;
   height: 30%;
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
   h4 {
-     // border: 1px solid red;
-      margin-top: 0;
+    // border: 1px solid red;
+    margin-top: 0;
   }
   .mat {
-     //border: 5px solid rgb(255, 11, 255);
-      height: 100%;
-      width: 100%;
-      border-radius: 7px;
-  
-      img {
-         width: 13%;
-         height: 20%;
-         margin-top: 2%;
-         margin-left: 2%;
-         //border: 2px solid white;
-         color: white;
-         font-weight: bolder;
-      }
-      //short burger
-      .burger {
-    
-        background: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 10%;
-        height: 15%;
-        position: absolute;
-        right: 0%;
-        bottom: 80px;
-        border-bottom-left-radius: 50px;
-        border-top-left-radius: 50px;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        ion-icon {
-          color: black;
-          font-size: 2vw;
-         
-        }
-      }
+    //border: 5px solid rgb(255, 11, 255);
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
 
-      
-      //long burger
-      .burgercontent {
-        transition: 300ms;
-        background: white;
-       // border: 2px solid red;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 40px;
-        height: 30px;
-        position: absolute;
-        bottom: 90px;
-        right:0%;
-        //border: 1px solid rgb(12, 12, 12);
-        border-bottom-left-radius: 50px;
-        border-top-left-radius: 50px;
-        display: flex;
-        overflow: hidden;
-        // ion-icon {
-        //   font-size: 1vw;
-        // }
-        ion-button{
-          margin: 0;
-          height: 30px;
-        }
+    img {
+      width: 13%;
+      height: 20%;
+      margin-top: 2%;
+      margin-left: 2%;
+      //border: 2px solid white;
+      color: white;
+      font-weight: bolder;
+    }
+    //short burger
+    .burger {
+      background: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+      width: 10%;
+      height: 15%;
+      position: absolute;
+      right: 0%;
+      bottom: 80px;
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      ion-icon {
+        color: black;
+        font-size: 2vw;
       }
+    }
 
-      .burgercontent2 {
-        transition: 300ms;
-        background: white;
-       // border: 2px solid red;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 40px;
+    //long burger
+    .burgercontent {
+      transition: 300ms;
+      background: white;
+      // border: 2px solid red;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      bottom: 90px;
+      right: 0%;
+      //border: 1px solid rgb(12, 12, 12);
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      display: flex;
+      overflow: hidden;
+      // ion-icon {
+      //   font-size: 1vw;
+      // }
+      ion-button {
+        margin: 0;
         height: 30px;
-        position: absolute;
-        bottom: 90px;
-        right:0%;
-        //border: 1px solid rgb(12, 12, 12);
-        border-bottom-left-radius: 50px;
-        border-top-left-radius: 50px;
-        display: flex;
-        overflow: hidden;
-        // ion-icon {
-        //   font-size: 1vw;
-        // }
-        ion-button{
-          margin: 0;
-          height: 30px;
-        }
       }
+    }
 
-      .burgercontent3 {
-        transition: 300ms;
-        background: white;
-       // border: 2px solid red;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 40px;
+    .burgercontent2 {
+      transition: 300ms;
+      background: white;
+      // border: 2px solid red;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      bottom: 90px;
+      right: 0%;
+      //border: 1px solid rgb(12, 12, 12);
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      display: flex;
+      overflow: hidden;
+      // ion-icon {
+      //   font-size: 1vw;
+      // }
+      ion-button {
+        margin: 0;
         height: 30px;
-        position: absolute;
-        bottom: 90px;
-        right:0%;
-        //border: 1px solid rgb(12, 12, 12);
-        border-bottom-left-radius: 50px;
-        border-top-left-radius: 50px;
-        display: flex;
-        overflow: hidden;
-        // ion-icon {
-        //   font-size: 1vw;
-        // }
-        ion-button{
-          margin: 0;
-          height: 30px;
-        }
       }
+    }
 
-      .burgercontent4 {
-        transition: 300ms;
-        background: white;
-       // border: 2px solid red;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-        width: 40px;
+    .burgercontent3 {
+      transition: 300ms;
+      background: white;
+      // border: 2px solid red;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      bottom: 90px;
+      right: 0%;
+      //border: 1px solid rgb(12, 12, 12);
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      display: flex;
+      overflow: hidden;
+      // ion-icon {
+      //   font-size: 1vw;
+      // }
+      ion-button {
+        margin: 0;
         height: 30px;
-        position: absolute;
-        bottom: 90px;
-        right:0%;
-       // border: 1px solid rgb(12, 12, 12);
-        border-bottom-left-radius: 50px;
-        border-top-left-radius: 50px;
-        display: flex;
-        overflow: hidden;
-        // ion-icon {
-        //   font-size: 1vw;
-        // }
-        ion-button{
-          margin: 0;
-          height: 30px;
-        }
       }
+    }
+
+    .burgercontent4 {
+      transition: 300ms;
+      background: white;
+      // border: 2px solid red;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
+      width: 40px;
+      height: 30px;
+      position: absolute;
+      bottom: 90px;
+      right: 0%;
+      // border: 1px solid rgb(12, 12, 12);
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      display: flex;
+      overflow: hidden;
+      // ion-icon {
+      //   font-size: 1vw;
+      // }
+      ion-button {
+        margin: 0;
+        height: 30px;
+      }
+    }
   }
 
   //div holding edit form
-  .editform, .deletecategory {
+  .editform,
+  .deletecategory {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-   width: 100%;
+    width: 100%;
     //border: 3px solid blue;
     border-radius: 10px;
     background: white;
@@ -344,7 +397,7 @@ h6 {
       margin-left: 10%;
       margin-top: 2%;
       border-radius: 50px;
-      background: #EAEAEA;
+      background: #eaeaea;
       padding: 9px;
       border: none !important;
       outline: none;
@@ -356,7 +409,7 @@ h6 {
       width: 80%;
       margin-left: 10%;
       font-size: 1.5vw;
-      font-family: 'Microsoft YaHei UI';
+      font-family: "Microsoft YaHei UI";
     }
     button {
       width: 40%;
@@ -386,7 +439,7 @@ h6 {
       margin-left: 10%;
       margin-top: 2%;
       border-radius: 50px;
-      background: #EAEAEA;
+      background: #eaeaea;
       padding: 9px;
       border: none !important;
       outline: none;
@@ -394,12 +447,12 @@ h6 {
     }
     h1 {
       // border: 1px solid red;
-       padding-top: 5%;
+      padding-top: 5%;
       margin-top: 10%;
       width: 80%;
       margin-left: 10%;
       font-size: 1.6vw;
-      font-family: 'Microsoft YaHei UI';
+      font-family: "Microsoft YaHei UI";
     }
     button {
       width: 40%;
@@ -411,12 +464,10 @@ h6 {
       color: white;
     }
   }
-
- 
 }
 .box {
   width: 24%;
- // border: 5px solid blue;
+  // border: 5px solid blue;
   height: 90%;
   position: relative;
   .matnames {
@@ -427,45 +478,43 @@ h6 {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-     z-index: 9;
-     position: relative;
-     top: -40%;
-     left: 10%; 
-      display: flex;
+    z-index: 9;
+    position: relative;
+    top: -40%;
+    left: 10%;
+    display: flex;
   }
 }
 .matnames {
-
-//  position: relative;
-//  left: -225%;
-//  top: 18%;
-//  border-top-left-radius: 7px;
-//  border-bottom-left-radius: 7px;
+  //  position: relative;
+  //  left: -225%;
+  //  top: 18%;
+  //  border-top-left-radius: 7px;
+  //  border-bottom-left-radius: 7px;
   z-index: 9;
- // background: red;
+  // background: red;
 
   // justify-content: center;
 }
 .manname {
   width: 40%;
-display: flex;
-justify-content: center;
-align-content: center;
-align-items: center;
-background: white;
-font-size: 1.2vw;
-font-family: 'Pompiere', cursive;
-border-bottom-right-radius: 5px;
-//border: 1px solid red;
-
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background: white;
+  font-size: 1.2vw;
+  font-family: "Pompiere", cursive;
+  border-bottom-right-radius: 5px;
+  //border: 1px solid red;
 }
 .codes {
   width: 60%;
   max-height: 80px;
-padding: 1%;
+  padding: 1%;
   overflow-y: scroll;
-//border: 1px solid blue;
-  background: #EAEAEA;
+  //border: 1px solid blue;
+  background: #eaeaea;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 
@@ -483,7 +532,7 @@ padding: 1%;
     margin-top: -1%;
     // border: 2px solid ;
     position: relative;
-    span{
+    span {
       position: absolute;
       right: 0;
       padding-right: 2px;
@@ -492,14 +541,14 @@ padding: 1%;
 }
 
 .graphs {
-
-
-// border: 2px solid blue;
+  // border: 2px solid blue;
   height: 31%;
   display: flex;
   justify-content: space-around;
 
-  #daily, #weekly, #montly {
+  #daily,
+  #weekly,
+  #montly {
     position: absolute;
     bottom: 28%;
     right: 16%;
@@ -507,21 +556,21 @@ padding: 1%;
   }
   #weekly {
     right: 9%;
-    --background: #FFBA00;
+    --background: #ffba00;
   }
   #montly {
     right: 2%;
   }
-
 }
 
-.graph, .graph2, .graph3 {
+.graph,
+.graph2,
+.graph3 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
   width: 31.8%;
   height: 100%;
   border-radius: 12px;
   position: relative;
-
 
   .fix {
     position: absolute;
@@ -529,23 +578,22 @@ padding: 1%;
     right: 0;
     display: none;
   }
-
 }
 
 /* chart */
 .graph {
-//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//   height: 100%;
-//   width: 100%;
-//  border-radius: 12px;
+  //   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  //   height: 100%;
+  //   width: 100%;
+  //  border-radius: 12px;
 
-canvas {
- // border: 2px solid blue !important;
-  height: 100% !important;
-  width: 100% !important;
- background: rgba(255, 255, 255, 0.158) !important;
-  border-radius: 12px !important;
-}
+  canvas {
+    // border: 2px solid blue !important;
+    height: 100% !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.158) !important;
+    border-radius: 12px !important;
+  }
 }
 
 .test {
@@ -553,7 +601,7 @@ canvas {
 
   h1 {
     font-size: 15px;
-   letter-spacing: 1px;
+    letter-spacing: 1px;
   }
   .headers {
     border-radius: 1.5px;
@@ -570,42 +618,40 @@ canvas {
       display: flex;
       justify-content: left;
       align-items: center;
-    
     }
     h2 {
       color: white;
       font-size: 15px;
       margin: 0 !important;
       padding: 0 !important;
-     // border: 1px solid blue;
+      // border: 1px solid blue;
     }
   }
 
   .historydata {
-   // border: 4px solid rgb(255, 0, 0);
+    // border: 4px solid rgb(255, 0, 0);
     height: 75%;
     overflow-y: scroll;
-   
 
     .historydata2 {
-    //border: 1px solid red;
-    width: 100%;
-    height: 30px;
-    display: flex;
+      //border: 1px solid red;
+      width: 100%;
+      height: 30px;
+      display: flex;
     }
     .two {
-     width: 32%;
-     height: 30px;
-     font-size: 15px;
-     padding-left: 5px;
-     text-align: left;
-     padding-top: 5px;
-    // border: 1px solid blue;
-   }
+      width: 32%;
+      height: 30px;
+      font-size: 15px;
+      padding-left: 5px;
+      text-align: left;
+      padding-top: 5px;
+      // border: 1px solid blue;
+    }
 
-   .historydata2:nth-child(odd) {
-    background: rgb(238, 234, 234);
-}
+    .historydata2:nth-child(odd) {
+      background: rgb(238, 234, 234);
+    }
   }
 }
 ::-webkit-scrollbar {
@@ -614,19 +660,19 @@ canvas {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey; 
+  background: grey;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000; 
+  background: #b30000;
 }
 
 .opacitydivs {
@@ -639,14 +685,15 @@ canvas {
   height: 100%;
   z-index: 1000000000000000000000;
 }
-.createDiv, .editDiv, .deleteDiv {
+.createDiv,
+.editDiv,
+.deleteDiv {
   display: none;
 }
-// style for the edit modal 
+// style for the edit modal
 
 .editform2 {
-
-//border: 2px solid green;
+  //border: 2px solid green;
   width: 60%;
   height: 60%;
   position: relative;
@@ -658,16 +705,16 @@ canvas {
   display: flex;
   flex-direction: column;
 
-    &::before {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-    }
- 
+  &::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+  }
+
   h1 {
     font-size: 1.3vw;
-   //border: 2px solid green;
+    //border: 2px solid green;
     //margin-top: -1%;
     padding-left: 10%;
     width: 80%;
@@ -677,41 +724,44 @@ canvas {
     border: none;
     padding: 10px;
     padding-left: 13px;
-    background: #EAEAEA;
+    background: #eaeaea;
     margin-top: 1.2%;
     font-size: 1vw;
     width: 80%;
     margin-left: 10%;
     outline: none;
   }
-button {
-width: 25%;
-margin-left: 37.5%;
-padding: 1.4%;
-margin-top: 5%;
-border-radius: 5px;
-font-size: 1vw;
-background: #265902;
-color: white;
-}
-.close {
- // border: 1px solid red;
-  width: 15%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: right;
-  margin: 0;
-  padding: 0;
-  ion-icon {
-    font-size: 2vw;
- text-align: right;
+  button {
+    width: 25%;
+    margin-left: 37.5%;
+    padding: 1.4%;
+    margin-top: 5%;
+    border-radius: 5px;
+    font-size: 1vw;
+    background: #265902;
+    color: white;
+  }
+  .close {
+    // border: 1px solid red;
+    width: 15%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: right;
+    margin: 0;
+    padding: 0;
+    ion-icon {
+      font-size: 2vw;
+      text-align: right;
+    }
   }
 }
-}
-#aluminium, #glass, #plastic, #paper {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/cans.jpg');
+#aluminium,
+#glass,
+#plastic,
+#paper {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.582)), url("../../assets/cans.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -719,101 +769,99 @@ color: white;
 }
 
 #glass {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/glass2.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.582)), url("../../assets/glass2.jpg");
 }
 
 #plastic {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/Hd\ plastic.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.582)), url("../../assets/Hd\ plastic.jpg");
 }
 #paper {
-  background-image:linear-gradient(rgba(0, 0, 0, 0.582)), url('../../assets/flatnews.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.582)), url("../../assets/flatnews.jpg");
 }
 #secondborder {
-border: 1px solid gray;
-width: 74%;
-margin-left: 2%;
-
+  border: 1px solid gray;
+  width: 74%;
+  margin-left: 2%;
 }
 
 #history {
-//  border: 3px solid blue;
+  //  border: 3px solid blue;
   width: 70%;
   h1 {
-   // color: red;
-   // border: 1px solid red;
+    // color: red;
+    // border: 1px solid red;
     font-size: 18px;
     text-align: left;
     font-weight: bold;
-
   }
   .data {
-   // border: 2px solid red;
+    // border: 2px solid red;
     height: 85%;
     // overflow-y: scroll;
-    
+
     .head {
       background: green;
-     // border: 1px solid red;
+      // border: 1px solid red;
       height: 30px;
       display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-  
-    .date, .oldPrice, .newPrice {
-    //  border: 1px solid blue;
-      width: 33%;
-    height: 100%;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    
-    h3 {
-      color: white;
-      font-size: 17px;
-      font-family: 'Microsoft YaHei UI';
-      padding-left: 10px;
-      padding-bottom: 5px;
-    
-    }
-   p {
-     padding-left: 5px;
-   }
-    }
-
-    }
-    .info2 {
-    //  border: 3px solid black;
-      height: 25px;
-      display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-    .date, .oldPrice, .newPrice {
-      width: 33%;
-      height: 100%;
-      display: flex;
+      justify-content: space-between;
       align-content: center;
       align-items: center;
+
+      .date,
+      .oldPrice,
+      .newPrice {
+        //  border: 1px solid blue;
+        width: 33%;
+        height: 100%;
+        display: flex;
+        align-content: center;
+        align-items: center;
+
+        h3 {
+          color: white;
+          font-size: 17px;
+          font-family: "Microsoft YaHei UI";
+          padding-left: 10px;
+          padding-bottom: 5px;
+        }
+        p {
+          padding-left: 5px;
+        }
+      }
     }
-    p {
-      font-size: 13px;
-      font-family: 'Microsoft YaHei UI'; 
-      padding-left: 10px;
-      padding-bottom: 5px;
-    //  border: 1px solid blue;
-      width: 90%;
-    }
+    .info2 {
+      //  border: 3px solid black;
+      height: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      .date,
+      .oldPrice,
+      .newPrice {
+        width: 33%;
+        height: 100%;
+        display: flex;
+        align-content: center;
+        align-items: center;
+      }
+      p {
+        font-size: 13px;
+        font-family: "Microsoft YaHei UI";
+        padding-left: 10px;
+        padding-bottom: 5px;
+        //  border: 1px solid blue;
+        width: 90%;
+      }
     }
     .info:nth-child(odd) {
       background: white;
+    }
   }
-  }
-
-
 }
 .chartbuttons {
- // border: 1px solid red;
+  // border: 1px solid red;
   height: 8%;
   margin: 0;
   padding: 0;
@@ -822,12 +870,12 @@ margin-left: 2%;
     border: 1px solid gray;
     width: 68%;
     height: 1px;
-   margin-top: 3.5%;
-   margin-left: 2%;
+    margin-top: 3.5%;
+    margin-left: 2%;
   }
   .dynamicBtns {
     margin: 0;
-  padding: 0;
+    padding: 0;
     //border: 4px solid rgb(15, 221, 94);
     width: 30%;
     display: flex;
@@ -840,7 +888,7 @@ margin-left: 2%;
       padding: 4px;
       width: 31%;
       border-radius: 4px;
-    //  border: 1px solid green;
+
       text-align: center;
     }
   }
@@ -848,75 +896,247 @@ margin-left: 2%;
 
 //all media queries
 @media screen and (min-width: 1366px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+        margin-left: -2%;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: 3.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+      //border: 1px solid red;
+      height: 10px !important;
+      width: auto;
+    }
+  }
   .alltime {
-  //  border: 2px solid red;
+    //  border: 2px solid red;
     height: 27%;
 
     .small {
-     // border: 2px solid red;
-       height: 55%;
+      // border: 2px solid red;
+      height: 55%;
     }
     .mass {
-    //  border: 2px solid red;
+      //  border: 2px solid red;
       position: absolute;
       top: 8%;
     }
     .updates {
-     // border: 1px solid green;
-     margin-top: 10px;
+      // border: 1px solid green;
+      margin-top: 10px;
     }
     .big {
       height: 80%;
     }
   }
   .stats {
-  //  border: 2px solid blue;
-  
+    //  border: 2px solid blue;
   }
   h6 {
     margin-top: -5px;
   }
-.material {
- // border: 2px solid red;
+  .material {
+    // border: 2px solid red;
 
-  .matnames {
-  //  border: 2px solid blue;
-    margin-top: 40px;
+    .matnames {
+      //  border: 2px solid blue;
+      margin-top: 40px;
+    }
+    .burgercontent3,
+    .burgercontent4,
+    .burgercontent2,
+    .burgercontent {
+      //border: 2px solid blue;
+      margin-bottom: 30%;
+    }
   }
-  .burgercontent3,.burgercontent4, .burgercontent2, .burgercontent {
-    //border: 2px solid blue;
-    margin-bottom: 30%;
+  .chartbuttons {
+    p {
+      border: 1px solid gray;
+      width: 65%;
+      margin-right: 2%;
+    }
+    //border: 2px solid red;
+    margin-top: -1.5%;
+    .dynamicBtns {
+      // border: 1px solid blue;
+      margin-right: 1.8%;
+      margin-top: -1%;
+      ion-button {
+        font-size: 15px;
+        padding: 5px;
+        // border: 2px solid red;
+      }
+    }
   }
+  .graphs {
+    // border: 2px solid blue;
+    height: 34%;
+    margin: 0;
+    margin-top: -2% !important;
+    .graph {
+      //border: 1px solid red;
+      height: 105%;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+        margin-left: -4%;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: 3.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+      width: auto;
+    }
+  }
+ 
+  .container {
+    //border: 2px solid red;
+    .small {
+    //  border: 2px solid red;
+      height: 60%; 
+    }
+.alltime {
+ //
+height: 25%;
+.updates {
+ //  border: 2px solid rgb(0, 68, 255);
+   height: 25%;
+   margin-top: 5%;
+}
+
+}
+.burgercontent , .burgercontent2, .burgercontent3, .burgercontent4{
+  // border: 2px solid rgb(0, 68, 255);
+  margin-bottom: 15%;
 }
 .chartbuttons {
-  p {
-    border: 1px solid gray;
-    width: 65%;
-    margin-right: 2%;
-   
-  }
-  //border: 2px solid red;
-  margin-top: -1.5%;
+ // border: 2px solid rgb(176, 235, 16);
+p {
+  width: 70%;
+}
   .dynamicBtns {
-   // border: 1px solid blue;
-    margin-right: 1.8%;
-    margin-top: -1%;
-      ion-button {
-    font-size: 15px;
-    padding: 5px;
-   // border: 2px solid red;
+   // border: 2px solid rgb(0, 68, 255);
+    margin-right: 2%;
+  }
+}
+  }
+}
+@media screen and (min-width: 1920px) {
+ 
+  .header {
+   // border: 1px solid red;
+    ion-title {
+    //  border: 2px solid blue;
+      height: 40px;
+    }
+    ion-avatar {
+     // border: 1px solid red;
+      height: 40px;
+      width: 40px;
+      margin-top: -5px;
+    }
+    p {
+    //  border: 1px solid white;
+      position: absolute;
+      left: 6.4%;
+     top: -5px;
+    }
+    #logout {
+   // border: 1px solid red;
+     height: 40%; 
+     padding: 1% !important;
   }
   }
+ .container {
+  // border: 2px solid red;
+ .close {
+ // border: 2px solid red;
+ }
+  .alltime {
+    //border: 2px solid blue;
+    height: 25%;
+    .stats {
+     // border: 2px solid green;
+      margin-top: -0.4%;
+h3 {
+ // border: 1px solid red;
+  padding: 0 !important;
+  position: absolute;
+  top: 4%;
+  padding-right: 10px !important;
+  font-size: 45px;
+}
+.updates {
+  border-top: 1.5px solid gray;
+  margin-top: -3%;
+p {
+//  border: 1px solid red;
+  font-size: 15px;
+}
+}
+.mass {
+ // border: 1px solid black;
+  font-size: 35px;
+ position: absolute;
+ margin-top: 20px;
+}
+      .small {
+       // border: 2px solid blue;
+        height: 80%;
+      }
+    }
+  }
+  .material {
+ //  border: 2px solid blue;
+   .burgercontent, .burgercontent2, .burgercontent3, .burgercontent4 {
+     //border: 1px solid red;
+     position: absolute;
+     bottom: 10%;
+  
+   }
+    .matnames {
+     // border: 1px solid green;
+      position: relative;
+      top: -45%;
+    }
+  }
+  .graphs {
+    //border: 2px solid red;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .chartbuttons {
+    //border: 2px solid rgb(238, 198, 19);
+    margin-top: 0.7%;
+    .dynamicBtns {
+     // border: 1px solid blue;
+    }
 
-}
-.graphs {
-  //border: 2px solid blue;
-  height: 34%;
-  margin: 0;
-  margin-top: -3% !important;
-  .graph {
-    //border: 1px solid red;
-    height: 105%;
+    p {
+      margin-top: 1.8%;
+    }
   }
-}
+ }
 }
