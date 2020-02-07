@@ -384,3 +384,30 @@ margin: 0 !important;
   height:100%;
   // background: red;
 }
+
+
+@media screen and (max-width: 900px){
+  .Theblocks {
+    height: 27%;
+    width: 100%;
+    // border: solid 2px blueviolet;
+    display: flex;
+    justify-content: space-between;
+  }
+  .History {
+    height: 112%;
+    width: 100%;
+    //  border: solid 2px red;
+    padding-top: 0 !important;
+    overflow-y: scroll;
+  }
+  .Block1 {
+    // border: 1px solid red;
+    position: relative;
+    height: 89%;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
+  }
+
+}
