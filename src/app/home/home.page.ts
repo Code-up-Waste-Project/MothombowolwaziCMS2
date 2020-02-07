@@ -16,6 +16,8 @@ import { format } from 'url';
 })
 export class HomePage implements OnInit {
 
+  viewBackdrop = false
+
   @ViewChild('barChart', {static: false}) barChart;
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
@@ -3039,8 +3041,5 @@ deletehd001(v){
   })
   
 }
-
-
-
 
 }
