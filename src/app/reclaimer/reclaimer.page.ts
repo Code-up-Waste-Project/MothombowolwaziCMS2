@@ -399,6 +399,7 @@ export class ReclaimerPage implements OnInit {
       });
       this.admin.forEach(item => {
         if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin = [];
           this.Newadmin.push(item);
         }
       });
