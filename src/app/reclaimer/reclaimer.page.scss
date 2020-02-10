@@ -1601,6 +1601,27 @@ ion-item {
          }
     }
     }
-
+    @media screen and (max-width: 1440px) {
+      .header {
+        ion-title {
+          p {
+            text-align: left;
+           // margin-left: -4%;
+           margin-top: -5px;
+          }
+        }
+        ion-avatar {
+          margin-left: 0 !important;
+          position: absolute;
+          left: 1% !important;
+          top: -16.5px;
+          width: 35px;
+          height: 35px;
+        }
+        #logout {
+         padding: 1.5%;
+        }
+      }
+    }
    
   

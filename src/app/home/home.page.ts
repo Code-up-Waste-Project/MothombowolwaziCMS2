@@ -966,7 +966,8 @@ console.log(this.PaperArray)
           handler: () => {
             // this.update();
             this.clearInputs();
-            this.route.navigateByUrl('/home');
+           
+         
             // console.log('Confirm Okay');
           }
         }
@@ -998,8 +999,9 @@ console.log(this.PaperArray)
         this.PAP007price === undefined &&
         this.PAP001price === undefined &&
         this.PET003price === undefined
-        
+     
       ) {
+       
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdatePaper();
@@ -1016,6 +1018,7 @@ console.log(this.PaperArray)
         this.PET001price === undefined
         
       ) {
+      
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdatePlastic();
@@ -1061,7 +1064,8 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkglassInputs();
-            this.route.navigateByUrl('/home');
+            this.glassShow();
+            // this.route.navigateByUrl('/home');
             console.log('Confirm Okay');
           }
         }
@@ -1126,7 +1130,8 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkPaperInputs();
-            this.route.navigateByUrl('/home');
+            // this.route.navigateByUrl('/home');
+            this.HideandShowSave();
             console.log('Confirm Okay');
           }
         }
@@ -1150,8 +1155,11 @@ console.log(this.PaperArray)
         }, {
           text: 'Okay',
           handler: () => {
+       
             this.checkPlasticInputs();
-            this.route.navigateByUrl('/home');
+            this.HideandShowCreate();
+            // this.route.navigateByUrl('/home');
+            console.log( 'close',this.HideandShowCreate)
             console.log('Confirm Okay');
           }
         }
@@ -1177,7 +1185,7 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkAlumInputs();
-            
+            this.HideandShowDelete()
             console.log('Confirm Okay');
           }
         }
@@ -2930,6 +2938,8 @@ HideandShowHISTORYGLASS() {
             {
               text: 'Okay',
               handler: () => {
+                
+             
                 this.route.navigateByUrl('/home');
               }
             }

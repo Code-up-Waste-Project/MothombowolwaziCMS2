@@ -128,7 +128,7 @@ ion-icon {
 }
 .slideOut {
   animation-name: slideOut;
-  animation-duration: 5s;
+  animation-duration: 1ms;
   animation-fill-mode: forwards;
 }
 
@@ -1139,4 +1139,50 @@ p {
     }
   }
  }
+}
+@media screen and (max-width: 1440px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+       // margin-left: -4%;
+       margin-top: -5px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: -16.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+     padding: 1.5%;
+    }
+  }
+ 
+  .container {
+  // border: 2px solid red;
+
+   .burgercontent, .burgercontent2, .burgercontent3, .burgercontent4 {
+    //  border: 1px solid blue;
+    position: absolute;
+    top: 50px;
+   }
+.chartbuttons {
+ // border: 1px solid red;
+  margin-top: 1%;
+  p {
+  position: relative;
+  top: -10px;
+    border: 1px solid gray;
+  }
+}
+   .graphs {
+   //  border: 2px solid blue;
+     position: absolute;
+     bottom: 0 !important;
+   }
+ } 
 }

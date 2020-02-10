@@ -218,7 +218,7 @@
   <input placeholder="PET005" [(ngModel)]="PET005price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
-<button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
+<button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
 </div>
 </div>
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -274,31 +274,31 @@
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
     <div class="two">{{paper.timePaper}}</div>
     
-    <div class="two">{{paper.newpap001}}</div>
-    <div class="two">{{paper.newpap001}}</div>
+    <div class="two">R{{paper.newpap001}}</div>
+    <div class="two">R{{paper.newpap001}}</div>
     
     </div>
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">{{paper.timePaper}}</div>
-    <div class="two">{{paper.oldpap003}}</div>
-    <div class="two">{{paper.newpap003}}</div>
+    <div class="two">R{{paper.timePaper}}</div>
+    <div class="two">R{{paper.oldpap003}}</div>
+    <div class="two">R{{paper.newpap003}}</div>
+    
+    </div>
+
+    <div class="historydata2">
+      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+    <div class="two">R{{paper.timePaper}}</div>
+    <div class="two">R{{paper.oldpap005}}</div>
+    <div class="two">R{{paper.newpap005}}</div>
     
     </div>
 
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
     <div class="two">{{paper.timePaper}}</div>
-    <div class="two">{{paper.oldpap005}}</div>
-    <div class="two">{{paper.newpap005}}</div>
-    
-    </div>
-
-    <div class="historydata2">
-      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">{{paper.timePaper}}</div>
-    <div class="two">{{paper.oldpap007}}</div>
-    <div class="two">{{paper.newpap007}}</div>
+    <div class="two">R{{paper.oldpap007}}</div>
+    <div class="two">R{{paper.newpap007}}</div>
     
     </div>
 
@@ -329,45 +329,45 @@
     <div class="historydata" *ngFor="let plastics of plasticarray">
       <div class="historydata2">
         <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-      <div class="two">R{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.timePlastic2}}</div>
       
-      <div class="two">{{plastics.oldhd001}}</div>
-      <div class="two">{{plastics.newhd001}}</div>
+      <div class="two">R{{plastics.oldhd001}}</div>
+      <div class="two">R{{plastics.newhd001}}</div>
       
       </div>
   
   
      
       <div class="historydata2">
-        <div class="two">R{{plastics.timePlastic2}}</div>
-        <div class="two">{{plastics.oldld001}}</div>
-        <div class="two">{{plastics.newld001}}</div>
+        <div class="two">{{plastics.timePlastic2}}</div>
+        <div class="two">R{{plastics.oldld001}}</div>
+        <div class="two">R{{plastics.newld001}}</div>
       </div>
 
   
       <div class="historydata2">
-        <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldld003}}</div>
-      <div class="two">{{plastics.newld003}}</div>
+        <div class="two">R{{plastics.timePlastic2}}</div>
+      <div class="two">R{{plastics.oldld003}}</div>
+      <div class="two">R{{plastics.newld003}}</div>
       </div>
      
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet003}}</div>
-      <div class="two">{{plastics.newpet003}}</div>
+      <div class="two">R{{plastics.oldpet003}}</div>
+      <div class="two">R{{plastics.newpet003}}</div>
       </div>
 
 
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet001}}</div>
-      <div class="two">{{plastics.newpet001}}</div>
+      <div class="two">R{{plastics.oldpet001}}</div>
+      <div class="two">R{{plastics.newpet001}}</div>
       </div>
 
       <div class="historydata2">
         <div class="two">R{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet005}}</div>
-      <div class="two">{{plastics.newpet005}}</div>
+      <div class="two">R{{plastics.oldpet005}}</div>
+      <div class="two">R{{plastics.newpet005}}</div>
       </div>
 
 
