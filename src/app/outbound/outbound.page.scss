@@ -89,22 +89,7 @@ ion-title {
   right: 0;
   transform: translateY(-50%);
 }
-// h3{
-//   font-family: 'Open Sans Condensed', sans-serif;
-//   color: white;
-//   font-size: 240%;
-//   position: absolute;
-//   top: -22px;
-//   right: 55px;
-// }
-// #H3{
-//   font-family: 'Open Sans Condensed', sans-serif;
-//   color: white;
-//   font-size: 240%;
-//   position: absolute;
-//   top: -22px;
-//   right: 25px;
-// }
+
 h2 {
   font-family: "Open Sans Condensed", sans-serif;
   color: rgb(255, 255, 255);
@@ -328,15 +313,6 @@ h2 {
   font-size: 190%;
   color: #183b03;
 }
-
-// #Tittle {
-//   text-align: center;
-//   position: absolute;
-//   left: 0%;
-//   right: 0%;
-//   top: 10px;
-//   color: black;
-// }
 
 .FirstIMG {
   //  border: solid 2px purple;
@@ -990,194 +966,7 @@ h1{
   padding-top: 15px;
 }
 
-// @media screen and (max-width: 1366px) {
-  
-// .Mask {
-//   height: 75%;
-//   border-radius: 10px;
-//   width: 50%;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   z-index: 100000;
-//   // background-color: rgba(255, 0, 0, 0.548);
-// }
-// .Group1 {
-//   width: 64%;
-//   height: 100%;
-//   border-radius: 5px;
-//   background-color: #f4f4f4;
-//   // background: purple;
-//   box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.589);
-//   position: absolute;
-//    left: 50%;
-//    top: 10%;
-//    transform: translateX(-50%);
-//   transition: 700ms;
 
-//   // z-index: 10;
-//   // overflow: scroll;
-// }
-// #PurpleBubbles {
-//   position: absolute;
-//   bottom: -35%;
-//   left: -33%;
-//   height: 800px;
-// }
-
-// // Ipad in Landscape
-// // @media screen and (max-width: 1025px){
-// //   .Mask{
-// //     width: 80%;
-// //     height: 90%;
-// //     // background: white;
-// //     transition: 300ms;
-// //   }
-// //   .Group1{
-// //     width: 95%;
-// //     height: 95%;
-// //   }
-// //   .Daughter{
-// //     width: 100%;
-// //     height: 100%;
-// //   }
-
-// // }
-
-//   // #PurpleBubbles {
-//   //   position: absolute;
-//   //   bottom: 0px;
-//   //   right: -11%;
-//   //   height: 900px;
-//   // }
-  
-// .Sub2 {
-//   width: 100%;
-//   height: 90%;
-//   border-radius: 5px;
-//   background-color: rgb(255, 255, 255);
-//   // background-color: peachpuff;
-//   box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.589);
-//   transition: 100ms;
-//   margin-left: 95px;
-//   margin-bottom: -50px;
-//   animation: slideInLeft 700ms;
-// }
-//   .Daughter {
-//     height: 75%;
-//     border-radius: 10px;
-//     width: 50%;
-//     // background-color: red;
-//     // border: solid 2px purple;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     display: flex;
-//     flex-direction: column;
-//     overflow: hidden;
-//   }
-//   #FinishBTN {
-//     // border: blueviolet solid 2px;
-//     width: 80%;
-//     height: 54%;
-//     border-right: 0px;
-//     border-top-left-radius: 50px;
-//     border-bottom-left-radius: 50px;
-//     background: linear-gradient(to left, rgb(196, 170, 211) 10%, #a571c3 100%);
-//     position: absolute;
-//     right: 0%;
-//     left: 33%;
-//     bottom: 0%;
-//     top: 84%;
-//     color: white;
-//     font-weight: 600;
-//   }
-//   #TruckIMG {
-//     height: 85px;
-//     position: absolute;
-//     top: 280px;
-//     left: 50px;
-//   }
-//   h6{
-//     text-align: center;
-//     position: absolute;
-//     left: 0%;
-//     right: 0%;
-//     top: 10px;
-//     color: black;
-//     font-size: 44px;
-//     font-family: "Open Sans Condensed", sans-serif;
-//     font-weight: 800;
-//   }
-
-// // This is for Ipad-Pro--not rotated
-
-//   // @media screen and (max-width: 1025px){
-//   //   .Daughter{
-//   //     width: 100%;
-//   //     height: 100%;
-//   //     transition: 300ms;
-//   //     // background: red;
-//   //   }
-//   //   // #PurpleBubbles {
-//   //   //   position: absolute;
-//   //   //   bottom: -50%;
-//   //   //   right: -11%;
-//   //   //   height: 900px;
-//   //   // }
-//   //   // #TruckIMG {
-//   //   //   height: 120px;
-//   //   //   position: absolute;
-//   //   //   top: 550px;
-//   //   //   left: 50px;
-//   //   // }
-//   //   // .DriverInputs {
-//   //   //   height: 311px;
-//   //   //   width: 100%;
-//   //   //   // border: solid 2px purple;
-//   //   //   display: flex;
-//   //   //   flex-direction: column;
-//   //   //   align-items: center;
-//   //   //   margin-top: 100px;
-//   //   //   margin-left: 0px;
-//   //   //   position: relative;
-//   //   //   bottom: 40px;
-//   //   // }
-//   //   #FinishBTN {
-//   //     // border: blueviolet solid 2px;
-//   //     width: 10 0%;
-//   //     height: 54%;
-//   //     border-right: 0px;
-//   //     border-top-left-radius: 50px;
-//   //     border-bottom-left-radius: 50px;
-//   //     background: linear-gradient(to left, rgb(196, 170, 211) 10%, #a571c3 100%);
-//   //     position: absolute;
-//   //     right: 0%;
-//   //     bottom: 0%;
-//   //     color: white;
-//   //     font-weight: 600;
-//   //     font-size: 2vh
-//   //   } 
-//   //   // .AddDriver {
-//   //   //   background-color: #558703;
-//   //   //   height: 60px;
-//   //   //   width: 100px;
-//   //   //   border-radius: 3px;
-//   //   //   font-size: 20px;
-//   //   // }
-//   //   #input {
-//   //     // border: blueviolet solid 2px;
-//   //     width: 90%;
-//   //     margin-bottom: 10px;
-//   //     height: 100px;
-//   //     background: #eaeaea;
-//   //     border-radius: 5px;
-//   //     border-left: 0px;
-//   //     border-top: 0px;
-//   //     font-size: 25px;
-//   //   }
   
 
   .Theblocks {
@@ -1204,14 +993,7 @@ h1{
     top: 50%;
     transform: translateY(-50%);
   }
-  // #H3{
-  //   font-family: 'Open Sans Condensed', sans-serif;
-  //   color: white;
-  //   font-size: 240%;
-  //   position: absolute;
-  //   top: -22px;
-  //   right: 9px;
-  // }
+
 
   #RecyleLogo1 {
     width: 65%;
@@ -1304,52 +1086,6 @@ button[ion-fab] {
   }
 }
 
-// Without sideMenu
-// @media screen and (max-width: 991px){
-//   .Mask{
-//     width: 90%;
-//     height: 90%;
-//     // background: white;
-//     transition: 300ms;
-//   }
-//   .Group1{
-//     width: 95%;
-//     height: 95%;
-//   }
-
-  
-// .AddDriver {
-//   background-color: #558703;
-//   height: 60px;
-//   width: 100px;
-//   border-radius: 3px;
-//   font-size: 20px;
-// }
-// #PurpleBubbles {
-//   position: absolute;
-//   bottom: 0px;
-//   left: -190px;
-// }
-// #TruckIMG {
-//   height: 116px;
-//   position: absolute;
-//   top: 377px;
-//   left: 36px;
-// }
-// .Sub2 {
-//   width: 100%;
-//   height: 90%;
-//   border-radius: 5px;
-//   background-color: rgb(255, 255, 255);
-//   // background-color: peachpuff;
-//   box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.589);
-//   transition: 100ms;
-//   margin-left: 115px;
-//   animation: slideInLeft 700ms;
-// }
-
-  
-// }
 
 #BAckbtn{
   color: #265902;
@@ -1599,3 +1335,57 @@ height: 35%;
      }
 }
 }}
+
+
+@media screen and (max-width: 1440px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+        margin-left: -2.5%;
+       margin-top: -10px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: -16.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+     padding: 0.1%;
+     width: 120px;
+    display: flex;
+    justify-content: center;
+    }
+  }
+ 
+  #Everything {
+    //border: 2px solid blue;
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+   // overflow-y: hidden;
+    .Theblocks {
+   // border: 2px solid red;
+      height: 40%;
+      .Block1 {
+       // border: 1px solid red;
+        h3 {
+          margin-top: 60%;
+        }
+      }
+    }
+    .History {
+     // border: 2px solid black;
+      height: 60%;
+     // margin-top: -4%;
+     .History1 {
+    //   border: 3px solid red;
+       margin-top: 4%;
+     }
+    }
+  }
+}

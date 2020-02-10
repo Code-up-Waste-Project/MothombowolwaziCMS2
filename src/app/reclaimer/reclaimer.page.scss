@@ -1517,37 +1517,6 @@ ion-item {
      
     }
 
-    // @media screen and (min-width: 1920px) {
- 
-    //   .header {
-    //    // border: 1px solid red;
-    //     ion-title {
-    //     //  border: 2px solid blue;
-    //       height: 40px;
-    //     }
-    //     ion-avatar {
-    //      // border: 1px solid red;
-    //       height: 40px;
-    //       width: 40px;
-    //       margin-top: -5px;
-    //     }
-    //     p {
-    //     //  border: 1px solid white;
-    //       position: absolute;
-    //       left: 6.9%;
-    //      top: 2px;
-    //     }
-    //     #logout {
-    //    // border: 1px solid red;
-    //      height: 40%; 
-    //      padding: 1% !important;
-    //   }
-    //   }
-    // .container {
-    //   border: 2px solid red;
-    // }
-    // }
-
     @media screen and (min-width: 1920px) {
  
       .header {
@@ -1602,5 +1571,58 @@ ion-item {
     }
     }
 
+ 
+@media screen and (max-width: 1440px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+       // margin-left: -4%;
+       margin-top: -10px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: -16.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+     padding: 1.5%;
+    }
+  }
+ 
+  #Everything {
+   // border: 2px solid blue;
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+   // overflow-y: hidden;
+    .Theblocks {
+   // border: 2px solid red;
+      height: 40%;
+      margin-top: 0 !important;
+      .Block1 {
+        //border: 1px solid red;
+        height: 100%;
+        h3 {
+          margin-top: 60%;
+        }
+      }
+    }
+    .History {
+     // border: 2px solid black;
+      height: 60%;
+      margin-top: 0 !important;
+     // margin-top: -4%;
+     .History1 {
+    //   border: 3px solid red;
+       margin-top: 2%;
+     }
+    }
+  }
+}
    
   

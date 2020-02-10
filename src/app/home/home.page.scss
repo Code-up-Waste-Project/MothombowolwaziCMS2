@@ -128,7 +128,7 @@ ion-icon {
 }
 .slideOut {
   animation-name: slideOut;
-  animation-duration: 5s;
+  animation-duration: 1ms;
   animation-fill-mode: forwards;
 }
 
@@ -1073,6 +1073,9 @@ p {
  .close {
   border: 2px solid red;
  }
+ .editform2 {
+   border: 2px solid red;
+ }
   .alltime {
     //border: 2px solid blue;
     height: 25%;
@@ -1108,9 +1111,11 @@ p {
     }
   }
   .material {
-   border: 2px solid blue;
-   .burgercontent {
-     border: 1px solid red;
+   //border: 2px solid blue;
+   .burgercontent,   .burgercontent2,   .burgercontent3,   .burgercontent4 {
+    // border: 1px solid red;
+  position: absolute;
+  top: 15%;
   
    }
     .matnames {
@@ -1138,3 +1143,77 @@ p {
   }
  }
 }
+@media screen and (max-width: 1248) {
+  .container {
+    border: 2px solid red;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .header {
+    ion-title {
+      p {
+        text-align: left;
+       // margin-left: -4%;
+       margin-top: -5px;
+      }
+    }
+    ion-avatar {
+      margin-left: 0 !important;
+      position: absolute;
+      left: 1% !important;
+      top: -16.5px;
+      width: 35px;
+      height: 35px;
+    }
+    #logout {
+     padding: 1.5%;
+    }
+  }
+ .editform2 {
+ //  border: 2px solid red;
+   .close {
+     padding: 4px;
+   ion-icon {
+    //  width: 50px;
+    //  height: 40px;
+     margin-top: 5px;
+     margin-right: -20px;
+   }
+
+   }
+
+ }
+ .test {
+  border: 2px solid red;
+  
+ }
+  .container {
+  // border: 2px solid red;
+   .burgercontent, .burgercontent2, .burgercontent3, .burgercontent4 {
+    //  border: 1px solid blue;
+    position: absolute;
+    top: 50px;
+   }
+.chartbuttons {
+ // border: 1px solid red;
+  margin-top: 1%;
+  p {
+  position: relative;
+  top: -10px;
+    border: 1px solid gray;
+  }
+}
+   .graphs {
+   //  border: 2px solid blue;
+     position: absolute;
+     bottom: 0 !important;
+   }
+ } 
+}
+/*  
+   } */
+
+
+
+

@@ -2613,7 +2613,7 @@ optsSlider = document.getElementsByClassName("burgercontent") as HTMLCollectionO
 showMoreBtn() {
   if (this.moreState == 0) {
     this.moreState = 1
-    this.optsSlider[0].style.width = "105px"
+    this.optsSlider[0].style.width = "125px"
     // console.log("this is open")
   }
   else {
@@ -2630,7 +2630,7 @@ optsSlider2 = document.getElementsByClassName("burgercontent2") as HTMLCollectio
 showMoreBtn2() {
   if (this.moreState2 == 0) {
     this.moreState2 = 1
-    this.optsSlider2[0].style.width = "105px"
+    this.optsSlider2[0].style.width = "125px"
     // console.log("this is open")
   }
   else {
@@ -2646,7 +2646,7 @@ optsSlider3 = document.getElementsByClassName("burgercontent3") as HTMLCollectio
 showMoreBtn3() {
   if (this.moreState3 == 0) {
     this.moreState3 = 1
-    this.optsSlider3[0].style.width = "105px"
+    this.optsSlider3[0].style.width = "125px"
     // console.log("this is open")
   }
   else {
@@ -2662,7 +2662,7 @@ optsSlider4 = document.getElementsByClassName("burgercontent4") as HTMLCollectio
 showMoreBtn4() {
   if (this.moreState4 == 0) {
     this.moreState4 = 1
-    this.optsSlider4[0].style.width = "105px"
+    this.optsSlider4[0].style.width = "125px"
     //  console.log("this is open")
   }
   else {
