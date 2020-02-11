@@ -3,7 +3,7 @@
 .header {
   --background: #265902 !important;
   display: flex;
-  // border: 2px solid rgb(17, 0, 255);
+   border: 2px solid rgb(236, 55, 124);
 }
 ion-toolbar {
   display: flex;
@@ -73,7 +73,7 @@ ion-toolbar {
   transition: 0.3s;
 }
 ion-title {
-  // border: 1px solid red;
+   border: 1px solid red;
   font-family: "Microsoft YaHei UI";
   font-size: 15px;
   color: white;
