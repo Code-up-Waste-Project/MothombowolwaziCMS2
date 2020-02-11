@@ -104,9 +104,7 @@ this.surname=obj.surname
 
 
   ngOnInit() {
-    this.email = "";
-    this.password ="";
-    this.positions="";
+   
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -313,6 +311,9 @@ this.surname=obj.surname
               profile:'no',
               positions:this.positions,
             }).then(async res =>{
+              this.email=null
+              this.positions=null
+              this.password=null
               let alert = await this.alertCtrl.create({
               message:'Created users',
                 
@@ -345,18 +346,11 @@ this.surname=obj.surname
            }
           
         })
-     this.email=''
-     this.position=''
-     this.password=''
+   
   
       }
 
-      ionViewWillLeave(){
-        this.email = "";
-        this.password ="";
-        this.position=""
-      }
-     
+   
 
       changeListener(admin): void {
         const i = admin.target.files[0];
