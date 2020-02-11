@@ -308,7 +308,8 @@ this.surname=obj.surname
             this.db.collection('userprofiles').add({
               email: this.email,
               password: this.password,
-              profile:'no'
+              profile:'no',
+              position:this.position,
             }).then(async res =>{
               let alert = await this.alertCtrl.create({
               message:'Created users',
@@ -342,8 +343,7 @@ this.surname=obj.surname
            }
           
         })
-        this.email = "";
-        this.password ="";
+     
   
       }
 

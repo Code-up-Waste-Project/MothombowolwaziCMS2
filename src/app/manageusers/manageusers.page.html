@@ -14,7 +14,7 @@
            <div class="names">
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.email }}</p>
-            <p>{{ myprofiles.position }}</p>
+            
             
             <div class="image">
               
@@ -36,7 +36,7 @@
         <p id="borderb"></p>
         <div padding class="info" >
           <h4>{{name}} {{surname}}</h4>
-          <p>{{position}}</p>
+         
           <p>{{email}}</p>
           <p>{{number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
@@ -75,6 +75,7 @@
      <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
       <h1>Register</h1>
       <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset >
+      <input class="inputs" placeholder="Enter position" [(ngModel)]="position"  this.position.reset >
       <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset>
      <button ion-button (click)="saveNewUseer()" type="reset">Register</button>
      <div class="bottomdeco">

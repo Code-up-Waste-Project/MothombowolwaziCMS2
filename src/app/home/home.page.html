@@ -73,7 +73,7 @@
     </div>
     
       <div class="matnames">
-        <div class="codes">
+        <div class="codes" >
          <p>pap005 <span>R {{ pricess.pap005 }}</span></p>
          <p>pap007 <span>R {{ pricess.pap007 }}</span></p>
          <p>pap001 <span>R {{ pricess.pap001 }}</span></p>
@@ -149,7 +149,7 @@
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="folder"></ion-icon></ion-button>
 </div>    
 </div>
-<div class="matnames">
+<div class="matnames" >
   <div class="codes" >
     <p>nfalo1 <span>R {{ pricess.nfalo1 }}</span></p>
     
@@ -226,7 +226,7 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input placeholder="GH001" [(ngModel)]="GH001price" type="tel" maxlength="4">
+    <input placeholder="GH001" [(ngModel)]="GH001price"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
     
   <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
   </div>
