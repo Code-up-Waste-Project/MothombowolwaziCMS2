@@ -1,7 +1,7 @@
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, AlertController, MenuController} from '@ionic/angular';
+import { LoadingController, AlertController} from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -34,7 +34,7 @@ export class ProfilePage implements OnInit {
   constructor(
     private router: Router,
     private toastController: ToastController,
-    private menuCtrl: MenuController,
+    // private menuCtrl: MenuController,
     public alertController: AlertController,
     ) {
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {

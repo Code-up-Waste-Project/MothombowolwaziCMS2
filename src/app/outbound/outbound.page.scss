@@ -1403,37 +1403,7 @@ button[ion-fab] {
 
 @media screen and (max-width:1024px){
 
-  .Theblocks {
-    height: 27%;
-    width: 100%;
-    // border: solid 2px blueviolet;
-    display: flex;
-    justify-content: space-between;
-  }
-  .History {
-    height: 73%;
-    width: 100%;
-    //  border: solid 2px red;
-    padding-top: 0 !important;
-    overflow-y: scroll;
-  }
-  .Block1 {
-    // border: 1px solid red;
-    position: relative;
-    height: 89%;
-    width: 24%;
-    border-radius: 5px;
-    box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
-  }
-  // .Mask{
-  //   // background: red;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-
   .Mask{
-    
-    // background: red;
     width: 100%;
     height: 100%;
 
@@ -1442,11 +1412,7 @@ button[ion-fab] {
     width: 100%;
     height: 100%;
   }
-  // .SecIMG{
-  //   background: red;
-  //   width: 100%;
-  //   height: 100%;
-  // }
+ 
 #PurpleBubbles{
   bottom: 0px;
 
@@ -1468,6 +1434,7 @@ h6{
   position: absolute;
   top: 40px;
   right: -5px;
+}
 }
 // fifi media queries
 @media screen and (min-width: 1366px) {
@@ -1598,6 +1565,5 @@ height: 35%;
       //border: 2px solid red;
       margin-top: 0;
      }
-}
 }
 }

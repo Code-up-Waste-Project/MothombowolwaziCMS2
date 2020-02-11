@@ -311,7 +311,7 @@ this.surname=obj.surname
               profile:'no'
             }).then(async res =>{
               let alert = await this.alertCtrl.create({
-              message:'Created users',
+              message:'You Have just created a new user with the following email Addr',
                 
               buttons: [
                 {
@@ -342,8 +342,7 @@ this.surname=obj.surname
            }
           
         })
-        this.email = "";
-        this.password ="";
+     
   
       }
 

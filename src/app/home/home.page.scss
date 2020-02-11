@@ -1,4 +1,5 @@
 
+
 .header {
   --background: #265902 !important;
   display: flex;
@@ -151,7 +152,8 @@ ion-icon {
 }
 
 .container {
-  // border: 1px solid red;
+display: flex;
+flex-direction: column;
   height: 100%;
   //  overflow-x: scroll;
 }
@@ -474,7 +476,7 @@ h6 {
     //border: 1px solid purple;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.322);
     width: 90%;
-    height: 80px;
+    height: 100px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -483,19 +485,15 @@ h6 {
     top: -40%;
     left: 10%;
     display: flex;
+
+    .codes{
+      background: red;
+      height: 100px;
+    }
+
   }
 }
-.matnames {
-  //  position: relative;
-  //  left: -225%;
-  //  top: 18%;
-  //  border-top-left-radius: 7px;
-  //  border-bottom-left-radius: 7px;
-  z-index: 9;
-  // background: red;
 
-  // justify-content: center;
-}
 .manname {
   width: 40%;
   display: flex;
@@ -510,7 +508,7 @@ h6 {
 }
 .codes {
   width: 60%;
-  max-height: 80px;
+  max-height: 100px;
   padding: 1%;
   overflow-y: scroll;
   //border: 1px solid blue;
@@ -568,7 +566,7 @@ h6 {
 .graph2,
 .graph3 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-  width: 31.8%;
+  width: 32%;
   height: 100%;
   border-radius: 12px;
   position: relative;
@@ -1008,14 +1006,17 @@ h6 {
     }
     #logout {
       width: auto;
+      font-size: 15px;
+      letter-spacing: 1px;
+      padding: 0 !important;
     }
   }
- 
+
   .container {
     //border: 2px solid red;
     .small {
     //  border: 2px solid red;
-      height: 60%; 
+      height: 60%;
     }
 .alltime {
  //
@@ -1043,8 +1044,8 @@ p {
 }
   }
 }
-@media screen and (min-width: 1920px) {
- 
+@media screen and (max-width: 1920px) {
+
   .header {
    // border: 1px solid red;
     ion-title {
@@ -1065,7 +1066,7 @@ p {
     }
     #logout {
    // border: 1px solid red;
-     height: 40%; 
+     height: 40%;
      padding: 1% !important;
   }
   }
@@ -1114,7 +1115,7 @@ p {
      //border: 1px solid red;
      position: absolute;
      bottom: 10%;
-  
+
    }
     .matnames {
      // border: 1px solid green;
@@ -1140,4 +1141,68 @@ p {
     }
   }
  }
+}
+@media screen and (max-width: 1440px) {
+  .container {
+    border: 1px solid red;
+    height: 100%;
+
+    .alltime {
+
+      .stats {
+       // border: 1px solid red;
+        margin-top: 1%;
+
+        h3 {
+          font-size: 40px;
+         // border: 1px solid red;
+        }
+        .mass {
+         // border: 2px solid green;
+          padding-top: 6px;
+        }
+      }
+    }
+
+    .material {
+  //    border: 2px solid green;
+
+      .box {
+     //   border: 2px solid red;
+ .burgercontent, .burgercontent2, .burgercontent3,  .burgercontent4 {
+ // border: 2px solid red;
+  position: absolute;
+  bottom: 55px;
+ }
+        .matnames {
+          position: relative;
+          top: -50%;
+        }
+      }
+    }
+
+    .chartbuttons {
+     // border: 2px solid red;
+      position: absolute;
+      bottom: 37% !important;
+      width: 100%;
+      p {
+        margin-top: 2.5%;
+      }
+      ion-button {
+        padding: 10px;
+      }
+    }
+
+    .graphs {
+     // border: 1px solid blue;
+      position: absolute;
+      bottom: 0 !important;
+      height: 37.5%;
+      .graph {
+        //border: 1px solid red;
+
+      }
+    }
+  }
 }
