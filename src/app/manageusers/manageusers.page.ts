@@ -51,6 +51,7 @@ registerForm = false;
 
   email;
   password;
+  positions;
 
   selectedUser ={}
 
@@ -105,6 +106,7 @@ this.surname=obj.surname
   ngOnInit() {
     this.email = "";
     this.password ="";
+    this.positions="";
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -308,10 +310,11 @@ this.surname=obj.surname
             this.db.collection('userprofiles').add({
               email: this.email,
               password: this.password,
-              profile:'no'
+              profile:'no',
+              positions:this.positions,
             }).then(async res =>{
               let alert = await this.alertCtrl.create({
-              message:'Created users',
+              message:'You Have just created a new user with the following email Addr',
                 
               buttons: [
                 {
@@ -342,14 +345,16 @@ this.surname=obj.surname
            }
           
         })
-        this.email = "";
-        this.password ="";
+     this.email=''
+     this.position=''
+     this.password=''
   
       }
 
       ionViewWillLeave(){
         this.email = "";
         this.password ="";
+        this.position=""
       }
      
 
@@ -439,7 +444,7 @@ this.surname=obj.surname
 
     AddUser(id) {
       this.db.collection('admin').doc(id).onSnapshot(element => {
-        let id = {};
+      let id = {};
       let name = {};
       let surname = {};
       let email = {};

@@ -1,26 +1,16 @@
-<ion-header *ngFor="let user of Newadmin">
-  <!-- <ion-toolbar class="header" >
-    <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-    <ion-buttons  id="logout" slot="end">
-     
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
-    </ion-buttons>
-  </ion-toolbar> -->
-  <div class="navCont">
-    <div id="userDP" [routerLink]="['/profile']">
-      <img  *ngIf="user.image"  src="{{user.image}}"> 
-      <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt="">
-    </div>
-    <div id="userName">
-      {{ user.name }} {{ user.surname }}
-    </div>
-  </div>
-  <div class="logger">
-    <ion-button icon-end id="TheLoGoutBTN" color="clear" (click)="Logout()">
-      Logout <ion-icon id="LogOutIco" name="log-out"></ion-icon>
-    </ion-button>
-  </div>
-
+<ion-header >
+  <ion-toolbar class="header" >
+    <ion-title> <img src="../assets/logo.svg">Mthombowolwazi</ion-title>
+    
+     <div class="logout">
+       <ion-button fill="clear"  (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+       
+     </div>
+      
+    
+    <!-- <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+   -->
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -35,11 +25,13 @@
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #C5A60A;">
-          <img src="../../assets/inbound.svg">
+          <!-- <img src="../../assets/inbound.svg"> -->
         </div>
         <h3>Inbound</h3>
         <p class="mass">{{inboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+        <div class="line"></div>
         <div class="updates">
+         
         <p>Updated {{updated}}</p>
         </div>
       </div>
@@ -49,10 +41,11 @@
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #D12C6F;">
-          <img src="../../assets/outbound.svg">
+          <!-- <img src="../../assets/outbound.svg"> -->
         </div>
         <h3>Outbound</h3>
         <p class="mass">{{outboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+        <div class="line"></div>
         <div class="updates">
           <p>Updated {{updatedoutbound}}</p>
         </div>
@@ -62,19 +55,21 @@
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #0BCECE;">
-          <img src="../../assets/reclaimer.svg">
+          <!-- <img src="../../assets/reclaimer.svg"> -->
         </div>
         <h3>Reclaimer</h3>
         <p class="mass">{{Reclaimerweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+        <div class="line"></div>
         <div class="updates">
           <p>Updated {{updateReclaimer}}</p>
         </div>
       </div>
     </div>
-  </div>
+        </div>
   <h6></h6>
   <!-- material -->
-  <div padding class="material">
+  <div class="line"></div>
+  <div  class="material">
     <!-- paper -->
     <div class="box" id="paper">
       <div class="mat">
@@ -88,7 +83,7 @@
     </div>
     
       <div class="matnames">
-        <div class="codes">
+        <div class="codes" >
          <p>pap005 <span>R {{ pricess.pap005 }}</span></p>
          <p>pap007 <span>R {{ pricess.pap007 }}</span></p>
          <p>pap001 <span>R {{ pricess.pap001 }}</span></p>
@@ -164,7 +159,7 @@
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="folder"></ion-icon></ion-button>
 </div>    
 </div>
-<div class="matnames">
+<div class="matnames" >
   <div class="codes" >
     <p>nfalo1 <span>R {{ pricess.nfalo1 }}</span></p>
     
@@ -233,7 +228,7 @@
   <input placeholder="PET005" [(ngModel)]="PET005price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
-<button ion-button (click)="CheckInputsEmptyStringPlastics()">Save</button>
+<button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
 </div>
 </div>
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -241,7 +236,7 @@
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
-    <input placeholder="GH001" [(ngModel)]="GH001price" type="tel" maxlength="4">
+    <input placeholder="GH001" [(ngModel)]="GH001price"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
     
   <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
   </div>
@@ -289,31 +284,31 @@
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
     <div class="two">{{paper.timePaper}}</div>
     
-    <div class="two">{{paper.newpap001}}</div>
-    <div class="two">{{paper.newpap001}}</div>
+    <div class="two">R{{paper.newpap001}}</div>
+    <div class="two">R{{paper.newpap001}}</div>
     
     </div>
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">{{paper.timePaper}}</div>
-    <div class="two">{{paper.oldpap003}}</div>
-    <div class="two">{{paper.newpap003}}</div>
+    <div class="two">R{{paper.timePaper}}</div>
+    <div class="two">R{{paper.oldpap003}}</div>
+    <div class="two">R{{paper.newpap003}}</div>
+    
+    </div>
+
+    <div class="historydata2">
+      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+    <div class="two">R{{paper.timePaper}}</div>
+    <div class="two">R{{paper.oldpap005}}</div>
+    <div class="two">R{{paper.newpap005}}</div>
     
     </div>
 
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
     <div class="two">{{paper.timePaper}}</div>
-    <div class="two">{{paper.oldpap005}}</div>
-    <div class="two">{{paper.newpap005}}</div>
-    
-    </div>
-
-    <div class="historydata2">
-      <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">{{paper.timePaper}}</div>
-    <div class="two">{{paper.oldpap007}}</div>
-    <div class="two">{{paper.newpap007}}</div>
+    <div class="two">R{{paper.oldpap007}}</div>
+    <div class="two">R{{paper.newpap007}}</div>
     
     </div>
 
@@ -344,45 +339,45 @@
     <div class="historydata" *ngFor="let plastics of plasticarray">
       <div class="historydata2">
         <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-      <div class="two">R{{plastics.timePlastic2}}</div>
+      <div class="two">{{plastics.timePlastic2}}</div>
       
-      <div class="two">{{plastics.oldhd001}}</div>
-      <div class="two">{{plastics.newhd001}}</div>
+      <div class="two">R{{plastics.oldhd001}}</div>
+      <div class="two">R{{plastics.newhd001}}</div>
       
       </div>
   
   
      
       <div class="historydata2">
-        <div class="two">R{{plastics.timePlastic2}}</div>
-        <div class="two">{{plastics.oldld001}}</div>
-        <div class="two">{{plastics.newld001}}</div>
+        <div class="two">{{plastics.timePlastic2}}</div>
+        <div class="two">R{{plastics.oldld001}}</div>
+        <div class="two">R{{plastics.newld001}}</div>
       </div>
 
   
       <div class="historydata2">
-        <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldld003}}</div>
-      <div class="two">{{plastics.newld003}}</div>
+        <div class="two">R{{plastics.timePlastic2}}</div>
+      <div class="two">R{{plastics.oldld003}}</div>
+      <div class="two">R{{plastics.newld003}}</div>
       </div>
      
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet003}}</div>
-      <div class="two">{{plastics.newpet003}}</div>
+      <div class="two">R{{plastics.oldpet003}}</div>
+      <div class="two">R{{plastics.newpet003}}</div>
       </div>
 
 
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet001}}</div>
-      <div class="two">{{plastics.newpet001}}</div>
+      <div class="two">R{{plastics.oldpet001}}</div>
+      <div class="two">R{{plastics.newpet001}}</div>
       </div>
 
       <div class="historydata2">
         <div class="two">R{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet005}}</div>
-      <div class="two">{{plastics.newpet005}}</div>
+      <div class="two">R{{plastics.oldpet005}}</div>
+      <div class="two">R{{plastics.newpet005}}</div>
       </div>
 
 

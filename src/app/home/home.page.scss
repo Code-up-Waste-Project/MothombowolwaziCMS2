@@ -1,74 +1,9 @@
 
-  #TheLoGoutBTN{
-    background-color: white;
-    border-radius:50px;
-    color: black;
-    margin-top: 10px;
-  }
-  #LogOutIco{
-    color:brown;
-  }
-  .logger{
-    // border: 2px solid green;
-    background-color: #265902;
-    width: 50%;
-    height: 55px;
-    ion-button{
-    text-transform: capitalize;
-    position: absolute;
-    right: 10px;
-    }
-  }
-  .navCont{
-    // border: 2px solid red;
-    width: 50%;
-    height: 55px;
-    display: flex;
-  }
-  .navCont > div {
-    // border: 1px solid red;
-    background-color: #265902;
-  }
-    #userName{
-      padding-left: 10px;
-      font-size: 14px;
-      line-height: 55px;
-      font-weight: 500;
-      color: white;
-    }
-  .navCont > div:nth-child(1){
-    width: 55px;
-    img{
-      width: 50px;
-      height: 50px;
-      border-radius: 50px;
-      object-fit: cover;
-      margin: 2.5px;
-    }
-  }
-  .navCont > div:nth-child(2){
-    width: calc(100% - 55px);
-  }
-
-  ion-header {
-    --background: #265902 !important;
-    display: flex;
-   // border: 2px solid rgb(17, 0, 255);
-  }
-
-
-
-
-
-
-
-
-
 
 .header {
   --background: #265902 !important;
   display: flex;
-  // border: 2px solid rgb(17, 0, 255);
+  // border: 2px solid rgb(236, 55, 124);
 }
 ion-toolbar {
   display: flex;
@@ -138,41 +73,47 @@ ion-toolbar {
   transition: 0.3s;
 }
 ion-title {
-  // border: 1px solid red;
-  font-family: "Microsoft YaHei UI";
-  font-size: 15px;
+  //border: 1px solid red;
+   width: 40%;
+   font-family: 'Microsoft YaHei UI';
+  font-size: 30px;
+  // margin-left: 10px;
+  // margin-left: 10px;
   color: white;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  p {
-    // border: 1px solid red;
-    width: 50%;
-    position: absolute;
-    left: 75px;
-    top: -3px;
-  }
-  ion-avatar {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  img {
     width: 40px;
-    height: 40px;
+    padding-left: 10px;
+   padding-right: 5px;
+   padding-top: 7px;
   }
+  
+  
 }
-#logout {
-  border: 1px solid white;
-  padding: 1px;
+
+ion-button  {
+  position: absolute;
+  right: 1%;
+  top: 5px;
+  //border: 1px solid blue;
+  font-size: 10px;
   border-radius: 50px;
   background: white;
-  ion-button {
-    font-size: 10px;
-    font-weight: bold;
-  }
+  padding: 1px;
+ 
   ion-icon {
     color: brown;
     font-size: 20px;
-    font-weight: bold;
-    margin-left: 5px;
+    font-weight: bolder;
+   // padding: 10px !important;
+    // margin-left: 3px;
   }
 }
 ion-icon {
@@ -194,7 +135,7 @@ ion-icon {
 }
 .slideOut {
   animation-name: slideOut;
-  animation-duration: 5s;
+  animation-duration: 1ms;
   animation-fill-mode: forwards;
 }
 
@@ -217,7 +158,8 @@ ion-icon {
 }
 
 .container {
-  // border: 1px solid red;
+display: flex;
+flex-direction: column;
   height: 100%;
   //  overflow-x: scroll;
 }
@@ -258,7 +200,7 @@ ion-icon {
     text-align: right;
     // padding: 1%;
     font-size: 2.4vw;
-    font-family: "Poiret One", cursive;
+    font-family: 'SkarpaLT';
     font-weight: 200;
   }
 }
@@ -289,7 +231,7 @@ ion-icon {
   p {
     font-size: 1vw;
     // border: 1px solid red;
-    font-family: "Pompiere", cursive;
+    font-family: 'SkarpaLT';
     font-weight: 600;
     color: rgb(63, 61, 61);
   }
@@ -475,7 +417,7 @@ h6 {
       width: 80%;
       margin-left: 10%;
       font-size: 1.5vw;
-      font-family: "Microsoft YaHei UI";
+      font-family: 'Microsoft YaHei UI';
     }
     button {
       width: 40%;
@@ -540,7 +482,7 @@ h6 {
     //border: 1px solid purple;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.322);
     width: 90%;
-    height: 80px;
+    height: 100px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -549,19 +491,15 @@ h6 {
     top: -40%;
     left: 10%;
     display: flex;
+
+    .codes{
+      background: red;
+      height: 100px;
+    }
+
   }
 }
-.matnames {
-  //  position: relative;
-  //  left: -225%;
-  //  top: 18%;
-  //  border-top-left-radius: 7px;
-  //  border-bottom-left-radius: 7px;
-  z-index: 9;
-  // background: red;
 
-  // justify-content: center;
-}
 .manname {
   width: 40%;
   display: flex;
@@ -570,13 +508,13 @@ h6 {
   align-items: center;
   background: white;
   font-size: 1.2vw;
-  font-family: "Pompiere", cursive;
+  font-family: 'SHKODER 1989';
   border-bottom-right-radius: 5px;
   //border: 1px solid red;
 }
 .codes {
   width: 60%;
-  max-height: 80px;
+  max-height: 100px;
   padding: 1%;
   overflow-y: scroll;
   //border: 1px solid blue;
@@ -634,7 +572,7 @@ h6 {
 .graph2,
 .graph3 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-  width: 31.8%;
+  width: 32%;
   height: 100%;
   border-radius: 12px;
   position: relative;
@@ -888,7 +826,7 @@ h6 {
         h3 {
           color: white;
           font-size: 17px;
-          font-family: "Microsoft YaHei UI";
+          font-family: 'Microsoft YaHei UI';
           padding-left: 10px;
           padding-bottom: 5px;
         }
@@ -915,7 +853,7 @@ h6 {
       }
       p {
         font-size: 13px;
-        font-family: "Microsoft YaHei UI";
+        font-family: 'Microsoft YaHei UI';
         padding-left: 10px;
         padding-bottom: 5px;
         //  border: 1px solid blue;
@@ -1074,14 +1012,17 @@ h6 {
     }
     #logout {
       width: auto;
+      font-size: 15px;
+      letter-spacing: 1px;
+      padding: 0 !important;
     }
   }
- 
+
   .container {
     //border: 2px solid red;
     .small {
     //  border: 2px solid red;
-      height: 60%; 
+      height: 60%;
     }
 .alltime {
  //
@@ -1109,8 +1050,8 @@ p {
 }
   }
 }
-@media screen and (min-width: 1920px) {
- 
+@media screen and (max-width: 1920px) {
+
   .header {
    // border: 1px solid red;
     ion-title {
@@ -1131,7 +1072,7 @@ p {
     }
     #logout {
    // border: 1px solid red;
-     height: 40%; 
+     height: 40%;
      padding: 1% !important;
   }
   }
@@ -1180,7 +1121,7 @@ p {
      //border: 1px solid red;
      position: absolute;
      bottom: 10%;
-  
+
    }
     .matnames {
      // border: 1px solid green;
@@ -1206,4 +1147,68 @@ p {
     }
   }
  }
+}
+@media screen and (max-width: 1440px) {
+  .container {
+    border: 1px solid red;
+    height: 100%;
+
+    .alltime {
+
+      .stats {
+       // border: 1px solid red;
+        margin-top: 1%;
+
+        h3 {
+          font-size: 40px;
+         // border: 1px solid red;
+        }
+        .mass {
+         // border: 2px solid green;
+          padding-top: 6px;
+        }
+      }
+    }
+
+    .material {
+  //    border: 2px solid green;
+
+      .box {
+     //   border: 2px solid red;
+ .burgercontent, .burgercontent2, .burgercontent3,  .burgercontent4 {
+ // border: 2px solid red;
+  position: absolute;
+  bottom: 55px;
+ }
+        .matnames {
+          position: relative;
+          top: -50%;
+        }
+      }
+    }
+
+    .chartbuttons {
+     // border: 2px solid red;
+      position: absolute;
+      bottom: 37% !important;
+      width: 100%;
+      p {
+        margin-top: 2.5%;
+      }
+      ion-button {
+        padding: 10px;
+      }
+    }
+
+    .graphs {
+     // border: 1px solid blue;
+      position: absolute;
+      bottom: 0 !important;
+      height: 37.5%;
+      .graph {
+        //border: 1px solid red;
+
+      }
+    }
+  }
 }

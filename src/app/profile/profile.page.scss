@@ -13,27 +13,34 @@
   text-shadow: 0px 0px 10px black;
 }
 
-#asd{
-  // border: 2px solid red;
-}
-
 .container {
-    //border: 3px solid blue;
+   // border: 3px solid blue;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
+    overflow-y: hidden;
     #background1 {
-   // border: 1px solid blue;
+  //  border: 1px solid red;
     position: absolute;
-    width: 100%;
-    bottom: 48%;
-    left: 20%;
+    height: 100%;
+    bottom: 40%;
+    right: -10%;
+    top: -60%;
   
   }
+  #close {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    font-size:25px;
+    color: white;
+  //  border: 1px solid blue;
+  }
   #people {
+   // border: 1px solid blue;
     #sthombe-upload {
       color: black;
       position: absolute;
@@ -58,7 +65,7 @@
     // border: 1px solid green;
       width: 20%;
       position: absolute;
-      bottom: -1%;
+      bottom: 0;
       right: 14%;
   }
   }
@@ -74,7 +81,7 @@
   h3 {
     //border: 3px solid red;
     margin: 0;
-    margin-top: 5%;
+    margin-top: 15%;
     font-size: 22px;
     text-align: center;
     padding-top:70px;
@@ -90,12 +97,12 @@
   
     .ProPic {
     
-  //  border: 3px solid rgb(76, 0, 255);
+   // border: 3px solid rgb(76, 0, 255);
    position: relative;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.123), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
-     margin-top: 10px;
-      width: 90px;
-      height: 90px;
+     margin-top: 15%;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       margin-top: 119px;
       img {
@@ -115,7 +122,7 @@
     align-content: center;
     align-items: center;
     margin: 0;
-  
+  margin-top: -12%;
     input {
         width: 300px;
         padding: 10px;
@@ -130,7 +137,7 @@
     }
     ion-button {
         width: 150px;
-        margin-top: 25px;
+        margin-top: 35px;
         outline: none;
         background: #1B4001;
         border-radius: 5px;
