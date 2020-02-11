@@ -31,12 +31,13 @@
     top: -60%;
   
   }
-  ion-icon {
+  #close {
     position: absolute;
-    top: 5%;
-    right: 5%;
-    font-size: 3vw;
+    top: 2.5%;
+    right: 2.5%;
+    font-size:25px;
     color: white;
+  //  border: 1px solid blue;
   }
   #people {
    // border: 1px solid blue;
