@@ -1,5 +1,4 @@
 <ion-header *ngFor="let user of Newadmin">
- 
   <ion-toolbar class="header" >
     <ion-title><ion-avatar [routerLink]="['/profile']"><img src="{{user.image}}"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
@@ -7,9 +6,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-  
   <ion-content>
-    
     <div padding class="container">
       <div padding class="left">
         <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)'>
@@ -75,14 +72,15 @@
   <!-- this form appears when fab button is clicked -->
 
     <div padding class="registerform"  class="right" *ngIf="registerForm" >
-      
+     
      <ion-button  class="close"  fill="clear" slot="icon-only"  ><ion-icon name="close-circle" (click)="back()"></ion-icon></ion-button>
-
+     
       <h1>Register</h1>
       <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email">
       <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.positions.reset autocomplete="off" autocorrect="off" id="myInput" value="positions">
       <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password">
-     <button ion-button (click)="saveNewUseer()" type="reset"   onclick="document.getElementById('myInput').value = ''">Register</button>
+     <button ion-button   type="reset"   onclick="document.getElementById('myInput').value = ''">Register</button>
+     
      <div class="bottomdeco">
     <img  src="../../assets/binsPopup  2.svg">
      </div>
@@ -90,4 +88,5 @@
   
     </div>
     <!-- <button (click)="AddUser(id)">view</button> -->
+
   </ion-content>

@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     private render: Renderer2,
     public router: Router,
   ) {
-      // this.getAuth();
+      this.getAuth();
       this.initializeApp();
   }
 

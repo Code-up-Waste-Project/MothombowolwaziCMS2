@@ -12,7 +12,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 import { analyzeFileForInjectables } from '@angular/compiler';
 import * as moment from 'moment'
-
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-reclaimer',
@@ -385,7 +385,8 @@ export class ReclaimerPage implements OnInit {
     public rendered: Renderer2,
     private plt: Platform,
     private file: File,
-    private fileOpener: FileOpener
+    private fileOpener: FileOpener,
+    private location: Location
   ) {
     this.getprices();
     this.getMasses();
@@ -1854,5 +1855,7 @@ allocate() {
     // this.addresss = this.addresss
     // console.log('im clicked');
 }
-
+myBackButton(){
+  this.location.back();
+}
 }

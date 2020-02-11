@@ -8,6 +8,7 @@ import { AuthService } from '../../app/user/auth.service';
 import { MenuController } from '@ionic/angular';
 import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 import { element } from 'protractor';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-manageusers',
@@ -62,7 +63,8 @@ registerForm = false;
     public alertCtrl: AlertController,
     public formBuilder: FormBuilder,
     public router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private location: Location
   ) {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -470,16 +472,8 @@ back(){
   this.router.navigateByUrl('/home');
 }
     
-get() {
-
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.router.navigateByUrl('/home');
-    }else {
-      this.router.navigateByUrl('/login');
-    }
-    });
-    console.log
-  } 
+myBackButton(){
+  this.location.back();
+}
      
 }
