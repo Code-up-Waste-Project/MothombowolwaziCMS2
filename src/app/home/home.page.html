@@ -1,85 +1,135 @@
 <ion-header >
-  <ion-toolbar class="header" >
-    <ion-title> <img src="../assets/logo.svg">Mthombowolwazi</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <img class="logo-header" src="../assets/logo.svg">
+    </ion-buttons>
+    <ion-title>Mthombowolwazi</ion-title>
     
      <div class="logout">
        <ion-button fill="clear"  (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
        
      </div>
-      
     
-    <!-- <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-   -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
-  <!-- <ion-button (click)="backdrop()">
-    <ion-icon slot="icon-only" name="close"></ion-icon>
-  </ion-button>
-  -->
+ 
 </div>
 <div class="container">
   <div padding class="alltime">
     <div class="stats">
       <div class="big">
-        <div class="small" style="background: #C5A60A;">
-          <!-- <img src="../../assets/inbound.svg"> -->
+       
+        <div class="info-box">
+            <div class="yellow-box">
+              <div class="small" style="background: #C5A60A;">
+                <!-- <img src="../../assets/inbound.svg"> -->
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>Inbound</h3>
+              <p>{{inboundweight}}<span>kg</span></p>
+            </div>
         </div>
-        <h3>Inbound</h3>
-        <p class="mass">{{inboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        <div class="line"></div>
-        <div class="updates">
+        
+        <div class="update">
          
         <p>Updated {{updated}}</p>
         </div>
       </div>
     
     </div>
-    <!-- box 2 -->
+    <div class="stats">
+      <div class="big">
+       
+        <div class="info-box">
+            <div class="yellow-box">
+              <div class="small" style="background: #C5A60A;">
+                <!-- <img src="../../assets/inbound.svg"> -->
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>Inbound</h3>
+              <p>{{inboundweight}}<span>kg</span></p>
+            </div>
+        </div>
+        
+        <div class="update">
+         
+        <p>Updated {{updated}}</p>
+        </div>
+      </div>
+    
+    </div>
+    <div class="stats">
+      <div class="big">
+       
+        <div class="info-box">
+            <div class="yellow-box">
+              <div class="small" style="background: #C5A60A;">
+                <!-- <img src="../../assets/inbound.svg"> -->
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>Inbound</h3>
+              <p>{{inboundweight}}<span>kg</span></p>
+            </div>
+        </div>
+        
+        <div class="update">
+         
+        <p>Updated {{updated}}</p>
+        </div>
+      </div>
+    
+    </div>
+
+   <!--  box 2
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #D12C6F;">
-          <!-- <img src="../../assets/outbound.svg"> -->
+          <img src="../../assets/outbound.svg">
         </div>
         <h3>Outbound</h3>
         <p class="mass">{{outboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        <div class="line"></div>
+    
         <div class="updates">
           <p>Updated {{updatedoutbound}}</p>
         </div>
       </div>
-    </div>
-    <!-- box 3 -->
+    </div> -->
+    <!-- box 3
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #0BCECE;">
-          <!-- <img src="../../assets/reclaimer.svg"> -->
+          <img src="../../assets/reclaimer.svg">
         </div>
         <h3>Reclaimer</h3>
         <p class="mass">{{Reclaimerweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        <div class="line"></div>
+        
         <div class="updates">
           <p>Updated {{updateReclaimer}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
         </div>
-  <h6></h6>
+  
   <!-- material -->
-  <div class="line"></div>
-  <div  class="material">
+ 
+  <div  class="material" padding>
     <!-- paper -->
     <div class="box" id="paper">
+   <!--    <img src="../../assets/Asset 8.svg">
       <div class="mat">
         <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
           <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
          <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-          <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
+         -->  <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
+     <!--      <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
         </div>   
-        <img src="../../assets/Asset 8.svg">
+        
     </div>
     
       <div class="matnames">
@@ -93,7 +143,7 @@
         <div class="manname">
           PAPER
         </div>
-      </div>
+      </div> -->
     </div>
 <!-- div holding form(EDIT PRICE) -->
 <!-- plastic -->
