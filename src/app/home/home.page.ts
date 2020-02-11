@@ -39,7 +39,7 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   PET001price;
   PET003price;
   PET005price;
-
+ 
  pricess = {
    gl001: null ,
    hd001: null,
@@ -725,8 +725,11 @@ bD = document.getElementsByClassName('bD')
 
 
     // all Storage (DNT)
-    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
-    this.prices.get().then((documentSnapshot) => {
+
+
+    this.prices = firebase.firestore().collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot((documentSnapshot) => {
+
+
       this.price = [];
       // console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
@@ -744,6 +747,10 @@ bD = document.getElementsByClassName('bD')
       this.pricess.pet001 = documentSnapshot.data().pet001;
       this.pricess.pet003 = documentSnapshot.data().pet003;
       this.pricess.pet005 = documentSnapshot.data().pet005;
+      
+      this.PaperArray.push({
+        pap003: this.pricess.pap003,
+      })
     
       this.oldpricepap003 = documentSnapshot.data().pap003;
       this.oldpricepap001 = documentSnapshot.data().pap001;
@@ -759,7 +766,11 @@ bD = document.getElementsByClassName('bD')
       this.oldpriceNFAL01 = documentSnapshot.data().nfalo1;
       this.oldpriceglass = documentSnapshot.data().gl001;
 
-    });
+
+    })
+
+
+
     // console.log(this.pricess.gl001);
     // console.log(this.pricess.hd001);
     // console.log(this.pricess.ld001);
@@ -966,7 +977,8 @@ console.log(this.PaperArray)
           handler: () => {
             // this.update();
             this.clearInputs();
-            this.route.navigateByUrl('/home');
+           
+         
             // console.log('Confirm Okay');
           }
         }
@@ -998,8 +1010,9 @@ console.log(this.PaperArray)
         this.PAP007price === undefined &&
         this.PAP001price === undefined &&
         this.PET003price === undefined
-        
+     
       ) {
+       
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdatePaper();
@@ -1016,6 +1029,7 @@ console.log(this.PaperArray)
         this.PET001price === undefined
         
       ) {
+      
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdatePlastic();
@@ -1041,11 +1055,15 @@ console.log(this.PaperArray)
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdateglass();
+          
+      
+
       }
   }
   
  
   async presentAlertUpdateglass() {
+
     const alert = await this.alertController.create({
       header: 'Confirm!',
       message: '<strong>Are you sure you want to change prices?</strong>!!!',
@@ -1061,6 +1079,7 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkglassInputs();
+            this.glassShow();
             this.route.navigateByUrl('/home');
             console.log('Confirm Okay');
           }
@@ -1068,6 +1087,8 @@ console.log(this.PaperArray)
       ]
     });
     await alert.present();
+
+    
   }
 
   checkglassInputs() {
@@ -1078,8 +1099,6 @@ console.log(this.PaperArray)
       this.GH001 = this.pricess.gl001;
     }
     // console.log(this.nFAL01);
-
-
     this.Updateglass()
 
   }
@@ -1095,6 +1114,7 @@ console.log(this.PaperArray)
          
 
         }).then((data) => {
+         
           console.log("Paper old storage successfully updated!");
         });
 
@@ -1127,6 +1147,7 @@ console.log(this.PaperArray)
           handler: () => {
             this.checkPaperInputs();
             this.route.navigateByUrl('/home');
+            this.HideandShowSave();
             console.log('Confirm Okay');
           }
         }
@@ -1151,7 +1172,10 @@ console.log(this.PaperArray)
           text: 'Okay',
           handler: () => {
             this.checkPlasticInputs();
+            this.HideandShowCreate();
+            
             this.route.navigateByUrl('/home');
+            console.log( 'close',this.HideandShowCreate)
             console.log('Confirm Okay');
           }
         }
@@ -1176,9 +1200,12 @@ console.log(this.PaperArray)
         }, {
           text: 'Okay',
           handler: () => {
+         
             this.checkAlumInputs();
+            this.HideandShowDelete();
             
             console.log('Confirm Okay');
+           
           }
         }
       ]
@@ -1362,8 +1389,10 @@ console.log(this.PaperArray)
     this.db.collection("price").doc("ChHHlFcUFzucHOzPpEgE").update({
       timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
       oldnfal01: this.oldpriceNFAL01,
-      newnfal01: this.NFAL01price
+      newnfal01: this.NFAL01price,
+      
     }).then((data) => {
+      this.route.navigateByUrl('/home');
       console.log("Paper old storage successfully updated!");
     });
 
@@ -2908,6 +2937,7 @@ HideandShowHISTORYGLASS() {
           } else {
             this.checkinputfields();
           }
+        
       }
 
       CheckInputsEmptyStringAlu() {
@@ -2929,6 +2959,7 @@ HideandShowHISTORYGLASS() {
           buttons: [
             {
               text: 'Okay',
+              
               handler: () => {
                 this.route.navigateByUrl('/home');
               }

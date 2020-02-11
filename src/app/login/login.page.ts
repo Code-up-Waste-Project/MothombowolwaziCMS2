@@ -114,6 +114,8 @@ export class LoginPage implements OnInit {
       );
  
     }
+    this.email="",
+    this.password="",
     this.loginForm.reset()
   }
 
