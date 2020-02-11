@@ -20,14 +20,39 @@ ion-icon {
 }
 
 .profile {
-    border: 1px solid blue;
+  //  border: 1px solid blue;
     height: 200px !important;
     display: flex;
-
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background: #022a2e;
+    .profilepic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: white;
+    }
+h4,p {
+color: white;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    font-size: 17px;
 }
+#border {
+    border: 1px solid white;
+    width: 90%;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+}
+// ion-header {
+//   background: #1d3f04;
+// }
+
 ion-header {
-  background: #1d3f04;
+    background: 2px solid red !important;
 }
-
-
 
