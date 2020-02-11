@@ -1,10 +1,11 @@
 <ion-header *ngFor="let user of Newadmin">
   <ion-toolbar class="header" >
-    <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
+    <ion-title>Mthombowolwazi</ion-title>
+    <!-- <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
      
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -20,11 +21,13 @@
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #C5A60A;">
-          <img src="../../assets/inbound.svg">
+          <!-- <img src="../../assets/inbound.svg"> -->
         </div>
         <h3>Inbound</h3>
         <p class="mass">{{inboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+        <div class="line"></div>
         <div class="updates">
+         
         <p>Updated {{updated}}</p>
         </div>
       </div>
@@ -34,10 +37,11 @@
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #D12C6F;">
-          <img src="../../assets/outbound.svg">
+          <!-- <img src="../../assets/outbound.svg"> -->
         </div>
         <h3>Outbound</h3>
         <p class="mass">{{outboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+        <div class="line"></div>
         <div class="updates">
           <p>Updated {{updatedoutbound}}</p>
         </div>
@@ -47,19 +51,21 @@
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #0BCECE;">
-          <img src="../../assets/reclaimer.svg">
+          <!-- <img src="../../assets/reclaimer.svg"> -->
         </div>
         <h3>Reclaimer</h3>
         <p class="mass">{{Reclaimerweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+        <div class="line"></div>
         <div class="updates">
           <p>Updated {{updateReclaimer}}</p>
         </div>
       </div>
     </div>
-  </div>
+        </div>
   <h6></h6>
   <!-- material -->
-  <div padding class="material">
+  <div class="line"></div>
+  <div  class="material">
     <!-- paper -->
     <div class="box" id="paper">
       <div class="mat">
