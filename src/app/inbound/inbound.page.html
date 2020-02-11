@@ -1,148 +1,272 @@
 <ion-header *ngFor="let user of Newadmin">
-  <ion-toolbar class="header" >
+  <!-- <ion-toolbar class="header" >
     <ion-title><ion-avatar (click)="editprofile()"><img  *ngIf="user.image"  src="{{user.image}}">   <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
     <ion-buttons  id="logout" slot="end">
       <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-toolbar> -->
+
+  <div class="navCont">
+    <div id="userDP" (click)="editprofile()">
+      <img  *ngIf="user.image"  src="{{user.image}}">   
+      <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt="">
+    </div>
+    <div id="userName">
+        {{ user.name }} {{ user.surname }}
+    </div>
+  </div>
+  <div class="logger">
+    <ion-button icon-end id="TheLoGoutBTN" color="clear" (click)="Logout()">
+       Logout <ion-icon id="LogOutIco" name="log-out"></ion-icon>
+    </ion-button>
+  </div>
 </ion-header>
 
+
+
+
 <ion-content>
-  <!--  -->
-  <div class="Mother" *ngIf="selectedCat">
-    <div id="Son" (click)="goAway()"></div>
-    <div id="Daughter" >
-      <div id="Header" >
-        <div id="Paper" (click)="togglePaper()">
-          <h4>PAPER</h4>
-        </div>
-        <div id="Plastic" (click)="togglePlastic()">
-          <h4>PLASTIC</h4>
-        </div>
-        <div id="Aluminium" (click)="toggleAluminium()">
-          <h4>ALUMINIUM</h4>
-        </div>
-        <div id="Glass" (click)="toggleGlass()">
-          <h4>GLASS</h4>
-        </div>
-       <!--  <div id="line"></div> -->
+  <div class="mother" *ngIf="popOpOpen === true">
+    <div class="dismissOverlay" (click)="goAway()"></div>
+
+    <div class="userForm">
+      <div class="waste-materials">
+       <div (click)="togglePaper()" id="isPaper">PAPER</div>
+       <div (click)="togglePlastic()" id="isPlastic">PLASTIC</div>
+       <div (click)="toggleAluminium()" id="isAluminium">ALUMINIUM</div>
+       <div (click)="toggleGlass()" id="isGlass">GLASS</div> 
+
       </div>
-      <!--  -->
-<p id="border"></p>
-      <div class="myInfo">
-        <!-- PLASTIC MATERIAL -->
-        <div class="for-plastic" id="toPlastic">
-            <!-- new code -->
-              <div class="top">
-                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for HD001" [(ngModel)]="HD001mass">        
-                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for LB001" [(ngModel)]="LD001mass">
-               </div>
-               <div class="middle">
-                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"  placeholder="Mass for LD003" [(ngModel)]="LD003mass">
-                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for PET005" [(ngModel)]="PET005mass">
-               </div>
-               <div class="bottom">
-                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for PET001" [(ngModel)]="PET001mass">
-                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"  placeholder="Mass for PET003" [(ngModel)]="PET003mass">
-               </div>
-               <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
-               <button class="btn"  clear (click)='toggleAluminium()'>Next</button>
-         
-
-        </div>
-        
-        <!-- PAPER MATERIAL -->
-        <div class="for-paper" id="toPaper">
-          <div class="top">
-            <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"  placeholder="Mass for PAP005" [(ngModel)]="PAP005mass">
-            <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for PAP007" [(ngModel)]="PAP007mass">
-          </div>
-          <div class="top">
-            <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for PAP001" [(ngModel)]="PAP001mass">
-            <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"  placeholder="Mass for PAP003" [(ngModel)]="PAP003mass">
-          </div>
-
-          <!-- button -->
-          <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
-          <button class="btn" clear (click)='togglePlastic()'>Next</button>
-        </div><!-- end of PAPER MATERIAL  -->
-
-        <!-- Aluminium MATERIAL  -->
-        <div class="for-Aluminium" id="toAluminium">
-           <div class="top">
-           <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for NFAL01" [(ngModel)]="NFAL01mass">
-           </div>
-           <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
-           <button class="btn" clear (click)='toggleGlass()'>Next</button>
+      
+      <div class="RecyleLogo">
+        <img src="../../assets/icon/Asset 10.svg" alt="">
+      </div>
+      <div class="Recycle-Bins">
+        <img src="../../assets/binsPopup  2.svg" alt="">
+      </div>
+        <div class="SecSection">
+          <!-- For Paper -->
           
-        </div><!--  end of Aluminium MATERIAL -->
-
-        
-        <!-- Glass MATERIAL  -->
-        <div class="for-Glass" id="toGlass">
-          <div class="top">
-            <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Mass for GH001" [(ngModel)]="GH001mass">
+          <div class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
+            <!-- paper -->
+            <div class="Next-button">
+              <ion-button fill="clear" color="light">Done</ion-button>
+            </div>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
           </div>
-          <img class="image" src="../../assets/icon/binsPopup  2.svg" alt="">
-          <button class="btn" clear (click)="CheckInputsEmptyString()">Save</button>
+          <!-- For PLAstic -->
+          <div class="Material-inputs" id="forPlastic" *ngIf="isPlastic === true">
+            <!-- plastic -->
+            <div class="Next-button">
+              <ion-button fill="clear" color="light">Done</ion-button>
+            </div>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+                <ion-col class="input-textfields" size= "6">
+                  <input type="text" placeholder="Yesssses">
+                </ion-col>
+                
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!-- For Aluminium -->
+          <div class="Material-inputs" id="forAluminium" *ngIf="isAluminium === true">
+            <!-- Aluminium -->
+            <div class="Next-button">
+              <ion-button fill="clear" color="light">Done</ion-button>
+            </div>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="input-textfields">
+                  <input type="text" placeholder="Yesssses" class="singular-input">
+                </ion-col>               
+              </ion-row>
+            </ion-grid>
+          </div>
+          <!-- For Glass -->
+          <div class="Material-inputs" id="forGlass" *ngIf="isGlass === true">
+            <!-- Glass -->
+            <div class="Next-button">
+              <ion-button fill="clear" color="light">Done</ion-button>
+            </div>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="input-textfields">
+                  <input type="text" placeholder="Yesssses" class="singular-input">
+                </ion-col>               
+              </ion-row>
+            </ion-grid>
+          </div>
         </div>
-
-        
-      </div>
-
     </div>
+
   </div>
-  <!-- End of Pop-up div -->
-
-<!-- Start of Everything outside Pop-over dive -->
-
-
-  <div id="Everything">     
-  <div id="StuffInside">
-    <div padding class="Theblocks">
-      <!-- PAPER DIV -->
-      <div class="Block1" (click)="showPopUp('paper')">
-        <h3  >PAPER</h3>
-        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
-      </div>
-         <!-- PLASTIC DIV -->
-      <div class="Block1" (click)="showPopUp('plastic')">
-      <h3>PLASTIC</h3>
-        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
-      </div>
-         <!-- ALUMINIUM DIV -->
-      <div class="Block1" (click)="showPopUp('aluminium')">
-        <h3>ALUMINIUM</h3>
-        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
-      </div>
-         <!-- GLASS DIV -->
-      <div class="Block1" (click)="showPopUp('glass')">
-        <h3>GLASS</h3>
-        <img class="logoright" src="../../assets/icon/Asset 9.svg" alt="">
-      </div>
-
-    </div><!-- END OF TOP DIV HOLDING MATERIAL -->
-    
-    <!-- BOTTOM DIV HOLDING HISTORY -->
-    <div padding class="History">
-      <div class="History1">
-        <div id="Date"><h2>Date</h2></div>
-        <div id="Material"><h2>Transaction Id</h2></div>
-      </div>
-      <!-- <ion-card *ngFor="let records of recordinbounddisplays">
-        <p>time: {{records.time * 1000 | date:'MM-dd-yyyy HH-ss'}}</p>
-        <div>
-          <ion-button (click)="pdfmakerFirebase(records.id)" class="PDF">Download PDF</ion-button>
-        </div>
-      </ion-card> -->
-      <div class="History2" *ngFor="let records of recordinbounddisplaysz">
-        <div id="Date1">{{ records.time }}</div>
-        <div id="material" >{{ records.id }} 
-          <ion-icon class="eye" name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon>
-          <ion-icon name="trash" class="trash" (click)='presentAlertDelete(records.id)'></ion-icon> </div>
-      </div>
-    </div>
+<div class="top-blocks">
+  <div class="waste-blocks" (click)="showPopUp('paper')">
+    <img src="../../assets/Asset 9.svg" alt="">
+    <p>PAPER</p>
+  </div>
+  <div class="waste-blocks" (click)="showPopUp('plastic')">
+    <img src="../../assets/Asset 9.svg" alt="">
+    <p>PLASTIC</p>
+  </div>
+  <div class="waste-blocks" (click)="showPopUp('aluminium')">
+    <img src="../../assets/Asset 9.svg" alt="">
+    <p>ALUMINIUM</p>
+  </div>
+  <div class="waste-blocks" (click)="showPopUp('glass')">
+    <img src="../../assets/Asset 9.svg" alt="">
+    <p>GLASS</p>
   </div>
 </div>
-
+<div class="history" padding> 
+  <div class="history-labels">
+    <div>Date</div>
+    <div>Transaction Identity</div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="itemList">
+    <div>February 10 2020</div>
+    <div>ADSGDSHGSHEREWT</div>
+    <div><ion-icon name="eye"></ion-icon></div>
+    <div><ion-icon name="trash"></ion-icon></div>
+  </div>
+  <div class="itemList">
+    <div>February 10 2020</div>
+    <div>ADSGDSHGSHEREWT</div>
+    <div><ion-icon name="eye"></ion-icon></div>
+    <div><ion-icon name="trash"></ion-icon></div>
+  </div>
+</div>
 </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

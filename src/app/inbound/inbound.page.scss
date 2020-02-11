@@ -1,508 +1,384 @@
-
-.header {
-    --background: #265902 !important;
-    display: flex;
-   // border: 2px solid rgb(17, 0, 255);
-  }
-  ion-toolbar {
-    display: flex;
-    flex-direction: row;
-   
-  }
-  ion-title {
-    //border: 1px solid red;
-    font-family: 'Microsoft YaHei UI';
-    font-size: 15px;
-  color: white;
+ion-header {
+  --background: #265902 !important;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  p {
-  //  border: 1px solid red;
-    width: 50%;
+  // border: 2px solid rgb(17, 0, 255);
+}
+ion-toolbar {
+  display: flex;
+  flex-direction: row;
+}
+
+#TheLoGoutBTN {
+  background-color: white;
+  border-radius: 50px;
+  color: black;
+  margin-top: 10px;
+}
+#LogOutIco {
+  color: brown;
+}
+
+.logger {
+  // border: 2px solid green;
+  background-color: #265902;
+  width: 50%;
+  height: 55px;
+  ion-button {
+    text-transform: capitalize;
     position: absolute;
-    left: 75px;
-    top:4px ;
+    right: 10px;
   }
-  ion-avatar {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-  
+}
+
+.navCont {
+  // border: 2px solid red;
+  width: 50%;
+  height: 55px;
+  display: flex;
+}
+.navCont > div {
+  // border: 1px solid red;
+  background-color: #265902;
+}
+#userName {
+  padding-left: 10px;
+  font-size: 14px;
+  line-height: 55px;
+  font-weight: 500;
+  color: white;
+}
+.navCont > div:nth-child(1) {
+  width: 55px;
+  img {
     width: 50px;
     height: 50px;
-  }
-  }
-  #logout {
-    border: 1px solid white;
-    padding: 1px;
     border-radius: 50px;
-    background: white;
-  ion-button {
-    font-size: 10px;
-    font-weight: bold;
-  }
-    ion-icon {
-      color: brown;
-      font-size: 20px;
-      font-weight: bold;
-      margin-left: 5px;
-    }
-  }
-  ion-icon {
-    padding-left: 2%;
-    font-size: 1vw;
-  }
-  
-
- //container
-#StuffInside{
-    width: 100%;
-    height: 100%;
-  //  border: solid 2px rgb(255, 0, 64);
-}
-//top div holding material
-.Theblocks{
-    height: 40%;
-    width: 100%;
-    // border: solid 2px blueviolet;
-    display: flex;
-    justify-content: space-between;
-
-}
-
-
-
-.Block1{
-     //border: 1px solid red;
-  position: relative;
-  height: 100%;
-  width: 24%;
-  border-radius: 5px;
-  box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.377);
-}
-
-
-.logoright{
-   // border: 1px solid black;
-    width: 60%;   
-    position: absolute;
-    // bottom: 0;
-    top: 50%;
-    right: 2%;
-    transform: translateY(-50%);
-}
-
-h3{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 80%;
-    height: 40px;
-    z-index: 10;
-    margin-top: 45%;
-    text-align: right;
-    background: #558C03;
-    position: relative;
-    padding-right: 2%;
-    color: white;
-    font-size: 20px;
-   padding: 10px;
-    border-top-right-radius:4px ;
-    border-bottom-right-radius:4px ;
-  
-}
-
-//bottom div holding history
-.History{
-    height: 60%;
-    width: 100%;
-  //  border: solid 2px red;
-      padding-top: 0 !important;
-   overflow-y: scroll;
-}
-
-.History1{
-    height: 35px;
-    width: 100%;
-    background-color: #548D04;
-    display: flex;
-    h2 {
-        width: 100%;
-        font-size: 25px;
-       // border: 1px solid red;
-     text-align: left;
-     margin: 0 !important;
-     padding-left: 8px;
-    }
-    #Date{
-       // border: salmon solid 2px;
-      height: 100%;
-      width:40%;
-  }
-  #Material{
- //  border: salmon solid 2px;
-      height: 100%;
-      width:60%;
-  
+    object-fit: cover;
+    margin: 2.5px;
   }
 }
-.History2{
-    height: 35px;
-     width: 100%;
-    background-color: rgb(238, 234, 234);
-    display:flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-   
-    padding-left: 8px;
-   // border: 1px solid red;
-    #Date1 {
-        
-        width: 40%;
-        font-size: 15px;
-     
-    }
-    #material {
-    
-        width: 60%;
-        font-size: 15px;
-        padding-left: 5px;
-        .eye {
-           // border: 1px solid green;
-           position: absolute;
-           right: 10% !important;
-           font-size: 20px;
-        }
-        .trash {
-          //  border: 1px solid green;
-           position: absolute;
-           right: 5% !important;
-           font-size: 20px;
-           color: brown;
-        }
-    }
-}
-.History2:nth-child(odd) {
-    background: white;
-}
-h2{
-    color: rgb(255, 255, 255);
-    font-family: 'Open Sans Condensed', sans-serif;
-    margin-top: 10px
-}
-#Everything{
-    height: 100%;
-    width: 100%;
-    background-color: white;
+.navCont > div:nth-child(2) {
+  width: calc(100% - 55px);
 }
 
-@keyframes fadeInCustom {
-    0%{
-        opacity: 0
-    }
-    100%{
-        opacity: 1
-    }
-}
+//container
 
-//div holding sub divs
-.Mother{
-    height: 100%;
-    width: 100%;
-    // border: solid 5px rgb(141, 5, 5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 3000000000000000000000000000;
-    animation: fadeInCustom 300ms;
-}
-
-//sub divs holding material and form
-#Daughter{
-    height: 55%;
-    width: 60%;
-    background: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    transform: translate(-50%,-50%);
-    z-index: 10000000000000000000000000000000000000000000000000;
-}
-//sub headers for sub material
-#Header{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%)
-}
-#border {
-    border: 1px solid gray;
-    width: 90%;
-    margin: 0 !important;
-    margin-left: 5% !important;
-}
-
-#Header > div {
-  //border: 3px solid blue;
-    cursor: pointer;
-    height: 60%;
-    width: 24%;
-    border-radius: 4px;
-    h4 {
-        font-size: 17px;
-    }
-}
-
-//header for paper
-#Paper, #Aluminium, #Plastic,#Glass {
-    // border: solid blueviolet 2px;
-    height: 50%;  
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.myInfo{
-    width: 100%;
-    height: calc(100% - 80px);
- }
-
-.top, .middle, .bottom {
-    height: 50px;
-    border: 2px solid rgb(255, 255, 255);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    input {
-       // border: 2px solid black;
-        width: 48%;
-        font-size: 12px;
-        height: 37px;
-       padding-left: 10px;
-       border-radius: 7px;
-       outline: none;
-       border: none;
-       background: #EAEAEA;
-    }
-
-}
-.for-plastic, .for-paper, .for-Aluminium, .for-Glass  {
-    width: 100%;
-    height: 100%;
-     //background: rgb(27, 126, 32);
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    margin-top: 5%;
-    .btn {
-        // border: 1px solid red;
-        width: 70%;
-        height: 40px;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        border-top-left-radius: 5px;
-        // border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 10px;
-        color: white;
-        letter-spacing: 1px;
-        background: linear-gradient(-90deg, rgba(128, 0, 128, 0.877), rgba(128, 0, 128, 0.418));;
-    }
-    .image {
-      //  border: 1px solid blue;
-        position: absolute;
-        bottom: -15%;
-        left: -5%;
-        width: 35%;
-    }
-}
-
-::placeholder {
-    font-size: 12px;  
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: rgb(32, 31, 31);
- }
-
-
-// .Amount{
-//     text-align: right;
-//     padding-right: 8px;
-// }
-
-#image{
-    border: 1px solid red;
-    position: absolute;
-    bottom: -55px;
-    left: -40px;
-    width: 45%;
-    right: 200px;
-margin: 0 !important;
-}
-@media screen and (max-width:1366px){
-    #logout {
-        border: 1px solid white;
-        padding: 1px;
-        border-radius: 50px;
-        background: white;
-        color: black;
-      ion-button {
-        font-size: 10px;
-        font-weight: bold;
-      }
-        ion-icon {
-          color: brown;
-          font-size: 20px;
-          font-weight: bold;
-          margin-left: 5px;
-        }
-      }
-      .header {
-        --background: #265902 !important;
-        display: flex;
-        color: white;
-      }
-
-      
-.Theblocks{
-    height: 35%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-}
-#Son{
+.top-blocks {
   width: 100%;
-  height:100%;
+  height: 35vh;
+  // background: black;
+  overflow-x: scroll;
+  display: flex;
+  .waste-blocks {
+    width: 23%;
+    min-width: 200px;
+    height: 90%;
+    background: white;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.493);
+    img {
+      width: 100%;
+      min-width: 90px;
+      max-width: 150px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    p {
+      font-size: 2vh;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-100%);
+      width: 90%;
+      background: #548d04;
+      padding: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.493);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      color: white;
+    }
+  }
+}
+.history {
+  width: 100%;
+  height: calc(100% - 35vh);
+  // background: red;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.history-labels {
+  width: 100%;
+  height: 40px;
+  background: #548d04;
+  color: white;
+  display: flex;
+}
+.history-labels > div {
+  height: 40px;
+  min-width: 150px;
+  line-height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.history-labels > div:nth-child(1) {
+  width: 25%;
+}
+.history-labels > div:nth-child(2) {
+  // border-left: 1px solid black;
+  width: 50%;
+}
+.history-labels > div:nth-child(3) {
+  // border-left: 1px solid yellow;
+  width: 12.5%;
+}
+.history-labels > div:nth-child(4) {
+  // border-left: 1px solid blue;
+  width: 12.5%;
+}
+
+.itemList {
+  background-color: #eeeaea;
+  display: flex;
+  height: 35px;
+  width: 100%;
+}
+
+.itemList > div {
+  height: 35px;
+  min-width: 150px;
+  line-height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  // border: solid 2px purple;
+}
+
+.itemList > div:nth-child(1) {
+  width: 25%;
+}
+.itemList > div:nth-child(2) {
+  width: 50%;
+}
+.itemList > div:nth-child(3) {
+  width: 12.5%;
+  text-align: center;
+}
+.itemList > div:nth-child(4) {
+  width: 12.5%;
+  text-align: center;
+  color: brown;
+}
+.itemList:nth-child(even){
+background: white;
+}
+.itemList:nth-child(odd){
+background: #eaeaea;
+}
+
+.mother {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.452);
+  position: absolute;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .userForm {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 600px;
+    background: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+  }
+  .dismissOverlay {
+    width: 100%;
+    height: 100%;
+    // background: red;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+  }
+}
+
+.waste-materials {
+  width: calc(100% - 50px);
+  margin: 0 auto;
+  height: 100px;
+  display: flex;
+  border-bottom:   solid 1px black;
+
+}
+
+.waste-materials > div {
+  width: 23%;
+  height: 50px;
+  // background-color: #497529;
+  margin: 5px auto;
+  margin-top: 20px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#isPaper, #isPlastic, #isAluminium, #isGlass{
+  background: grey;
+}
+
+.SecSection {
+  width: 100%;
+  height: calc(100% - 100px);
   // background: red;
 }
 
-//fifi's media queries
-@media screen and (min-width: 1366px) {
-  .header {
-    ion-title {
-    p {
-      //border: 1px solid white;
-   text-align: left;;
-         margin-left: -2.5%;
-         margin-top: 8px;
-       }
-      }
-      ion-avatar {
-       margin-left: 0 !important;
-       position: absolute;
-       left: 1% !important;
-       top: 3.5px;
-       width: 35px;
-       height: 35px;
-   }
-      #logout {
-        //border: 1px solid red;
-        height: 10px !important;
-        width: auto;
-        }
-   }
-.Theblocks {
- // border: 1px solid blue;
-  margin-top: 10px;
+.Material-inputs {
+  width: 100%;
+  height: 100%;
+  z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+  // background: purple;
+  
 }
-  .Block1 {
-    //border: 1px solid blue;
-    h3 {
-     // border: 1px solid red;
-      margin-top: 60%;
-    }
+.input-textfields > input {
+  width: 100%;
+  height: 40px;
+  background: #eaeaea;
+  border: 0px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.input-textfields > p {
+  text-align: right;
+  font-weight: bold;
+}
+
+ion-col {
+  width: 100%;
+  min-width: 250px;
+  text-align: center;
+}
+
+.singular-input {
+  width: 80% !important;
+}
+
+#forPaper {
+  // this will appear when paper has been selected
+  // display: none;
+}
+#forPlastic {
+  // this will appear when plastic has been selected
+  // display: none;
+}
+#forAluminium {
+  // this will appear when aluminium has been selected
+  // display: none;
+}
+#forGlass {
+  // this will appear when glass has been selected
+  // display: none;
+}
+
+.RecyleLogo {
+  // transform: scale(0.5 , 0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -10;
+  width: 300px;
+  height: 300px;
+  opacity: 0.3;
+  overflow: hidden;
+  img {
+    transform: translate(10%, -10%);
   }
-  .History {
-   // border: 2px solid black;
-     margin-top: 4%;
+}
+
+.Recycle-Bins {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 100px;
+  z-index: 10 !important;
+  img {
+    transform: translate(-40%, -40%);
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .header {
-    ion-title {
-      display: grid;
-      align-items: center;
-      p {
-        text-align: left;
-        margin-left: -4%;
-        margin-top: 7px;
-      }
-    }
-    ion-avatar {
-      margin-left: 0 !important;
-      position: absolute;
-      left: 1% !important;
-      top: 3.5px;
-      width: 35px;
-      height: 35px;
-    }
-    #logout {
-      width: auto;
-    }
+.Next-button{
+  background: plum;
+  width:100%;
+  height: 50px;
+  position: absolute;
+  bottom:0;
+  z-index: 1;
+  ion-button{
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);  
+    width: 200px;
   }
-  h3 {
-   // border: 1px solid red;
-    margin-top: 51%;
-  }
-  .History1{
-    //border: 1px solid red;
-    margin-top: 2%;
-  }
- 
 }
+ ion-grid{
+  //  height: 100%
+  margin-top: 50px;
+   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // border: solid 2px orange;
+ }
 
-@media screen and (min-width: 1920px) {
- 
-  .header {
-   // border: 1px solid red;
-    ion-title {
 
-      height: 40px;
-    }
-    ion-avatar {
-     // border: 1px solid red;
-      height: 40px;
-      width: 40px;
-      margin-top: -5px;
-    }
-    p {
-    //  border: 1px solid white;
-      position: absolute;
-      left: 6.9%;
-     top: 2px;
-    }
-    #logout {
-   // border: 1px solid red;
-     height: 40%; 
-     padding: 1% !important;
-  }
-  }
-#Everything {
-    // border: 2px solid blue;
-     height: 100%;
 
-     .Theblocks {
-   //   border: 2px solid rgb(17, 223, 110);
-      margin-top: 0;
 
-      h3 {
-       // border: 1px solid red;
-        margin-top: 45%;
-      }
-     }
-     .History {
-     // border: 2px solid red;
-      margin-top: 0;
-     }
-}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
