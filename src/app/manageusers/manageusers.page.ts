@@ -465,9 +465,21 @@ this.surname=obj.surname
         console.log(this.Snapprofile);
       });
     }
+back(){
+  console.log('tbladddd' )
+  this.router.navigateByUrl('/home');
+}
+    
+get() {
 
-    // myFunction() {
-    //   document.getElementById("fifi").classList.add('animation')
-    // }
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.router.navigateByUrl('/home');
+    }else {
+      this.router.navigateByUrl('/login');
+    }
+    });
+    console.log
+  } 
      
 }
