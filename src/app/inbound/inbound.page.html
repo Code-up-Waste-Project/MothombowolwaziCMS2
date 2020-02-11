@@ -1,9 +1,9 @@
-<ion-header *ngFor="let user of Newadmin">
+<ion-header >
   <ion-toolbar class="header" >
-    <ion-title><ion-avatar (click)="editprofile()"><img  *ngIf="user.image"  src="{{user.image}}">   <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-    <ion-buttons  id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
-    </ion-buttons>
+    <ion-title> <img src="../assets/logo.svg">Mthombowolwazi</ion-title>
+     <div class="logout">
+       <ion-button fill="clear"  (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+       </div>
   </ion-toolbar>
 </ion-header>
 

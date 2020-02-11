@@ -1,11 +1,9 @@
-<ion-header>
-  <ion-toolbar class="header" *ngFor="let user of Newadmin">
-    <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"><img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-    <!-- <ion-title>{{ user.name }} {{ user.surname }}</ion-title> -->
-    <ion-buttons id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon name="log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+<ion-header >
+  <ion-toolbar class="header" >
+    <ion-title> <img src="../assets/logo.svg">Mthombowolwazi</ion-title>
+     <div class="logout">
+       <ion-button fill="clear"  (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+       </div>
   </ion-toolbar>
 </ion-header>
 
@@ -343,7 +341,7 @@
       <div class="History2" *ngFor="let records of testArrays">
         <div id="Date1">{{ records.name }} {{ records.surname }}</div>
         <div id="material">{{ records.contact }}</div>
-        <div id="material">R{{ records.OverallGrandTotal }}</div>
+        <div id="material">R{{ records.OverallGrandTotal }}.00</div>
         <!-- <div id="Material1">R{{ records.time.seconds * 1000 | date:'dd-MM-yyyy HH-ss' }}</div> -->
           <ion-icon name="eye" class="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
           <ion-icon name="trash" class="trash" (click)='presentAlertDelete(records.id)'></ion-icon>

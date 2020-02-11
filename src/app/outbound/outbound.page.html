@@ -1,13 +1,9 @@
-<ion-header *ngFor="let user of Newadmin">
-  <ion-toolbar class="header">
-    <ion-title>
-      <ion-avatar [routerLink]="['/profile']"><img src="{{user.image}}"></ion-avatar>
-      <p>{{ user.name }} {{ user.surname }}</p>
-    </ion-title>
-    <ion-buttons id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon name="log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+<ion-header >
+  <ion-toolbar class="header" >
+    <ion-title> <img src="../assets/logo.svg">Mthombowolwazi</ion-title>
+     <div class="logout">
+       <ion-button fill="clear"  (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
+       </div>
   </ion-toolbar>
 </ion-header>
 

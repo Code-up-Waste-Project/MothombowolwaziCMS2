@@ -73,12 +73,12 @@ ion-toolbar {
   transition: 0.3s;
 }
 ion-title {
-  // border: 1px solid red;
-   width: 65%;
-   font-family: 'Righteous', cursive;
+  //border: 1px solid red;
+   width: 40%;
+   font-family: 'Microsoft YaHei UI';
   font-size: 30px;
-  margin-left: 10px;
-  margin-left: 10px;
+  // margin-left: 10px;
+  // margin-left: 10px;
   color: white;
   display: flex;
   flex-direction: row;
@@ -89,18 +89,12 @@ ion-title {
   padding: 0 !important;
   
   img {
-   // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
-   width: 47px;
-   padding-left: 10px;
-   padding-right: 10px;
+    width: 40px;
+    padding-left: 10px;
+   padding-right: 5px;
+   padding-top: 7px;
   }
-  // h1 {
-  //    border: 1px solid red;
-  //    width: 35%;
-  //   // position: absolute;
-  //   // left: 75px;
-  //   //top: -3px;
-  // }
+  
   
 }
 
@@ -206,7 +200,7 @@ flex-direction: column;
     text-align: right;
     // padding: 1%;
     font-size: 2.4vw;
-    font-family: "Poiret One", cursive;
+    font-family: 'SkarpaLT';
     font-weight: 200;
   }
 }
@@ -237,7 +231,7 @@ flex-direction: column;
   p {
     font-size: 1vw;
     // border: 1px solid red;
-    font-family: "Pompiere", cursive;
+    font-family: 'SkarpaLT';
     font-weight: 600;
     color: rgb(63, 61, 61);
   }
@@ -423,7 +417,7 @@ h6 {
       width: 80%;
       margin-left: 10%;
       font-size: 1.5vw;
-      font-family: "Microsoft YaHei UI";
+      font-family: 'Microsoft YaHei UI';
     }
     button {
       width: 40%;
@@ -514,7 +508,7 @@ h6 {
   align-items: center;
   background: white;
   font-size: 1.2vw;
-  font-family: "Pompiere", cursive;
+  font-family: 'SHKODER 1989';
   border-bottom-right-radius: 5px;
   //border: 1px solid red;
 }
@@ -832,7 +826,7 @@ h6 {
         h3 {
           color: white;
           font-size: 17px;
-          font-family: "Microsoft YaHei UI";
+          font-family: 'Microsoft YaHei UI';
           padding-left: 10px;
           padding-bottom: 5px;
         }
@@ -859,7 +853,7 @@ h6 {
       }
       p {
         font-size: 13px;
-        font-family: "Microsoft YaHei UI";
+        font-family: 'Microsoft YaHei UI';
         padding-left: 10px;
         padding-bottom: 5px;
         //  border: 1px solid blue;
