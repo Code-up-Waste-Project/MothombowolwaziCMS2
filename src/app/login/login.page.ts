@@ -115,7 +115,7 @@ export class LoginPage implements OnInit {
  
     }
    
-
+    this.menuCtrl.enable(false);
     this.loginForm.reset()
   }
 
@@ -131,9 +131,9 @@ export class LoginPage implements OnInit {
     this.menuCtrl.enable(false);
    }
 
-   ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menuCtrl.enable(true);
-  }
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
+  // }
  
 }

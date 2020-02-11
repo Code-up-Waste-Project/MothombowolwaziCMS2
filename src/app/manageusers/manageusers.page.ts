@@ -369,9 +369,10 @@ this.surname=obj.surname
           });
         });
       }
-      editprofile() {
-        this.router.navigate(['profile']);
-      }
+
+      // editprofile() {
+      //   this.router.navigate(['profile2']);
+      // }
 
       adminprofile(){
         this.db.collection('admin').onSnapshot(snapshot => {
@@ -472,8 +473,6 @@ back(){
   this.router.navigateByUrl('/home');
 }
     
-myBackButton(){
-  this.location.back();
-}
+
      
 }

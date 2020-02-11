@@ -1855,7 +1855,9 @@ allocate() {
     // this.addresss = this.addresss
     // console.log('im clicked');
 }
-myBackButton(){
-  this.location.back();
-}
+
+// editprofile() {
+//   this.route.navigate(['profile2']);
+// }
+
 }

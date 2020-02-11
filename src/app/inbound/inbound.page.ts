@@ -868,6 +868,6 @@ export class InboundPage implements OnInit {
     }
     
     editprofile() {
-      this.route.navigate(['profile']);
+      this.route.navigate(['profile2']);
     }
 }

@@ -66,7 +66,11 @@ const routes: Routes = [
   {
     path: 'reclaimer-pdf/:id',
     loadChildren: () => import('./reclaimer-pdf/reclaimer-pdf.module').then( m => m.ReclaimerPDFPageModule)
+  },  {
+    path: 'profile2',
+    loadChildren: () => import('./profile2/profile2.module').then( m => m.Profile2PageModule)
   }
+
 
 
 
