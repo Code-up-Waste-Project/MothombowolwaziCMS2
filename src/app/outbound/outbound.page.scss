@@ -118,7 +118,7 @@ ion-toolbar {
 .history-labels {
   width: 100%;
   height: 40px;
-  background: #548d04;
+  background: rgb(209,44,111);
   color: white;
   display: flex;
 }
@@ -132,9 +132,13 @@ ion-toolbar {
 
 .history-labels > div:nth-child(1) {
   width: 25%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
 }
 .history-labels > div:nth-child(2) {
   // border-left: 1px solid black;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
   width: 50%;
 }
 .history-labels > div:nth-child(3) {
@@ -207,6 +211,16 @@ ion-toolbar {
 
     .Purple{
        overflow: hidden;
+       height: 90%;
+       width: 100%;
+       position: absolute;
+       bottom: 0px;
+      //  border: solid 2px red;
+       img{
+         transform: scale(1.5);
+         position: absolute;
+         top:160px;
+       }
      }
   }
   .dismissOverlay {
@@ -224,7 +238,9 @@ ion-toolbar {
   margin: 0 auto;
   height: 100px;
   display: flex;
-  border-bottom: solid 1px black;
+  border-bottom:   solid 1px black;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 30px;
 }
 
 .waste-materials > div {
@@ -259,6 +275,8 @@ ion-toolbar {
   height: 100%;
   z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
   // background: purple;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 .input-textfields > input {
   width: 100%;
@@ -331,7 +349,7 @@ ion-col {
 
 .Next-button {
   background: plum;
-  width: 100%;
+  width: 97.5%;
   height: 50px;
   position: absolute;
   bottom: 0;
@@ -392,6 +410,7 @@ ion-grid {
 
 .flyer-inputs {
   background: white;
+  box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.589);
   border-radius: 10px;
   position: absolute;
   right: -75%;
@@ -405,6 +424,7 @@ ion-grid {
   width: 90%;
   height: 80%;
   background: white;
+  box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.589);
   border-radius: 10px;
   animation: 300ms sliderIn;
   display: flex;
@@ -462,8 +482,6 @@ ion-grid {
 .Purple{
     position: absolute;
     bottom: 0;
-    
-    
     left: 0;
     // z-index: -10;
     width: 100%;
@@ -474,4 +492,26 @@ ion-grid {
     img{
       overflow: hidden;
     }
+}
+
+
+#CODE{
+  padding-right: 58px;
+}
+
+.truck-div{
+  border: solid solid 2px;
+  position: absolute;
+  bottom: -20%;
+  top: 0;
+  left: 0;
+  // right: 20px;
+  z-index: 10000000000;
+  width: 150px;
+  height: 150px;
+  // opacity: 0.5;
+  // overflow: hidden;
+  img {
+    // transform: translate(10%, -10%);
+  }
 }

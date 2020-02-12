@@ -32,152 +32,221 @@
   <div class="mother" *ngIf="popOpOpen === true">
     <div class="dismissOverlay" (click)="goAway()"></div>
 
-    <div class="userForm">
+    <div class="userForm" id="materials-form" *ngIf="slideTwo === true">
+      <!-- this is for the materials form -->
       <div class="waste-materials">
-       <div (click)="togglePaper()" id="isPaper">PAPER</div>
-       <div (click)="togglePlastic()" id="isPlastic">PLASTIC</div>
-       <div (click)="toggleAluminium()" id="isAluminium">ALUMINIUM</div>
-       <div (click)="toggleGlass()" id="isGlass">GLASS</div> 
+        <div (click)="togglePaper()" id="isPaper">PAPER</div>
+        <div (click)="togglePlastic()" id="isPlastic">PLASTIC</div>
+        <div (click)="toggleAluminium()" id="isAluminium">ALUMINIUM</div>
+        <div (click)="toggleGlass()" id="isGlass">GLASS</div>
 
       </div>
-      
+
       <div class="RecyleLogo">
         <img src="../../assets/icon/Asset 10.svg" alt="">
       </div>
       <div class="Recycle-Bins">
         <img src="../../assets/binsPopup  2.svg" alt="">
       </div>
-        <div class="SecSection">
-          <!-- For Paper -->
-          
-          <div class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
-            <!-- paper -->
-            <div class="Next-button">
-              <ion-button fill="clear" color="light">Done</ion-button>
-            </div>
-            <ion-grid>
-              <ion-row>
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-              </ion-row>
-            </ion-grid>
+      <div class="SecSection">
+        <!-- For Paper -->
+
+        <div class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
+          <!-- paper -->
+          <div class="Next-button">
+            <ion-button fill="clear" color="light">Done</ion-button>
           </div>
-          <!-- For PLAstic -->
-          <div class="Material-inputs" id="forPlastic" *ngIf="isPlastic === true">
-            <!-- plastic -->
-            <div class="Next-button">
-              <ion-button fill="clear" color="light">Done</ion-button>
-            </div>
-            <ion-grid>
-              <ion-row>
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-                <ion-col class="input-textfields" size= "6">
-                  <input type="text" placeholder="Yesssses">
-                </ion-col>
-                
-              </ion-row>
-            </ion-grid>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PAP005 (Kg)"><br>
+                <p>R20</p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PAP007 (Kg)"><br>
+                <p>R50</p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PAP001 (Kg)"><br>
+                <p>R10</p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PAP003 (Kg)"><br>
+                <p></p>
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </div>
+        <!-- For PLAstic -->
+        <div class="Material-inputs" id="forPlastic" *ngIf="isPlastic === true">
+          <!-- plastic -->
+          <div class="Next-button">
+            <ion-button fill="clear" color="light">Done</ion-button>
           </div>
-          <!-- For Aluminium -->
-          <div class="Material-inputs" id="forAluminium" *ngIf="isAluminium === true">
-            <!-- Aluminium -->
-            <div class="Next-button">
-              <ion-button fill="clear" color="light">Done</ion-button>
-            </div>
-            <ion-grid>
-              <ion-row>
-                <ion-col class="input-textfields">
-                  <input type="text" placeholder="Yesssses" class="singular-input">
-                </ion-col>               
-              </ion-row>
-            </ion-grid>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="HD001 (Kg)"><br>
+                <p></p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="LD001 (Kg)"><br>
+                <p>R10</p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="LD003 (Kg)"><br>
+                <p></p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PET005 (Kg)"><br>
+                <p></p>
+              </ion-col>
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PET001 (Kg)"><br>
+                <p></p>
+              </ion-col>
+
+              <ion-col class="input-textfields" size="6">
+                <input type="text" placeholder="PET003 (Kg)"><br>
+                <p></p>
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </div>
+        <!-- For Aluminium -->
+        <div class="Material-inputs" id="forAluminium" *ngIf="isAluminium === true">
+          <!-- Aluminium -->
+          <div class="Next-button">
+            <ion-button fill="clear" color="light">Done</ion-button>
           </div>
-          <!-- For Glass -->
-          <div class="Material-inputs" id="forGlass" *ngIf="isGlass === true">
-            Glass
-            <div class="Next-button">
-              <ion-button fill="clear" color="light">Done</ion-button>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="input-textfields">
+                <input type="text" placeholder="NFAL01 (Kg)" class="singular-input"><br>
+                <p></p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <!-- For Glass -->
+        <div class="Material-inputs" id="forGlass" *ngIf="isGlass === true">
+          Glass
+          <div class="Next-button">
+            <ion-button fill="clear" color="light">Done</ion-button>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="input-textfields">
+                <input type="text" placeholder="GL001 (Kg)" class="singular-input"><br>
+                <p></p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </div>
+    <div class="userForm" id="driver-details" *ngIf="slideOne === true">
+      <div class="RecyleLogo">
+        <img src="../../assets/icon/Asset 10.svg" alt="">
+      </div>
+      <div class="Purple">
+        <img id="bubbles" src="../../assets/icon/outboundPOPup                                                                .svg" alt="">
+      </div>
+      <div class="heading-block">
+        Reclaimer Details
+      </div>
+      <div class="flow-container">
+        <div class="blockItems" id="absolutely">
+          <div class="flyer-inputs">
+            <div class="Searhcer">
+              <ion-searchbar></ion-searchbar>
             </div>
-            <ion-grid>
-              <ion-row>
-                <ion-col class="input-textfields">
-                  <input type="text" placeholder="Yesssses" class="singular-input">
-                </ion-col>               
-              </ion-row>
-            </ion-grid>
+            <div class="contact-cards">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Lebogang Thipe</ion-card-title>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  HG4 K4Y GP
+                </ion-card-content>
+              </ion-card>
+              
+            </div>
+            <div class="clicker">
+              <ion-button (click)="nextClick()"><ion-icon name="add">New </ion-icon>New Driver</ion-button>
+            </div>
           </div>
         </div>
+        <div class="blockItems">
+          <div class="details-driver" *ngIf="driverInfo === true" padding>
+            <input type="text" placeholder="Driver Name">
+            <input type="text" placeholder="Registration No.">
+            <input type="text" placeholder="Destination">
+            <input type="text" placeholder="Truck Source">
+          </div>
+        </div>
+      </div>
+      <div class="bottom-button">
+        <ion-button color="clear" id="FinishBTN" (click)="doneBtn()">
+          Done
+        </ion-button>
+      </div>
     </div>
 
   </div>
-<div class="top-blocks">
-  <div class="waste-blocks" (click)="showPopUp('paper')">
-    <img src="../../assets/Asset 9.svg" alt="">
-    <p>PAPER</p>
+  <div class="top-blocks">
+    <div class="waste-blocks" (click)="showPopUp('paper')">
+      <img src="../../assets/Asset 9.svg" alt="">
+      <p>PAPER</p>
+    </div>
+    <div class="waste-blocks" (click)="showPopUp('plastic')">
+      <img src="../../assets/Asset 9.svg" alt="">
+      <p>PLASTIC</p>
+    </div>
+    <div class="waste-blocks" (click)="showPopUp('aluminium')">
+      <img src="../../assets/Asset 9.svg" alt="">
+      <p>ALUMINIUM</p>
+    </div>
+    <div class="waste-blocks" (click)="showPopUp('glass')">
+      <img src="../../assets/Asset 9.svg" alt="">
+      <p>GLASS</p>
+    </div>
   </div>
-  <div class="waste-blocks" (click)="showPopUp('plastic')">
-    <img src="../../assets/Asset 9.svg" alt="">
-    <p>PLASTIC</p>
+  <div class="history" padding>
+    <div class="history-labels">
+      <div>Date</div>
+      <div>Transaction Identity</div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="itemList">
+      <div>February 10 2020</div>
+      <div>ADSGDSHGSHEREWT</div>
+      <div>
+        <ion-icon name="eye"></ion-icon>
+      </div>
+      <div>
+        <ion-icon name="trash"></ion-icon>
+      </div>
+    </div>
+    <div class="itemList">
+      <div>February 10 2020</div>
+      <div>ADSGDSHGSHEREWT</div>
+      <div>
+        <ion-icon name="eye"></ion-icon>
+      </div>
+      <div>
+        <ion-icon name="trash"></ion-icon>
+      </div>
+    </div>
   </div>
-  <div class="waste-blocks" (click)="showPopUp('aluminium')">
-    <img src="../../assets/Asset 9.svg" alt="">
-    <p>ALUMINIUM</p>
-  </div>
-  <div class="waste-blocks" (click)="showPopUp('glass')">
-    <img src="../../assets/Asset 9.svg" alt="">
-    <p>GLASS</p>
-  </div>
-</div>
-<div class="history" padding> 
-  <div class="history-labels">
-    <div>Date</div>
-    <div>Transaction Identity</div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="itemList">
-    <div>February 10 2020</div>
-    <div>ADSGDSHGSHEREWT</div>
-    <div><ion-icon name="eye"></ion-icon></div>
-    <div><ion-icon name="trash"></ion-icon></div>
-  </div>
-  <div class="itemList">
-    <div>February 10 2020</div>
-    <div>ADSGDSHGSHEREWT</div>
-    <div><ion-icon name="eye"></ion-icon></div>
-    <div><ion-icon name="trash"></ion-icon></div>
-  </div>
-</div>
 </ion-content>
