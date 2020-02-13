@@ -3,8 +3,10 @@ import * as firebase from 'firebase';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from '../app/user/auth.service';
 
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { element } from 'protractor';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,10 +16,14 @@ export class AppComponent implements OnInit {
 
   public appPages = [];
   admin;
+ pos;
+  adminss = [];
   ActiveAcount: boolean;
   active = 0
- 
 
+  db = firebase.firestore();
+  
+  Newadmin = [];
 
   constructor(
     private platform: Platform,
@@ -29,12 +35,59 @@ export class AppComponent implements OnInit {
   ) {
       // this.getAuth();
       this.initializeApp();
+
+       // pulling for admin
+    //  this.db.collection('admin').onSnapshot(snapshot => {
+    //   this.Newadmin = [];
+    //   snapshot.forEach(Element => {
+    //     this.Newadmins.push(Element);
+    //   });
+    //   console.log(this.Newadmins);
+
+    //   this.Newadmins.forEach(item => {
+    //     if (item.userid === firebase.auth().currentUser.uid) {
+    //       this.Newadmin = [];
+    //       this.Newadmin.push(item);
+    //     }
+    //   });
+    //   console.log('Newadmins', this.Newadmin);
+    // });
+     
+
+    this.db.collection('admin').onSnapshot(snapshot => {
+      this.Newadmin = [];
+      snapshot.forEach(Element => {
+        this.adminss.push(Element.data());
+      });
+      this.adminss.forEach(item => {
+        
+        if (item.userid === firebase.auth().currentUser.uid) {
+          this.Newadmin = [];
+          this.Newadmin.push(item);     }
+      });
+      // console.log('Newadmins', this.Newadmin);
+    });
   }
 
   ngOnInit() {
+    // this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
+    //   this.Newadmin = [];
+    //   // snapshot.forEach(Element => {
+    //     this.adminss.push(element);
+    //   // });
+    // });
+    // console.log(this.adminss);
+
     this.appPages = [];
     
     firebase.auth().onAuthStateChanged(user => {
+      console.log(user.email)
+      firebase.firestore().collection('userprofiles').where('email','==',user.email).get().then(res=>{
+      res.forEach(val=>{
+        this.pos =val.data().positions
+        console.log("Look here ",val.data().positions)
+      })
+      })
       firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         // this.profile.email = snapshot.data().email;
 

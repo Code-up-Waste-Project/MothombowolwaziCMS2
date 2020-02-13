@@ -14,9 +14,10 @@ import { format } from 'url';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage implements OnInit {
 
-  viewBackdrop = false
+  viewBackdrop = false;
 
   @ViewChild('barChart', {static: false}) barChart;
   @ViewChild('barChart1', {static: false}) barChart1;
@@ -56,23 +57,22 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
    time:null
  };
 
- oldpriceNFAL01;
- oldpriceglass;
+  oldpriceNFAL01;
+  oldpriceglass;
 
- oldpricehd001;
- oldpriceld001;
- oldpriceld003;
- oldpricepet003;
- oldpricepet001;
- oldpricepet005;
+  oldpricehd001;
+  oldpriceld001;
+  oldpriceld003;
+  oldpricepet003;
+  oldpricepet001;
+  oldpricepet005;
 
-
- oldpricepap001;
- oldpricepap005;
- oldpricepap003;
- oldpricepap007;
+  oldpricepap001;
+  oldpricepap005;
+  oldpricepap003;
+  oldpricepap007;
  
- price = [];
+  price = [];
   prices;
 
   bars: any;
@@ -84,7 +84,7 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   burgercontent: any = document.getElementsByClassName('burgercontent');
   burger: boolean = false;
 
-/* Div */
+  /* Div */
   editDiv: any = document.getElementsByClassName('editDiv');
   edit: boolean = false;
 
@@ -106,7 +106,6 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
 
   aluDiv: any = document.getElementsByClassName('aluDiv');
   alu: boolean = false;
-
 
   fix: any = document.getElementsByClassName('fix');
 
@@ -169,7 +168,6 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   inboundPET001;
   inboundPET003;
   inboundPET005;
-
 
   //Reclaomers
   GH001Mass;
@@ -460,20 +458,20 @@ bD = document.getElementsByClassName('bD')
     public alertController: AlertController,
     ) {
       // pulling for admin
-    this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin = [];
-      snapshot.forEach(Element => {
-        this.admin.push(Element.data());
-      });
-      this.admin.forEach(item => {
+    // this.db.collection('admin').onSnapshot(snapshot => {
+    //   this.Newadmin = [];
+    //   snapshot.forEach(Element => {
+    //     this.admin.push(Element.data());
+    //   });
+    //   this.admin.forEach(item => {
      
-        if (item.userid === firebase.auth().currentUser.uid) {
-          this.Newadmin = [];
-          this.Newadmin.push(item);
-        }
-      });
-      // console.log('Newadmins', this.Newadmin);
-    });
+    //     if (item.userid === firebase.auth().currentUser.uid) {
+    //       this.Newadmin = [];
+    //       this.Newadmin.push(item);
+    //     }
+    //   });
+    //   console.log('Newadmins', this.Newadmin);
+    // });
 
     // code by nathi 3 feb
     this.pullWeeklyInbound();
@@ -501,9 +499,6 @@ bD = document.getElementsByClassName('bD')
         }, 500);
       }
     }
-  backdrop() {
-  
-  }
 
      //chart
      updated
@@ -718,18 +713,11 @@ bD = document.getElementsByClassName('bD')
     +parseFloat(val.data().PET001Mass) 
   })
   this.createBarChart2();
-})
+  })
     }
    
   ngOnInit() {
-
-
-    // all Storage (DNT)
-
-
     this.prices = firebase.firestore().collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot((documentSnapshot) => {
-
-
       this.price = [];
       // console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
@@ -765,11 +753,7 @@ bD = document.getElementsByClassName('bD')
      this.oldpricehd001 = documentSnapshot.data().hd001;
       this.oldpriceNFAL01 = documentSnapshot.data().nfalo1;
       this.oldpriceglass = documentSnapshot.data().gl001;
-
-
     })
-
-
 
     // console.log(this.pricess.gl001);
     // console.log(this.pricess.hd001);
@@ -786,9 +770,6 @@ bD = document.getElementsByClassName('bD')
 
     this.menuCtrl.enable(true); // or true
 
-//plastic
-//glasss
- // Plastic Storage update
  this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
    
  this.prices.get().then(Document => {
@@ -846,7 +827,6 @@ console.log(this.PaperArray)
       });
     });
   }
-  // 
   
   ionViewWillEnter() {
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
@@ -859,7 +839,6 @@ console.log(this.PaperArray)
    }
 
    checkinputfields() {
-
     // GH001price;
     if (this.GH001price === null ) {
       this.GH001price = this.pricess.gl001;
@@ -977,8 +956,6 @@ console.log(this.PaperArray)
           handler: () => {
             // this.update();
             this.clearInputs();
-           
-         
             // console.log('Confirm Okay');
           }
         }
@@ -986,8 +963,6 @@ console.log(this.PaperArray)
     });
     await alert.present();
   }
-
-  
 
   clearInputs() {
     this.GH001price = '';
@@ -1010,13 +985,10 @@ console.log(this.PaperArray)
         this.PAP007price === undefined &&
         this.PAP001price === undefined &&
         this.PET003price === undefined
-     
       ) {
-       
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdatePaper();
-        
       }
   }
 
@@ -1027,16 +999,12 @@ console.log(this.PaperArray)
         this.LD003price  === undefined &&
         this.PET005price === undefined &&
         this.PET001price === undefined
-        
       ) {
-      
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdatePlastic();
       }
   }
-
-  
 
   CheckInputsEmptyStringAlum() {
     if (
@@ -1055,15 +1023,10 @@ console.log(this.PaperArray)
         this.presentAlertcheckInputs();
       } else {
         this.presentAlertUpdateglass();
-          
-      
-
       }
   }
   
- 
   async presentAlertUpdateglass() {
-
     const alert = await this.alertController.create({
       header: 'Confirm!',
       message: '<strong>Are you sure you want to change prices?</strong>!!!',
@@ -1087,8 +1050,6 @@ console.log(this.PaperArray)
       ]
     });
     await alert.present();
-
-    
   }
 
   checkglassInputs() {
@@ -1115,7 +1076,7 @@ console.log(this.PaperArray)
 
         }).then((data) => {
          
-          console.log("Paper old storage successfully updated!");
+          // console.log("Paper old storage successfully updated!");
         });
 
     // To update price :
