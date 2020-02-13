@@ -115,8 +115,8 @@ export class LoginPage implements OnInit {
  
     }
    
-    this.menuCtrl.enable(false);
-    this.loginForm.reset()
+    this.menuCtrl.enable(true);
+    // this.loginForm.reset()
   }
 
   // forgetpassword() {
@@ -133,7 +133,7 @@ export class LoginPage implements OnInit {
 
   //  ionViewDidLeave() {
   //   // enable the root left menu when leaving the tutorial page
-  //   this.menuCtrl.enable(true);
+  //   this.menuCtrl.enable(false);
   // }
  
 }

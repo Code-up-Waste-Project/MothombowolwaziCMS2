@@ -1696,7 +1696,6 @@ Logout() {
     document.getElementById("isPlastic").style.background = "transparent"
     document.getElementById("isAluminium").style.background = "#5C8A1B"
     document.getElementById("isGlass").style.background = "transparent"
-
     
     document.getElementById("isPaper").style.color = "black"
     document.getElementById("isPlastic").style.color = "black"
@@ -1715,7 +1714,6 @@ Logout() {
     document.getElementById("isPlastic").style.background = "transparent"
     document.getElementById("isAluminium").style.background = "transparent"
     document.getElementById("isGlass").style.background = "#5C8A1B"
-
     
     document.getElementById("isPaper").style.color = "black"
     document.getElementById("isPlastic").style.color = "black"
@@ -1753,7 +1751,7 @@ Logout() {
       this.group1[0].style.right = "0";
       this.group1[0].style.width = "90%"
     }
-  getItems(ev: any) {
+    getItems(ev: any) {
     // Reset items back to all of the items
     // set val to the value of the searchbar
     const val = ev.target.value;

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   admin;
  pos;
   adminss = [];
+  
   ActiveAcount: boolean;
   active = 0
 
@@ -81,10 +82,10 @@ export class AppComponent implements OnInit {
     this.appPages = [];
     
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user.email)
+      // console.log(user.email)
       firebase.firestore().collection('userprofiles').where('email','==',user.email).get().then(res=>{
       res.forEach(val=>{
-        this.pos =val.data().positions
+        // this.pos =val.data().positions
         console.log("Look here ",val.data().positions)
       })
       })
