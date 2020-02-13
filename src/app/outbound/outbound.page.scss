@@ -515,3 +515,45 @@ ion-grid {
     // transform: translate(10%, -10%);
   }
 }
+
+#Paper{
+  background-image: url(../../assets/ColorFullMagazines.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#Plastic{
+  background-image: url(../../assets/BluCapPlasticBottle.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#Aluminium{
+  background-image: url(../../assets/SquashedRedCan.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#Glass{
+  background-image: url(../../assets/WhiteWineGlass.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.Title{
+  height: 40px;
+  // border: solid 2px red;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+
+
+
