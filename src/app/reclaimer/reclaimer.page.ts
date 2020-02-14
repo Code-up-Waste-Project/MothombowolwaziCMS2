@@ -449,7 +449,8 @@ export class ReclaimerPage implements OnInit {
           surname: this.surname,
           contact: this.contact,
           address: this.address,
-          OverallGrandTotal: this.OverallGrandTotal
+          OverallGrandTotal: this.OverallGrandTotal,
+          date: this.reclaimerDate
         })
 
         // this.recordreclaimerdisplays.push({

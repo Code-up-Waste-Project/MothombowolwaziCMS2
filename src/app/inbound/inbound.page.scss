@@ -342,7 +342,10 @@ ion-col {
     position: absolute;
     right: 50%;
     transform: translateX(50%);  
-    width: 200px;
+    // border: solid 2px red;
+    height: 91%;
+    width: 100%;
+
   }
 }
  ion-grid{
