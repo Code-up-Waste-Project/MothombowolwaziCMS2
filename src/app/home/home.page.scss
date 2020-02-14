@@ -5,18 +5,18 @@
   box-sizing: border-box;
  
 }
-.header {
-  --background: #265902 !important;
-  display: flex;
-  // border: 2px solid rgb(236, 55, 124);
-}
+
 .logo-header {
     width: 30px;
 
 }
 ion-toolbar {
-  display: flex;
-  flex-direction: row;
+border: 1px solid red !important;
+display: flex !important;
+flex-direction: row;
+p {
+  width: 50%;
+}
 }
 .bD {
   display: none;
