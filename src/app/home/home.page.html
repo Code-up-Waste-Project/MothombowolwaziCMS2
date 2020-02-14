@@ -123,12 +123,28 @@
     <div class="box" id="paper">
       <img src="../../assets/Asset 8.svg">
       <div class="mat">
-        <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
-          <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
+        <!-- <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
+          <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
           <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
           <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
          <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-        </div>   
+        </div>    -->
+
+        <div class="toSlide">
+
+          <div class="userButtons" id="optA">
+
+            <div class="btns" (click)="toggleOpts()">
+              <ion-icon name="more"></ion-icon>
+            </div>
+            <div class="btns">
+              <ion-icon name="create"></ion-icon>
+            </div>
+            <div class="btns">
+              <ion-icon name="folder"></ion-icon>
+            </div>
+          </div>
+        </div>
       
     </div>
 
@@ -151,11 +167,28 @@
       <div class="mat">
         <img src="../../assets/paper.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
+<!-- <div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYPPLASTIC()"><ion-icon name="folder"></ion-icon></ion-button>
-</div>       
+</div>        -->
+
+<!-- new code for animation icons -->
+<div class="toSlide">
+
+  <div class="userButtons" id="optB">
+
+    <div class="btns" (click)="toggleOpts1()">
+      <ion-icon name="more" (click)="showMoreBtn2()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="create" (click)="HideandShowCreate()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="folder" (click)="HideandShowHISTORYPPLASTIC()"></ion-icon>
+    </div>
+  </div>
+</div>
 
 </div>
       <div class="matnames">
@@ -178,12 +211,28 @@
       <div class="mat">
         <img src="../../assets/glassy.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
+<!-- <div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYGLASS()" ><ion-icon name="folder"></ion-icon></ion-button>
-</div>       
+</div>        -->
+
+<!-- new code for animation icons -->
+<div class="toSlide">
+
+  <div class="userButtons" id="optC">
+
+    <div class="btns" (click)="toggleOpts2()">
+      <ion-icon name="more" (click)="showMoreBtn3()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="create" (click)="glassShow()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="folder" (click)="HideandShowHISTORYGLASS()"></ion-icon>
+    </div>
+  </div>
+</div>
 
 </div>
 <div class="matnames">
@@ -200,13 +249,23 @@
     <div class="box" id="aluminium">
       <div class="mat">
         <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent4" [ngClass]="{'hide': !burger, 'show': burger}">
-  <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success"  (click)="HideandShowDelete()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="folder"></ion-icon></ion-button>
-</div>    
+
+<!-- new code for animation icons -->
+<div class="toSlide">
+
+  <div class="userButtons" id="optD">
+
+    <div class="btns" (click)="toggleOpts3()">
+      <ion-icon name="more" (click)="showMoreBtn4()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="create"  (click)="HideandShowDelete()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="folder" (click)="HideandShowHISTORYALUMINIUM()"></ion-icon>
+    </div>
+  </div>
+</div>
 </div>
 <div class="matnames" >
   <div class="codes" >
@@ -219,11 +278,10 @@
 </div>
      
     </div>
-    <!--<ion-button fill="clear" size="small" color="success"></ion-button> -->
 
   </div>
 <div class="chartbuttons" padding>
-<p></p>
+
 <div class="dynamicBtns" padding>
   <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
   <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="PullWeekData()" (click)="toggleWeekly()">Weekly</ion-button>
@@ -248,8 +306,7 @@
 <!-- graph 1 -->
     <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
       <canvas #barChart >
-   
-      </canvas>
+  </canvas>
       
     </div>
 <!-- graph 2 -->

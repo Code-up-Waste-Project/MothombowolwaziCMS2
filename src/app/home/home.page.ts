@@ -2538,7 +2538,19 @@ console.log(this.PaperArray)
     }
 
   }
+  togglOpts = 0;
 
+  toggleOpts(){
+    var myOpts = document.getElementById("optA")
+    if(this.togglOpts == 0){
+      this.togglOpts = 1
+      myOpts.style.right = "0"
+    }
+    else{
+      this.togglOpts = 0
+      myOpts.style.right = "-100px"
+    }
+  }
 
 
 //EDIT PAPER
