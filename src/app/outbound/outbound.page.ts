@@ -1389,7 +1389,7 @@ export class OutboundPage implements OnInit {
 
     }
 
-    editprofile() {
-      this.route.navigate(['profile']);
-    }
+    // editprofile() {
+    //   this.route.navigate(['profile2']);
+    // }
 }

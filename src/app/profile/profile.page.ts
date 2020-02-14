@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController, MenuController} from '@ionic/angular';
 import * as firebase from 'firebase';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-profile',
@@ -36,7 +37,9 @@ export class ProfilePage implements OnInit {
     private toastController: ToastController,
     private menuCtrl: MenuController,
     public alertController: AlertController,
+    private location: Location
     ) {
+      this.menuCtrl.enable(false);
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
@@ -50,9 +53,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    // this.menuCtrl.enable(false, 'main-content')
     this.menuCtrl.enable(false); // or true
-    // this.menuCtrl.enable(false, 'main-content');
   }
 
   async users() {
@@ -191,13 +192,20 @@ toast.present();
     this.profile.number = '';
   }
 
+  
+
   ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
+
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
+  // }
+
+  myBackButton(){
+    this.location.back();
     this.menuCtrl.enable(false);
   }
 
-  ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menuCtrl.enable(false);
-  }
- 
   }

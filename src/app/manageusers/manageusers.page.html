@@ -15,7 +15,7 @@
            <div class="names">
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.email }}</p>
-            <p>{{ myprofiles.number }}</p>
+            <p>{{ myprofiles.position }}</p>
             
             <div class="image">
               
@@ -72,13 +72,17 @@
   </div> -->
 
   <!-- this form appears when fab button is clicked -->
+
     <div padding class="registerform"  class="right" *ngIf="registerForm" >
-     <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+     
+      <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+     
       <h1>Register</h1>
-      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset >
-      <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.positions.reset>
-      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset>
-     <button ion-button (click)="saveNewUseer()" type="reset">Register</button>
+      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email">
+      <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position">
+      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password">
+     <button ion-button   type="reset"   onclick="document.getElementById('myInput').value = ''" (click)="saveNewUseer()">Register</button>
+     
      <div class="bottomdeco">
     <img  src="../../assets/binsPopup  2.svg">
      </div>
@@ -86,4 +90,5 @@
   
     </div>
     <!-- <button (click)="AddUser(id)">view</button> -->
+
   </ion-content>

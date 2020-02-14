@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "mthombowolwazicms2"
+    "default": "mthombowolwazicms2",
+    "mthombowolwazicms": "mothombowolwazicms"
   }
 }

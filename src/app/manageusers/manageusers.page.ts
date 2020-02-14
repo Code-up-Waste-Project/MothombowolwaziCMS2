@@ -8,6 +8,7 @@ import { AuthService } from '../../app/user/auth.service';
 import { MenuController } from '@ionic/angular';
 import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 import { element } from 'protractor';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-manageusers',
@@ -62,7 +63,8 @@ registerForm = false;
     public alertCtrl: AlertController,
     public formBuilder: FormBuilder,
     public router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private location: Location
   ) {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -104,9 +106,7 @@ this.surname=obj.surname
 
 
   ngOnInit() {
-    this.email = "";
-    this.password ="";
-    this.positions="";
+   
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -313,6 +313,9 @@ this.surname=obj.surname
               profile:'no',
               positions:this.positions,
             }).then(async res =>{
+              this.email=null
+              this.positions=null
+              this.password=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user with the following email Addr',
                 
@@ -345,18 +348,11 @@ this.surname=obj.surname
            }
           
         })
-     this.email=''
-     this.position=''
-     this.password=''
+   
   
       }
 
-      ionViewWillLeave(){
-        this.email = "";
-        this.password ="";
-        this.position=""
-      }
-     
+   
 
       changeListener(admin): void {
         const i = admin.target.files[0];
@@ -373,9 +369,10 @@ this.surname=obj.surname
           });
         });
       }
-      editprofile() {
-        this.router.navigate(['profile']);
-      }
+
+      // editprofile() {
+      //   this.router.navigate(['profile2']);
+      // }
 
       adminprofile(){
         this.db.collection('admin').onSnapshot(snapshot => {
@@ -471,9 +468,11 @@ this.surname=obj.surname
         console.log(this.Snapprofile);
       });
     }
+back(){
+  console.log('tbladddd' )
+  this.router.navigateByUrl('/home');
+}
+    
 
-    // myFunction() {
-    //   document.getElementById("fifi").classList.add('animation')
-    // }
      
 }
