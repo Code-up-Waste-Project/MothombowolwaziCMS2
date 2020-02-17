@@ -8,6 +8,7 @@ import { AuthService } from '../../app/user/auth.service';
 import { MenuController } from '@ionic/angular';
 import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 import { element } from 'protractor';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-manageusers',
@@ -51,6 +52,7 @@ registerForm = false;
 
   email;
   password;
+  positions;
 
   selectedUser ={}
 
@@ -61,7 +63,8 @@ registerForm = false;
     public alertCtrl: AlertController,
     public formBuilder: FormBuilder,
     public router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private location: Location
   ) {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -99,8 +102,7 @@ firsttem(obj:any ={})
 }
 
   ngOnInit() {
-    this.email = "";
-    this.password ="";
+   
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -305,10 +307,13 @@ firsttem(obj:any ={})
               email: this.email,
               password: this.password,
               profile:'no',
-              position:this.position,
+              positions:this.positions,
             }).then(async res =>{
+              this.email=null
+              this.positions=null
+              this.password=null
               let alert = await this.alertCtrl.create({
-              message:'Created users',
+              message:'You Have just created a new user with the following email Addr',
                 
               buttons: [
                 {
@@ -339,15 +344,11 @@ firsttem(obj:any ={})
            }
           
         })
-     
+   
   
       }
 
-      ionViewWillLeave(){
-        this.email = "";
-        this.password ="";
-      }
-     
+   
 
       changeListener(admin): void {
         const i = admin.target.files[0];
@@ -364,9 +365,10 @@ firsttem(obj:any ={})
           });
         });
       }
-      editprofile() {
-        this.router.navigate(['profile']);
-      }
+
+      // editprofile() {
+      //   this.router.navigate(['profile2']);
+      // }
 
       adminprofile(){
         this.db.collection('admin').onSnapshot(snapshot => {
@@ -435,7 +437,7 @@ firsttem(obj:any ={})
 
     AddUser(id) {
       this.db.collection('admin').doc(id).onSnapshot(element => {
-        let id = {};
+      let id = {};
       let name = {};
       let surname = {};
       let email = {};
@@ -462,9 +464,11 @@ firsttem(obj:any ={})
         console.log(this.Snapprofile);
       });
     }
+back(){
+  console.log('tbladddd' )
+  this.router.navigateByUrl('/home');
+}
+    
 
-    // myFunction() {
-    //   document.getElementById("fifi").classList.add('animation')
-    // }
      
 }

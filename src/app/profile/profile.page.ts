@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController, MenuController} from '@ionic/angular';
 import * as firebase from 'firebase';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-profile',
@@ -36,23 +37,23 @@ export class ProfilePage implements OnInit {
     private toastController: ToastController,
     private menuCtrl: MenuController,
     public alertController: AlertController,
+    private location: Location
     ) {
+      this.menuCtrl.enable(false);
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
         this.profile.name = snapshot.data().name;
         this.profile.surname = snapshot.data().surname;
         this.profile.image = snapshot.data().image;
-        this.profile.position= snapshot.data().position;
+        // this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
         console.log('admin', this.userprofile);
       });
   }
 
   ngOnInit() {
-    // this.menuCtrl.enable(false, 'main-content')
-    // this.menuCtrl.enable(false); // or true
-    // this.menuCtrl.enable(false, 'main-content');
+    this.menuCtrl.enable(false); // or true
   }
 
   async users() {
@@ -83,7 +84,7 @@ toast.present();
       surname: this.profile.surname,
       email: this.profile.email,
       number:this.profile.number,
-      position: this.profile.position,
+      // position: this.profile.position,
       image: this.profile.image,
       isAdmin: this.isAdmin,
       userid: this.profile.userid,
@@ -191,13 +192,20 @@ toast.present();
     this.profile.number = '';
   }
 
-  // ionViewWillEnter() {
-  //   this.menuCtrl.enable(false);
+  
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
+
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
   // }
 
-  // ionViewDidLeave() {
-  //   // enable the root left menu when leaving the tutorial page
-  //   this.menuCtrl.enable(false);
-  // }
- 
+  myBackButton(){
+    this.location.back();
+    this.menuCtrl.enable(false);
+  }
+
   }

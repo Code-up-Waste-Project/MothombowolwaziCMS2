@@ -1,19 +1,24 @@
-<ion-header *ngFor="let user of Newadmin">
-  <ion-toolbar class="header" >
-    <ion-title><ion-avatar [routerLink]="['/profile']"><img src="{{user.image}}"></ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-    <ion-buttons  id="logout" slot="end">
-      <ion-button fill="clear" size="large" (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class="The-header">
+  <div class="sub-header" padding>
+ <h1>Manage Admins</h1>
+</div>
+<div class="log-out">
+<ion-icon name="log-out"></ion-icon>
+</div>
+</div>
+ <div class="line-breaker"></div>
   
   <ion-content>
-    <div padding class="container">
+  <div class="background-Logo">
+    <img src="../../assets/icon/Asset 10.svg" alt="">
+  </div>
+    <div class="cont-container">
       <div padding class="left">
         <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)'>
            <div class="names">
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.email }}</p>
+            <p>{{ myprofiles.position }}</p>
             
             <div class="image">
               <img *ngIf="!myprofiles.image" src="../../assets/mthombologo (1).png" alt=""> 
@@ -68,13 +73,17 @@
   </div> -->
 
   <!-- this form appears when fab button is clicked -->
+
     <div padding class="registerform"  class="right" *ngIf="registerForm" >
-     <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+     
+      <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+     
       <h1>Register</h1>
-      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset >
-      <input class="inputs" placeholder="Enter position" [(ngModel)]="position"  this.position.reset >
-      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset>
-     <button ion-button (click)="saveNewUseer()" type="reset">Register</button>
+      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email">
+      <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position">
+      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password">
+     <button ion-button   type="reset"   onclick="document.getElementById('myInput').value = ''" (click)="saveNewUseer()">Register</button>
+     
      <div class="bottomdeco">
     <img  src="../../assets/binsPopup  2.svg">
      </div>
@@ -82,4 +91,5 @@
   
     </div>
     <!-- <button (click)="AddUser(id)">view</button> -->
+
   </ion-content>
