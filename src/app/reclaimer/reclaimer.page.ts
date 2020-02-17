@@ -1790,6 +1790,9 @@ Logout() {
       });
       // console.log('Results = ',this.searchResults);
     } else if (val != " ") {
+      // this.testArrays = this.usersz.filter(item => {
+      //   return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      // });
       this.searchResults = this.usersz.filter(item => {
         return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
       });

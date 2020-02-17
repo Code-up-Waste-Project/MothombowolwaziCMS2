@@ -15,9 +15,7 @@
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.email }}</p>
             
-            
             <div class="image">
-              
               <img *ngIf="!myprofiles.image" src="../../assets/mthombologo (1).png" alt=""> 
               <img  *ngIf="myprofiles.image" src="{{myprofiles.image}}" alt="">
             </div>
@@ -25,7 +23,6 @@
           </div>
       </div>
   
-      <!--  -->
       <div class="right" *ngIf="!registerForm" >
         <div class="pic" padding >
        <ion-avatar>

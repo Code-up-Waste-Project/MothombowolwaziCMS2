@@ -1252,7 +1252,7 @@ export class OutboundPage implements OnInit {
           return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
         });
       } else if (val == "") {
-        this.searchResults = [];
+        this.searchResults = this.recordoutbounddisplaysz;
       }
 
       console.log(this.usersz);

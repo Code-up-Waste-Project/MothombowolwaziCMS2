@@ -90,17 +90,13 @@ registerForm = false;
 firsttem(obj:any ={})
 {
  console.log(obj)
-
-
- 
-this.name =obj.name
-this.surname=obj.surname
+ this.name =obj.name
+ this.surname=obj.surname
  this.number=obj.number
  this.position=obj.position
  this.image=obj.image
  this.ActiveAcount=obj.ActiveAcount
 }
-
 
   ngOnInit() {
     this.email = "";
