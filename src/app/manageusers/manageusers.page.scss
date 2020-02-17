@@ -56,15 +56,28 @@ ion-button  {
 //   padding-left: 2%;
 //   font-size: 1vw;
 // }//END OF HEADER
-.container {
+
+.background-Logo{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  // z-index: -10;
+}
+.cont-container {
 //  border: 1px solid red;
   height: 100%;
   display: flex;
+  padding: 20px;
+  // padding-right: 0; 
   justify-content: space-between;
-  background-image: url('../../assets/manageuser.svg');
+  // background-image: url('../../assets/manageuser.svg');
+  // opacity: 0.3;
+  // background-image: url('../../assets/Asset\ 10.svg');
   background-repeat: no-repeat;
   background-size: 130%;
   background-position: -10% 40%;
+  z-index: 100000000000000000;
 }
 .left {
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -72,6 +85,7 @@ width: 68%;
 border-radius: 10px;
 background: rgba(255, 255, 255, 0.719);
 overflow-y: scroll;
+z-index: 1000000000000000;
 .profile {
   // border: 3px solid rgb(255, 0, 212);
     height: 100px;
@@ -126,7 +140,9 @@ margin-top: 3%;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 width: 30%;
 border-radius: 10px;
-background: rgba(255, 255, 255, 0.664);
+// background: rgba(255, 255, 255, 0.664);
+background: white;
+z-index: 100000000000000;
 #borderb{
     width: 80%;
     margin-left: 10%;
@@ -258,6 +274,66 @@ to {
   margin-top: 0%;
   width: 100%;
 }
+}
+
+
+.The-header{
+  // border: solid red 2px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.sub-header{
+  // border: solid 2px yellow;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  h1{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    padding-bottom: 0px;
+  }
+}
+
+.log-out{
+  // border: solid 2px purple;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.log-out > ion-icon{
+  position: absolute;
+  right: 0px;
+  padding-right: 30px;
+  font-size: 30px;
+}
+
+.line-breaker{
+  border: solid 1px rgb(153, 152, 152);
+  border-bottom:0px;
+  border-right: 0px;
+  border-left: 0px;
+  width: 5%;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  top: 5px;
+}
+
+.Title{
+  // border: solid 2px red;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  h2{
+    font-family: 'Montserrat', sans-serif;
+  }
 }
 // fifi media queries
 @media screen and (min-width: 1366px) {
