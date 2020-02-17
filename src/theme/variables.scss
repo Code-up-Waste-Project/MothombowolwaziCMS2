@@ -136,3 +136,10 @@ ion-split-pane{
      src: url('../assets/fonts/Shkoder_1989_Black.otf');
    
    }
+
+   .split-pane-visible >.split-pane-side {
+    min-width: 330px!important;
+    max-width: 330px!important;
+  }
+
+  ::-webkit-scrollbar, *::-webkit-scrollbar { display: none; }

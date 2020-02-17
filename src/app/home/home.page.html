@@ -1,94 +1,151 @@
-<ion-header >
-  <ion-toolbar class="header" >
-    <ion-title> <img src="../assets/logo.svg">Mthombowolwazi</ion-title>
-    
-     <div class="logout">
-       <ion-button fill="clear"  (click)="Logout()">Logout<ion-icon  name="log-out"></ion-icon></ion-button>
-       
-     </div>
-      
-    
-    <!-- <ion-title><ion-avatar [routerLink]="['/profile']"><img  *ngIf="user.image"  src="{{user.image}}"> <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt=""> </ion-avatar><p>{{ user.name }} {{ user.surname }}</p></ion-title>
-   -->
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <p>Heading<span><ion-button fill="clear" size="small" color="danger"><ion-icon name="folder"></ion-icon></ion-button>
+  </span></p>
+  
+</ion-toolbar>
 
 <ion-content>
 <div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
-  <!-- <ion-button (click)="backdrop()">
-    <ion-icon slot="icon-only" name="close"></ion-icon>
-  </ion-button>
-  -->
+ 
 </div>
 <div class="container">
   <div padding class="alltime">
     <div class="stats">
       <div class="big">
-        <div class="small" style="background: #C5A60A;">
-          <!-- <img src="../../assets/inbound.svg"> -->
+       
+        <div class="info-box">
+            <div class="yellow-box">
+              <div class="small" style="background: #C5A60A;">
+                <!-- <img src="../../assets/inbound.svg"> -->
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>Inbound</h3>
+              <p>{{inboundweight}}<span>kg</span></p>
+            </div>
         </div>
-        <h3>Inbound</h3>
-        <p class="mass">{{inboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        <div class="line"></div>
-        <div class="updates">
+        
+        <div class="update">
          
         <p>Updated {{updated}}</p>
         </div>
       </div>
     
     </div>
-    <!-- box 2 -->
+    <div class="stats">
+      <div class="big">
+       
+        <div class="info-box">
+            <div class="yellow-box">
+              <div class="small" style="background: #C5A60A;">
+                <!-- <img src="../../assets/inbound.svg"> -->
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>Inbound</h3>
+              <p>{{inboundweight}}<span>kg</span></p>
+            </div>
+        </div>
+        
+        <div class="update">
+         
+        <p>Updated {{updated}}</p>
+        </div>
+      </div>
+    
+    </div>
+    <div class="stats">
+      <div class="big">
+       
+        <div class="info-box">
+            <div class="yellow-box">
+              <div class="small" style="background: #C5A60A;">
+                <!-- <img src="../../assets/inbound.svg"> -->
+              </div>
+            </div>
+            <div class="info-text">
+              <h3>Inbound</h3>
+              <p>{{inboundweight}}<span>kg</span></p>
+            </div>
+        </div>
+        
+        <div class="update">
+         
+        <p>Updated {{updated}}</p>
+        </div>
+      </div>
+    
+    </div>
+
+   <!--  box 2
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #D12C6F;">
-          <!-- <img src="../../assets/outbound.svg"> -->
+          <img src="../../assets/outbound.svg">
         </div>
         <h3>Outbound</h3>
         <p class="mass">{{outboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        <div class="line"></div>
+    
         <div class="updates">
           <p>Updated {{updatedoutbound}}</p>
         </div>
       </div>
-    </div>
-    <!-- box 3 -->
+    </div> -->
+    <!-- box 3
     <div class="stats">
       <div class="big">
         <div class="small" style="background: #0BCECE;">
-          <!-- <img src="../../assets/reclaimer.svg"> -->
+          <img src="../../assets/reclaimer.svg">
         </div>
         <h3>Reclaimer</h3>
         <p class="mass">{{Reclaimerweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        <div class="line"></div>
+        
         <div class="updates">
           <p>Updated {{updateReclaimer}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
         </div>
-  <h6></h6>
+  
   <!-- material -->
-  <div class="line"></div>
-  <div  class="material">
+ 
+  <div  class="material" padding>
     <!-- paper -->
     <div class="box" id="paper">
+      <img src="../../assets/Asset 8.svg">
       <div class="mat">
-        <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
+        <!-- <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
+          <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
+          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
           <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
          <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-          <!-- <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
-        </div>   
-        <img src="../../assets/Asset 8.svg">
+        </div>    -->
+
+        <div class="toSlide">
+
+          <div class="userButtons" id="optA">
+
+            <div class="btns" (click)="toggleOpts()">
+              <ion-icon name="more"></ion-icon>
+            </div>
+            <div class="btns">
+              <ion-icon name="create"></ion-icon>
+            </div>
+            <div class="btns">
+              <ion-icon name="folder"></ion-icon>
+            </div>
+          </div>
+        </div>
+      
     </div>
-    
+
       <div class="matnames">
         <div class="codes" >
          <p>pap005 <span>R {{ pricess.pap005 }}</span></p>
          <p>pap007 <span>R {{ pricess.pap007 }}</span></p>
          <p>pap001 <span>R {{ pricess.pap001 }}</span></p>
          <p>pap003 <span>R {{ pricess.pap003 }}</span></p>
-        
+
           </div>
         <div class="manname">
           PAPER
@@ -101,12 +158,28 @@
       <div class="mat">
         <img src="../../assets/paper.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
+<!-- <div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYPPLASTIC()"><ion-icon name="folder"></ion-icon></ion-button>
-</div>       
+</div>        -->
+
+<!-- new code for animation icons -->
+<div class="toSlide">
+
+  <div class="userButtons" id="optB">
+
+    <div class="btns" (click)="toggleOpts1()">
+      <ion-icon name="more" (click)="showMoreBtn2()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="create" (click)="HideandShowCreate()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="folder" (click)="HideandShowHISTORYPPLASTIC()"></ion-icon>
+    </div>
+  </div>
+</div>
 
 </div>
       <div class="matnames">
@@ -129,12 +202,28 @@
       <div class="mat">
         <img src="../../assets/glassy.svg">
 <!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
+<!-- <div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
   <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
  <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary" ><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
   <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYGLASS()" ><ion-icon name="folder"></ion-icon></ion-button>
-</div>       
+</div>        -->
+
+<!-- new code for animation icons -->
+<div class="toSlide">
+
+  <div class="userButtons" id="optC">
+
+    <div class="btns" (click)="toggleOpts2()">
+      <ion-icon name="more" (click)="showMoreBtn3()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="create" (click)="glassShow()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="folder" (click)="HideandShowHISTORYGLASS()"></ion-icon>
+    </div>
+  </div>
+</div>
 
 </div>
 <div class="matnames">
@@ -151,13 +240,23 @@
     <div class="box" id="aluminium">
       <div class="mat">
         <img src="../../assets/Asset 8.svg">
-<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<div class="burgercontent4" [ngClass]="{'hide': !burger, 'show': burger}">
-  <ion-button fill="clear" (click)="showMoreBtn4()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success"  (click)="HideandShowDelete()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <!-- <ion-button fill="clear" size="small" color="primary"><ion-icon   name="add-circle-outline"></ion-icon></ion-button>  -->
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYALUMINIUM()"><ion-icon name="folder"></ion-icon></ion-button>
-</div>    
+
+<!-- new code for animation icons -->
+<div class="toSlide">
+
+  <div class="userButtons" id="optD">
+
+    <div class="btns" (click)="toggleOpts3()">
+      <ion-icon name="more" (click)="showMoreBtn4()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="create"  (click)="HideandShowDelete()"></ion-icon>
+    </div>
+    <div class="btns">
+      <ion-icon name="folder" (click)="HideandShowHISTORYALUMINIUM()"></ion-icon>
+    </div>
+  </div>
+</div>
 </div>
 <div class="matnames" >
   <div class="codes" >
@@ -170,11 +269,10 @@
 </div>
      
     </div>
-    <!--<ion-button fill="clear" size="small" color="success"></ion-button> -->
 
   </div>
 <div class="chartbuttons" padding>
-<p></p>
+
 <div class="dynamicBtns" padding>
   <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
   <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="PullWeekData()" (click)="toggleWeekly()">Weekly</ion-button>
@@ -199,8 +297,7 @@
 <!-- graph 1 -->
     <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
       <canvas #barChart >
-   
-      </canvas>
+  </canvas>
       
     </div>
 <!-- graph 2 -->
