@@ -1,277 +1,184 @@
-<ion-toolbar>
+<!-- <ion-toolbar>
   <p>Heading<span><ion-button fill="clear" size="small" color="danger"><ion-icon name="folder"></ion-icon></ion-button>
   </span></p>
-  
-</ion-toolbar>
+</ion-toolbar> -->
 
 <ion-content>
 <div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
  
 </div>
 <div class="container">
-  <div padding class="alltime">
-    <div class="stats">
-      <div class="big">
-       
-        <div class="info-box">
-            <div class="yellow-box">
-              <div class="small" style="background: #C5A60A;">
-                <!-- <img src="../../assets/inbound.svg"> -->
-              </div>
-            </div>
-            <div class="info-text">
-              <h3>Inbound</h3>
-              <p>{{inboundweight}}<span>kg</span></p>
-            </div>
-        </div>
-        
-        <div class="update">
-         
-        <p>Updated {{updated}}</p>
-        </div>
-      </div>
-    
-    </div>
-    <div class="stats">
-      <div class="big">
-       
-        <div class="info-box">
-            <div class="yellow-box">
-              <div class="small" style="background: #C5A60A;">
-                <!-- <img src="../../assets/inbound.svg"> -->
-              </div>
-            </div>
-            <div class="info-text">
-              <h3>Inbound</h3>
-              <p>{{inboundweight}}<span>kg</span></p>
-            </div>
-        </div>
-        
-        <div class="update">
-         
-        <p>Updated {{updated}}</p>
-        </div>
-      </div>
-    
-    </div>
-    <div class="stats">
-      <div class="big">
-       
-        <div class="info-box">
-            <div class="yellow-box">
-              <div class="small" style="background: #C5A60A;">
-                <!-- <img src="../../assets/inbound.svg"> -->
-              </div>
-            </div>
-            <div class="info-text">
-              <h3>Inbound</h3>
-              <p>{{inboundweight}}<span>kg</span></p>
-            </div>
-        </div>
-        
-        <div class="update">
-         
-        <p>Updated {{updated}}</p>
-        </div>
-      </div>
-    
-    </div>
 
-   <!--  box 2
-    <div class="stats">
-      <div class="big">
-        <div class="small" style="background: #D12C6F;">
-          <img src="../../assets/outbound.svg">
-        </div>
-        <h3>Outbound</h3>
-        <p class="mass">{{outboundweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
+  <div padding class="alltime">
+    <h4 class="heading">All Storage Material</h4>
+<!-- box 1 -->
+<div class="stats" style="background: #C5A60A;">
+  <div class="first">
+ <img src="../../assets/inboundW.svg"> 
+
+  </div>
+  <div class="second" padding>
+   <h2 class="h2">INBOUND</h2>
+   <p class="p">{{inboundweight}}<span>kg</span></p>
+  </div>
+ </div>
+ <!-- box2 -->
+ <div class="stats" style="background: #D12C6F;">
+  <div class="first">
+ <img src="../../assets/outboundW.svg" height="70%"> 
+
+  </div>
+  <div class="second" padding>
+   <h2 class="h2">OUTBOUND</h2>
+   <p class="p">{{outboundweight}}<span>kg</span></p>
+  </div>
+ </div>
+    <!-- box 3 -->
+    <div class="stats" style="background: #13BBBB;">
+      <div class="first">
+     <img src="../../assets/reclaimerW.svg" > 
     
-        <div class="updates">
-          <p>Updated {{updatedoutbound}}</p>
-        </div>
       </div>
-    </div> -->
-    <!-- box 3
-    <div class="stats">
-      <div class="big">
-        <div class="small" style="background: #0BCECE;">
-          <img src="../../assets/reclaimer.svg">
-        </div>
-        <h3>Reclaimer</h3>
-        <p class="mass">{{Reclaimerweight}}<span style="font-weight: bold;font-size: 2vw;padding-left: 1%;">kg</span></p>
-        
-        <div class="updates">
-          <p>Updated {{updateReclaimer}}</p>
-        </div>
+      <div class="second" padding>
+       <h2 class="h2">RECLAIMER</h2>
+       <p class="p">{{reclaimerweight}}<span>kg</span></p>
       </div>
-    </div> -->
-        </div>
+     </div>
+
+        </div><!-- end of all time div -->
   
   <!-- material -->
  
-  <div  class="material" padding>
-    <!-- paper -->
-    <div class="box" id="paper">
-      <img src="../../assets/Asset 8.svg">
-      <div class="mat">
-        <!-- <div class="burgercontent" [ngClass]="{'hide': !burger, 'show': burger}">
-          <ion-button fill="clear" size="small" color="primary" (click)="HideandShowCreate()"><ion-icon   name="add-circle-outline"></ion-icon></ion-button> 
-          <ion-button fill="clear" size="small" color="danger"  (click)="HideandShowHISTORYPAPER()"><ion-icon name="folder"></ion-icon></ion-button>
-          <ion-button fill="clear" (click)="showMoreBtn()"><ion-icon name="more"></ion-icon></ion-button>
-         <ion-button fill="clear" size="small" color="success" (click)="HideandShowSave()"><ion-icon name="create" ></ion-icon></ion-button> 
-        </div>    -->
-
-        <div class="toSlide">
-
-          <div class="userButtons" id="optA">
-
-            <div class="btns" (click)="toggleOpts()">
-              <ion-icon name="more"></ion-icon>
-            </div>
-            <div class="btns">
-              <ion-icon name="create"></ion-icon>
-            </div>
-            <div class="btns">
-              <ion-icon name="folder"></ion-icon>
-            </div>
-          </div>
-        </div>
-      
-    </div>
-
-      <div class="matnames">
-        <div class="codes" >
-         <p>pap005 <span>R {{ pricess.pap005 }}</span></p>
-         <p>pap007 <span>R {{ pricess.pap007 }}</span></p>
-         <p>pap001 <span>R {{ pricess.pap001 }}</span></p>
-         <p>pap003 <span>R {{ pricess.pap003 }}</span></p>
-
-          </div>
-        <div class="manname">
-          PAPER
-        </div>
-      </div>
-    </div>
-<!-- div holding form(EDIT PRICE) -->
-<!-- plastic -->
-    <div class="box" id="plastic">
-      <div class="mat">
-        <img src="../../assets/paper.svg">
-<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<!-- <div class="burgercontent2" [ngClass]="{'hide': !burger, 'show': burger}">
-  <ion-button fill="clear" (click)="showMoreBtn2()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success" (click)="HideandShowCreate()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYPPLASTIC()"><ion-icon name="folder"></ion-icon></ion-button>
-</div>        -->
-
-<!-- new code for animation icons -->
-<div class="toSlide">
-
-  <div class="userButtons" id="optB">
-
-    <div class="btns" (click)="toggleOpts1()">
-      <ion-icon name="more" (click)="showMoreBtn2()"></ion-icon>
-    </div>
-    <div class="btns">
-      <ion-icon name="create" (click)="HideandShowCreate()"></ion-icon>
-    </div>
-    <div class="btns">
-      <ion-icon name="folder" (click)="HideandShowHISTORYPPLASTIC()"></ion-icon>
-    </div>
-  </div>
-</div>
-
-</div>
-      <div class="matnames">
-        <div class="codes">
-          <p>hd001 <span>R{{ pricess.hd001 }}</span></p>
-          <p>ld001 <span>R{{ pricess.ld001 }}</span></p>
-          <p>ld003 <span>R{{ pricess.ld003 }}</span></p>
-          <p>pet005 <span>R{{ pricess.pet005 }}</span></p>
-          <p>pet001 <span>R{{ pricess.pet001 }}</span></p>
-    </div>
-        <div class="manname">
-          PLASTIC
-        </div>
-      </div>
-    </div>
-    
-    <!-- <h4>All Time Material</h4> -->
-    <!-- glass -->
-    <div class="box" id="glass">
-      <div class="mat">
-        <img src="../../assets/glassy.svg">
-<!-- <div class="burger"><ion-icon name="more"></ion-icon></div> -->
-<!-- <div class="burgercontent3" [ngClass]="{'hide': !burger, 'show': burger}">
-  <ion-button fill="clear" (click)="showMoreBtn3()"><ion-icon name="more"></ion-icon></ion-button>
- <ion-button fill="clear" size="small" color="success" (click)="glassShow()"><ion-icon name="create" ></ion-icon></ion-button> 
-  <ion-button fill="clear" size="small" color="danger" (click)="HideandShowHISTORYGLASS()" ><ion-icon name="folder"></ion-icon></ion-button>
-</div>        -->
-
-<!-- new code for animation icons -->
-<div class="toSlide">
-
-  <div class="userButtons" id="optC">
-
-    <div class="btns" (click)="toggleOpts2()">
-      <ion-icon name="more" (click)="showMoreBtn3()"></ion-icon>
-    </div>
-    <div class="btns">
-      <ion-icon name="create" (click)="glassShow()"></ion-icon>
-    </div>
-    <div class="btns">
-      <ion-icon name="folder" (click)="HideandShowHISTORYGLASS()"></ion-icon>
-    </div>
-  </div>
-</div>
-
-</div>
-<div class="matnames">
-  <div class="codes">
-    <p>gl001 <span>R {{ pricess.gl001 }}</span></p>
+  <div  class="material" >
+    <h4 class="heading2">All Material and Prices</h4>
    
+    <!-- paper -->
+    <div class="box" >
+<div class="head">
+  <h3 class="materialz">PAPER </h3>
+  <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+</div>
+
+<div class="sub-material">
+  <div class="tops">
+    <div class="left">
+      <p class="matb">hello</p>
+      <p class="smallp">fifla</p>
     </div>
-  <div class="manname">
-    GLASS
+    <div class="right">
+      <p class="matb">hello</p>
+      <p class="smallp">fifla</p>
+    </div>
+  </div>
+  <div class="bottoms">
+    <div class="left">
+      <p class="matb">hello</p>
+      <p class="smallp">fifla</p>
+    </div>
+    <div class="right">
+      <p class="matb">hello</p>
+      <p class="smallp">fifla</p>
+    </div>
   </div>
 </div>
+  </div>
+
+<!-- plastic -->
+    <div class="box" id="plastic" >
+      <div class="head">
+        <h3 class="materialz">PLASTIC </h3>
+        <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+      </div>
+
+      <div class="sub-material2">
+        <div class="tops">
+          <div class="one" id="firstblock">
+            <p class="matb">hello</p>
+            <p class="smallp">fifla</p>
+          </div>
+          <div class="two" id="firstblock">
+            <p class="matb">hello</p>
+            <p class="smallp">fifla</p>
+          </div>
+          <div class="three">
+            <p class="matb">hello</p>
+            <p class="smallp">fifla</p>
+          </div>
+        </div>
+        <div class="bottoms">
+          <div class="one">
+            <p class="matb">hello</p>
+            <p class="smallp">fifla</p>
+          </div>
+          <div class="two" id="thirdblock">
+            <p class="matb">hello</p>
+            <p class="smallp">fifla</p>
+          </div>
+          <div class="three" id="thirdblock">
+            <p class="matb">hello</p>
+            <p class="smallp">fifla</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  
+    <!-- glass -->
+    <div class="box" >
+      <div class="head">
+        <h3 class="materialz">GLASS </h3>
+        <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+      </div>
+      <div id="sub-material3">
+             <p class="matb">hello</p>
+      <p class="smallp">fifla</p>
+      </div>
+ 
+
+    </div>
+
 <!-- aluminium -->
-    <div class="box" id="aluminium">
-      <div class="mat">
-        <img src="../../assets/Asset 8.svg">
+    <div class="box" >
+      <div class="head">
+        <h3 class="materialz">ALUMINIUM </h3>
+        <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+      </div>
 
-<!-- new code for animation icons -->
-<div class="toSlide">
+      <div id="sub-material3">
+        <p class="matb">hello</p>
+ <p class="smallp">fifla</p>
+ </div>
+     </div>
 
-  <div class="userButtons" id="optD">
+  </div><!-- end of material div -->
 
-    <div class="btns" (click)="toggleOpts3()">
-      <ion-icon name="more" (click)="showMoreBtn4()"></ion-icon>
+  <div class="graphs">
+
+    <div class="chartsbtn">
+      <h3>Statistics</h3>
+      <div class="btns">
+        <div class="btnze">Daily</div>
+        <div class="btnze">Weekly</div>
+        <div class="btnze">Monthly</div>
+      </div>
     </div>
-    <div class="btns">
-      <ion-icon name="create"  (click)="HideandShowDelete()"></ion-icon>
+    <div padding class="chartsjs">
+      
+    <div id="yellow"  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
+      <canvas #barChart >
+  </canvas>
+       </div>
+
+    <div id="pink"  class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
+      <canvas #barChart1  ></canvas>
     </div>
-    <div class="btns">
-      <ion-icon name="folder" (click)="HideandShowHISTORYALUMINIUM()"></ion-icon>
+
+    <div id="green"  class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
+      <canvas #barChart2></canvas>
+    </div>
     </div>
   </div>
-</div>
-</div>
-<div class="matnames" >
-  <div class="codes" >
-    <p>nfalo1 <span>R {{ pricess.nfalo1 }}</span></p>
-    
-    </div>
-  <div class="manname" >
-    ALUMINIUM
-  </div>
-</div>
-     
-    </div>
-
-  </div>
-<div class="chartbuttons" padding>
+<!-- <div class="chartbuttons" padding>
 
 <div class="dynamicBtns" padding>
   <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
@@ -279,39 +186,23 @@
   <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="PullMonthData()" (click)="toggleMonthly()">Monthly</ion-button>
 
 </div>
-</div>
+</div> -->
   <!-- <p id="secondborder"></p> -->
-  <div padding class="graphs"  >
-    <!-- <ion-fab id="daily" >
-      <ion-fab-button size="small" color="warning">D</ion-fab-button>   
-     </ion-fab>
-
-    <ion-fab  id="weekly">
-      <ion-fab-button size="small" color="secondary">W</ion-fab-button>
-    </ion-fab>
-
-    <ion-fab id="montly">
-      <ion-fab-button size="small" color="tertiary">M</ion-fab-button> 
-       </ion-fab> -->
-
-<!-- graph 1 -->
+  <!-- <div padding class="graphs"  >
+ 
     <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
       <canvas #barChart >
   </canvas>
-      
-    </div>
-<!-- graph 2 -->
+       </div>
+
     <div class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
       <canvas #barChart1  ></canvas>
     </div>
-<!-- graph 3 -->
+
     <div class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
       <canvas #barChart2></canvas>
-      <!-- <ion-button class="" fill="solid">
-        <ion-icon name="close"></ion-icon>
-      </ion-button> -->
     </div>
-  </div>
+  </div> -->
 
 </div>
 
