@@ -84,7 +84,7 @@ toast.present();
       surname: this.profile.surname,
       email: this.profile.email,
       number:this.profile.number,
-      position: this.profile.position,
+      // position: this.profile.position,
       image: this.profile.image,
       isAdmin: this.isAdmin,
       userid: this.profile.userid,
