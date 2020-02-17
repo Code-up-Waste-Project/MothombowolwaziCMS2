@@ -46,7 +46,7 @@ export class ProfilePage implements OnInit {
         this.profile.name = snapshot.data().name;
         this.profile.surname = snapshot.data().surname;
         this.profile.image = snapshot.data().image;
-        this.profile.position= snapshot.data().position;
+        // this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
         console.log('admin', this.userprofile);
       });
