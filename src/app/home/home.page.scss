@@ -265,11 +265,11 @@ letter-spacing: 0.7px;  width: 100%;
   padding-top: 10% !important;
 }
   .p {
-    font-size: 2.1em;
+    font-size: 1.9em;
     font-family: 'SkarpaLT';
     font-weight: lighter;
     span {
-      font-size: 50%
+      font-size: 40%
     }
   }
 }
@@ -1152,7 +1152,8 @@ color: white;
   //   }
   // }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 768px) and(max-width: 1024px) {
+
   .header {
     ion-title {
       p {
