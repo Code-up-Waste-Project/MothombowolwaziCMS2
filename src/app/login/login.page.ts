@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
               this.db.collection('admin').where('userid', '==', user.uid).get().then(res => {
                 if (res.empty) {
                   // this.loading.dismiss();
-                  // this.router.navigate(['profile']);
+                  this.router.navigate(['profile']);
                 } else {
                   // this.loading.dismiss()
                   this.router.navigate(['home']);
