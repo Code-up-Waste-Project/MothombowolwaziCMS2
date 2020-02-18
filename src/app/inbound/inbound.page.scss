@@ -325,13 +325,13 @@ ion-col {
 
 .Recycle-Bins {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   left: 0;
-  width: 300px;
+  width: 10px;
   height: 100px;
   z-index: 10 !important;
   img {
-    transform: translate(-40%, -40%);
+    transform: translate(-45%, -40%) scale(30);
   }
 }
 
@@ -344,12 +344,11 @@ ion-col {
   z-index: 1;
   ion-button{
     position: absolute;
-    right: 50%;
-    transform: translateX(50%);  
+    right: 0%;
+    // transform: translateX(50%);  
     // border: solid 2px red;
     height: 91%;
     width: 100%;
-
   }
 }
  ion-grid{
@@ -516,7 +515,7 @@ ion-col {
   line-height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  border: solid 2px yellow;
+  // border: solid 2px yellow;
 }
 
 .history-labels > div:nth-child(1) {
@@ -558,7 +557,7 @@ ion-col {
   line-height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  border: solid 2px purple;
+  // border: solid 2px purple;
 }
 
 .itemList > div:nth-child(1) {
