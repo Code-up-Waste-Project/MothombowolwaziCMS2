@@ -125,4 +125,13 @@ export class LoginPage implements OnInit {
     this.router.navigate(['register']);
   }
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
+
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
+  // }
+
 }
