@@ -45,7 +45,7 @@
       </div>
       <div class="second" padding>
        <h2 class="h2">RECLAIMER</h2>
-       <p class="p">{{reclaimerweight}}<span>kg</span></p>
+       <p class="p">{{Reclaimerweight}}<span>kg</span></p>
       </div>
      </div>
 
@@ -61,28 +61,28 @@
     <div class="box" >
 <div class="head">
   <h3 class="materialz">PAPER </h3>
-  <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+  <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowSave()" ></ion-icon></p>
 </div>
 
-<div class="sub-material">
+<div class="sub-material" *ngFor="let paper of PaperArray">
   <div class="tops">
     <div class="left">
-      <p class="matb">hello</p>
-      <p class="smallp">fifla</p>
+      <p class="matb">R{{paper.newpap001}}</p>
+      <p class="smallp">PAP001</p>
     </div>
     <div class="right">
-      <p class="matb">hello</p>
-      <p class="smallp">fifla</p>
+      <p class="matb">R{{paper.newpap003}}</p>
+      <p class="smallp">PAP003</p>
     </div>
   </div>
   <div class="bottoms">
     <div class="left">
-      <p class="matb">hello</p>
-      <p class="smallp">fifla</p>
+      <p class="matb">R{{paper.newpap005}}</p>
+      <p class="smallp">PAP005</p>
     </div>
     <div class="right">
-      <p class="matb">hello</p>
-      <p class="smallp">fifla</p>
+      <p class="matb">R{{paper.newpap007}}</p>
+      <p class="smallp">PAP007</p>
     </div>
   </div>
 </div>
@@ -92,36 +92,36 @@
     <div class="box" id="plastic" >
       <div class="head">
         <h3 class="materialz">PLASTIC </h3>
-        <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+        <p class="icon">  <ion-icon name="create" mode="ios"  (click)="HideandShowCreate()"></ion-icon></p>
       </div>
 
-      <div class="sub-material2">
+      <div class="sub-material2" *ngFor="let plastics of plasticarray">
         <div class="tops">
           <div class="one" id="firstblock">
-            <p class="matb">hello</p>
-            <p class="smallp">fifla</p>
+            <p class="matb">R{{plastics.newhd001}}</p>
+            <p class="smallp">HD001</p>
           </div>
           <div class="two" id="firstblock">
-            <p class="matb">hello</p>
-            <p class="smallp">fifla</p>
+            <p class="matb">R{{plastics.newld001}}</p>
+            <p class="smallp">LD001</p>
           </div>
           <div class="three">
-            <p class="matb">hello</p>
-            <p class="smallp">fifla</p>
+            <p class="matb">R{{plastics.newld003}}</p>
+            <p class="smallp">LD003</p>
           </div>
         </div>
         <div class="bottoms">
           <div class="one">
-            <p class="matb">hello</p>
-            <p class="smallp">fifla</p>
+            <p class="matb">R{{plastics.newpet003}}</p>
+            <p class="smallp">PET003</p>
           </div>
           <div class="two" id="thirdblock">
-            <p class="matb">hello</p>
-            <p class="smallp">fifla</p>
+            <p class="matb">R{{plastics.newpet001}}</p>
+            <p class="smallp">PET001</p>
           </div>
           <div class="three" id="thirdblock">
-            <p class="matb">hello</p>
-            <p class="smallp">fifla</p>
+            <p class="matb">R{{plastics.newpet005}}</p>
+            <p class="smallp">PET005</p>
           </div>
         </div>
       </div>
@@ -132,11 +132,11 @@
     <div class="box" >
       <div class="head">
         <h3 class="materialz">GLASS </h3>
-        <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+        <p class="icon">  <ion-icon name="create" mode="ios" (click)="glassShow()"></ion-icon></p>
       </div>
-      <div id="sub-material3">
-             <p class="matb">hello</p>
-      <p class="smallp">fifla</p>
+      <div id="sub-material3" *ngFor="let glass of glassArray">
+             <p class="matb">R{{glass.newgl001}}</p>
+      <p class="smallp">GL001</p>
       </div>
  
 
@@ -146,13 +146,13 @@
     <div class="box" >
       <div class="head">
         <h3 class="materialz">ALUMINIUM </h3>
-        <p class="icon">  <ion-icon name="create" mode="ios"></ion-icon></p>
+        <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowDelete()"></ion-icon></p>
       </div>
 
-      <div id="sub-material3">
-        <p class="matb">hello</p>
- <p class="smallp">fifla</p>
- </div>
+      <div id="sub-material3" *ngFor="let nfal001 of NFAL001Array">
+        <p class="matb">R{{ nfal001.newnfal01 }}</p>
+        <p class="smallp">NFALO01</p>
+      </div>
      </div>
 
   </div><!-- end of material div -->
@@ -162,9 +162,9 @@
     <div class="chartsbtn">
       <h3>Statistics</h3>
       <div class="btns">
-        <div class="btnze">Daily</div>
-        <div class="btnze">Weekly</div>
-        <div class="btnze">Monthly</div>
+        <div class="btnze" (click)="PullDayData()">Daily</div>
+        <div class="btnze" (click)="PullWeekData()">Weekly</div>
+        <div class="btnze" (click)="PullMonthData()">Monthly</div>
       </div>
     </div>
     <div padding class="chartsjs">
@@ -275,38 +275,28 @@
   <div class="historydata" *ngFor="let paper of PaperArray">
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">{{paper.timePaper}}</div>
-    
+    <!-- <div class="two">{{paper.timePaper}}</div> -->
     <div class="two">R{{paper.newpap001}}</div>
     <div class="two">R{{paper.newpap001}}</div>
-    
     </div>
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">R{{paper.timePaper}}</div>
+    <!-- <div class="two">R{{paper.timePaper}}</div> -->
     <div class="two">R{{paper.oldpap003}}</div>
     <div class="two">R{{paper.newpap003}}</div>
-    
     </div>
-
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">R{{paper.timePaper}}</div>
+    <!-- <div class="two">R{{paper.timePaper}}</div> -->
     <div class="two">R{{paper.oldpap005}}</div>
     <div class="two">R{{paper.newpap005}}</div>
-    
     </div>
-
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
-    <div class="two">{{paper.timePaper}}</div>
+    <!-- <div class="two">{{paper.timePaper}}</div> -->
     <div class="two">R{{paper.oldpap007}}</div>
     <div class="two">R{{paper.newpap007}}</div>
-    
     </div>
-
-    
-
   </div>
  </div>
 <!-- <p>date  old new <ion-icon name="trash"></ion-icon></p>
@@ -329,58 +319,46 @@
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
   
-    <div class="historydata" *ngFor="let plastics of plasticarray">
+    <!-- <div class="historydata" *ngFor="let plastics of plasticarray">
       <div class="historydata2">
-        <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+        <div class="two">{{myprice.timePlastic}}</div> 
       <div class="two">{{plastics.timePlastic2}}</div>
-      
       <div class="two">R{{plastics.oldhd001}}</div>
       <div class="two">R{{plastics.newhd001}}</div>
-      
       </div>
-  
-  
-     
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
         <div class="two">R{{plastics.oldld001}}</div>
         <div class="two">R{{plastics.newld001}}</div>
       </div>
-
-  
       <div class="historydata2">
         <div class="two">R{{plastics.timePlastic2}}</div>
       <div class="two">R{{plastics.oldld003}}</div>
       <div class="two">R{{plastics.newld003}}</div>
       </div>
-     
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
       <div class="two">R{{plastics.oldpet003}}</div>
       <div class="two">R{{plastics.newpet003}}</div>
       </div>
-
-
       <div class="historydata2">
         <div class="two">{{plastics.timePlastic2}}</div>
       <div class="two">R{{plastics.oldpet001}}</div>
       <div class="two">R{{plastics.newpet001}}</div>
       </div>
-
       <div class="historydata2">
         <div class="two">R{{plastics.timePlastic2}}</div>
       <div class="two">R{{plastics.oldpet005}}</div>
       <div class="two">R{{plastics.newpet005}}</div>
-      </div>
-
+      </div> -->
 
       <!-- <div class="historydata2">
         <div class="two">R{{plastics.timePlastic2}}</div>
       <div class="two">{{plastics.oldpet005}}</div>
       <div class="two">{{plastics.newpet005}}</div>
-      </div> -->
+      </div> 
 
-    </div>
+    </div> -->
 </div>
 </div>
 
@@ -395,15 +373,13 @@
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
   
-    <div class="historydata" *ngFor="let glass of glassArray" >
+    <!-- <div class="historydata" *ngFor="let glass of glassArray" >
       <div class="historydata2">
         <div class="two">{{glass.timeglass}}</div>
         <div class="two">R{{glass.newgl001}}</div>
         <div class="two">R{{glass .oldgl001}}</div>
       </div>
-  
-
-    </div>
+    </div> -->
 </div>
 </div>
 
@@ -418,14 +394,13 @@
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
   
-    <div class="historydata">
+    <!-- <div class="historydata">
       <div class="historydata2" *ngFor="let nfal001 of NFAL001Array">
         <div class="two">{{ nfal001.timePlastic }}</div>
         <div class="two">{{ nfal001.oldnfal01 }}</div>
         <div class="two">{{ nfal001.newnfal01 }}</div>
       </div>
-  
-    </div>
+    </div> -->
 </div>
 </div>
 
