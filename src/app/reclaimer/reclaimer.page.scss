@@ -132,7 +132,7 @@ ion-toolbar {
 }
 
 .history-labels > div:nth-child(1) {
-  width: 25%;
+  width: 20%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
 }
@@ -140,15 +140,18 @@ ion-toolbar {
   // border-left: 1px solid black;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
-  width: 50%;
+  width: 20%;
 }
 .history-labels > div:nth-child(3) {
   // border-left: 1px solid yellow;
-  width: 12.5%;
+  width: 20%;
 }
 .history-labels > div:nth-child(4) {
   // border-left: 1px solid blue;
-  width: 12.5%;
+  width: 20%;
+}
+.history-labels > div:nth-child(5) {
+
 }
 
 .itemList {
@@ -168,20 +171,27 @@ ion-toolbar {
 }
 
 .itemList > div:nth-child(1) {
-  width: 25%;
+  width: 20%;
 }
 .itemList > div:nth-child(2) {
-  width: 50%;
+  width: 20%;
 }
 .itemList > div:nth-child(3) {
-  width: 12.5%;
-  text-align: center;
+  width: 20%;
 }
 .itemList > div:nth-child(4) {
-  width: 12.5%;
+  width: 20%;
+}
+.itemList > div:nth-child(5) {
+   width: 10%;
   text-align: center;
   color: brown;
 }
+.itemList > div:nth-child(6) {
+   width: 10%;
+  text-align: center;
+}
+
 .itemList:nth-child(even) {
   background: white;
 }
