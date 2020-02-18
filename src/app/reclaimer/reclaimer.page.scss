@@ -114,10 +114,14 @@
 .history-labels > div:nth-child(3) {
   // border-left: 1px solid yellow;
   width: 20%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
 }
 .history-labels > div:nth-child(4) {
   // border-left: 1px solid blue;
   width: 20%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
 }
 .history-labels > div:nth-child(5) {
 
@@ -309,24 +313,36 @@ ion-col {
   z-index: -10;
   width: 300px;
   height: 300px;
-  opacity: 0.5;
+  // opacity: 0.5;
   overflow: hidden;
   img {
     transform: translate(10%, -10%);
   }
 }
 
+.RecycleLogo2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -10;
+  width: 300px;
+  height: 300px;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
 .Recycle-Bins {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   left: 0;
-  width: 300px;
+  width: 10px;
   height: 100px;
   z-index: 10 !important;
   img {
-    transform: translate(-40%, -40%);
+    transform: translate(-45%, -40%) scale(30);
   }
 }
+
 
 .Next-button {
   background: plum;
@@ -587,6 +603,7 @@ form > input{
   right: 0px;
   padding-right: 30px;
   font-size: 30px;
+  color: brown;
 }
 
 .line-breaker{
@@ -638,6 +655,7 @@ form > input{
   right: 0px;
   padding-right: 30px;
   font-size: 25px;
+  color: brown;
 }
 
 
@@ -676,7 +694,7 @@ form > input{
   line-height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  border: solid 2px yellow;
+  // border: solid 2px yellow;
 }
 
 .history-labels > div:nth-child(1) {
@@ -685,23 +703,30 @@ form > input{
   font-size: 20px;
 }
 .history-labels > div:nth-child(2) {
-  // border-left: 1px solid black;
+  width: 20%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
-  width: 20%;
 }
 .history-labels > div:nth-child(3) {
-  // border-left: 1px solid yellow;
+  width: 20%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
-  width: 20%;
 }
 .history-labels > div:nth-child(4) {
-  // border-left: 1px solid blue;
   width: 20%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
 }
 .history-labels > div:nth-child(5) {
+  width: 20%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+}
 
+.history-labels > div:nth-child(6) {
+  width: 20%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
 }
 
 .itemList {
@@ -718,7 +743,7 @@ form > input{
   line-height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  border: solid 2px purple;
+  // border: solid 2px purple;
 }
 
 .itemList > div:nth-child(1) {
@@ -814,5 +839,42 @@ form > input{
     font-size: 15px;
   }
 }
+
+
+form > input{
+  height: 45px;
+  max-width: 150px;
+  margin-bottom: 10px;
+  border: 0;
+  background: #EAEAEA;
+  border-radius: 5px;
+  padding-left: 8px;
+}
+
+
+.waste-materials {
+  width: calc(100% - 50px);
+  margin: 0 auto;
+  height: 100px;
+  display: flex;
+  border-bottom:   solid 1px black;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+}
+
+.waste-materials > div {
+  width: 23%;
+  height: 50px;
+  // background-color: #497529;
+  margin: 5px auto;
+  margin-top: 20px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 }

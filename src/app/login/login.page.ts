@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
               this.db.collection('admin').where('userid', '==', user.uid).get().then(res => {
                 if (res.empty) {
                   // this.loading.dismiss();
-                  // this.router.navigate(['profile']);
+                  this.router.navigate(['profile']);
                 } else {
                   // this.loading.dismiss()
                   this.router.navigate(['home']);
@@ -124,5 +124,14 @@ export class LoginPage implements OnInit {
   goToRegister() {
     this.router.navigate(['register']);
   }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+   }
+
+  //  ionViewDidLeave() {
+  //   // enable the root left menu when leaving the tutorial page
+  //   this.menuCtrl.enable(true);
+  // }
 
 }

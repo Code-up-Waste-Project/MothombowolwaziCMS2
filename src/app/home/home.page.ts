@@ -809,15 +809,15 @@ bD = document.getElementsByClassName('bD')
     });
   }
   
-  ionViewWillEnter() {
-    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
-    this.prices.get().then((documentSnapshot) => {
-      this.price = [];
-      // console.log(documentSnapshot.data());
-      this.price.push(documentSnapshot.data());
-      // console.log('prices', this.price);
-    });
-   }
+  // ionViewWillEnter() {
+  //   this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+  //   this.prices.get().then((documentSnapshot) => {
+  //     this.price = [];
+  //     // console.log(documentSnapshot.data());
+  //     this.price.push(documentSnapshot.data());
+  //     // console.log('prices', this.price);
+  //   });
+  //  }
 
    checkinputfields() {
     // GH001price;
@@ -2955,6 +2955,10 @@ deletehd001(v){
   })
   
 }
+
+ionViewWillEnter() {
+  this.menuCtrl.enable(true);
+ }
 
 
 }
