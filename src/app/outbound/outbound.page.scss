@@ -183,6 +183,7 @@ ion-toolbar {
 .itemList > div:nth-child(4) {
   width: 20%;
   text-align: center;
+  color: rgb(209,44,111);
 }
 .itemList > div:nth-child(5) {
    width: 20%;
@@ -605,7 +606,8 @@ form > input{
   display: flex;
   flex-direction: row;
   h1{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'lato';
+    font-size: 1.1em;
   }
 }
 .sub-header{
@@ -651,6 +653,7 @@ form > input{
   flex-direction: row;
   align-items: center;
   h2{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'lato';
+    font-size: 1.1em;
   }
 }

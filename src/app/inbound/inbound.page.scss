@@ -176,6 +176,7 @@ ion-toolbar {
 .itemList > div:nth-child(3) {
   width: 12.5%;
   text-align: center;
+  color: rgb(182, 154, 13);
 }
 .itemList > div:nth-child(4) {
   width: 12.5%;
@@ -396,7 +397,8 @@ ion-col {
   display: flex;
   flex-direction: row;
   h1{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'lato';
+    font-size: 1.1em;
   }
 }
 .sub-header{
@@ -442,6 +444,7 @@ ion-col {
   flex-direction: row;
   align-items: center;
   h2{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'lato';
+    font-size: 1.1em;
   }
 }
