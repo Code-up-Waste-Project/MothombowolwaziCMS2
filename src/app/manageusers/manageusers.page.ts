@@ -263,6 +263,7 @@ this.surname=obj.surname
       }
       deleteuser(id) {
         this.db.collection('admin').doc(id).delete();
+        
         console.log('user  deleted');
       }
 
@@ -305,9 +306,9 @@ this.surname=obj.surname
           backdropDismiss: false,
         })
 
-        this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
+        this.db.collection('admin').where('email', '==',this.email).get().then(async (data) => {
            if(data.size == 0) {
-            this.db.collection('userprofiles').add({
+            this.db.collection('admin').add({
               email: this.email,
               password: this.password,
               profile:'no',

@@ -256,7 +256,7 @@
     <div class="itemList" *ngFor="let records of testArrays">
       <div>{{ records.name }} {{ records.surname }}</div>
       <div>{{ records.contact }}</div>
-      <div>{{ records.OverallGrandTotal }}</div>
+      <div>R{{ records.OverallGrandTotal }}</div>
       <div>{{ records.date }}</div>
       <div>
         <ion-icon name="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
