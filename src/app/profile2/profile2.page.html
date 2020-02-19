@@ -7,14 +7,17 @@
     
       <img id="bins" src="../../assets/binsPopup  2.svg">
       <div class="form">
-      <h3>Create Your Profile Here</h3>
+        <div class="head">
+          <h3>Update Your Profile Here</h3>
+        </div>
+      
         <div class="profile" >
           <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)">
           <div class="ProPic">
            
           <label  for="disapear" id="asd"> 
           <div id="camera">
-            <ion-icon name="camera"></ion-icon>
+            <ion-icon name="add-circle"></ion-icon>
           </div>
           <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt=""> 
           <img *ngIf="profile.image" src="{{profile.image}}" alt="">
@@ -26,7 +29,7 @@
          <input placeholder="Name" [(ngModel)]="profile.name">
           <input placeholder="Surname" [(ngModel)]="profile.surname">
             <input placeholder="Phone Number" [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
-          <ion-button color="clear" (click)="users()" type="submit" >save</ion-button>
+          <ion-button id="save" color="clear" (click)="users()" type="submit" >save</ion-button>
          </div>
              
         </div>

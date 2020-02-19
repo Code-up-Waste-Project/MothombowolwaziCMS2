@@ -10,18 +10,18 @@ import { element } from 'protractor';
 import { format } from 'url';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
 
-export class HomePage implements OnInit {
+export class HomePage implements OnInit {
 
   viewBackdrop = false;
 
-  @ViewChild('barChart', {static: false}) barChart;
-  @ViewChild('barChart1', {static: false}) barChart1;
-  @ViewChild('barChart2', {static: false}) barChart2;
+  @ViewChild('barChart', {static: false}) barChart;
+  @ViewChild('barChart1', {static: false}) barChart1;
+  @ViewChild('barChart2', {static: false}) barChart2;
 
 //store element into a variable
 imgGraph = document.getElementsByClassName('inbgraph');
@@ -156,46 +156,46 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
     };
   isAdmin: any;
 //inbound
-  inboundGH001;
-  inboundHD001;
-  inboundLD001;
-  inboundLD003;
-  inboundNFAL01;
-  inboundPAP001;
-  inboundPAP003;
-  inboundPAP005;
-  inboundPAP007;
-  inboundPET001;
-  inboundPET003;
-  inboundPET005;
+  inboundGH001;
+  inboundHD001;
+  inboundLD001;
+  inboundLD003;
+  inboundNFAL01;
+  inboundPAP001;
+  inboundPAP003;
+  inboundPAP005;
+  inboundPAP007;
+  inboundPET001;
+  inboundPET003;
+  inboundPET005;
 
-  //Reclaomers
-  GH001Mass;
-  HD001Mass; 
-  LD001Mass; 
-  LD003Mass;
-  NFAL01Mass; 
-  PAP001Mass;
-  PAP003Mass;
-  PAP007Mass; 
-  PET001Mass;
-  PET003Mass;
-  PET005Mass;
-  PAP005Mass
+  //Reclaomers
+  GH001Mass;
+  HD001Mass; 
+  LD001Mass; 
+  LD003Mass;
+  NFAL01Mass; 
+  PAP001Mass;
+  PAP003Mass;
+  PAP007Mass; 
+  PET001Mass;
+  PET003Mass;
+  PET005Mass;
+  PAP005Mass
 
 //outbound
   GL001
   NFAL01;
-  PAP005;
+  PAP005;
   PAP007;
   PAP003;
-  PAP001;
-  HD001;
-  LD001;
-  LD003;
+  PAP001;
+  HD001;
+  LD001;
+  LD003;
   PET001;
-  PET003;
-  PET005;
+  PET003;
+  PET005;
 
 //storage
   GH001storagemass;
@@ -383,7 +383,7 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   outboundweight = 0;
   Reclaimerweight = 0;
 
-   //graghdatainbound
+   //graghdatainbound
   inboundgh001 = 0;
   inboundnfalo1 = 0;
   inboundpap005 = 0;
@@ -397,9 +397,9 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   inboundpet003 = 0;
   inboundpet005 = 0;
 
-   inboundpaper = 0;
-   inboundAlum = 0;
-   inboundplastic = 0;
+   inboundpaper = 0;
+   inboundAlum = 0;
+   inboundplastic = 0;
 
   //outboundgraphs
   outboundglass = 0;
@@ -457,27 +457,10 @@ bD = document.getElementsByClassName('bD')
     private render: Renderer2,
     public alertController: AlertController,
     ) {
-      // pulling for admin
-    // this.db.collection('admin').onSnapshot(snapshot => {
-    //   this.Newadmin = [];
-    //   snapshot.forEach(Element => {
-    //     this.admin.push(Element.data());
-    //   });
-    //   this.admin.forEach(item => {
-     
-    //     if (item.userid === firebase.auth().currentUser.uid) {
-    //       this.Newadmin = [];
-    //       this.Newadmin.push(item);
-    //     }
-    //   });
-    //   console.log('Newadmins', this.Newadmin);
-    // });
-
     // code by nathi 3 feb
     this.pullWeeklyInbound();
     this.PullDayData();
     // console.log("im working ninja");
-
     }
 
     //increase the size of clicked graph
@@ -512,9 +495,9 @@ bD = document.getElementsByClassName('bD')
     //inbound
     // this.inboundgh001=0;
     this.inboundpap005=0;
-    this.inboundAlum =0;
-    this.inboundweight =0;
-    this.inboundplastic =0;
+    this.inboundAlum =0;
+    this.inboundweight =0;
+    this.inboundplastic =0;
     firebase.firestore().collection('inbounds').get().then(res=>{
       res.forEach(val=>{
   
@@ -554,17 +537,17 @@ bD = document.getElementsByClassName('bD')
     this.inboundpet005 =this.inboundpet005 +parseFloat(val.data().inboundPET005)
 
     //paper
-    this.inboundpaper = this.inboundpaper 
-    +parseFloat(val.data().inboundPAP005) 
-    +parseFloat(val.data().inboundPAP007) 
-    +parseFloat(val.data().inboundPAP003) 
+    this.inboundpaper = this.inboundpaper 
+    +parseFloat(val.data().inboundPAP005) 
+    +parseFloat(val.data().inboundPAP007) 
+    +parseFloat(val.data().inboundPAP003) 
     +parseFloat(val.data().inboundPAP001);
 
     //aluminium
-    this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
+    this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
 
     //plastic
-    this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
+    this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
     +parseFloat(val.data().inboundHD001)
     +parseFloat(val.data().inboundLD001)
     +parseFloat(val.data().inboundLD003)
@@ -576,12 +559,12 @@ bD = document.getElementsByClassName('bD')
 
     //outbound
 
-    this.outboundglass =0;
-     this.outboundpaper =0;
-     this.outboundAlum =0;
-     this.outboundplastic =0;
+    this.outboundglass =0;
+     this.outboundpaper =0;
+     this.outboundAlum =0;
+     this.outboundplastic =0;
 
-    this.outboundweight =0;
+    this.outboundweight =0;
 
     firebase.firestore().collection('outbound').get().then(res=>{
       res.forEach(val=>{
@@ -602,7 +585,7 @@ bD = document.getElementsByClassName('bD')
         +parseFloat(val.data().PET003)
         +parseFloat(val.data().PET005);
     
-      console.log(new Date(val.data().date.seconds*1000))
+      // console.log(new Date(val.data().date.seconds*1000))
       this.updatedoutbound =(new Date(val.data().date)).toDateString();
         // console.log('ountglass',  this.outboundglass)
         this.outboundgh001 =this.outboundgh001 +parseFloat(val.data().GH001)
@@ -645,11 +628,11 @@ bD = document.getElementsByClassName('bD')
     })
 
     //reclaimer
-    this.reclaimerglass =0;
-    this.reclaimerpaper =0;
-    this.reclaimerAlum =0;
-    this.reclaimerplastic =0;
-    this.Reclaimerweight =0;
+    this.reclaimerglass =0;
+    this.reclaimerpaper =0;
+    this.reclaimerAlum =0;
+    this.reclaimerplastic =0;
+    this.Reclaimerweight =0;
     firebase.firestore().collection('reclaimers').get().then(res=>{
     res.forEach(val=>{
     // console.log(val.data().GH001Mass+val.data().HD001Mass)
@@ -721,7 +704,7 @@ bD = document.getElementsByClassName('bD')
       this.price = [];
       // console.log(documentSnapshot.data());
       this.price.push(documentSnapshot.data());
-      console.log('my pricess', documentSnapshot.data().time);
+      // console.log('my pricess', documentSnapshot.data().time);
 
       this.pricess.gl001 = documentSnapshot.data().gl001;
       this.pricess.hd001 = documentSnapshot.data().hd001;
@@ -736,9 +719,9 @@ bD = document.getElementsByClassName('bD')
       this.pricess.pet003 = documentSnapshot.data().pet003;
       this.pricess.pet005 = documentSnapshot.data().pet005;
       
-      this.PaperArray.push({
-        pap003: this.pricess.pap003,
-      })
+      // this.PaperArray.push({
+      //   pap003: this.pricess.pap003,
+      // })
     
       this.oldpricepap003 = documentSnapshot.data().pap003;
       this.oldpricepap001 = documentSnapshot.data().pap001;
@@ -770,19 +753,18 @@ bD = document.getElementsByClassName('bD')
 
     this.menuCtrl.enable(true); // or true
 
- this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
-   
- this.prices.get().then(Document => {
-   this.glassArray.push(Document.data())
- });
- console.log(this.glassArray)
-// paper
-this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
-   
-this.prices.get().then(Document => {
-  this.PaperArray.push(Document.data())
-});
-console.log(this.PaperArray)
+    this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
+    this.prices.get().then(Document => {
+      this.glassArray.push(Document.data())
+    });
+    //  console.log(this.glassArray)
+    // paper
+    this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
+      
+    this.prices.get().then(Document => {
+      this.PaperArray.push(Document.data())
+    });
+    // console.log(this.PaperArray)
 
     // Plastic Storage update
     this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
@@ -790,15 +772,14 @@ console.log(this.PaperArray)
     this.prices.get().then(Document => {
       this.plasticarray.push(Document.data())
     });
-    console.log(this.plasticarray)
-
+    // console.log(this.plasticarray)
 
     // NFAL01 Storage update
     this.prices = this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE");
     this.prices.get().then(Document => {
       this.NFAL001Array.push(Document.data())
     });
-    console.log(this.NFAL001Array);
+    // console.log(this.NFAL001Array);
   }
 
   getReclaimers() {
@@ -828,15 +809,15 @@ console.log(this.PaperArray)
     });
   }
   
-  ionViewWillEnter() {
-    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
-    this.prices.get().then((documentSnapshot) => {
-      this.price = [];
-      // console.log(documentSnapshot.data());
-      this.price.push(documentSnapshot.data());
-      // console.log('prices', this.price);
-    });
-   }
+  // ionViewWillEnter() {
+  //   this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+  //   this.prices.get().then((documentSnapshot) => {
+  //     this.price = [];
+  //     // console.log(documentSnapshot.data());
+  //     this.price.push(documentSnapshot.data());
+  //     // console.log('prices', this.price);
+  //   });
+  //  }
 
    checkinputfields() {
     // GH001price;
@@ -1505,67 +1486,7 @@ console.log(this.PaperArray)
 
         this.outGH001.push({GH001: GH001})
       });
-      // console.log(this.outGH001);
-
-      // console.log(this.outBoundGraph);
-
-    // let dat = this.datez
-
-    // let time = dat.setTime(dat.getTime() - (1 * 24 * 60 * 60 * 1000))
-
-    // let newdate = new Date(time)
-    // let today = new Date()
-    // let todayMonth = Number(moment(today).format('MM'))
-    // let todayDay = Number(moment(today).format('DD'))
-    // let todayYear = Number(moment(today).format('YYYY'))
-    // this.datez = moment().format('LLLL');
-    // // this.dateq = moment(String(this.datesss)).format('LLLL');
-    // this.dateq = this.datesss.toDate();
-    // this.dateqq = new Date(this.dateq).getMonth()
-
-    // this.outboundDay = Number(moment(this.dateq).format('DD'))
-    // this.outboundWeek = new Date(this.dateq).getHours()
-    // this.outboundMonth = Number(moment(this.dateq).format('MM'))
-    // this.outboundYear = Number(moment(this.dateq).format('YYYY'))
-    // if((todayYear - this.outboundYear) < 2){
-    //   console.log('yeha yeah');
-    //   if((todayYear - this.outboundYear) === 1) {
-    //     console.log('last year to check is 2019');
-        
-    //     if((todayMonth - this.outboundMonth) === 0){
-    //       console.log('zero');
-    //       console.log((todayMonth - this.outboundMonth));
-          
-    //     }else if((todayMonth - this.outboundMonth) < 0){
-    //       console.log('lower than zero');
-    //       console.log((todayMonth - this.outboundMonth));
-          
-    //     }else{
-    //       console.log('greater than zero');
-    //       console.log((todayMonth - this.outboundMonth));
-  
-    //     }
-    //   }else if((todayYear - this.outboundYear) === 0){
-    //     console.log('last year to check is 2020');
-        
-    //   }
-    // }
-    // if((todayDay - this.outboundDay) < 7){
-    //   console.log('sdfdsfds');
-    //   console.log((todayDay - this.outboundDay));
-    //   let monthDiff = todayMonth - 1
-    //   console.log(monthDiff);
-    //   if(monthDiff < 0){
-        
-    //   }
-    // }else{
-    //   console.log((todayDay - this.outboundDay));
-    // }
-    // console.log(this.datez);
-    // console.log(this.outboundDay);
-    // console.log(this.outboundWeek);
-    // console.log(this.outboundMonth);
-    // console.log(todayMonth);
+      
     // console.log(this.outboundYear)
     });
   }
@@ -1670,6 +1591,7 @@ console.log(this.PaperArray)
       })
       // this.outBoundGraphDisplayDay.push(date)
       // console.log(this.inboundGraphDisplay);
+      console.log('kaberekaDay');
     }
 
     // OutBound Graph
@@ -2499,19 +2421,7 @@ console.log(this.PaperArray)
     }
 
   }
-  togglOpts = 0;
 
-  toggleOpts(){
-    var myOpts = document.getElementById("optA")
-    if(this.togglOpts == 0){
-      this.togglOpts = 1
-      myOpts.style.right = "0"
-    }
-    else{
-      this.togglOpts = 0
-      myOpts.style.right = "-100px"
-    }
-  }
 
 
 //EDIT PAPER
@@ -3045,6 +2955,10 @@ deletehd001(v){
   })
   
 }
+
+ionViewWillEnter() {
+  this.menuCtrl.enable(true);
+ }
 
 
 }

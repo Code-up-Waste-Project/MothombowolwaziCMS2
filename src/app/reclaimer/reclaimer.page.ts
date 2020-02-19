@@ -1300,12 +1300,12 @@ export class ReclaimerPage implements OnInit {
 
   getprices() {
     this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
-    console.log('prices firestore', this.prices);
+    // console.log('prices firestore', this.prices);
       this.prices.get().then(element => {
-        console.log(element.data());
+        // console.log(element.data());
         this.GH001 = element.data().gl001;
         this.GH001sss = element.data().gl001;
-        console.log(this.GH001sss);
+        // console.log(this.GH001sss);
         this.HD001 = element.data().hd001;
         this.LD001 = element.data().ld001;
         this.LD003 = element.data().ld003;
@@ -1319,19 +1319,17 @@ export class ReclaimerPage implements OnInit {
         this.PET005 = element.data().pet005;
         // console.log(element);
 
-        console.log(this.GH001);
-        console.log(this.HD001);
-        console.log(this.LD003);
-        console.log(this.NFAL01);
-        console.log(this.PAP001);
-        console.log(this.PAP003);
-        console.log(this.PAP005);
-        console.log(this.PET001);
-        console.log(this.PET003);
-        console.log(this.PET005);
+        // console.log(this.GH001);
+        // console.log(this.HD001);
+        // console.log(this.LD003);
+        // console.log(this.NFAL01);
+        // console.log(this.PAP001);
+        // console.log(this.PAP003);
+        // console.log(this.PAP005);
+        // console.log(this.PET001);
+        // console.log(this.PET003);
+        // console.log(this.PET005);
       });
-      
-
   }
 
   getMasses() {

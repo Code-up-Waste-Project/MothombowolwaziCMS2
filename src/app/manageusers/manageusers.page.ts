@@ -259,6 +259,7 @@ firsttem(obj:any ={})
       }
       deleteuser(id) {
         this.db.collection('admin').doc(id).delete();
+        
         console.log('user  deleted');
       }
 
@@ -301,9 +302,9 @@ firsttem(obj:any ={})
           backdropDismiss: false,
         })
 
-        this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
+        this.db.collection('admin').where('email', '==',this.email).get().then(async (data) => {
            if(data.size == 0) {
-            this.db.collection('userprofiles').add({
+            this.db.collection('admin').add({
               email: this.email,
               password: this.password,
               profile:'no',
@@ -469,6 +470,7 @@ back(){
   this.router.navigateByUrl('/home');
 }
     
+
 
      
 }
