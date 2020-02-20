@@ -1441,6 +1441,9 @@ export class ReclaimerPage implements OnInit {
     this.storagePET005 = this.PET005storagemass + this.PET005massz;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PEP005: this.storagePET005});
     // console.log(this.storagePET005);
+
+    this.popOpOpen = false;
+    
   }
 
   Addreclaimer() {
@@ -1763,6 +1766,9 @@ Logout() {
       });
       // console.log('Results = ',this.searchResults);
     } else if (val != " ") {
+      // this.testArrays = this.usersz.filter(item => {
+      //   return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      // });
       this.searchResults = this.usersz.filter(item => {
         return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
       });

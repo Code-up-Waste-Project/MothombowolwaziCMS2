@@ -93,17 +93,13 @@ registerForm = false;
 firsttem(obj:any ={})
 {
  console.log(obj)
-
-
- 
-this.name =obj.name
-this.surname=obj.surname
+ this.name =obj.name
+ this.surname=obj.surname
  this.number=obj.number
  this.position=obj.position
  this.image=obj.image
  this.ActiveAcount=obj.ActiveAcount
 }
-
 
   ngOnInit() {
    
@@ -263,6 +259,7 @@ this.surname=obj.surname
       }
       deleteuser(id) {
         this.db.collection('admin').doc(id).delete();
+        
         console.log('user  deleted');
       }
 
@@ -305,9 +302,9 @@ this.surname=obj.surname
           backdropDismiss: false,
         })
 
-        this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
+        this.db.collection('admin').where('email', '==',this.email).get().then(async (data) => {
            if(data.size == 0) {
-            this.db.collection('userprofiles').add({
+            this.db.collection('admin').add({
               email: this.email,
               password: this.password,
               profile:'no',
@@ -317,7 +314,7 @@ this.surname=obj.surname
               this.positions=null
               this.password=null
               let alert = await this.alertCtrl.create({
-              message:'You Have just created a new user with the following email Address ',
+              message:'You Have just created a new user ',
                 
               buttons: [
                 {
@@ -432,7 +429,7 @@ this.surname=obj.surname
       })
     }
 
-  //   Userids;
+  //Userids;
   // Username;
   // Usersurname;
   // Useremail;
@@ -473,7 +470,5 @@ back(){
   this.router.navigateByUrl('/home');
 }
     
-
-
      
 }

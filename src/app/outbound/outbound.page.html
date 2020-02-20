@@ -99,7 +99,7 @@
               </ion-col>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass"><br>
                 <p>PET001</p>
               </ion-col>
 
@@ -173,7 +173,7 @@
                 </div>
               </div>
               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
-              <ion-searchbar name="search" (ionInput)="getItems($event)"></ion-searchbar>
+              <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar>
             </div>
             <div class="contact-cards">
 

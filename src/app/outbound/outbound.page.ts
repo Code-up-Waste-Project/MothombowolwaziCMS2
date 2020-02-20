@@ -886,6 +886,8 @@ export class OutboundPage implements OnInit {
     // console.log('entered mass', this.PET005storagemass);
     // console.log('mass of database', this.PET005mass);
 
+    this.popOpOpen = false;
+
   }
 
   async presentAlertupdate() {
@@ -1350,7 +1352,7 @@ export class OutboundPage implements OnInit {
           return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
         });
       } else if (val == "") {
-        this.searchResults = [];
+        this.searchResults = this.recordoutbounddisplaysz;
       }
 
       console.log(this.usersz);

@@ -148,7 +148,7 @@
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="GL001 (Kg)" [(ngModel)]="GH001massz" (change)='onChangeGH001($event.target.value)'><br>
-                <p>{{ GH001pricez }}</p>
+                <p>R{{ GH001pricez }}</p>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -179,7 +179,7 @@
                 </div>
               </div>
               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation" type="number"></ion-input> -->
-              <ion-searchbar (ionInput)="getItems($event)" placeholder="Phone Numbers" type="number"
+              <ion-searchbar (ionInput)="getItems($event)" placeholder="Search by Phone Numbers" type="number"
                 pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;"></ion-searchbar>
             </div>
             <div class="contact-cards">
@@ -206,8 +206,7 @@
             <form padding [formGroup]="RegisterForm">
               <input placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
               <input placeholder="Surnames" [(ngModel)]="surnames" formControlName="surnames" type="text">
-              <input placeholder="Contact No." [(ngModel)]="contacts" type="number" maxlength="10"
-                (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
+              <input placeholder="Contact No." [(ngModel)]="contacts" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel" onKeyPress="if(this.value.length==10)">
               <input placeholder="Physical Address" [(ngModel)]="addresss" formControlName="addresss" type="text">
             </form>
           </div>
@@ -256,7 +255,7 @@
     <div class="itemList" *ngFor="let records of testArrays">
       <div>{{ records.name }} {{ records.surname }}</div>
       <div>{{ records.contact }}</div>
-      <div>{{ records.OverallGrandTotal }}</div>
+      <div>R{{ records.OverallGrandTotal }}</div>
       <div>{{ records.date }}</div>
       <div>
         <ion-icon name="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
@@ -265,6 +264,6 @@
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
       </div>
     </div>
-
   </div>
+
 </ion-content>
