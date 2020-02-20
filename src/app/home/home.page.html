@@ -63,24 +63,24 @@
   <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowSave()" ></ion-icon></p>
 </div>
 
-<div class="sub-material" >
+<div class="sub-material" *ngFor="let paper of PaperArray">
   <div class="tops">
     <div class="left">
-      <p class="matb">R{{pricess.pap001}}</p>
+      <p class="matb">R{{ paper.newpap001 }}  {{paper.oldpap001}}</p>
       <p class="smallp">PAP001</p>
     </div>
     <div class="right">
-      <p class="matb">R{{pricess.pap003}}</p>
+      <p class="matb">R{{ paper.newpap003 }}</p>
       <p class="smallp">PAP003</p>
     </div>
   </div>
   <div class="bottoms">
     <div class="left">
-      <p class="matb">R{{pricess.pap005}}</p>
+      <p class="matb">R{{ paper.newpap005 }}</p>
       <p class="smallp">PAP005</p>
     </div>
     <div class="right">
-      <p class="matb">R{{pricess.pap007}}</p>
+      <p class="matb">R{{ paper.newpap007 }}</p>
       <p class="smallp">PAP007</p>
     </div>
   </div>
@@ -94,32 +94,32 @@
         <p class="icon">  <ion-icon name="create" mode="ios"  (click)="HideandShowCreate()"></ion-icon></p>
       </div>
 
-      <div class="sub-material2" >
+      <div class="sub-material2" *ngFor="let plastic of plasticarray">
         <div class="tops">
           <div class="one" id="firstblock">
-            <p class="matb">R{{pricess.hd001}}</p>
+            <p class="matb">R{{ plastic.newhd001 }}</p>
             <p class="smallp">HD001</p>
           </div>
           <div class="two" id="firstblock">
-            <p class="matb">R{{pricess.ld001}}</p>
+            <p class="matb">R{{ plastic.newld001 }}</p>
             <p class="smallp">LD001</p>
           </div>
           <div class="three">
-            <p class="matb">R{{pricess.ld003}}</p>
+            <p class="matb">R{{ plastic.newld003 }}</p>
             <p class="smallp">LD003</p>
           </div>
         </div>
         <div class="bottoms">
           <div class="one">
-            <p class="matb">R{{pricess.pet003}}</p>
+            <p class="matb">R{{ plastic.newpet003 }}</p>
             <p class="smallp">PET003</p>
           </div>
           <div class="two" id="thirdblock">
-            <p class="matb">R{{pricess.pet001}}</p>
+            <p class="matb">R{{ plastic.newpet001 }}</p>
             <p class="smallp">PET001</p>
           </div>
           <div class="three" id="thirdblock">
-            <p class="matb">R{{pricess.pet005}}</p>
+            <p class="matb">R{{ plastic.newpet005 }}</p>
             <p class="smallp">PET005</p>
           </div>
         </div>
@@ -133,12 +133,10 @@
         <h3 class="materialz">GLASS </h3>
         <p class="icon">  <ion-icon name="create" mode="ios" (click)="glassShow()"></ion-icon></p>
       </div>
-      <div id="sub-material3" >
-             <p class="matb">R{{pricess.gl001}}</p>
+      <div id="sub-material3" *ngFor="let tinns of glassArray">
+             <p class="matb">R{{ tinns.newgl001 }}</p>
       <p class="smallp">GL001</p>
       </div>
- 
-
     </div>
 
 <!-- aluminium -->
@@ -147,9 +145,8 @@
         <h3 class="materialz">ALUMINIUM </h3>
         <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowDelete()"></ion-icon></p>
       </div>
-
-      <div id="sub-material3">
-        <p class="matb">R{{pricess.nfalo1}}</p>
+      <div id="sub-material3" *ngFor="let allu of NFAL001Array">
+        <p class="matb">R{{ allu.newnfal01 }}</p>
         <p class="smallp">NFALO01</p>
       </div>
      </div>
@@ -222,7 +219,7 @@
   <input placeholder="PET005" [(ngModel)]="PET005price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
-<button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
+<button ion-button (click)="CheckInputsEmptyStringPlastics()" >Save</button>
 </div>
 </div>
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -277,7 +274,7 @@
     <div class="historydata2">
       <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
     <!-- <div class="two">{{paper.timePaper}}</div> -->
-    <div class="two">R{{paper.newpap001}}</div>
+    <div class="two">R{{paper.oldpap001}}</div>
     <div class="two">R{{paper.newpap001}}</div>
     </div>
     <div class="historydata2">

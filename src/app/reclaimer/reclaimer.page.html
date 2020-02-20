@@ -148,7 +148,7 @@
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="GL001 (Kg)" [(ngModel)]="GH001massz" (change)='onChangeGH001($event.target.value)'><br>
-                <p>{{ GH001pricez }}</p>
+                <p>R{{ GH001pricez }}</p>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -179,7 +179,7 @@
                 </div>
               </div>
               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation" type="number"></ion-input> -->
-              <ion-searchbar (ionInput)="getItems($event)" placeholder="Phone Numbers" type="number"
+              <ion-searchbar (ionInput)="getItems($event)" placeholder="Search by Phone Numbers" type="number"
                 pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;"></ion-searchbar>
             </div>
             <div class="contact-cards">
@@ -265,6 +265,6 @@
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
       </div>
     </div>
-
   </div>
+
 </ion-content>

@@ -446,6 +446,7 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
 NFAL001Array = [];
 plasticarray= [];
 PaperArray =[];
+PaperArrayz =[];
 glassArray=[];
 
 bD = document.getElementsByClassName('bD')
@@ -706,36 +707,23 @@ bD = document.getElementsByClassName('bD')
       this.price.push(documentSnapshot.data());
       // console.log('my pricess', documentSnapshot.data().time);
 
-      this.pricess.gl001 = documentSnapshot.data().gl001;
-      this.pricess.hd001 = documentSnapshot.data().hd001;
-      this.pricess.ld001 = documentSnapshot.data().ld001;
-      this.pricess.ld003 = documentSnapshot.data().ld003;
-      this.pricess.nfalo1 = documentSnapshot.data().nfalo1;
-      this.pricess.pap001 = documentSnapshot.data().pap001;
-      this.pricess.pap003 = documentSnapshot.data().pap003;
-      this.pricess.pap005 = documentSnapshot.data().pap005;
-      this.pricess.pap007 = documentSnapshot.data().pap007;
-      this.pricess.pet001 = documentSnapshot.data().pet001;
-      this.pricess.pet003 = documentSnapshot.data().pet003;
-      this.pricess.pet005 = documentSnapshot.data().pet005;
+      // this.pricess.gl001 = documentSnapshot.data().gl001.toFixed(2);
+      // this.pricess.hd001 = documentSnapshot.data().hd001.toFixed(2);
+      // this.pricess.ld001 = documentSnapshot.data().ld001.toFixed(2);
+      // this.pricess.ld003 = documentSnapshot.data().ld003.toFixed(2);
+      // this.pricess.nfalo1 = documentSnapshot.data().nfalo1.toFixed(2);
+      // this.pricess.pap001 = documentSnapshot.data().pap001.toFixed(2);
+      // this.pricess.pap003 = documentSnapshot.data().pap003.toFixed(2);
+      // this.pricess.pap005 = documentSnapshot.data().pap005.toFixed(2);
+      // this.pricess.pap007 = documentSnapshot.data().pap007.toFixed(2);
+      // this.pricess.pet001 = documentSnapshot.data().pet001.toFixed(2);
+      // this.pricess.pet003 = documentSnapshot.data().pet003.toFixed(2);
+      // this.pricess.pet005 = documentSnapshot.data().pet005.toFixed(2);
       
       // this.PaperArray.push({
       //   pap003: this.pricess.pap003,
       // })
-    
-      this.oldpricepap003 = documentSnapshot.data().pap003;
-      this.oldpricepap001 = documentSnapshot.data().pap001;
-      this.oldpricepap005 = documentSnapshot.data().pap005;
-      this.oldpricepap007 = documentSnapshot.data().pap007;
 
-      this.oldpricepet005 = documentSnapshot.data().pet005;
-      this.oldpricepet001 = documentSnapshot.data().pet001;
-      this.oldpricepet003 = documentSnapshot.data().pet003;
-      this.oldpriceld003 = documentSnapshot.data().ld003;
-      this.oldpriceld001 = documentSnapshot.data().ld001;
-     this.oldpricehd001 = documentSnapshot.data().hd001;
-      this.oldpriceNFAL01 = documentSnapshot.data().nfalo1;
-      this.oldpriceglass = documentSnapshot.data().gl001;
     })
 
     // console.log(this.pricess.gl001);
@@ -752,33 +740,81 @@ bD = document.getElementsByClassName('bD')
     // console.log(this.pricess.pet005);
 
     this.menuCtrl.enable(true); // or true
+    // old code
+    // this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
+    // this.prices.get().then(Document => {
+    //   this.glassArray.push(Document.data())
+    // });
 
-    this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
-    this.prices.get().then(Document => {
-      this.glassArray.push(Document.data())
-    });
+    // new code
+    this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").onSnapshot((snap) => {
+      this.glassArray = [];
+      this.glassArray.push(snap.data())
+
+      this.oldpriceglass = snap.data().oldgl001;
+    })
     //  console.log(this.glassArray)
+
     // paper
-    this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
-      
-    this.prices.get().then(Document => {
-      this.PaperArray.push(Document.data())
-    });
-    // console.log(this.PaperArray)
+    // this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
+    // this.prices.get().then(Document => {
+    //   this.PaperArray.push(Document.data())
+    // });
+
+    // new code
+    this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
+      this.PaperArray = [];
+      this.PaperArray.push(snap.data())
+      console.log(snap.data())
+
+      this.oldpricepap003 = snap.data().oldpap003;
+      this.oldpricepap001 = snap.data().oldpap001;
+      this.oldpricepap005 = snap.data().oldpap005;
+      this.oldpricepap007 = snap.data().oldpap007;
+    })
+    console.log(this.PaperArray)
+
+    this.PaperArrayz.push({
+      oldpricepap003: this.oldpricepap003,
+      oldpricepap001: this.oldpricepap001,
+      oldpricepap005: this.oldpricepap005,
+      oldpricepap007: this.oldpricepap007
+      })
+    console.log(this.PaperArrayz)
 
     // Plastic Storage update
-    this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
+    // this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
+    // this.prices.get().then(Document => {
+    //   this.plasticarray.push(Document.data())
+    // });
 
-    this.prices.get().then(Document => {
-      this.plasticarray.push(Document.data())
-    });
+    // new code
+    this.db.collection('price').doc("7O6KqClxLD780ltfC6i5").onSnapshot(snap => {
+      this.plasticarray = [];
+      this.plasticarray.push(snap.data())
+
+      this.oldpricepet005 = snap.data().oldpet005;
+      this.oldpricepet001 = snap.data().oldpet001;
+      this.oldpricepet003 = snap.data().oldpet003;
+      this.oldpriceld003 = snap.data().oldld003;
+      this.oldpriceld001 = snap.data().oldld001;
+      this.oldpricehd001 = snap.data().oldhd001;
+    })
     // console.log(this.plasticarray)
 
     // NFAL01 Storage update
-    this.prices = this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE");
-    this.prices.get().then(Document => {
-      this.NFAL001Array.push(Document.data())
-    });
+    // this.prices = this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE");
+    // this.prices.get().then(Document => {
+    //   this.NFAL001Array.push(Document.data())
+    // });
+
+    // new code
+    this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE").onSnapshot(snap => {
+      this.NFAL001Array = [];
+      this.NFAL001Array.push(snap.data())
+
+      this.oldpriceNFAL01 = snap.data().oldnfal01;
+    })
     // console.log(this.NFAL001Array);
   }
 
@@ -975,11 +1011,12 @@ bD = document.getElementsByClassName('bD')
 
   CheckInputsEmptyStringPlastics() {
     if (
-         this.HD001price  === undefined &&
-         this.LD001price === undefined &&
+        this.HD001price  === undefined &&
+        this.LD001price === undefined &&
         this.LD003price  === undefined &&
-        this.PET005price === undefined &&
-        this.PET001price === undefined
+        this.PET005price === undefined &&+
+        this.PET001price === undefined && 
+        this.PET003price === undefined
       ) {
         this.presentAlertcheckInputs();
       } else {
@@ -1039,6 +1076,8 @@ bD = document.getElementsByClassName('bD')
       this.GH001price = this.pricess.gl001;
     } else if (this.GH001price === undefined) {
       this.GH001 = this.pricess.gl001;
+    } else if (this.GH001price === '') {
+      this.GH001 = this.pricess.gl001;
     }
     // console.log(this.nFAL01);
     this.Updateglass()
@@ -1052,11 +1091,7 @@ bD = document.getElementsByClassName('bD')
           timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
           newgl001: this.GH001price,
           oldgl001: this.oldpriceglass,
-    
-         
-
         }).then((data) => {
-         
           // console.log("Paper old storage successfully updated!");
         });
 
@@ -1115,7 +1150,6 @@ bD = document.getElementsByClassName('bD')
           handler: () => {
             this.checkPlasticInputs();
             this.HideandShowCreate();
-            
             this.route.navigateByUrl('/home');
             console.log( 'close',this.HideandShowCreate)
             console.log('Confirm Okay');
@@ -1161,6 +1195,8 @@ bD = document.getElementsByClassName('bD')
       this.PAP005price = this.pricess.pap005;
     } else if (this.PAP005price === undefined) {
       this.PAP005price = this.pricess.pap005;
+    } else if (this.PAP005price === '') {
+      this.PAP005price = this.pricess.pap005;
     }
     // console.log(this.PAP005price);
 
@@ -1168,6 +1204,8 @@ bD = document.getElementsByClassName('bD')
     if (this.PAP007price === null) {
       this.PAP007price = this.pricess.pap007;
     } else if (this.PAP007price === undefined) {
+      this.PAP007price = this.pricess.pap007;
+    } else if (this.PAP007price === '') {
       this.PAP007price = this.pricess.pap007;
     }
     // console.log(this.PAP007price);
@@ -1177,6 +1215,8 @@ bD = document.getElementsByClassName('bD')
       this.PAP001price = this.pricess.pap001;
     } else if (this.PAP001price === undefined) {
       this.PAP001price = this.pricess.pap001;
+    } else if (this.PAP001price === '') {
+      this.PAP001price = this.pricess.pap001;
     }
     // console.log(this.PAP001price);
 
@@ -1185,20 +1225,20 @@ bD = document.getElementsByClassName('bD')
       this.PAP003price = this.pricess.pap003;
     } else if (this.PAP003price === undefined) {
       this.PAP003price = this.pricess.pap003;
+    } else if (this.PAP003price === '') {
+      this.PAP003price = this.pricess.pap003;
     }
     // console.log(this.PAP003price);
-
     this.UpdatePaper()
-
   }
-
-  
 
   checkPlasticInputs() {
     // HD001price;
     if (this.HD001price === null) {
       this.HD001price = this.pricess.hd001;
     } else if (this.HD001price === undefined) {
+      this.HD001price = this.pricess.hd001;
+    } else if (this.HD001price === '') {
       this.HD001price = this.pricess.hd001;
     }
     // console.log(this.HD001price);
@@ -1208,6 +1248,8 @@ bD = document.getElementsByClassName('bD')
       this.LD001price = this.pricess.ld001;
     } else if (this.LD001price === undefined) {
       this.LD001price = this.pricess.ld001;
+    } else if (this.LD001price === '') {
+      this.LD001price = this.pricess.ld001;
     }
     // console.log(this.LD001price);
 
@@ -1215,6 +1257,8 @@ bD = document.getElementsByClassName('bD')
     if (this.LD003price === null) {
       this.LD003price = this.pricess.ld003;
     } else if (this.LD003price === undefined) {
+      this.LD003price = this.pricess.ld003;
+    } else if (this.LD003price === '') {
       this.LD003price = this.pricess.ld003;
     }
     // console.log(this.LD003price);
@@ -1224,6 +1268,8 @@ bD = document.getElementsByClassName('bD')
       this.PET001price = this.pricess.pet001;
     } else if (this.PET001price === undefined) {
       this.PET001price = this.pricess.pet001;
+    } else if (this.PET001price === '') {
+      this.PET001price = this.pricess.pet001;
     }
     // console.log(this.PET001price);
 
@@ -1232,6 +1278,8 @@ bD = document.getElementsByClassName('bD')
       this.PET003price = this.pricess.pet003;
     } else if (this.PET003price === undefined) {
       this.PET003price = this.pricess.pet003;
+    } else if (this.PET003price === '') {
+      this.PET003price = this.pricess.pet003;
     }
     // console.log(this.PET003price);
 
@@ -1239,6 +1287,8 @@ bD = document.getElementsByClassName('bD')
     if (this.PET005price === null) {
       this.PET005price = this.pricess.pet005;
     } else if (this.PET005price === undefined) {
+      this.PET005price = this.pricess.pet005;
+    } else if (this.PET005price === '') {
       this.PET005price = this.pricess.pet005;
     }
     // console.log(this.PET005price);
@@ -1251,11 +1301,11 @@ bD = document.getElementsByClassName('bD')
       this.NFAL01price = this.pricess.nfalo1;
     } else if (this.NFAL01price === undefined) {
       this.nFAL01 = this.pricess.nfalo1;
+    } else if (this.NFAL01price === '') {
+      this.nFAL01 = this.pricess.nfalo1;
     }
     // console.log(this.nFAL01);
-
     this.UpdateAlum()
-    
   }
 
   UpdatePaper() {

@@ -318,7 +318,7 @@ this.surname=obj.surname
               this.positions=null
               this.password=null
               let alert = await this.alertCtrl.create({
-              message:'You Have just created a new user with the following email Addr',
+              message:'You Have just created a new user ',
                 
               buttons: [
                 {
@@ -433,7 +433,7 @@ this.surname=obj.surname
       })
     }
 
-  //   Userids;
+  //Userids;
   // Username;
   // Usersurname;
   // Useremail;
@@ -474,7 +474,5 @@ back(){
   this.router.navigateByUrl('/home');
 }
     
-
-
      
 }
