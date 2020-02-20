@@ -886,6 +886,8 @@ export class OutboundPage implements OnInit {
     // console.log('entered mass', this.PET005storagemass);
     // console.log('mass of database', this.PET005mass);
 
+    this.popOpOpen = false;
+
   }
 
   async presentAlertupdate() {

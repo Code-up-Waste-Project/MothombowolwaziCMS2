@@ -127,6 +127,7 @@ export class InboundPage implements OnInit {
     public toastController: ToastController,
     public alertController: AlertController,
     public formGroup: FormBuilder,
+    private modalController: ModalController
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -563,6 +564,9 @@ export class InboundPage implements OnInit {
     this.storagePET005 = this.PET005storagemass + this.PET005mass;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PEP005: this.storagePET005});
     // console.log(this.storagePET005);
+
+    this.popOpOpen = false;
+    
   }
 
   recordInbounds() {
@@ -860,4 +864,11 @@ export class InboundPage implements OnInit {
     editprofile() {
       this.route.navigate(['profile2']);
     }
+
+    CloseModel() {
+      this.modalController.dismiss({
+        'dismissed': true
+      });
+    }
+
 }

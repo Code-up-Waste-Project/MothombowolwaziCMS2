@@ -751,9 +751,12 @@ bD = document.getElementsByClassName('bD')
       this.glassArray = [];
       this.glassArray.push(snap.data())
 
-      this.oldpriceglass = snap.data().oldgl001;
+      this.oldpriceglass = snap.data().newgl001;
+
+      this.pricess.gl001 = snap.data().newgl001;
     })
     //  console.log(this.glassArray)
+     console.log(this.oldpriceglass)
 
     // paper
     // this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
@@ -765,22 +768,19 @@ bD = document.getElementsByClassName('bD')
     this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
       this.PaperArray = [];
       this.PaperArray.push(snap.data())
-      console.log(snap.data())
+      // console.log(snap.data())
 
-      this.oldpricepap003 = snap.data().oldpap003;
-      this.oldpricepap001 = snap.data().oldpap001;
-      this.oldpricepap005 = snap.data().oldpap005;
-      this.oldpricepap007 = snap.data().oldpap007;
+      this.oldpricepap003 = snap.data().newpap003;
+      this.oldpricepap001 = snap.data().newpap001;
+      this.oldpricepap005 = snap.data().newpap005;
+      this.oldpricepap007 = snap.data().newpap007;
+
+      this.pricess.pap001 = snap.data().newpap001;
+      this.pricess.pap003 = snap.data().newpap003;
+      this.pricess.pap005 = snap.data().newpap005;
+      this.pricess.pap007 = snap.data().newpap007;
     })
-    console.log(this.PaperArray)
-
-    this.PaperArrayz.push({
-      oldpricepap003: this.oldpricepap003,
-      oldpricepap001: this.oldpricepap001,
-      oldpricepap005: this.oldpricepap005,
-      oldpricepap007: this.oldpricepap007
-      })
-    console.log(this.PaperArrayz)
+    // console.log(this.PaperArray)
 
     // Plastic Storage update
     // this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
@@ -793,14 +793,23 @@ bD = document.getElementsByClassName('bD')
       this.plasticarray = [];
       this.plasticarray.push(snap.data())
 
-      this.oldpricepet005 = snap.data().oldpet005;
-      this.oldpricepet001 = snap.data().oldpet001;
-      this.oldpricepet003 = snap.data().oldpet003;
-      this.oldpriceld003 = snap.data().oldld003;
-      this.oldpriceld001 = snap.data().oldld001;
-      this.oldpricehd001 = snap.data().oldhd001;
+      this.oldpricepet005 = snap.data().newpet005;
+      this.oldpricepet001 = snap.data().newpet001;
+      this.oldpricepet003 = snap.data().newpet003;
+      this.oldpriceld003 = snap.data().newld003;
+      this.oldpriceld001 = snap.data().newld001;
+      this.oldpricehd001 = snap.data().newhd001;
+
+      this.pricess.hd001 = snap.data().newhd001;
+      this.pricess.ld001 = snap.data().newld001;
+      this.pricess.ld003 = snap.data().newld003;
+      this.pricess.pet001 = snap.data().newpet001;
+      this.pricess.pet003 = snap.data().newpet003;
+      this.pricess.pet005 = snap.data().newpet005;
     })
     // console.log(this.plasticarray)
+
+      
 
     // NFAL01 Storage update
     // this.prices = this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE");
@@ -813,9 +822,12 @@ bD = document.getElementsByClassName('bD')
       this.NFAL001Array = [];
       this.NFAL001Array.push(snap.data())
 
-      this.oldpriceNFAL01 = snap.data().oldnfal01;
+      this.oldpriceNFAL01 = snap.data().newnfal01;
+
+      this.pricess.nfalo1 = snap.data().newnfal01;
     })
     // console.log(this.NFAL001Array);
+
   }
 
   getReclaimers() {
@@ -1085,7 +1097,6 @@ bD = document.getElementsByClassName('bD')
   }
 
   Updateglass() {
-
         // To update price :
         this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
           timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
@@ -2472,8 +2483,6 @@ bD = document.getElementsByClassName('bD')
 
   }
 
-
-
 //EDIT PAPER
   HideandShowSave() {
     this.edit = !this.edit;
@@ -2876,8 +2885,6 @@ HideandShowHISTORYGLASS() {
       CheckInputsEmptyStringAlu() {
         if (
             this.NFAL01price === undefined 
-          
-            
           ) {
             this.presentAlertcheckInputs();
           } else {

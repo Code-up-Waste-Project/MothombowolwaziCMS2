@@ -206,8 +206,7 @@
             <form padding [formGroup]="RegisterForm">
               <input placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
               <input placeholder="Surnames" [(ngModel)]="surnames" formControlName="surnames" type="text">
-              <input placeholder="Contact No." [(ngModel)]="contacts" type="number" maxlength="10"
-                (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
+              <input placeholder="Contact No." [(ngModel)]="contacts" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel" onKeyPress="if(this.value.length==10)">
               <input placeholder="Physical Address" [(ngModel)]="addresss" formControlName="addresss" type="text">
             </form>
           </div>
