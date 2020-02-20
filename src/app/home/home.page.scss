@@ -265,11 +265,12 @@ letter-spacing: 0.7px;  width: 100%;
   padding-top: 10% !important;
 }
   .p {
-    font-size: 1.5em;
+    font-size: 2em;
     font-family: 'SkarpaLT';
     font-weight: lighter;
     span {
-      font-size: 40%
+      font-size: 50%;
+      padding-left: 5px !important;
     }
   }
 }
@@ -698,7 +699,7 @@ background: rgb(216, 215, 215);
 
     .btnze:hover {
 cursor: pointer;
-background: green;
+background: #558c03;
 color: white;
     }
 .btnze:active {
@@ -1387,30 +1388,6 @@ p {
 }
 @media screen and (max-width: 1920px) {
 
-  .header {
-   // border: 1px solid red;
-    ion-title {
-    //  border: 2px solid blue;
-      height: 40px;
-    }
-    ion-avatar {
-     // border: 1px solid red;
-      height: 40px;
-      width: 40px;
-      margin-top: -5px;
-    }
-    p {
-    //  border: 1px solid white;
-      position: absolute;
-      left: 6.4%;
-     top: -5px;
-    }
-    #logout {
-   // border: 1px solid red;
-     height: 40%;
-     padding: 1% !important;
-  }
-  }
  .container {
   // border: 2px solid red;
  .close {
@@ -1450,6 +1427,14 @@ h3 {
     bottom: 0;
     width: 100%;
   }
+  .btnze:hover {
+    cursor: pointer;
+    background: #558c03;
+    color: white;
+        }
+    .btnze:active {
+      --background: #558c03  !important;
+    }
   .chartbuttons {
     //border: 2px solid rgb(238, 198, 19);
     margin-top: 0.7%;
