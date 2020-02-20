@@ -759,12 +759,19 @@ bD = document.getElementsByClassName('bD')
     });
     //  console.log(this.glassArray)
     // paper
-    this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
+    // this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
       
-    this.prices.get().then(Document => {
-      this.PaperArray.push(Document.data())
-    });
-    // console.log(this.PaperArray)
+    // this.prices.get().then(Document => {
+    //   this.PaperArray = [];
+    //   this.PaperArray.push(Document.data())
+    //   this.route.navigateByUrl('/home');
+    // });
+
+    this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
+      this.PaperArray = [];
+      this.PaperArray.push(snap.data())
+    })
+    console.log(this.PaperArray)
 
     // Plastic Storage update
     this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
