@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
   active = 0
 
   db = firebase.firestore();
-  
+   
+  myadmis=[]
   Newadmin = [];
 
   public getLastAction() {
@@ -51,21 +52,41 @@ export class AppComponent implements OnInit {
       // this.getAuth();
       this.initializeApp();
      
-    this.db.collection('admin').onSnapshot(snapshot => {
-      // this.Newadmin = [];
-      snapshot.forEach(Element => {
-        this.adminss.push(Element.data());
-      });
-      this.adminss.forEach(item => {
+    // this.db.collection('admin').onSnapshot(snapshot => {
+    //   // this.Newadmin = [];
+    //   snapshot.forEach(Element => {
+    //     this.adminss.push(Element.data());
+    //   });
+    //   this.adminss.forEach(item => {
        
-        if (item.userid === firebase.auth().currentUser.uid) {
-          this.Newadmin = [];
-          this.Newadmin.push(item); 
+    //     if (item.userid === firebase.auth().currentUser.uid) {
+    //       // this.Newadmin = [];
+    //       this.Newadmin.push(item); 
         
-            }
+    //         }
+    //   });
+    //   // console.log('Newadmins', this.Newadmin);
+    // });
+
+       // pulling for admin
+     
+      this.db.collection('admin').onSnapshot(snapshot => {
+        this.Newadmin.splice(0, this.Newadmin.length)
+        // this.Newadmin.length = 0;
+        snapshot.forEach(Element => {
+          this.myadmis.push(Element.data());
+          console.log(Element.data());
+        });
+        this.myadmis.forEach(item => {
+          if (item.userid === firebase.auth().currentUser.uid) {
+            // this.Newadmin.length = 0;
+            
+            this.Newadmin.push(item);
+            // this.Newadmin =[]
+          }
+        });
+        console.log('Newadmins', this.Newadmin);
       });
-      // console.log('Newadmins', this.Newadmin);
-    });
 
     // code for idle
     this.check();
