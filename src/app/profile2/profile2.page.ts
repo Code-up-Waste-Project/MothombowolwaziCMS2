@@ -199,15 +199,23 @@ export class Profile2Page implements OnInit {
       this.menuCtrl.enable(false);
      }
   
-     ionViewDidLeave() {
-      // enable the root left menu when leaving the tutorial page
-      this.menuCtrl.enable(true);
-    }
+    //  ionViewDidLeave() {
+    //   // enable the root left menu when leaving the tutorial page
+    //   this.menuCtrl.enable(true);
+    // }
 
     myBackButton(){
       
       this.location.back();
       // this.menuCtrl.enable(true);
     }
+
+    Logout() {
+      firebase.auth().signOut().then((res) => {
+        console.log(res);
+        this.router.navigateByUrl('/login');
+       });
+      }
+  
 
 }
