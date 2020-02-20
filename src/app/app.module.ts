@@ -17,7 +17,9 @@ import * as firebase from 'firebase';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RegistersPipe } from './registers.pipe';
 import { ResetPasswordPageModule } from './reset-password/reset-password.module';
-import { ProfilePageModule} from './profile/profile.module'
+import { ProfilePageModule} from './profile/profile.module';
+
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
@@ -61,6 +63,7 @@ firebase.analytics();
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    NgIdleKeepaliveModule,
     ReactiveFormsModule,
     PdfViewerModule,
     ResetPasswordPageModule,

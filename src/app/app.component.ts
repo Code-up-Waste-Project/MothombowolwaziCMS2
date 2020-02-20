@@ -7,6 +7,12 @@ import { AuthService } from '../app/user/auth.service';
 
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { element } from 'protractor';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+
+const MINUTES_UNITL_AUTO_LOGOUT = 5 // in mins
+const CHECK_INTERVAL = 3000 // in ms
+const STORE_KEY =  'lastAction';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -26,6 +32,13 @@ export class AppComponent implements OnInit {
   
   Newadmin = [];
 
+  public getLastAction() {
+    return parseInt(localStorage.getItem(STORE_KEY));
+  }
+ public setLastAction(lastAction: number) {
+    localStorage.setItem(STORE_KEY, lastAction.toString());
+  }
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -33,41 +46,32 @@ export class AppComponent implements OnInit {
     private content: ElementRef,
     private render: Renderer2,
     public router: Router,
+    
   ) {
       // this.getAuth();
       this.initializeApp();
-
-       // pulling for admin
-    //  this.db.collection('admin').onSnapshot(snapshot => {
-    //   this.Newadmin = [];
-    //   snapshot.forEach(Element => {
-    //     this.Newadmins.push(Element);
-    //   });
-    //   console.log(this.Newadmins);
-
-    //   this.Newadmins.forEach(item => {
-    //     if (item.userid === firebase.auth().currentUser.uid) {
-    //       this.Newadmin = [];
-    //       this.Newadmin.push(item);
-    //     }
-    //   });
-    //   console.log('Newadmins', this.Newadmin);
-    // });
      
-
     this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin = [];
+      // this.Newadmin = [];
       snapshot.forEach(Element => {
         this.adminss.push(Element.data());
       });
       this.adminss.forEach(item => {
-        
+       
         if (item.userid === firebase.auth().currentUser.uid) {
           this.Newadmin = [];
-          this.Newadmin.push(item);     }
+          this.Newadmin.push(item); 
+        
+            }
       });
       // console.log('Newadmins', this.Newadmin);
     });
+
+    // code for idle
+    this.check();
+    this.initListener();
+    this.initInterval();
+    localStorage.setItem(STORE_KEY,Date.now().toString());
   }
 
   ngOnInit() {
@@ -83,12 +87,12 @@ export class AppComponent implements OnInit {
     
     firebase.auth().onAuthStateChanged(user => {
       // console.log(user.email)
-      firebase.firestore().collection('userprofiles').where('email','==',user.email).get().then(res=>{
-      res.forEach(val=>{
-        // this.pos =val.data().positions
-        console.log("Look here ",val.data().positions)
-      })
-      })
+      // firebase.firestore().collection('userprofiles').where('email','==',user.email).get().then(res=>{
+      // res.forEach(val=>{
+      //   // this.pos =val.data().positions
+      //   console.log("Look here ",val.data().positions)
+      // })
+      // })
       firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         // this.profile.email = snapshot.data().email;
 
@@ -173,15 +177,35 @@ export class AppComponent implements OnInit {
           });
         }
 
-      //   afAuth.authState.subscribe( user => {
-      //     if (user) {
-      //       this.rootPage = 'HomePage';
-      //     } else {
-      //       this.rootPage = 'SignupPage';
-      //     }
-      //   });
-    
-      //   platform.ready().then(() => {...});
-      // }
+        initListener() {
+          document.body.addEventListener('click', () => this.reset());
+          document.body.addEventListener('mouseover',()=> this.reset());
+          document.body.addEventListener('mouseout',() => this.reset());
+          document.body.addEventListener('keydown',() => this.reset());
+          document.body.addEventListener('keyup',() => this.reset());
+          document.body.addEventListener('keypress',() => this.reset());
+        }
+      
+        reset() {
+          this.setLastAction(Date.now());
+        }
+      
+        initInterval() {
+          setInterval(() => {
+            this.check();
+          }, CHECK_INTERVAL);
+        }
+      
+        check() {
+          const now = Date.now();
+          const timeleft = this.getLastAction() + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
+          const diff = timeleft - now;
+          const isTimeout = diff < 0;
+      
+          if (isTimeout)  {
+            localStorage.clear();
+            this.router.navigate(['./login']);
+          }
+        }
 
 }
