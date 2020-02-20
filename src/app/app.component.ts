@@ -7,7 +7,7 @@ import { AuthService } from '../app/user/auth.service';
 
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { element } from 'protractor';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+// import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 const MINUTES_UNITL_AUTO_LOGOUT = 5 // in mins
 const CHECK_INTERVAL = 3000 // in ms
