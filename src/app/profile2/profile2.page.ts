@@ -210,4 +210,12 @@ export class Profile2Page implements OnInit {
       // this.menuCtrl.enable(true);
     }
 
+    Logout() {
+      firebase.auth().signOut().then((res) => {
+        console.log(res);
+        this.router.navigateByUrl('/login');
+       });
+      }
+  
+
 }
