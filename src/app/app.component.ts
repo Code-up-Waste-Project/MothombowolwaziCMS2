@@ -105,6 +105,12 @@ export class AppComponent implements OnInit {
       
     },
     {
+      title: 'Profile',
+      url: 'profile2',
+      icon: 'person',
+      admin: 'cool'
+    },
+    {
       title: 'Inbounds',
       url: '/inbound',
       icon: 'inboundW',
@@ -124,6 +130,13 @@ export class AppComponent implements OnInit {
         icon: 'homeW',
         admin:"cool"
       },
+      
+    {
+      title: 'Profile',
+      url: 'profile2',
+      icon: 'person',
+      admin: 'cool'
+    },
      {
         title: 'Inbound',
         url: '/inbound',

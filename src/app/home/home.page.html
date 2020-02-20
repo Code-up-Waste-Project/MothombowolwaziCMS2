@@ -212,19 +212,37 @@
 
 </div>
 
+<!-- EDIT PRICE FOR PLASTIC -->
 <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
-<div padding class="editform2">
+<div padding class="editform2"  >
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
-  <input placeholder="HD001" [(ngModel)]="HD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  <div class="inputs">
+    <div class="row1">
+      <input placeholder="HD001" [(ngModel)]="HD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="LD001" [(ngModel)]="LD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
-  <input placeholder="LD003" [(ngModel)]="LD003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  </div>
+
+    <div class="row2">
+       <input placeholder="LD003" [(ngModel)]="LD003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET005" [(ngModel)]="PET005price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
-  <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  </div>
+
+ <div class="row3">
+    <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
-<button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
+
+ </div>
+
+     <button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
+
+  </div>
 </div>
+
+
 </div>
+
+<!-- EDIT PRICE FOR GLASS -->
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
   <div padding class="editform2">
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
@@ -235,20 +253,44 @@
   <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
   </div>
   </div>
-<!-- create new material -->
+<!-- EDIT PRICE FOR PAPER -->
 <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
-  <div padding class="editform2">
+  <div padding class="editform2" id="plasticPrices">
     <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price For Paper</h1>
-  <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP005" [(ngModel)]="PAP005price"  >
-  <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP007" [(ngModel)]="PAP007price" >
- <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP001"  [(ngModel)]="PAP001price"  >
- <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP003"  [(ngModel)]="PAP003price" >
 
-<button ion-button  (click)="  CheckInputsEmptyStringPaper()">Save</button>
+  <div class="inputs">
+ <div class="row1">
+     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP005" [(ngModel)]="PAP005price"  >
+  <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP007" [(ngModel)]="PAP007price" >
+  </div>
+
+  <div class="row2">
+    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP001"  [(ngModel)]="PAP001price"  >
+ <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP003"  [(ngModel)]="PAP003price" >
 </div>
+<!-- button -->
+<button ion-button id="savePaper" (click)="  CheckInputsEmptyStringPaper()">Save</button>
+ </div><!-- end of inputs div -->
+ <p class="heading">Keeping Record of all upadates</p>
+ <div class="historydetails">
+   <div class="heady">
+     <div class="col">
+       <h4 class="headz">Date</h4></div>
+     <div class="col"> <h4 class="headz">Admin</h4></div>
+     <div class="col"><h4 class="headz">Details</h4></div>
+   </div>
+
+   <div class="rows">
+    <div class="col">
+      <h4 class="headz">20 / 02/ 2020</h4></div>
+    <div class="col"> <h4 class="headz">Refilwe</h4></div>
+    <div class="col"><h4 class="headz"><ion-icon name="arrow-down-circle-outline"></ion-icon></h4></div>
+  </div>
+ </div>
+ </div><!-- end of edit form2 -->
 </div>
-<!-- delete material -->
+<!-- EDIT PRICE FOR ALUMINIUM -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >
   <ion-button class="close"  fill="clear" (click)="HideandShowDelete()"
@@ -319,47 +361,6 @@
       <div class="one"><h2 >Old Pricing</h2></div>
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
-  
-    <!-- <div class="historydata" *ngFor="let plastics of plasticarray">
-      <div class="historydata2">
-        <div class="two">{{myprice.timePlastic}}</div> 
-      <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">R{{plastics.oldhd001}}</div>
-      <div class="two">R{{plastics.newhd001}}</div>
-      </div>
-      <div class="historydata2">
-        <div class="two">{{plastics.timePlastic2}}</div>
-        <div class="two">R{{plastics.oldld001}}</div>
-        <div class="two">R{{plastics.newld001}}</div>
-      </div>
-      <div class="historydata2">
-        <div class="two">R{{plastics.timePlastic2}}</div>
-      <div class="two">R{{plastics.oldld003}}</div>
-      <div class="two">R{{plastics.newld003}}</div>
-      </div>
-      <div class="historydata2">
-        <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">R{{plastics.oldpet003}}</div>
-      <div class="two">R{{plastics.newpet003}}</div>
-      </div>
-      <div class="historydata2">
-        <div class="two">{{plastics.timePlastic2}}</div>
-      <div class="two">R{{plastics.oldpet001}}</div>
-      <div class="two">R{{plastics.newpet001}}</div>
-      </div>
-      <div class="historydata2">
-        <div class="two">R{{plastics.timePlastic2}}</div>
-      <div class="two">R{{plastics.oldpet005}}</div>
-      <div class="two">R{{plastics.newpet005}}</div>
-      </div> -->
-
-      <!-- <div class="historydata2">
-        <div class="two">R{{plastics.timePlastic2}}</div>
-      <div class="two">{{plastics.oldpet005}}</div>
-      <div class="two">{{plastics.newpet005}}</div>
-      </div> 
-
-    </div> -->
 </div>
 </div>
 
@@ -373,14 +374,6 @@
       <div class="one"><h2 >Old Pricing</h2></div>
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
-  
-    <!-- <div class="historydata" *ngFor="let glass of glassArray" >
-      <div class="historydata2">
-        <div class="two">{{glass.timeglass}}</div>
-        <div class="two">R{{glass.newgl001}}</div>
-        <div class="two">R{{glass .oldgl001}}</div>
-      </div>
-    </div> -->
 </div>
 </div>
 
@@ -394,14 +387,6 @@
       <div class="one"><h2 >Old Pricing</h2></div>
       <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
     </div>
-  
-    <!-- <div class="historydata">
-      <div class="historydata2" *ngFor="let nfal001 of NFAL001Array">
-        <div class="two">{{ nfal001.timePlastic }}</div>
-        <div class="two">{{ nfal001.oldnfal01 }}</div>
-        <div class="two">{{ nfal001.newnfal01 }}</div>
-      </div>
-    </div> -->
 </div>
 </div>
 

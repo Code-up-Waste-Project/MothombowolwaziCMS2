@@ -54,7 +54,7 @@ export class Profile2Page implements OnInit {
    }
 
   ngOnInit() {
-    this.menuCtrl.enable(false);
+    this.menuCtrl.enable(true);
   }
 
   async users() {
@@ -195,14 +195,14 @@ export class Profile2Page implements OnInit {
   
     
   
-    ionViewWillEnter() {
-      this.menuCtrl.enable(false);
-     }
+    // ionViewWillEnter() {
+    //   this.menuCtrl.enable(false);
+    //  }
   
-     ionViewDidLeave() {
-      // enable the root left menu when leaving the tutorial page
-      this.menuCtrl.enable(true);
-    }
+    //  ionViewDidLeave() {
+    //   // enable the root left menu when leaving the tutorial page
+    //   this.menuCtrl.enable(true);
+    // }
 
     myBackButton(){
       

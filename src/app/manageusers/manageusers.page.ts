@@ -317,7 +317,7 @@ this.surname=obj.surname
               this.positions=null
               this.password=null
               let alert = await this.alertCtrl.create({
-              message:'You Have just created a new user with the following email Addr',
+              message:'You Have just created a new user with the following email Address ',
                 
               buttons: [
                 {
