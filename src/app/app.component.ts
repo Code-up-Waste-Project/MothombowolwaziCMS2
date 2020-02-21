@@ -7,7 +7,7 @@ import { AuthService } from '../app/user/auth.service';
 
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { element } from 'protractor';
-// import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 const MINUTES_UNITL_AUTO_LOGOUT = 5 // in mins
 const CHECK_INTERVAL = 3000 // in ms
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     public router: Router,
     
   ) {
-      // this.getAuth();
+      this.getAuth();
       this.initializeApp();
      
     // this.db.collection('admin').onSnapshot(snapshot => {
@@ -70,19 +70,19 @@ export class AppComponent implements OnInit {
 
        // pulling for admin
      
-      this.db.collection('admin').onSnapshot(snapshot => {
-        this.Newadmin.splice(0, this.Newadmin.length)
-        // this.Newadmin.length = 0;
+       this.db.collection('admin').onSnapshot(snapshot => {
+      this.Newadmin =[]
         snapshot.forEach(Element => {
+  
           this.myadmis.push(Element.data());
-          console.log(Element.data());
+          this.Newadmin =[]
+          // console.log(Element.data());
         });
         this.myadmis.forEach(item => {
           if (item.userid === firebase.auth().currentUser.uid) {
-            // this.Newadmin.length = 0;
-            
+          this.Newadmin =[]
             this.Newadmin.push(item);
-            // this.Newadmin =[]
+           
           }
         });
         console.log('Newadmins', this.Newadmin);

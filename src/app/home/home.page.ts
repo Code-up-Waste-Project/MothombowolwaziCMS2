@@ -756,7 +756,7 @@ bD = document.getElementsByClassName('bD')
       this.pricess.gl001 = snap.data().newgl001;
     })
     //  console.log(this.glassArray)
-     console.log(this.oldpriceglass)
+    //  console.log(this.oldpriceglass)
 
     // paper
     // this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
