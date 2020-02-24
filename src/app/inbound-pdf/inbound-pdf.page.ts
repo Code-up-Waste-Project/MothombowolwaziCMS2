@@ -10,6 +10,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-inbound-pdf',
@@ -89,6 +90,7 @@ export class InboundPDFPage implements OnInit {
     public rendered: Renderer2,
     private plt: Platform,
     private file: File,
+    private location: Location,
     private fileOpener: FileOpener
   ) {
     this.Userid = this.activatedRoute.snapshot.paramMap.get('id');
@@ -362,5 +364,11 @@ downloadPdf() {
     this.pdfObj.download();
   }
 }
+
+myBackButton(){
+  this.location.back();
+  // this.menuCtrl.enable(true);
+}
+
 
 }

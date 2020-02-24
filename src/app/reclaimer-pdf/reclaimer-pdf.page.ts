@@ -10,6 +10,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-reclaimer-pdf',
@@ -298,6 +299,7 @@ export class ReclaimerPDFPage implements OnInit {
     private content: ElementRef,
     public rendered: Renderer2,
     private plt: Platform,
+    private location: Location,
     private file: File,
     private fileOpener: FileOpener
   ) {
@@ -1472,6 +1474,11 @@ export class ReclaimerPDFPage implements OnInit {
         console.log(res);
         this.route.navigateByUrl('/login');
        });
+      }
+  
+      myBackButton(){
+        this.location.back();
+        // this.menuCtrl.enable(true);
       }
 
 }

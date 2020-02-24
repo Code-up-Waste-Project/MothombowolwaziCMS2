@@ -119,7 +119,7 @@ console.log("good morning")
     this.appPages.push({
      
       title: 'Home',
-      url: '/home',
+      url: '/home2',
       icon: 'homeW',
       admin:"hot",
       
@@ -132,13 +132,13 @@ console.log("good morning")
     },
     {
       title: 'Inbounds',
-      url: '/inbound',
+      url: '/inbound2',
       icon: 'inboundW',
       admin:"cool"
     },
     {
       title: 'Reclaimer',
-      url: '/reclaimer',
+      url: '/reclaimer2',
       icon: 'reclaimerW',
       admin:"cool"
     });

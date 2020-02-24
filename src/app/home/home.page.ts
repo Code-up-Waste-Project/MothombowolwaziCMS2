@@ -444,10 +444,14 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
 
 // storage Variebles
 NFAL001Array = [];
-plasticarray= [];
-PaperArray =[];
-PaperArrayz =[];
-glassArray=[];
+NFAL001ArrayHistory = [];
+plasticarray = [];
+plasticarrayHistory = [];
+PaperArray = [];
+PaperArrayHistory = [];
+PaperArrayz = [];
+glassArray = [];
+glassArrayHistory = [];
 
 bD = document.getElementsByClassName('bD')
 
@@ -725,26 +729,7 @@ bD = document.getElementsByClassName('bD')
 
     })
 
-    // console.log(this.pricess.gl001);
-    // console.log(this.pricess.hd001);
-    // console.log(this.pricess.ld001);
-    // console.log(this.pricess.ld003);
-    // console.log(this.pricess.nfalo1);
-    // console.log(this.pricess.pap001);
-    // console.log(this.pricess.pap003);
-    // console.log(this.pricess.pap005);
-    // console.log(this.pricess.pap007);
-    // console.log(this.pricess.pet001);
-    // console.log(this.pricess.pet003);
-    // console.log(this.pricess.pet005);
-
     this.menuCtrl.enable(true); // or true
-    // old code
-    // this.prices = this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25");
-    // this.prices.get().then(Document => {
-    //   this.glassArray.push(Document.data())
-    // });
-    let id = []
     // new code
     this.db.collection('price').get().then((snap) => {
       //  this.glassArray = [];
@@ -761,13 +746,13 @@ bD = document.getElementsByClassName('bD')
     })
    
     //  console.log(this.glassArray)
-    //  console.log(this.oldpriceglass)
-
-    // paper
-    // this.prices = this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6");
-    // this.prices.get().then(Document => {
-    //   this.PaperArray.push(Document.data())
-    // });
+    this.db.collection('pricehistory').doc("8FtqTT4N4mFpbI4DKc25").collection("glass").orderBy('timeglass', "desc").get().then(snap => {
+      this.glassArrayHistory = [];
+      snap.forEach(element => {
+      this.glassArrayHistory.push(element.data())
+      })
+      console.log(this.glassArrayHistory);
+    })
 
     // new code
     this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
@@ -798,13 +783,15 @@ bD = document.getElementsByClassName('bD')
 
       // this.pricess.gl001 = snap.data().newgl001;
     })
-    // console.log(this.PaperArray)
-
-    // Plastic Storage update
-    // this.prices = this.db.collection('price').doc("7O6KqClxLD780ltfC6i5");
-    // this.prices.get().then(Document => {
-    //   this.plasticarray.push(Document.data())
-    // });
+    console.log(this.PaperArray)
+    this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").get().then(snap => {
+      this.PaperArrayHistory = [];
+      snap.forEach(snap => {
+      this.PaperArrayHistory.push(snap.data())
+      // console.log(snap.data())
+      })
+      console.log(this.PaperArrayHistory);
+    })
 
     // new code
     this.db.collection('price').doc("7O6KqClxLD780ltfC6i5").onSnapshot(snap => {
@@ -826,28 +813,13 @@ bD = document.getElementsByClassName('bD')
       // this.pricess.pet005 = snap.data().newpet005;
     })
     // console.log(this.plasticarray)
-
-    this.db.collection('price').get().then((snap) => {
-      //  this.glassArray = [];
-       snap.forEach((res)=>{
-         id.push(res.id)
-       })
-       this.db.collection('price').doc(id[0]).get().then((res)=>{
-        console.log("my snap ", res.data());
-        this.plasticarray.push(res.data())
-       })
-      // this.oldpriceglass = snap.data().newgl001;
-
-      // this.pricess.gl001 = snap.data().newgl001;
+    this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").get().then(snap => {
+      this.plasticarrayHistory = [];
+      snap.forEach(element => {
+      this.plasticarrayHistory.push(element.data())
+      })
+      console.log(this.plasticarrayHistory);
     })
-
-      
-
-    // NFAL01 Storage update
-    // this.prices = this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE");
-    // this.prices.get().then(Document => {
-    //   this.NFAL001Array.push(Document.data())
-    // });
 
     // new code
     this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE").onSnapshot(snap => {
@@ -859,6 +831,13 @@ bD = document.getElementsByClassName('bD')
       // this.pricess.nfalo1 = snap.data().newnfal01;
     })
     // console.log(this.NFAL001Array);
+    this.db.collection('pricehistory').doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").orderBy('timePlastic', "desc").get().then(snap => {
+      this.NFAL001ArrayHistory = [];
+      snap.forEach(element => {
+      this.NFAL001ArrayHistory.push(element.data())
+      })
+      console.log(this.NFAL001ArrayHistory);
+    })
 
     this.db.collection('price').get().then((snap) => {
       //  this.glassArray = [];
@@ -874,7 +853,7 @@ bD = document.getElementsByClassName('bD')
       // this.pricess.gl001 = snap.data().newgl001;
     })
   }
-
+  
   getReclaimers() {
     // pulling from reclaimers
     this.db.collection('reclaimers').onSnapshot(snapshot => {
@@ -1141,28 +1120,6 @@ bD = document.getElementsByClassName('bD')
 
   }
 
-  Updateglass() {
-        // To update price :
-        this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
-          timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
-          newgl001: this.GH001price,
-          oldgl001: this.oldpriceglass,
-        }).then((data) => {
-          // console.log("Paper old storage successfully updated!");
-        });
-
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      timeAlum:moment().format('MMMM Do YYYY, h:mm:ss a'),
-      gl001: this.GH001price,
-     
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
-    this.clearInputsGlass();
-  }
-  // gl001: this.GH001price,
-
   async presentAlertUpdatePaper() {
     const alert = await this.alertController.create({
       header: 'Confirm!',
@@ -1365,37 +1322,60 @@ bD = document.getElementsByClassName('bD')
   }
 
   UpdatePaper() {
-        // To update price :
-        this.db.collection("price").doc("uk3Rla3tt9xgd8NivPJ6").update({
-          timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
-     
-          newpap005: this.PAP005price,
-          newpap007: this.PAP007price,
-          newpap001: this.PAP001price,
-          newpap003: this.PAP003price,
-          
-          oldpap005: this.oldpricepap005,
-          oldpap007: this.oldpricepap007,
-          oldpap001: this.oldpricepap001,
-          oldpap003: this.oldpricepap003,
-        }).then((data) => {
-          console.log("Paper old storage successfully updated!");
-        });
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      timePaper:moment().format('MMMM Do YYYY, h:mm:ss a'),
+    // Update Price History
+    this.db.collection("pricehistory").doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").doc().set({
+      timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
       pap005: this.PAP005price,
       pap007: this.PAP007price,
       pap001: this.PAP001price,
       pap003: this.PAP003price,
+    })
 
+    // To update price :
+    this.db.collection("price").doc("uk3Rla3tt9xgd8NivPJ6").update({
+      timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
+     
+      newpap005: this.PAP005price,
+      newpap007: this.PAP007price,
+      newpap001: this.PAP001price,
+      newpap003: this.PAP003price,
+          
+      oldpap005: this.oldpricepap005,
+      oldpap007: this.oldpricepap007,
+      oldpap001: this.oldpricepap001,
+      oldpap003: this.oldpricepap003,
+      }).then((data) => {
+        console.log("Paper old storage successfully updated!");
+      });
 
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
+    // // To update price :
+    // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    //   timePaper:moment().format('MMMM Do YYYY, h:mm:ss a'),
+    //   pap005: this.PAP005price,
+    //   pap007: this.PAP007price,
+    //   pap001: this.PAP001price,
+    //   pap003: this.PAP003price,
+    // }).then((data) => {
+    //   // console.log("Paper successfully updated!");
+    // });
+
     this.clearInputsPaper();
+
   }
+
   UpdatePlastic() {
+    // Update Price History
+    this.db.collection("pricehistory").doc("7O6KqClxLD780ltfC6i5").collection("plastic").doc().set({
+      timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
+ 
+      hd001: this.HD001price,
+      ld001: this.LD001price,
+      ld003: this.LD003price,
+      pet001: this.PET001price,
+      pet003: this.PET003price,
+      pet005: this.PET005price,
+    })
+
     // To update price :
     this.db.collection("price").doc("7O6KqClxLD780ltfC6i5").update({
       timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
@@ -1417,22 +1397,31 @@ bD = document.getElementsByClassName('bD')
     }).then((data) => {
       console.log("Paper old storage successfully updated!");
     });
-    // To update price :
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      timePlastic:moment().format('MMMM Do YYYY, h:mm:ss a'),
-      hd001: this.HD001price,
-      ld001: this.LD001price,
-      ld003: this.LD003price,
-      pet001: this.PET001price,
-      pet003: this.PET003price,
-      pet005: this.PET005price,
-    }).then((data) => {
-      // console.log("Paper successfully updated!");
-    });
+
+    // // To update price :
+    // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    //   timePlastic:moment().format('MMMM Do YYYY, h:mm:ss a'),
+    //   hd001: this.HD001price,
+    //   ld001: this.LD001price,
+    //   ld003: this.LD003price,
+    //   pet001: this.PET001price,
+    //   pet003: this.PET003price,
+    //   pet005: this.PET005price,
+    // }).then((data) => {
+    //   // console.log("Paper successfully updated!");
+    // });
+
     this.clearInputsPlastic();
+
   }
   
   UpdateAlum() {
+    // Update Price History
+    this.db.collection("pricehistory").doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").doc().set({
+      timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      nfal01: this.oldpriceNFAL01,
+    })
+
     // To update price :
     this.db.collection("price").doc("ChHHlFcUFzucHOzPpEgE").update({
       timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
@@ -1444,13 +1433,42 @@ bD = document.getElementsByClassName('bD')
       console.log("Paper old storage successfully updated!");
     });
 
-    this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
-      timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
-      nfalo1: this.NFAL01price,
-    }).then((data) => {
-      console.log("Paper successfully updated!");
-    });
+    // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    //   timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+    //   nfalo1: this.NFAL01price,
+    // }).then((data) => {
+    //   console.log("Paper successfully updated!");
+    // });
+
     this.clearInputsAlum();
+
+  }
+
+  Updateglass() {
+    this.db.collection("pricehistory").doc("8FtqTT4N4mFpbI4DKc25").collection("glass").doc().set({
+      timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      gl001: this.GH001price,
+    })
+
+        // To update price :
+        this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
+          timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+          newgl001: this.GH001price,
+          oldgl001: this.oldpriceglass,
+        }).then((data) => {
+          // console.log("Paper old storage successfully updated!");
+        });
+
+    // // To update price :
+    // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+    //   timeAlum:moment().format('MMMM Do YYYY, h:mm:ss a'),
+    //   gl001: this.GH001price,
+     
+    // }).then((data) => {
+    //   // console.log("Paper successfully updated!");
+    // });
+
+    this.clearInputsGlass();
   }
 
   clearInputsPaper() {

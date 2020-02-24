@@ -319,17 +319,11 @@ ion-col {
     transform: translate(10%, -10%);
   }
 }
-
-.RecycleLogo2 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -10;
-  width: 300px;
-  height: 300px;
-  opacity: 0.5;
-  overflow: hidden;
+#Opaque{
+  opacity: 0.3;
 }
+
+
 
 .Recycle-Bins {
   position: absolute;

@@ -224,7 +224,6 @@ export class Profile2Page implements OnInit {
     // }
 
     myBackButton(){
-      
       this.location.back();
       // this.menuCtrl.enable(true);
     }

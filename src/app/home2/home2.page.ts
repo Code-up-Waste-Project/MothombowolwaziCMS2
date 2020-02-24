@@ -1,15 +1,13 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
-import { SelectMultipleControlValueAccessor } from '@angular/forms';
-import { MenuController } from '@ionic/angular';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { File } from '@ionic-native/file/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { Platform } from '@ionic/angular';
-import { Router, ActivatedRoute  } from '@angular/router';
-import { ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Chart } from 'chart.js';
+import { computeStackId } from '@ionic/angular/dist/directives/navigation/stack-utils';
+// import { ModalpopupPage } from '../modalpopup/modalpopup.page';
+import * as moment from 'moment'
+import { element } from 'protractor';
+import { format } from 'url';
 
 @Component({
   selector: 'app-home2',
@@ -18,420 +16,3037 @@ import { ModalController, ToastController, LoadingController, AlertController } 
 })
 export class Home2Page implements OnInit {
 
+  viewBackdrop = false;
+
+  @ViewChild('barChart', {static: false}) barChart;
+  @ViewChild('barChart1', {static: false}) barChart1;
+  @ViewChild('barChart2', {static: false}) barChart2;
+
+//store element into a variable
+imgGraph = document.getElementsByClassName('inbgraph');
+imgGraph2 = document.getElementsByClassName('inbgraph2');
+imgGraph3 = document.getElementsByClassName('inbgraph3');
+ 
+  GH001price;
+  NFAL01price;
+  PAP005price;
+  PAP007price;
+  PAP001price;
+  PAP003price;
+  HD001price;
+  LD001price;
+  LD003price;
+  PET001price;
+  PET003price;
+  PET005price;
+ 
+ pricess = {
+   gl001: null ,
+   hd001: null,
+   pap005: null,
+   pap007: null,
+   pap001: null,
+   pap003: null,
+   ld003: null,
+   ld001: null,
+   nfalo1: null,
+   pet005: null,
+   pet003: null,
+   pet001: null,
+   time:null
+ };
+
+  oldpriceNFAL01;
+  oldpriceglass;
+
+  oldpricehd001;
+  oldpriceld001;
+  oldpriceld003;
+  oldpricepet003;
+  oldpricepet001;
+  oldpricepet005;
+
+  oldpricepap001;
+  oldpricepap005;
+  oldpricepap003;
+  oldpricepap007;
+ 
+  price = [];
+  prices;
+
+  bars: any;
+  colorArray: any;
+
+  inboundss=[];
+  newInbound=[];
+
+  burgercontent: any = document.getElementsByClassName('burgercontent');
+  burger: boolean = false;
+
+  /* Div */
+  editDiv: any = document.getElementsByClassName('editDiv');
+  edit: boolean = false;
+
+  deleteDiv: any = document.getElementsByClassName('deleteDiv');
+  delete: boolean = false;
+
+  createDiv: any = document.getElementsByClassName('createDiv');
+  create: boolean = false;
+
+
+  paperDiv: any = document.getElementsByClassName('paperDiv');
+  paper: boolean = false;
+
+  glasshDiv: any = document.getElementsByClassName('glassDiv');
+  glassh: boolean = false;
+
+  plasticDiv: any = document.getElementsByClassName('plasticDiv');
+  plastic: boolean = false;
+
+  aluDiv: any = document.getElementsByClassName('aluDiv');
+  alu: boolean = false;
+
+  fix: any = document.getElementsByClassName('fix');
+
+  // Reclaimer
+  reclaimerID;
+  reclaimername;
+  reclaimersurname;
+  reclaimerDate;
+
+  // inBound
+  InID;
+  indate;
+  inDriverName;
+  inRegistarionNumberPlates;
+  inovarallMass;
+
+   // OutBound
+   id;
+   outdate;
+   outDriverName;
+   outRegistarionNumberPlates;
+   outovarallMass;
+
+   newreclaimer = [];
+   outbound = [];
+   inbound = [];
+
+  // @ViewChild('barChart', {static: false}) barChart;
+  // bars: any;
+  // colorArray: any;
+
+  // user infor
+  admin = [];
+  Newadmin = [];
+
   db = firebase.firestore();
+  profiles;
+  profile = {
+  image: null,
+  name: null,
+  addres: null,
+  surname: null,
+  position: null,
+  isAdmin: true,
+  // ActiveAcount : Boolean,
+  // userid:firebase.auth().currentUser.uid,
+  // email:firebase.auth().currentUser.email
+    };
+  isAdmin: any;
+//inbound
+  inboundGH001;
+  inboundHD001;
+  inboundLD001;
+  inboundLD003;
+  inboundNFAL01;
+  inboundPAP001;
+  inboundPAP003;
+  inboundPAP005;
+  inboundPAP007;
+  inboundPET001;
+  inboundPET003;
+  inboundPET005;
 
-  dates = new Date();
-  id;
-  id2;
-  ids;
-  Outbound;
-  ViewOutbound = [];
-  testArray = [];
-  time;
+  //Reclaomers
+  GH001Mass;
+  HD001Mass; 
+  LD001Mass; 
+  LD003Mass;
+  NFAL01Mass; 
+  PAP001Mass;
+  PAP003Mass;
+  PAP007Mass; 
+  PET001Mass;
+  PET003Mass;
+  PET005Mass;
+  PAP005Mass
 
-  // printDataName = [];
-  // printDataNumber = [];
+//outbound
+  GL001
+  NFAL01;
+  PAP005;
+  PAP007;
+  PAP003;
+  PAP001;
+  HD001;
+  LD001;
+  LD003;
+  PET001;
+  PET003;
+  PET005;
 
-  PDFArray2 = {};
-  PDFArrayPrint = [];
-
-  letterObj = {
-    to: '',
-    from: '',
-    text: ''
-  };
-
-  pdfObj = null;
-
-  DriverName;
-  RegistarionNumberPlates;
-  overallStorage;
-  overallStoragez;
-  TruckSourcess;
-  Destination;
-
+//storage
   GH001storagemass;
   NFAL01storagemass;
+
   PAP005storagemass;
   PAP007storagemass;
   PAP001storagemass;
   PAP003storagemass;
+
   HD001storagemass;
   LD001storagemass;
   LD003storagemass;
   PET001storagemass;
   PET003storagemass;
   PET005storagemass;
-  // substrings
-  GH001storagemassz;
-  NFAL01storagemassz;
-  PAP005storagemassz;
-  PAP007storagemassz;
-  PAP001storagemassz;
-  PAP003storagemassz;
-  HD001storagemassz;
-  LD001storagemassz;
-  LD003storagemassz;
-  PET001storagemassz;
-  PET003storagemassz;
-  PET005storagemassz;
 
-  GH001 = 'GH001';
-  NFAL01 = 'NFAL01';
-  PAP005 = 'PAP005';
-  PAP007 = 'PAP007';
-  PAP001 = 'PAP001';
-  PAP003 = 'PAP003';
-  HD001 = 'HD001';
-  LD001 = 'LD001';
-  LD003 = 'LD003';
-  PET001 = 'PET001';
-  PET003 = 'PET003';
-  PET005 = 'PET005';
-  Mass = 'MASS';
+  GH001: string;
+  nFAL01: string;
 
-  printDriveName = [];
-  printNoPlates = [];
-  printDestination = [];
-  printTruckSource = [];
-  printOverallMass = [];
+  Totalpaperinbound: number = 0;
+  Totalpapersinbound: string;
+  Totalplasticinbound: number = 0;
+
+  Totalpaper: number = 0;
+  Totalplastic: number = 0;
+
+  Totalplasticz: string;
+  ActiveAcount: Boolean;
+  glass: boolean = false;
+  glassDiv: any = document.getElementsByClassName('glassDiv');
+
+  // code added by nathi 3 feb
+  // beginningDate = Date.now() - 1514184967000;
+  // beginningDateObject = new Date(this.beginningDate);
+
+  InboundGraph = [];
+  outBoundGraph = [];
+  inboundGraphDisplay = [];
+  outBoundGraphDisplayDay = [];
+  outBoundGraphDisplayWeek = [];
+  outBoundGraphDisplayMonth = [];
+  outGH001 = [];
+  ReclaimerGraph = [];
+  datesss;
+  dateq;
+  dateqq;
+  datez;
+
+  weekTime;
+
+  outboundDay;
+  outboundWeek;
+  outboundMonth;
+  outboundYear;
+
+  viewingGraph = ''
+  xAxisSize = 5
+  yAxisSize = 3
+
+  // variebles for graphs                                     inbound
+  // day
+  totalInBoundDayGL001 = 0;
+  totalInBoundDayNFAL01 = 0;
+  totalInBoundDayPAP005 = 0;
+  totalInBoundDayPAP007 = 0;
+  totalInBoundDayPAP003 = 0;
+  totalInBoundDayPAP001 = 0;
+  totalInBoundDayHD001 = 0;
+  totalInBoundDayLD001 = 0;
+  totalInBoundDayLD003 = 0;
+  totalInBoundDayPET001 = 0;
+  totalInBoundDayPET003 = 0;
+  totalInBoundDayPET005 = 0;
+  // week
+  totalInBoundWeekGL001 = 0;
+  totalInBoundWeekNFAL01 = 0;
+  totalInBoundWeekPAP005 = 0;
+  totalInBoundWeekPAP007 = 0;
+  totalInBoundWeekPAP003 = 0;
+  totalInBoundWeekPAP001 = 0;
+  totalInBoundWeekHD001 = 0;
+  totalInBoundWeekLD001 = 0;
+  totalInBoundWeekLD003 = 0;
+  totalInBoundWeekPET001 = 0;
+  totalInBoundWeekPET003 = 0;
+  totalInBoundWeekPET005 = 0;
+  // Month
+  totalInBoundMonthGL001 = 0;
+  totalInBoundMonthNFAL01 = 0;
+  totalInBoundMonthPAP005 = 0;
+  totalInBoundMonthPAP007 = 0;
+  totalInBoundMonthPAP003 = 0;
+  totalInBoundMonthPAP001 = 0;
+  totalInBoundMonthHD001 = 0;
+  totalInBoundMonthLD001 = 0;
+  totalInBoundMonthLD003 = 0;
+  totalInBoundMonthPET001 = 0;
+  totalInBoundMonthPET003 = 0;
+  totalInBoundMonthPET005 = 0;
+
+  // variebles for graphs                                   outbound
+  // day
+  totaloutBoundDayGL001 = 0;
+  totaloutBoundDayNFAL01 = 0;
+  totaloutBoundDayPAP005 = 0;
+  totaloutBoundDayPAP007 = 0;
+  totaloutBoundDayPAP003 = 0;
+  totaloutBoundDayPAP001 = 0;
+  totaloutBoundDayHD001 = 0;
+  totaloutBoundDayLD001 = 0;
+  totaloutBoundDayLD003 = 0;
+  totaloutBoundDayPET001 = 0;
+  totaloutBoundDayPET003 = 0;
+  totaloutBoundDayPET005 = 0;
+  // week
+  totaloutBoundWeekGL001 = 0;
+  totaloutBoundWeekNFAL01 = 0;
+  totaloutBoundWeekPAP005 = 0;
+  totaloutBoundWeekPAP007 = 0;
+  totaloutBoundWeekPAP003 = 0;
+  totaloutBoundWeekPAP001 = 0;
+  totaloutBoundWeekHD001 = 0;
+  totaloutBoundWeekLD001 = 0;
+  totaloutBoundWeekLD003 = 0;
+  totaloutBoundWeekPET001 = 0;
+  totaloutBoundWeekPET003 = 0;
+  totaloutBoundWeekPET005 = 0;
+  // Month
+  totaloutBoundMonthGL001 = 0;
+  totaloutBoundMonthNFAL01 = 0;
+  totaloutBoundMonthPAP005 = 0;
+  totaloutBoundMonthPAP007 = 0;
+  totaloutBoundMonthPAP003 = 0;
+  totaloutBoundMonthPAP001 = 0;
+  totaloutBoundMonthHD001 = 0;
+  totaloutBoundMonthLD001 = 0;
+  totaloutBoundMonthLD003 = 0;
+  totaloutBoundMonthPET001 = 0;
+  totaloutBoundMonthPET003 = 0;
+  totaloutBoundMonthPET005 = 0;
+
+  // variebles for graphs                                     Reclaimers
+  // day
+  totalReclaimerDayGL001 = 0;
+  totalReclaimerDayNFAL01 = 0;
+  totalReclaimerDayPAP005 = 0;
+  totalReclaimerDayPAP007 = 0;
+  totalReclaimerDayPAP003 = 0;
+  totalReclaimerDayPAP001 = 0;
+  totalReclaimerDayHD001 = 0;
+  totalReclaimerDayLD001 = 0;
+  totalReclaimerDayLD003 = 0;
+  totalReclaimerDayPET001 = 0;
+  totalReclaimerDayPET003 = 0;
+  totalReclaimerDayPET005 = 0;
+  // week
+  totalReclaimerWeekGL001 = 0;
+  totalReclaimerWeekNFAL01 = 0;
+  totalReclaimerWeekPAP005 = 0;
+  totalReclaimerWeekPAP007 = 0;
+  totalReclaimerWeekPAP003 = 0;
+  totalReclaimerWeekPAP001 = 0;
+  totalReclaimerWeekHD001 = 0;
+  totalReclaimerWeekLD001 = 0;
+  totalReclaimerWeekLD003 = 0;
+  totalReclaimerWeekPET001 = 0;
+  totalReclaimerWeekPET003 = 0;
+  totalReclaimerWeekPET005 = 0;
+  // Month
+  totalReclaimerMonthGL001 = 0;
+  totalReclaimerMonthNFAL01 = 0;
+  totalReclaimerMonthPAP005 = 0;
+  totalReclaimerMonthPAP007 = 0;
+  totalReclaimerMonthPAP003 = 0;
+  totalReclaimerMonthPAP001 = 0;
+  totalReclaimerMonthHD001 = 0;
+  totalReclaimerMonthLD001 = 0;
+  totalReclaimerMonthLD003 = 0;
+  totalReclaimerMonthPET001 = 0;
+  totalReclaimerMonthPET003 = 0;
+  totalReclaimerMonthPET005 = 0;
+
+  inboundweight = 0;
+  outboundweight = 0;
+  Reclaimerweight = 0;
+
+   //graghdatainbound
+  inboundgh001 = 0;
+  inboundnfalo1 = 0;
+  inboundpap005 = 0;
+  inboundpap007 = 0;
+  inboundpap001 = 0;
+  inboundpap003 = 0;
+  inboundhd001 = 0;
+  inboundld001 = 0;
+  inboundld003 = 0;
+  inboundpet001 = 0;
+  inboundpet003 = 0;
+  inboundpet005 = 0;
+
+   inboundpaper = 0;
+   inboundAlum = 0;
+   inboundplastic = 0;
+
+  //outboundgraphs
+  outboundglass = 0;
+  outboundpaper = 0;
+  outboundAlum = 0;
+  outboundplastic = 0;
+
+
+  //reclaimer
+  reclaimergh001mass = 0;
+  reclaimernfa01Mass = 0;
+  reclaimerpap005mass = 0;
+  reclaimerpap007Mass = 0;
+  reclaimerpap001mass = 0;
+  reclaimerpap003mass = 0;
+  reclaimerhd001mass = 0;
+  reclaimerld001mass = 0;
+  reclaimerld003mass = 0;
+  reclaimerpet001mass = 0;
+  reclaimerpet003mass = 0;
+  reclaimerpet005mass = 0;
+  //outboundgraphs
+
+  // outbound Day
+  outboundgh001 = 0;
+  outboundnfal01 = 0;
+  outboundpap005 = 0;
+  outboundpap007 = 0;
+  outboundpap003 = 0;
+  outboundpap001 = 0;
+  outboundhd001 = 0;
+  outboundld001 = 0;
+  outboundld003 = 0;
+  outboundpet003 = 0;
+  outboundpet001 = 0;
+  outboundpet005 = 0;
+
+  reclaimerglass =0;
+  reclaimerpaper =0;
+  reclaimerAlum =0;
+  reclaimerplastic =0;
+
+  // storage Variebles
+  NFAL001Array = [];
+  NFAL001ArrayHistory = [];
+  plasticarray = [];
+  plasticarrayHistory = [];
+  PaperArray = [];
+  PaperArrayHistory = [];
+  PaperArrayz = [];
+  glassArray = [];
+  glassArrayHistory = [];
+
+  bD = document.getElementsByClassName('bD')
 
   constructor(
-    public toastController: ToastController,
     private modalcontroller: ModalController,
-    public loadingController: LoadingController,
+    private menuCtrl: MenuController,
+    public route: Router,
+    private render: Renderer2,
     public alertController: AlertController,
-    public activatedRoute: ActivatedRoute,
-    public menuCtrl: MenuController,
-    private content: ElementRef,
-    public rendered: Renderer2,
-    private plt: Platform,
-    private file: File,
-    private fileOpener: FileOpener
   ) {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.getOutBound(this.id);
-      // console.log(this.getOutBound);
-
-    this.getDatafirebase(this.id);
+    // code by nathi 3 feb
+    this.pullWeeklyInbound();
+    this.PullDayData();
+    // console.log("im working ninja");
    }
 
-   ngOnInit() {
-  }
-
-   getDatafirebase(id) {
-    this.db.collection('outbound').doc(id).onSnapshot(element => {
-      // element.forEach(element => {
-        let DriverName = {};
-        let RegistarionNumberPlates = {};
-        let overallStorage = {};
-        let TruckSourcess = {};
-        let Destination = {};
-        let time = {};
-
-        let GH001storagemass = {};
-        let NFAL01storagemass = {};
-        let PAP005storagemass = {};
-        let PAP007storagemass = {};
-        let PAP001storagemass = {};
-        let PAP003storagemass = {};
-        let HD001storagemass = {};
-        let LD001storagemass = {};
-        let LD003storagemass = {};
-        let PET001storagemass = {};
-        let PET003storagemass = {};
-        let PET005storagemass = {};
-
-        DriverName = this.DriverName = element.data().DriverName;
-        RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        overallStorage = this.overallStorage = element.data().ovarallMass;
-        this.overallStoragez = (String(overallStorage).substring(0, 6));
-        TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-        Destination = this.Destination = element.data().Destination;
-        console.log(this.DriverName);
-        console.log(this.RegistarionNumberPlates);
-        console.log(this.overallStorage);
-        console.log(this.TruckSourcess);
-        console.log(this.Destination);
-        console.log(this.overallStoragez);
-
-        this.ids = element.id;
-        console.log(this.ids);
-
-        time = this.time = element.data().date;
-        GH001storagemass = this.GH001storagemass = element.data().GH001;
-        this.GH001storagemassz = (String(GH001storagemass).substring(0, 6));
-        NFAL01storagemass = this.NFAL01storagemass = element.data().NFAL01;
-        this.NFAL01storagemassz = (String(NFAL01storagemass).substring(0, 6));
-        PAP005storagemass = this.PAP005storagemass = element.data().PAP005;
-        this.PAP005storagemassz = (String(PAP005storagemass).substring(0, 6));
-        PAP007storagemass = this.PAP007storagemass = element.data().PAP007;
-        this.PAP007storagemassz = (String(PAP007storagemass).substring(0, 6));
-        PAP001storagemass = this.PAP001storagemass = element.data().PAP001;
-        this.PAP001storagemassz = (String(PAP001storagemass).substring(0, 6));
-        PAP003storagemass = this.PAP003storagemass = element.data().PAP003;
-        this.PAP003storagemassz = (String(PAP003storagemass).substring(0, 6));
-        HD001storagemass = this.HD001storagemass = element.data().HD001;
-        this.HD001storagemassz = (String(HD001storagemass).substring(0, 6));
-        LD001storagemass = this.LD001storagemass = element.data().LD001;
-        this.LD001storagemassz = (String(LD001storagemass).substring(0, 6));
-        LD003storagemass = this.LD003storagemass = element.data().LD003;
-        this.LD003storagemassz = (String(LD003storagemass).substring(0, 6));
-        PET001storagemass = this.PET001storagemass = element.data().PET00;
-        this.PET001storagemassz = (String(PET001storagemass).substring(0, 6));
-        PET003storagemass = this.PET003storagemass = element.data().PET003;
-        this.PET003storagemassz = (String(PET003storagemass).substring(0, 6));
-        PET005storagemass = this.PET005storagemass = element.data().PET005;
-        this.PET005storagemassz = (String(PET005storagemass).substring(0, 6));
-        // console.log(this.GH001storagemass);
-        // console.log(this.NFAL01storagemass);
-        // console.log(this.PAP005storagemass);
-        // console.log(this.PAP007storagemass);
-        // console.log(this.PAP001storagemass);
-        // console.log(this.PAP003storagemass);
-        // console.log(this.HD001storagemass);
-        // console.log(this.LD001storagemass);
-        // console.log(this.LD003storagemass);
-        // console.log(this.PET001storagemass);
-        // console.log(this.PET003storagemass);
-        // console.log(this.PET005storagemass);
-        // console.log(this.GH001storagemassz);
-        // console.log(this.NFAL01storagemassz);
-        // console.log(this.PAP005storagemassz);
-        // console.log(this.PAP007storagemassz);
-        // console.log(this.PAP001storagemassz);
-        // console.log(this.PAP003storagemassz);
-        // console.log(this.HD001storagemassz);
-        // console.log(this.LD001storagemassz);
-        // console.log(this.LD003storagemassz);
-        // console.log(this.PET001storagemassz);
-        // console.log(this.PET003storagemassz);
-        // console.log(this.PET005storagemassz);
-
-        this.testArray.push({
-          DriverName: this.DriverName,
-          RegistarionNumberPlates: this.RegistarionNumberPlates,
-          overallStorage: this.overallStorage,
-          TruckSourcess: this.TruckSourcess,
-          Destination: this.Destination,
-          GH001storagemass: this.GH001storagemassz,
-          NFAL01storagemass: this.NFAL01storagemassz,
-          PAP005storagemass: this.PAP005storagemassz,
-          PAP007storagemass: this.PAP007storagemassz,
-          PAP001storagemass: this.PAP001storagemassz,
-          PAP003storagemass: this.PAP003storagemassz,
-          HD001storagemass: this.HD001storagemassz,
-          LD001storagemass: this.LD001storagemassz,
-          LD003storagemass: this.LD003storagemassz,
-          PET001storagemass: this.PET001storagemassz,
-          PET003storagemass: this.PET003storagemassz,
-          PET005storagemass: this.PET005storagemassz,
-        });
-        console.log(this.testArray);
-
-        this.PDFArray2 = {
-          GH001: this.GH001storagemassz,
-          NFAL01: this.NFAL01storagemassz,
-          PAP005: this.PAP005storagemassz,
-          PAP007: this.PAP007storagemassz,
-          PAP001: this.PAP001storagemassz,
-          PAP003: this.PAP003storagemassz,
-          HD001: this.HD001storagemassz,
-          LD001: this.LD001storagemassz,
-          LD003: this.LD003storagemassz,
-          PET001: this.PET001storagemassz,
-          PET003: this.PET003storagemassz,
-          PET005: this.PET005storagemassz,
-          overallMass: this.overallStoragez
-        };
-        console.log(this.PDFArray2);
-
-        // tslint:disable-next-line: forin
-        for (let key in this.PDFArray2) {
-        // console.log(key);
-        if (this.PDFArray2[key] === '0') {
-          // console.log('Skipped because its 0');
-        } else if (this.PDFArray2[key] !== '0') {
-          this.PDFArrayPrint.push({name : key, number : this.PDFArray2[key]});
+      //increase the size of clicked graph
+      transformGraph(graph) {
+        if (this.viewingGraph == graph) {
+          this.viewingGraph = ''
+          this.viewBackdrop = false
+        } else {
+          this.viewingGraph = graph
+          this.viewBackdrop = true;
+        }
+        if (this.viewBackdrop) {
+          this.render.setStyle(this.bD[0],'display','block')
+        } else {
+          setTimeout(() => {
+            console.log('çloses');
+            
+            this.render.setStyle(this.bD[0],'display','none')
+          }, 500);
         }
       }
-        console.log(this.PDFArrayPrint);
-      });
-      // create PDF
-    this.createPdf();
-    // });
-   }
 
-  calculateOverall() {
-    this.overallStorage = this.GH001storagemassz + this.HD001storagemassz + this.LD001storagemassz + this.LD003storagemassz +
-    this.NFAL01storagemassz + this.PAP001storagemassz + this.PAP003storagemassz + this.PAP005storagemassz + this.PAP007storagemassz +
-    this.PET001storagemassz + this.PET003storagemassz + this.overallStoragez;
-    // console.log(this.overallStorage);
+      //chart
+      updated
 
-    // GH001: this.GH001storagemassz,
-    //       NFAL01: this.NFAL01storagemassz,
-    //       PAP005: this.PAP005storagemassz,
-    //       PAP007: this.PAP007storagemassz,
-    //       PAP001: this.PAP001storagemassz,
-    //       PAP003: this.PAP003storagemassz,
-    //       HD001: this.HD001storagemassz,
-    //       LD001: this.LD001storagemassz,
-    //       LD003: this.LD003storagemassz,
-    //       PET001: this.PET001storagemassz,
-    //       PET003: this.PET003storagemassz,
-    //       PET005: this.PET005storagemassz,
-    //       overallMass: this.overallStoragez
+      updatedoutbound
+      updateReclaimer
 
-  }
+      ionViewDidEnter() {
 
-  createPdf() {
-    let printDataName = [];
-    let printDataNumber = [];
+      //pulling data
+      //inbound
+      // this.inboundgh001=0;
+      this.inboundpap005=0;
+      this.inboundAlum =0;
+      this.inboundweight =0;
+      this.inboundplastic =0;
+      firebase.firestore().collection('inbounds').get().then(res=>{
+        res.forEach(val=>{
 
-    this.PDFArrayPrint.forEach((item) => {
-      printDataName.push(item.name);
-      printDataNumber.push(item.number);
-    });
-    console.log(this.PDFArrayPrint);
-    console.log(printDataName);
-    console.log(printDataNumber);
+      // console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
+      this.inboundweight =this.inboundweight 
+      +parseFloat(val.data().inboundGH001) +
+      +parseFloat(val.data().inboundNFAL01) +
 
-    var docDefinition = {
-     
-      content: [
-        { text: 'Mothombowolwazi', style: 'header' },
-        // { text: new Date().toTimeString(), alignment: 'right' },    printDataNumber.push(String(item.number).substring(0, 4));
-        {
-  			  image: 'data:image/png;base64,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',
-          width: 150,
-          height: 50,
-          fit: [100, 100], alignment: "right", marginBottom: 10,
-  		  },
+      +parseFloat(val.data().inboundPAP001) +
+      +parseFloat(val.data().inboundPAP003) +
+      +parseFloat(val.data().inboundPAP005) +
+      +parseFloat(val.data().inboundPAP007) +
 
-        {
-          alignment: 'justify',
-          columns: [
-            {
-              text: 'Drive Name', style: 'subheader'
-            },
-            {
-              text: this.DriverName, style: 'subheader'
-            },
-          ]
-        },
-        {
-          alignment: 'justify',
-          columns: [
-            {
-              text: 'Registarion Number Plates', style: 'subheader'
-            },
-            {
-              text: this.RegistarionNumberPlates, style: 'subheader'
-            },
-          ]
-        },
-        {
-          alignment: 'justify',
-          columns: [
-            {
-              text: 'Truck Source', style: 'subheader'
-            },
-            {
-              text: this.TruckSourcess, style: 'subheader'
-            },
-          ]
-        },
-        {
-          alignment: 'justify',
-          columns: [
-            {
-              text: 'Destination', style: 'subheader'
-            },
-            {
-              text: this.Destination, style: 'subheader'
-            },
-          ]
-        },
+      +parseFloat(val.data().inboundHD001) +
+      +parseFloat(val.data().inboundLD001) +
+      +parseFloat(val.data().inboundLD003) +
+      +parseFloat(val.data().inboundPET001) +
+      +parseFloat(val.data().inboundPET003) +
+      +parseFloat(val.data().inboundPET005) ;
+      
+      // console.log(new Date(val.data().time.seconds*1000))
+      this.updated =(new Date(val.data().time)).toDateString();
 
-        { text: '', style: 'subheader' },
-        { text: this.letterObj.from },
+      this.inboundgh001 =this.inboundgh001 +parseFloat(val.data().inboundGH001)
+      this.inboundnfalo1 =this.inboundnfalo1 +parseFloat(val.data().inboundNFAL01)
 
-        { text: '', style: 'subheader' },
-        this.letterObj.to,
+      this.inboundpap005 =this.inboundpap005 +parseFloat(val.data().inboundPAP005)
+      this.inboundpap007 =this.inboundpap007  +parseFloat(val.data().inboundPAP007)
+      this.inboundpap001 =this.inboundpap001 +parseFloat(val.data().inboundPAP001)
+      this.inboundpap003 =this.inboundpap003 +parseFloat(val.data().inboundPAP003)
 
-        {
+      this.inboundhd001 =this.inboundhd001 +parseFloat(val.data().inboundHD001)
+      this.inboundld001 =this.inboundld001 +parseFloat(val.data().inboundLD001)
+      this.inboundld003 =this.inboundld003 +parseFloat(val.data().inboundLD003)
+      this.inboundpet001 =this.inboundpet001 +parseFloat(val.data().inboundPET001)
+      this.inboundpet003 =this.inboundpet003 +parseFloat(val.data().inboundPET003)
+      this.inboundpet005 =this.inboundpet005 +parseFloat(val.data().inboundPET005)
 
-          layout: 'lightHorizontalLines',
-          table: {
-    
-            widths: ['33%', '33%', '33%'],
-    
-            body: [
-              ["name", "quantity", "Mass",],
-              [ printDataName, '', printDataNumber ],
-              // [{ text: printDataName, color: 'gray' }, '', { text: printDataNumber, color: 'gray', Border: false }],
-              // [{ text: 'Item 3', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-              // [{ text: 'Item 2', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-              // [{ text: 'Status', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-              // [{ text: 'Item 45', color: 'gray' }, '', { text: '100', color: 'gray', Border: false }],
-            ]
-          }
-    
-        },
-      ],
+      //paper
+      this.inboundpaper = this.inboundpaper 
+      +parseFloat(val.data().inboundPAP005) 
+      +parseFloat(val.data().inboundPAP007) 
+      +parseFloat(val.data().inboundPAP003) 
+      +parseFloat(val.data().inboundPAP001);
 
-      // footer: {
-      //   columns: [
-      //     'Printed Date',
-      //     { text: new Date().toTimeString(), alignment: 'right' }
-      //   ]
-      // },
+      //aluminium
+      this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
 
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-        },
-        subheader: {
-          fontSize: 13,
-          bold: true,
-          margin: [0, 15, 0, 0]
-        },
-        story: {
-          italic: true,
-          alignment: 'center',
-          width: '50%',
-        }
+      //plastic
+      this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
+      +parseFloat(val.data().inboundHD001)
+      +parseFloat(val.data().inboundLD001)
+      +parseFloat(val.data().inboundLD003)
+      +parseFloat(val.data().inboundPET003)
+      +parseFloat(val.data().inboundPET001) 
+        })
+        this.createBarChart();
+      })
+
+      //outbound
+
+      this.outboundglass =0;
+      this.outboundpaper =0;
+      this.outboundAlum =0;
+      this.outboundplastic =0;
+
+      this.outboundweight =0;
+
+      firebase.firestore().collection('outbound').get().then(res=>{
+        res.forEach(val=>{
+          // console.log(val.data().GH001+val.data().GH001)
+          this.outboundweight =this.outboundweight 
+          +parseFloat(val.data().GH001)
+          +parseFloat(val.data().NFAL01)
+
+          +parseFloat(val.data().PAP005)
+          +parseFloat(val.data().PAP007)
+          +parseFloat(val.data().PAP001)
+          +parseFloat(val.data().PAP003)
+
+          +parseFloat(val.data().HD001)
+          +parseFloat(val.data().LD001)
+          +parseFloat(val.data().LD003)
+          +parseFloat(val.data().PET00);
+          +parseFloat(val.data().PET003)
+          +parseFloat(val.data().PET005);
+      
+        // console.log(new Date(val.data().date.seconds*1000))
+        this.updatedoutbound =(new Date(val.data().date)).toDateString();
+          // console.log('ountglass',  this.outboundglass)
+          this.outboundgh001 =this.outboundgh001 +parseFloat(val.data().GH001)
+          this.outboundnfal01 =this.outboundnfal01 +parseFloat(val.data().NFAL01)
+
+          this.outboundpap005 =this.outboundpap005 +parseFloat(val.data().PAP005)
+          this.outboundpap007=this.outboundpap007 +parseFloat(val.data().PAP007)
+          this.outboundpap003 =this.outboundpap003 +parseFloat(val.data().PAP003)
+          this.outboundpap001 =this.outboundpap001 +parseFloat(val.data().PAP001)
+
+          this.outboundhd001 =this.outboundhd001 +parseFloat(val.data().HD001)
+          this.outboundld001 =this.outboundld001 +parseFloat(val.data().LD001)
+          this.outboundld003 =this.outboundld003 +parseFloat(val.data().LD003)
+          this.outboundpet003 =this.outboundpet003 +parseFloat(val.data().PET003)
+          this.outboundpet001 =this.outboundpet001 +parseFloat(val.data().PET001)
+          this.outboundpet005 =this.outboundpet005 +parseFloat(val.data().PET005)
+
+          //paper
+          // console.log('outboundpaper',this.outboundpaper)
+          this.outboundpaper = this.outboundpaper 
+          +parseFloat(val.data().PAP005) 
+          +parseFloat(val.data().PAP007) 
+          +parseFloat(val.data().PAP003) 
+          +parseFloat(val.data().PAP001);
+          
+          //aluminium
+          // console.log('outboundAluminium', this.outboundAlum)
+          this.outboundAlum = this.outboundAlum  +parseFloat(val.data().NFAL01) 
+          
+          //plastic
+          // console.log('outplastic',this.outboundplastic)
+          this.outboundplastic =this.outboundplastic + +parseFloat(val.data().HD001) 
+          +parseFloat(val.data().HD001)
+          +parseFloat(val.data().LD001)
+          +parseFloat(val.data().LD003)
+          +parseFloat(val.data().PET003)
+          +parseFloat(val.data().PET001) 
+        })
+        this.createBarChart1();
+      })
+
+      //reclaimer
+      this.reclaimerglass =0;
+      this.reclaimerpaper =0;
+      this.reclaimerAlum =0;
+      this.reclaimerplastic =0;
+      this.Reclaimerweight =0;
+      firebase.firestore().collection('reclaimers').get().then(res=>{
+      res.forEach(val=>{
+      // console.log(val.data().GH001Mass+val.data().HD001Mass)
+      this.Reclaimerweight =this.Reclaimerweight 
+      +parseFloat(val.data().GH001Mass)
+      +parseFloat(val.data().HD001Mass)
+      +parseFloat(val.data().LD001Mass)
+      +parseFloat(val.data().LD003Mass)
+      +parseFloat(val.data().NFAL01Mass)
+      +parseFloat(val.data().PAP001Mass)
+      +parseFloat(val.data().PAP003Mass)
+      +parseFloat(val.data().PAP005Mass)
+      +parseFloat(val.data().PAP007Mass)
+      +parseFloat(val.data().PEP005Mass)
+      +parseFloat(val.data().PET001Mass)
+      +parseFloat(val.data().PET003Mass);
+
+      // console.log(new Date(val.data().date.seconds*1000))
+      this.updateReclaimer =(new Date(val.data().date.seconds*1000)).toDateString();
+      this.reclaimerglass =0;
+      this.reclaimerpaper =0;
+      this.reclaimerAlum =0;
+      this.reclaimerplastic =0;
+
+      //glass
+      // console.log('glassreclaimer',this.reclaimerglass)
+      this.reclaimergh001mass  = this.reclaimergh001mass  +parseFloat(val.data().GH001Mass)
+      this.reclaimernfa01Mass  = this.reclaimernfa01Mass  +parseFloat(val.data().NFAL01Mass)
+
+      this.reclaimerpap005mass  = this.reclaimerpap005mass  +parseFloat(val.data().PAP005Mass)
+      this.reclaimerpap007Mass  = this.reclaimerpap007Mass  +parseFloat(val.data().PAP007Mass)
+      this.reclaimerpap001mass  = this.reclaimerpap001mass  +parseFloat(val.data().PAP001Mass)
+      this.reclaimerpap003mass  = this.reclaimerpap003mass  +parseFloat(val.data().PAP003Mass)
+      
+      this.reclaimerhd001mass  = this.reclaimerhd001mass  +parseFloat(val.data().HD001Mass)
+      this.reclaimerld001mass  = this.reclaimerld001mass  +parseFloat(val.data().LD001Mass)
+      this.reclaimerld003mass  = this.reclaimerld003mass  +parseFloat(val.data().LD003Mass)
+      this.reclaimerpet001mass  = this.reclaimerpet001mass  +parseFloat(val.data().PEt001Mass)
+      this.reclaimerpet003mass  = this.reclaimerpet003mass  +parseFloat(val.data().PET003Mass)
+      this.reclaimerpet005mass  = this.reclaimerpet005mass  +parseFloat(val.data().PEP005Mass)
+
+      //paper
+      // console.log('paperreclaimer',this.reclaimerpaper)
+      this.reclaimerpaper =   this.reclaimerpaper
+      +parseFloat(val.data().PAP005Mass) 
+      + parseFloat(val.data().PAP007Mass) 
+      +parseFloat(val.data().PAP003Mass) 
+      +parseFloat(val.data().PAP001Mass);
+      
+      //aluminium
+      // console.log('aluminiumreclaimer',this.reclaimerAlum )
+      this.reclaimerAlum  = this.reclaimerAlum   +parseFloat(val.data().NFAL01) 
+      
+      //plastic
+      // console.log('plasticreclaimer',    this.reclaimerplastic )
+      this.reclaimerplastic =this.reclaimerplastic + +parseFloat(val.data().HD001) 
+      +parseFloat(val.data().HD001Mass)
+      +parseFloat(val.data().LD001Mass)
+      +parseFloat(val.data().LD003Mass)
+      +parseFloat(val.data().PET003Mass)
+      +parseFloat(val.data().PET001Mass) 
+    })
+    this.createBarChart2();
+    })
       }
-    };
-    this.pdfObj = pdfMake.createPdf(docDefinition);
-  }
+    
+    ngOnInit() {
+      this.prices = firebase.firestore().collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot((documentSnapshot) => {
+        this.price = [];
+        // console.log(documentSnapshot.data());
+        this.price.push(documentSnapshot.data());
+        // console.log('my pricess', documentSnapshot.data().time);
 
-  downloadPdf() {
-    if (this.plt.is('cordova')) {
-      this.pdfObj.getBuffer((buffer) => {
-        var blob = new Blob([buffer], { type: 'application/pdf' });
+        // this.pricess.gl001 = documentSnapshot.data().gl001.toFixed(2);
+        // this.pricess.hd001 = documentSnapshot.data().hd001.toFixed(2);
+        // this.pricess.ld001 = documentSnapshot.data().ld001.toFixed(2);
+        // this.pricess.ld003 = documentSnapshot.data().ld003.toFixed(2);
+        // this.pricess.nfalo1 = documentSnapshot.data().nfalo1.toFixed(2);
+        // this.pricess.pap001 = documentSnapshot.data().pap001.toFixed(2);
+        // this.pricess.pap003 = documentSnapshot.data().pap003.toFixed(2);
+        // this.pricess.pap005 = documentSnapshot.data().pap005.toFixed(2);
+        // this.pricess.pap007 = documentSnapshot.data().pap007.toFixed(2);
+        // this.pricess.pet001 = documentSnapshot.data().pet001.toFixed(2);
+        // this.pricess.pet003 = documentSnapshot.data().pet003.toFixed(2);
+        // this.pricess.pet005 = documentSnapshot.data().pet005.toFixed(2);
+        
+        // this.PaperArray.push({
+        //   pap003: this.pricess.pap003,
+        // })
 
-        // Save the PDF to the data Directory of our App
-        this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
-          // Open the PDf with the correct OS tools
-          this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
-        });
-      });
-    } else {
-      // On a browser simply use download!
-      this.pdfObj.download();
+      })
+
+      this.menuCtrl.enable(true); // or true
+
+      // new code
+      this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").onSnapshot((snap) => {
+        this.glassArray = [];
+        this.glassArray.push(snap.data())
+
+        this.oldpriceglass = snap.data().newgl001;
+
+        this.pricess.gl001 = snap.data().newgl001;
+      })
+      //  console.log(this.glassArray)
+      this.db.collection('pricehistory').doc("8FtqTT4N4mFpbI4DKc25").collection("glass").orderBy('timeglass', "desc").get().then(snap => {
+        this.glassArrayHistory = [];
+        snap.forEach(element => {
+        this.glassArrayHistory.push(element.data())
+        })
+        console.log(this.glassArrayHistory);
+      })
+
+      // new code
+      this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
+        this.PaperArray = [];
+        this.PaperArray.push(snap.data())
+        // console.log(snap.data())
+
+        this.oldpricepap003 = snap.data().newpap003;
+        this.oldpricepap001 = snap.data().newpap001;
+        this.oldpricepap005 = snap.data().newpap005;
+        this.oldpricepap007 = snap.data().newpap007;
+
+        this.pricess.pap001 = snap.data().newpap001;
+        this.pricess.pap003 = snap.data().newpap003;
+        this.pricess.pap005 = snap.data().newpap005;
+        this.pricess.pap007 = snap.data().newpap007;
+      })
+      console.log(this.PaperArray)
+      this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").get().then(snap => {
+        this.PaperArrayHistory = [];
+        snap.forEach(snap => {
+        this.PaperArrayHistory.push(snap.data())
+        // console.log(snap.data())
+        })
+        console.log(this.PaperArrayHistory);
+      })
+
+      // new code
+      this.db.collection('price').doc("7O6KqClxLD780ltfC6i5").onSnapshot(snap => {
+        this.plasticarray = [];
+        this.plasticarray.push(snap.data())
+
+        this.oldpricepet005 = snap.data().newpet005;
+        this.oldpricepet001 = snap.data().newpet001;
+        this.oldpricepet003 = snap.data().newpet003;
+        this.oldpriceld003 = snap.data().newld003;
+        this.oldpriceld001 = snap.data().newld001;
+        this.oldpricehd001 = snap.data().newhd001;
+
+        this.pricess.hd001 = snap.data().newhd001;
+        this.pricess.ld001 = snap.data().newld001;
+        this.pricess.ld003 = snap.data().newld003;
+        this.pricess.pet001 = snap.data().newpet001;
+        this.pricess.pet003 = snap.data().newpet003;
+        this.pricess.pet005 = snap.data().newpet005;
+      })
+      // console.log(this.plasticarray)
+      this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").get().then(snap => {
+        this.plasticarrayHistory = [];
+        snap.forEach(element => {
+        this.plasticarrayHistory.push(element.data())
+        })
+        console.log(this.plasticarrayHistory);
+      })
+
+      // new code
+      this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE").onSnapshot(snap => {
+        this.NFAL001Array = [];
+        this.NFAL001Array.push(snap.data())
+
+        this.oldpriceNFAL01 = snap.data().newnfal01;
+
+        this.pricess.nfalo1 = snap.data().newnfal01;
+      })
+      // console.log(this.NFAL001Array);
+      this.db.collection('pricehistory').doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").orderBy('timePlastic', "desc").get().then(snap => {
+        this.NFAL001ArrayHistory = [];
+        snap.forEach(element => {
+        this.NFAL001ArrayHistory.push(element.data())
+        })
+        console.log(this.NFAL001ArrayHistory);
+      })
+
     }
-  }
 
-  getOutBound(id) {
-    this.Outbound = this.db.collection('outbound').doc(id);
-    this.Outbound.get().then((documentSnapshot) => {
-      this.ViewOutbound = [];
-      // console.log(documentSnapshot.data());
-      this.ViewOutbound.push(documentSnapshot.data());
-      // console.log(this.ViewOutbound);
-    });  }
+    getReclaimers() {
+      // pulling from reclaimers
+      this.db.collection('reclaimers').onSnapshot(snapshot => {
+        this.newreclaimer = [];
+        snapshot.forEach(element => {
+          let id = {};
+          let reclaimername = {};
+          let reclaimersurname = {};
+          let reclaimerDate = {};
+
+          id = this.id = element.id;
+          reclaimername = this.reclaimername = element.data().name;
+          reclaimersurname = this.reclaimersurname = element.data().surname;
+          reclaimerDate = this.reclaimerDate = element.data().date;
+
+          // this.newreclaimer = [];
+          this.newreclaimer.push({
+            id: id,
+            reName: reclaimername,
+            reSurname: reclaimersurname,
+            reDate: reclaimerDate,
+          });
+          // console.log('newreclaimer', this.newreclaimer);
+        });
+      });
+    }
+
+    // ionViewWillEnter() {
+    //   this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+    //   this.prices.get().then((documentSnapshot) => {
+    //     this.price = [];
+    //     // console.log(documentSnapshot.data());
+    //     this.price.push(documentSnapshot.data());
+    //     // console.log('prices', this.price);
+    //   });
+    //  }
+
+    checkinputfields() {
+      // GH001price;
+      if (this.GH001price === null ) {
+        this.GH001price = this.pricess.gl001;
+      } else if (this.GH001price === undefined) {
+        this.GH001price = this.pricess.gl001;
+      }
+      // console.log(this.GH001price);
+
+      // NFAL01price;
+      if (this.NFAL01price === null) {
+        this.NFAL01price = this.pricess.nfalo1;
+      } else if (this.NFAL01price === undefined) {
+        this.NFAL01price = this.pricess.nfalo1;
+      }
+      // console.log(this.NFAL01price);
+
+      // PAP005price;
+      if (this.PAP005price === null) {
+        this.PAP005price = this.pricess.pap005;
+      } else if (this.PAP005price === undefined) {
+        this.PAP005price = this.pricess.pap005;
+      }
+      // console.log(this.PAP005price);
+
+      // PAP007price;
+      if (this.PAP007price === null) {
+        this.PAP007price = this.pricess.pap007;
+      } else if (this.PAP007price === undefined) {
+        this.PAP007price = this.pricess.pap007;
+      }
+      // console.log(this.PAP007price);
+
+      // PAP001price;
+      if (this.PAP001price === null) {
+        this.PAP001price = this.pricess.pap001;
+      } else if (this.PAP001price === undefined) {
+        this.PAP001price = this.pricess.pap001;
+      }
+      // console.log(this.PAP001price);
+
+      // PAP003price;
+      if (this.PAP003price === null) {
+        this.PAP003price = this.pricess.pap003;
+      } else if (this.PAP003price === undefined) {
+        this.PAP003price = this.pricess.pap003;
+      }
+      // console.log(this.PAP003price);
+
+      // HD001price;
+      if (this.HD001price === null) {
+        this.HD001price = this.pricess.hd001;
+      } else if (this.HD001price === undefined) {
+        this.HD001price = this.pricess.hd001;
+      }
+      // console.log(this.HD001price);
+
+      // LD001price;
+      if (this.LD001price === null) {
+        this.LD001price = this.pricess.ld001;
+      } else if (this.LD001price === undefined) {
+        this.LD001price = this.pricess.ld001;
+      }
+      // console.log(this.LD001price);
+
+      // LD003price;
+      if (this.LD003price === null) {
+        this.LD003price = this.pricess.ld003;
+      } else if (this.LD003price === undefined) {
+        this.LD003price = this.pricess.ld003;
+      }
+      // console.log(this.LD003price);
+
+      // PET001price;
+      if (this.PET001price === null) {
+        this.PET001price = this.pricess.pet001;
+      } else if (this.PET001price === undefined) {
+        this.PET001price = this.pricess.pet001;
+      }
+      // console.log(this.PET001price);
+
+      // PET003price;
+      if (this.PET003price === null) {
+        this.PET003price = this.pricess.pet003;
+      } else if (this.PET003price === undefined) {
+        this.PET003price = this.pricess.pet003;
+      }
+      // console.log(this.PET003price);
+
+      // PET005price;
+      if (this.PET005price === null) {
+        this.PET005price = this.pricess.pet005;
+      } else if (this.PET005price === undefined) {
+        this.PET005price = this.pricess.pet005;
+      }
+      // console.log(this.PET005price);
+
+      this.presentAlertupdate();
+
+    }
+
+    async presentAlertupdate() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Are you sure you want to update Prices?</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              // console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Okay',
+            handler: () => {
+              // this.update();
+              this.clearInputs();
+              // console.log('Confirm Okay');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    clearInputs() {
+      this.GH001price = '';
+      this.NFAL01price = '';
+      this.PAP005price = '';
+      this.PAP007price = '';
+      this.PAP001price = '';
+      this.PAP003price = '';
+      this.HD001price = '';
+      this.LD001price = '';
+      this.LD003price = '';
+      this.PET001price = '';
+      this.PET003price = '';
+      this.PET005price = '';
+    }
+
+    CheckInputsEmptyStringPaper() {
+      if (
+          this.PAP005price === undefined &&
+          this.PAP007price === undefined &&
+          this.PAP001price === undefined &&
+          this.PET003price === undefined
+        ) {
+          this.presentAlertcheckInputs();
+        } else {
+          this.presentAlertUpdatePaper();
+        }
+    }
+
+    CheckInputsEmptyStringPlastics() {
+      if (
+          this.HD001price  === undefined &&
+          this.LD001price === undefined &&
+          this.LD003price  === undefined &&
+          this.PET005price === undefined &&+
+          this.PET001price === undefined && 
+          this.PET003price === undefined
+        ) {
+          this.presentAlertcheckInputs();
+        } else {
+          this.presentAlertUpdatePlastic();
+        }
+    }
+
+    CheckInputsEmptyStringAlum() {
+      if (
+        this.NFAL01price === undefined
+        ) {
+          this.presentAlertcheckInputs();
+        } else {
+          this.presentAlertUpdateAlum();
+        }
+    }
+
+    CheckInputsEmptyStringglass() {
+      if (
+        this.GH001price === undefined
+        ) {
+          this.presentAlertcheckInputs();
+        } else {
+          this.presentAlertUpdateglass();
+        }
+    }
+
+    async presentAlertUpdateglass() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Are you sure you want to change prices?</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Okay',
+            handler: () => {
+              this.checkglassInputs();
+              this.glassShow();
+              this.route.navigateByUrl('/home');
+              console.log('Confirm Okay');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    checkglassInputs() {
+      // nFAL01;
+      if (this.GH001price === null) {
+        this.GH001price = this.pricess.gl001;
+      } else if (this.GH001price === undefined) {
+        this.GH001 = this.pricess.gl001;
+      } else if (this.GH001price === '') {
+        this.GH001 = this.pricess.gl001;
+      }
+      // console.log(this.nFAL01);
+      this.Updateglass()
+
+    }
+
+    async presentAlertUpdatePaper() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Are you sure you want to change prices?</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Okay',
+            handler: () => {
+              this.checkPaperInputs();
+              this.route.navigateByUrl('/home');
+              this.HideandShowSave();
+              console.log('Confirm Okay');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    async presentAlertUpdatePlastic() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Are you sure you want to change prices?</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Okay',
+            handler: () => {
+              this.checkPlasticInputs();
+              this.HideandShowCreate();
+              this.route.navigateByUrl('/home');
+              console.log( 'close',this.HideandShowCreate)
+              console.log('Confirm Okay');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+
+    async presentAlertUpdateAlum() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Are you sure you want to change prices?</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Okay',
+            handler: () => {
+          
+              this.checkAlumInputs();
+              this.HideandShowDelete();
+              
+              console.log('Confirm Okay');
+            
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    checkPaperInputs() {
+      // PAP005price;
+      if (this.PAP005price === null) {
+        this.PAP005price = this.pricess.pap005;
+      } else if (this.PAP005price === undefined) {
+        this.PAP005price = this.pricess.pap005;
+      } else if (this.PAP005price === '') {
+        this.PAP005price = this.pricess.pap005;
+      }
+      // console.log(this.PAP005price);
+
+      // PAP007price;
+      if (this.PAP007price === null) {
+        this.PAP007price = this.pricess.pap007;
+      } else if (this.PAP007price === undefined) {
+        this.PAP007price = this.pricess.pap007;
+      } else if (this.PAP007price === '') {
+        this.PAP007price = this.pricess.pap007;
+      }
+      // console.log(this.PAP007price);
+
+      // PAP001price;
+      if (this.PAP001price === null) {
+        this.PAP001price = this.pricess.pap001;
+      } else if (this.PAP001price === undefined) {
+        this.PAP001price = this.pricess.pap001;
+      } else if (this.PAP001price === '') {
+        this.PAP001price = this.pricess.pap001;
+      }
+      // console.log(this.PAP001price);
+
+      // PAP003price;
+      if (this.PAP003price === null) {
+        this.PAP003price = this.pricess.pap003;
+      } else if (this.PAP003price === undefined) {
+        this.PAP003price = this.pricess.pap003;
+      } else if (this.PAP003price === '') {
+        this.PAP003price = this.pricess.pap003;
+      }
+      // console.log(this.PAP003price);
+      this.UpdatePaper()
+    }
+
+    checkPlasticInputs() {
+      // HD001price;
+      if (this.HD001price === null) {
+        this.HD001price = this.pricess.hd001;
+      } else if (this.HD001price === undefined) {
+        this.HD001price = this.pricess.hd001;
+      } else if (this.HD001price === '') {
+        this.HD001price = this.pricess.hd001;
+      }
+      // console.log(this.HD001price);
+
+      // LD001price;
+      if (this.LD001price === null) {
+        this.LD001price = this.pricess.ld001;
+      } else if (this.LD001price === undefined) {
+        this.LD001price = this.pricess.ld001;
+      } else if (this.LD001price === '') {
+        this.LD001price = this.pricess.ld001;
+      }
+      // console.log(this.LD001price);
+
+      // LD003price;
+      if (this.LD003price === null) {
+        this.LD003price = this.pricess.ld003;
+      } else if (this.LD003price === undefined) {
+        this.LD003price = this.pricess.ld003;
+      } else if (this.LD003price === '') {
+        this.LD003price = this.pricess.ld003;
+      }
+      // console.log(this.LD003price);
+
+      // PET001price;
+      if (this.PET001price === null) {
+        this.PET001price = this.pricess.pet001;
+      } else if (this.PET001price === undefined) {
+        this.PET001price = this.pricess.pet001;
+      } else if (this.PET001price === '') {
+        this.PET001price = this.pricess.pet001;
+      }
+      // console.log(this.PET001price);
+
+      // PET003price;
+      if (this.PET003price === null) {
+        this.PET003price = this.pricess.pet003;
+      } else if (this.PET003price === undefined) {
+        this.PET003price = this.pricess.pet003;
+      } else if (this.PET003price === '') {
+        this.PET003price = this.pricess.pet003;
+      }
+      // console.log(this.PET003price);
+
+      // PET005price;
+      if (this.PET005price === null) {
+        this.PET005price = this.pricess.pet005;
+      } else if (this.PET005price === undefined) {
+        this.PET005price = this.pricess.pet005;
+      } else if (this.PET005price === '') {
+        this.PET005price = this.pricess.pet005;
+      }
+      // console.log(this.PET005price);
+      this.UpdatePlastic()
+    }
+
+    checkAlumInputs() {
+      // nFAL01;
+      if (this.NFAL01price === null) {
+        this.NFAL01price = this.pricess.nfalo1;
+      } else if (this.NFAL01price === undefined) {
+        this.nFAL01 = this.pricess.nfalo1;
+      } else if (this.NFAL01price === '') {
+        this.nFAL01 = this.pricess.nfalo1;
+      }
+      // console.log(this.nFAL01);
+      this.UpdateAlum()
+    }
+
+    UpdatePaper() {
+      // Update Price History
+      this.db.collection("pricehistory").doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").doc().set({
+        timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        pap005: this.PAP005price,
+        pap007: this.PAP007price,
+        pap001: this.PAP001price,
+        pap003: this.PAP003price,
+      })
+
+      // To update price :
+      this.db.collection("price").doc("uk3Rla3tt9xgd8NivPJ6").update({
+        timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      
+        newpap005: this.PAP005price,
+        newpap007: this.PAP007price,
+        newpap001: this.PAP001price,
+        newpap003: this.PAP003price,
+            
+        oldpap005: this.oldpricepap005,
+        oldpap007: this.oldpricepap007,
+        oldpap001: this.oldpricepap001,
+        oldpap003: this.oldpricepap003,
+        }).then((data) => {
+          console.log("Paper old storage successfully updated!");
+        });
+
+      // // To update price :
+      // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      //   timePaper:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      //   pap005: this.PAP005price,
+      //   pap007: this.PAP007price,
+      //   pap001: this.PAP001price,
+      //   pap003: this.PAP003price,
+      // }).then((data) => {
+      //   // console.log("Paper successfully updated!");
+      // });
+
+      this.clearInputsPaper();
+
+    }
+
+    UpdatePlastic() {
+      // Update Price History
+      this.db.collection("pricehistory").doc("7O6KqClxLD780ltfC6i5").collection("plastic").doc().set({
+        timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
+
+        hd001: this.HD001price,
+        ld001: this.LD001price,
+        ld003: this.LD003price,
+        pet001: this.PET001price,
+        pet003: this.PET003price,
+        pet005: this.PET005price,
+      })
+
+      // To update price :
+      this.db.collection("price").doc("7O6KqClxLD780ltfC6i5").update({
+        timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
+
+        newhd001: this.HD001price,
+        newld001: this.LD001price,
+        newld003: this.LD003price,
+        newpet001: this.PET001price,
+        newpet003: this.PET003price,
+        newpet005: this.PET005price,
+      
+        oldhd001: this.oldpricehd001,
+        oldld001: this.oldpricehd001,
+        oldld003: this.oldpriceld003,
+        oldpet001: this.oldpricepet001,
+        oldpet003: this.oldpricepet003,
+        oldpet005: this.oldpricepet005,
+
+      }).then((data) => {
+        console.log("Paper old storage successfully updated!");
+      });
+
+      // // To update price :
+      // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      //   timePlastic:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      //   hd001: this.HD001price,
+      //   ld001: this.LD001price,
+      //   ld003: this.LD003price,
+      //   pet001: this.PET001price,
+      //   pet003: this.PET003price,
+      //   pet005: this.PET005price,
+      // }).then((data) => {
+      //   // console.log("Paper successfully updated!");
+      // });
+
+      this.clearInputsPlastic();
+
+    }
+
+    UpdateAlum() {
+      // Update Price History
+      this.db.collection("pricehistory").doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").doc().set({
+        timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        nfal01: this.oldpriceNFAL01,
+      })
+
+      // To update price :
+      this.db.collection("price").doc("ChHHlFcUFzucHOzPpEgE").update({
+        timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        oldnfal01: this.oldpriceNFAL01,
+        newnfal01: this.NFAL01price,
+        
+      }).then((data) => {
+        this.route.navigateByUrl('/home');
+        console.log("Paper old storage successfully updated!");
+      });
+
+      // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      //   timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      //   nfalo1: this.NFAL01price,
+      // }).then((data) => {
+      //   console.log("Paper successfully updated!");
+      // });
+
+      this.clearInputsAlum();
+
+    }
+
+    Updateglass() {
+      this.db.collection("pricehistory").doc("8FtqTT4N4mFpbI4DKc25").collection("glass").doc().set({
+        timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+        gl001: this.GH001price,
+      })
+
+          // To update price :
+          this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
+            timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+            newgl001: this.GH001price,
+            oldgl001: this.oldpriceglass,
+          }).then((data) => {
+            // console.log("Paper old storage successfully updated!");
+          });
+
+      // // To update price :
+      // this.db.collection("price").doc("SinUfRNnbB073KZiDIZE").update({
+      //   timeAlum:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      //   gl001: this.GH001price,
+      
+      // }).then((data) => {
+      //   // console.log("Paper successfully updated!");
+      // });
+
+      this.clearInputsGlass();
+    }
+
+    clearInputsPaper() {
+      this.PAP005price = '';
+      this.PAP007price = '';
+      this.PAP001price = '';
+      this.PAP003price = '';
+    }
+    clearInputsAlum() {
+      this.NFAL01price ='';
+    }
+
+    clearInputsGlass() {
+      this.GH001price ='';
+    }
+
+    clearInputsPlastic() {
+      this.HD001price = '';
+      this.LD001price = '';
+      this.LD003price = '';
+      this.PET001price = '';
+      this.PET003price = '';
+      this.PET005price = '';
+    }
+
+    getOutbound() {
+      // pulling from outbound
+      this.db.collection('outbound').onSnapshot(snapshot => {
+        this.outbound = [];
+        snapshot.forEach(element => {
+          let id = {};
+          let outdate = {};
+          let outDriverName = {};
+          let outRegistarionNumberPlates = {};
+          let outovarallMass = {};
+          let date = {};
+
+          id = this.id = element.id;
+          outdate = this.outdate = element.data().date;
+          outDriverName = this.outDriverName = element.data().DriverName;
+          outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
+          outovarallMass = this.outovarallMass = element.data().ovarallMass;
+
+          // this.outbound = [];
+          this.outbound.push({
+            id: id,
+            outDate: outdate,
+            outdriverName: outDriverName,
+            outRegistarionNo: outRegistarionNumberPlates,
+            outovarallmass: outovarallMass,
+          });
+          // this.outbound.push(element.data());
+          console.log('outbound', this.outbound);
+        });
+      });
+
+    }
+
+    getInbound() {
+      // pulling from inbounds
+      this.db.collection('inbounds').onSnapshot(snapshot => {
+        this.outbound = [];
+        snapshot.forEach(element => {
+          // this.outbound = [];
+          this.outbound.push({
+            // data
+          });
+          // this.outbound.push(element.data());
+          // console.log('inbound', this.outbound);
+        });
+      });
+    }
+
+    pullWeeklyInbound() {
+      // code added by nathi
+      let currentTime = new Date();
+      let month = currentTime.getMonth();
+      let year = currentTime.getFullYear();
+      let date = currentTime.getTime();
+      let TodaysDate;
+
+      // console.log(month, year, date);
+      // console.log(currentTime);
+
+      // console.log(day7);
+      this.db.collection('outbound').onSnapshot(element => {
+        // console.log(element);
+        element.forEach(snap => {
+          // console.log(snap);
+          // console.log(snap.data());
+
+          let timess = {};
+          let GH001 = {};
+          let NFAL01 = {};
+          let HD001 = {};
+          let PAP005 = {};
+          let PAP007 = {};
+          let PAP001 = {};
+          let PAP003 = {};
+          let LD003 = {};
+          let LD001 = {};
+          let PET005 = {};
+          let PET003 = {};
+          let PET00 = {};
+          let Mass = {};
+
+          this.datesss = snap.data().date;
+          // this.datez = this.datesss.toDate();
+          GH001 = snap.data().GH001;
+          NFAL01 = snap.data().NFAL01;
+          HD001 = snap.data().HD001;
+          PAP005 = snap.data().PAP005;
+          PAP007 = snap.data().PAP007;
+          PAP001 = snap.data().PAP001;
+          PAP003 = snap.data().PAP003;
+          LD003 = snap.data().LD003;
+          LD001 = snap.data().LD001;
+          PET005 = snap.data().PET005;
+          PET003 = snap.data().PET003;
+          PET00 = snap.data().PET00;
+          Mass = snap.data().ovarallMass;
+
+          this.outBoundGraph.push({
+            time: this.datez,
+            GH001: GH001,
+            NFAL01: NFAL01,
+            HD001: HD001,
+            PAP005: PAP005,
+            PAP007: PAP007,
+            PAP001: PAP001,
+            PAP003: PAP003,
+            LD003: LD003,
+            LD001: LD001,
+            PET005: PET005,
+            PET003: PET003,
+            PET001: PET00,
+            Mass: Mass
+          })
+
+          this.outGH001.push({GH001: GH001})
+        });
+        
+      // console.log(this.outboundYear)
+      });
+    }
+
+    PullDayData() {
+      // Inbound Graph
+      for(let key in this.outBoundGraph) {
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('inbounds').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().time;
+            gl001 = element.data().inboundGH001;
+            nfalo1 = element.data().inboundNFAL01;
+            pap005 = element.data().inboundPAP005;
+            pap007 = element.data().inboundPAP007;
+            pap001 = element.data().inboundPAP001;
+            pap003 = element.data().inboundPAP003;
+            hd001 = element.data().inboundHD001;
+            ld003 = element.data().inboundLD003;
+            ld001 = element.data().inboundLD001;
+            pet005 = element.data().inboundPET005;
+            pet003 = element.data().inboundPET003;
+            pet001 = element.data().inboundPET00;
+
+            this.inboundGraphDisplay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totalInBoundDayGL001 = +this.totalInBoundDayGL001 + +gl001;
+            this.totalInBoundDayNFAL01 = +this.totalInBoundDayNFAL01 + +nfalo1;
+            this.totalInBoundDayPAP005 = +this.totalInBoundDayPAP005 + +pap005;
+            this.totalInBoundDayPAP007 = +this.totalInBoundDayPAP007 + +pap007;
+            this.totalInBoundDayPAP003 = +this.totalInBoundDayPAP003 + +pap001;
+            this.totalInBoundDayPAP001 = +this.totalInBoundDayPAP001 + +pap003;
+            this.totalInBoundDayHD001 = +this.totalInBoundDayHD001 + +hd001;
+            this.totalInBoundDayLD001 = +this.totalInBoundDayLD001 + +ld003;
+            this.totalInBoundDayLD003 = +this.totalInBoundDayLD003 + +ld001;
+            this.totalInBoundDayPET001 = +this.totalInBoundDayPET001 + +pet001;
+            this.totalInBoundDayPET003 = +this.totalInBoundDayPET003 + +pet003;
+            this.totalInBoundDayPET005 = +this.totalInBoundDayPET005 + +pet005;
+
+            this.inboundgh001 = this.totalInBoundDayGL001;
+            this.inboundnfalo1 = this.totalInBoundDayNFAL01;
+            this.inboundpap005 = this.totalInBoundDayPAP005;
+            this.inboundpap007 = this.totalInBoundDayPAP007;
+            this.inboundpap003 = this.totalInBoundDayPAP003;
+            this.inboundpap001 = this.totalInBoundDayPAP001;
+            this.inboundhd001 = this.totalInBoundDayHD001;
+            this.inboundld001 = this.totalInBoundDayLD001;
+            this.inboundld003 = this.totalInBoundDayLD003;
+            this.inboundpet001 = this.totalInBoundDayPET001;
+            this.inboundpet003 = this.totalInBoundDayPET003;
+            this.inboundpet005 = this.totalInBoundDayPET005;
+
+            // console.log(this.inboundgh001);
+            // console.log(this.inboundnfalo1);
+            // console.log(this.inboundpap005);
+            // console.log(this.inboundpap007);
+            // console.log(this.inboundpap003);
+            // console.log(this.inboundpap001);
+            // console.log(this.inboundhd001);
+            // console.log(this.inboundld001);
+            // console.log(this.inboundld003);
+            // console.log(this.inboundpet001);
+            // console.log(this.inboundpet003);
+            // console.log(this.inboundpet005);
+            
+          })
+          this.createBarChart();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.inboundGraphDisplay);
+        console.log('kaberekaDay');
+      }
+
+      // OutBound Graph
+      for(let key in this.outBoundGraph) {
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          // this.outBoundGraphDisplayDay.push(Snapshot);
+          // console.log(Snapshot);
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().date;
+            gl001 = element.data().GH001;
+            nfalo1 = element.data().NFAL01;
+            pap005 = element.data().PAP005;
+            pap007 = element.data().PAP007;
+            pap001 = element.data().PAP001;
+            pap003 = element.data().PAP003;
+            hd001 = element.data().HD001;
+            ld003 = element.data().LD003;
+            ld001 = element.data().LD001;
+            pet005 = element.data().PET005;
+            pet003 = element.data().PET003;
+            pet001 = element.data().PET00;
+
+            this.outBoundGraphDisplayDay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totaloutBoundDayGL001 = +this.totaloutBoundDayGL001 + +gl001;
+            this.totaloutBoundDayNFAL01 = +this.totaloutBoundDayNFAL01 + +nfalo1;
+            this.totaloutBoundDayPAP005 = +this.totaloutBoundDayPAP005 + +pap005;
+            this.totaloutBoundDayPAP007 = +this.totaloutBoundDayPAP007 + +pap007;
+            this.totaloutBoundDayPAP003 = +this.totaloutBoundDayPAP003 + +pap001;
+            this.totaloutBoundDayPAP001 = +this.totaloutBoundDayPAP001 + +pap003;
+            this.totaloutBoundDayHD001 = +this.totaloutBoundDayHD001 + +hd001;
+            this.totaloutBoundDayLD001 = +this.totaloutBoundDayLD001 + +ld003;
+            this.totaloutBoundDayLD003 = +this.totaloutBoundDayLD003 + +ld001;
+            this.totaloutBoundDayPET001 = +this.totaloutBoundDayPET001 + +pet001;
+            this.totaloutBoundDayPET003 = +this.totaloutBoundDayPET003 + +pet003;
+            this.totaloutBoundDayPET005 = +this.totaloutBoundDayPET005 + +pet005;
+
+            this.outboundgh001 = this.totaloutBoundDayGL001;
+            this.outboundnfal01 = this.totaloutBoundDayNFAL01;
+            this.outboundpap005 = this.totaloutBoundDayPAP005;
+            this.outboundpap007 = this.totaloutBoundDayPAP007;
+            this.outboundpap003 = this.totaloutBoundDayPAP003;
+            this.outboundpap001 = this.totaloutBoundDayPAP001;
+            this.outboundhd001 = this.totaloutBoundDayHD001;
+            this.outboundld001 = this.totaloutBoundDayLD001;
+            this.outboundld003 = this.totaloutBoundDayLD003;
+            this.outboundpet003 = this.totaloutBoundDayPET001;
+            this.outboundpet001 = this.totaloutBoundDayPET003;
+            this.outboundpet005 = this.totaloutBoundDayPET005;
+
+            // console.log(this.outboundgh001);
+            // console.log(this.outboundnfal01);
+            // console.log(this.outboundpap005);
+            // console.log(this.outboundpap007);
+            // console.log(this.outboundpap003);
+            // console.log(this.outboundpap001);
+            // console.log(this.outboundhd001);
+            // console.log(this.outboundld001);
+            // console.log(this.outboundld003);
+            // console.log(this.outboundpet003);
+            // console.log(this.outboundpet001);
+            // console.log(this.outboundpet005);
+            
+          })
+          this.createBarChart1();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.outBoundGraphDisplayDay);
+      }
+
+      // reclaimers Graph
+      for(let key in this.outBoundGraph) {
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(0, 'days').format('MMMM DD YYYY')
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('reclaimers').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().date;
+            gl001 = element.data().GH001Mass;
+            nfalo1 = element.data().NFAL01Mass;
+            pap005 = element.data().PAP005Mass;
+            pap007 = element.data().PAP007Mass;
+            pap001 = element.data().PAP001Mass;
+            pap003 = element.data().PAP003Mass;
+            hd001 = element.data().HD001Mass;
+            ld003 = element.data().LD003Mass;
+            ld001 = element.data().LD001Mass;
+            pet005 = element.data().PET005Mass;
+            pet003 = element.data().PET003Mass;
+            pet001 = element.data().PET001Mass;
+
+            this.inboundGraphDisplay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totalReclaimerDayGL001 = +this.totalReclaimerDayGL001 + +gl001;
+            this.totalReclaimerDayNFAL01 = +this.totalReclaimerDayNFAL01 + +nfalo1;
+            this.totalReclaimerDayPAP005 = +this.totalReclaimerDayPAP005 + +pap005;
+            this.totalReclaimerDayPAP007 = +this.totalReclaimerDayPAP007 + +pap007;
+            this.totalReclaimerDayPAP003 = +this.totalReclaimerDayPAP003 + +pap001;
+            this.totalReclaimerDayPAP001 = +this.totalReclaimerDayPAP001 + +pap003;
+            this.totalReclaimerDayHD001 = +this.totalReclaimerDayHD001 + +hd001;
+            this.totalReclaimerDayLD001 = +this.totalReclaimerDayLD001 + +ld003;
+            this.totalReclaimerDayLD003 = +this.totalReclaimerDayLD003 + +ld001;
+            this.totalReclaimerDayPET001 = +this.totalReclaimerDayPET001 + +pet001;
+            this.totalReclaimerDayPET003 = +this.totalReclaimerDayPET003 + +pet003;
+            this.totalReclaimerDayPET005 = +this.totalReclaimerDayPET005 + +pet005;
+
+            this.reclaimergh001mass = this.totalReclaimerDayGL001;
+            this.reclaimernfa01Mass = this.totalReclaimerDayNFAL01;
+            this.reclaimerpap005mass = this.totalReclaimerDayPAP005;
+            this.reclaimerpap007Mass = this.totalReclaimerDayPAP007;
+            this.reclaimerpap003mass = this.totalReclaimerDayPAP003;
+            this.reclaimerpap001mass = this.totalReclaimerDayPAP001;
+            this.reclaimerhd001mass = this.totalReclaimerDayHD001;
+            this.reclaimerld001mass = this.totalReclaimerDayLD001;
+            this.reclaimerld003mass = this.totalReclaimerDayLD003;
+            this.reclaimerpet001mass = this.totalReclaimerDayPET003;
+            this.reclaimerpet003mass = this.totalReclaimerDayPET001;
+            this.reclaimerpet005mass = this.totalReclaimerDayPET005;
+
+            // console.log(this.reclaimergh001mass);
+            // console.log(this.reclaimernfa01Mass);
+            // console.log(this.reclaimerpap005mass);
+            // console.log(this.reclaimerpap007Mass);
+            // console.log(this.reclaimerpap003mass);
+            // console.log(this.reclaimerpap001mass);
+            // console.log(this.reclaimerhd001mass);
+            // console.log(this.reclaimerld001mass);
+            // console.log(this.reclaimerld003mass);
+            // console.log(this.reclaimerpet001mass);
+            // console.log(this.reclaimerpet003mass);
+            // console.log(this.reclaimerpet005mass);
+            
+          })
+          this.createBarChart2();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.inboundGraphDisplay);
+      }
+
+    }
+
+    PullWeekData() {
+      // Inbound Graph
+      for(let key in this.outBoundGraph) {
+        var i = 0; i < 7; i++;
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('inbounds').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().time;
+            gl001 = element.data().inboundGH001;
+            nfalo1 = element.data().inboundNFAL01;
+            pap005 = element.data().inboundPAP005;
+            pap007 = element.data().inboundPAP007;
+            pap001 = element.data().inboundPAP001;
+            pap003 = element.data().inboundPAP003;
+            hd001 = element.data().inboundHD001;
+            ld003 = element.data().inboundLD003;
+            ld001 = element.data().inboundLD001;
+            pet005 = element.data().inboundPET005;
+            pet003 = element.data().inboundPET003;
+            pet001 = element.data().inboundPET00;
+
+            this.inboundGraphDisplay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totalInBoundWeekGL001 = +this.totalInBoundWeekGL001 + +gl001;
+            this.totalInBoundWeekNFAL01 = +this.totalInBoundWeekNFAL01 + +nfalo1;
+            this.totalInBoundWeekPAP005 = +this.totalInBoundWeekPAP005 + +pap005;
+            this.totalInBoundWeekPAP007 = +this.totalInBoundWeekPAP007 + +pap007;
+            this.totalInBoundWeekPAP003 = +this.totalInBoundWeekPAP003 + +pap001;
+            this.totalInBoundWeekPAP001 = +this.totalInBoundWeekPAP001 + +pap003;
+            this.totalInBoundWeekHD001 = +this.totalInBoundWeekHD001 + +hd001;
+            this.totalInBoundWeekLD001 = +this.totalInBoundWeekLD001 + +ld003;
+            this.totalInBoundWeekLD003 = +this.totalInBoundWeekLD003 + +ld001;
+            this.totalInBoundWeekPET001 = +this.totalInBoundWeekPET001 + +pet001;
+            this.totalInBoundWeekPET003 = +this.totalInBoundWeekPET003 + +pet003;
+            this.totalInBoundWeekPET005 = +this.totalInBoundWeekPET005 + +pet005;
+
+            this.inboundgh001 = this.totalInBoundWeekGL001;
+            this.inboundnfalo1 = this.totalInBoundWeekNFAL01;
+            this.inboundpap005 = this.totalInBoundWeekPAP005;
+            this.inboundpap007 = this.totalInBoundWeekPAP007;
+            this.inboundpap003 = this.totalInBoundWeekPAP003;
+            this.inboundpap001 = this.totalInBoundWeekPAP001;
+            this.inboundhd001 = this.totalInBoundWeekHD001;
+            this.inboundld001 = this.totalInBoundWeekLD001;
+            this.inboundld003 = this.totalInBoundWeekLD003;
+            this.inboundpet001 = this.totalInBoundWeekPET001;
+            this.inboundpet003 = this.totalInBoundWeekPET003;
+            this.inboundpet005 = this.totalInBoundWeekPET005;
+
+            // console.log(this.inboundgh001);
+            // console.log(this.inboundnfalo1);
+            // console.log(this.inboundpap005);
+            // console.log(this.inboundpap007);
+            // console.log(this.inboundpap003);
+            // console.log(this.inboundpap001);
+            // console.log(this.inboundhd001);
+            // console.log(this.inboundld001);
+            // console.log(this.inboundld003);
+            // console.log(this.inboundpet001);
+            // console.log(this.inboundpet003);
+            // console.log(this.inboundpet005);
+            
+          })
+          this.createBarChart();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.inboundGraphDisplay);
+      }
+
+      // code for outbound
+      for(let key in this.outBoundGraph) {
+        var i = 0; i < 7; i++;
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          // this.outBoundGraphDisplayDay.push(Snapshot);
+          // console.log(Snapshot);
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().date;
+            gl001 = element.data().GH001;
+            nfalo1 = element.data().NFAL01;
+            pap005 = element.data().PAP005;
+            pap007 = element.data().PAP007;
+            pap001 = element.data().PAP001;
+            pap003 = element.data().PAP003;
+            hd001 = element.data().HD001;
+            ld003 = element.data().LD003;
+            ld001 = element.data().LD001;
+            pet005 = element.data().PET005;
+            pet003 = element.data().PET003;
+            pet001 = element.data().PET00;
+
+            this.outBoundGraphDisplayDay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totaloutBoundWeekGL001 = +this.totaloutBoundWeekGL001 + +gl001;
+            this.totaloutBoundWeekNFAL01 = +this.totaloutBoundWeekNFAL01 + +nfalo1;
+            this.totaloutBoundWeekPAP005 = +this.totaloutBoundWeekPAP005 + +pap005;
+            this.totaloutBoundWeekPAP007 = +this.totaloutBoundWeekPAP007 + +pap007;
+            this.totaloutBoundWeekPAP003 = +this.totaloutBoundWeekPAP003 + +pap001;
+            this.totaloutBoundWeekPAP001 = +this.totaloutBoundWeekPAP001 + +pap003;
+            this.totaloutBoundWeekHD001 = +this.totaloutBoundWeekHD001 + +hd001;
+            this.totaloutBoundWeekLD001 = +this.totaloutBoundWeekLD001 + +ld003;
+            this.totaloutBoundWeekLD003 = +this.totaloutBoundWeekLD003 + +ld001;
+            this.totaloutBoundWeekPET001 = +this.totaloutBoundWeekPET001 + +pet001;
+            this.totaloutBoundWeekPET003 = +this.totaloutBoundWeekPET003 + +pet003;
+            this.totaloutBoundWeekPET005 = +this.totaloutBoundWeekPET005 + +pet005;
+
+            this.outboundgh001 = this.totaloutBoundWeekGL001;
+            this.outboundnfal01 = this.totaloutBoundWeekNFAL01;
+            this.outboundpap005 = this.totaloutBoundWeekPAP005;
+            this.outboundpap007 = this.totaloutBoundWeekPAP007;
+            this.outboundpap003 = this.totaloutBoundWeekPAP003;
+            this.outboundpap001 = this.totaloutBoundWeekPAP001;
+            this.outboundhd001 = this.totaloutBoundWeekHD001;
+            this.outboundld001 = this.totaloutBoundWeekLD001;
+            this.outboundld003 = this.totaloutBoundWeekLD003;
+            this.outboundpet003 = this.totaloutBoundWeekPET001;
+            this.outboundpet001 = this.totaloutBoundWeekPET003;
+            this.outboundpet005 = this.totaloutBoundWeekPET005;
+
+            // console.log(this.outboundgh001);
+            // console.log(this.outboundnfal01);
+            // console.log(this.outboundpap005);
+            // console.log(this.outboundpap007);
+            // console.log(this.outboundpap003);
+            // console.log(this.outboundpap001);
+            // console.log(this.outboundhd001);
+            // console.log(this.outboundld001);
+            // console.log(this.outboundld003);
+            // console.log(this.outboundpet003);
+            // console.log(this.outboundpet001);
+            // console.log(this.outboundpet005);
+            
+          })
+          this.createBarChart1();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.outBoundGraphDisplayDay);
+      }
+
+      // reclaimers Graph
+      for(let key in this.outBoundGraph) {
+        var i = 0; i < 7; i++;
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('reclaimers').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().date;
+            gl001 = element.data().GH001Mass;
+            nfalo1 = element.data().NFAL01Mass;
+            pap005 = element.data().PAP005Mass;
+            pap007 = element.data().PAP007Mass;
+            pap001 = element.data().PAP001Mass;
+            pap003 = element.data().PAP003Mass;
+            hd001 = element.data().HD001Mass;
+            ld003 = element.data().LD003Mass;
+            ld001 = element.data().LD001Mass;
+            pet005 = element.data().PET005Mass;
+            pet003 = element.data().PET003Mass;
+            pet001 = element.data().PET001Mass;
+
+            this.inboundGraphDisplay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totalReclaimerWeekGL001 = +this.totalReclaimerWeekGL001 + +gl001;
+            this.totalReclaimerWeekNFAL01 = +this.totalReclaimerWeekNFAL01 + +nfalo1;
+            this.totalReclaimerWeekPAP005 = +this.totalReclaimerWeekPAP005 + +pap005;
+            this.totalReclaimerWeekPAP007 = +this.totalReclaimerWeekPAP007 + +pap007;
+            this.totalReclaimerWeekPAP003 = +this.totalReclaimerWeekPAP003 + +pap001;
+            this.totalReclaimerWeekPAP001 = +this.totalReclaimerWeekPAP001 + +pap003;
+            this.totalReclaimerWeekHD001 = +this.totalReclaimerWeekHD001 + +hd001;
+            this.totalReclaimerWeekLD001 = +this.totalReclaimerWeekLD001 + +ld003;
+            this.totalReclaimerWeekLD003 = +this.totalReclaimerWeekLD003 + +ld001;
+            this.totalReclaimerWeekPET001 = +this.totalReclaimerWeekPET001 + +pet001;
+            this.totalReclaimerWeekPET003 = +this.totalReclaimerWeekPET003 + +pet003;
+            this.totalReclaimerWeekPET005 = +this.totalReclaimerWeekPET005 + +pet005;
+
+            this.reclaimergh001mass = this.totalReclaimerWeekGL001;
+            this.reclaimernfa01Mass = this.totalReclaimerWeekNFAL01;
+            this.reclaimerpap005mass = this.totalReclaimerWeekPAP005;
+            this.reclaimerpap007Mass = this.totalReclaimerWeekPAP007;
+            this.reclaimerpap003mass = this.totalReclaimerWeekPAP003;
+            this.reclaimerpap001mass = this.totalReclaimerWeekPAP001;
+            this.reclaimerhd001mass = this.totalReclaimerWeekHD001;
+            this.reclaimerld001mass = this.totalReclaimerWeekLD001;
+            this.reclaimerld003mass = this.totalReclaimerWeekLD003;
+            this.reclaimerpet001mass = this.totalReclaimerWeekPET001;
+            this.reclaimerpet003mass = this.totalReclaimerWeekPET003;
+            this.reclaimerpet005mass = this.totalReclaimerWeekPET005;
+
+            // console.log(this.reclaimergh001mass);
+            // console.log(this.reclaimernfa01Mass);
+            // console.log(this.reclaimerpap005mass);
+            // console.log(this.reclaimerpap007Mass);
+            // console.log(this.reclaimerpap003mass);
+            // console.log(this.reclaimerpap001mass);
+            // console.log(this.reclaimerhd001mass);
+            // console.log(this.reclaimerld001mass);
+            // console.log(this.reclaimerld003mass);
+            // console.log(this.reclaimerpet001mass);
+            // console.log(this.reclaimerpet003mass);
+            // console.log(this.reclaimerpet005mass);
+            
+          })
+          this.createBarChart2();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.inboundGraphDisplay);
+      }
+
+    }
+
+    PullMonthData() {
+      // Inbound Graph
+      for(let key in this.outBoundGraph) {
+        var i = 0; i < 30; i++;
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('inbounds').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().time;
+            gl001 = element.data().inboundGH001;
+            nfalo1 = element.data().inboundNFAL01;
+            pap005 = element.data().inboundPAP005;
+            pap007 = element.data().inboundPAP007;
+            pap001 = element.data().inboundPAP001;
+            pap003 = element.data().inboundPAP003;
+            hd001 = element.data().inboundHD001;
+            ld003 = element.data().inboundLD003;
+            ld001 = element.data().inboundLD001;
+            pet005 = element.data().inboundPET005;
+            pet003 = element.data().inboundPET003;
+            pet001 = element.data().inboundPET00;
+
+            this.inboundGraphDisplay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totalInBoundMonthGL001 = +this.totalInBoundMonthGL001 + +gl001;
+            this.totalInBoundMonthNFAL01 = +this.totalInBoundMonthNFAL01 + +nfalo1;
+            this.totalInBoundMonthPAP005 = +this.totalInBoundMonthPAP005 + +pap005;
+            this.totalInBoundMonthPAP007 = +this.totalInBoundMonthPAP007 + +pap007;
+            this.totalInBoundMonthPAP003 = +this.totalInBoundMonthPAP003 + +pap001;
+            this.totalInBoundMonthPAP001 = +this.totalInBoundMonthPAP001 + +pap003;
+            this.totalInBoundMonthHD001 = +this.totalInBoundMonthHD001 + +hd001;
+            this.totalInBoundMonthLD001 = +this.totalInBoundMonthLD001 + +ld003;
+            this.totalInBoundMonthLD003 = +this.totalInBoundMonthLD003 + +ld001;
+            this.totalInBoundMonthPET001 = +this.totalInBoundMonthPET001 + +pet001;
+            this.totalInBoundMonthPET003 = +this.totalInBoundMonthPET003 + +pet003;
+            this.totalInBoundMonthPET005 = +this.totalInBoundMonthPET005 + +pet005;
+
+            this.inboundgh001 = this.totalInBoundMonthGL001;
+            this.inboundnfalo1 = this.totalInBoundMonthNFAL01;
+            this.inboundpap005 = this.totalInBoundMonthPAP005;
+            this.inboundpap007 = this.totalInBoundMonthPAP007;
+            this.inboundpap003 = this.totalInBoundMonthPAP003;
+            this.inboundpap001 = this.totalInBoundMonthPAP001;
+            this.inboundhd001 = this.totalInBoundMonthHD001;
+            this.inboundld001 = this.totalInBoundMonthLD001;
+            this.inboundld003 = this.totalInBoundMonthLD003;
+            this.inboundpet001 = this.totalInBoundMonthPET001;
+            this.inboundpet003 = this.totalInBoundMonthPET003;
+            this.inboundpet005 = this.totalInBoundMonthPET005;
+
+            // console.log(this.inboundgh001);
+            // console.log(this.inboundnfalo1);
+            // console.log(this.inboundpap005);
+            // console.log(this.inboundpap007);
+            // console.log(this.inboundpap003);
+            // console.log(this.inboundpap001);
+            // console.log(this.inboundhd001);
+            // console.log(this.inboundld001);
+            // console.log(this.inboundld003);
+            // console.log(this.inboundpet001);
+            // console.log(this.inboundpet003);
+            // console.log(this.inboundpet005);
+            
+          })
+          this.createBarChart();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.inboundGraphDisplay);
+      }
+
+      // code for outbound
+      for(let key in this.outBoundGraph) {
+        var i = 0; i < 30; i++;
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          // this.outBoundGraphDisplayDay.push(Snapshot);
+          // console.log(Snapshot);
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().date;
+            gl001 = element.data().GH001;
+            nfalo1 = element.data().NFAL01;
+            pap005 = element.data().PAP005;
+            pap007 = element.data().PAP007;
+            pap001 = element.data().PAP001;
+            pap003 = element.data().PAP003;
+            hd001 = element.data().HD001;
+            ld003 = element.data().LD003;
+            ld001 = element.data().LD001;
+            pet005 = element.data().PET005;
+            pet003 = element.data().PET003;
+            pet001 = element.data().PET00;
+
+            this.outBoundGraphDisplayDay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totaloutBoundMonthGL001 = +this.totaloutBoundMonthGL001 + +gl001;
+            this.totaloutBoundMonthNFAL01 = +this.totaloutBoundMonthNFAL01 + +nfalo1;
+            this.totaloutBoundMonthPAP005 = +this.totaloutBoundWeekPAP005 + +pap005;
+            this.totaloutBoundMonthPAP007 = +this.totaloutBoundMonthPAP007 + +pap007;
+            this.totaloutBoundMonthPAP003 = +this.totaloutBoundMonthPAP003 + +pap001;
+            this.totaloutBoundMonthPAP001 = +this.totaloutBoundMonthPAP001 + +pap003;
+            this.totaloutBoundMonthHD001 = +this.totaloutBoundMonthHD001 + +hd001;
+            this.totaloutBoundMonthLD001 = +this.totaloutBoundMonthLD001 + +ld003;
+            this.totaloutBoundMonthLD003 = +this.totaloutBoundMonthLD003 + +ld001;
+            this.totaloutBoundMonthPET001 = +this.totaloutBoundMonthPET001 + +pet001;
+            this.totaloutBoundMonthPET003 = +this.totaloutBoundMonthPET003 + +pet003;
+            this.totaloutBoundMonthPET005 = +this.totaloutBoundMonthPET005 + +pet005;
+
+            this.outboundgh001 = this.totaloutBoundMonthGL001;
+            this.outboundnfal01 = this.totaloutBoundMonthNFAL01;
+            this.outboundpap005 = this.totaloutBoundWeekPAP005;
+            this.outboundpap007 = this.totaloutBoundMonthPAP007;
+            this.outboundpap003 = this.totaloutBoundMonthPAP003;
+            this.outboundpap001 = this.totaloutBoundMonthPAP001;
+            this.outboundhd001 = this.totaloutBoundMonthHD001;
+            this.outboundld001 = this.totaloutBoundMonthLD001;
+            this.outboundld003 = this.totaloutBoundMonthLD003;
+            this.outboundpet003 = this.totaloutBoundMonthPET001;
+            this.outboundpet001 = this.totaloutBoundMonthPET003;
+            this.outboundpet005 = this.totaloutBoundMonthPET005;
+
+            // console.log(this.outboundgh001);
+            // console.log(this.outboundnfal01);
+            // console.log(this.outboundpap005);
+            // console.log(this.outboundpap007);
+            // console.log(this.outboundpap003);
+            // console.log(this.outboundpap001);
+            // console.log(this.outboundhd001);
+            // console.log(this.outboundld001);
+            // console.log(this.outboundld003);
+            // console.log(this.outboundpet003);
+            // console.log(this.outboundpet001);
+            // console.log(this.outboundpet005);
+            
+          })
+          this.createBarChart1();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.outBoundGraphDisplayDay);
+      }
+
+      // reclaimers Graph
+      for(let key in this.outBoundGraph) {
+        var i = 0; i < 30; i++;
+        let date = moment(new Date()).format('MMMM DD YYYY');
+        let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+
+        // console.log(date);
+        // console.log(newdate);
+
+        this.db.collection('reclaimers').where("date", ">=", newdate).onSnapshot(Snapshot => {
+          Snapshot.forEach(element => {
+            let time = {};
+            let gl001 = {};
+            let nfalo1 = {};
+            let pap005 = {};
+            let pap007 = {};
+            let pap001 = {};
+            let pap003 = {};
+            let hd001 = {};
+            let ld003 = {};
+            let ld001 = {};
+            let pet005 = {};
+            let pet003 = {};
+            let pet001 = {};
+
+            time = element.data().date;
+            gl001 = element.data().GH001Mass;
+            nfalo1 = element.data().NFAL01Mass;
+            pap005 = element.data().PAP005Mass;
+            pap007 = element.data().PAP007Mass;
+            pap001 = element.data().PAP001Mass;
+            pap003 = element.data().PAP003Mass;
+            hd001 = element.data().HD001Mass;
+            ld003 = element.data().LD003Mass;
+            ld001 = element.data().LD001Mass;
+            pet005 = element.data().PET005Mass;
+            pet003 = element.data().PET003Mass;
+            pet001 = element.data().PET001Mass;
+
+            this.inboundGraphDisplay.push({
+              time: time,
+              gl001: gl001,
+              nfalo1: nfalo1,
+              pap005: pap005,
+              pap007: pap007,
+              pap001: pap001,
+              pap003: pap003,
+              hd001: hd001,
+              ld003: ld003,
+              ld001: ld001,
+              pet005: pet005,
+              pet003: pet003,
+              pet001: pet001
+            })
+            // console.log(element.data());
+
+            this.totalReclaimerMonthGL001 = +this.totalReclaimerMonthGL001 + +gl001;
+            this.totalReclaimerMonthNFAL01 = +this.totalReclaimerMonthNFAL01 + +nfalo1;
+            this.totalReclaimerMonthPAP005 = +this.totalReclaimerMonthPAP005 + +pap005;
+            this.totalReclaimerMonthPAP007 = +this.totalReclaimerMonthPAP007 + +pap007;
+            this.totalReclaimerMonthPAP003 = +this.totalReclaimerMonthPAP003 + +pap001;
+            this.totalReclaimerMonthPAP001 = +this.totalReclaimerMonthPAP001 + +pap003;
+            this.totalReclaimerMonthHD001 = +this.totalReclaimerMonthHD001 + +hd001;
+            this.totalReclaimerMonthLD001 = +this.totalReclaimerMonthLD001 + +ld003;
+            this.totalReclaimerMonthLD003 = +this.totalReclaimerMonthLD003 + +ld001;
+            this.totalReclaimerMonthPET001 = +this.totalReclaimerMonthPET001 + +pet001;
+            this.totalReclaimerMonthPET003 = +this.totalReclaimerMonthPET003 + +pet003;
+            this.totalReclaimerMonthPET005 = +this.totalReclaimerMonthPET005 + +pet005;
+
+            this.reclaimergh001mass = this.totalReclaimerWeekGL001;
+            this.reclaimernfa01Mass = this.totalReclaimerMonthNFAL01;
+            this.reclaimerpap005mass = this.totalReclaimerMonthPAP005;
+            this.reclaimerpap007Mass = this.totalReclaimerMonthPAP007;
+            this.reclaimerpap003mass = this.totalReclaimerMonthPAP003;
+            this.reclaimerpap001mass = this.totalReclaimerMonthPAP001;
+            this.reclaimerhd001mass = this.totalReclaimerMonthHD001;
+            this.reclaimerld001mass = this.totalReclaimerMonthLD001;
+            this.reclaimerld003mass = this.totalReclaimerMonthLD003;
+            this.reclaimerpet001mass = this.totalReclaimerMonthPET001;
+            this.reclaimerpet003mass = this.totalReclaimerMonthPET003;
+            this.reclaimerpet005mass = this.totalReclaimerMonthPET005;
+
+            // console.log(this.reclaimergh001mass);
+            // console.log(this.reclaimernfa01Mass);
+            // console.log(this.reclaimerpap005mass);
+            // console.log(this.reclaimerpap007Mass);
+            // console.log(this.reclaimerpap003mass);
+            // console.log(this.reclaimerpap001mass);
+            // console.log(this.reclaimerhd001mass);
+            // console.log(this.reclaimerld001mass);
+            // console.log(this.reclaimerld003mass);
+            // console.log(this.reclaimerpet001mass);
+            // console.log(this.reclaimerpet003mass);
+            // console.log(this.reclaimerpet005mass);
+            
+          })
+          this.createBarChart2();
+        })
+        // this.outBoundGraphDisplayDay.push(date)
+        // console.log(this.inboundGraphDisplay);
+      }
+
+    }
+
+    //EDIT PAPER
+    HideandShowSave() {
+      this.edit = !this.edit;
+      // console.log(this.edit,this.editDiv[0]);
+      
+      if (this.edit) {
+        // console.log('block');
+        this.render.setStyle(this.editDiv[0],'display','block')
+      } else {
+        // console.log('none');
+        setTimeout(() => {
+          this.render.setStyle(this.editDiv[0],'display','none')
+        }, 500);
+      }
+    }
+
+    burgerMan() {
+      this.burger = !this.burger;
+    }
+    //edit plastic div
+    HideandShowCreate () {
+      this.create = !this.create;
+          
+      if (this.create) {
+        // console.log('block');
+        this.render.setStyle(this.createDiv[0],'display','block')
+      } else {
+        // console.log('none');
+        setTimeout(() => {
+          this.render.setStyle(this.createDiv[0],'display','none')
+        }, 500);
+      }
+    }
+
+    //edit glass div
+    glassShow () {
+      this.glass = !this.glass;
+          
+      if (this.glass) {
+        // console.log('block');
+        this.render.setStyle(this.glassDiv[0],'display','block')
+      } else {
+        // console.log('none');
+        setTimeout(() => {
+          this.render.setStyle(this.glassDiv[0],'display','none')
+        }, 500);
+      }
+    }
+
+    //edit aluminium
+    HideandShowDelete() {
+      this.delete = !this.delete;
+      if (this.delete) {
+        // console.log('block');
+        this.render.setStyle(this.deleteDiv[0],'display','block')
+      } else {
+        // console.log('none');
+        setTimeout(() => {
+          this.render.setStyle(this.deleteDiv[0],'display','none')
+        }, 500);
+      }
+    }
+
+    //HISTORY FOR PAPER
+    HideandShowHISTORYPAPER() {
+    this.paper = !this.paper;
+    if (this.paper) {
+      // console.log('block');
+      this.render.setStyle(this.paperDiv[0],'display','block')
+    } else {
+      // console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.paperDiv[0],'display','none')
+      }, 500);
+    }
+    }
+
+    //HISTORY FOR PLASTIC
+    HideandShowHISTORYPPLASTIC() {
+    this.plastic = !this.plastic;
+    if (this.plastic) {
+      // console.log('block');
+      this.render.setStyle(this.plasticDiv[0],'display','block')
+    } else {
+      // console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.plasticDiv[0],'display','none')
+      }, 500);
+    }
+    }
+
+    //HISTORY FOR ALUMINUM
+    HideandShowHISTORYALUMINIUM() {
+
+    this.alu = !this.alu;
+    if (this.alu) {
+      // console.log('block');
+      this.render.setStyle(this.aluDiv[0],'display','block')
+    } else {
+      // console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.aluDiv[0],'display','none')
+      }, 500);
+    }
+    }
+
+    //HISTORY FOR GLASS
+    HideandShowHISTORYGLASS() {
+    this.glassh = !this.glassh;
+    if (this.glassh) {
+      // console.log('block');
+      this.render.setStyle(this.glasshDiv[0],'display','block')
+    } else {
+      // console.log('none');
+      setTimeout(() => {
+        this.render.setStyle(this.glasshDiv[0],'display','none')
+      }, 500);
+    }
+    }
+
+    createBarChart() {
+      Chart.defaults.global.defaultFontSize = 4;
+      Chart.defaults.global.defaultFontFamily = 'Roboto';
+
+      this.bars = new Chart(this.barChart.nativeElement, {
+        type: 'bar',
+        data: {
+          labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+          datasets: [{
+            label: 'INBOUND',
+            data: [ 
+              this.inboundgh001,
+              this.inboundnfalo1,
+
+              this.inboundpap005,
+              this.inboundpap007,
+              this.inboundpap001,
+              this.inboundpap003,
+
+              this.inboundhd001,
+              this.inboundld001,
+              this.inboundld003,
+              this.inboundpet001,
+              this.inboundpet003,
+              this.inboundpet005,
+              
+            ],
+            // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+            backgroundColor: 'rgb(90, 78, 31)', // array should have same number of elements as number of dataset
+            borderColor: 'rgb(90, 78, 31)',  // array should have same number of elements as number of dataset
+            borderWidth: 0.1,
+          
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              stacked: true,
+              gridLines: {
+                display: false,
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false
+              }
+            }]
+          },
+          labels: {
+            defaultFontSize: 5
+          }
+        }
+      });
+    }
+
+    createBarChart1() {
+      Chart.defaults.global.defaultFontSize = 3;
+      Chart.defaults.global.defaultFontFamily = 'Roboto';
+      this.bars = new Chart(this.barChart1.nativeElement, {
+        type: 'bar',
+        data: {
+          labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+          // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
+          datasets: [{
+            label: 'OUTBOUND',
+            data: [
+              this.outboundgh001,
+              this.outboundnfal01,
+              this.outboundpap005,
+              this.outboundpap007,
+              this.outboundpap001,
+              this.outboundpap003,
+              this.outboundhd001,
+              this.outboundld001,
+              this.outboundld003,
+              this.outboundpet001,
+              this.outboundpet003,
+              this.outboundpet005
+            ],
+        
+            // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+            backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
+            borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
+            borderWidth: 0.1,
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              stacked: true,
+              gridLines: {
+                display: false,
+            
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false
+              }
+            }]
+          },
+          labels: {
+            defaultFontSize: 5
+          }
+        }
+      });
+    }
+
+      /* bar chart */
+    
+      createBarChart2() {
+        this.bars = new Chart(this.barChart2.nativeElement, {
+          type: 'bar',
+          data: {
+            labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+            // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
+            datasets: [{
+              label: 'RECLAIMER',
+    
+        data: [ 
+          this.reclaimergh001mass,
+          this.reclaimernfa01Mass,
+          this.reclaimerpap005mass,
+          this.reclaimerpap007Mass,
+          this.reclaimerpap001mass,
+          this.reclaimerpap003mass,
+          this.reclaimerhd001mass,
+          this.reclaimerld001mass,
+          this.reclaimerld003mass,
+          this.reclaimerpet001mass,
+          this.reclaimerpet003mass,
+          this.reclaimerpet005mass
+        ],
+              // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+              backgroundColor: 'rgb(29, 61, 61)', // array should have same number of elements as number of dataset
+              borderColor: 'rgb(29, 61, 61)',  // array should have same number of elements as number of dataset
+              borderWidth: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                stacked: true,
+                gridLines: {
+                  display: false,
+              
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  display: false
+                }
+              }]
+            },
+            labels: {
+              defaultFontSize: 5
+            }
+          }
+        });
+      }
+
+    Logout() {
+      firebase.auth().signOut().then((res) => {
+        // console.log(res);
+        this.route.navigateByUrl('/login');
+      });
+      }
+      editprofile() {
+        this.route.navigate(['profile']);
+      }
+
+      moreState = 0;
+      optsSlider = document.getElementsByClassName("burgercontent") as HTMLCollectionOf <HTMLElement>
+      showMoreBtn(){
+        if(this.moreState == 0){
+          this.moreState = 1
+          this.optsSlider[0].style.width = "125px"
+          // console.log("this is open")
+        }
+        else {
+          this.moreState = 0
+          this.optsSlider[0].style.width = "30px"
+          // console.log("this is closed")
+        }
+      }
+
+      //testing
+      //burgercontent 2
+      moreState2 = 0;
+      optsSlider2 = document.getElementsByClassName("burgercontent2") as HTMLCollectionOf <HTMLElement>
+      showMoreBtn2(){
+        if(this.moreState2 == 0){
+          this.moreState2 = 1
+          this.optsSlider2[0].style.width = "125px"
+          // console.log("this is open")
+        }
+        else {
+          this.moreState2 = 0
+          this.optsSlider2[0].style.width = "30px"
+          // console.log("this is closed")
+        }
+      }
+
+        //burgercontent 3
+        moreState3 = 0;
+        optsSlider3 = document.getElementsByClassName("burgercontent3") as HTMLCollectionOf <HTMLElement>
+        showMoreBtn3(){
+          if(this.moreState3 == 0){
+            this.moreState3 = 1
+            this.optsSlider3[0].style.width = "125px"
+            // console.log("this is open")
+          }
+          else {
+            this.moreState3 = 0
+            this.optsSlider3[0].style.width = "30px"
+            // console.log("this is closed")
+          }
+        }
+
+        //burgercontent 3
+        moreState4 = 0;
+        optsSlider4 = document.getElementsByClassName("burgercontent4") as HTMLCollectionOf <HTMLElement>
+        showMoreBtn4(){
+          if(this.moreState4 == 0){
+            this.moreState4 = 1
+            this.optsSlider4[0].style.width = "125px"
+            //  console.log("this is open")
+          }
+          else {
+            this.moreState4 = 0
+            this.optsSlider4[0].style.width = "30px"
+            //  console.log("this is closed")
+          }
+        }
+        getinbound(){
+          this.db.collection('inbounds').onSnapshot(snapshot => {
+        
+            this.newInbound=[]
+          
+            snapshot.forEach(Element => {
+            
+                  this.inboundss.push(Element.data());
+            });
+            this.inboundss.forEach(item => {
+            
+              if(item.Userid === firebase.auth().currentUser.uid){
+                      this.newInbound.push(item);
+              }
+            })
+            // console.log('Newinbounds', this.newInbound);
+          }); 
+        }
+
+        CheckInputsEmptyStringPlastic() {
+          if (
+              this.HD001price === undefined &&
+              this.LD001price === undefined &&
+              this.LD003price === undefined &&
+              this.PET001price === undefined &&
+              this.PET003price === undefined &&
+              this.PET005price === undefined
+            ) {
+              this.presentAlertcheckInputs();
+            } else {
+              this.checkinputfields();
+            }
+        }
+
+        CheckInputsEmptyStringGlass() {
+          if (
+              this.GH001price === undefined 
+            ) {
+              this.presentAlertcheckInputs();
+            } else {
+              this.checkinputfields();
+            }
+          
+        }
+
+        CheckInputsEmptyStringAlu() {
+          if (
+              this.NFAL01price === undefined 
+            ) {
+              this.presentAlertcheckInputs();
+            } else {
+              this.checkinputfields();
+            }
+        }
+
+        async presentAlertcheckInputs() {
+          const alert = await this.alertController.create({
+            header: 'Warning!',
+            message: '<strong>Field cannot be empty.</strong>!!!',
+            buttons: [
+              {
+                text: 'Okay',
+                
+                handler: () => {
+                  this.route.navigateByUrl('/home');
+                }
+              }
+            ]
+          });
+          await alert.present();
+        } 
+    //highlighting the navigation of the daily weekly
+    toggleDaily() {
+    // Changes the header tab
+    document.getElementById("daily").style.display = "flex";
+    document.getElementById("weekly").style.display = "flex";
+    document.getElementById("monthly").style.display = "flex";
+
+
+    // Changes the color of the daily tab
+    // document.getElementById("daily").style.background = "white";
+    // document.getElementById("daily").style.color = "black";
+
+    // Changes the color of the weekly tab
+    document.getElementById("weekly").style.background = "white";
+    document.getElementById("weekly").style.color = "black";
+
+    // Changes the color of the monthly tab
+    document.getElementById("monthly").style.background = "white";
+    document.getElementById("monthly").style.color = "black";
+
+    // Changes the color of the Plastic tab
+    document.getElementById("daily").style.background = "#568C0B";
+    document.getElementById("daily").style.color = "white";
+    }
+
+    toggleWeekly() {                        
+    // Changes the header tab
+    document.getElementById("weekly").style.display = "flex";
+    document.getElementById("monthly").style.display = "flex";
+    document.getElementById("daily").style.display = "flex";
+
+
+    // Changes the color of the Paper tab
+    document.getElementById("weekly").style.background = "#568C0B";
+    document.getElementById("weekly").style.color = "white";
+
+    // Changes the color of the Cans tab
+    document.getElementById("monthly").style.background = "white";
+    document.getElementById("monthly").style.color = "black";
+
+    // Changes the color of the Glass tab
+    document.getElementById("daily").style.background = "white";
+    document.getElementById("daily").style.color = "black";
+
+    }
+
+    toggleMonthly() {                        
+    // Changes the header tab
+    document.getElementById("monthly").style.display = "flex";
+    document.getElementById("weekly").style.display = "flex";
+    document.getElementById("daily").style.display = "flex";
+
+
+    // Changes the color of the Paper tab
+    document.getElementById("monthly").style.background = "#568C0B";
+    document.getElementById("monthly").style.color = "white";
+
+    // Changes the color of the Cans tab
+    document.getElementById("weekly").style.background = "white";
+    document.getElementById("weekly").style.color = "black";
+
+    // Changes the color of the Glass tab
+    document.getElementById("daily").style.background = "white";
+    document.getElementById("daily").style.color = "black";
+
+    }
+    async presentAlertDelete(id) {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to delete this record, your information will not be saved.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.deleteprice(id);
+            this.route.navigateByUrl('/home');
+          }
+        }
+      ]
+    });
+    await alert.present();
+    }
+
+    deleteprice(id) {
+    this.db.collection('price').doc('SinUfRNnbB073KZiDIZE').delete();
+    console.log('Record deleted');
+    }  
+    deletehd001(v){
+    console.log('aaaa',v);
+    firebase.firestore().collection('price').doc('SinUfRNnbB073KZiDIZE').update({
+      v : firebase.firestore.FieldValue.delete()
+    }).catch( err => {
+      console.log(err);
+      
+    })
+
+    }
+
+    ionViewWillEnter() {
+    this.menuCtrl.enable(true);
+    }
 
 }

@@ -1,12 +1,13 @@
 <div class="The-header">
   <div class="sub-header" padding>
-    <h1>All Outbound Material</h1>
+    <h1>All Reclaimer Material</h1>
   </div>
   <!-- <div class="log-out">
     <ion-icon name="log-out" (click)="Logout()"></ion-icon>
   </div> -->
 </div>
 <div class="line-breaker"></div>
+
 
 
 <ion-content>
@@ -20,11 +21,10 @@
         <div (click)="togglePlastic()" id="isPlastic">PLASTIC</div>
         <div (click)="toggleAluminium()" id="isAluminium">ALUMINIUM</div>
         <div (click)="toggleGlass()" id="isGlass">GLASS</div>
-
       </div>
 
       <div class="RecyleLogo">
-        <img  id="Opaque" src="../../assets/icon/Asset 10.svg" alt="">
+        <img id="RecycleLogo2" src="../../assets/icon/Asset 10.svg" alt="">
       </div>
       <div class="Recycle-Bins">
         <img src="../../assets/binsPopup  2.svg" alt="">
@@ -35,32 +35,36 @@
         <div class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
           <!-- paper -->
           <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="togglePlastic()">Next</ion-button>
+            <ion-button fill="clear" color="light" (click)='togglePlastic()'>Next</ion-button>
           </div>
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass"><br>
-                <p>PAP005</p>
+                  placeholder="PAP005 (Kg)" [(ngModel)]="PAP005massz"
+                  (change)='onChangePAP005($event.target.value)'><br>
+                <p>{{ PAP005pricez }}</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass"><br>
-                <p>PAP007</p>
+                  placeholder="PAP007 (Kg)" [(ngModel)]="PAP007massz"
+                  (change)='onChangePAP007($event.target.value)'><br>
+                <p>	R {{ PAP007pricez }}</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass"><br>
-                <p>PAP001</p>
+                  placeholder="PAP001 (Kg)" [(ngModel)]="PAP001massz"
+                  (change)='onChangePAP001($event.target.value)'><br>
+                <p>{{ PAP001pricez }}</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass"><br>
-                <p>PAP003</p>
+                  placeholder="PAP003 (Kg)" [(ngModel)]="PAP003massz"
+                  (change)='onChangePAP003($event.target.value)'><br>
+                <p>{{ PAP003pricez }}</p>
               </ion-col>
 
             </ion-row>
@@ -70,43 +74,48 @@
         <div class="Material-inputs" id="forPlastic" *ngIf="isPlastic === true">
           <!-- plastic -->
           <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="toggleAluminium()">Next</ion-button>
+            <ion-button fill="clear" color="light" (click)='toggleAluminium()'>Next</ion-button>
           </div>
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="HD001mass"><br>
-                <p>HD001</p>
+                  placeholder="HD001 (Kg)" maxlength="4" [(ngModel)]="HD001massz"
+                  (change)='onChangeHD001($event.target.value)'><br>
+                <p>{{ HD001pricez }}</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD001mass"><br>
-                <p>LD001</p>
+                  maxlength="4" placeholder="LD001 (Kg)" [(ngModel)]="LD001massz"
+                  (change)='onChangeLD001($event.target.value)'><br>
+                <p>{{ LD001pricez }}</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD003mass"><br>
-                <p>LD003</p>
+                  maxlength="4" placeholder="LD003 (Kg)" [(ngModel)]="LD003massz"
+                  (change)='onChangeLD003($event.target.value)'><br>
+                <p>{{ LD003pricez }}</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET005mass"><br>
-                <p>PET005</p>
+                  placeholder="PET005 (Kg)" [(ngModel)]="PET005massz"
+                  (change)='onChangePET005($event.target.value)'><br>
+                <p>{{ PET005pricez }}</p>
               </ion-col>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass"><br>
-                <p>PET001</p>
+                  placeholder="PET001 (Kg)" [(ngModel)]="PET001massz"
+                  (change)='onChangePET001($event.target.value)'><br>
+                <p>{{ PET001pricez }}</p>
               </ion-col>
-
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET003mass"><br>
-                <p>PET003</p>
+                  placeholder="PET003 (Kg)" [(ngModel)]="PET003massz"
+                  (change)='onChangePET003($event.target.value)'><br>
+                <p>{{ PET003pricez }}</p>
               </ion-col>
 
             </ion-row>
@@ -116,21 +125,21 @@
         <div class="Material-inputs" id="forAluminium" *ngIf="isAluminium === true">
           <!-- Aluminium -->
           <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="toggleGlass()">Next</ion-button>
+            <ion-button fill="clear" color="light" (click)='toggleGlass()'>Next</ion-button>
           </div>
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass"><br>
-                <p id="CODE">NFAL01</p>
+                  placeholder="NFAL01 (Kg)" [(ngModel)]="NFAL01massz"
+                  (change)='onChangeNFAL01($event.target.value)'><br>
+                <p>{{ NFAL01pricez }}</p>
               </ion-col>
             </ion-row>
           </ion-grid>
         </div>
         <!-- For Glass -->
         <div class="Material-inputs" id="forGlass" *ngIf="isGlass === true">
-          <!-- Glass -->
           <div class="Next-button">
             <ion-button fill="clear" color="light" (click)="CheckInputsEmptyString()">Save</ion-button>
           </div>
@@ -138,8 +147,8 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="GH001mass"><br>
-                <p id="CODE">GL001</p>
+                  placeholder="GL001 (Kg)" [(ngModel)]="GH001massz" (change)='onChangeGH001($event.target.value)'><br>
+                <p>R{{ GH001pricez }}</p>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -155,11 +164,8 @@
           src="../../assets/icon/outboundPOPup                                                                .svg"
           alt="">
       </div>
-      <!-- <div class="truck-div">
-        <img src="../../assets/outboundPopup.svg" alt="">
-      </div> -->
       <div class="heading-block">
-        Outbound Details
+        Reclaimer Details
       </div>
       <div class="flow-container">
         <div class="blockItems" id="absolutely">
@@ -172,18 +178,18 @@
                   {{ searchResults.length }}
                 </div>
               </div>
-              <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
-              <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar>
+              <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation" type="number"></ion-input> -->
+              <ion-searchbar (ionInput)="getItems($event)" placeholder="Search by Phone Numbers" type="number"
+                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;"></ion-searchbar>
             </div>
             <div class="contact-cards">
-
-              <ion-card *ngFor="let records of recordoutbounddisplays">
+              <ion-card *ngFor="let records of testArrays">
                 <ion-card-header (click)='presentAlertAddUser(records.id)'>
-                  <ion-card-title>{{ records.DriverName }}</ion-card-title>
+                  <ion-card-title>{{ records.name }} {{ records.surname }}</ion-card-title>
                 </ion-card-header>
 
                 <ion-card-content>
-                  {{ records.RegistarionNumberPlates }}
+                  {{ records.contact }}
                 </ion-card-content>
               </ion-card>
 
@@ -196,22 +202,18 @@
           </div>
         </div>
         <div class="blockItems">
-          <div class="details-driver" *ngIf="driverInfo === true" padding>
-            <form [formGroup]="RegisterForm">
-              <input type="text" placeholder="Driver Name" [(ngModel)]="DriverNameInput"
-                formControlName="DriverNameInput">
-              <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
-                formControlName="RegistarionNumberPlatesInput">
-              <input type="text" placeholder="Destination" [(ngModel)]="DestinationInput"
-                formControlName="DestinationInput">
-              <input type="text" placeholder="Truck Source" [(ngModel)]="TruckSourcessInput"
-                formControlName="TruckSourcessInput">
+          <div class="details-driver" *ngIf="driverInfo === true">
+            <form padding [formGroup]="RegisterForm">
+              <input placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
+              <input placeholder="Surnames" [(ngModel)]="surnames" formControlName="surnames" type="text">
+              <input placeholder="Contact No." [(ngModel)]="contacts" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel" onKeyPress="if(this.value.length==10)">
+              <input placeholder="Physical Address" [(ngModel)]="addresss" formControlName="addresss" type="text">
             </form>
           </div>
         </div>
       </div>
       <div class="bottom-button">
-        <ion-button color="clear" id="FinishBTN" (click)="doneBtn()" (click)="showWasteInfo()"
+        <ion-button color="clear" id="FinishBTN" (click)="doneBtn()" (click)="showInputs()"
           [disabled]="!RegisterForm.valid">
           Next
         </ion-button>
@@ -243,32 +245,25 @@
     </div>
     <div class="line-breaker"></div>
     <div class="history-labels">
-      <div>Driver Name</div>
-      <div>Registration No.</div>
+      <div>Full Name</div>
+      <div>Phone Number</div>
+      <div>Amount</div>
       <div>Date</div>
       <div></div>
       <div></div>
     </div>
-    <div class="itemList" *ngFor="let records of recordoutbounddisplaysz">
-      <div>{{ records.DriverName }}</div>
-      <div>{{ records.RegistarionNumberPlates }}</div>
-      <div>{{ records.time }}</div>
+    <div class="itemList" *ngFor="let records of testArrays">
+      <div>{{ records.name }} {{ records.surname }}</div>
+      <div>{{ records.contact }}</div>
+      <div>R{{ records.OverallGrandTotal }}</div>
+      <div>{{ records.date }}</div>
       <div>
-        <ion-icon name="eye" [routerLink]="['/outbound-pdf', records.id]"></ion-icon>
+        <ion-icon name="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
       </div>
-      <div>
+      <!-- <div>
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-      </div>
+      </div> -->
     </div>
-    <!-- <div class="itemList">
-      <div>February 10 2020</div>
-      <div>ADSGDSHGSHEREWT</div>
-      <div>
-        <ion-icon name="eye"></ion-icon>
-      </div>
-      <div>
-        <ion-icon name="trash"></ion-icon>
-      </div>
-    </div> -->
   </div>
+
 </ion-content>
