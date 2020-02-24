@@ -326,10 +326,7 @@ firsttem(obj:any ={})
           alert.present();
           console.log('user addded to cloud ')
             })
-            
             console.log('user saved to cloud');
-    
-        
            }else {
             let alert = await this.alertCtrl.create({
               message: 'the email is already  been used',
@@ -343,13 +340,8 @@ firsttem(obj:any ={})
             alert.present();
             console.log('This email has already been used already');
            }
-          
         })
-   
-  
       }
-
-   
 
       changeListener(admin): void {
         const i = admin.target.files[0];
@@ -401,7 +393,7 @@ firsttem(obj:any ={})
             let image = {};
             let ActiveAcount = {};
 
-            id = this.id = element.data().userid;
+            id = this.id = element.id;
             name = this.name = element.data().name;
             surname = this.surname = element.data().surname;
             number = this.number = element.data().number;

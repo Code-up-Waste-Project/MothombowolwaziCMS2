@@ -320,6 +320,7 @@ export class ReclaimerPage implements OnInit {
   reclaimername;
   reclaimersurname;
   reclaimerDate;
+  reclaimercode;
   recordreclaimerdisplays = [];
 
   pdfObj = null;
@@ -420,11 +421,13 @@ export class ReclaimerPage implements OnInit {
         let contact = {};
         let address = {};
         let OverallGrandTotal = {};
+        let reclaimercode = {};
 
         id = this.id = element.id;
         reclaimername = this.reclaimername = element.data().name;
         reclaimersurname = this.reclaimersurname = element.data().surname;
         reclaimerDate = this.reclaimerDate = element.data().date;
+        reclaimercode = this.reclaimercode = element.data().reclaimercode;
 
         name = this.name = element.data().name;
         surname = this.surname = element.data().surname;
@@ -432,7 +435,7 @@ export class ReclaimerPage implements OnInit {
         address = this.address = element.data().address;
         OverallGrandTotal = this.OverallGrandTotal = element.data().OverallGrandTotal;
 
-        this.usersz.push(contact)
+        this.usersz.push(reclaimercode)
 
         this.newreclaimer = [];
         this.newreclaimer.push({
@@ -1448,7 +1451,8 @@ export class ReclaimerPage implements OnInit {
 
   Addreclaimer() {
     this.db.collection('reclaimers').doc().set({
-      date: moment(new Date()).format('MMMM DD YYYY'),
+      reclaimercode: Math.floor(Math.random()*899999+100000),
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
       name: this.names,
       surname: this.surnames,
       address: this.addresss,
@@ -1787,12 +1791,13 @@ Logout() {
     // console.log(this.userLocation);
     // console.log(location);
 
-    this.db.collection('reclaimers').where("contact","==",location).onSnapshot(element => {
+    this.db.collection('reclaimers').where("reclaimercode","==",location).onSnapshot(element => {
       element.forEach(element => {
         let name = {};
         let surname = {};
         let contact = {};
         let address = {};
+        let reclaimercode = {};
 
         name = this.names = element.data().name;
         surname = this.surnames = element.data().surname;

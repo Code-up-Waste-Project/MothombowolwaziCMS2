@@ -11,6 +11,7 @@ import { Platform } from '@ionic/angular';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { element } from 'protractor';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-outbound-pdf',
@@ -120,6 +121,7 @@ export class OutboundPDFPage implements OnInit {
     public rendered: Renderer2,
     private plt: Platform,
     private file: File,
+    private location: Location,
     private fileOpener: FileOpener
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -440,5 +442,10 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
       this.ViewOutbound.push(documentSnapshot.data());
       // console.log(this.ViewOutbound);
     });  }
+
+    myBackButton(){
+      this.location.back();
+      // this.menuCtrl.enable(true);
+    }
 
 }

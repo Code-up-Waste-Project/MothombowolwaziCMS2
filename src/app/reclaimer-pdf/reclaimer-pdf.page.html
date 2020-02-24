@@ -6,7 +6,7 @@
                     <ion-button (click)="downloadPdf()" color="clear" class="PDF">Download PDF</ion-button>
                 </div>
                 <div class="CancelBtn">
-                    <ion-icon [routerLink]="['/reclaimer']" class="Cancel" name="close-circle"></ion-icon>
+                    <ion-icon (click)="myBackButton()" class="Cancel" name="close-circle"></ion-icon>
                 </div>
             </div>
         </ion-title>
