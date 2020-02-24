@@ -571,7 +571,7 @@ export class InboundPage implements OnInit {
 
   recordInbounds() {
     this.db.collection("inbounds").doc().set({
-      time: moment(new Date()).format('MMMM DD YYYY'),
+      time: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
       inboundGH001: this.GH001mass,
       inboundNFAL01: this.NFAL01mass,
       inboundPAP005: this.PAP005mass,

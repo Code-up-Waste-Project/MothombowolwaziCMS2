@@ -1,204 +1,397 @@
-<ion-header>
-  <ion-toolbar class="header"> 
-    <ion-title>
-      <div class="Buttons">
-        <div class="PDFButton">
-          <ion-button (click)="downloadPdf()" color="clear" class="PDF">Download PDF</ion-button>
-        </div>
-        <div class="CancelBtn">
-          <ion-icon [routerLink]="['/outbound']" class="Cancel" name="close-circle"></ion-icon>
-        </div>
-      </div>
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-  <div class="Thecont">
-    <div class="Information">
-  <div  *ngFor="let out of ViewOutbound">
-
-  <div class="Info">
-    <div class="div1"></div>
-    <!-- <div class="div2"><h2>Date:  {{ out.date }}</h2></div> -->
+  <div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
+   
   </div>
-
-  <h1>Purchases Per Product Summery</h1>
-
-  <table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Reg No.</th>
-    <th>Source</th>
-    <th>Location</th>
-  </tr>
-  <tr>
-    <td><p>{{ out.DriverName }}</p></td>
-    <td><p>{{ out.RegistarionNumberPlates }}</p></td>
-    <td><p>{{ out.TruckSourcess }}</p></td>
-    <td><p>{{ out.Destination }}</p></td>
-  </tr>
-<br><br><br>
-  <tr>
-    <th>Waste Type</th>
-    <th>CODE/NUMBER</th>
-    <th>Mass(kg)</th>
-  </tr>
-  <tr>
-    <td><p>Glass</p></td>
-    <td><p>{{ GH001 }}</p></td>
-    <td><p>{{ out.GH001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p>Non-Ferrous</p></td>
-    <td><p>NFAL01</p></td>
-    <td><p>{{ out.NFAL01 }}</p></td>
-  </tr>
-  <tr>
-    <td><p>PAPER</p></td>
-    <td><p>PAP005</p></td>
-    <td><p>{{ out.PAP005 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP007</p></td>
-    <td><p>{{ out.PAP007 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP001</p></td>
-    <td><p>{{ out.PAP001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP003</p></td>
-    <td><p>{{ out.PAP003 }}</p></td>
-  </tr>
-  <tr>
-    <td><p>PLASTIC</p></td>
-    <td><p>HD001</p></td>
-    <td><p>{{ out.HD001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>LD001</p></td>
-    <td><p>{{ out.LD001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>LD003</p></td>
-    <td><p>{{ out.LD003 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET001</p></td>
-    <td><p>{{ out.PET00 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET003</p></td>
-    <td><p>{{ out.PET003 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET005</p></td>
-    <td><p>{{ out.PET005 }}</p></td>
-  </tr>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>Overall Mass</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td><p>{{ out.ovarallMass }}</p></td>
-  </tr>
-</table>
-</div>
-
-  <!-- <div class="Everything" *ngFor="let out of ViewOutbound">
-        <div class="Information1">
-          <div class="MotherInfo">
-          <div class="Info1"> 
-            Purchases Per Product Summery
-          </div>
-          <div class="Info2">
-            Date:  {{ out.date }}
-          </div>
+  <div class="container">
+  
+    <div padding class="alltime">
+      <h4 class="heading">All Storage Material</h4>
+     <!-- <div class="log-out">
+     
+      <ion-button fill="clear" (click)="Logout()"><ion-icon name="log-out" ></ion-icon></ion-button>
+     </div> -->
+  <!-- box 1 -->
+  <div class="stats" style="background: #C5A60A;">
+    <div class="first">
+   <img src="../../assets/inboundW.svg"> 
+  
+    </div>
+    <div class="second" padding>
+     <h2 class="h2">INBOUND</h2>
+     <p class="p">{{inboundweight}}<span>kg</span></p>
+    </div>
+   </div>
+   <!-- box2 -->
+   <div class="stats" style="background: #D12C6F;">
+    <div class="first">
+   <img src="../../assets/outboundW.svg" height="70%"> 
+  
+    </div>
+    <div class="second" padding>
+     <h2 class="h2">OUTBOUND</h2>
+     <p class="p">{{outboundweight}}<span>kg</span></p>
+    </div>
+   </div>
+      <!-- box 3 -->
+      <div class="stats" style="background: #13BBBB;">
+        <div class="first">
+       <img src="../../assets/reclaimerW.svg" > 
+      
         </div>
-        <div class="FatherInfo">
-          <div class="Date">{{ dates }}</div>
+        <div class="second" padding>
+         <h2 class="h2">RECLAIMER</h2>
+         <p class="p">{{Reclaimerweight}}<span>kg</span></p>
         </div>
-        </div>
+       </div>
+  
+          </div><!-- end of all time div -->
     
-        <div class="Heading">
-          <h2>Mthombowolwazi</h2>
-          <h5>{{ out.DriverName }}</h5>
-          <h5>{{ out.RegistarionNumberPlates }}</h5>
-          <h5>{{ out.TruckSourcess }}</h5>
-          <h5>{{ out.Destination }}</h5>
+    <!-- material -->
+   
+    <div  class="material" >
+      <div class="matHeading">  
+        <h4 class="heading2">All Material and Prices</h4>
+      </div>
+    <div class="boxez" padding>
+      
+      <!-- paper -->
+      <div class="box" >
+  <div class="head">
+    <h3 class="materialz">PAPER </h3>
+    <!-- <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowSave()" ></ion-icon></p> -->
+  </div>
+  
+  <div class="sub-material" *ngFor="let paper of PaperArray">
+    <div class="tops">
+      <div class="left">
+        <p class="matb">R{{ paper.newpap001.toFixed(2) }}</p>
+        <p class="smallp">PAP001</p>
+      </div>
+      <div class="right">
+        <p class="matb">R{{ paper.newpap003.toFixed(2) }}</p>
+        <p class="smallp">PAP003</p>
+      </div>
+    </div>
+    <div class="bottoms">
+      <div class="left">
+        <p class="matb">R{{ paper.newpap005.toFixed(2) }}</p>
+        <p class="smallp">PAP005</p>
+      </div>
+      <div class="right">
+        <p class="matb">R{{ paper.newpap007.toFixed(2) }}</p>
+        <p class="smallp">PAP007</p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+  <!-- plastic -->
+      <div class="box" id="plastic" >
+        <div class="head">
+          <h3 class="materialz">PLASTIC </h3>
+          <!-- <p class="icon">  <ion-icon name="create" mode="ios"  (click)="HideandShowCreate()"></ion-icon></p> -->
         </div>
-    
-        <div class="Information2">
-          <div class="Subheads">
-            <div class="Sub1">GLASS</div>
-            <div class="Sub3">Mass</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">GH001</div>
-              <div class="Price3">{{ out.GH001 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">NFAL01</div>
-            <div class="Price3">{{ out.NFAL01 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PAP005</div>
-            <div class="Price3">{{ out.PAP005 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PAP007</div>
-              <div class="Price3">{{ out.PAP007 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PAP001</div>
-            <div class="Price3">{{ out.PAP001 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PAP003</div>
-            <div class="Price3">{{ out.PAP003 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">HD001</div>
-            <div class="Price3">{{ out.HD001 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">LD001</div>
-            <div class="Price3">{{ out.LD001 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">LD003</div>
-            <div class="Price3">{{ out.LD003 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PET001</div>
-            <div class="Price3">{{ out.PET00 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PET003</div>
-            <div class="Price3">{{ out.PET003 }}</div>
-          </div>
-          <div class="Prices">
-            <div class="Price1">PET005</div>
-            <div class="Price3">{{ out.PET005 }}</div>
-          </div>
-          <div class="Prices">
-              <div class="Price1">Overall Mass</div>
-              <div class="Price3">{{ out.ovarallMass }}</div>
+  
+        <div class="sub-material2" *ngFor="let plastic of plasticarray">
+          <div class="tops">
+            <div class="one" id="firstblock">
+              <p class="matb">R{{ plastic.newhd001.toFixed(2) }}</p>
+              <p class="smallp">HD001</p>
+            </div>
+            <div class="two" id="firstblock">
+              <p class="matb">R{{ plastic.newld001.toFixed(2) }}</p>
+              <p class="smallp">LD001</p>
+            </div>
+            <div class="three">
+              <p class="matb">R{{ plastic.newld003.toFixed(2) }}</p>
+              <p class="smallp">LD003</p>
             </div>
           </div>
-      </div> -->
+          <div class="bottoms">
+            <div class="one">
+              <p class="matb">R{{ plastic.newpet003.toFixed(2) }}</p>
+              <p class="smallp">PET003</p>
+            </div>
+            <div class="two" id="thirdblock">
+              <p class="matb">R{{ plastic.newpet001.toFixed(2) }}</p>
+              <p class="smallp">PET001</p>
+            </div>
+            <div class="three" id="thirdblock">
+              <p class="matb">R{{ plastic.newpet005.toFixed(2) }}</p>
+              <p class="smallp">PET005</p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    
+      <!-- glass -->
+      <div class="box" >
+        <div class="head">
+          <h3 class="materialz">GLASS </h3>
+          <!-- <p class="icon">  <ion-icon name="create" mode="ios" (click)="glassShow()"></ion-icon></p> -->
+        </div>
+        <div id="sub-material3" *ngFor="let tinns of glassArray">
+               <p class="matb">R{{ tinns.newgl001.toFixed(2) }}</p>
+        <p class="smallp">GL001</p>
+        </div>
+      </div>
+  
+  <!-- aluminium -->
+      <div class="box" >
+        <div class="head">
+          <h3 class="materialz">ALUMINIUM </h3>
+          <!-- <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowDelete()"></ion-icon></p> -->
+        </div>
+        <div id="sub-material3" *ngFor="let allu of NFAL001Array">
+          <p class="matb">R{{ allu.newnfal01.toFixed(2) }}</p>
+          <p class="smallp">NFALO01</p>
+        </div>
+       </div>
+  
+   
+    </div>
+      </div><!-- end of material div -->
+  
+    <div class="graphs">
+  
+      <div class="chartsbtn">
+        <h3>Statistics</h3>
+        <div class="btns">
+          <div class="btnze" (click)="PullDayData()">Daily</div>
+          <div class="btnze" (click)="PullWeekData()">Weekly</div>
+          <div class="btnze" (click)="PullMonthData()">Monthly</div>
+        </div>
+      </div>
+      <div padding class="chartsjs">
+        
+      <div id="yellow"  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
+        <canvas #barChart >
+    </canvas>
+         </div>
+  
+      <div id="pink"  class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
+        <canvas #barChart1  ></canvas>
+      </div>
+  
+      <div id="green"  class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
+        <canvas #barChart2></canvas>
+      </div>
+      </div>
+    </div>
+  <!-- <div class="chartbuttons" padding>
+  
+  <div class="dynamicBtns" padding>
+    <ion-button id="daily" fill="clear" size="small" color="success" (click)="PullDayData()" (click)="toggleDaily()">Daily</ion-button>
+    <ion-button  id="weekly"  fill="clear" size="small" color="success" (click)="PullWeekData()" (click)="toggleWeekly()">Weekly</ion-button>
+    <ion-button  id="monthly"  fill="clear" size="small" color="success" (click)="PullMonthData()" (click)="toggleMonthly()">Monthly</ion-button>
+  
+  </div>
+  </div> -->
+    <!-- <p id="secondborder"></p> -->
+    <!-- <div padding class="graphs"  >
+   
+      <div  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
+        <canvas #barChart >
+    </canvas>
+         </div>
+  
+      <div class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
+        <canvas #barChart1  ></canvas>
+      </div>
+  
+      <div class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
+        <canvas #barChart2></canvas>
+      </div>
+    </div> -->
+  
+  </div>
+  
+  <!-- EDIT PRICE FOR PLASTIC -->
+  <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
+  <div padding class="editform2"  >
+    <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
+    <h1>Edit Price for Plastic</h1>
+    <div class="inputs">
+      <div class="row1">
+        <input placeholder="HD001" [(ngModel)]="HD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+    <input placeholder="LD001" [(ngModel)]="LD001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+    </div>
+  
+      <div class="row2">
+         <input placeholder="LD003" [(ngModel)]="LD003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+    <input placeholder="PET005" [(ngModel)]="PET005price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+    </div>
+  
+   <div class="row3">
+      <input placeholder="PET001" [(ngModel)]="PET001price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+    <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
+  
+   </div>
+  
+       <button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
+  
+    </div>
+  </div>
+  
+  
+  </div>
+  
+  <!-- EDIT PRICE FOR GLASS -->
+  <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
+    <div padding class="editform2">
+      <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
+      <h1>Edit Price For Glass </h1>
+     
+      <input placeholder="GH001" [(ngModel)]="GH001price"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+      
+    <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
     </div>
     </div>
-</ion-content>
+  <!-- EDIT PRICE FOR PAPER -->
+  <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
+    <div padding class="editform2" id="plasticPrices">
+      <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+    <h1>Edit Price For Paper</h1>
+  
+    <div class="inputs">
+   <div class="row1">
+       <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP005" [(ngModel)]="PAP005price"  >
+    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP007" [(ngModel)]="PAP007price" >
+    </div>
+  
+    <div class="row2">
+      <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP001"  [(ngModel)]="PAP001price"  >
+   <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="PAP003"  [(ngModel)]="PAP003price" >
+  </div>
+  <!-- button -->
+  <button ion-button id="savePaper" (click)="  CheckInputsEmptyStringPaper()">Save</button>
+   </div><!-- end of inputs div -->
+   <p class="heading">Keeping Record of all upadates</p>
+   <div class="historydetails">
+     <div class="heady">
+       <div class="col">
+         <h4 class="headz">Date</h4></div>
+       <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+       <div class="col"><h4 class="headz">PAP001</h4></div>
+       <div class="col"><h4 class="headz">PAP003</h4></div>
+       <div class="col"><h4 class="headz">PAP005</h4></div>
+       <div class="col"><h4 class="headz">PAP007</h4></div>
+     </div>
+  
+     <div class="rows" *ngFor="let paper of PaperArrayHistory">
+      <div class="col">
+        <h4 class="headz">{{paper.timePaper}}</h4></div>
+      <div class="col"> <h4 class="headz">R{{paper.pap001}}</h4></div>
+      <div class="col"> <h4 class="headz">R{{paper.pap003}}</h4></div>
+      <div class="col"> <h4 class="headz">R{{paper.pap005}}</h4></div>
+      <div class="col"> <h4 class="headz">R{{paper.pap007}}</h4></div>
+      <div class="col"><h4 class="headz"><ion-icon name="arrow-down-circle-outline"></ion-icon></h4></div>
+    </div>
+   </div>
+   </div><!-- end of edit form2 -->
+  </div>
+  <!-- EDIT PRICE FOR ALUMINIUM -->
+  <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
+  <div padding class="editform2" >
+    <ion-button class="close"  fill="clear" (click)="HideandShowDelete()"
+     slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
+    <h1>Edit Price For  AluminIum</h1>
+   
+    <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+    
+  <button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
+  </div>
+  </div>
+  
+  <!-- DELETE DIVS FOR MATERIAL -->
+  <!-- history for paper -->
+  <div class="opacitydivs paperDiv" [ngClass]="{'slideIn': paper, 'slideOut': !paper}">
+    <div padding id="history" class="editform2 test">
+      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+    <h1>Keeping Track Of All Your Updates</h1>
+    <div class="headers">
+      <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+      <div class="one"><h2 >Old Pricing </h2></div>
+      <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+    </div>
+  
+    <div class="historydata" *ngFor="let paper of PaperArray">
+      <div class="historydata2">
+        <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+      <!-- <div class="two">{{paper.timePaper}}</div> -->
+      <div class="two">R{{paper.oldpap001}}</div>
+      <div class="two">R{{paper.newpap001}}</div>
+      </div>
+      <div class="historydata2">
+        <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+      <!-- <div class="two">R{{paper.timePaper}}</div> -->
+      <div class="two">R{{paper.oldpap003}}</div>
+      <div class="two">R{{paper.newpap003}}</div>
+      </div>
+      <div class="historydata2">
+        <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+      <!-- <div class="two">R{{paper.timePaper}}</div> -->
+      <div class="two">R{{paper.oldpap005}}</div>
+      <div class="two">R{{paper.newpap005}}</div>
+      </div>
+      <div class="historydata2">
+        <!-- <div class="two">{{myprice.timePlastic}}</div>  -->
+      <!-- <div class="two">{{paper.timePaper}}</div> -->
+      <div class="two">R{{paper.oldpap007}}</div>
+      <div class="two">R{{paper.newpap007}}</div>
+      </div>
+    </div>
+   </div>
+  <!-- <p>date  old new <ion-icon name="trash"></ion-icon></p>
+  <p>date <span>R {{ pricess.pap005 }}</span></p>
+  <p>date <span>R {{ pricess.pap007 }}</span></p>
+  <p>date <span>R {{ pricess.pap001 }}</span></p>
+  <p>date <span>R {{ pricess.pap003 }}</span></p> -->
+  <!-- <button ion-button  (click)="checkinputfields()">Save</button> -->
+  
+  </div>
+  
+  <!-- history for plastic -->
+  <div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
+    <div padding class="editform2 test">
+      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <h1>Keeping Track Of All Your Updates</h1>
+      <div class="headers">
+        <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+        <div class="one"><h2 >Old Pricing</h2></div>
+        <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+      </div>
+  </div>
+  </div>
+  
+  <!-- history for glass -->
+  <div class="opacitydivs glassDiv " [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
+    <div padding class="editform2 test"  >
+      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <h1>Keeping Track Of All Your Updates</h1>
+      <div class="headers">
+        <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+        <div class="one"><h2 >Old Pricing</h2></div>
+        <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+      </div>
+  </div>
+  </div>
+  
+  <!-- history for alu -->
+  <div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
+    <div padding class="editform2 test" *ngFor="let p of price">
+      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <h1>Keeping Track Of All Your Updates</h1>
+      <div class="headers">
+        <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
+        <div class="one"><h2 >Old Pricing</h2></div>
+        <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
+      </div>
+  </div>
+  </div>
+  
+  </ion-content>
+  

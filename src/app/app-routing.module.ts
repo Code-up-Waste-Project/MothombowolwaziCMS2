@@ -52,7 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
-    path: 'home2/:id',
+    path: 'home2',
     loadChildren: () => import('./home2/home2.module').then( m => m.Home2PageModule)
   },
   {
@@ -66,10 +66,19 @@ const routes: Routes = [
   {
     path: 'reclaimer-pdf/:id',
     loadChildren: () => import('./reclaimer-pdf/reclaimer-pdf.module').then( m => m.ReclaimerPDFPageModule)
-  },  {
+  },
+  {
     path: 'profile2',
     loadChildren: () => import('./profile2/profile2.module').then( m => m.Profile2PageModule)
+  },  {
+    path: 'inbound2',
+    loadChildren: () => import('./inbound2/inbound2.module').then( m => m.Inbound2PageModule)
+  },
+  {
+    path: 'reclaimer2',
+    loadChildren: () => import('./reclaimer2/reclaimer2.module').then( m => m.Reclaimer2PageModule)
   }
+
 
 
 
