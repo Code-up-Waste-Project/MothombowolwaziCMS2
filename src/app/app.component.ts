@@ -49,6 +49,18 @@ export class AppComponent implements OnInit {
     public router: Router,
     
   ) {
+
+
+console.log("good morning")
+
+
+
+
+
+
+
+
+
       this.getAuth();
       this.initializeApp();
      
@@ -69,24 +81,7 @@ export class AppComponent implements OnInit {
     // });
 
        // pulling for admin
-     
-       this.db.collection('admin').onSnapshot(snapshot => {
-      this.Newadmin =[]
-        snapshot.forEach(Element => {
-  
-          this.myadmis.push(Element.data());
-          this.Newadmin =[]
-          // console.log(Element.data());
-        });
-        this.myadmis.forEach(item => {
-          if (item.userid === firebase.auth().currentUser.uid) {
-          this.Newadmin =[]
-            this.Newadmin.push(item);
-           
-          }
-        });
-        console.log('Newadmins', this.Newadmin);
-      });
+    
 
     // code for idle
     this.check();
@@ -202,9 +197,33 @@ export class AppComponent implements OnInit {
       }
 
     getAuth() {
+      //auth
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
+            
             this.router.navigateByUrl('/home');
+
+
+            //admin 
+ 
+            this.db.collection('admin').get().then(snapshot => {
+              this.Newadmin =[]
+                snapshot.forEach(Element => {
+          
+                  this.myadmis.push(Element.data());
+                  // this.Newadmin =[]
+                  // console.log(Element.data());
+                });
+                this.myadmis.forEach(item => {
+                  if (item.userid === firebase.auth().currentUser.uid) {
+               
+                    console.log('Newadmins', this.Newadmin);
+                    this.Newadmin.push(item);
+                    this.Newadmin.splice(1,1);
+                   
+                  }
+                });
+              });
           }else {
             this.router.navigateByUrl('/login');
           }

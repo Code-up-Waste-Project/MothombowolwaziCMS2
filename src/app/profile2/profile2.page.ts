@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile2.page.scss'],
 })
 export class Profile2Page implements OnInit {
+  buttonDisabled: boolean;
 
   storage = firebase.storage().ref();
   userprofile = [];
@@ -40,7 +41,9 @@ export class Profile2Page implements OnInit {
     public alertController: AlertController,
     private location: Location
   ) {
+    
     this.menuCtrl.enable(false);
+  
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
@@ -54,6 +57,21 @@ export class Profile2Page implements OnInit {
    }
 
   ngOnInit() {
+
+    firebase.auth().onAuthStateChanged(user => {
+
+        if (user) {
+          firebase
+             .firestore()
+             .doc(`/admin/${user.uid}`)
+              .get()
+              .then(userProfileSnapshot => {
+                this.isAdmin = userProfileSnapshot.data().isAdmin;
+              });
+         }
+         this.buttonDisabled = false;
+       });
+
     this.menuCtrl.enable(true);
   }
 
@@ -80,6 +98,7 @@ export class Profile2Page implements OnInit {
   toast.present();
       }
        else {
+       
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
         name: this.profile.name,
         surname: this.profile.surname,
@@ -211,11 +230,17 @@ export class Profile2Page implements OnInit {
     }
 
     Logout() {
+
+     
       firebase.auth().signOut().then((res) => {
         console.log(res);
         this.router.navigateByUrl('/login');
        });
+       
+
       }
-  
+      // theadmin(){
+      //   
+      // }
 
 }

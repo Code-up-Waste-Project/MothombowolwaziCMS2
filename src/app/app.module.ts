@@ -24,7 +24,7 @@ import { ProfilePageModule} from './profile/profile.module';
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
 
-// // Your web app's Firebase configuration       OLD Database 
+// Your web app's Firebase configuration       OLD Database 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
 //   authDomain: "mothombowolwazicms.firebaseapp.com",

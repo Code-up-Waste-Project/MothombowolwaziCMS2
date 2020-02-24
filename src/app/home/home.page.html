@@ -66,21 +66,21 @@
 <div class="sub-material" *ngFor="let paper of PaperArray">
   <div class="tops">
     <div class="left">
-      <p class="matb">R{{ paper.newpap001.toFixed(2) }}</p>
+      <p class="matb">R{{ paper.newpap001 }}</p>
       <p class="smallp">PAP001</p>
     </div>
     <div class="right">
-      <p class="matb">R{{ paper.newpap003.toFixed(2) }}</p>
+      <p class="matb">R{{ paper.newpap003 }}</p>
       <p class="smallp">PAP003</p>
     </div>
   </div>
   <div class="bottoms">
     <div class="left">
-      <p class="matb">R{{ paper.newpap005.toFixed(2) }}</p>
+      <p class="matb">R{{ paper.newpap005 }}</p>
       <p class="smallp">PAP005</p>
     </div>
     <div class="right">
-      <p class="matb">R{{ paper.newpap007.toFixed(2) }}</p>
+      <p class="matb">R{{ paper.newpap007 }}</p>
       <p class="smallp">PAP007</p>
     </div>
   </div>
@@ -97,29 +97,29 @@
       <div class="sub-material2" *ngFor="let plastic of plasticarray">
         <div class="tops">
           <div class="one" id="firstblock">
-            <p class="matb">R{{ plastic.newhd001.toFixed(2) }}</p>
+            <p class="matb">R{{ plastic.newhd001 }}</p>
             <p class="smallp">HD001</p>
           </div>
           <div class="two" id="firstblock">
-            <p class="matb">R{{ plastic.newld001.toFixed(2) }}</p>
+            <p class="matb">R{{ plastic.newld001 }}</p>
             <p class="smallp">LD001</p>
           </div>
           <div class="three">
-            <p class="matb">R{{ plastic.newld003.toFixed(2) }}</p>
+            <p class="matb">R{{ plastic.newld003 }}</p>
             <p class="smallp">LD003</p>
           </div>
         </div>
         <div class="bottoms">
           <div class="one">
-            <p class="matb">R{{ plastic.newpet003.toFixed(2) }}</p>
+            <p class="matb">R{{ plastic.newpet003 }}</p>
             <p class="smallp">PET003</p>
           </div>
           <div class="two" id="thirdblock">
-            <p class="matb">R{{ plastic.newpet001.toFixed(2) }}</p>
+            <p class="matb">R{{ plastic.newpet001 }}</p>
             <p class="smallp">PET001</p>
           </div>
           <div class="three" id="thirdblock">
-            <p class="matb">R{{ plastic.newpet005.toFixed(2) }}</p>
+            <p class="matb">R{{ plastic.newpet005 }}</p>
             <p class="smallp">PET005</p>
           </div>
         </div>
@@ -134,7 +134,7 @@
         <p class="icon">  <ion-icon name="create" mode="ios" (click)="glassShow()"></ion-icon></p>
       </div>
       <div id="sub-material3" *ngFor="let tinns of glassArray">
-             <p class="matb">R{{ tinns.newgl001.toFixed(2) }}</p>
+             <p class="matb">R{{ tinns.newgl001 }}</p>
       <p class="smallp">GL001</p>
       </div>
     </div>
@@ -146,7 +146,7 @@
         <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowDelete()"></ion-icon></p>
       </div>
       <div id="sub-material3" *ngFor="let allu of NFAL001Array">
-        <p class="matb">R{{ allu.newnfal01.toFixed(2) }}</p>
+        <p class="matb">R{{ allu.newnfal01 }}</p>
         <p class="smallp">NFALO01</p>
       </div>
      </div>
@@ -278,7 +278,7 @@
      <div class="col"><h4 class="headz">Details</h4></div>
    </div>
 
-   <div class="rows">
+   <div class="rows" *ngFor="let paper of PaperArray">
     <div class="col">
       <h4 class="headz">20 / 02/ 2020</h4></div>
     <div class="col"> <h4 class="headz">Refilwe</h4></div>
@@ -287,6 +287,11 @@
  </div>
  </div><!-- end of edit form2 -->
 </div>
+<!-- <h4 class="headz">{{ paper.timePaper }}</h4></div>
+    <div class="col"> <h4 class="headz">R{{ paper.oldpap001.toFixed(2) }}</h4></div>
+    <div class="col"> <h4 class="headz">R{{ paper.oldpap003.toFixed(2) }}</h4></div>
+    <div class="col"> <h4 class="headz">R{{ paper.oldpap005.toFixed(2) }}</h4></div>
+    <div class="col"> <h4 class="headz">R{{ paper.oldpap007.toFixed(2) }}</h4></div> -->
 <!-- EDIT PRICE FOR ALUMINIUM -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
 <div padding class="editform2" >

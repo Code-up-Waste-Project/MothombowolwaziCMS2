@@ -53,6 +53,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+    
     this.menuCtrl.enable(false); // or true
   }
 
@@ -208,4 +209,19 @@ toast.present();
     this.menuCtrl.enable(false);
   }
 
+// theadmin(){
+//   firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//       firebase
+//         .firestore()
+//         .doc(`/admin/${user.uid}`)
+//         .get()
+//         .then(userProfileSnapshot => {
+//           this.isAdmin = userProfileSnapshot.data().isAdmin;
+//         });
+//     }
+//   });
+// }
+
+  
   }
