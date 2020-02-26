@@ -69,6 +69,10 @@ const routes: Routes = [
   },  {
     path: 'profile2',
     loadChildren: () => import('./profile2/profile2.module').then( m => m.Profile2PageModule)
+  },
+  {
+    path: 'outbound-driver-info',
+    loadChildren: () => import('./outbound-driver-info/outbound-driver-info.module').then( m => m.OutboundDriverInfoPageModule)
   }
 
 

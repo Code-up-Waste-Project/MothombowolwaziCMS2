@@ -20,11 +20,11 @@ ion-icon {
 }
 
 ion-label {
-    color: white !important;
-    font-family: 'lato' !important;
+    // color: white !important;
+     font-family: 'lato' !important;
     font-weight: lighter !important;
-    font-size: 20px !important;
-    letter-spacing: 0.8px;
+     font-size: 20px !important;
+     letter-spacing: 0.8px;
 }
 .profile {
   //  border: 1px solid blue;
@@ -55,9 +55,7 @@ color: white;
     margin-left: 5%;
 }
 }
-// ion-header {
-//   background: #1d3f04;
-// }
+
 #names, #position {
 font-family: 'lato';
 font-weight: lighter;

@@ -10,7 +10,8 @@ import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { element } from 'protractor';
-import * as moment from 'moment'
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-outbound',
@@ -1391,7 +1392,7 @@ export class OutboundPage implements OnInit {
 
     }
 
-    // editprofile() {
-    //   this.route.navigate(['profile2']);
-    // }
+    ViewDriver() {
+      this.route.navigate(['outbound-driver-info']);
+    }
 }
