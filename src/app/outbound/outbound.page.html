@@ -155,6 +155,8 @@
           src="../../assets/icon/outboundPOPup                                                                .svg"
           alt="">
       </div>
+
+
       <!-- <div class="truck-div">
         <img src="../../assets/outboundPopup.svg" alt="">
       </div> -->
@@ -199,6 +201,11 @@
         </div>
         <div class="blockItems">
           <div class="details-driver" *ngIf="driverInfo === true" padding>
+            <div id="user-profile">
+              <div id="user-pic">
+                <img src="../../assets/96c03bda-9e1d-4e89-91d7-0b88a9549d7a.jfif" alt="">
+              </div>
+            </div>
             <form [formGroup]="RegisterForm">
               <input type="text" placeholder="Driver Name" [(ngModel)]="DriverNameInput"
                 formControlName="DriverNameInput">
@@ -208,6 +215,8 @@
                 formControlName="DestinationInput">
               <input type="text" placeholder="Truck Source" [(ngModel)]="TruckSourcessInput"
                 formControlName="TruckSourcessInput">
+              <input placeholder="Email Address"> 
+              <input placeholder="Physical Address"> 
             </form>
           </div>
         </div>
