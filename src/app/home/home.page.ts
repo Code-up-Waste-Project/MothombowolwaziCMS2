@@ -706,8 +706,9 @@ bD = document.getElementsByClassName('bD')
    
   ngOnInit() {
     this.prices = firebase.firestore().collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot((documentSnapshot) => {
-      // this.price = [];
-      // this.price.push(documentSnapshot.data());
+      this.price = [];
+      // console.log(documentSnapshot.data());
+      this.price.push(documentSnapshot.data());
       // console.log('my pricess', documentSnapshot.data().time);
 
       // this.pricess.gl001 = documentSnapshot.data().gl001.toFixed(2);
@@ -730,21 +731,16 @@ bD = document.getElementsByClassName('bD')
     })
 
     this.menuCtrl.enable(true); // or true
-    // new code
-    this.db.collection('price').get().then((snap) => {
-      //  this.glassArray = [];
-       snap.forEach((res)=>{
-         id.push(res.id)
-       })
-       this.db.collection('price').doc(id[1]).get().then((res)=>{
-        // console.log("my snap ", res.data());
-        this.glassArray.push(res.data())
-       })
-      // this.oldpriceglass = snap.data().newgl001;
 
-      // this.pricess.gl001 = snap.data().newgl001;
+    // new code
+    this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").onSnapshot((snap) => {
+      this.glassArray = [];
+      this.glassArray.push(snap.data())
+
+      this.oldpriceglass = snap.data().newgl001;
+
+      this.pricess.gl001 = snap.data().newgl001;
     })
-   
     //  console.log(this.glassArray)
     this.db.collection('pricehistory').doc("8FtqTT4N4mFpbI4DKc25").collection("glass").orderBy('timeglass', "desc").get().then(snap => {
       this.glassArrayHistory = [];
@@ -756,32 +752,19 @@ bD = document.getElementsByClassName('bD')
 
     // new code
     this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
-      // this.PaperArray = [];
-      // this.PaperArray.push(snap.data())
-      // console.log(this.PaperArray);
+      this.PaperArray = [];
+      this.PaperArray.push(snap.data())
+      // console.log(snap.data())
 
-      // this.oldpricepap003 = snap.data().newpap003;
-      // this.oldpricepap001 = snap.data().newpap001;
-      // this.oldpricepap005 = snap.data().newpap005;
-      // this.oldpricepap007 = snap.data().newpap007;
+      this.oldpricepap003 = snap.data().newpap003;
+      this.oldpricepap001 = snap.data().newpap001;
+      this.oldpricepap005 = snap.data().newpap005;
+      this.oldpricepap007 = snap.data().newpap007;
 
-      // this.pricess.pap001 = snap.data().newpap001;
-      // this.pricess.pap003 = snap.data().newpap003;
-      // this.pricess.pap005 = snap.data().newpap005;
-      // this.pricess.pap007 = snap.data().newpap007;
-    })
-    this.db.collection('price').get().then((snap) => {
-      //  this.glassArray = [];
-       snap.forEach((res)=>{
-         id.push(res.id)
-       })
-       this.db.collection('price').doc(id[2]).get().then((res)=>{
-        console.log("my snap ", res.data());
-        this.PaperArray.push(res.data())
-       })
-      // this.oldpriceglass = snap.data().newgl001;
-
-      // this.pricess.gl001 = snap.data().newgl001;
+      this.pricess.pap001 = snap.data().newpap001;
+      this.pricess.pap003 = snap.data().newpap003;
+      this.pricess.pap005 = snap.data().newpap005;
+      this.pricess.pap007 = snap.data().newpap007;
     })
     console.log(this.PaperArray)
     this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").get().then(snap => {
@@ -795,22 +778,22 @@ bD = document.getElementsByClassName('bD')
 
     // new code
     this.db.collection('price').doc("7O6KqClxLD780ltfC6i5").onSnapshot(snap => {
-      // this.plasticarray = [];
-      // this.plasticarray.push(snap.data())
+      this.plasticarray = [];
+      this.plasticarray.push(snap.data())
 
-      // this.oldpricepet005 = snap.data().newpet005;
-      // this.oldpricepet001 = snap.data().newpet001;
-      // this.oldpricepet003 = snap.data().newpet003;
-      // this.oldpriceld003 = snap.data().newld003;
-      // this.oldpriceld001 = snap.data().newld001;
-      // this.oldpricehd001 = snap.data().newhd001;
+      this.oldpricepet005 = snap.data().newpet005;
+      this.oldpricepet001 = snap.data().newpet001;
+      this.oldpricepet003 = snap.data().newpet003;
+      this.oldpriceld003 = snap.data().newld003;
+      this.oldpriceld001 = snap.data().newld001;
+      this.oldpricehd001 = snap.data().newhd001;
 
-      // this.pricess.hd001 = snap.data().newhd001;
-      // this.pricess.ld001 = snap.data().newld001;
-      // this.pricess.ld003 = snap.data().newld003;
-      // this.pricess.pet001 = snap.data().newpet001;
-      // this.pricess.pet003 = snap.data().newpet003;
-      // this.pricess.pet005 = snap.data().newpet005;
+      this.pricess.hd001 = snap.data().newhd001;
+      this.pricess.ld001 = snap.data().newld001;
+      this.pricess.ld003 = snap.data().newld003;
+      this.pricess.pet001 = snap.data().newpet001;
+      this.pricess.pet003 = snap.data().newpet003;
+      this.pricess.pet005 = snap.data().newpet005;
     })
     // console.log(this.plasticarray)
     this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").get().then(snap => {
@@ -823,12 +806,12 @@ bD = document.getElementsByClassName('bD')
 
     // new code
     this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE").onSnapshot(snap => {
-      // this.NFAL001Array = [];
-      // this.NFAL001Array.push(snap.data())
+      this.NFAL001Array = [];
+      this.NFAL001Array.push(snap.data())
 
-      // this.oldpriceNFAL01 = snap.data().newnfal01;
+      this.oldpriceNFAL01 = snap.data().newnfal01;
 
-      // this.pricess.nfalo1 = snap.data().newnfal01;
+      this.pricess.nfalo1 = snap.data().newnfal01;
     })
     // console.log(this.NFAL001Array);
     this.db.collection('pricehistory').doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").orderBy('timePlastic', "desc").get().then(snap => {
@@ -839,19 +822,6 @@ bD = document.getElementsByClassName('bD')
       console.log(this.NFAL001ArrayHistory);
     })
 
-    this.db.collection('price').get().then((snap) => {
-      //  this.glassArray = [];
-       snap.forEach((res)=>{
-         id.push(res.id)
-       })
-       this.db.collection('price').doc(id[3]).get().then((res)=>{
-        console.log("my snap ", res.data());
-        this.NFAL001Array.push(res.data())
-       })
-      // this.oldpriceglass = snap.data().newgl001;
-
-      // this.pricess.gl001 = snap.data().newgl001;
-    })
   }
   
   getReclaimers() {
@@ -3079,6 +3049,8 @@ deletehd001(v){
 ionViewWillEnter() {
   this.menuCtrl.enable(true);
  }
-
+map(){
+  this.route.navigateByUrl('/map');
+}
 
 }

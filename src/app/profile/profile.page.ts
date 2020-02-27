@@ -11,6 +11,8 @@ import { Location } from "@angular/common";
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+ 
+
   storage = firebase.storage().ref();
   userprofile = [];
   newuserprofile = [];

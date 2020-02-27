@@ -9,6 +9,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { element } from 'protractor';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
+ 
 const MINUTES_UNITL_AUTO_LOGOUT = 5 // in mins
 const CHECK_INTERVAL = 3000 // in ms
 const STORE_KEY =  'lastAction';
@@ -119,7 +120,7 @@ console.log("good morning")
     this.appPages.push({
      
       title: 'Home',
-      url: '/home2',
+      url: '/home',
       icon: 'homeW',
       admin:"hot",
       
@@ -132,13 +133,13 @@ console.log("good morning")
     },
     {
       title: 'Inbounds',
-      url: '/inbound2',
+      url: '/inbound',
       icon: 'inboundW',
       admin:"cool"
     },
     {
       title: 'Reclaimer',
-      url: '/reclaimer2',
+      url: '/reclaimer',
       icon: 'reclaimerW',
       admin:"cool"
     });
@@ -197,14 +198,13 @@ console.log("good morning")
       }
 
     getAuth() {
-      //auth
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             
             this.router.navigateByUrl('/home');
 
 
-            //admin 
+            
  
             this.db.collection('admin').get().then(snapshot => {
               this.Newadmin =[]
@@ -224,6 +224,20 @@ console.log("good morning")
                   }
                 });
               });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           }else {
             this.router.navigateByUrl('/login');
           }

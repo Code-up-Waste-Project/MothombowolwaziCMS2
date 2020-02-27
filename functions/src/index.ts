@@ -8,7 +8,7 @@ admin.initializeApp(functions.config().firebase);
     take the user credentials from the CMS_Users collection (email/password)
     create an account in the auth
 */
-exports.createAccount = functions.firestore.document('userprofiles/{docid}').onCreate((change, context) => {
+exports.createAccount = functions.firestore.document('admin/{docid}').onCreate((change, context) => {
     console.log('Document change', change.data(), 'Document context', context);
     const email = change.get('email');
     const password = change.get('password');

@@ -18,7 +18,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RegistersPipe } from './registers.pipe';
 import { ResetPasswordPageModule } from './reset-password/reset-password.module';
 import { ProfilePageModule} from './profile/profile.module';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+ 
 
 
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
@@ -74,6 +76,8 @@ firebase.analytics();
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
+    NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     FileOpener,
     File

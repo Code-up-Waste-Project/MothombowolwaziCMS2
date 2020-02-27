@@ -77,6 +77,14 @@ const routes: Routes = [
   {
     path: 'reclaimer2',
     loadChildren: () => import('./reclaimer2/reclaimer2.module').then( m => m.Reclaimer2PageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'direction',
+    loadChildren: () => import('./direction/direction.module').then( m => m.DirectionPageModule)
   }
 
 
