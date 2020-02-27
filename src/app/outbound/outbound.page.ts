@@ -32,6 +32,7 @@ export class OutboundPage implements OnInit {
   Newadmin = [];
   recordoutbounddisplays = [];
   recordoutbounddisplaysz = [];
+  recordoutbounddisplayshome = [];
 
   // outbound
   outbound = [];
@@ -58,6 +59,8 @@ export class OutboundPage implements OnInit {
   getprice;
 
   truckcode;
+  truckcode2222;
+  truckcodefirebase;
   DriverName;
   RegistarionNumberPlates;
   overallStorage;
@@ -84,6 +87,19 @@ export class OutboundPage implements OnInit {
   PET001mass;
   PET003mass;
   PET005mass;
+
+  GH001mass2;
+  NFAL01mass2;
+  PAP005mass2;
+  PAP007mass2;
+  PAP001mass2;
+  PAP003mass2;
+  HD001mass2;
+  LD001mass2;
+  LD003mass2;
+  PET001mass2;
+  PET003mass2;
+  PET005mass2;
 
   GH001storagemass;
   NFAL01storagemass;
@@ -150,6 +166,11 @@ export class OutboundPage implements OnInit {
   myLocation = "Search for Name";
   usersz = [];
   users = [];
+
+  resultID;
+  loadresultID;
+  outboundID;
+  outboundArray = [];
 
   /////////////////////////////////////////////////////////////////////////////////////
 
@@ -280,7 +301,8 @@ export class OutboundPage implements OnInit {
           outdriverName: outDriverName,
           outRegistarionNo: outRegistarionNumberPlates,
           outovarallmass: outovarallMass,
-          outTrucksource: TruckSourcess
+          outTrucksource: TruckSourcess,
+          truckcode: this.truckcode
         });
         // this.outbound.push(element.data());
         // console.log(this.outbound);
@@ -296,6 +318,7 @@ export class OutboundPage implements OnInit {
         // console.log(this.UserArray);
 
         this.usersz.push(truckcode)
+        // console.log(this.usersz);
 
       });
     });
@@ -303,8 +326,8 @@ export class OutboundPage implements OnInit {
     this.RegisterForm = formGroup.group({
       DriverNameInput : ['', [Validators.required, Validators.maxLength(15)]],
       RegistarionNumberPlatesInput : ['', [Validators.required, Validators.maxLength(15)]],
-      DestinationInput : ['', [Validators.required, Validators.maxLength(10)]],
-      TruckSourcessInput : ['', [Validators.required, , Validators.maxLength(40)]],
+      DestinationInput : ['', [Validators.required, Validators.maxLength(50)]],
+      TruckSourcessInput : ['', [Validators.required, , Validators.maxLength(50)]],
     });
 
     // console.log(this.usersz);
@@ -318,29 +341,23 @@ export class OutboundPage implements OnInit {
   }
 
   sortTable() {
-    this.db.collection('outbound').orderBy('date', "desc").onSnapshot(element => {
-      this.recordoutbounddisplaysz = [];
-      element.forEach(element => {
-        let time = {};
-        let DriverName = {};
-        let RegistarionNumberPlates = {};
-        let id = {};
+    this.db.collection('outbound').onSnapshot(element => {
+      // console.log(snap)
+      let loads = {};
 
-        DriverName = this.DriverName = element.data().DriverName;
-        RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        this.ids = element.id;
-        time = this.time = element.data().date;
+      element.forEach(snap => {
+        // this.recordoutbounddisplayshome = [];
+        console.log(snap.data())
+        this.DriverName = snap.data().DriverName;
+        this.RegistarionNumberPlates = snap.data().RegistarionNumberPlates;
+        this.TruckSourcess = snap.data().TruckSourcess;
+        this.truckcode = snap.data().truckcode;
 
-        this.recordoutbounddisplaysz.push({
-          DriverName: this.DriverName,
-          RegistarionNumberPlates: this.RegistarionNumberPlates,
-          time: this.time,
-          id: this.ids
-        });
-        // console.log(element.data());
-        // console.log(this.recordoutbounddisplaysz);
+        this.recordoutbounddisplayshome.push(snap.data());
       })
+      console.log(this.recordoutbounddisplayshome);
     })
+
   }
 
   LoopNames() {
@@ -367,6 +384,7 @@ export class OutboundPage implements OnInit {
         let TruckSourcess = {};
         let Destination = {};
         let time = {};
+        let truckcode = {};
 
         let GH001storagemass = {};
         let NFAL01storagemass = {};
@@ -387,12 +405,14 @@ export class OutboundPage implements OnInit {
         this.overallStoragez = (String(overallStorage).substring(0, 6));
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
         Destination = this.Destination = element.data().Destination;
+        truckcode = this.truckcode = element.data().truckcode;
         // console.log(this.DriverName);
         // console.log(this.RegistarionNumberPlates);
         // console.log(this.overallStorage);
         // console.log(this.TruckSourcess);
         // console.log(this.Destination);
         // console.log(this.overallStoragez);
+        // console.log(this.truckcode);
 
         this.ids = element.id;
         // console.log(element.data());
@@ -466,6 +486,7 @@ export class OutboundPage implements OnInit {
           PET003storagemass: this.PET003storagemassz,
           PET005storagemass: this.PET005storagemassz,
         });
+        // console.log(this.PET005storagemassz);
 
         this.PDFArray = {
           GH001: this.GH001storagemassz,
@@ -482,28 +503,46 @@ export class OutboundPage implements OnInit {
           PET005: this.PET005storagemassz,
         };
 
+        // this.db.collection('outbound').onSnapshot(snap => {
+        //   this.recordoutbounddisplays = [];
+        //   console.log(snap)
+        //   let loads = {};
+
+        //   snap.forEach(snap => {
+        //     // console.log(snap.data())
+        //     DriverName = this.DriverName = snap.data().DriverName;
+        //     RegistarionNumberPlates = this.RegistarionNumberPlates = snap.data().RegistarionNumberPlates;
+        //     overallStorage = this.overallStorage = snap.data().ovarallMass;
+        //     this.overallStoragez = (String(overallStorage).substring(0, 6));
+        //     TruckSourcess = this.TruckSourcess = snap.data().TruckSourcess;
+        //     Destination = this.Destination = snap.data().Destination;
+        //     truckcode = this.truckcode = snap.data().truckcode;
+        //   })
+        // })
+
         this.recordoutbounddisplays.push({
           DriverName: this.DriverName,
           RegistarionNumberPlates: this.RegistarionNumberPlates,
           overallStorage: this.overallStorage,
           TruckSourcess: this.TruckSourcess,
-          Destination: this.Destination,
-          GH001: this.GH001storagemassz,
-          NFAL01: this.NFAL01storagemassz,
-          PAP005: this.PAP005storagemassz,
-          PAP007: this.PAP007storagemassz,
-          PAP001: this.PAP001storagemassz,
-          PAP003: this.PAP003storagemassz,
-          HD001: this.HD001storagemassz,
-          LD001: this.LD001storagemassz,
-          LD003: this.LD003storagemassz,
-          PET001: this.PET001storagemassz,
-          PET003: this.PET003storagemassz,
-          PET005: this.PET005storagemassz,
+          // Destination: this.Destination,
+          // GH001: this.GH001storagemassz,
+          // NFAL01: this.NFAL01storagemassz,
+          // PAP005: this.PAP005storagemassz,
+          // PAP007: this.PAP007storagemassz,
+          // PAP001: this.PAP001storagemassz,
+          // PAP003: this.PAP003storagemassz,
+          // HD001: this.HD001storagemassz,
+          // LD001: this.LD001storagemassz,
+          // LD003: this.LD003storagemassz,
+          // PET001: this.PET001storagemassz,
+          // PET003: this.PET003storagemassz,
+          // PET005: this.PET005storagemassz,
           id: this.ids,
           time: this.time,
+          truckcode: this.truckcode
         });
-        // console.log(this.recordoutbounddisplays);
+        console.log(this.recordoutbounddisplays);
 
       // create PDF
         this.ForLoop();
@@ -569,18 +608,18 @@ export class OutboundPage implements OnInit {
 
   CheckInputsEmptyString() {
     if (
-        this.GH001mass === undefined &&
-        this.NFAL01mass === undefined &&
-        this.PAP005mass === undefined &&
-        this.PAP007mass === undefined &&
-        this.PAP001mass === undefined &&
-        this.PAP003mass === undefined &&
-        this.HD001mass === undefined &&
-        this.LD001mass === undefined &&
-        this.LD003mass === undefined &&
-        this.PET001mass === undefined &&
-        this.PET003mass === undefined &&
-        this.PET005mass === undefined
+        this.GH001mass2 === undefined &&
+        this.NFAL01mass2 === undefined &&
+        this.PAP005mass2 === undefined &&
+        this.PAP007mass2 === undefined &&
+        this.PAP001mass2 === undefined &&
+        this.PAP003mass2 === undefined &&
+        this.HD001mass2 === undefined &&
+        this.LD001mass2 === undefined &&
+        this.LD003mass2 === undefined &&
+        this.PET001mass2 === undefined &&
+        this.PET003mass2 === undefined &&
+        this.PET005mass2 === undefined
       ) {
         this.presentAlertcheckInputs();
       } else {
@@ -621,6 +660,7 @@ export class OutboundPage implements OnInit {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
+            this.doneBtn();
             // this.route.navigateByUrl('/reclaimer');
           }
         }
@@ -630,173 +670,284 @@ export class OutboundPage implements OnInit {
   }
 
   AddUserToForm(id) {
-    this.db.collection('outbound').doc(id).onSnapshot(element => {
-      // element.forEach(element => {
+    this.db.collection('outbound').where('id', '==', id).onSnapshot(element => {
+      element.forEach(element => {
       this.id = element.id;
       this.DriverName = element.data().DriverName;
       this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
       // this.overallStorage = element.data().ovarallMass;
       this.TruckSourcess = element.data().TruckSourcess;
       this.Destination = element.data().Destination;
-      console.log(element.data().DriverName);
-      console.log(element.data().RegistarionNumberPlates);
+      this.truckcode = element.data().truckcode;
+      // console.log(element.data().DriverName);
+      // console.log(element.data().RegistarionNumberPlates);
       // console.log(element.data().overallStorage);
-      console.log(element.data().TruckSourcess);
-      console.log(element.data().Destination);
-      console.log(element.data());
-        // })
+      // console.log(element.data().TruckSourcess);
+      // console.log(element.data().Destination);
+      console.log(element.data().truckcode);
+      // console.log(element.data());
+        })
 
         // adding data to textboxes
         this.DriverNameInput = this.DriverName;
         this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
         this.TruckSourcessInput = this.TruckSourcess;
-        this.DestinationInput = this.Destination
+        this.DestinationInput = this.Destination;
+        this.truckcode2222 = this.truckcode;
+
+        console.log(this.truckcode2222);
       })
 
   this.nextClick()
 
   }
 
-  SaveOutbound() {
-    this.db.collection('outbound').doc().set({
-      truckcode: Math.floor(Math.random()*899999+100000),
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+  calculateOverall() {
+    this.overallStorage = +this.GH001mass2 + +this.HD001mass2 + +this.LD001mass2 + +this.LD003mass2 + +this.NFAL01mass2
+     + +this.PAP001mass2 + +this.PAP003mass2 + +this.PAP005mass2 + +this.PAP007mass2 + +this.PET001mass2 +
+     +this.PET003mass2 + +this.PET005mass2;
+    // console.log(this.overallStorage);
+
+    this.createDriver();
+
+  }
+
+  createDriver() {
+    // this.db.collection('outbound').onSnapshot(snap => {
+    //   snap.forEach(snap => {
+    //     this.truckcodefirebase = snap.data().truckcode
+    //   })
+    // })
+
+    console.log(this.truckcode2222)
+
+    if(this.truckcode2222 === undefined) {
+      this.saveUserToFirebase();
+      console.log('no user registerd');
+    }else if(this.truckcode2222 === null) {
+      this.saveUserToFirebase()
+      console.log('no user registerd');
+    } else if(this.truckcode2222 !== undefined) {
+      this.SaveOutbound2(this.outboundID)
+      console.log('user already exits');
+    }
+
+  }
+
+  saveUserToFirebase() {
+    this.db.collection('outbound').add({
       DriverName: this.DriverNameInput,
       RegistarionNumberPlates: this.RegistarionNumberPlatesInput,
       TruckSourcess: this.TruckSourcessInput,
       Destination: this.DestinationInput,
-      GH001: this.GH001mass,
-      NFAL01: this.NFAL01mass,
-      PAP005: this.PAP005mass,
-      PAP007: this.PAP007mass,
-      PAP001: this.PAP001mass,
-      PAP003: this.PAP003mass,
-      HD001: this.HD001mass,
-      LD001: this.LD001mass,
-      LD003: this.LD003mass,
-      PET00: this.PET001mass,
-      PET003: this.PET003mass,
-      PET005: this.PET005mass,
-      ovarallMass: this.overallStorage,
-      id: firebase.auth().currentUser.uid
-    });
+      truckcode: Math.floor(Math.random()*899999+100000),
+    }).then(result => {
+      // console.log(result);
+      console.log(result.id);
+      this.resultID = result.id
+      // console.log(resultID);
+      this.db.collection('outbound').doc(this.resultID).update({
+        id: this.resultID
+      })
+    }).then(result => {
+      this.SaveOutbound(this.resultID);
+    })
   }
 
-  calculateOverall() {
-    this.overallStorage = +this.GH001mass + +this.HD001mass + +this.LD001mass + +this.LD003mass + +this.NFAL01mass
-     + +this.PAP001mass + +this.PAP003mass + +this.PAP005mass + +this.PAP007mass + +this.PET001mass +
-     +this.PET003mass + +this.PET005mass;
-    // console.log(this.overallStorage);
+  SaveOutbound(resultID) {
+    this.db.collection('outbound').doc(resultID).collection('loads').add({
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      GH001: this.GH001mass2,
+      NFAL01: this.NFAL01mass2,
+      PAP005: this.PAP005mass2,
+      PAP007: this.PAP007mass2,
+      PAP001: this.PAP001mass2,
+      PAP003: this.PAP003mass2,
+      HD001: this.HD001mass2,
+      LD001: this.LD001mass2,
+      LD003: this.LD003mass2,
+      PET00: this.PET001mass2,
+      PET003: this.PET003mass2,
+      PET005: this.PET005mass2,
+      ovarallMass: this.overallStorage,
+    // }).then(result => {
+    //   // console.log(result);
+    //   console.log(result.id);
+    //   this.loadresultID = result.id
+    //   // console.log(loadresultID);
+    //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
+    //     loadid: this.loadresultID
+    //   })
+    })
+  }
 
-    this.SaveOutbound();
-
+  SaveOutbound2(id) {
+    this.db.collection('outbound').doc(this.id).collection('loads').add({
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      GH001: this.GH001mass2,
+      NFAL01: this.NFAL01mass2,
+      PAP005: this.PAP005mass2,
+      PAP007: this.PAP007mass2,
+      PAP001: this.PAP001mass2,
+      PAP003: this.PAP003mass2,
+      HD001: this.HD001mass2,
+      LD001: this.LD001mass2,
+      LD003: this.LD003mass2,
+      PET00: this.PET001mass2,
+      PET003: this.PET003mass2,
+      PET005: this.PET005mass2,
+      ovarallMass: this.overallStorage,
+    // }).then(result => {
+    //   // console.log(result);
+    //   console.log(result.id);
+    //   this.loadresultID = result.id
+    //   // console.log(loadresultID);
+    //   this.db.collection('outbound').doc(id).collection('loads').doc(this.loadresultID).update({
+    //     loadid: this.loadresultID
+    //   })
+    })
   }
 
   checkinputfields() {
     // GH001mass
-    if (this.GH001mass === null) {
-      this.GH001mass = 0;
-    } else if (this.GH001mass === undefined) {
-      this.GH001mass = 0;
+    if (this.GH001mass2 === null) {
+      this.GH001mass2 = 0;
+    } else if (this.GH001mass2 === undefined) {
+      this.GH001mass2 = 0;
+    } else if (this.GH001mass2 === '') {
+      this.GH001mass2 = 0;
     }
     // console.log(this.GH001mass);
 
     // NFAL01mass
-    if (this.NFAL01mass === null) {
-      this.NFAL01mass = 0;
+    if (this.NFAL01mass2 === null) {
+      this.NFAL01mass2 = 0;
     }
-    if (this.NFAL01mass === undefined) {
-      this.NFAL01mass = 0;
+    if (this.NFAL01mass2 === undefined) {
+      this.NFAL01mass2 = 0;
+    }
+    if (this.NFAL01mass2 === '') {
+      this.NFAL01mass2 = 0;
     }
     // console.log(this.NFAL01mass);
 
     // PAP005mass
-    if (this.PAP005mass === null) {
-      this.PAP005mass = 0;
+    if (this.PAP005mass2 === null) {
+      this.PAP005mass2 = 0;
     }
-    if (this.PAP005mass === undefined) {
-      this.PAP005mass = 0;
+    if (this.PAP005mass2 === undefined) {
+      this.PAP005mass2 = 0;
+    }
+    if (this.PAP005mass2 === '') {
+      this.PAP005mass2 = 0;
     }
     // console.log(this.PAP005mass);
 
     // PAP007mass
-    if (this.PAP007mass === null) {
-      this.PAP007mass = 0;
+    if (this.PAP007mass2 === null) {
+      this.PAP007mass2 = 0;
     }
-    if (this.PAP007mass === undefined) {
-      this.PAP007mass = 0;
+    if (this.PAP007mass2 === undefined) {
+      this.PAP007mass2 = 0;
+    }
+    if (this.PAP007mass2 === '') {
+      this.PAP007mass2 = 0;
     }
     // console.log(this.PAP007mass);
 
     // PAP001mass
-    if (this.PAP001mass === null) {
-      this.PAP001mass = 0;
+    if (this.PAP001mass2 === null) {
+      this.PAP001mass2 = 0;
     }
-    if (this.PAP001mass === undefined) {
-      this.PAP001mass = 0;
+    if (this.PAP001mass2 === undefined) {
+      this.PAP001mass2 = 0;
+    }
+    if (this.PAP001mass2 === '') {
+      this.PAP001mass2 = 0;
     }
     // console.log(this.PAP001mass);
 
     // PAP003mass
-    if (this.PAP003mass === null) {
-      this.PAP003mass = 0;
+    if (this.PAP003mass2 === null) {
+      this.PAP003mass2 = 0;
     }
-    if (this.PAP003mass === undefined) {
-      this.PAP003mass = 0;
+    if (this.PAP003mass2 === undefined) {
+      this.PAP003mass2 = 0;
+    }
+    if (this.PAP003mass2 === '') {
+      this.PAP003mass2 = 0;
     }
     // console.log(this.PAP003mass);
 
     // HD001mass
-    if (this.HD001mass === null) {
-      this.HD001mass = 0;
+    if (this.HD001mass2 === null) {
+      this.HD001mass2 = 0;
     }
-    if (this.HD001mass === undefined) {
-      this.HD001mass = 0;
+    if (this.HD001mass2 === undefined) {
+      this.HD001mass2 = 0;
+    }
+    if (this.HD001mass2 === '') {
+      this.HD001mass2 = 0;
     }
     // console.log(this.HD001mass);
 
     // LD001mass
-    if (this.LD001mass === null) {
-      this.LD001mass = 0;
+    if (this.LD001mass2 === null) {
+      this.LD001mass2 = 0;
     }
-    if (this.LD001mass === undefined) {
-      this.LD001mass = 0;
+    if (this.LD001mass2 === undefined) {
+      this.LD001mass2 = 0;
+    }
+    if (this.LD001mass2 === '') {
+      this.LD001mass2 = 0;
     }
     // console.log(this.LD001mass);
 
     // LD003mass
-    if (this.LD003mass === null) {
-      this.LD003mass = 0;
+    if (this.LD003mass2 === null) {
+      this.LD003mass2 = 0;
     }
-    if (this.LD003mass === undefined) {
-      this.LD003mass = 0;
+    if (this.LD003mass2 === undefined) {
+      this.LD003mass2 = 0;
+    }
+    if (this.LD003mass2 === '') {
+      this.LD003mass2 = 0;
     }
     // console.log(this.LD003mass);
 
     // PET001mass
-    if (this.PET001mass === null) {
-      this.PET001mass = 0;
+    if (this.PET001mass2 === null) {
+      this.PET001mass2 = 0;
     }
-    if (this.PET001mass === undefined) {
-      this.PET001mass = 0;
+    if (this.PET001mass2 === undefined) {
+      this.PET001mass2 = 0;
+    }
+    if (this.PET001mass2 === '') {
+      this.PET001mass2 = 0;
     }
     // console.log(this.PET001mass);
 
     // PET003mass
-    if (this.PET003mass === null) {
-      this.PET003mass = 0;
+    if (this.PET003mass2 === null) {
+      this.PET003mass2 = 0;
     }
-    if (this.PET003mass === undefined) {
-      this.PET003mass = 0;
+    if (this.PET003mass2 === undefined) {
+      this.PET003mass2 = 0;
+    }
+    if (this.PET003mass2 === '') {
+      this.PET003mass2 = 0;
     }
     // console.log(this.PET003mass);
 
     // PET005mass
-    if (this.PET005mass === null) {
-      this.PET005mass = 0;
+    if (this.PET005mass2 === null) {
+      this.PET005mass2 = 0;
     }
-    if (this.PET005mass === undefined) {
-      this.PET005mass = 0;
+    if (this.PET005mass2 === undefined) {
+      this.PET005mass2 = 0;
+    }
+    if (this.PET005mass2 === '') {
+      this.PET005mass2 = 0;
     }
     // console.log(this.PET005mass);
 
@@ -1319,8 +1470,8 @@ export class OutboundPage implements OnInit {
     document.getElementById("isGlass").style.color = "white"
     }
     driverDetails: boolean = false;
-    doneBtn(){
 
+    doneBtn() {
       console.log("done");
       
       this.showPopUp(this.selectedCat)
@@ -1333,7 +1484,7 @@ export class OutboundPage implements OnInit {
 
     driverInfo: boolean = false;
     group1 = document.getElementsByClassName("flyer-inputs") as HTMLCollectionOf <HTMLElement>
-    nextClick(){
+    nextClick() {
       // this will slide the elements to their original place
       this.driverInfo = true;
       this.group1[0].style.right = "0";
@@ -1347,26 +1498,27 @@ export class OutboundPage implements OnInit {
       // if the value is an empty string don't filter the items
       console.log(val);
       if (val && val.trim() != "") {
-        this.searchResults = this.usersz.filter(item => {
+        this.recordoutbounddisplays = this.usersz.filter(item => {
           return item.toString().indexOf(val.toString().toLowerCase()) > -1;
         });
         console.log('Results = ',this.searchResults);
       } else if (val != " ") {
-        this.searchResults = this.usersz.filter(item => {
+        this.recordoutbounddisplays = this.usersz.filter(item => {
           return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
         });
       } else if (val == "") {
-        this.searchResults = this.recordoutbounddisplaysz;
+        this.recordoutbounddisplays = this.recordoutbounddisplaysz;
       }
 
       console.log(this.usersz);
+      console.log(this.recordoutbounddisplays);
       console.log(this.searchResults);
       
     }
 
     selectLocation(location) {
       this.userLocation = location;
-      this.searchResults = [];
+      this.recordoutbounddisplays = [];
       console.log(this.userLocation);
       console.log(location);
 
@@ -1391,9 +1543,10 @@ export class OutboundPage implements OnInit {
           this.DriverNameInput = this.DriverName;
           this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
           this.TruckSourcessInput = this.TruckSourcess;
-          this.DestinationInput = this.Destination
+          this.DestinationInput = this.Destination;
+          this.truckcode2222 = this.truckcode;
         })
-
+        console.log(this.truckcode2222);
     }
 
     // editprofile() {
