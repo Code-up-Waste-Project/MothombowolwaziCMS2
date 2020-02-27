@@ -185,8 +185,8 @@
   .userForm {
     width: 100%;
     height: 100%;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 729px;
+    max-height: 752px;
     background: white;
     border-radius: 10px;
     margin: 0 auto;
@@ -204,7 +204,7 @@
        img{
          transform: scale(1.5);
          position: absolute;
-         top:160px;
+         top: 222px;
        }
      }
   }
@@ -421,7 +421,7 @@ ion-grid {
   animation: 300ms sliderIn;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
 }
 .clicker{
   position: absolute;
@@ -456,6 +456,7 @@ form{
 
 form > input{
   height: 45px;
+  width: 259px;
   margin-bottom: 10px;
   border: 0;
   background: #EAEAEA;
@@ -624,6 +625,33 @@ form > input{
     font-size: 1.1em;
   }
 }
+
+
+#user-profile{
+  height: 30%;
+  width: 100%;
+  // border: solid red 2PX;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#user-pic{
+  width:110px;
+  height: 110px;
+  border-radius: 100px;
+  // border: solid 2px purple;
+
+  img{
+  width:110px;
+  height: 110px;
+  border-radius: 100px;
+  }
+}
+
+
+
+
 
 @media screen and (max-width:450px){
   .The-header{

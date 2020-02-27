@@ -1,5 +1,5 @@
 ion-header {
-  --background: #265902 !important;
+  --background: rgb(85,140,3) !important;
   display: flex;
   // border: 2px solid rgb(17, 0, 255);
 }
@@ -20,7 +20,7 @@ ion-toolbar {
 
 .logger {
   // border: 2px solid green;
-  background-color: #265902;
+  background-color:#548d04;
   width: 50%;
   height: 55px;
   ion-button {
@@ -38,7 +38,7 @@ ion-toolbar {
 }
 .navCont > div {
   // border: 1px solid red;
-  background-color: #265902;
+  background-color: rgb(85,140,3);
 }
 #userName {
   padding-left: 10px;
@@ -212,8 +212,8 @@ ion-toolbar {
   .userForm {
     width: 100%;
     height: 100%;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 729px;
+    max-height: 752px;
     background: white;
     border-radius: 10px;
     margin: 0 auto;
@@ -231,7 +231,7 @@ ion-toolbar {
        img{
          transform: scale(1.5);
          position: absolute;
-         top:160px;
+         top: 222px;
        }
      }
   }
@@ -365,7 +365,7 @@ ion-col {
 
 
 .Next-button {
-  background: plum;
+  background: #548d04;
   width: 97.5%;
   height: 50px;
   position: absolute;
@@ -447,7 +447,7 @@ ion-grid {
   animation: 300ms sliderIn;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
 }
 .clicker{
   position: absolute;
@@ -481,7 +481,8 @@ form{
 }
 
 form > input{
-  height: 45px;
+  height: 38px;
+  width: 259px;
   margin-bottom: 10px;
   border: 0;
   background: #EAEAEA;
@@ -496,6 +497,7 @@ form > input{
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   background: linear-gradient(to left, rgb(196, 170, 211) 10%, #a571c3 100%);
+  // background-color: rgb(0,181,151);
   position: absolute;
   right: 0%;
   bottom: 0%;
@@ -605,6 +607,7 @@ form > input{
   // border: solid 2px red;
   width: 105px;
   font-size: 60%;
+  background-color: rgb(85,140,3);
 }
 
 .The-header{
@@ -666,6 +669,30 @@ form > input{
     font-size: 1.1em;
   }
 }
+
+#user-profile{
+  height: 30%;
+  width: 100%;
+  // border: solid red 2PX;
+  display:flex;
+  justify-content: center;
+}
+
+#user-pic{
+  width:110px;
+  height: 110px;
+  border-radius: 100px;
+  // border: solid 2px purple;
+
+  img{
+  width:110px;
+  height: 110px;
+  border-radius: 100px;
+  }
+}
+
+
+
 
 
 @media screen and (max-width:450px){
@@ -873,6 +900,7 @@ form > input{
 
 form > input{
   height: 45px;
+  width: 259px;
   max-width: 150px;
   margin-bottom: 10px;
   border: 0;
