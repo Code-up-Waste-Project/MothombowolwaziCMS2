@@ -158,8 +158,8 @@ export class OutboundPDFPage implements OnInit {
   }
 
    getDatafirebase(id) {
-    this.db.collection('outbound').doc(id).onSnapshot(element => {
-      // element.forEach(element => {
+    this.db.collection('outboundMass').where('driverID', '==', id).onSnapshot(element => {
+      element.forEach(element => {
         let DriverName = {};
         let RegistarionNumberPlates = {};
         let overallStorage = {};
@@ -182,8 +182,6 @@ export class OutboundPDFPage implements OnInit {
 
         DriverName = this.DriverName = element.data().DriverName;
         RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        overallStorage = this.overallStorage = element.data().ovarallMass;
-        this.overallStoragez = (String(overallStorage).substring(0, 6));
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
         Destination = this.Destination = element.data().Destination;
         // console.log(this.DriverName);
@@ -197,6 +195,8 @@ export class OutboundPDFPage implements OnInit {
         // console.log(this.ids);
 
         time = this.time = element.data().date;
+        overallStorage = this.overallStorage = element.data().ovarallMass;
+        this.overallStoragez = (String(overallStorage).substring(0, 6));
         GH001storagemass = this.GH001storagemass = element.data().GH001;
         this.GH001storagemassz = (String(GH001storagemass).substring(0, 6));
         NFAL01storagemass = this.NFAL01storagemass = element.data().NFAL01;
@@ -293,6 +293,7 @@ export class OutboundPDFPage implements OnInit {
           this.outBoundPDFPrint.push({name: key, number: this.PDFArray2[key]})
         }
       }
+    })
        this.createPdf();
         // console.log(this.PDFArrayPrint);
       });

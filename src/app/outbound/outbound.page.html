@@ -264,14 +264,11 @@
       <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.truckcode }}</div>
       <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.DriverName }}</div>
       <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
-      <div class="icon"><ion-button (click)="ViewDriver()" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
+      <div class="icon"><ion-button [routerLink]="['/outbound-driver-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
-      <!-- <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
-        <div>{{ records.DriverName }}</div>
-        <div>{{ records.RegistarionNumberPlates }}</div>
-        <div>{{ records.truckcode }}</div>
-        <div>
-           -->
+      <!-- <div>
+        <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
+      </div> -->
        </div>
     </div>
   </div>

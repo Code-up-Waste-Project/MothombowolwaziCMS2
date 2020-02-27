@@ -38,6 +38,7 @@ export class OutboundPage implements OnInit {
   // outbound
   outbound = [];
   id;
+  UpdateID;
   outdate;
   outDriverName;
   outRegistarionNumberPlates;
@@ -355,14 +356,15 @@ export class OutboundPage implements OnInit {
       let loads = {};
 
       element.forEach(snap => {
-        console.log(snap.data())
+        // this.recordoutbounddisplayshome = [];
+        // console.log(snap.data())
         this.DriverName = snap.data().DriverName;
         this.RegistarionNumberPlates = snap.data().RegistarionNumberPlates;
         this.TruckSourcess = snap.data().TruckSourcess;
         this.truckcode = snap.data().truckcode;
         this.recordoutbounddisplayshome.push(snap.data());
       })
-      console.log(this.recordoutbounddisplayshome);
+      // console.log(this.recordoutbounddisplayshome);
     })
   }
 
@@ -705,6 +707,7 @@ export class OutboundPage implements OnInit {
         this.truckcode2222 = this.truckcode;
         this.PhoneNumbersInput = this.numbers;
         this.CompanyAddressInput = this.companyaddress;
+        this.UpdateID = id;
 
         console.log(this.truckcode2222);
       })
@@ -717,7 +720,7 @@ export class OutboundPage implements OnInit {
     this.overallStorage = +this.GH001mass2 + +this.HD001mass2 + +this.LD001mass2 + +this.LD003mass2 + +this.NFAL01mass2
      + +this.PAP001mass2 + +this.PAP003mass2 + +this.PAP005mass2 + +this.PAP007mass2 + +this.PET001mass2 +
      +this.PET003mass2 + +this.PET005mass2;
-    // console.log(this.overallStorage);
+    console.log(this.overallStorage);
 
     this.createDriver();
 
@@ -739,7 +742,7 @@ export class OutboundPage implements OnInit {
       this.saveUserToFirebase()
       console.log('no user registerd');
     } else if(this.truckcode2222 !== undefined) {
-      this.SaveOutbound2(this.outboundID)
+      this.SaveOutbound2(this.UpdateID)
       console.log('user already exits');
     }
 
@@ -764,7 +767,65 @@ export class OutboundPage implements OnInit {
         id: this.resultID
       })
     }).then(result => {
+      // this.truckcode = 
       this.SaveOutbound(this.resultID);
+    })
+
+  }
+
+  SaveOutbound(resultID) {
+    this.db.collection('outboundMass').add({
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      GH001: this.GH001mass2,
+      NFAL01: this.NFAL01mass2,
+      PAP005: this.PAP005mass2,
+      PAP007: this.PAP007mass2,
+      PAP001: this.PAP001mass2,
+      PAP003: this.PAP003mass2,
+      HD001: this.HD001mass2,
+      LD001: this.LD001mass2,
+      LD003: this.LD003mass2,
+      PET00: this.PET001mass2,
+      PET003: this.PET003mass2,
+      PET005: this.PET005mass2,
+      ovarallMass: this.overallStorage,
+      driverID: this.resultID
+    // }).then(result => {
+    //   // console.log(result);
+    //   console.log(result.id);
+    //   this.loadresultID = result.id
+    //   // console.log(loadresultID);
+    //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
+    //     loadid: this.loadresultID
+    //   })
+    })
+  }
+
+  SaveOutbound2(id) {
+    this.db.collection('outboundMass').add({
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      GH001: this.GH001mass2,
+      NFAL01: this.NFAL01mass2,
+      PAP005: this.PAP005mass2,
+      PAP007: this.PAP007mass2,
+      PAP001: this.PAP001mass2,
+      PAP003: this.PAP003mass2,
+      HD001: this.HD001mass2,
+      LD001: this.LD001mass2,
+      LD003: this.LD003mass2,
+      PET00: this.PET001mass2,
+      PET003: this.PET003mass2,
+      PET005: this.PET005mass2,
+      driverID: id,
+      ovarallMass: this.overallStorage,
+    // }).then(result => {
+    //   // console.log(result);
+    //   console.log(result.id);
+    //   this.loadresultID = result.id
+    //   // console.log(loadresultID);
+    //   this.db.collection('outbound').doc(id).collection('loads').doc(this.loadresultID).update({
+    //     loadid: this.loadresultID
+    //   })
     })
   }
 
@@ -782,60 +843,6 @@ export class OutboundPage implements OnInit {
         this.image = dwnURL;
       });
     });
-  }
-
-  SaveOutbound(resultID) {
-    this.db.collection('outbound').doc(resultID).collection('loads').add({
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
-      GH001: this.GH001mass2,
-      NFAL01: this.NFAL01mass2,
-      PAP005: this.PAP005mass2,
-      PAP007: this.PAP007mass2,
-      PAP001: this.PAP001mass2,
-      PAP003: this.PAP003mass2,
-      HD001: this.HD001mass2,
-      LD001: this.LD001mass2,
-      LD003: this.LD003mass2,
-      PET00: this.PET001mass2,
-      PET003: this.PET003mass2,
-      PET005: this.PET005mass2,
-      ovarallMass: this.overallStorage,
-    // }).then(result => {
-    //   // console.log(result);
-    //   console.log(result.id);
-    //   this.loadresultID = result.id
-    //   // console.log(loadresultID);
-    //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
-    //     loadid: this.loadresultID
-    //   })
-    })
-  }
-
-  SaveOutbound2(id) {
-    this.db.collection('outbound').doc(this.id).collection('loads').add({
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
-      GH001: this.GH001mass2,
-      NFAL01: this.NFAL01mass2,
-      PAP005: this.PAP005mass2,
-      PAP007: this.PAP007mass2,
-      PAP001: this.PAP001mass2,
-      PAP003: this.PAP003mass2,
-      HD001: this.HD001mass2,
-      LD001: this.LD001mass2,
-      LD003: this.LD003mass2,
-      PET00: this.PET001mass2,
-      PET003: this.PET003mass2,
-      PET005: this.PET005mass2,
-      ovarallMass: this.overallStorage,
-    // }).then(result => {
-    //   // console.log(result);
-    //   console.log(result.id);
-    //   this.loadresultID = result.id
-    //   // console.log(loadresultID);
-    //   this.db.collection('outbound').doc(id).collection('loads').doc(this.loadresultID).update({
-    //     loadid: this.loadresultID
-    //   })
-    })
   }
 
   checkinputfields() {
@@ -1558,7 +1565,7 @@ export class OutboundPage implements OnInit {
         this.truckcode = element.data().truckcode;
         this.DriverName = element.data().DriverName;
         this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        // this.overallStorage = element.data().ovarallMass;
+        this.overallStorage = element.data().ovarallMass;
         this.TruckSourcess = element.data().TruckSourcess;
         // this.Destination = element.data().Destination;
         this.numbers = element.data().numbers;
