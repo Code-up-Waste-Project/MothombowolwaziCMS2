@@ -58,6 +58,7 @@ export class OutboundPage implements OnInit {
   prices;
   getprice;
 
+  truckcode;
   DriverName;
   RegistarionNumberPlates;
   overallStorage;
@@ -262,9 +263,11 @@ export class OutboundPage implements OnInit {
         let outovarallMass = {};
         let Destination = {};
         let TruckSourcess = {};
+        let truckcode = {};
 
         id = this.id = element.id;
         outdate = this.outdate = element.data().date;
+        truckcode = this.truckcode = element.data().truckcode;
         outDriverName = this.outDriverName = element.data().DriverName;
         outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
         outovarallMass = this.outovarallMass = element.data().ovarallMass;
@@ -293,7 +296,7 @@ export class OutboundPage implements OnInit {
         }
         // console.log(this.UserArray);
 
-        this.usersz.push(outDriverName)
+        this.usersz.push(truckcode)
 
       });
     });
@@ -657,7 +660,8 @@ export class OutboundPage implements OnInit {
 
   SaveOutbound() {
     this.db.collection('outbound').doc().set({
-      date: moment(new Date()).format('MMMM DD YYYY'),
+      truckcode: Math.floor(Math.random()*899999+100000),
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
       DriverName: this.DriverNameInput,
       RegistarionNumberPlates: this.RegistarionNumberPlatesInput,
       TruckSourcess: this.TruckSourcessInput,
@@ -1345,7 +1349,7 @@ export class OutboundPage implements OnInit {
       console.log(val);
       if (val && val.trim() != "") {
         this.searchResults = this.usersz.filter(item => {
-          return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
+          return item.toString().indexOf(val.toString().toLowerCase()) > -1;
         });
         console.log('Results = ',this.searchResults);
       } else if (val != " ") {
@@ -1367,9 +1371,10 @@ export class OutboundPage implements OnInit {
       console.log(this.userLocation);
       console.log(location);
 
-      this.db.collection('outbound').where("DriverName","==",location).onSnapshot(element => {
+      this.db.collection('outbound').where("truckcode","==",location).onSnapshot(element => {
         element.forEach(element => {
         this.id = element.id;
+        this.truckcode = element.data().truckcode;
         this.DriverName = element.data().DriverName;
         this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
         // this.overallStorage = element.data().ovarallMass;

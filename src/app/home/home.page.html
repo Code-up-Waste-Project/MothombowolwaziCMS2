@@ -250,14 +250,20 @@
    <div class="heady">
      <div class="col">
        <h4 class="headz">Date</h4></div>
-     <div class="col"> <h4 class="headz">Admin</h4></div>
-     <div class="col"><h4 class="headz">Details</h4></div>
+     <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+     <div class="col"><h4 class="headz">PAP001</h4></div>
+     <div class="col"><h4 class="headz">PAP003</h4></div>
+     <div class="col"><h4 class="headz">PAP005</h4></div>
+     <div class="col"><h4 class="headz">PAP007</h4></div>
    </div>
 
-   <div class="rows">
+   <div class="rows" *ngFor="let paper of PaperArrayHistory">
     <div class="col">
-      <h4 class="headz">20 / 02/ 2020</h4></div>
-    <div class="col"> <h4 class="headz">Refilwe</h4></div>
+      <h4 class="headz">{{paper.timePaper}}</h4></div>
+    <div class="col"> <h4 class="headz">R{{paper.pap001}}</h4></div>
+    <div class="col"> <h4 class="headz">R{{paper.pap003}}</h4></div>
+    <div class="col"> <h4 class="headz">R{{paper.pap005}}</h4></div>
+    <div class="col"> <h4 class="headz">R{{paper.pap007}}</h4></div>
     <div class="col"><h4 class="headz"><ion-icon name="arrow-down-circle-outline"></ion-icon></h4></div>
   </div>
  </div>

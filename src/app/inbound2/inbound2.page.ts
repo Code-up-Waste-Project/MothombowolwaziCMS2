@@ -12,14 +12,12 @@ import { element } from 'protractor';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import * as moment from 'moment'
 
-
 @Component({
-  selector: 'app-inbound',
-  templateUrl: './inbound.page.html',
-  styleUrls: ['./inbound.page.scss'],
+  selector: 'app-inbound2',
+  templateUrl: './inbound2.page.html',
+  styleUrls: ['./inbound2.page.scss'],
 })
-
-export class InboundPage implements OnInit {
+export class Inbound2Page implements OnInit {
 
   // start of Declaretions
   // user infor
@@ -147,7 +145,6 @@ export class InboundPage implements OnInit {
 
     this.getMasses();
     this.pdfmakerFirebase();
-
    }
 
   ngOnInit() {
