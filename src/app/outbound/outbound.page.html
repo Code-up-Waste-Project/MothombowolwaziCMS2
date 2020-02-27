@@ -243,16 +243,16 @@
     <h4 class="heading">All Storage Material</h4>
 
     <div class="history-labels">  
-      <div class="userId">UserID</div>
+      <div class="userId">Code</div>
       <div class="name">Driver Name</div>
       <div class="regNo">Registration No.</div>
       <div></div>
      </div><!-- end of history-labels -->
 <div class="scrolling">
-    <div class="itemList" >
-      <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">001</div>
-      <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">Nkosinathi Dlamini</div>
-      <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">jk 0586 Gpmfhmxfmkmrsmrs</div>
+    <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
+      <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.truckcode }}</div>
+      <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.DriverName }}</div>
+      <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
       <div class="icon"><ion-button (click)="ViewDriver()" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
       <!-- <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
