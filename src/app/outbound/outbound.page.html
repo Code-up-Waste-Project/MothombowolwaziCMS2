@@ -203,20 +203,22 @@
           <div class="details-driver" *ngIf="driverInfo === true" padding>
             <div id="user-profile">
               <div id="user-pic">
-                <img src="../../assets/96c03bda-9e1d-4e89-91d7-0b88a9549d7a.jfif" alt="">
+                <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                <img *ngIf="image" src="{{ image }}" alt="">
+                <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
               </div>
-            </div>
+            </div><br>
             <form [formGroup]="RegisterForm">
-              <input type="text" placeholder="Driver Name" [(ngModel)]="DriverNameInput"
+              <input type="text" placeholder="Driver Name & Surname" [(ngModel)]="DriverNameInput"
                 formControlName="DriverNameInput">
+                <input type="tel" placeholder="Phone Numbers" [(ngModel)]="PhoneNumbersInput"
+              formControlName="PhoneNumbersInput" maxlength="10" (keyup)="getPhoneInput($event)">
               <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
                 formControlName="RegistarionNumberPlatesInput">
-              <input type="text" placeholder="Destination" [(ngModel)]="DestinationInput"
-                formControlName="DestinationInput">
-              <input type="text" placeholder="Truck Source" [(ngModel)]="TruckSourcessInput"
-                formControlName="TruckSourcessInput">
-              <input placeholder="Email Address"> 
-              <input placeholder="Physical Address"> 
+              <input type="text" placeholder="Company Name" [(ngModel)]="TruckSourcessInput"
+                formControlName="TruckSourcessInput"> 
+              <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput"
+              formControlName="CompanyAddressInput"> 
             </form>
           </div>
         </div>
