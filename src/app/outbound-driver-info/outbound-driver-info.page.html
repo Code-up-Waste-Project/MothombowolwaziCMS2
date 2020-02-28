@@ -74,7 +74,7 @@
 
 <div class="graph">
   <div class="tops">
-    <h3>Materials delivered by Fumani overtime</h3>
+    <h3 *ngFor="let driver of ViewOutbound">Materials delivered by {{ driver.DriverName }} overtime</h3>
     <div class="boxes">
       <P>PAPER <br><span>{{ paperTotal }} kg</span></P>
       <P>PLASTIC <br><span>{{ plasticTotal }} kg</span></P>

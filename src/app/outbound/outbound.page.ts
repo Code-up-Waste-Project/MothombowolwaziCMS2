@@ -550,7 +550,7 @@ export class OutboundPage implements OnInit {
           time: this.time,
           truckcode: this.truckcode
         });
-        console.log(this.recordoutbounddisplays);
+        // console.log(this.recordoutbounddisplays);
 
       // create PDF
         this.ForLoop();
@@ -655,7 +655,7 @@ export class OutboundPage implements OnInit {
   async presentAlertAddUser(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want add this user to your form?</strong>!!!',
+      message: '<strong>Are you sure you want to use this user details?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -695,7 +695,7 @@ export class OutboundPage implements OnInit {
       // console.log(element.data().overallStorage);
       // console.log(element.data().TruckSourcess);
       // console.log(element.data().Destination);
-      console.log(element.data().truckcode);
+      // console.log(element.data().truckcode);
       // console.log(element.data());
         })
 
@@ -727,12 +727,6 @@ export class OutboundPage implements OnInit {
   }
 
   createDriver() {
-    // this.db.collection('outbound').onSnapshot(snap => {
-    //   snap.forEach(snap => {
-    //     this.truckcodefirebase = snap.data().truckcode
-    //   })
-    // })
-
     console.log(this.truckcode2222)
 
     if(this.truckcode2222 === undefined) {
@@ -766,40 +760,58 @@ export class OutboundPage implements OnInit {
       this.db.collection('outbound').doc(this.resultID).update({
         id: this.resultID
       })
+      this.db.collection('outboundMass').add({
+        date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+        GH001: this.GH001mass2,
+        NFAL01: this.NFAL01mass2,
+        PAP005: this.PAP005mass2,
+        PAP007: this.PAP007mass2,
+        PAP001: this.PAP001mass2,
+        PAP003: this.PAP003mass2,
+        HD001: this.HD001mass2,
+        LD001: this.LD001mass2,
+        LD003: this.LD003mass2,
+        PET00: this.PET001mass2,
+        PET003: this.PET003mass2,
+        PET005: this.PET005mass2,
+        ovarallMass: this.overallStorage,
+        driverID: this.resultID
+      })
+      console.log('im here');
     }).then(result => {
       // this.truckcode = 
-      this.SaveOutbound(this.resultID);
     })
 
   }
 
-  SaveOutbound(resultID) {
-    this.db.collection('outboundMass').add({
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
-      GH001: this.GH001mass2,
-      NFAL01: this.NFAL01mass2,
-      PAP005: this.PAP005mass2,
-      PAP007: this.PAP007mass2,
-      PAP001: this.PAP001mass2,
-      PAP003: this.PAP003mass2,
-      HD001: this.HD001mass2,
-      LD001: this.LD001mass2,
-      LD003: this.LD003mass2,
-      PET00: this.PET001mass2,
-      PET003: this.PET003mass2,
-      PET005: this.PET005mass2,
-      ovarallMass: this.overallStorage,
-      driverID: this.resultID
-    // }).then(result => {
-    //   // console.log(result);
-    //   console.log(result.id);
-    //   this.loadresultID = result.id
-    //   // console.log(loadresultID);
-    //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
-    //     loadid: this.loadresultID
-    //   })
-    })
-  }
+  // SaveOutbound(resultID) {
+  //   this.db.collection('outboundMass').add({
+  //     date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+  //     GH001: this.GH001mass2,
+  //     NFAL01: this.NFAL01mass2,
+  //     PAP005: this.PAP005mass2,
+  //     PAP007: this.PAP007mass2,
+  //     PAP001: this.PAP001mass2,
+  //     PAP003: this.PAP003mass2,
+  //     HD001: this.HD001mass2,
+  //     LD001: this.LD001mass2,
+  //     LD003: this.LD003mass2,
+  //     PET00: this.PET001mass2,
+  //     PET003: this.PET003mass2,
+  //     PET005: this.PET005mass2,
+  //     ovarallMass: this.overallStorage,
+  //     driverID: resultID
+  //   // }).then(result => {
+  //   //   // console.log(result);
+  //   //   console.log(result.id);
+  //   //   this.loadresultID = result.id
+  //   //   // console.log(loadresultID);
+  //   //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
+  //   //     loadid: this.loadresultID
+  //   //   })
+  //   })
+  //   console.log('ndila');
+  // }
 
   SaveOutbound2(id) {
     this.db.collection('outboundMass').add({
@@ -1544,18 +1556,18 @@ export class OutboundPage implements OnInit {
           return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
         });
       } else if (val == "") {
-        this.recordoutbounddisplays = this.recordoutbounddisplaysz;
+        this.recordoutbounddisplays = this.recordoutbounddisplays;
       }
 
-      console.log(this.usersz);
-      console.log(this.recordoutbounddisplays);
-      console.log(this.searchResults);
+      // console.log(this.usersz);
+      // console.log(this.recordoutbounddisplays);
+      // console.log(this.searchResults);
       
     }
 
     selectLocation(location) {
       this.userLocation = location;
-      this.recordoutbounddisplays = [];
+      // this.recordoutbounddisplays = [];
       console.log(this.userLocation);
       console.log(location);
 
