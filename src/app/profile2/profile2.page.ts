@@ -24,7 +24,7 @@ export class Profile2Page implements OnInit {
   profile = {
   image: '',
   name: null,
-  address: null,
+  addres: null,
   surname: null,
   position: null,
   number:null,
@@ -52,7 +52,7 @@ export class Profile2Page implements OnInit {
         this.profile.image = snapshot.data().image;
         this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
-        this.profile.address = snapshot.data().address;
+        this.profile.addres = snapshot.data().address;
         console.log('admin', this.userprofile);
       });
    }
@@ -91,7 +91,7 @@ export class Profile2Page implements OnInit {
           duration: 2000
         });
         toast.present();
-      }else if (this.profile.address == "" || this.profile.address == undefined) {
+      }else if (this.profile.addres == "" || this.profile.addres == undefined) {
           const toast = await this.toastController.create({
             message: 'Enter the address',
             duration: 2000
@@ -113,10 +113,10 @@ export class Profile2Page implements OnInit {
         email: this.profile.email,
         number:this.profile.number,
         position: this.profile.position,
-        address: this.profile.address,
         image: this.profile.image,
         isAdmin: this.isAdmin,
         userid: this.profile.userid,
+        address: this.profile.addres
       })
       .then(function() {
         console.log("Document successfully written!");

@@ -11,34 +11,39 @@
   <div class="Profile-content">
     <div class="profile-background">
       <img src="../../assets/loginright.svg" alt="">
+      <!-- <img src="../../assets/outboundPOPup                                                                .svg" alt="">
+      <img src="../../assets/ReclaimerPopup.svg" alt=""> -->
     </div>
     <div class="mask">
       <div class="user-card">
         <div class="first-section">
           <div id="user-profile">
             <div id="user-pic">
-              <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="" id="user-pic"> 
-              <img *ngIf="profile.image" src="{{profile.image}}" alt="" id="user-pic">
+                
+                <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt=""> 
+                <img *ngIf="profile.image" src="{{profile.image}}" alt="">
             </div>
           </div>
+          <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
           <div id="user-content">
             <div id="the-name">
-              <h2>{{profile.name}} </h2>
+              <h2>{{ profile.name }} {{ profile.surname }}</h2>
             </div>
             <div id="the-role">
-              <p>{{profile.position}}</p>
+              <p>{{ profile.position }}</p>
             </div>
           </div>
         </div>
         <div class="second-section">
           <div id="the-inputs">
-            <input type="text" placeholder="Name & Surname"  [(ngModel)]="profile.name">
-            <input type="number" placeholder="Phone Number" [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
+            <input type="text" placeholder="Name" [(ngModel)]="profile.name">
+            <input type="text" placeholder="Surname" [(ngModel)]="profile.surname">
+            <input type="tel" placeholder="Phone Number" [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)">
             <input type="text" placeholder="Role" [(ngModel)]="profile.position">
-            <input type="text" placeholder="Physical Address" [(ngModel)]="profile.address">
+            <input type="text" placeholder="Physical Address" [(ngModel)]="profile.addres">
           </div>
           <div id="the-button">
-            <ion-button>SAVE</ion-button>
+            <ion-button (click)="users()" type="submit" id="save">SAVE</ion-button>
           </div>
         </div>
       </div>
@@ -47,17 +52,7 @@
 
 </ion-content>
 
-
-
-  <!-- <div class="The-header">
-    <div class="sub-header" padding>
-      <div class="log-out">
-      <ion-icon name="log-out" (click)="Logout()"></ion-icon>
-    </div> 
-    </div>
-  </div>
-
-  <div class="container">      
+  <!-- <div class="container">      
     <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
     <img id="people" src="../../assets/ReclaimerPopup.svg">
     <ion-button id="close" fill="clear" slot="icon-only"  (click)="myBackButton()" ><ion-icon mode="ios" name="close-circle" (click)="myBackButton()"></ion-icon></ion-button>

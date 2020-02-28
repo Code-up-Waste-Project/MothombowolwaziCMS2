@@ -196,16 +196,24 @@
             </div>
             <div class="clicker">
               <ion-button id="add-new-driver" (click)="nextClick()">
-                <ion-icon name="add"></ion-icon>New Driver
+                <ion-icon name="add"></ion-icon>New Reclaimer
               </ion-button>
             </div>
           </div>
         </div>
         <div class="blockItems">
           <div class="details-driver" *ngIf="driverInfo === true">
+            <div id="user-profile">
+              <div id="user-pic">
+                <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                <img *ngIf="image" src="{{ image }}" alt="">
+                <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
+              </div>
+            </div>
             <form padding [formGroup]="RegisterForm">
               <input placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
               <input placeholder="Surnames" [(ngModel)]="surnames" formControlName="surnames" type="text">
+              <input type="number" placeholder="ID Number" maxlength="13" [ngModelOptions]="{standalone: true}" [(ngModel)]="IDno">
               <input placeholder="Contact No." [(ngModel)]="contacts" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel" onKeyPress="if(this.value.length==10)">
               <input placeholder="Physical Address" [(ngModel)]="addresss" formControlName="addresss" type="text">
             </form>

@@ -571,7 +571,7 @@ bD = document.getElementsByClassName('bD')
 
     this.outboundweight =0;
 
-    firebase.firestore().collection('outbound').get().then(res=>{
+    firebase.firestore().collection('outboundMass').get().then(res=>{
       res.forEach(val=>{
         // console.log(val.data().GH001+val.data().GH001)
         this.outboundweight =this.outboundweight 

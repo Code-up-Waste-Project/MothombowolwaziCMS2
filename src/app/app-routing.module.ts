@@ -92,12 +92,43 @@ const routes: Routes = [
   {
     path: 'direction',
     loadChildren: () => import('./direction/direction.module').then(m => m.DirectionPageModule)
-  },  {
+  },
+  {
     path: 'auto',
     loadChildren: () => import('./auto/auto.module').then( m => m.AutoPageModule)
   },
-
-
+  {
+    path: 'inbound-pdf/:id',
+    loadChildren: () => import('./inbound-pdf/inbound-pdf.module').then( m => m.InboundPDFPageModule)
+  },
+  {
+    path: 'outbound-pdf/:id',
+    loadChildren: () => import('./outbound-pdf/outbound-pdf.module').then( m => m.OutboundPDFPageModule)
+  },
+  {
+    path: 'reclaimer-pdf/:id',
+    loadChildren: () => import('./reclaimer-pdf/reclaimer-pdf.module').then( m => m.ReclaimerPDFPageModule)
+  },
+  {
+    path: 'profile2',
+    loadChildren: () => import('./profile2/profile2.module').then( m => m.Profile2PageModule)
+  },
+  {
+    path: 'inbound2',
+    loadChildren: () => import('./inbound2/inbound2.module').then( m => m.Inbound2PageModule)
+  },
+  {
+    path: 'reclaimer2',
+    loadChildren: () => import('./reclaimer2/reclaimer2.module').then( m => m.Reclaimer2PageModule)
+  },
+  {
+    path: 'outbound-driver-info/:id',
+    loadChildren: () => import('./outbound-driver-info/outbound-driver-info.module').then( m => m.OutboundDriverInfoPageModule)
+  },
+  {
+    path: 'reclaimer-info',
+    loadChildren: () => import('./reclaimer-info/reclaimer-info.module').then( m => m.ReclaimerInfoPageModule)
+  }
 
 ];
 

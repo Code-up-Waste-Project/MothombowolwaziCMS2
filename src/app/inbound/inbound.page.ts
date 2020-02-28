@@ -118,6 +118,76 @@ export class InboundPage implements OnInit {
 
   RegisterForm: FormGroup;
 
+  
+  goAway() {
+    // alert("clicked")
+    // this.selectedCat = "";
+    // this.driverInformation = false;
+    // this.driverInfo = false;
+    this.popOpOpen = false;
+    this.slideOne = true;
+    this.slideTwo = false;
+    this.driverInfo = false
+  }
+  coemBack() {
+  }
+
+  otherPopup: boolean = false;
+
+  showOtherPopup() {
+    // alert("clicked")
+    this.otherPopup = true;
+  }
+
+  showInputs() {
+    this.otherPopup = false;
+
+  }
+  driverInformation: boolean = false;
+  wasteInformation: boolean = false;
+
+  showDriverInfo() {
+    this.driverInformation = true;
+    this.wasteInformation = false;
+  }
+  showWasteInfo() {
+    this.wasteInformation = true;
+    this.driverInformation = false;
+    this.coemBack();
+  }
+
+  popOpOpen: boolean = false;
+  selectedCat = "";
+
+  showPopUp(userCat) {
+    this.popOpOpen = true;
+    this.selectedCat = userCat;
+    this.showDriverInfo();
+    // alert(this.selectedCat);
+    setTimeout(() => {
+    if (this.selectedCat === 'paper') {
+      this.togglePaper();
+    } else if (this.selectedCat === 'plastic') {
+      this.togglePlastic();
+    } else if (this.selectedCat === 'aluminium') {
+      this.toggleAluminium();
+    } else if (this.selectedCat === 'glass') {
+      this.toggleGlass();
+    }
+    }, 10);
+    // console.log(this.selectedCat);
+  }
+
+  
+  driverInfo: boolean = false;
+  group1 = document.getElementsByClassName("flyer-inputs") as HTMLCollectionOf <HTMLElement>
+  nextClick(){
+    // this will slide the elements to their original place
+    this.driverInfo = true;
+    this.group1[0].style.right = "0";
+    this.group1[0].style.width = "90%"
+  }
+
   constructor(
     private plt: Platform,
     private file: File,
@@ -753,14 +823,14 @@ export class InboundPage implements OnInit {
       this.route.navigateByUrl('/login');
      });
     }
-
-
+   
+    
     isPaper : boolean = false;
     isPlastic : boolean = false;
     isAluminium : boolean = false;
     isGlass : boolean = false;
-
-
+    slideOne: boolean = true;
+    slideTwo: boolean = false;
     togglePlastic() {
       console.log("calling plastic");
       
@@ -837,38 +907,16 @@ export class InboundPage implements OnInit {
     document.getElementById("isAluminium").style.color = "black"
     document.getElementById("isGlass").style.color = "white"
     }
+    driverDetails: boolean = false;
+    doneBtn(){
 
-    goAway() {
-      this.popOpOpen = false;
-    }
-
-    popOpOpen: boolean = false;
-    selectedCat = "";
-    showPopUp(userCat) {
-      this.popOpOpen = true;
-      this.selectedCat = userCat;
-      setTimeout(() => {
-      if (this.selectedCat === "paper") {
-        this.togglePaper();
-        console.log(this.selectedCat);
-      } else if (this.selectedCat === "plastic"){
-        this.togglePlastic();
-      } else if (this.selectedCat === "aluminium") {
-        this.toggleAluminium();
-      } else if (this.selectedCat === "glass") {
-        this.toggleGlass();
-      }
-      }, 10);
-    }
-    
-    editprofile() {
-      this.route.navigate(['profile2']);
-    }
-
-    CloseModel() {
-      this.modalController.dismiss({
-        'dismissed': true
-      });
+      console.log("done");
+      
+      this.showPopUp(this.selectedCat)
+      
+      this.driverDetails = true;
+      this.slideOne = false;
+      this.slideTwo = true;
     }
 
 }
