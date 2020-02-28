@@ -70,7 +70,8 @@ const routes: Routes = [
   {
     path: 'profile2',
     loadChildren: () => import('./profile2/profile2.module').then( m => m.Profile2PageModule)
-  },  {
+  },
+  {
     path: 'inbound2',
     loadChildren: () => import('./inbound2/inbound2.module').then( m => m.Inbound2PageModule)
   },
@@ -79,16 +80,22 @@ const routes: Routes = [
     loadChildren: () => import('./reclaimer2/reclaimer2.module').then( m => m.Reclaimer2PageModule)
   },
   {
-    path: 'map',
-    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+    path: 'outbound-driver-info',
+    loadChildren: () => import('./outbound-driver-info/outbound-driver-info.module').then( m => m.OutboundDriverInfoPageModule)
   },
   {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
+  },
+
+
+  {
     path: 'direction',
-    loadChildren: () => import('./direction/direction.module').then( m => m.DirectionPageModule)
-  }
-
-
-
+    loadChildren: () => import('./direction/direction.module').then(m => m.DirectionPageModule)
+  },  {
+    path: 'auto',
+    loadChildren: () => import('./auto/auto.module').then( m => m.AutoPageModule)
+  },
 
 
 

@@ -1,15 +1,3 @@
-<!-- <ion-header *ngFor="let user of Newadmin">
-  <ion-toolbar class="header">
-    <ion-title>
-      <ion-avatar [routerLink]="['/profile']"><img src="{{user.image}}"></ion-avatar>
-      <p>{{ user.name }} {{ user.surname }}</p>
-    </ion-title>
-    <ion-buttons id="logout" slot="end">
-      <ion-button fill="clear" size="large" >Logout<ion-icon name="log-out"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar> -->
-
 
 <ion-app   >
   <ion-split-pane  contentId="main-content"   >
@@ -19,7 +7,7 @@
       <div class="profilepic" ><img  *ngIf="user.image" [routerLink]="['/profile2']" src="{{user.image}}" class="profilepic">
         <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt="" class="profilepic"> 
       </div>
-      <h4 id="names">{{ user.name }} {{ user.surname }}</h4>
+      <h4 id="names">{{ user.name }} </h4>
       <!-- <p id="position">Developer</p> -->
       <!-- <h4 *ngFor="let myusers of users" >{{ myusers.positions }} </h4> -->
       <p></p>

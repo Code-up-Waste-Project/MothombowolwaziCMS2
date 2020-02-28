@@ -41,25 +41,25 @@
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass2"><br>
                 <p>PAP005</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass2"><br>
                 <p>PAP007</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass2"><br>
                 <p>PAP001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass2"><br>
                 <p>PAP003</p>
               </ion-col>
 
@@ -76,36 +76,36 @@
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="HD001mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="HD001mass2"><br>
                 <p>HD001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD001mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="LD001mass2"><br>
                 <p>LD001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD003mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="LD003mass2"><br>
                 <p>LD003</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET005mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET005mass2"><br>
                 <p>PET005</p>
               </ion-col>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass2"><br>
                 <p>PET001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET003mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET003mass2"><br>
                 <p>PET003</p>
               </ion-col>
 
@@ -122,7 +122,7 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass2"><br>
                 <p id="CODE">NFAL01</p>
               </ion-col>
             </ion-row>
@@ -138,7 +138,7 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="GH001mass"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="GH001mass2"><br>
                 <p id="CODE">GL001</p>
               </ion-col>
             </ion-row>
@@ -179,11 +179,13 @@
 
               <ion-card *ngFor="let records of recordoutbounddisplays">
                 <ion-card-header (click)='presentAlertAddUser(records.id)'>
+                  <!-- <ion-card-title>{{ records }}</ion-card-title> -->
                   <ion-card-title>{{ records.DriverName }}</ion-card-title>
                 </ion-card-header>
 
                 <ion-card-content>
-                  {{ records.RegistarionNumberPlates }}
+                  {{ records.RegistarionNumberPlates }}<br>
+                  {{ records.truckcode }}
                 </ion-card-content>
               </ion-card>
 
@@ -237,38 +239,29 @@
       <p>GLASS</p>
     </div>
   </div>
-  <div class="history" padding>
-    <div class="Title" padding>
-      <h2>Your History</h2>
-    </div>
-    <div class="line-breaker"></div>
-    <div class="history-labels">
-      <div>Driver Name</div>
-      <div>Registration No.</div>
-      <div>Date</div>
+  <div class="history" >
+    <h4 class="heading">All Storage Material</h4>
+
+    <div class="history-labels">  
+      <div class="userId">UserID</div>
+      <div class="name">Driver Name</div>
+      <div class="regNo">Registration No.</div>
       <div></div>
-      <div></div>
+     </div><!-- end of history-labels -->
+<div class="scrolling">
+    <div class="itemList" >
+      <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">001</div>
+      <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">Nkosinathi Dlamini</div>
+      <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">jk 0586 Gpmfhmxfmkmrsmrs</div>
+      <div class="icon"><ion-button (click)="ViewDriver()" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
+      </div>
+      <!-- <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
+        <div>{{ records.DriverName }}</div>
+        <div>{{ records.RegistarionNumberPlates }}</div>
+        <div>{{ records.truckcode }}</div>
+        <div>
+           -->
+       </div>
     </div>
-    <div class="itemList" *ngFor="let records of recordoutbounddisplaysz">
-      <div>{{ records.DriverName }}</div>
-      <div>{{ records.RegistarionNumberPlates }}</div>
-      <div>{{ records.time }}</div>
-      <div>
-        <ion-icon name="eye" [routerLink]="['/outbound-pdf', records.id]"></ion-icon>
-      </div>
-      <div>
-        <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-      </div>
-    </div>
-    <!-- <div class="itemList">
-      <div>February 10 2020</div>
-      <div>ADSGDSHGSHEREWT</div>
-      <div>
-        <ion-icon name="eye"></ion-icon>
-      </div>
-      <div>
-        <ion-icon name="trash"></ion-icon>
-      </div>
-    </div> -->
   </div>
 </ion-content>

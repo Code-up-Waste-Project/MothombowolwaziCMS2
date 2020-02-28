@@ -1,6 +1,55 @@
-<ion-content>
 
-  <div class="The-header">
+  <!-- <div class="The-header">
+    <div class="sub-header" padding>
+      Your Profile
+    </div>
+  </div> -->
+
+<ion-content>
+  
+
+  <div class="Profile-content">
+    <div class="profile-background">
+      <img src="../../assets/loginright.svg" alt="">
+    </div>
+    <div class="mask">
+      <div class="user-card">
+        <div class="first-section">
+          <div id="user-profile">
+            <div id="user-pic">
+              <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="" id="user-pic"> 
+              <img *ngIf="profile.image" src="{{profile.image}}" alt="" id="user-pic">
+            </div>
+          </div>
+          <div id="user-content">
+            <div id="the-name">
+              <h2>{{profile.name}} </h2>
+            </div>
+            <div id="the-role">
+              <p>{{profile.position}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="second-section">
+          <div id="the-inputs">
+            <input type="text" placeholder="Name & Surname"  [(ngModel)]="profile.name">
+            <input type="number" placeholder="Phone Number" [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel">
+            <input type="text" placeholder="Role" [(ngModel)]="profile.position">
+            <input type="text" placeholder="Physical Address" [(ngModel)]="profile.address">
+          </div>
+          <div id="the-button">
+            <ion-button>SAVE</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+
+
+  <!-- <div class="The-header">
     <div class="sub-header" padding>
       <div class="log-out">
       <ion-icon name="log-out" (click)="Logout()"></ion-icon>
@@ -43,7 +92,4 @@
          </div>
              
         </div>
-        </div>
-        
-        </ion-content>
-
+        </div>  -->

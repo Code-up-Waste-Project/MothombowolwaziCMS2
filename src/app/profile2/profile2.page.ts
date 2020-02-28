@@ -24,7 +24,7 @@ export class Profile2Page implements OnInit {
   profile = {
   image: '',
   name: null,
-  addres: null,
+  address: null,
   surname: null,
   position: null,
   number:null,
@@ -50,8 +50,9 @@ export class Profile2Page implements OnInit {
         this.profile.name = snapshot.data().name;
         this.profile.surname = snapshot.data().surname;
         this.profile.image = snapshot.data().image;
-        // this.profile.position= snapshot.data().position;
+        this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
+        this.profile.address = snapshot.data().address;
         console.log('admin', this.userprofile);
       });
    }
@@ -84,12 +85,19 @@ export class Profile2Page implements OnInit {
           duration: 2000
         });
         toast.present();
-      } else if (this.profile.surname == "" || this.profile.surname == undefined) {
+      } else if (this.profile.position == "" || this.profile.position == undefined) {
         const toast = await this.toastController.create({
-          message: 'Enter the surname',
+          message: 'Enter the position',
           duration: 2000
         });
         toast.present();
+      }else if (this.profile.address == "" || this.profile.address == undefined) {
+          const toast = await this.toastController.create({
+            message: 'Enter the address',
+            duration: 2000
+          });
+          toast.present();
+        
       } else if(this.profile.number == "" || this.profile.number == undefined || this.profile.number.length <10){
   const toast = await this.toastController.create({
     message:'Enter a cellphone number with 10 digits',
@@ -104,7 +112,8 @@ export class Profile2Page implements OnInit {
         surname: this.profile.surname,
         email: this.profile.email,
         number:this.profile.number,
-        // position: this.profile.position,
+        position: this.profile.position,
+        address: this.profile.address,
         image: this.profile.image,
         isAdmin: this.isAdmin,
         userid: this.profile.userid,
@@ -229,14 +238,11 @@ export class Profile2Page implements OnInit {
     }
 
     Logout() {
-
-     
       firebase.auth().signOut().then((res) => {
         console.log(res);
         this.router.navigateByUrl('/login');
        });
-       
-
+      
       }
       // theadmin(){
       //   
