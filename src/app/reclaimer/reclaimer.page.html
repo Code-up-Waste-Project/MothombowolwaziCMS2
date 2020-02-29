@@ -253,20 +253,20 @@
     </div>
     <div class="line-breaker"></div>
     <div class="history-labels">
+      <div>Reclaimer Code</div>
       <div>Full Name</div>
       <div>Phone Number</div>
-      <div>Amount</div>
-      <div>Date</div>
+      <div>ID Number</div>
       <div></div>
       <div></div>
     </div>
     <div class="itemList" *ngFor="let records of testArrays">
+      <div>{{ records.reclaimercode }}</div>
       <div>{{ records.name }} {{ records.surname }}</div>
       <div>{{ records.contact }}</div>
-      <div>R{{ records.OverallGrandTotal }}</div>
-      <div>{{ records.date }}</div>
+      <div>{{ records.IDnumber }}</div>
       <div>
-        <ion-icon name="eye" [routerLink]="['/reclaimer-pdf', records.id]"></ion-icon>
+        <ion-icon name="eye" [routerLink]="['/reclaimer-info', records.id]"></ion-icon>
       </div>
       <div>
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>

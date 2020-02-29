@@ -423,6 +423,7 @@ export class ReclaimerPage implements OnInit {
       snapshot.forEach(element => {
 
         this.testArrays.push(element.data())
+        console.log(this.testArrays);
 
         let id = {};
         let reclaimername = {};
@@ -681,7 +682,8 @@ export class ReclaimerPage implements OnInit {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
-            this.allocate();
+            this.doneBtn();
+            // this.allocate();
             // this.route.navigateByUrl('/reclaimer');
           }
         }
@@ -708,11 +710,6 @@ export class ReclaimerPage implements OnInit {
         this.UpdateID = id;
         })
 
-        // console.log(this.names);
-        // console.log(this.surnames);
-        // console.log(this.contacts);
-        // console.log(this.addresss);
-
         // adding data to textboxes
         this.names = this.names;
         this.surnames = this.surnames;
@@ -720,6 +717,12 @@ export class ReclaimerPage implements OnInit {
         this.addresss = this.addresss
         this.reclaimercode = this.truckcode2222
       // })
+
+        // console.log(this.names);
+        // console.log(this.surnames);
+        // console.log(this.contacts);
+        // console.log(this.addresss);
+        // console.log(this.reclaimercode);
   })
 
   this.nextClick();
@@ -1640,8 +1643,16 @@ export class ReclaimerPage implements OnInit {
       OverallGrandTotal: this.OverallGrandTotal2,
 
       reclaimerID: this.resultID
+      }).then(result => {
+        // console.log(result);
+      console.log(result.id);
+      this.resultID = result.id
+      // console.log(resultID);
+      this.db.collection('reclaimersMass').doc(this.resultID).update({
+        productcode: this.resultID
       })
-      console.log('im here');
+      })
+      // console.log('im here');
     }).then(result => {
       // this.truckcode = 
     })
@@ -1651,7 +1662,7 @@ export class ReclaimerPage implements OnInit {
   savereclaimerdata(id) {
     this.db.collection('reclaimersMass').add({
       date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
-      driverID: id,
+      reclaimerID: id,
 
       GH001Mass: this.GH001massz,
       GH001Price: this.GH001,
@@ -1729,6 +1740,14 @@ export class ReclaimerPage implements OnInit {
       OverallSubTotal: this.OverallSubTotal,
       OverallVat: this.OverallVat,
       OverallGrandTotal: this.OverallGrandTotal2,
+    }).then(result => {
+      // console.log(result);
+    console.log(result.id);
+    this.resultID = result.id
+    // console.log(resultID);
+    this.db.collection('reclaimersMass').doc(this.resultID).update({
+      productcode: this.resultID
+    })
     })
   }
 
@@ -1997,6 +2016,7 @@ Logout() {
         surname = this.surnames = element.data().surname;
         contact = this.contacts = element.data().contact;
         address = this.addresss = element.data().address;
+        this.truckcode2222 = element.data().reclaimercode;
         })
 
         // console.log(this.names);

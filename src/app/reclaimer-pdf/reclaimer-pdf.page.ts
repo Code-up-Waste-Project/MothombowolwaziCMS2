@@ -30,7 +30,9 @@ export class ReclaimerPDFPage implements OnInit {
   getprice;
 
   overallMass;
+  overallMass2;
   OverallSubTotal;
+  OverallSubTotal2;
   OverallVat;
   OverallGrandTotal;
   // substrings
@@ -284,6 +286,9 @@ export class ReclaimerPDFPage implements OnInit {
   reclaimername;
   reclaimersurname;
   reclaimerDate;
+  reclaimerAddress;
+  reclaimercode;
+  reclaimercontact;
   time;
 
   pdfObj = null;
@@ -305,7 +310,7 @@ export class ReclaimerPDFPage implements OnInit {
   ) {
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    // console.log(this.id);
+    console.log(this.id);
 
     this.pdfmakerFirebase(this.id);
     this.getprices();
@@ -326,9 +331,9 @@ export class ReclaimerPDFPage implements OnInit {
     });
 
     // pulling from reclaimers
-    this.db.collection('reclaimers').onSnapshot(snapshot => {
+    this.db.collection('reclaimers').doc(this.id).onSnapshot(element => {
       this.newreclaimer = [];
-      snapshot.forEach(element => {
+      // snapshot.forEach(element => {
         let id = {};
         let reclaimername = {};
         let reclaimersurname = {};
@@ -337,8 +342,14 @@ export class ReclaimerPDFPage implements OnInit {
         id = this.id = element.id;
         reclaimername = this.reclaimername = element.data().name;
         reclaimersurname = this.reclaimersurname = element.data().surname;
-        reclaimerDate = this.reclaimerDate = element.data().date;
-        // this.time = element.data().date;
+        this.reclaimerAddress = element.data().address;
+        this.reclaimercode = element.data().reclaimercode;
+        this.reclaimercontact = element.data().contact;
+        // console.log(this.reclaimername);
+        // console.log(this.reclaimersurname);
+        // console.log(this.reclaimerAddress);
+        // console.log(this.reclaimercode);
+        // console.log(this.reclaimercontact);
 
         // this.newreclaimer = [];
         this.newreclaimer.push({
@@ -346,8 +357,6 @@ export class ReclaimerPDFPage implements OnInit {
           reName: reclaimername,
           reSurname: reclaimersurname,
           reDate: reclaimerDate,
-        });
-        // console.log(this.newreclaimer);
       });
     });
    }
@@ -357,8 +366,8 @@ export class ReclaimerPDFPage implements OnInit {
 
   pdfmakerFirebase(id) {
     // pulling data from database
-    this.db.collection('reclaimers').doc(id).onSnapshot(element => {
-      // snapshot.forEach(element => {
+    this.db.collection('reclaimersMass').doc(this.id).get().then(element => {
+      // element.forEach(element => {
         let name = {};
         let surname = {};
         let contact = {};
@@ -469,34 +478,23 @@ export class ReclaimerPDFPage implements OnInit {
         let PET005Vat = {};
         let PET005GrandTotal = {};
 
-        // user infor
-        name = this.name = element.data().name;
-        surname = this.surname = element.data().surname;
-        contact = this.contact = element.data().contact;
-        address = this.address = element.data().address;
-        this.time = element.data().date;
-        // console.log(this.name);
-        // console.log(this.surname);
-        // console.log(this.contact);
-        // console.log(this.address);
-
         // Logistic infor
-        overallMass = this.overallMass = element.data().OverallMass;
-        this.overallMassz = (String(overallMass).substring(0, 6));
-        OverallSubTotal = this.OverallSubTotal = element.data().OverallSubTotal;
         this.OverallSubTotalz = (String(OverallSubTotal).substring(0, 6));
         OverallVat = this.OverallVat = element.data().OverallVat;
         this.OverallVatz = (String(OverallVat).substring(0, 6));
         OverallGrandTotal = this.OverallGrandTotal = element.data().OverallGrandTotal;
         this.OverallGrandTotalz = (String(OverallGrandTotal).substring(0, 6));
-        // console.log(this.overallMass);
-        // console.log(this.OverallSubTotal);
-        // console.log(this.OverallVat);
-        // console.log(this.OverallGrandTotal);
-        // console.log(this.overallMassz);
-        // console.log(this.OverallSubTotalz);
-        // console.log(this.OverallVatz);
-        // console.log(this.OverallGrandTotalz);
+        this.overallMass2 = element.data().OverallMass;
+        this.overallMassz = (String(this.overallMass2).substring(0, 6));
+        OverallSubTotal = this.OverallSubTotal2 = element.data().OverallSubTotal;
+        console.log(this.overallMass2);
+        console.log(this.OverallSubTotal);
+        console.log(this.OverallVat);
+        console.log(this.OverallGrandTotal);
+        console.log(this.overallMassz);
+        console.log(this.OverallSubTotalz);
+        console.log(this.OverallVatz);
+        console.log(this.OverallGrandTotalz);
 
         // prices
         GH001 = this.GH001 = element.data().GH001;
@@ -775,7 +773,7 @@ export class ReclaimerPDFPage implements OnInit {
           surname: surname,
           contact: contact,
           address: address,
-          overallMass: overallMass,
+          overallMass: this.overallMass2,
           OverallSubTotal: OverallSubTotal,
           OverallVat: OverallVat,
           OverallGrandTotal: OverallGrandTotal,
@@ -852,10 +850,10 @@ export class ReclaimerPDFPage implements OnInit {
           PET005Vat: PET005Vat,
           PET005GrandTotal: PET005GrandTotal,
         });
-        // console.log(this.testArray);
+        console.log(this.testArray);
 
         this.PDFArray = {
-          overallMass: overallMass,
+          overallMass: this.overallMass2,
           OverallSubTotal: OverallSubTotal,
           OverallVat: OverallVat,
           OverallGrandTotal: OverallGrandTotal,
@@ -941,7 +939,7 @@ export class ReclaimerPDFPage implements OnInit {
 
         // PDFOverallz
         this.PDFOverallMass = {
-          overallMass: overallMass
+          overallMass: this.overallMass2
         };
 
         this.PDFOverallSubTotal = {
@@ -1052,11 +1050,11 @@ export class ReclaimerPDFPage implements OnInit {
           PET005mass: PET005mass
         };
 
-      // });
+      });
 
       // create PDF for Download
         this.ForLoop();
-    });
+    // });
     }
 
     ForLoop() {

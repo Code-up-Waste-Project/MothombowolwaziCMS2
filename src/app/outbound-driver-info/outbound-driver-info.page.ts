@@ -97,7 +97,7 @@ export class OutboundDriverInfoPage implements OnInit {
       snapshot.forEach(element => {
         console.log(element.data());
         this.ViewOutboundMasses.push(element.data());
-      console.log(this.ViewOutboundMasses);
+        console.log(this.ViewOutboundMasses);
 
         this.GH001storagemass = element.data().GH001;
         this.GH001storagemassz = (String(this.GH001storagemass).substring(0, 6));
