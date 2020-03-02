@@ -179,6 +179,11 @@ console.log("good morning")
         icon: 'manageUserz',
         admin:"cool"
       },
+      {
+        title: 'Logout',
+        icon: 'logout',
+        admin: "cool"
+      }
       );
     }
             // console.log(this.appPages);

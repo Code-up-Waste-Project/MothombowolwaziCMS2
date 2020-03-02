@@ -13,7 +13,7 @@
   <div class="mother" *ngIf="popOpOpen === true">
     <div class="dismissOverlay" (click)="goAway()"></div>
 
-    <div class="userForm" id="materials-form" *ngIf="slideTwo === true">
+    <div class="userForm2" *ngIf="slideTwo === true">
       <!-- this is for the materials form -->
       <div class="waste-materials">
         <div (click)="togglePaper()" id="isPaper">PAPER</div>
@@ -203,6 +203,9 @@
           <div class="details-driver" *ngIf="driverInfo === true" padding>
             <div id="user-profile">
               <div id="user-pic">
+                <label for="disapear">
+                  <ion-icon id="Addd" name="add"></ion-icon>
+                </label>
                 <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                 <img *ngIf="image" src="{{ image }}" alt="">
                 <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
@@ -250,9 +253,9 @@
       <p>GLASS</p>
     </div>
   </div>
-  <div class="history" >
-    <h4 class="heading">All Storage Material</h4>
-
+  <div class="history" padding>
+    <h4 class="Title" padding>All Storage Material</h4>
+    <div class="line-breaker"></div>
     <div class="history-labels">  
       <div class="userId">Code</div>
       <div class="name">Driver Name</div>
@@ -266,9 +269,9 @@
       <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
       <div class="icon"><ion-button [routerLink]="['/outbound-driver-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
-      <!-- <div>
+      <div>
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-      </div> -->
+      </div>
        </div>
     </div>
   </div>

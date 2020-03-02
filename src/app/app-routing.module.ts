@@ -126,7 +126,7 @@ const routes: Routes = [
     loadChildren: () => import('./outbound-driver-info/outbound-driver-info.module').then( m => m.OutboundDriverInfoPageModule)
   },
   {
-    path: 'reclaimer-info',
+    path: 'reclaimer-info/:id',
     loadChildren: () => import('./reclaimer-info/reclaimer-info.module').then( m => m.ReclaimerInfoPageModule)
   }
 

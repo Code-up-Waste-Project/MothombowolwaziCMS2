@@ -423,6 +423,7 @@ export class ReclaimerPage implements OnInit {
       snapshot.forEach(element => {
 
         this.testArrays.push(element.data())
+        console.log(this.testArrays);
 
         let id = {};
         let reclaimername = {};
@@ -681,7 +682,8 @@ export class ReclaimerPage implements OnInit {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
-            this.allocate();
+            this.doneBtn();
+            // this.allocate();
             // this.route.navigateByUrl('/reclaimer');
           }
         }
@@ -708,11 +710,6 @@ export class ReclaimerPage implements OnInit {
         this.UpdateID = id;
         })
 
-        // console.log(this.names);
-        // console.log(this.surnames);
-        // console.log(this.contacts);
-        // console.log(this.addresss);
-
         // adding data to textboxes
         this.names = this.names;
         this.surnames = this.surnames;
@@ -720,6 +717,12 @@ export class ReclaimerPage implements OnInit {
         this.addresss = this.addresss
         this.reclaimercode = this.truckcode2222
       // })
+
+        // console.log(this.names);
+        // console.log(this.surnames);
+        // console.log(this.contacts);
+        // console.log(this.addresss);
+        // console.log(this.reclaimercode);
   })
 
   this.nextClick();
@@ -1359,37 +1362,66 @@ export class ReclaimerPage implements OnInit {
   }
 
   getprices() {
-    this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
-    // console.log('prices firestore', this.prices);
-      this.prices.get().then(element => {
-        // console.log(element.data());
-        this.GH001 = element.data().gl001;
-        this.GH001sss = element.data().gl001;
-        // console.log(this.GH001sss);
-        this.HD001 = element.data().hd001;
-        this.LD001 = element.data().ld001;
-        this.LD003 = element.data().ld003;
-        this.NFAL01 = element.data().nfalo1;
-        this.PAP001 = element.data().pap001;
-        this.PAP003 = element.data().pap003;
-        this.PAP005 = element.data().pap005;
-        this.PAP007 = element.data().pap007;
-        this.PET001 = element.data().pet001;
-        this.PET003 = element.data().pet003;
-        this.PET005 = element.data().pet005;
-        // console.log(element);
+    // this.prices = this.db.collection('price').doc("SinUfRNnbB073KZiDIZE");
+    // // console.log('prices firestore', this.prices);
+    //   this.prices.get().then(element => {
+    //     // console.log(element.data());
+    //     this.GH001 = element.data().gl001;
+    //     this.GH001sss = element.data().gl001;
+    //     // console.log(this.GH001sss);
+    //     this.HD001 = element.data().hd001;
+    //     this.LD001 = element.data().ld001;
+    //     this.LD003 = element.data().ld003;
+    //     this.NFAL01 = element.data().nfalo1;
+    //     this.PAP001 = element.data().pap001;
+    //     this.PAP003 = element.data().pap003;
+    //     this.PAP005 = element.data().pap005;
+    //     this.PAP007 = element.data().pap007;
+    //     this.PET001 = element.data().pet001;
+    //     this.PET003 = element.data().pet003;
+    //     this.PET005 = element.data().pet005;
+    //     // console.log(element);
 
-        // console.log(this.GH001);
-        // console.log(this.HD001);
-        // console.log(this.LD003);
-        // console.log(this.NFAL01);
-        // console.log(this.PAP001);
-        // console.log(this.PAP003);
-        // console.log(this.PAP005);
-        // console.log(this.PET001);
-        // console.log(this.PET003);
-        // console.log(this.PET005);
-      });
+    //     console.log(this.GH001);
+    //     console.log(this.HD001);
+    //     console.log(this.LD003);
+    //     console.log(this.NFAL01);
+    //     console.log(this.PAP001);
+    //     console.log(this.PAP003);
+    //     console.log(this.PAP005);
+    //     console.log(this.PET001);
+    //     console.log(this.PET003);
+    //     console.log(this.PET005);
+    //     });
+      
+    // Glass Prices
+    this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").onSnapshot((snap) => {
+      this.GH001 = snap.data().newgl001;
+    })
+
+    // Aluminium Prices
+    this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE").onSnapshot(snap => {
+      this.NFAL01 = snap.data().newnfal01;
+    })
+
+    // Paper Prices
+    this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
+      this.PAP003 = snap.data().newpap003;
+      this.PAP001 = snap.data().newpap001;
+      this.PAP005 = snap.data().newpap005;
+      this.PAP007 = snap.data().newpap007;
+    })
+
+    // Plastic Prices
+    this.db.collection('price').doc("7O6KqClxLD780ltfC6i5").onSnapshot(snap => {
+      this.PET005 = snap.data().newpet005;
+      this.PET001 = snap.data().newpet001;
+      this.PET003 = snap.data().newpet003;
+      this.LD003 = snap.data().newld003;
+      this.LD001 = snap.data().newld001;
+      this.HD001 = snap.data().newhd001;
+    })
+
   }
 
   getMasses() {
@@ -1640,8 +1672,16 @@ export class ReclaimerPage implements OnInit {
       OverallGrandTotal: this.OverallGrandTotal2,
 
       reclaimerID: this.resultID
+      }).then(result => {
+        // console.log(result);
+      console.log(result.id);
+      this.resultID = result.id
+      // console.log(resultID);
+      this.db.collection('reclaimersMass').doc(this.resultID).update({
+        productcode: this.resultID
       })
-      console.log('im here');
+      })
+      // console.log('im here');
     }).then(result => {
       // this.truckcode = 
     })
@@ -1651,7 +1691,7 @@ export class ReclaimerPage implements OnInit {
   savereclaimerdata(id) {
     this.db.collection('reclaimersMass').add({
       date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
-      driverID: id,
+      reclaimerID: id,
 
       GH001Mass: this.GH001massz,
       GH001Price: this.GH001,
@@ -1729,6 +1769,14 @@ export class ReclaimerPage implements OnInit {
       OverallSubTotal: this.OverallSubTotal,
       OverallVat: this.OverallVat,
       OverallGrandTotal: this.OverallGrandTotal2,
+    }).then(result => {
+      // console.log(result);
+    console.log(result.id);
+    this.resultID = result.id
+    // console.log(resultID);
+    this.db.collection('reclaimersMass').doc(this.resultID).update({
+      productcode: this.resultID
+    })
     })
   }
 
@@ -1997,6 +2045,7 @@ Logout() {
         surname = this.surnames = element.data().surname;
         contact = this.contacts = element.data().contact;
         address = this.addresss = element.data().address;
+        this.truckcode2222 = element.data().reclaimercode;
         })
 
         // console.log(this.names);
@@ -2033,8 +2082,8 @@ allocate() {
     // console.log('im clicked');
 }
 
-// editprofile() {
-//   this.route.navigate(['profile2']);
-// }
+viewReclaimerHistory() {
+  this.route.navigate(['reclaimerHistory']);
+}
 
 }
