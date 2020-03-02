@@ -1,4 +1,6 @@
 <ion-header>
+  <button (click)="callback()">distance</button>
+
   <ion-toolbar>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
@@ -8,10 +10,11 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="directionForm">
+  <form [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
     <ion-item>
-      <input class="input" #autoCompleteInput formControlName="placeName" />
+      <input class="input" #autoCompleteInput formControlName="destination" />
     </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
   </form>
   <div #mapElement class="map"></div>
 

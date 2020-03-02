@@ -166,30 +166,6 @@
       <div class="flow-container">
         <div class="blockItems" id="absolutely">
           <div class="flyer-inputs">
-            <div class="Searhcer">
-              <!-- code for auto complete -->
-              <div class="results">
-                <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
-                <div class='count' *ngIf="searchResults.length > 0">
-                  {{ searchResults.length }}
-                </div>
-              </div>
-              <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
-              <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar>
-            </div>
-            <div class="contact-cards">
-
-              <ion-card *ngFor="let records of recordoutbounddisplays">
-                <ion-card-header (click)='presentAlertAddUser(records.id)'>
-                  <ion-card-title>{{ records.DriverName }}</ion-card-title>
-                </ion-card-header>
-
-                <ion-card-content>
-                  {{ records.RegistarionNumberPlates }}
-                </ion-card-content>
-              </ion-card>
-
-            </div>
             <div class="clicker">
               <ion-button id="add-new-driver" (click)="nextClick()">
                 <ion-icon name="add"></ion-icon>New Driver
@@ -204,18 +180,6 @@
                 <img src="../../assets/96c03bda-9e1d-4e89-91d7-0b88a9549d7a.jfif" alt="">
               </div>
             </div>
-            <form [formGroup]="RegisterForm">
-              <input type="text" placeholder="Driver Name" [(ngModel)]="DriverNameInput"
-                formControlName="DriverNameInput">
-              <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
-                formControlName="RegistarionNumberPlatesInput">
-              <input type="text" placeholder="Destination" [(ngModel)]="DestinationInput"
-                formControlName="DestinationInput">
-              <input type="text" placeholder="Truck Source" [(ngModel)]="TruckSourcessInput"
-                formControlName="TruckSourcessInput">
-              <input placeholder="Email Address"> 
-              <input placeholder="Physical Address"> 
-            </form>
           </div>
         </div>
       </div>

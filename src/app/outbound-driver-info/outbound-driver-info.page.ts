@@ -19,6 +19,8 @@ export class OutboundDriverInfoPage implements OnInit {
 
   db = firebase.firestore();
 
+  image;
+
   id;
   Outbound;
   OutboundMass;

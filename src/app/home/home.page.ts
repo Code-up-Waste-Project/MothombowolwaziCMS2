@@ -656,7 +656,7 @@ bD = document.getElementsByClassName('bD')
     +parseFloat(val.data().PET003Mass);
 
     // console.log(new Date(val.data().date.seconds*1000))
-    this.updateReclaimer =(new Date(val.data().date.seconds*1000)).toDateString();
+    this.updateReclaimer =(new Date(val.data().date)).toDateString();
     this.reclaimerglass =0;
     this.reclaimerpaper =0;
     this.reclaimerAlum =0;
@@ -3050,7 +3050,9 @@ ionViewWillEnter() {
   this.menuCtrl.enable(true);
  }
 map(){
-  this.route.navigateByUrl('/map');
+  this.route.navigateByUrl('/auto');
 }
+
+
 
 }

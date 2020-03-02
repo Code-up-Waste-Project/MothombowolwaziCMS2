@@ -7,7 +7,8 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild,NgZone} from '@a
 
 
 
-declare var google;
+
+declare var google : any;
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -26,6 +27,8 @@ export class MapPage implements OnInit, AfterViewInit {
   marker: any
   
 
+  autocom : any
+  autoCompSearch = document.getElementsByClassName('search');
   latitude: number = 0;
   longitude: number = 0;
   geo: any
@@ -46,8 +49,8 @@ export class MapPage implements OnInit, AfterViewInit {
   directionsDisplay = new google.maps.DirectionsRenderer;
   directionForm: FormGroup;
   currentLocation: any = {
-    lat: 0,
-    lng: 0
+    lat: -26.260997,
+    lng: 27.950293
   };
   constructor(private fb: FormBuilder, private geolocation: Geolocation,private zone: NgZone) {
     this.createDirectionForm();
@@ -68,6 +71,27 @@ export class MapPage implements OnInit, AfterViewInit {
       query: ''
     };
   
+    this.autoComplete()
+  }
+
+
+  autoComplete(){
+    console.log('loc in');
+    // this.autocom = new google.maps.places.Autocomplete(this.autoCompSearch[0], { types: ['geocode'] });
+    // this.autocom.addListener('place_changed', () => {
+    //   let place = this.autocom.getPlace();
+    //   console.log('place',place);
+      // this.tournamentObj.address.address = place.formatted_address
+      // this.tournamentObj.address.placeID = place.place_id;
+      // this.placeID =  place.place_id;
+      // this.MyData.address = place.formatted_address;
+      // this.MyData.placeId = place.place_id
+      // console.log('form',place.formatted_address);
+      
+      // this.searchResults.push(place)
+    // })  
+    
+    
   }
 
   createDirectionForm() {
@@ -87,17 +111,18 @@ export class MapPage implements OnInit, AfterViewInit {
     });
 
     const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
-      zoom: 7,
+
+     
+      zoom: 14,
       center: {lat: -26.260997, lng: 27.950293}
     });
     this.directionsDisplay.setMap(map);
     console.log('directins',this.directionsDisplay.setMap(map))
     console.log('map', map)
 
-//autocomplete
 
 
-    
+
   }
 
   calculateAndDisplayRoute(formValues) {
@@ -120,13 +145,35 @@ export class MapPage implements OnInit, AfterViewInit {
     });
   }
 
+  addMarker(){
+
+    let marker = new google.maps.Marker({
+    map: this.map,
+    animation: google.maps.Animation.DROP,
+    position: this.map.getCenter()
+    });
+
+    let content = "<p>This is your current position !</p>";          
+    let infoWindow = new google.maps.InfoWindow({
+    content: content
+    });
+
+    google.maps.event.addListener(marker, 'click', () => {
+    infoWindow.open(this.map, marker);
+    });
+
+}
+
+
+
+
   chooseItem(item: any) {
     // this.viewCtrl.dismiss(item);
     this.geo = item;
     this.geoCode(this.geo);//convert Address to lat and long
   }
-  updateSearch() {
 
+  updateSearch() {
     if (this.autocomplete.query == '') {
      this.autocompleteItems = [];
      return;
@@ -153,12 +200,19 @@ export class MapPage implements OnInit, AfterViewInit {
 
 //convert Address string to lat and long
 geoCode(address:any) {
+   // mark
+  //  this.geolocation.getCurrentPosition().then((resp) => {
+  //   this.currentLocation.lat = resp.coords.latitude;
+  //   this.currentLocation.lng = resp.coords.longitude;
+  // });
+
   let geocoder = new google.maps.Geocoder();
   geocoder.geocode({ 'address': address }, (results, status) => {
   this.latitude = results[0].geometry.location.lat();
   this.longitude = results[0].geometry.location.lng();
   // alert("lat: " + this.latitude + ", long: " + this.longitude);
  });
+  
 }
 
 
