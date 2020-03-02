@@ -23,12 +23,14 @@ export class ReclaimerPage implements OnInit {
 
   db = firebase.firestore();
 
+  IDno;
   name;
   surname;
   contact;
   address;
   time;
   id;
+  image;
 
   names;
   surnames;
@@ -44,6 +46,7 @@ export class ReclaimerPage implements OnInit {
   OverallSubTotal;
   OverallVat;
   OverallGrandTotal;
+  OverallGrandTotal2;
   // substrings
   overallMassz;
   OverallSubTotalz;
@@ -327,6 +330,12 @@ export class ReclaimerPage implements OnInit {
 
   UserArray = {};
 
+  // 27feb add ons
+  truckcode2222;
+  resultID;
+  UpdateID;
+  storage = firebase.storage().ref();
+
   ///////////////////////////////////////////////////////////////
 
   otherPopup: boolean = false;
@@ -412,6 +421,10 @@ export class ReclaimerPage implements OnInit {
     this.db.collection('reclaimers').onSnapshot(snapshot => {
       this.testArrays = [];
       snapshot.forEach(element => {
+
+        this.testArrays.push(element.data())
+        console.log(this.testArrays);
+
         let id = {};
         let reclaimername = {};
         let reclaimersurname = {};
@@ -429,6 +442,9 @@ export class ReclaimerPage implements OnInit {
         reclaimerDate = this.reclaimerDate = element.data().date;
         reclaimercode = this.reclaimercode = element.data().reclaimercode;
 
+        this.image = element.data().image;
+        // this.truckcode2222 = element.data().reclaimercode;
+
         name = this.name = element.data().name;
         surname = this.surname = element.data().surname;
         contact = this.contact = element.data().contact;
@@ -445,16 +461,6 @@ export class ReclaimerPage implements OnInit {
           reDate: reclaimerDate,
         });
         // console.log(this.newreclaimer);
-
-        this.testArrays.push({
-          id: id,
-          name: this.name,
-          surname: this.surname,
-          contact: this.contact,
-          address: this.address,
-          OverallGrandTotal: this.OverallGrandTotal,
-          date: this.reclaimerDate
-        })
 
         // this.recordreclaimerdisplays.push({
         //   name: this.name,
@@ -504,7 +510,37 @@ export class ReclaimerPage implements OnInit {
     }
       // console.log(this.phoneVal);
       // console.log(this.contacts);
-    
+  }
+
+  // getIDInput(ev: any) {
+  //   this.IDno = ev.target.value;
+
+  //   // calling firebase
+  //   // this.contact[0] == '0'
+  //   if (this.IDno.lenght == '13') {
+  //     this.presentAlertIDValidation();
+  //   } else {
+  //     // this.showInputs()
+  //     // console.log('im working');
+  //     this.IDno = this.IDno;
+  //   }
+  //     // console.log(this.IDno);
+  // }
+
+  changeListener(admin): void {
+    const i = admin.target.files[0];
+    console.log(i);
+    const upload = this.storage.child(i.name).put(i);
+    upload.on('state_changed', snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('upload is: ', progress , '% done.');
+    }, err => {
+    }, () => {
+      upload.snapshot.ref.getDownloadURL().then(dwnURL => {
+        console.log('File avail at: ', dwnURL);
+        this.image = dwnURL;
+      });
+    });
   }
 
   async presentAlertPhoneValidation() {
@@ -518,6 +554,25 @@ export class ReclaimerPage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             this.erasedToContact();
+            // console.log('Confirm Cancel: blah');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertIDValidation() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>ID Numbers must have 13 digitz.</strong>!!!',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            this.erasedToID();
             // console.log('Confirm Cancel: blah');
           }
         }
@@ -568,6 +623,10 @@ export class ReclaimerPage implements OnInit {
     this.contacts = '';
   }
 
+  erasedToID() {
+    this.IDno = '';
+  }
+
   clearForm() {
     this.names = '';
     this.surnames = '';
@@ -610,7 +669,7 @@ export class ReclaimerPage implements OnInit {
   async presentAlertAddUser(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want add this user to your form?</strong>!!!',
+      message: '<strong>Are you sure you want to use this user details?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -623,7 +682,8 @@ export class ReclaimerPage implements OnInit {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
-            this.allocate();
+            this.doneBtn();
+            // this.allocate();
             // this.route.navigateByUrl('/reclaimer');
           }
         }
@@ -633,30 +693,36 @@ export class ReclaimerPage implements OnInit {
   }
 
   AddUserToForm(id) {
-    this.db.collection('reclaimers').doc(id).onSnapshot(element => {
-      // element.forEach(element => {
+    this.db.collection('reclaimers').where('id', '==', id).onSnapshot(element => {
+      element.forEach(element => {
         let name = {};
         let surname = {};
         let contact = {};
         let address = {};
+        let reclaimer = {};
 
         name = this.names = element.data().name;
         surname = this.surnames = element.data().surname;
         contact = this.contacts = element.data().contact;
         address = this.addresss = element.data().address;
-        // })
-
-        // console.log(this.names);
-        // console.log(this.surnames);
-        // console.log(this.contacts);
-        // console.log(this.addresss);
+        this.image = element.data().image;
+        reclaimer = this.truckcode2222 = element.data().reclaimercode;
+        this.UpdateID = id;
+        })
 
         // adding data to textboxes
         this.names = this.names;
         this.surnames = this.surnames;
         this.contacts = this.contacts;
         this.addresss = this.addresss
+        this.reclaimercode = this.truckcode2222
       // })
+
+        // console.log(this.names);
+        // console.log(this.surnames);
+        // console.log(this.contacts);
+        // console.log(this.addresss);
+        // console.log(this.reclaimercode);
   })
 
   this.nextClick();
@@ -807,9 +873,6 @@ export class ReclaimerPage implements OnInit {
       this.PET005massz = 0;
     }
     // console.log(this.PET005massz);
-
-    // text boxes
-    this.presentAlert();
 
     // under calculate the are other functions
     this.calculate();
@@ -1296,9 +1359,6 @@ export class ReclaimerPage implements OnInit {
     // push to update overall storage
     this.updateStorage();
 
-    // save to database
-    this.Addreclaimer();
-
   }
 
   getprices() {
@@ -1369,19 +1429,37 @@ export class ReclaimerPage implements OnInit {
 
   calculateOverall() {
     // overall GrandTotal
-    this.OverallGrandTotal = +this.GH001GrandTotal + +this.NFAL01GrandTotal + +this.PAP005GrandTotal + +this.PAP007GrandTotal + +this.PAP001GrandTotal + 
+    this.OverallGrandTotal2 = +this.GH001GrandTotal + +this.NFAL01GrandTotal + +this.PAP005GrandTotal + +this.PAP007GrandTotal + +this.PAP001GrandTotal + 
     +this.PAP003GrandTotal + +this.HD001GrandTotal + +this.LD001GrandTotal + +this.LD003GrandTotal + +this.PET001GrandTotal + +this.PET003GrandTotal + +this.PET005GrandTotal;
-    // console.log(this.OverallGrandTotal);
+    console.log(this.OverallGrandTotal2);
+
+    // this.OverallGrandTotal = this.OverallGrandTotal 
+    //       +parseFloat(this.GH001GrandTotal) +
+    //       +parseFloat(this.NFAL01GrandTotal) +
+    //       +parseFloat(this.PAP005GrandTotal) +
+    //       +parseFloat(this.PAP007GrandTotal) +
+    //       +parseFloat(this.PAP001GrandTotal) +
+    //       +parseFloat(this.PAP003GrandTotal) +
+    //       +parseFloat(this.HD001GrandTotal) +
+    //       +parseFloat(this.LD001GrandTotal) +
+    //       +parseFloat(this.LD003GrandTotal) +
+    //       +parseFloat(this.PET001GrandTotal) +
+    //       +parseFloat(this.PET003GrandTotal) +
+    //       +parseFloat(this.PET005GrandTotal);
 
     // overall GrandTotal
     this.OverallSubTotal = +this.GH001SubTotal + +this.NFAL01SubTotal + +this.PAP005SubTotal + +this.PAP007SubTotal + +this.PAP001SubTotal + 
     +this.PAP003SubTotal + +this.HD001SubTotal + +this.LD001SubTotal + +this.LD003SubTotal + +this.PET001SubTotal + +this.PET003SubTotal + +this.PET005SubTotal;
-    // console.log(this.OverallSubTotal);
+    console.log(this.OverallSubTotal);
 
     // overall GrandTotal
     this.OverallVat = +this.GH001Vat + +this.NFAL01Vat + +this.PAP005Vat + +this.PAP007Vat + +this.PAP001Vat +
     +this.PAP003Vat + +this.HD001Vat + +this.LD001Vat + +this.LD003Vat + +this.PET001Vat + +this.PET003Vat + +this.PET005Vat;
-    // console.log(this.OverallVat);
+    console.log(this.OverallVat);
+
+    // save to database
+    this.Addreclaimer();
+    
   }
 
   updateStorage() {
@@ -1450,13 +1528,141 @@ export class ReclaimerPage implements OnInit {
   }
 
   Addreclaimer() {
-    this.db.collection('reclaimers').doc().set({
+    console.log(this.truckcode2222)
+
+    if(this.truckcode2222 === undefined) {
+      this.savereclaimerprofile();
+      console.log('no user registerd');
+    }else if(this.truckcode2222 === null) {
+      this.savereclaimerprofile()
+      console.log('no user registerd');
+    } else if(this.truckcode2222 !== undefined) {
+      this.savereclaimerdata(this.UpdateID)
+      console.log('user already exits');
+    }
+
+    // text boxes
+    this.presentAlert();
+
+  }
+
+  savereclaimerprofile() {
+    this.db.collection('reclaimers').add({
       reclaimercode: Math.floor(Math.random()*899999+100000),
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      image: this.image,
       name: this.names,
       surname: this.surnames,
       address: this.addresss,
       contact: this.contacts,
+      IDnumber: this.IDno,
+    }).then(result => {
+      // console.log(result);
+      console.log(result.id);
+      this.resultID = result.id
+      // console.log(resultID);
+      this.db.collection('reclaimers').doc(this.resultID).update({
+        id: this.resultID
+      })
+      this.db.collection('reclaimersMass').add({
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      GH001Mass: this.GH001massz,
+      GH001Price: this.GH001,
+      GH001: this.GH001GrandTotal,
+      GH001Vat: this.GH001Vat,
+      GH001SubTotal: this.GH001SubTotal,
+
+      NFAL01Mass: this.NFAL01massz,
+      NFAL01Price: this.NFAL01,
+      NFAL01: this.NFAL01GrandTotal,
+      NFAL01Vat: this.NFAL01Vat,
+      NFAL01SubTotal: this.NFAL01SubTotal,
+
+      PAP005Mass: this.PAP005massz,
+      PAP005Price: this.PAP005,
+      PAP005: this.PAP005GrandTotal,
+      PAP005Vat: this.PAP005Vat,
+      PAP005SubTotal: this.PAP005SubTotal,
+
+      PAP007Mass: this.PAP007massz,
+      PAP007Price: this.PAP007,
+      PAP007: this.PAP007GrandTotal,
+      PAP007Vat: this.PAP007Vat,
+      PAP007SubTotal: this.PAP007SubTotal,
+
+      PAP001Mass: this.PAP001massz,
+      PAP001Price: this.PAP001,
+      PAP001: this.PAP001GrandTotal,
+      PAP001Vat: this.PAP001Vat,
+      PAP001SubTotal: this.PAP001SubTotal,
+
+      PAP003Mass: this.PAP003massz,
+      PAP003Price: this.PAP003,
+      PAP003: this.PAP003GrandTotal,
+      PAP003Vat: this.PAP003Vat,
+      PAP003SubTotal: this.PAP003SubTotal,
+
+      HD001Mass: this.HD001massz,
+      HD001Price: this.HD001,
+      HD001: this.HD001GrandTotal,
+      HD001Vat: this.HD001Vat,
+      HD001SubTotal: this.HD001SubTotal,
+
+      LD001Mass: this.LD001massz,
+      LD001Price: this.LD001,
+      LD001: this.LD001GrandTotal,
+      LD001Vat: this.LD001Vat,
+      LD001SubTotal: this.LD001SubTotal,
+
+      LD003Mass: this.LD003massz,
+      LD003Price: this.LD003,
+      LD003: this.LD003GrandTotal,
+      LD003Vat: this.LD003Vat,
+      LD003SubTotal: this.LD003SubTotal,
+
+      PET001Mass: this.PET001massz,
+      PET001Price: this.PET001,
+      PET001: this.PET001GrandTotal,
+      PET001Vat: this.PET001Vat,
+      PET001SubTotal: this.PET001SubTotal,
+
+      PET003Mass: this.PET003massz,
+      PET003Price: this.PET003,
+      PET003: this.PET003GrandTotal,
+      PET003Vat: this.PET003Vat,
+      PET003SubTotal: this.PET003SubTotal,
+
+      PEP005Mass: this.PET005massz,
+      PEP005Price: this.PET005,
+      PEP005: this.PET005GrandTotal,
+      PEP005Vat: this.PET005Vat,
+      PEP005SubTotal: this.PET005SubTotal,
+
+      OverallMass: this.overallMass,
+      OverallSubTotal: this.OverallSubTotal,
+      OverallVat: this.OverallVat,
+      OverallGrandTotal: this.OverallGrandTotal2,
+
+      reclaimerID: this.resultID
+      }).then(result => {
+        // console.log(result);
+      console.log(result.id);
+      this.resultID = result.id
+      // console.log(resultID);
+      this.db.collection('reclaimersMass').doc(this.resultID).update({
+        productcode: this.resultID
+      })
+      })
+      // console.log('im here');
+    }).then(result => {
+      // this.truckcode = 
+    })
+    // this.presentToast();
+  }
+
+  savereclaimerdata(id) {
+    this.db.collection('reclaimersMass').add({
+      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      reclaimerID: id,
 
       GH001Mass: this.GH001massz,
       GH001Price: this.GH001,
@@ -1533,9 +1739,16 @@ export class ReclaimerPage implements OnInit {
       OverallMass: this.overallMass,
       OverallSubTotal: this.OverallSubTotal,
       OverallVat: this.OverallVat,
-      OverallGrandTotal: this.OverallGrandTotal,
-    });
-    // this.presentToast();
+      OverallGrandTotal: this.OverallGrandTotal2,
+    }).then(result => {
+      // console.log(result);
+    console.log(result.id);
+    this.resultID = result.id
+    // console.log(resultID);
+    this.db.collection('reclaimersMass').doc(this.resultID).update({
+      productcode: this.resultID
+    })
+    })
   }
 
   clearTextBoxes() {
@@ -1803,6 +2016,7 @@ Logout() {
         surname = this.surnames = element.data().surname;
         contact = this.contacts = element.data().contact;
         address = this.addresss = element.data().address;
+        this.truckcode2222 = element.data().reclaimercode;
         })
 
         // console.log(this.names);

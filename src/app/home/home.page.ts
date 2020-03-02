@@ -571,7 +571,7 @@ bD = document.getElementsByClassName('bD')
 
     this.outboundweight =0;
 
-    firebase.firestore().collection('outbound').get().then(res=>{
+    firebase.firestore().collection('outboundMass').get().then(res=>{
       res.forEach(val=>{
         // console.log(val.data().GH001+val.data().GH001)
         this.outboundweight =this.outboundweight 
@@ -656,7 +656,7 @@ bD = document.getElementsByClassName('bD')
     +parseFloat(val.data().PET003Mass);
 
     // console.log(new Date(val.data().date.seconds*1000))
-    this.updateReclaimer =(new Date(val.data().date.seconds*1000)).toDateString();
+    this.updateReclaimer =(new Date(val.data().date)).toDateString();
     this.reclaimerglass =0;
     this.reclaimerpaper =0;
     this.reclaimerAlum =0;

@@ -7,23 +7,213 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { element } from 'protractor';
 import { Location } from "@angular/common";
 
 @Component({
-  selector: 'app-outbound-driver-info',
-  templateUrl: './outbound-driver-info.page.html',
-  styleUrls: ['./outbound-driver-info.page.scss'],
+  selector: 'app-reclaimer-info',
+  templateUrl: './reclaimer-info.page.html',
+  styleUrls: ['./reclaimer-info.page.scss'],
 })
-export class OutboundDriverInfoPage implements OnInit {
+export class ReclaimerInfoPage implements OnInit {
 
   db = firebase.firestore();
 
+  idz;
+  productID;
   id;
-  Outbound;
-  OutboundMass;
-  ViewOutbound = [];
-  ViewOutboundMasses = [];
+  reclaimer;
+  ViewReclaimer = [];
+  ViewReclaimerMass = [];
+  ViewReclaimerPDF = [];
+
+  overallMass;
+  OverallSubTotal;
+  OverallVat;
+  OverallGrandTotal;
+  OverallGrandTotal2;
+  // substrings
+  overallMassz;
+  OverallSubTotalz;
+  OverallVatz;
+  OverallGrandTotalz;
+
+  GH001;
+  GH001sss;
+  NFAL01;
+  PAP005;
+  PAP007;
+  PAP001;
+  PAP001z;
+  PAP003;
+  HD001;
+  LD001;
+  LD003;
+  PET001;
+  PET003;
+  PET005;
+
+  GH001mass;
+  NFAL01mass;
+  PAP005mass;
+  PAP007mass;
+  PAP001mass;
+  PAP003mass;
+  HD001mass;
+  LD001mass;
+  LD003mass;
+  PET001mass;
+  PET003mass;
+  PET005mass;
+
+  GH001massz;
+  NFAL01massz;
+  PAP005massz;
+  PAP007massz;
+  PAP001massz;
+  PAP003massz;
+  HD001massz;
+  LD001massz;
+  LD003massz;
+  PET001massz;
+  PET003massz;
+  PET005massz;
+
+  // Inputs
+  GH001price;
+  NFAL01price;
+  PAP005price;
+  PAP007price;
+  PAP001price;
+  PAP003price;
+  HD001price;
+  LD001price;
+  LD003price;
+  PET001price;
+  PET003price;
+  PET005price;
+  // converts
+  GH001pricez;
+  NFAL01pricez;
+  PAP005pricez;
+  PAP007pricez;
+  PAP001pricez;
+  PAP003pricez;
+  HD001pricez;
+  LD001pricez;
+  LD003pricez;
+  PET001pricez;
+  PET003pricez;
+  PET005pricez;
+
+  // GH001
+  GH001SubTotal;
+  GH001Vat;
+  GH001GrandTotal;
+  // substrings
+  GH001SubTotalz;
+  GH001Vatz;
+  GH001GrandTotalz;
+
+  // NFAL01;
+  NFAL01SubTotal;
+  NFAL01Vat;
+  NFAL01GrandTotal;
+  // substrings
+  NFAL01SubTotalz;
+  NFAL01Vatz;
+  NFAL01GrandTotalz;
+
+  // PAP005;
+  PAP005SubTotal;
+  PAP005Vat;
+  PAP005GrandTotal;
+  // substrings
+  PAP005SubTotalz;
+  PAP005Vatz;
+  PAP005GrandTotalz;
+
+  // PAP007;
+  PAP007SubTotal;
+  PAP007Vat;
+  PAP007GrandTotal;
+  // substrings
+  PAP007SubTotalz;
+  PAP007Vatz;
+  PAP007GrandTotalz;
+
+  // PAP001;
+  PAP001SubTotal;
+  PAP001Vat;
+  PAP001GrandTotal;
+  // substrings
+  PAP001SubTotalz;
+  PAP001Vatz;
+  PAP001GrandTotalz;
+
+  // PAP003;
+  PAP003SubTotal;
+  PAP003Vat;
+  PAP003GrandTotal;
+  // substrings
+  PAP003SubTotalz;
+  PAP003Vatz;
+  PAP003GrandTotalz;
+
+  // HD001;
+  HD001SubTotal;
+  HD001Vat;
+  HD001GrandTotal;
+  // substrings
+  HD001SubTotalz;
+  HD001Vatz;
+  HD001GrandTotalz;
+
+  // LD001;
+  LD001SubTotal;
+  LD001Vat;
+  LD001GrandTotal;
+  // substrings
+  LD001SubTotalz;
+  LD001Vatz;
+  LD001GrandTotalz;
+
+  // LD003;
+  LD003SubTotal;
+  LD003Vat;
+  LD003GrandTotal;
+  // substrings
+  LD003SubTotalz;
+  LD003Vatz;
+  LD003GrandTotalz;
+
+  // PET001;
+  PET001SubTotal;
+  PET001Vat;
+  PET001GrandTotal;
+  // substrings
+  PET001SubTotalz;
+  PET001Vatz;
+  PET001GrandTotalz;
+
+  // PET003;
+  PET003SubTotal;
+  PET003Vat;
+  PET003GrandTotal;
+  // substrings
+  PET003SubTotalz;
+  PET003Vatz;
+  PET003GrandTotalz;
+
+  // PET005;
+  PET005SubTotal;
+  PET005Vat;
+  PET005GrandTotal;
+  // substrings
+  PET005SubTotalz;
+  PET005Vatz;
+  PET005GrandTotalz;
 
   GH001storagemass;
   NFAL01storagemass;
@@ -70,35 +260,65 @@ export class OutboundDriverInfoPage implements OnInit {
   glassTotal = 0;
 
   constructor(
-    public toastController: ToastController,
     private modalcontroller: ModalController,
+    public route: Router,
+    public formGroup: FormBuilder,
     public loadingController: LoadingController,
+    public toastController: ToastController,
     public alertController: AlertController,
-    public activatedRoute: ActivatedRoute,
-    public menuCtrl: MenuController,
     private content: ElementRef,
+    public activatedRoute: ActivatedRoute,
     public rendered: Renderer2,
     private plt: Platform,
     private file: File,
-    private location: Location,
-    private fileOpener: FileOpener
+    private fileOpener: FileOpener,
+    private location: Location
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
 
-    this.Outbound = this.db.collection('outbound').doc(this.id);
-    this.Outbound.get().then((documentSnapshot) => {
-      this.ViewOutbound = [];
-      // console.log(documentSnapshot.data());
-      this.ViewOutbound.push(documentSnapshot.data());
-      console.log(this.ViewOutbound);
+    this.reclaimer = this.db.collection('reclaimers').doc(this.id);
+    this.reclaimer.get().then((documentSnapshot) => {
+      this.ViewReclaimer = [];
+      // documentSnapshot.forEach(element => {
+        // console.log(documentSnapshot.data()); 0769424068
+      this.ViewReclaimer.push(documentSnapshot.data());
+      console.log(this.ViewReclaimer);
+      // console.log(this.id);
+      // });
     });
 
-    this.db.collection('outboundMass').where('driverID', '==', this.id).onSnapshot(snapshot => {
+    this.db.collection('reclaimersMass').where('reclaimerID', '==', this.id).onSnapshot(snapshot => {
       snapshot.forEach(element => {
+        // this.ViewReclaimerMass = [];
         console.log(element.data());
-        this.ViewOutboundMasses.push(element.data());
-        console.log(this.ViewOutboundMasses);
 
+      this.ViewReclaimerPDF.push(element.data())
+      console.log(this.ViewReclaimerPDF);
+
+      this.idz = element.id;
+       console.log(this.idz);
+      this.productID = element.data().productcode;
+      console.log(this.productID);
+      this.overallMass = element.data().OverallMass;
+      this.overallMassz = (String(this.overallMass).substring(0, 6));
+      this.OverallSubTotal = element.data().OverallSubTotal;
+      this.OverallSubTotalz = (String(this.OverallSubTotal).substring(0, 6));
+      this.OverallVat = element.data().OverallVat;
+      this.OverallVatz = (String(this.OverallVat).substring(0, 6));
+      this.OverallGrandTotal = element.data().OverallGrandTotal;
+      this.OverallGrandTotalz = (String(this.OverallGrandTotal).substring(0, 6));
+
+      this.ViewReclaimerMass.push({
+        OverallMass: this.overallMassz,
+        OverallSubTotal: this.OverallSubTotalz,
+        OverallVat: this.OverallVatz,
+        OverallGrandTotal: this.OverallGrandTotalz,
+        reclaimerID: this.id,
+        productID: this.productID
+      });
+        console.log(this.ViewReclaimerMass);
+      
         this.GH001storagemass = element.data().GH001;
         this.GH001storagemassz = (String(this.GH001storagemass).substring(0, 6));
         this.NFAL01storagemass = element.data().NFAL01;
@@ -117,7 +337,7 @@ export class OutboundDriverInfoPage implements OnInit {
         this.LD001storagemassz = (String(this.LD001storagemass).substring(0, 6));
         this.LD003storagemass = element.data().LD003;
         this.LD003storagemassz = (String(this.LD003storagemass).substring(0, 6));
-        this.PET001storagemass = element.data().PET00;
+        this.PET001storagemass = element.data().PET001;
         this.PET001storagemassz = (String(this.PET001storagemass).substring(0, 6));
         this.PET003storagemass = element.data().PET003;
         this.PET003storagemassz = (String(this.PET003storagemass).substring(0, 6));
@@ -134,9 +354,16 @@ export class OutboundDriverInfoPage implements OnInit {
           +parseFloat(element.data().HD001) +
           +parseFloat(element.data().LD001) +
           +parseFloat(element.data().LD003) +
-          +parseFloat(element.data().PET00) +
+          +parseFloat(element.data().PET001) +
           +parseFloat(element.data().PET003) +
-          +parseFloat(element.data().PET005);
+          +parseFloat(element.data().PEP005);
+          // console.log(element.data().HD001);
+          // console.log(element.data().LD001);
+          // console.log(element.data().LD003);
+          // console.log(element.data().PET001);
+          // console.log(element.data().PET003);
+          // console.log(element.data().PEP005);
+          
 
         this.alumTotal = this.alumTotal +parseFloat(element.data().NFAL01);
 
@@ -157,10 +384,9 @@ export class OutboundDriverInfoPage implements OnInit {
         this.PET001storagemassgraph = this.PET001storagemassgraph +parseFloat(element.data().PET00)
         this.PET003storagemassgraph = this.PET003storagemassgraph +parseFloat(element.data().PET003)
         this.PET005storagemassgraph = this.PET005storagemassgraph +parseFloat(element.data().PET005)
-        
-      });
+      
+      })
     })
-
    }
 
   ngOnInit() {
