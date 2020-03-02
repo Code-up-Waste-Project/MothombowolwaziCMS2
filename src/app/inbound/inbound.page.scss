@@ -235,6 +235,21 @@ ion-toolbar {
        }
      }
   }
+
+
+.userForm2{
+  width: 80%;
+  height:80%;
+  max-width: 702px;
+  max-height: 659px;
+  background: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  z-index: 10;
+  position: relative;
+}
+  
+
   .dismissOverlay {
     width: 100%;
     height: 100%;
@@ -672,7 +687,7 @@ form > input{
   }
 }
 
-#user-profile{
+#inbound-profile{
   height: 30%;
   width: 100%;
   // border: solid red 2PX;
@@ -680,7 +695,9 @@ form > input{
   justify-content: center;
 }
 
-#user-pic{
+#inbound-pic{
+  position: relative;
+  top: 16px;
   width:110px;
   height: 110px;
   border-radius: 100px;
@@ -692,6 +709,46 @@ form > input{
   border-radius: 100px;
   }
 }
+
+#Addd{
+  position: absolute;
+  right: 5px;
+  top: 85px;
+  border: solid 2px #548d04;
+  border-radius: 50px;
+  color: #548d04;
+  font-size: 20px;
+  background-color: white;
+  // box-shadow: 0px -1px 15px black;
+}
+
+#disapear{
+  display: none;
+}
+
+
+.the-inputs{
+  // border: solid 2px purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.the-inputs > input{
+  width: 80%;
+  height: 40px;
+  background: #eaeaea;
+  border: 0px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+}
+
+
+
+
+
 
 
 
@@ -899,10 +956,7 @@ form > input{
 
 
 .contact-cards{
-  border: solid 2px black;
-  width: 100%;
-  height: 280px;
-  overflow-y: scroll;
+  header
 
   ion-card-title{
     font-size: 15px;
@@ -948,3 +1002,16 @@ form > input{
 
 
 }
+
+
+.Cardie{
+  // border: solid 2px yellow;
+}
+
+
+.CardiDiv{
+  // border: solid 2px red;
+  height: 80%;
+  overflow: scroll;
+}
+
