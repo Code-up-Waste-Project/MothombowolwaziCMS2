@@ -16,7 +16,8 @@ import { format } from 'url';
 })
 
 export class HomePage implements OnInit {
-
+  myValue:Boolean=false;
+  hideMe=false;
   viewBackdrop = false;
 
   @ViewChild('barChart', {static: false}) barChart;        
@@ -467,6 +468,7 @@ bD = document.getElementsByClassName('bD')
     this.PullDayData();
     // console.log("im working ninja");
     }
+
 
     //increase the size of clicked graph
     transformGraph(graph) {

@@ -1,13 +1,63 @@
-ion-header {
-  --background: rgb(85,140,3) !important;
-  display: flex;
-  // border: 2px solid rgb(17, 0, 255);
+div.swiper-container-horizontal > div.swiper-pagination-progressbar {
+  top: inherit;
+  bottom: 0 !important;
+  
 }
-ion-toolbar {
+.parentDiv {
+ // border: 3px solid blue;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
-}
+  flex-direction: column;
 
+  .head {
+    //border: 2px solid red;
+    height: 5%;
+
+    h3 {
+   //  border: 2px solid rgb(180, 252, 12);
+      padding-left: 2%;
+      font-family: 'lato';
+      font-size: 1em;
+      padding-top: 1%;
+     padding-bottom: 1%;
+      position: relative;
+      letter-spacing: 0.5px;
+      margin: 0;
+      height: 100%;
+
+      &::after {
+        position: absolute;
+        top: 100% !important;
+        left: 2%;
+        width: 4%;
+        height: 2px;
+        content: '';
+        background: #ddd;
+        border-radius: 50px;
+    
+      }
+    }
+  }
+
+  .top-blocks {
+    height: 40%;
+  }
+
+  .history {
+    //background: gray;
+    height: 54%;
+
+    .scrolling {
+     //  border: 1px solid red;
+       width: 96%;
+       position: relative;
+       left: 2%;
+       height: 78%;
+       overflow-y: scroll;
+     }
+  }
+}
 .heading {
   padding-left: 2%;
   font-family: 'lato';
@@ -15,10 +65,12 @@ ion-toolbar {
  padding-bottom: 2%;
   position: relative;
   letter-spacing: 0.5px;
+  //border: 1px solid red;
+  margin: 0;
 
   &::after {
     position: absolute;
-    bottom: 8% !important;
+    top: 70% !important;
     left: 2%;
     width: 4%;
     height: 2px;
@@ -84,14 +136,15 @@ ion-toolbar {
 //container
 
 .top-blocks {
+ // border: 2px solid green;
   width: 100%;
   padding: 10px;
-  height: 35vh;
+  height: 40%;
    background: white;
   overflow-x: scroll;
   display: flex;
   .waste-blocks {
-    width: 23%;
+    width: 24%;
     min-width: 200px;
     height: 90%;
     background: white;
@@ -102,7 +155,7 @@ ion-toolbar {
     text-align: right;
     position: relative;
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.493);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.253);
     img {
       width: 100%;
       min-width: 90px;
@@ -128,21 +181,21 @@ ion-toolbar {
     }
   }
 }
-.history {
-width: 100%;
- height: 60%;
- display: flex;
- flex-direction: column;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  //background: aqua;
-}
+// .history {
+// width: 100%;
+//  height: 60%;
+//  display: flex;
+//  flex-direction: column;
+//   position: relative;
+//   padding: 0;
+//   margin: 0;
+//   //background: aqua;
+// }
 
 .history-labels {
   width: 96%;
   margin-left: 2%;
-  margin-top: 1%;
+  margin-top: 0.5%;
   height: 35px;
   background: rgb(209,44,111);
   color: white;
@@ -174,6 +227,7 @@ width: 100%;
   
 }
 
+
 .icon {
   padding-left: 5px;
   display: flex;
@@ -184,13 +238,7 @@ width: 100%;
   right: 2%;
   height: 35px;
 }
-.scrolling {
- // border: 1px solid red;
-  width: 96%;
-  position: relative;
-  left: 2%;
-  height: 80%;
-}
+
 
 .itemList {
   background-color: #eeeaea;
@@ -200,6 +248,7 @@ width: 100%;
 }
 
 .mother {
+  border: 2px solid rgb(4, 0, 255);
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.452);
@@ -208,32 +257,157 @@ width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .userForm {
-    width: 100%;
-    height: 100%;
-    max-width: 729px;
-    max-height: 752px;
-    background: white;
-    border-radius: 10px;
-    margin: 0 auto;
-    z-index: 10;
-    position: relative;
-    //  overflow: hidden;
-
-    .Purple{
-       overflow: hidden;
-       height: 90%;
-       width: 100%;
-       position: absolute;
-       bottom: 0px;
-      //  border: solid 2px red;
-       img{
-         transform: scale(1.5);
-         position: absolute;
-         top: 222px;
-       }
-     }
+  align-items: center;
+  //fifi adding slides.
+  #close {
+    font-size: 1.5em;
+    color: red;
+    position: absolute;
+    right: 0 !important;
+    top: 0;
   }
+  .slides-container {
+    flex: 0 0 80%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+    .children-slides {
+      flex: 0 0 90%;
+      position: relative;
+    //  border: 4px solid green;
+
+      ion-slides {
+        position: absolute;
+        top: 0 ;
+        left: 0;
+        width:100%;
+        height: 100%;
+        border-radius: 5px;
+        background: white;
+
+        #slide3 {
+          border: 2px solid blue;
+         // background: rgb(194, 187, 187);
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          .map {
+            border: 2px solid red;
+            height: 70%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+          }
+          .mapInfo {
+            border: 2px solid green;
+            height: 30%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+
+           #p {
+              margin: 0;
+             // border: 1px solid black;
+              font-size: 0.8em;
+              font-family: 'lato';
+              text-align: left;
+              padding-left: 2%;
+              padding-top: 1%;
+
+              &::after {
+                position: absolute;
+                top: 20% !important;
+                left: 2%;
+                width: 4%;
+                height: 2px;
+                content: '';
+                background: #ddd;
+                border-radius: 50px;
+            
+              }
+            }
+            input {
+              border: 1px solid rgb(206, 201, 201);
+              margin-left: 2%;
+              width: 50%;
+              position: relative;
+              top: 18%;
+              border-radius: 50px;
+              height: 30px;
+              font-size: 0.7em;
+              padding-left: 1%;
+
+            }
+            .text {
+              font-size: 0.8em;
+              font-family: 'lato';
+              text-align: left;
+              padding-left: 2%;
+              padding-top: 1%;
+            //  border: 1px solid blue;
+              margin: 0;
+              position: relative;
+              top: 20%;
+
+              span {
+                color: green;
+                padding-top: 1%;
+              }
+            }
+          }
+        }
+
+        #materials-form {
+          border: 4px solid black;
+          }
+        .userForm {
+          width: 100%;
+          height: 100%;
+          max-width: 729px;
+          max-height: 752px;
+          background: white;
+          border-radius: 10px;
+          margin: 0 auto;
+          z-index: 10;
+          position: absolute;
+          background: blue;
+      
+          .Purple{
+             overflow: hidden;
+             height: 90%;
+             width: 100%;
+             position: absolute;
+             bottom: 0px;
+            //  border: solid 2px red;
+             img{
+               transform: scale(1.5);
+               position: absolute;
+               top: 222px;
+             }
+           }
+        }
+      }
+    }
+
+    .btn-slides {
+      flex: 0 0 10%;
+      background: red;
+      display: flex;
+      justify-content: space-between;
+
+    }
+    div.swiper-container-horizontal > div.swiper-pagination-progressbar {
+      position: absolute;
+      bottom: 100% !important;
+      
+    }
+
+  }    
+ 
   .dismissOverlay {
     width: 100%;
     height: 100%;
@@ -389,9 +563,10 @@ ion-grid {
 }
 
 #materials-form {
-  // display: none;
+border: 4px solid black;
 }
 #driver-details {
+  border: 2px solid black;
 }
 .bottom-button{
   width: 100%;
@@ -610,7 +785,7 @@ form > input{
 }
 
 .The-header{
-   border: solid white 2px;
+   border: solid blue 2px;
   height: 50px;
   width: 100%;
   display: flex;
@@ -869,6 +1044,7 @@ form > input{
   justify-content: center;
   border: 4px solid green;
   .userForm {
+    border: 2px solid blue;
     width: 100%;
     height: 89%;
     max-width: 600px;
