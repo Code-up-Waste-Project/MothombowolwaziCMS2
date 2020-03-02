@@ -205,6 +205,9 @@
           <div class="details-driver" *ngIf="driverInfo === true">
             <div id="user-profile">
               <div id="user-pic">
+                <label for="disapear">
+                  <ion-icon id="Addd" name="add"></ion-icon>
+                </label>
                 <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                 <img *ngIf="image" src="{{ image }}" alt="">
                 <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
@@ -213,8 +216,8 @@
             <form padding [formGroup]="RegisterForm">
               <input placeholder="Name" [(ngModel)]="names" formControlName="names" type="text">
               <input placeholder="Surnames" [(ngModel)]="surnames" formControlName="surnames" type="text">
-              <input type="number" placeholder="ID Number" maxlength="13" [ngModelOptions]="{standalone: true}" [(ngModel)]="IDno">
-              <input placeholder="Contact No." [(ngModel)]="contacts" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" type="tel" onKeyPress="if(this.value.length==10)">
+              <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13" placeholder="ID Number" [ngModelOptions]="{standalone: true}" [(ngModel)]="IDno">
+              <input type="tel" maxlength="10" placeholder="Contact No." [(ngModel)]="contacts" (keyup)="getPhoneInput($event)" [ngModelOptions]="{standalone: true}" >
               <input placeholder="Physical Address" [(ngModel)]="addresss" formControlName="addresss" type="text">
             </form>
           </div>

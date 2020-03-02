@@ -638,7 +638,7 @@ bD = document.getElementsByClassName('bD')
     this.reclaimerAlum =0;
     this.reclaimerplastic =0;
     this.Reclaimerweight =0;
-    firebase.firestore().collection('reclaimers').get().then(res=>{
+    firebase.firestore().collection('reclaimersMass').get().then(res=>{
     res.forEach(val=>{
     // console.log(val.data().GH001Mass+val.data().HD001Mass)
     this.Reclaimerweight =this.Reclaimerweight 
@@ -732,7 +732,7 @@ bD = document.getElementsByClassName('bD')
 
     this.menuCtrl.enable(true); // or true
 
-    // new code
+    // Glass Prices
     this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").onSnapshot((snap) => {
       this.glassArray = [];
       this.glassArray.push(snap.data())
@@ -750,7 +750,7 @@ bD = document.getElementsByClassName('bD')
       console.log(this.glassArrayHistory);
     })
 
-    // new code
+    // Paper Prices
     this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
       this.PaperArray = [];
       this.PaperArray.push(snap.data())
@@ -776,7 +776,7 @@ bD = document.getElementsByClassName('bD')
       console.log(this.PaperArrayHistory);
     })
 
-    // new code
+    // Plastic Prices
     this.db.collection('price').doc("7O6KqClxLD780ltfC6i5").onSnapshot(snap => {
       this.plasticarray = [];
       this.plasticarray.push(snap.data())
@@ -804,7 +804,7 @@ bD = document.getElementsByClassName('bD')
       console.log(this.plasticarrayHistory);
     })
 
-    // new code
+    // Aluminium Prices
     this.db.collection('price').doc("ChHHlFcUFzucHOzPpEgE").onSnapshot(snap => {
       this.NFAL001Array = [];
       this.NFAL001Array.push(snap.data())
@@ -1696,7 +1696,7 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('outboundMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
         // console.log(Snapshot);
         Snapshot.forEach(element => {
@@ -1799,7 +1799,7 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('reclaimers').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('reclaimersMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
           let time = {};
           let gl001 = {};
@@ -2006,7 +2006,7 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('outboundMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
         // console.log(Snapshot);
         Snapshot.forEach(element => {
@@ -2110,7 +2110,7 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('reclaimers').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('reclaimersMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
           let time = {};
           let gl001 = {};
@@ -2317,7 +2317,7 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('outbound').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('outboundMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
         // console.log(Snapshot);
         Snapshot.forEach(element => {
@@ -2421,7 +2421,7 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('reclaimers').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('reclaimersMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
           let time = {};
           let gl001 = {};

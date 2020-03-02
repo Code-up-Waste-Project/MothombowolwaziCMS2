@@ -125,41 +125,39 @@ export class OutboundPDFPage implements OnInit {
     private fileOpener: FileOpener
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    // console.log(this.id);
     this.getOutBound(this.id);
-      // console.log(this.getOutBound);
+      console.log(this.id);
 
     this.getDatafirebase(this.id);
 
-    // this.db.collection('outbound').doc(this.id).onSnapshot(element => {
-    //   let DriverName = {};
-    //   let RegistarionNumberPlates = {};
-    //   let overallStorage = {};
-    //   let TruckSourcess = {};
-    //   let Destination = {};
-    //   let time = {};
+    this.db.collection('outbound').doc(this.id).onSnapshot((element) => {
+      console.log(element.data());
+      // this.ViewOutbound.push(element.data());
+      // console.log(this.ViewOutbound);
 
-    //   DriverName = this.OutName = element.data().DriverName;
-    //   RegistarionNumberPlates = this.OutNumberPlates = element.data().RegistarionNumberPlates;
-    //   overallStorage = this.Outstorage = element.data().ovarallMass;
-    //   TruckSourcess = this.OutTruckSource = element.data().TruckSourcess;
-    //   Destination = this.OutDestination = element.data().Destination;
+      // console.log(element.data);
+      let DriverName = {};
+      let RegistarionNumberPlates = {};
+      let overallStorage = {};
+      let TruckSourcess = {};
+      let Destination = {};
+      let time = {};
 
-    //   console.log(this.OutName);
-    //   console.log(this.OutNumberPlates);
-    //   console.log(this.Outstorage);
-    //   console.log(this.OutTruckSource);
-    //   console.log(this.OutDestination);
-    // })
+      // DriverName = this.DriverName = element.data().DriverName;
+      // RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+      // TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
+      // Destination = this.Destination = element.data().Destination;
+      // console.log(this.DriverName);
+      // console.log(this.RegistarionNumberPlates);
+      // console.log(this.overallStorage);
+      // console.log(this.TruckSourcess);
+      // console.log(this.Destination);
+      // console.log(this.overallStoragez);
+    });
 
-   }
-
-   ngOnInit() {
-  }
-
-   getDatafirebase(id) {
-    this.db.collection('outboundMass').where('driverID', '==', id).onSnapshot(element => {
-      element.forEach(element => {
+    this.db.collection('outboundMass').doc(this.id).onSnapshot(element => {
+      // element.forEach(element => {
+        // console.log(element);
         let DriverName = {};
         let RegistarionNumberPlates = {};
         let overallStorage = {};
@@ -179,17 +177,6 @@ export class OutboundPDFPage implements OnInit {
         let PET001storagemass = {};
         let PET003storagemass = {};
         let PET005storagemass = {};
-
-        DriverName = this.DriverName = element.data().DriverName;
-        RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-        Destination = this.Destination = element.data().Destination;
-        // console.log(this.DriverName);
-        // console.log(this.RegistarionNumberPlates);
-        // console.log(this.overallStorage);
-        // console.log(this.TruckSourcess);
-        // console.log(this.Destination);
-        // console.log(this.overallStoragez);
 
         this.ids = element.id;
         // console.log(this.ids);
@@ -233,6 +220,7 @@ export class OutboundPDFPage implements OnInit {
         // console.log(this.PET001storagemass);
         // console.log(this.PET003storagemass);
         // console.log(this.PET005storagemass);
+        
         // console.log(this.GH001storagemassz);
         // console.log(this.NFAL01storagemassz);
         // console.log(this.PAP005storagemassz);
@@ -246,12 +234,14 @@ export class OutboundPDFPage implements OnInit {
         // console.log(this.PET003storagemassz);
         // console.log(this.PET005storagemassz);
 
+        // console.log(this.overallStorage);
+
         this.testArray.push({
-          DriverName: this.DriverName,
-          RegistarionNumberPlates: this.RegistarionNumberPlates,
-          overallStorage: this.overallStorage,
-          TruckSourcess: this.TruckSourcess,
-          Destination: this.Destination,
+          // DriverName: this.DriverName,
+          // RegistarionNumberPlates: this.RegistarionNumberPlates,
+          // overallStorage: this.overallStorage,
+          // TruckSourcess: this.TruckSourcess,
+          // Destination: this.Destination,
           GH001storagemass: this.GH001storagemassz,
           NFAL01storagemass: this.NFAL01storagemassz,
           PAP005storagemass: this.PAP005storagemassz,
@@ -293,17 +283,28 @@ export class OutboundPDFPage implements OnInit {
           this.outBoundPDFPrint.push({name: key, number: this.PDFArray2[key]})
         }
       }
+
+      this.CreatePDF2();
+
     })
-       this.createPdf();
+       
         // console.log(this.PDFArrayPrint);
-      });
+      // });
+
+   }
+
+   ngOnInit() {
+  }
+
+   getDatafirebase(id) {
+    
    }
 
   calculateOverall() {
     this.overallStorage = this.GH001storagemassz + this.HD001storagemassz + this.LD001storagemassz + this.LD003storagemassz +
     this.NFAL01storagemassz + this.PAP001storagemassz + this.PAP003storagemassz + this.PAP005storagemassz + this.PAP007storagemassz +
     this.PET001storagemassz + this.PET003storagemassz + this.overallStoragez;
-    // console.log(this.overallStorage);
+    console.log(this.overallStorage);
   }
 
   createPdf() {
@@ -311,9 +312,9 @@ export class OutboundPDFPage implements OnInit {
         this.printDataNamezz.push(item.name);
         this.printDataNumberzz.push(String(item.number).substring(0, 4));
       });
-      // console.log(this.outBoundPDFPrint);
-      // console.log(this.printDataNamezz);
-      // console.log(this.printDataNumberzz);
+      console.log(this.outBoundPDFPrint);
+      console.log(this.printDataNamezz);
+      console.log(this.printDataNumberzz);
       // console.log("im here baba kayi 2");
       // console.log(this.DriverName);
 
@@ -344,30 +345,29 @@ export class OutboundPDFPage implements OnInit {
     },
     { text: '', style: 'subheader'},
     { text: '', style: 'subheader'},
-    {
-      layout: 'noBorders',
-      table: {
-        widths: ['33%', '33%', '33%'],
-        body: [
-          ["Truck Driver", "Ship To", "Transaction ID",],
+    // {
+    //   layout: 'noBorders',
+    //   table: {
+    //     widths: ['33%', '33%', '33%'],
+    //     body: [
+    //       ["Truck Driver", "Ship To", "Transaction ID",],
 
-          [{ text: this.DriverName, color: 'gray' }, { text: this.Destination, color: 'gray' }, { text: this.id, color: 'gray', Border: false }],
-        ]
-      }
-    },
+    //       [{ text: this.DriverName, color: 'gray' }, { text: this.Destination, color: 'gray' }, { text: this.id, color: 'gray', Border: false }],
+    //     ]
+    //   }
+    // },
     { text: '', style: 'subheader'},
     { text: '', style: 'subheader' },
     {
       layout: 'lightHorizontalLines',
       table: {
 
-        widths: ['33%', '33%', '33%'],
+        widths: ['50%', '50%'],
 
         body: [
-          ["name", "quantity", "Mass",],
-          [ this.printDataNamezz, '', this.printDataNumberzz ],
+          ["name", "Mass",],
+          [ this.printDataNamezz, this.printDataNumberzz ],
           [{ text: 'TOTAL', bold: true, lineHeight: 2, marginTop: 10, },
-            { text: '', bold: true, lineHeight: 2, marginTop: 10 },
             { text: this.overallStoragez, bold: true, lineHeight: 2, marginTop: 10 },]
         ]
       }
@@ -419,13 +419,21 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
     }
 
   CreatePDF2(){
-    let printDataName = [];
-    let printDataNumber = [];
+    // let printDataNamezz = [];
+    // let printDataNumberzz = [];
 
-    this.PDFArrayPrint.forEach((item) => {
-      printDataName.push(item.name);
-      printDataNumber.push(item.number);
+    this.outBoundPDFPrint.forEach(item => {
+      this.printDataNamezz.push(item.name);
+      this.printDataNumberzz.push(String(item.number).substring(0, 4));
     });
+      console.log(this.outBoundPDFPrint);
+      console.log(this.printDataNamezz);
+      console.log(this.printDataNumberzz);
+
+    // this.PDFArrayPrint.forEach((item) => {
+    //   printDataName.push(item.name);
+    //   printDataNumber.push(item.number);
+    // });
     // console.log(this.PDFArrayPrint);
     // console.log(printDataName);  timez
     // console.log(printDataNumber);
@@ -468,9 +476,9 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
          
           table: {
            
-            widths: ['25%', '25%', '25%', '25%'],
+            widths: ['50%', '50%'],
             body: [
-              ["MATERIAL CODE", "MASS (KG)","VAT", "PRICE"]
+              ["MATERIAL CODE", "MASS (KG)"]
             ]
           }
         },
@@ -479,13 +487,9 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
           style: 'khuthy',
           
           table: {
-            widths: ['25%', '25%', '25%', '25%'],
+            widths: ['50%', '50%'],
             body: [
-            
-              [ printDataName, printDataNumber, '0.65', 'R500.00' ],  //output data here
-             
-
-              ['','','Total:','R500.00']
+              [ this.printDataNamezz, this.printDataNumberzz ],  //output data here
             ]
             
           },
@@ -515,7 +519,7 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
             widths: ['50%','50%'],
             style: 'body',
             body: [
-              [{ text: 'DELIVERY TO', color: 'grey', fontSize: 14, bold: true, margin: [0, 0,0, 10] }, { text: 'DRIVER', color: 'gray', Border: false, fontSize: 14, alignment: "right", bold: true,  margin: [0, 0,0, 10] }],
+              // [{ text: 'DELIVERY TO', color: 'grey', fontSize: 14, bold: true, margin: [0, 0,0, 10] }, { text: 'DRIVER', color: 'gray', Border: false, fontSize: 14, alignment: "right", bold: true,  margin: [0, 0,0, 10] }],
               // [{ text: 'Printed Time', color: 'gray', fontSize: 9 }, { text: this.timez, color: 'gray', Border: false, fontSize: 9, alignment: "right" }],
               [{ text: 'Company Name', color: 'gray', fontSize: 9 }, { text: 'Mthombowolwazi General Service (PTY) LTD', color: 'gray', Border: false, fontSize: 9 , alignment: "right"}],
               [{ text: 'Registration Number', color: 'gray', fontSize: 9 }, { text: '2016/146912/07', color: 'gray', Border: false, fontSize: 9, alignment: "right" }],
