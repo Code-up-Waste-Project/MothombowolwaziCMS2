@@ -444,7 +444,7 @@ ion-grid {
 .contact-cards{
   // border: solid 2px red;
   width: 100%;
-  height: 280px;
+  height: 393px;
   overflow-y: scroll;
 }
 form{
@@ -459,7 +459,7 @@ form > input{
   width: 259px;
   margin-bottom: 10px;
   border: 0;
-  background: #EAEAEA;
+  background: #DAE0E3;;
   border-radius: 5px;
   padding-left: 8px;
 }
@@ -633,7 +633,6 @@ form > input{
   // border: solid red 2PX;
   display:flex;
   justify-content: center;
-  align-items: center;
 }
 
 #user-pic{
@@ -646,9 +645,9 @@ form > input{
   width:110px;
   height: 110px;
   border-radius: 100px;
+  border: solid 5px rgba(2, 42, 46, 0.473);
   }
 }
-
 
 
 
@@ -868,7 +867,7 @@ form > input{
   max-width: 150px;
   margin-bottom: 10px;
   border: 0;
-  background: #EAEAEA;
+  background: #DAE0E3;;
   border-radius: 5px;
   padding-left: 8px;
 }

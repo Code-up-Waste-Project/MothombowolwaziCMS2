@@ -1,5 +1,5 @@
 <div class="The-header">
-  <div class="sub-header" padding>
+  <div class="sub-header" >
  <h1>All Inbound Material</h1>
 </div>
 <div class="log-out">
@@ -161,7 +161,7 @@
         <img src="../../assets/outboundPopup.svg" alt="">
       </div> -->
       <div class="heading-block">
-        Outbound Details
+        Indound Details
       </div>
       <div class="flow-container">
         <div class="blockItems" id="absolutely">
@@ -169,10 +169,10 @@
             <div class="Searhcer">
               <!-- code for auto complete -->
               <div class="results">
-                <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
-                <div class='count' *ngIf="searchResults.length > 0">
+                <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
+                <!-- <div class='count' *ngIf="searchResults.length > 0">
                   {{ searchResults.length }}
-                </div>
+                </div> -->
               </div>
               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
               <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar>
@@ -191,20 +191,21 @@
 
             </div>
             <div class="clicker">
-              <ion-button id="add-new-driver" (click)="nextClick()">
+              <ion-button id="add-new-driver" (click)="newDriverClick()">
                 <ion-icon name="add"></ion-icon>New Driver
               </ion-button>
             </div>
           </div>
         </div>
         <div class="blockItems">
-          <div class="details-driver" *ngIf="driverInfo === true" padding>
+           <!-- -->
+          <div class="details-driver" id="driverInputs" *ngIf="driverInfo === true">
             <div id="user-profile">
               <div id="user-pic">
                 <img src="../../assets/96c03bda-9e1d-4e89-91d7-0b88a9549d7a.jfif" alt="">
               </div>
             </div>
-            <form [formGroup]="RegisterForm">
+            <!-- <form [formGroup]="RegisterForm">
               <input type="text" placeholder="Driver Name" [(ngModel)]="DriverNameInput"
                 formControlName="DriverNameInput">
               <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
@@ -215,13 +216,13 @@
                 formControlName="TruckSourcessInput">
               <input placeholder="Email Address"> 
               <input placeholder="Physical Address"> 
-            </form>
+            </form> -->
           </div>
         </div>
       </div>
       <div class="bottom-button">
-        <ion-button color="clear" id="FinishBTN" (click)="doneBtn()" (click)="showWasteInfo()"
-          [disabled]="!RegisterForm.valid">
+        <ion-button color="clear" id="FinishBTN" (click)="showWasteInfo()"
+          [disabled]="!RegisterForm">
           Next
         </ion-button>
       </div>
@@ -246,8 +247,8 @@
     <p>GLASS</p>
   </div>
 </div>
-<div class="history" padding>   
-<div class="Title" padding>
+<div class="history" >   
+<div class="Title" >
   <h2>Your History</h2>
 </div>
 <div class="line-breaker"></div>

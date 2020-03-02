@@ -155,8 +155,7 @@ export class InboundPage implements OnInit {
     this.driverInformation = false;
     this.coemBack();
   }
-
-  popOpOpen: boolean = false;
+  popOpOpen: boolean;
   selectedCat = "";
 
   showPopUp(userCat) {
@@ -179,9 +178,9 @@ export class InboundPage implements OnInit {
   }
 
   
-  driverInfo: boolean = false;
+  driverInfo = false;
   group1 = document.getElementsByClassName("flyer-inputs") as HTMLCollectionOf <HTMLElement>
-  nextClick(){
+  newDriverClick(){
     // this will slide the elements to their original place
     this.driverInfo = true;
     this.group1[0].style.right = "0";
@@ -856,8 +855,8 @@ export class InboundPage implements OnInit {
     this.isPaper = true;
     this.isPlastic = false;
     this.isAluminium  = false;
-    this.isGlass  = false;
-    
+    this.isGlass = false;
+    alert()
     document.getElementById("isPaper").style.background = "#5C8A1B"
     document.getElementById("isPlastic").style.background = "transparent"
     document.getElementById("isAluminium").style.background = "transparent"
