@@ -1,0 +1,88 @@
+
+<ion-content>
+  <div class="container" >
+    <div class="head">
+      <p>Reclaimer's Profile $ History</p>
+    </div>
+  <div class="top" padding>
+    <div class="driverDetails" *ngFor="let reclaim of ViewReclaimer">
+      <div class="profilepic">
+        <p>Reclaimer's Personal Information</p>
+        <div class="profileimage">
+          <!-- <img src="../../assets/girl.jfif"> -->
+          <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+          <img *ngIf="image" src="{{ image }}" alt="">
+        </div>
+      </div>
+      <div class="profiledetails">
+        <p id="name">{{ reclaim.name }} {{ reclaim.surname }}</p>
+        
+        <p>{{ reclaim.reclaimercode }}</p>
+        <p>{{ reclaim.contact }}</p>
+        <p>{{ reclaim.IDnumber }}</p>
+        <p id="adres">{{ reclaim.address }}</p>
+        <button>Edit Profile</button>
+      </div>
+    </div>
+  
+    <div class="tripDetails">
+      <h3>Details Per Trip</h3>
+      <div class="scrollreceipts" >
+        <div class="card" *ngFor="let loads of ViewReclaimerMass">
+          <div class="leftside">
+            <p class="time"></p>
+            <p>Overall Mass</p>
+            <p>Sub-Total</p>
+            <p>Total VAT</p>
+            <p>Total Amount</p>
+          </div>
+          <div class="rightside">
+            <p class="time">{{ loads.date }}</p>
+            <p>: {{ loads.OverallMass }}</p>
+            <p>:  R{{ loads.OverallVat }}</p>
+            <p>: R{{ loads.OverallSubTotal }}</p>
+            <p>: R{{ loads.OverallGrandTotal }}</p>
+          </div>
+          <button [routerLink]="['/reclaimer-pdf', loads.productID]">Details</button>
+        </div>
+  
+        <!-- new -->
+        <!-- <div class="card">
+          <div class="leftside">
+            <p class="time">25/02/2020</p>
+            <p>Reference No.</p>
+            <p>Truck Load</p>
+            <p>Destination</p>
+            <p>Distance in km</p>
+          </div>
+          <div class="rightside">
+            <p class="time">16:41 pm</p>
+            <p>: jc 2374 gp</p>
+            <p>: 125486 kg</p>
+            <p>: 404 cruise road Melville</p>
+            <p>: 527 km</p>
+  
+            <button>Details</button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="graph">
+    <div class="tops">
+      <h3 *ngFor="let reclaim of ViewReclaimer">Materials brought by {{ reclaim.name }} {{ reclaim.surname }} overtime</h3>
+      <div class="boxes">
+        <P>PAPER <br><span>{{ paperTotal }} kg</span></P>
+        <P>PLASTIC <br><span>{{ plasticTotal }} kg</span></P>
+        <P>ALUMINIUM <br><span>{{ alumTotal }} kg</span></P>
+        <P>GLASS <br><span>{{ glassTotal }} kg</span></P>
+      </div>
+    </div>
+    <div class="canvas">
+      <h1>MAP GOES HERE</h1>
+    </div>
+  </div>
+  </div>
+  </ion-content>  

@@ -38,6 +38,7 @@ export class OutboundPage implements OnInit {
   // outbound
   outbound = [];
   id;
+  UpdateID;
   outdate;
   outDriverName;
   outRegistarionNumberPlates;
@@ -58,21 +59,6 @@ export class OutboundPage implements OnInit {
 
   prices;
   getprice;
-
-  truckcode;
-  truckcode2222;
-  truckcodefirebase;
-  DriverName;
-  RegistarionNumberPlates;
-  overallStorage;
-  overallStoragez;
-  TruckSourcess;
-  Destination;
-
-  DriverNameInput;
-  RegistarionNumberPlatesInput;
-  TruckSourcessInput;
-  DestinationInput;
 
   isLabelActive;
 
@@ -173,10 +159,30 @@ export class OutboundPage implements OnInit {
   outboundID;
   outboundArray = [];
 
+  // 27feb add ons
+  image;
+  truckcode;
+  truckcode2222;
+  truckcodefirebase;
+  DriverName;
+  RegistarionNumberPlates;
+  overallStorage;
+  overallStoragez;
+  TruckSourcess;
+  Destination;
+  numbers;
+  companyaddress;
+
+  DriverNameInput;
+  RegistarionNumberPlatesInput;
+  TruckSourcessInput;
+  DestinationInput;
+  PhoneNumbersInput;
+  CompanyAddressInput;
+
+  storage = firebase.storage().ref();
+
   /////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
     goAway() {
       // alert("clicked")
@@ -292,7 +298,7 @@ export class OutboundPage implements OnInit {
         outDriverName = this.outDriverName = element.data().DriverName;
         outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
         outovarallMass = this.outovarallMass = element.data().ovarallMass;
-        Destination = this.Destination = element.data().Destination;
+        // Destination = this.Destination = element.data().Destination;
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
 
         // this.outbound = [];
@@ -314,7 +320,7 @@ export class OutboundPage implements OnInit {
           RegistarionNumberPlates: outRegistarionNumberPlates,
           overallStorage: outovarallMass,
           TruckSourcess: TruckSourcess,
-          Destination: Destination,
+          // Destination: Destination,
         }
         // console.log(this.UserArray);
 
@@ -327,8 +333,10 @@ export class OutboundPage implements OnInit {
     this.RegisterForm = formGroup.group({
       DriverNameInput : ['', [Validators.required, Validators.maxLength(15)]],
       RegistarionNumberPlatesInput : ['', [Validators.required, Validators.maxLength(15)]],
-      DestinationInput : ['', [Validators.required, Validators.maxLength(50)]],
+      // DestinationInput : ['', [Validators.required, Validators.maxLength(50)]],
       TruckSourcessInput : ['', [Validators.required, , Validators.maxLength(50)]],
+      PhoneNumbersInput : ['', [Validators.required, , Validators.maxLength(10)]],
+      CompanyAddressInput : ['', [Validators.required, , Validators.maxLength(50)]],
     });
 
     // console.log(this.usersz);
@@ -342,23 +350,22 @@ export class OutboundPage implements OnInit {
   }
 
   sortTable() {
+    this.recordoutbounddisplayshome = [];
     this.db.collection('outbound').onSnapshot(element => {
       // console.log(snap)
       let loads = {};
 
       element.forEach(snap => {
         // this.recordoutbounddisplayshome = [];
-        console.log(snap.data())
+        // console.log(snap.data())
         this.DriverName = snap.data().DriverName;
         this.RegistarionNumberPlates = snap.data().RegistarionNumberPlates;
         this.TruckSourcess = snap.data().TruckSourcess;
         this.truckcode = snap.data().truckcode;
-
         this.recordoutbounddisplayshome.push(snap.data());
       })
-      console.log(this.recordoutbounddisplayshome);
+      // console.log(this.recordoutbounddisplayshome);
     })
-
   }
 
   LoopNames() {
@@ -405,7 +412,7 @@ export class OutboundPage implements OnInit {
         overallStorage = this.overallStorage = element.data().ovarallMass;
         this.overallStoragez = (String(overallStorage).substring(0, 6));
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-        Destination = this.Destination = element.data().Destination;
+        // Destination = this.Destination = element.data().Destination;
         truckcode = this.truckcode = element.data().truckcode;
         // console.log(this.DriverName);
         // console.log(this.RegistarionNumberPlates);
@@ -473,7 +480,7 @@ export class OutboundPage implements OnInit {
           RegistarionNumberPlates: this.RegistarionNumberPlates,
           overallStorage: this.overallStorage,
           TruckSourcess: this.TruckSourcess,
-          Destination: this.Destination,
+          // Destination: this.Destination,
           GH001storagemass: this.GH001storagemassz,
           NFAL01storagemass: this.NFAL01storagemassz,
           PAP005storagemass: this.PAP005storagemassz,
@@ -543,7 +550,7 @@ export class OutboundPage implements OnInit {
           time: this.time,
           truckcode: this.truckcode
         });
-        console.log(this.recordoutbounddisplays);
+        // console.log(this.recordoutbounddisplays);
 
       // create PDF
         this.ForLoop();
@@ -648,7 +655,7 @@ export class OutboundPage implements OnInit {
   async presentAlertAddUser(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
-      message: '<strong>Are you sure you want add this user to your form?</strong>!!!',
+      message: '<strong>Are you sure you want to use this user details?</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
@@ -678,14 +685,17 @@ export class OutboundPage implements OnInit {
       this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
       // this.overallStorage = element.data().ovarallMass;
       this.TruckSourcess = element.data().TruckSourcess;
-      this.Destination = element.data().Destination;
+      // this.Destination = element.data().Destination;
       this.truckcode = element.data().truckcode;
+      this.numbers = element.data().numbers;
+      this.companyaddress = element.data().companyaddress;
+      this.image = element.data().image;
       // console.log(element.data().DriverName);
       // console.log(element.data().RegistarionNumberPlates);
       // console.log(element.data().overallStorage);
       // console.log(element.data().TruckSourcess);
       // console.log(element.data().Destination);
-      console.log(element.data().truckcode);
+      // console.log(element.data().truckcode);
       // console.log(element.data());
         })
 
@@ -693,8 +703,11 @@ export class OutboundPage implements OnInit {
         this.DriverNameInput = this.DriverName;
         this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
         this.TruckSourcessInput = this.TruckSourcess;
-        this.DestinationInput = this.Destination;
+        // this.DestinationInput = this.Destination;
         this.truckcode2222 = this.truckcode;
+        this.PhoneNumbersInput = this.numbers;
+        this.CompanyAddressInput = this.companyaddress;
+        this.UpdateID = id;
 
         console.log(this.truckcode2222);
       })
@@ -707,19 +720,13 @@ export class OutboundPage implements OnInit {
     this.overallStorage = +this.GH001mass2 + +this.HD001mass2 + +this.LD001mass2 + +this.LD003mass2 + +this.NFAL01mass2
      + +this.PAP001mass2 + +this.PAP003mass2 + +this.PAP005mass2 + +this.PAP007mass2 + +this.PET001mass2 +
      +this.PET003mass2 + +this.PET005mass2;
-    // console.log(this.overallStorage);
+    console.log(this.overallStorage);
 
     this.createDriver();
 
   }
 
   createDriver() {
-    // this.db.collection('outbound').onSnapshot(snap => {
-    //   snap.forEach(snap => {
-    //     this.truckcodefirebase = snap.data().truckcode
-    //   })
-    // })
-
     console.log(this.truckcode2222)
 
     if(this.truckcode2222 === undefined) {
@@ -729,7 +736,7 @@ export class OutboundPage implements OnInit {
       this.saveUserToFirebase()
       console.log('no user registerd');
     } else if(this.truckcode2222 !== undefined) {
-      this.SaveOutbound2(this.outboundID)
+      this.SaveOutbound2(this.UpdateID)
       console.log('user already exits');
     }
 
@@ -740,8 +747,11 @@ export class OutboundPage implements OnInit {
       DriverName: this.DriverNameInput,
       RegistarionNumberPlates: this.RegistarionNumberPlatesInput,
       TruckSourcess: this.TruckSourcessInput,
-      Destination: this.DestinationInput,
+      // Destination: this.DestinationInput,
       truckcode: Math.floor(Math.random()*899999+100000),
+      numbers: this.PhoneNumbersInput,
+      companyaddress: this.CompanyAddressInput,
+      image: this.image,
     }).then(result => {
       // console.log(result);
       console.log(result.id);
@@ -750,40 +760,61 @@ export class OutboundPage implements OnInit {
       this.db.collection('outbound').doc(this.resultID).update({
         id: this.resultID
       })
+      this.db.collection('outboundMass').add({
+        date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+        GH001: this.GH001mass2,
+        NFAL01: this.NFAL01mass2,
+        PAP005: this.PAP005mass2,
+        PAP007: this.PAP007mass2,
+        PAP001: this.PAP001mass2,
+        PAP003: this.PAP003mass2,
+        HD001: this.HD001mass2,
+        LD001: this.LD001mass2,
+        LD003: this.LD003mass2,
+        PET00: this.PET001mass2,
+        PET003: this.PET003mass2,
+        PET005: this.PET005mass2,
+        ovarallMass: this.overallStorage,
+        driverID: this.resultID
+      })
+      console.log('im here');
     }).then(result => {
-      this.SaveOutbound(this.resultID);
+      // this.truckcode = 
     })
+
   }
 
-  SaveOutbound(resultID) {
-    this.db.collection('outbound').doc(resultID).collection('loads').add({
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
-      GH001: this.GH001mass2,
-      NFAL01: this.NFAL01mass2,
-      PAP005: this.PAP005mass2,
-      PAP007: this.PAP007mass2,
-      PAP001: this.PAP001mass2,
-      PAP003: this.PAP003mass2,
-      HD001: this.HD001mass2,
-      LD001: this.LD001mass2,
-      LD003: this.LD003mass2,
-      PET00: this.PET001mass2,
-      PET003: this.PET003mass2,
-      PET005: this.PET005mass2,
-      ovarallMass: this.overallStorage,
-    // }).then(result => {
-    //   // console.log(result);
-    //   console.log(result.id);
-    //   this.loadresultID = result.id
-    //   // console.log(loadresultID);
-    //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
-    //     loadid: this.loadresultID
-    //   })
-    })
-  }
+  // SaveOutbound(resultID) {
+  //   this.db.collection('outboundMass').add({
+  //     date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+  //     GH001: this.GH001mass2,
+  //     NFAL01: this.NFAL01mass2,
+  //     PAP005: this.PAP005mass2,
+  //     PAP007: this.PAP007mass2,
+  //     PAP001: this.PAP001mass2,
+  //     PAP003: this.PAP003mass2,
+  //     HD001: this.HD001mass2,
+  //     LD001: this.LD001mass2,
+  //     LD003: this.LD003mass2,
+  //     PET00: this.PET001mass2,
+  //     PET003: this.PET003mass2,
+  //     PET005: this.PET005mass2,
+  //     ovarallMass: this.overallStorage,
+  //     driverID: resultID
+  //   // }).then(result => {
+  //   //   // console.log(result);
+  //   //   console.log(result.id);
+  //   //   this.loadresultID = result.id
+  //   //   // console.log(loadresultID);
+  //   //   this.db.collection('outbound').doc(resultID).collection('loads').doc(this.loadresultID).update({
+  //   //     loadid: this.loadresultID
+  //   //   })
+  //   })
+  //   console.log('ndila');
+  // }
 
   SaveOutbound2(id) {
-    this.db.collection('outbound').doc(this.id).collection('loads').add({
+    this.db.collection('outboundMass').add({
       date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
       GH001: this.GH001mass2,
       NFAL01: this.NFAL01mass2,
@@ -797,6 +828,7 @@ export class OutboundPage implements OnInit {
       PET00: this.PET001mass2,
       PET003: this.PET003mass2,
       PET005: this.PET005mass2,
+      driverID: id,
       ovarallMass: this.overallStorage,
     // }).then(result => {
     //   // console.log(result);
@@ -807,6 +839,22 @@ export class OutboundPage implements OnInit {
     //     loadid: this.loadresultID
     //   })
     })
+  }
+
+  changeListener(admin): void {
+    const i = admin.target.files[0];
+    console.log(i);
+    const upload = this.storage.child(i.name).put(i);
+    upload.on('state_changed', snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('upload is: ', progress , '% done.');
+    }, err => {
+    }, () => {
+      upload.snapshot.ref.getDownloadURL().then(dwnURL => {
+        console.log('File avail at: ', dwnURL);
+        this.image = dwnURL;
+      });
+    });
   }
 
   checkinputfields() {
@@ -1244,7 +1292,7 @@ export class OutboundPage implements OnInit {
       this.RegistarionNumberPlates = '';
       // this.overallStorage = '';
       this.TruckSourcess = '';
-      this.Destination = '';
+      // this.Destination = '';
       this.GH001mass = '';
       this.NFAL01mass = '';
       this.PAP005mass = '';
@@ -1508,18 +1556,18 @@ export class OutboundPage implements OnInit {
           return item.toLowerCase().indexOf(val.toLowerCase()) > -1;
         });
       } else if (val == "") {
-        this.recordoutbounddisplays = this.recordoutbounddisplaysz;
+        this.recordoutbounddisplays = this.recordoutbounddisplays;
       }
 
-      console.log(this.usersz);
-      console.log(this.recordoutbounddisplays);
-      console.log(this.searchResults);
+      // console.log(this.usersz);
+      // console.log(this.recordoutbounddisplays);
+      // console.log(this.searchResults);
       
     }
 
     selectLocation(location) {
       this.userLocation = location;
-      this.recordoutbounddisplays = [];
+      // this.recordoutbounddisplays = [];
       console.log(this.userLocation);
       console.log(location);
 
@@ -1529,14 +1577,17 @@ export class OutboundPage implements OnInit {
         this.truckcode = element.data().truckcode;
         this.DriverName = element.data().DriverName;
         this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-        // this.overallStorage = element.data().ovarallMass;
+        this.overallStorage = element.data().ovarallMass;
         this.TruckSourcess = element.data().TruckSourcess;
-        this.Destination = element.data().Destination;
+        // this.Destination = element.data().Destination;
+        this.numbers = element.data().numbers;
+        this.companyaddress = element.data().companyaddress;
+        this.image = element.data().image;
         console.log(element.data().DriverName);
         console.log(element.data().RegistarionNumberPlates);
         // console.log(element.data().overallStorage);
         console.log(element.data().TruckSourcess);
-        console.log(element.data().Destination);
+        // console.log(element.data().Destination);
         console.log(element.data());
           })
 
@@ -1544,10 +1595,51 @@ export class OutboundPage implements OnInit {
           this.DriverNameInput = this.DriverName;
           this.RegistarionNumberPlatesInput = this.RegistarionNumberPlates;
           this.TruckSourcessInput = this.TruckSourcess;
-          this.DestinationInput = this.Destination;
+          // this.DestinationInput = this.Destination;
           this.truckcode2222 = this.truckcode;
+          this.PhoneNumbersInput = this.numbers;
+          this.CompanyAddressInput = this.companyaddress;
         })
         console.log(this.truckcode2222);
+    }
+
+    getPhoneInput(ev: any) {
+      this.PhoneNumbersInput = ev.target.value;
+  
+      // calling firebase
+      // this.contact[0] == '0'
+      if (this.PhoneNumbersInput[0] !== '0') {
+        this.presentAlertPhoneValidation();
+      } else {
+        // this.showInputs()
+        console.log('im working');
+        this.PhoneNumbersInput = this.PhoneNumbersInput;
+      }
+        // console.log(this.phoneVal);
+        console.log(this.PhoneNumbersInput);
+    }
+
+    async presentAlertPhoneValidation() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Phone Numbers must start with a number: 0.</strong>!!!',
+        buttons: [
+          {
+            text: 'Okay',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              this.erasedToContact();
+              console.log('Confirm Cancel: blah');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    erasedToContact() {
+      this.PhoneNumbersInput = '';
     }
 
     ViewDriver() {

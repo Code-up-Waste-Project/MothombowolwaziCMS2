@@ -47,8 +47,9 @@ export class Profile2Page implements OnInit {
         this.profile.name = snapshot.data().name;
         this.profile.surname = snapshot.data().surname;
         this.profile.image = snapshot.data().image;
-        // this.profile.position= snapshot.data().position;
+        this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
+        this.profile.addres = snapshot.data().address;
         console.log('admin', this.userprofile);
       });
    }
@@ -85,10 +86,11 @@ export class Profile2Page implements OnInit {
         surname: this.profile.surname,
         email: this.profile.email,
         number:this.profile.number,
-        // position: this.profile.position,
+        position: this.profile.position,
         image: this.profile.image,
         isAdmin: this.isAdmin,
         userid: this.profile.userid,
+        address: this.profile.addres
       })
       .then(function() {
         console.log("Document successfully written!");
