@@ -82,7 +82,11 @@ const routes: Routes = [
   {
     path: 'outbound-driver-info',
     loadChildren: () => import('./outbound-driver-info/outbound-driver-info.module').then( m => m.OutboundDriverInfoPageModule)
+  },  {
+    path: 'reclaimer-history',
+    loadChildren: () => import('./reclaimer-history/reclaimer-history.module').then( m => m.ReclaimerHistoryPageModule)
   }
+
 
 
 

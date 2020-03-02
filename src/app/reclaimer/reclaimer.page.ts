@@ -1839,8 +1839,8 @@ allocate() {
     // console.log('im clicked');
 }
 
-// editprofile() {
-//   this.route.navigate(['profile2']);
-// }
+viewReclaimerHistory() {
+  this.route.navigate(['reclaimerHistory']);
+}
 
 }
