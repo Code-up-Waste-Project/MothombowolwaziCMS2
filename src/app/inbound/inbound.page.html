@@ -169,13 +169,13 @@
             <div class="Searhcer">
               <!-- code for auto complete -->
               <div class="results">
-                <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p>
+                <!-- <p *ngFor="let g of searchResults" (click)="selectLocation(g)"> {{ g }} </p> -->
                 <!-- <div class='count' *ngIf="searchResults.length > 0">
                   {{ searchResults.length }}
                 </div> -->
               </div>
               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
-              <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar>
+              <!-- <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar> -->
             </div>
             <div class="CardiDiv"> 
             <ion-card class="Cardie">
@@ -223,9 +223,9 @@
                 <label for="disapear">
                   <ion-icon id="Addd" name="add"></ion-icon>
                 </label>
-                <img *ngIf="!image" src="../../assets/girl.jfif" alt=""> 
+                <!-- <img *ngIf="!image" src="../../assets/girl.jfif" alt="">  -->
                 <!-- <img *ngIf="image" src="{{ image }}" alt=""> -->
-                <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
+                <!-- <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center"> -->
               </div>
             </div>
             <div class="the-inputs">
