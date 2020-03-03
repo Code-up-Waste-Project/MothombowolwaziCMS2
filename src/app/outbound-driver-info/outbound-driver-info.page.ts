@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ElementRef,ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
@@ -25,6 +26,13 @@ export class OutboundDriverInfoPage implements OnInit {
   colorArray: any;
   bars: any;
   db = firebase.firestore();
+
+  DriverName;
+  RegistarionNumberPlates;
+  overallStorage;
+  overallStoragez;
+  TruckSourcess;
+  Destination;
 
   id;
   Outbound;
@@ -95,15 +103,46 @@ export class OutboundDriverInfoPage implements OnInit {
 
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
 
+    this.pullDrive();
+    this.pullMassz();
+    
+   }
+
+  ngOnInit() {
+  }
+
+  pullDrive() {
     this.Outbound = this.db.collection('outbound').doc(this.id);
-    this.Outbound.get().then((documentSnapshot) => {
-      this.ViewOutbound = [];
+    this.ViewOutbound = [];
+    this.Outbound.get().then((element) => {
       // console.log(documentSnapshot.data());
-      this.ViewOutbound.push(documentSnapshot.data());
+      this.ViewOutbound.push(element.data());
       console.log(this.ViewOutbound);
-    });
 
+      // console.log(element.data);
+      let DriverName = {};
+      let RegistarionNumberPlates = {};
+      let overallStorage = {};
+      let TruckSourcess = {};
+      let Destination = {};
+      let time = {};
+
+      DriverName = this.DriverName = element.data().DriverName;
+      RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+      TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
+      // Destination = this.Destination = element.data().Destination;
+      console.log(this.DriverName);
+      console.log(this.RegistarionNumberPlates);
+      // console.log(this.overallStorage);
+      console.log(this.TruckSourcess);
+      // console.log(this.Destination);
+      // console.log(this.overallStoragez);
+    });
+  }
+
+  pullMassz() {
     this.db.collection('outboundMass').where('driverID', '==', this.id).onSnapshot(snapshot => {
       snapshot.forEach(element => {
         console.log(element.data());
@@ -217,7 +256,5 @@ createLineChart() {
     }
   });
 }
-  ngOnInit() {
-  }
 
 }

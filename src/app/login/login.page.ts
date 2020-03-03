@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.loginForm.reset()
     this.menuCtrl.enable(false); // or true
   }
 
@@ -69,6 +70,7 @@ export class LoginPage implements OnInit {
               });
             }
           });
+         
         },
         async (error) => {
           const alert = await this.alertCtrl.create({
