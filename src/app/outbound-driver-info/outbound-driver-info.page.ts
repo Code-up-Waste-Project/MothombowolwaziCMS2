@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+
+import { Component, OnInit, ElementRef,ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { MenuController } from '@ionic/angular';
@@ -9,6 +10,7 @@ import { Router, ActivatedRoute  } from '@angular/router';
 import { ModalController, ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { element } from 'protractor';
 import { Location } from "@angular/common";
+import { Chart} from 'chart.js';
 
 @Component({
   selector: 'app-outbound-driver-info',
@@ -17,6 +19,12 @@ import { Location } from "@angular/common";
 })
 export class OutboundDriverInfoPage implements OnInit {
 
+  @ViewChild('barChart', {static: false}) barChart;   
+  
+
+
+  colorArray: any;
+  bars: any;
   db = firebase.firestore();
 
   DriverName;
@@ -75,6 +83,7 @@ export class OutboundDriverInfoPage implements OnInit {
   plasticTotal = 0;
   alumTotal = 0;
   glassTotal = 0;
+  // barChart: any;
 
   constructor(
     public toastController: ToastController,
@@ -90,6 +99,9 @@ export class OutboundDriverInfoPage implements OnInit {
     private location: Location,
     private fileOpener: FileOpener
   ) {
+
+
+
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
 
@@ -198,6 +210,51 @@ export class OutboundDriverInfoPage implements OnInit {
         
       });
     })
+
+   }
+  ionViewDidEnter() {
+    this.createLineChart();
   }
+   //graph by fifi
+//    var myLineChart = new Chart(ctx, {
+//     type: 'line',
+//     data: data,
+//     options: options
+// });
+
+// createLineChart(){
+//   Chart.defaults.global.defaultFontSize = 4;
+//   Chart.defaults.global.defaultFontFamily = 'Roboto';
+
+//   this.line = new Chart(this.createLineChart.nativeElement), {
+//     type: 'line',
+    
+//   }
+// }
+createLineChart() {
+  this.bars= new Chart(this.barChart.nativeElement, {
+ 
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Material Delivered',
+        data: [2.5, 3.8, 5, 6.9, 6.9, 7.5, 10, 17, 8,10,2,89],
+        backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+        borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
 
 }

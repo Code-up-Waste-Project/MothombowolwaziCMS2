@@ -6,10 +6,8 @@
       <div class="profile" *ngFor="let user of Newadmin"  >
       <div class="profilepic" ><img  *ngIf="user.image" [routerLink]="['/profile2']" src="{{user.image}}" class="profilepic">
         <img *ngIf="!user.image" src="../../assets/mthombologo (1).png" alt="" class="profilepic"> 
-    
-
       </div>
-      <h4 id="names">{{ user.name }} {{ user.surname }}</h4>
+      <h4 id="names">{{ user.name }} </h4>
       <!-- <p id="position">Developer</p> -->
       <!-- <h4 *ngFor="let myusers of users" >{{ myusers.positions }} </h4> -->
       <p></p>

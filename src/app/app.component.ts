@@ -7,8 +7,9 @@ import { AuthService } from '../app/user/auth.service';
 
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { element } from 'protractor';
-// import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
+ 
 const MINUTES_UNITL_AUTO_LOGOUT = 5 // in mins
 const CHECK_INTERVAL = 3000 // in ms
 const STORE_KEY =  'lastAction';
@@ -29,7 +30,8 @@ export class AppComponent implements OnInit {
   active = 0
 
   db = firebase.firestore();
-  
+   
+  myadmis=[]
   Newadmin = [];
 
   public getLastAction() {
@@ -48,24 +50,39 @@ export class AppComponent implements OnInit {
     public router: Router,
     
   ) {
-      // this.getAuth();
+
+
+console.log("good morning")
+
+
+
+
+
+
+
+
+
+      this.getAuth();
       this.initializeApp();
      
-    this.db.collection('admin').onSnapshot(snapshot => {
-      // this.Newadmin = [];
-      snapshot.forEach(Element => {
-        this.adminss.push(Element.data());
-      });
-      this.adminss.forEach(item => {
+    // this.db.collection('admin').onSnapshot(snapshot => {
+    //   // this.Newadmin = [];
+    //   snapshot.forEach(Element => {
+    //     this.adminss.push(Element.data());
+    //   });
+    //   this.adminss.forEach(item => {
        
-        if (item.userid === firebase.auth().currentUser.uid) {
-          this.Newadmin = [];
-          this.Newadmin.push(item); 
+    //     if (item.userid === firebase.auth().currentUser.uid) {
+    //       // this.Newadmin = [];
+    //       this.Newadmin.push(item); 
         
-            }
-      });
-      // console.log('Newadmins', this.Newadmin);
-    });
+    //         }
+    //   });
+    //   // console.log('Newadmins', this.Newadmin);
+    // });
+
+       // pulling for admin
+    
 
     // code for idle
     this.check();
@@ -103,7 +120,7 @@ export class AppComponent implements OnInit {
     this.appPages.push({
      
       title: 'Home',
-      url: '/home2',
+      url: '/home',
       icon: 'homeW',
       admin:"hot",
       
@@ -116,13 +133,13 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Inbounds',
-      url: '/inbound2',
+      url: '/inbound',
       icon: 'inboundW',
       admin:"cool"
     },
     {
       title: 'Reclaimer',
-      url: '/reclaimer2',
+      url: '/reclaimer',
       icon: 'reclaimerW',
       admin:"cool"
     });
@@ -188,7 +205,44 @@ export class AppComponent implements OnInit {
     getAuth() {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
+            
             this.router.navigateByUrl('/home');
+
+
+            
+ 
+            this.db.collection('admin').get().then(snapshot => {
+              this.Newadmin =[]
+                snapshot.forEach(Element => {
+          
+                  this.myadmis.push(Element.data());
+                  // this.Newadmin =[]
+                  // console.log(Element.data());
+                });
+                this.myadmis.forEach(item => {
+                  if (item.userid === firebase.auth().currentUser.uid) {
+               
+                    console.log('Newadmins', this.Newadmin);
+                    this.Newadmin.push(item);
+                    this.Newadmin.splice(1,1);
+                   
+                  }
+                });
+              });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           }else {
             this.router.navigateByUrl('/login');
           }

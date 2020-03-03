@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, IonSlides } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -19,7 +19,7 @@ import * as moment from 'moment';
   styleUrls: ['./outbound.page.scss'],
 })
 export class OutboundPage implements OnInit {
-
+  ishidden = false;
   myControl = new FormControl();
 
   letterObj = {
@@ -182,10 +182,21 @@ export class OutboundPage implements OnInit {
   CompanyAddressInput;
 
   storage = firebase.storage().ref();
-
+ 
+@ViewChild('slides', {static: false}) slides: IonSlides;
   /////////////////////////////////////////////////////////////////////////////////////
-
+  slideOpts =  {
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    }
+  }
+  isBeginning: boolean = false;
+  nextText = 'Next'
+  
     goAway() {
+
       // alert("clicked")
       // this.selectedCat = "";
       // this.driverInformation = false;
@@ -193,7 +204,10 @@ export class OutboundPage implements OnInit {
       this.popOpOpen = false;
       this.slideOne = true;
       this.slideTwo = false;
-      this.driverInfo = false
+      this.driverInfo = false;
+
+  
+      
     }
     coemBack() {
     }
@@ -346,7 +360,38 @@ export class OutboundPage implements OnInit {
     
    }
 
+   slideChanged($ev) {
+    this.slides.getActiveIndex().then(index => {
+      console.log(index);
+      if(index == 0) {
+        this.isBeginning = false;
+      }else {
+        this.isBeginning = true;
+      }
+      if(index == 2) {
+        this.nextText = 'Done';
+      }else {
+        this.nextText = 'Next';
+      }
+   });
+   }
+
+   //slides
+   nextislide(){
+ 
+    
+     this.slides.slideNext();
+   }
+   previslide() {
+    this.slides.slidePrev();
+  
+   
+   }
   ngOnInit() {
+
+   
+   
+    
     this.sortTable();
   }
 
@@ -1491,4 +1536,11 @@ export class OutboundPage implements OnInit {
     ViewDriver() {
       this.route.navigate(['outbound-driver-info']);
     }
+  
+    // hide() {
+    //   console.log('clloseee',this.hideMe);
+      
+    //   this.hideMe = true;
+    // }
+   
 }
