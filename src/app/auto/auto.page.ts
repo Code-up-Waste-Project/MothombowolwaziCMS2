@@ -1,4 +1,5 @@
 
+
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -10,9 +11,14 @@ declare var google;
 })
 export class AutoPage implements OnInit {
    //autocomplete
+   yourBoolean = false; /*viewable by default*/
    autocompleteItems;
    autocomplete;
    that
+   placez=[]
+
+   distance = ''
+   duration =''
 
   @ViewChild('mapElement', {static: false}) mapNativeElement: ElementRef;
   @ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
@@ -44,7 +50,6 @@ export class AutoPage implements OnInit {
   
   }
 
-
   createDirectionForm() {
     this.directionForm = this.fb.group({
       // mark
@@ -67,11 +72,11 @@ export class AutoPage implements OnInit {
   // }
 
   ngAfterViewInit(): void {
-
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.currentLocation.lat = resp.coords.latitude;
-      this.currentLocation.lng = resp.coords.longitude;
-    });
+   
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   this.currentLocation.lat = resp.coords.latitude;
+    //   this.currentLocation.lng = resp.coords.longitude;
+    // });
 
 
     // mark
@@ -121,7 +126,7 @@ export class AutoPage implements OnInit {
         map.setZoom(17);  // Why 17? Because it looks good.
       }
       marker.setPosition(place.geometry.location);
-      marker.setVisible(true);
+      marker.setVisible(false);
       let address = '';
       if (place.address_components) {
         address = [
@@ -142,29 +147,33 @@ export class AutoPage implements OnInit {
 
   // mark
   calculateAndDisplayRoute(address) {
-  
-  
+    // console.log('address', address)
     const that = this;
     this.directionsService.route({
-
+  
       origin: this.currentLocation,
-    
       destination: address,
       travelMode: 'DRIVING',
-    
-   
-
-      
     }, (response, status) => {
+      // console.log('status', status)
       if (status === 'OK') {
+        this.distance= response.routes[0].legs[0].distance.text,
+        this.duration= response.routes[0].legs[0].duration.text,
+
         that.directionsDisplay.setDirections(response);
+
+        console.log( 'response', response )
+      
+        
+        console.log( 'distance', response.routes[0].legs[0].distance.text)
+        console.log( 'duration', response.routes[0].legs[0].duration.text)
+        this.placez.push(response)
+        console.log( this.placez )
       } else {
         window.alert('Directions request failed due to ' + status);
       }
-      console.log('origin', origin)
-    
     });
-
+    this.in_your_method()
   }
 
 callback(response, status) {
@@ -185,4 +194,7 @@ callback(response, status) {
       }
     }
   }
+  in_your_method() {
+    this.yourBoolean = true;
+}
 }

@@ -53,6 +53,7 @@ var firebaseConfig = {
 //   measurementId: "G-32KKEKZX5S"
 // };
 // Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
