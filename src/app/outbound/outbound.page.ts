@@ -27,7 +27,7 @@ export class OutboundPage implements OnInit {
     from: '',
     text: ''
   };
-
+  transtioning: boolean = false;
   // user infor
   admin = [];
   Newadmin = [];
@@ -190,6 +190,7 @@ export class OutboundPage implements OnInit {
     pagination: {
       el: '.swiper-pagination',
       type: 'progressbar',
+    color: 'red !important',
     }
   }
   isBeginning: boolean = false;
@@ -219,6 +220,9 @@ export class OutboundPage implements OnInit {
       this.otherPopup = true;
     }
 
+    animateJs() {
+      this.transtioning = !this.transtioning;
+    }
     showInputs() {
       this.otherPopup = false;
 
