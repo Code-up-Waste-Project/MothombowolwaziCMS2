@@ -333,7 +333,7 @@ export class InboundPDFPage implements OnInit {
 
             fillColor: function (rowIndex) {
 
-              return (rowIndex % 2 === 0) ? '#CCCCCC' : null;
+              return (rowIndex % 2 === 0) ? '#F3F3F3' : null;
             },
           
             hLineColor: function () {
