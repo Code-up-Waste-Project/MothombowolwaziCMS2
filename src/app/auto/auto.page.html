@@ -8,6 +8,14 @@
     <ion-title>Places Autocomplete</ion-title>
   </ion-toolbar>
 </ion-header>
+<!-- <div *ngFor = "let plase  of placez" >
+place{{plase.legs.distance}}
+</div> -->
+
+
+
+<p *ngIf="yourBoolean"> Estimated distance:{{distance }}</p>
+<p  *ngIf="yourBoolean"> Estimated duration:{{duration }}</p>
 
 <ion-content>
   <form [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
@@ -16,6 +24,7 @@
     </ion-item>
     <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
   </form>
+
   <div #mapElement class="map"></div>
 
   <div id="infowindow-content">

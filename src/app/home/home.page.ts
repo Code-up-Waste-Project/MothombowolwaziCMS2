@@ -16,8 +16,7 @@ import { format } from 'url';
 })
 
 export class HomePage implements OnInit {
-  myValue:Boolean=false;
-  hideMe=false;
+
   viewBackdrop = false;
 
   @ViewChild('barChart', {static: false}) barChart;        
@@ -468,7 +467,6 @@ bD = document.getElementsByClassName('bD')
     this.PullDayData();
     // console.log("im working ninja");
     }
-
 
     //increase the size of clicked graph
     transformGraph(graph) {
@@ -2805,6 +2803,7 @@ HideandShowHISTORYGLASS() {
       this.route.navigateByUrl('/login');
      });
     }
+    
     editprofile() {
       this.route.navigate(['profile']);
     }
@@ -3036,7 +3035,8 @@ async presentAlertDelete(id) {
 deleteprice(id) {
   this.db.collection('price').doc('SinUfRNnbB073KZiDIZE').delete();
   console.log('Record deleted');
-}  
+}
+
 deletehd001(v){
   console.log('aaaa',v);
   firebase.firestore().collection('price').doc('SinUfRNnbB073KZiDIZE').update({
@@ -3051,6 +3051,7 @@ deletehd001(v){
 ionViewWillEnter() {
   this.menuCtrl.enable(true);
  }
+
 map(){
   this.route.navigateByUrl('/auto');
 }
