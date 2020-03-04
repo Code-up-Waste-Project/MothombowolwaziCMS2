@@ -190,7 +190,7 @@
 
 <!-- EDIT PRICE FOR PLASTIC -->
 <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
-<div padding class="editform2"  >
+<div padding class="editform2" id="plasticPrices">
   <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
   <h1>Edit Price for Plastic</h1>
   <div class="inputs">
@@ -210,7 +210,56 @@
 
  </div>
 
-     <button ion-button (click)="CheckInputsEmptyStringPlastics()"  >Save</button>
+     <button ion-button id="savePlastic" (click)="CheckInputsEmptyStringPlastics()">Save</button>
+     <p class="heading" id="HeadingPlastic">Keep Records of all updates</p>
+     <div class="historydetailsPlastic">
+       <div class="heady">
+         <div class="col">
+           <h4 class="headz">Date</h4>
+         </div>
+         <div class="col"><h4 class="headz">Name</h4></div>
+        <div class="col"><h4 class="headz"> Material</h4></div>
+        <div class="col"><h4 class="headz">Old Price</h4></div>
+        <div class="col"><h4 class="headz">New Price</h4></div>
+       </div>
+       <div class="dropper2" >
+        <div class="top-cell" (click)="viewMorePlastic()">
+          <div class="meshy">
+            <div class="col">
+              <h4 class="the-date-head"><p>23 July 2020</p></h4>
+             </div>
+            <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+            <div class="col"><h4 class="the-date-head">Thato</h4></div>
+            <div class="col"><h4 class="the-date-head"> GL001</h4></div>
+            <div class="col"><h4 class="the-date-head">R3.00</h4></div>
+            <div class="col"><h4 class="the-date-head">R4.50</h4>
+              <ion-icon id="chevron-drop-down2" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+            </div>
+          </div></div>
+        <div class="myCell">
+          <div class="meshy">
+            <div class="col">
+              <h4 class="headz"></h4>
+             </div>
+            <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+            <div class="col"><h4 class="the-date"></h4></div>
+            <div class="col"><h4 class="the-date"> PAP001</h4></div>
+            <div class="col"><h4 class="the-date">R1.00</h4></div>
+            <div class="col"><h4 class="the-date">R2.00</h4></div>
+          </div>
+          <div class="meshy">
+            <div class="col">
+              <h4 class="headz"></h4>
+             </div>
+            <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+            <div class="col"><h4 class="the-date"> </h4></div>
+            <div class="col"><h4 class="the-date"> NFL01</h4></div>
+            <div class="col"><h4 class="the-date">R1.50</h4></div>
+            <div class="col"><h4 class="the-date">R2.00</h4></div>
+          </div>
+        </div>
+      </div>
+     </div>
 
   </div>
 </div>
@@ -220,13 +269,77 @@
 
 <!-- EDIT PRICE FOR GLASS -->
 <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
-  <div padding class="editform2">
+  <div padding class="editform2" id="plasticPrices">
     <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Glass </h1>
    
+    <div class="inputs">
+      <div class="row1Glass">
     <input placeholder="GH001" [(ngModel)]="GH001price"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+  </div>
     
-  <button ion-button (click)="CheckInputsEmptyStringglass()">Save</button>
+  <button ion-button id="savePaper" (click)="CheckInputsEmptyStringglass()">Save</button>
+</div>
+<p class="heading">Keep Record of all updates</p>
+<div class="historydetails">
+  <div class="heady">
+    <div class="col">
+      <h4 class="headz">Date</h4>
+     </div>
+    <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+    <div class="col"><h4 class="headz">Name</h4></div>
+    <div class="col"><h4 class="headz"> Material</h4></div>
+    <div class="col"><h4 class="headz">Old Price</h4></div>
+    <div class="col"><h4 class="headz">New Price</h4></div>
+  </div>
+
+  <!-- <div class="rows" *ngFor="let paper of PaperArrayHistory">
+   <div class="col">
+     <h4 class="headz">{{paper.timePaper}}</h4></div>
+   <div class="col"> <h4 class="headz">R{{paper.pap001}}</h4></div>
+   <div class="col"> <h4 class="headz">R{{paper.pap003}}</h4></div>
+   <div class="col"> <h4 class="headz">R{{paper.pap005}}</h4></div>
+   <div class="col"> <h4 class="headz">R{{paper.pap007}}</h4></div>
+ </div> -->
+
+ <div class="dropper3" >
+   <div class="top-cell" (click)="viewMoreGlass()">
+     <div class="meshy">
+       <div class="col">
+         <h4 class="the-date-head"><p>23 July 2020</p></h4>
+        </div>
+       <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+       <div class="col"><h4 class="the-date-head">Thato</h4></div>
+       <div class="col"><h4 class="the-date-head"> GL001</h4></div>
+       <div class="col"><h4 class="the-date-head">R3.00</h4></div>
+       <div class="col"><h4 class="the-date-head">R4.50</h4>
+         <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+       </div>
+     </div></div>
+   <div class="myCell">
+     <div class="meshy">
+       <div class="col">
+         <h4 class="headz"></h4>
+        </div>
+       <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+       <div class="col"><h4 class="the-date"></h4></div>
+       <div class="col"><h4 class="the-date"> PAP001</h4></div>
+       <div class="col"><h4 class="the-date">R1.00</h4></div>
+       <div class="col"><h4 class="the-date">R2.00</h4></div>
+     </div>
+     <div class="meshy">
+       <div class="col">
+         <h4 class="headz"></h4>
+        </div>
+       <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+       <div class="col"><h4 class="the-date"> </h4></div>
+       <div class="col"><h4 class="the-date"> NFL01</h4></div>
+       <div class="col"><h4 class="the-date">R1.50</h4></div>
+       <div class="col"><h4 class="the-date">R2.00</h4></div>
+     </div>
+   </div>
+ </div>
+</div>
   </div>
   </div>
 <!-- EDIT PRICE FOR PAPER -->
@@ -252,22 +365,60 @@
  <div class="historydetails">
    <div class="heady">
      <div class="col">
-       <h4 class="headz">Date</h4></div>
+       <h4 class="headz">Date</h4>
+      </div>
      <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-     <div class="col"><h4 class="headz">PAP001</h4></div>
-     <div class="col"><h4 class="headz">PAP003</h4></div>
-     <div class="col"><h4 class="headz">PAP005</h4></div>
-     <div class="col"><h4 class="headz">PAP007</h4></div>
+     <div class="col"><h4 class="headz">Name</h4></div>
+     <div class="col"><h4 class="headz"> Material</h4></div>
+     <div class="col"><h4 class="headz">Old Price</h4></div>
+     <div class="col"><h4 class="headz">New Price</h4></div>
    </div>
 
-   <div class="rows" *ngFor="let paper of PaperArrayHistory">
+   <!-- <div class="rows" *ngFor="let paper of PaperArrayHistory">
     <div class="col">
       <h4 class="headz">{{paper.timePaper}}</h4></div>
     <div class="col"> <h4 class="headz">R{{paper.pap001}}</h4></div>
     <div class="col"> <h4 class="headz">R{{paper.pap003}}</h4></div>
     <div class="col"> <h4 class="headz">R{{paper.pap005}}</h4></div>
     <div class="col"> <h4 class="headz">R{{paper.pap007}}</h4></div>
-    <div class="col"><h4 class="headz"><ion-icon name="arrow-down-circle-outline"></ion-icon></h4></div>
+  </div> -->
+
+  <div class="dropper1" >
+    <div class="top-cell" (click)="viewMorePaper()">
+      <div class="meshy">
+        <div class="col">
+          <h4 class="the-date-head"><p>23 July 2020</p></h4>
+         </div>
+        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+        <div class="col"><h4 class="the-date-head">Thato</h4></div>
+        <div class="col"><h4 class="the-date-head"> GL001</h4></div>
+        <div class="col"><h4 class="the-date-head">R3.00</h4></div>
+        <div class="col"><h4 class="the-date-head">R4.50</h4>
+          <ion-icon id="chevron-drop-down1" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+        </div>
+      </div></div>
+    <div class="myCell">
+      <div class="meshy">
+        <div class="col">
+          <h4 class="headz"></h4>
+         </div>
+        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+        <div class="col"><h4 class="the-date"></h4></div>
+        <div class="col"><h4 class="the-date"> PAP001</h4></div>
+        <div class="col"><h4 class="the-date">R1.00</h4></div>
+        <div class="col"><h4 class="the-date">R2.00</h4></div>
+      </div>
+      <div class="meshy">
+        <div class="col">
+          <h4 class="headz"></h4>
+         </div>
+        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+        <div class="col"><h4 class="the-date"> </h4></div>
+        <div class="col"><h4 class="the-date"> NFL01</h4></div>
+        <div class="col"><h4 class="the-date">R1.50</h4></div>
+        <div class="col"><h4 class="the-date">R2.00</h4></div>
+      </div>
+    </div>
   </div>
  </div>
  </div><!-- end of edit form2 -->
@@ -279,14 +430,68 @@
     <div class="col"> <h4 class="headz">R{{ paper.oldpap007.toFixed(2) }}</h4></div> -->
 <!-- EDIT PRICE FOR ALUMINIUM -->
 <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
-<div padding class="editform2" >
+<div padding class="editform2" id="plasticPrices">
   <ion-button class="close"  fill="clear" (click)="HideandShowDelete()"
    slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
-  <h1>Edit Price For  AluminIum</h1>
+  <h1>Edit Price For AluminIum</h1>
  
+  <div class="inputs">
+    <div class="row1Glass">
   <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
-  
-<button ion-button (click)="CheckInputsEmptyStringAlum()">Save</button>
+</div>
+
+
+<button ion-button id="savePaper" (click)="CheckInputsEmptyStringAlum()">Save</button>
+</div>
+<p class="heading">Keep Record of all updates</p>
+<div class="historydetails">
+  <div class="heady">
+    <div class="col">
+      <h4 class="headz">Date</h4>
+     </div>
+     <div class="col"><h4 class="headz">Name</h4></div>
+     <div class="col"><h4 class="headz"> Material</h4></div>
+     <div class="col"><h4 class="headz">Old Price</h4></div>
+     <div class="col"><h4 class="headz">New Price</h4></div>
+  </div>
+  <div class="dropper4" >
+    <div class="top-cell" (click)="viewMoreAluminium()">
+      <div class="meshy">
+        <div class="col">
+          <h4 class="the-date-head"><p>23 July 2020</p></h4>
+         </div>
+        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+        <div class="col"><h4 class="the-date-head">Thato</h4></div>
+        <div class="col"><h4 class="the-date-head"> GL001</h4></div>
+        <div class="col"><h4 class="the-date-head">R3.00</h4></div>
+        <div class="col"><h4 class="the-date-head">R4.50</h4>
+          <ion-icon id="chevron-drop-down4" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+        </div>
+      </div></div>
+    <div class="myCell">
+      <div class="meshy">
+        <div class="col">
+          <h4 class="headz"></h4>
+         </div>
+        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+        <div class="col"><h4 class="the-date"></h4></div>
+        <div class="col"><h4 class="the-date"> PAP001</h4></div>
+        <div class="col"><h4 class="the-date">R1.00</h4></div>
+        <div class="col"><h4 class="the-date">R2.00</h4></div>
+      </div>
+      <div class="meshy">
+        <div class="col">
+          <h4 class="headz"></h4>
+         </div>
+        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+        <div class="col"><h4 class="the-date"> </h4></div>
+        <div class="col"><h4 class="the-date"> NFL01</h4></div>
+        <div class="col"><h4 class="the-date">R1.50</h4></div>
+        <div class="col"><h4 class="the-date">R2.00</h4></div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 

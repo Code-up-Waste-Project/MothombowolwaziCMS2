@@ -3055,6 +3055,70 @@ map(){
   this.route.navigateByUrl('/auto');
 }
 
+isOpenPaper = false;
+isOpenPlastic = false;
+isOpenGlass = false;
+isOpenAluminium = false;
+viewMorePaper(){
+  let dropDown = document.getElementsByClassName("dropper1") as HTMLCollectionOf <HTMLElement>
 
+  if(this.isOpenPaper == false){
+    this.isOpenPaper = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down1").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenPaper = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down1").style.transform="rotateX(0DEG)"
+  }
+}
+
+viewMorePlastic(){
+  let dropDown = document.getElementsByClassName("dropper2") as HTMLCollectionOf <HTMLElement>
+
+  if(this.isOpenPlastic == false){
+    this.isOpenPlastic = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down2").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenPlastic = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down2").style.transform="rotateX(0DEG)"
+  }
+}
+
+viewMoreGlass(){
+  let dropDown = document.getElementsByClassName("dropper3") as HTMLCollectionOf <HTMLElement>
+
+  if(this.isOpenGlass == false){
+    this.isOpenGlass = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down3").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenGlass = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down3").style.transform="rotateX(0DEG)"
+
+    alert();
+  }
+}
+
+viewMoreAluminium(){
+  let dropDown = document.getElementsByClassName("dropper4") as HTMLCollectionOf <HTMLElement>
+
+  if(this.isOpenAluminium == false){
+    this.isOpenAluminium = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down4").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenAluminium = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down4").style.transform="rotateX(0DEG)"
+  }
+}
 
 }
