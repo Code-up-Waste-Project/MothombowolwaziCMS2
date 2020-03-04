@@ -1,4 +1,55 @@
 
+  .heading {
+    position: absolute;
+    padding-bottom: 1.2%;
+    top: 0;
+    left: 27px;
+    width: 80%;
+    font-family: "lato";
+    font-size: 1.1em;
+    // border: 1px solid red;
+
+    &::after {
+      position: absolute;
+      bottom: 5%;
+      left: 0%;
+      width: 4%;
+      height: 2px;
+      content: "";
+      background: #ddd;
+      border-radius: 50px;
+    }
+  }
+  .headingHistory {
+    position: absolute;
+    padding-bottom: 1.2%;
+    top: 320px;
+    left: 19px;
+    width: 80%;
+    font-family: "lato";
+    font-size: 1.1em;
+    // border: 1px solid red;
+
+    &::after {
+      position: absolute;
+      bottom: 5%;
+      left: 0%;
+      width: 4%;
+      height: 2px;
+      content: "";
+      background: #ddd;
+      border-radius: 50px;
+    }
+  }
+  .sub-header{
+    // border: solid 2px yellow;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+
+
 .navCont {
   // border: 2px solid red;
   width: 50%;
@@ -602,7 +653,7 @@ form > input{
 }
 
 .line-breaker{
-  border: solid 1px rgb(153, 152, 152);
+  // border: solid 1px rgb(153, 152, 152);
   border-bottom:0px;
   border-right: 0px;
   border-left: 0px;

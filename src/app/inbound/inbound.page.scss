@@ -22,11 +22,12 @@
   .headingHistory {
     position: absolute;
     padding-bottom: 1.2%;
-    top: 0;
+    top: 320px;
+    left: 19px;
     width: 80%;
     font-family: "lato";
     font-size: 1.1em;
-    border: 1px solid red;
+    // border: 1px solid red;
 
     &::after {
       position: absolute;
