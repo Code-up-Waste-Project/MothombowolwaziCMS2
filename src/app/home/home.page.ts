@@ -16,8 +16,10 @@ import { format } from 'url';
 })
 
 export class HomePage implements OnInit {
-  myValue:Boolean=false;
-  hideMe=false;
+  isOpenPaper = false;
+  isOpenPlastic = false;
+  isOpenGlass = false;
+  isOpenAluminium = false;
   viewBackdrop = false;
 
   @ViewChild('barChart', {static: false}) barChart;        
@@ -469,7 +471,6 @@ bD = document.getElementsByClassName('bD')
     // console.log("im working ninja");
     }
 
-
     //increase the size of clicked graph
     transformGraph(graph) {
       if (this.viewingGraph == graph) {
@@ -740,6 +741,7 @@ bD = document.getElementsByClassName('bD')
       this.glassArray.push(snap.data())
 
       this.oldpriceglass = snap.data().newgl001;
+
 
       this.pricess.gl001 = snap.data().newgl001;
     })
@@ -1301,6 +1303,11 @@ bD = document.getElementsByClassName('bD')
       pap007: this.PAP007price,
       pap001: this.PAP001price,
       pap003: this.PAP003price,
+
+      oldpap005: this.oldpricepap005,
+      oldpap007: this.oldpricepap007,
+      oldpap001: this.oldpricepap001,
+      oldpap003: this.oldpricepap003,
     })
 
     // To update price :
@@ -1346,6 +1353,13 @@ bD = document.getElementsByClassName('bD')
       pet001: this.PET001price,
       pet003: this.PET003price,
       pet005: this.PET005price,
+
+      oldhd001: this.oldpricehd001,
+      oldld001: this.oldpricehd001,
+      oldld003: this.oldpriceld003,
+      oldpet001: this.oldpricepet001,
+      oldpet003: this.oldpricepet003,
+      oldpet005: this.oldpricepet005,
     })
 
     // To update price :
@@ -1392,6 +1406,7 @@ bD = document.getElementsByClassName('bD')
     this.db.collection("pricehistory").doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").doc().set({
       timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
       nfal01: this.oldpriceNFAL01,
+      oldnfal01: this.oldpriceNFAL01,
     })
 
     // To update price :
@@ -1420,6 +1435,7 @@ bD = document.getElementsByClassName('bD')
     this.db.collection("pricehistory").doc("8FtqTT4N4mFpbI4DKc25").collection("glass").doc().set({
       timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
       gl001: this.GH001price,
+      oldgl001: this.oldpriceglass,
     })
 
         // To update price :
@@ -3055,6 +3071,66 @@ map(){
   this.route.navigateByUrl('/auto');
 }
 
+viewMorePaper(){
+  let dropDown = document.getElementsByClassName("dropper1") as HTMLCollectionOf <HTMLElement>
 
+  if(this.isOpenPaper == false){
+    this.isOpenPaper = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down1").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenPaper = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down1").style.transform="rotateX(0DEG)"
+  }
+}
+
+viewMorePlastic(){
+  let dropDown = document.getElementsByClassName("dropper2") as HTMLCollectionOf <HTMLElement>
+
+  if(this.isOpenPlastic == false){
+    this.isOpenPlastic = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down2").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenPlastic = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down2").style.transform="rotateX(0DEG)"
+  }
+}
+
+viewMoreGlass(){
+  let dropDown = document.getElementsByClassName("dropper3") as HTMLCollectionOf <HTMLElement>
+
+  if(this.isOpenGlass == false){
+    this.isOpenGlass = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down3").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenGlass = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down3").style.transform="rotateX(0DEG)"
+
+  
+  }
+}
+
+viewMoreAluminium(){
+  let dropDown = document.getElementsByClassName("dropper4") as HTMLCollectionOf <HTMLElement>
+
+  if(this.isOpenAluminium == false){
+    this.isOpenAluminium = true;
+    dropDown[0].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down4").style.transform="rotateX(180DEG)"
+  }
+  else{
+    this.isOpenAluminium = false;
+    dropDown[0].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down4").style.transform="rotateX(0DEG)"
+  }
+}
 
 }

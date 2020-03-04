@@ -279,5 +279,11 @@ console.log("good morning")
             this.router.navigate(['./login']);
           }
         }
-
+        Logout() {
+          firebase.auth().signOut().then((res) => {
+            console.log(res);
+            this.router.navigateByUrl('/login');
+           });
+          
+          }
 }

@@ -21,8 +21,6 @@ export class OutboundDriverInfoPage implements OnInit {
 
   @ViewChild('barChart', {static: false}) barChart;   
   
-
-
   colorArray: any;
   bars: any;
   db = firebase.firestore();

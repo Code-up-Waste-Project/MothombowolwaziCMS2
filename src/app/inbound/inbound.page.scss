@@ -1,35 +1,45 @@
-ion-header {
-  --background: rgb(85,140,3) !important;
-  display: flex;
-  // border: 2px solid rgb(17, 0, 255);
-}
-ion-toolbar {
-  display: flex;
-  flex-direction: row;
-}
 
-#TheLoGoutBTN {
-  background-color: white;
-  border-radius: 50px;
-  color: black;
-  margin-top: 10px;
-}
-#LogOutIco {
-  color: brown;
-}
-
-.logger {
-  // border: 2px solid green;
-  background-color:#548d04;
-  width: 50%;
-  height: 55px;
-  ion-button {
-    text-transform: capitalize;
+  .heading {
     position: absolute;
-    right: 10px;
-  }
-}
+    padding-bottom: 1.2%;
+    top: 0;
+    width: 80%;
+    font-family: "lato";
+    font-size: 1.1em;
+    // border: 1px solid red;
 
+    &::after {
+      position: absolute;
+      bottom: 5%;
+      left: 0%;
+      width: 4%;
+      height: 2px;
+      content: "";
+      background: #ddd;
+      border-radius: 50px;
+    }
+  }
+  .headingHistory {
+    position: absolute;
+    padding-bottom: 1.2%;
+    top: 320px;
+    left: 19px;
+    width: 80%;
+    font-family: "lato";
+    font-size: 1.1em;
+    // border: 1px solid red;
+
+    &::after {
+      position: absolute;
+      bottom: 5%;
+      left: 0%;
+      width: 4%;
+      height: 2px;
+      content: "";
+      background: #ddd;
+      border-radius: 50px;
+    }
+  }
 .navCont {
   // border: 2px solid red;
   width: 50%;
@@ -132,7 +142,7 @@ ion-toolbar {
 }
 
 .history-labels > div:nth-child(1) {
-  width: 20%;
+  width: 25%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
 }
@@ -140,17 +150,17 @@ ion-toolbar {
   // border-left: 1px solid black;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
-  width: 20%;
+  width: 25%;
 }
 .history-labels > div:nth-child(3) {
   // border-left: 1px solid yellow;
-  width: 20%;
+  width: 25%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 25px;
 }
 .history-labels > div:nth-child(4) {
   // border-left: 1px solid blue;
-  width: 20%;
+  width: 25%;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
@@ -175,23 +185,28 @@ ion-toolbar {
 }
 
 .itemList > div:nth-child(1) {
-  width: 20%;
+  width: 25%;
 }
 .itemList > div:nth-child(2) {
-  width: 20%;
+  width: 25%;
 }
 .itemList > div:nth-child(3) {
-  width: 20%;
+  width: 25%;
+  color: rgb(209,44,111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .itemList > div:nth-child(4) {
-  width: 20%;
+  width: 25%;
+  // display: flex;
+  // justify-content: center;
   text-align: center;
-  color: rgb(209,44,111);
+  color: brown;
 }
 .itemList > div:nth-child(5) {
    width: 20%;
   text-align: center;
-  color: brown;
 }
 .itemList:nth-child(even) {
   background: white;
@@ -636,6 +651,8 @@ form > input{
   h1{
     font-family: 'lato';
     font-size: 1.1em;
+    position: absolute;
+    left: 20px;
   }
 }
 .sub-header{
@@ -663,7 +680,7 @@ form > input{
 }
 
 .line-breaker{
-  border: solid 1px rgb(153, 152, 152);
+  // border: solid 1px rgb(153, 152, 152);
   border-bottom:0px;
   border-right: 0px;
   border-left: 0px;
@@ -831,7 +848,7 @@ form > input{
 }
 
 .history-labels > div:nth-child(1) {
-  width: 20%;
+  width: 25%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
 }
@@ -839,17 +856,17 @@ form > input{
   // border-left: 1px solid black;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
-  width: 20%;
+  width: 25%;
 }
 .history-labels > div:nth-child(3) {
   // border-left: 1px solid yellow;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
-  width: 20%;
+  width: 25%;
 }
 .history-labels > div:nth-child(4) {
   // border-left: 1px solid blue;
-  width: 20%;
+  width: 25%;
 }
 .history-labels > div:nth-child(5) {
 
