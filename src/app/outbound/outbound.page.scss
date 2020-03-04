@@ -92,7 +92,7 @@ div.swiper-container-horizontal > div.swiper-pagination-progressbar {
 
 .logger {
   // border: 2px solid green;
-  background-color:#548d04;
+  // background-color:265902;
   width: 50%;
   height: 55px;
   ion-button {
@@ -207,36 +207,43 @@ div.swiper-container-horizontal > div.swiper-pagination-progressbar {
 
 }
 .userId {
-  //border: 1px solid black;
-  width: 15%;
+  // border: 1px solid black;
+  width: 20%;
   padding-left: 5px;
   display: flex;
   align-items: center;
 }
 .name {
 //  border: 1px solid black;
-  width: 30%;
+  width: 20%;
   padding-left: 5px;
   display: flex;
   align-items: center;
 }
 .regNo {
+  // border: 1px solid black;
+  width: 20%;
   padding-left: 5px;
   display: flex;
   align-items: center;
-  
 }
 
 .icon {
-  padding-left: 5px;
   display: flex;
+  justify-content: center;
   align-items: center;
- // border: 2px solid red;
+//  border: 2px solid red;
   width: 20%;
   right: 2%;
-  height: 35px;
+  color: #D12C6F;
 }
 .Trashh{
+  // border: 1px solid black;
+  color: red;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
