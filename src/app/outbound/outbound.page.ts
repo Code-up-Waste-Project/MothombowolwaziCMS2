@@ -382,14 +382,10 @@ export class OutboundPage implements OnInit {
 
    //slides
    nextislide(){
- 
-    
-     this.slides.slideNext();
+ this.slides.slideNext();
    }
    previslide() {
     this.slides.slidePrev();
-  
-   
    }
   ngOnInit() {
 
