@@ -3103,7 +3103,7 @@ viewMoreGlass(){
     dropDown[0].style.maxHeight = "30px";
     document.getElementById("chevron-drop-down3").style.transform="rotateX(0DEG)"
 
-    alert();
+  
   }
 }
 
