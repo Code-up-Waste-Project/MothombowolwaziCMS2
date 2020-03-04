@@ -16,7 +16,10 @@ import { format } from 'url';
 })
 
 export class HomePage implements OnInit {
-
+  isOpenPaper = false;
+  isOpenPlastic = false;
+  isOpenGlass = false;
+  isOpenAluminium = false;
   viewBackdrop = false;
 
   @ViewChild('barChart', {static: false}) barChart;        
@@ -739,6 +742,7 @@ bD = document.getElementsByClassName('bD')
 
       this.oldpriceglass = snap.data().newgl001;
 
+
       this.pricess.gl001 = snap.data().newgl001;
     })
     //  console.log(this.glassArray)
@@ -1299,6 +1303,11 @@ bD = document.getElementsByClassName('bD')
       pap007: this.PAP007price,
       pap001: this.PAP001price,
       pap003: this.PAP003price,
+
+      oldpap005: this.oldpricepap005,
+      oldpap007: this.oldpricepap007,
+      oldpap001: this.oldpricepap001,
+      oldpap003: this.oldpricepap003,
     })
 
     // To update price :
@@ -1344,6 +1353,13 @@ bD = document.getElementsByClassName('bD')
       pet001: this.PET001price,
       pet003: this.PET003price,
       pet005: this.PET005price,
+
+      oldhd001: this.oldpricehd001,
+      oldld001: this.oldpricehd001,
+      oldld003: this.oldpriceld003,
+      oldpet001: this.oldpricepet001,
+      oldpet003: this.oldpricepet003,
+      oldpet005: this.oldpricepet005,
     })
 
     // To update price :
@@ -1390,6 +1406,7 @@ bD = document.getElementsByClassName('bD')
     this.db.collection("pricehistory").doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").doc().set({
       timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
       nfal01: this.oldpriceNFAL01,
+      oldnfal01: this.oldpriceNFAL01,
     })
 
     // To update price :
@@ -1418,6 +1435,7 @@ bD = document.getElementsByClassName('bD')
     this.db.collection("pricehistory").doc("8FtqTT4N4mFpbI4DKc25").collection("glass").doc().set({
       timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
       gl001: this.GH001price,
+      oldgl001: this.oldpriceglass,
     })
 
         // To update price :
@@ -2803,7 +2821,6 @@ HideandShowHISTORYGLASS() {
       this.route.navigateByUrl('/login');
      });
     }
-    
     editprofile() {
       this.route.navigate(['profile']);
     }
@@ -3035,8 +3052,7 @@ async presentAlertDelete(id) {
 deleteprice(id) {
   this.db.collection('price').doc('SinUfRNnbB073KZiDIZE').delete();
   console.log('Record deleted');
-}
-
+}  
 deletehd001(v){
   console.log('aaaa',v);
   firebase.firestore().collection('price').doc('SinUfRNnbB073KZiDIZE').update({
@@ -3051,15 +3067,10 @@ deletehd001(v){
 ionViewWillEnter() {
   this.menuCtrl.enable(true);
  }
-
 map(){
   this.route.navigateByUrl('/auto');
 }
 
-isOpenPaper = false;
-isOpenPlastic = false;
-isOpenGlass = false;
-isOpenAluminium = false;
 viewMorePaper(){
   let dropDown = document.getElementsByClassName("dropper1") as HTMLCollectionOf <HTMLElement>
 
