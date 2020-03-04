@@ -1,12 +1,12 @@
 <div class="The-header">
-  <div class="sub-header" >
- <h1>All Inbound Material</h1>
+  <div class="sub-header">
+    <h1 class="heading">All Inbound Material</h1>
+  </div>
+  <div class="log-out">
+    <!-- <ion-icon name="log-out" (click)="Logout()"></ion-icon> -->
+  </div>
 </div>
-<div class="log-out">
-<!-- <ion-icon name="log-out" (click)="Logout()"></ion-icon> -->
-</div>
-</div>
- <div class="line-breaker"></div>
+<div class="line-breaker"></div>
 
 
 <ion-content>
@@ -24,7 +24,7 @@
       </div>
 
       <div class="RecyleLogo">
-        <img  id="Opaque" src="../../assets/icon/Asset 10.svg" alt="">
+        <img id="Opaque" src="../../assets/icon/Asset 10.svg" alt="">
       </div>
       <div class="Recycle-Bins">
         <img src="../../assets/binsPopup  2.svg" alt="">
@@ -177,23 +177,23 @@
               <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
               <!-- <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar> -->
             </div>
-            <div class="CardiDiv"> 
-            <ion-card class="Cardie">
-              <ion-card-header>
-                <b> Thipenyane</b>
-              </ion-card-header>
-              <ion-card-content>
-                Information goes here...
-              </ion-card-content>
-            </ion-card>
-            <ion-card class="Cardie">
-              <ion-card-header>
-                <b> Thipenyane</b>
-              </ion-card-header>
-              <ion-card-content>
-                Information goes here...
-              </ion-card-content>
-            </ion-card>
+            <div class="CardiDiv">
+              <ion-card class="Cardie">
+                <ion-card-header>
+                  <b> Thipenyane</b>
+                </ion-card-header>
+                <ion-card-content>
+                  Information goes here...
+                </ion-card-content>
+              </ion-card>
+              <ion-card class="Cardie">
+                <ion-card-header>
+                  <b> Thipenyane</b>
+                </ion-card-header>
+                <ion-card-content>
+                  Information goes here...
+                </ion-card-content>
+              </ion-card>
             </div>
             <!-- <div class="contact-cards">
 
@@ -216,7 +216,7 @@
           </div>
         </div>
         <div class="blockItems">
-           <!-- -->
+          <!-- -->
           <div class="details-driver" id="driverInputs" *ngIf="driverInfo === true">
             <div id="inbound-profile">
               <div id="inbound-pic">
@@ -229,12 +229,12 @@
               </div>
             </div>
             <div class="the-inputs">
-            <input type="text" placeholder="Credential goes here..">
-            <input type="text" placeholder="Credential goes here..">
-            <input type="text" placeholder="Credential goes here..">
-            <input type="text" placeholder="Credential goes here..">
-            <input type="text" placeholder="Credential goes here..">
-          </div>
+              <input type="text" placeholder="Credential goes here..">
+              <input type="text" placeholder="Credential goes here..">
+              <input type="text" placeholder="Credential goes here..">
+              <input type="text" placeholder="Credential goes here..">
+              <input type="text" placeholder="Credential goes here..">
+            </div>
             <!-- <form [formGroup]="RegisterForm">
               <input type="text" placeholder="Driver Name" [(ngModel)]="DriverNameInput"
                 formControlName="DriverNameInput">
@@ -251,56 +251,59 @@
         </div>
       </div>
       <div class="bottom-button">
-        <ion-button color="clear" id="FinishBTN" (click)="showWasteInfo()"
-          [disabled]="!RegisterForm">
+        <ion-button color="clear" id="FinishBTN" (click)="showWasteInfo()" [disabled]="!RegisterForm">
           Next
         </ion-button>
       </div>
     </div>
 
   </div>
-<div class="top-blocks">
-  <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
-    <!-- <img src="../../assets/icon/SVG/Material SVGs/file.svg" alt=""> -->
-    <p>PAPER</p>
+  <div class="top-blocks">
+    <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
+      <!-- <img src="../../assets/icon/SVG/Material SVGs/file.svg" alt=""> -->
+      <p>PAPER</p>
+    </div>
+    <div class="waste-blocks" id="Plastic" (click)="showPopUp('plastic')">
+      <!-- <img src="../../assets/icon/SVG/Material SVGs/plastic (3).svg" alt=""> -->
+      <p>PLASTIC</p>
+    </div>
+    <div class="waste-blocks" id="Aluminium" (click)="showPopUp('aluminium')">
+      <!-- <img src="../../assets/icon/SVG/Material SVGs/soda (1).svg" alt=""> -->
+      <p>ALUMINIUM</p>
+    </div>
+    <div class="waste-blocks" id="Glass" (click)="showPopUp('glass')">
+      <!-- <img src="../../assets/icon/SVG/Material SVGs/glass (4).svg" alt=""> -->
+      <p>GLASS</p>
+    </div>
   </div>
-  <div class="waste-blocks" id="Plastic" (click)="showPopUp('plastic')">
-    <!-- <img src="../../assets/icon/SVG/Material SVGs/plastic (3).svg" alt=""> -->
-    <p>PLASTIC</p>
-  </div>
-  <div class="waste-blocks" id="Aluminium" (click)="showPopUp('aluminium')">
-    <!-- <img src="../../assets/icon/SVG/Material SVGs/soda (1).svg" alt=""> -->
-    <p>ALUMINIUM</p>
-  </div>
-  <div class="waste-blocks" id="Glass" (click)="showPopUp('glass')">
-    <!-- <img src="../../assets/icon/SVG/Material SVGs/glass (4).svg" alt=""> -->
-    <p>GLASS</p>
-  </div>
-</div>
-<div class="history" >   
-<div class="Title" >
-  <h2>Your History</h2>
-</div>
-<div class="line-breaker"></div>
-  <div class="history-labels">
-    <div>Date</div>
-    <div>Transaction Identity</div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="itemList" *ngFor="let records of recordinbounddisplaysz">
-    <div>{{ records.time }}</div>
-    <div>{{ records.id }}</div>
-    <div><ion-icon name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon></div>
-    <div><ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon></div>
-  </div>
-  <!-- <div class="itemList">
+  <div class="history">
+
+      <h2 class="headingHistory">Your History</h2>
+
+    <div class="line-breaker"></div>
+    <div class="history-labels">
+      <div>Date</div>
+      <div>Transaction Identity</div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="itemList" *ngFor="let records of recordinbounddisplaysz">
+      <div>{{ records.time }}</div>
+      <div>{{ records.id }}</div>
+      <div>
+        <ion-icon name="eye" [routerLink]="['/inbound-pdf', records.id]"></ion-icon>
+      </div>
+      <div>
+        <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
+      </div>
+    </div>
+    <!-- <div class="itemList">
     <div>February 10 2020</div>
     <div>ADSGDSHGSHEREWT</div>
     <div><ion-icon name="eye"></ion-icon></div>
     <div><ion-icon name="trash"></ion-icon></div>
   </div> -->
-</div>
+  </div>
 
 
 
