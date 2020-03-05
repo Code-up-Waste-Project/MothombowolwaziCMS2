@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
 import { AlertController, LoadingController, ToastController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, IonSlides } from '@ionic/angular';
 import { element } from 'protractor';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import * as moment from 'moment'
@@ -20,7 +20,9 @@ import * as moment from 'moment'
 })
 
 export class InboundPage implements OnInit {
-
+  transtioning: boolean = false;
+  isBeginning: boolean = false;
+  nextText = 'Next'
   // start of Declaretions
   // user infor
   admin = [];
@@ -118,7 +120,7 @@ export class InboundPage implements OnInit {
 
   RegisterForm: FormGroup;
 
-  
+  @ViewChild('slides', {static: false}) slides: IonSlides;
   goAway() {
     // alert("clicked")
     // this.selectedCat = "";
@@ -138,7 +140,9 @@ export class InboundPage implements OnInit {
     // alert("clicked")
     this.otherPopup = true;
   }
-
+  animateJs() {
+    this.transtioning = !this.transtioning;
+  }
   showInputs() {
     this.otherPopup = false;
 
@@ -217,6 +221,31 @@ export class InboundPage implements OnInit {
     this.getMasses();
     this.pdfmakerFirebase();
 
+   }
+
+
+   slideChanged($ev) {
+    this.slides.getActiveIndex().then(index => {
+      console.log(index);
+      if(index == 0) {
+        this.isBeginning = false;
+      }else {
+        this.isBeginning = true;
+      }
+      if(index == 2) {
+        this.nextText = 'Done';
+      }else {
+        this.nextText = 'Done';
+      }
+   });
+   }
+
+   //slides
+   nextislide(){
+ this.slides.slideNext();
+   }
+   previslide() {
+    this.slides.slidePrev();
    }
 
   ngOnInit() {

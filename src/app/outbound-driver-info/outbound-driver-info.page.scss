@@ -42,7 +42,7 @@
     flex-direction: row;
     border-radius: 5px;
     .profilepic {
-     
+    // border: 2px solid red;
         width: 60%;
         position: relative;
         display: flex;
@@ -253,8 +253,21 @@
     flex-direction: column;
 
     .canvas {
-        background: aqua;
-        height: 85%;
+       // background: aqua;
+     //  border: 1px solid gray;
+        height: 82%;
+        width: 96%;
+        position: relative;
+        left: 2%;
+        border-radius: 5px;
+
+        canvas {
+            height: 90% !important;
+            width: 100% !important;
+           
+            background: rgba(255, 255, 255, 0.158) !important;
+            border-radius: 12px !important;
+        }
     }
 .tops {
    // border: 2px solid red;

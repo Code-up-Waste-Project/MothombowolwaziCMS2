@@ -22,7 +22,7 @@
 }
 
 .mask{
-  background: rgba(0, 0, 0, 0.521);
+  background: rgba(0, 0, 0, 0.308);
   height: 100%;
   width: 100%;
   position: absolute;
@@ -63,6 +63,7 @@
 #user-profile{
   height: 60%;
   width: 80%;
+  margin-top: 78px;
   // border: solid 2px black;
   display:flex;
   justify-content: center;
@@ -113,6 +114,7 @@ justify-content: center;
 #the-role > p{
   font-family: 'Montserrat';
   font-size: 20px;
+  padding-bottom: 37px;
 }
 
 }
@@ -193,13 +195,13 @@ ion-button{
     position: absolute;
     margin: 0 auto;
     bottom: 10px;
-    right: 10px;
-    border: solid 2px #548d04;
+    right: 15px;
+    // border: solid 2px #548d04;
     border-radius: 50px;
     color: #548d04;
     font-size: 28px;
     // box-shadow: 0px -1px 15px black;
-    background-color: white;
+    // background-color: white;
   }
 
 

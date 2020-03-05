@@ -443,6 +443,7 @@
       <div class="name">Driver Name</div>
       <div class="regNo">Registration No.</div>
       <div></div>
+      <div></div>
      </div><!-- end of history-labels -->
 <div class="scrolling">
     <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
@@ -451,9 +452,9 @@
       <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
       <div class="icon"><ion-button [routerLink]="['/outbound-driver-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
-      <div>
+      <!-- <div>
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-      </div>
+      </div> -->
        </div>
     </div>
   </div><!-- end of history -->

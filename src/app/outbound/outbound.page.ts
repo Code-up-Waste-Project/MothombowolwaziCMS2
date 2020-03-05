@@ -226,6 +226,7 @@ export class OutboundPage implements OnInit {
   nextText = 'Next';
 
     goAway() {
+
       // alert("clicked")
       // this.selectedCat = "";
       // this.driverInformation = false;
@@ -233,7 +234,10 @@ export class OutboundPage implements OnInit {
       this.popOpOpen = false;
       this.slideOne = true;
       this.slideTwo = false;
-      this.driverInfo = false
+      this.driverInfo = false;
+
+  
+      
     }
     coemBack() {
     }
@@ -248,7 +252,6 @@ export class OutboundPage implements OnInit {
     animateJs() {
       this.transtioning = !this.transtioning;
     }
-
     showInputs() {
       this.otherPopup = false;
 
@@ -420,6 +423,10 @@ export class OutboundPage implements OnInit {
    }
 
   ngOnInit() {
+
+   
+   
+    
     this.sortTable();
 
     this.autocompleteItems = [];
@@ -1673,4 +1680,11 @@ callback(response, status) {
     ViewDriver() {
       this.route.navigate(['outbound-driver-info']);
     }
+  
+    // hide() {
+    //   console.log('clloseee',this.hideMe);
+      
+    //   this.hideMe = true;
+    // }
+   
 }

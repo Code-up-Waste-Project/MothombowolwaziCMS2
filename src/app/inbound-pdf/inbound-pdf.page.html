@@ -14,95 +14,93 @@
 </ion-header>
 ​
 <ion-content>
-  <div class="Thecont">
-    <div class="Information">
-  <div  *ngFor="let In of ViewInbound">
-​
-  <div class="Info">
-    <div class="div1"></div>
-    <!-- <div class="div2"><h2>Date:  {{ out.date }}</h2></div> -->
-  </div>
+  <div class="the-pdf">
+    <div id="the-pdf-page">
+      <div id="pdf-header">
+        <div id="first-section">
+          <h1>MTHOMBOWOLWAZI</h1>
+          <P>INBOUND WASTE RECYCLING</P>
+        </div>
+        <div id="second-setion">
+          <div id="the-image-div">
+            <img src="../../assets/mthombologo (1).png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="pdf-details">
+        <div id="info-one">
+          <!-- <ion-grid>
+            <ion-row>
+              <ion-col id="for-icon">
+                sdsd
+              </ion-col>
+              <ion-col>
+                sdsd
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
 
-  <h1>Purchases Per Product Summery</h1>
-​
-  <table style="width:100%">
-  <tr>
-    <th>Waste Type</th>
-    <th>CODE/NUMBER</th>
-    <th>Mass(kg)</th>
-  </tr>
-  <tr>
-    <td><p>Glass</p></td>
-    <td><p>{{ GH001 }}</p></td>
-    <td><p>{{ In.inboundGH001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p>Non-Ferrous</p></td>
-    <td><p>NFAL01</p></td>
-    <td><p>{{ In.inboundNFAL01 }}</p></td>
-  </tr>
-  <tr>
-    <td><p>PAPER</p></td>
-    <td><p>PAP005</p></td>
-    <td><p>{{ In.inboundPAP005 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP007</p></td>
-    <td><p>{{ In.inboundPAP007 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP001</p></td>
-    <td><p>{{ In.inboundPAP001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP003</p></td>
-    <td><p>{{ In.inboundPAP003 }}</p></td>
-  </tr>
-  <tr>
-    <td><p>PLASTIC</p></td>
-    <td><p>HD001</p></td>
-    <td><p>{{ In.inboundHD001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>LD001</p></td>
-    <td><p>{{ In.inboundLD001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>LD003</p></td>
-    <td><p>{{ In.inboundLD003 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET001</p></td>
-    <td><p>{{ In.inboundPET001 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET003</p></td>
-    <td><p>{{ In.inboundPET003 }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET005</p></td>
-    <td><p>{{ In.inboundPET005 }}</p></td>
-  </tr>
-  <!-- <tr>
-    <th></th>
-    <th></th>
-    <th>Overall Mass</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td><p>{{ In.ovarallMass }}</p></td>
-  </tr> -->
-</table>
-</div>
-</div>
-</div>
+          <table id="receipt-table">
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="person"></ion-icon>
+                </div>
+                <div> Lebogang Thipenyane </div>
+              </td>
+              <td>REGISTRATIO NO.</td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="pin"></ion-icon>
+                </div>
+                <div>
+                  7118 ISIGEDLA, STREET Naledi EXT 2
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="mail"></ion-icon>
+                </div>
+                <div>
+                  mthombowolwazi@gmail.com
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="call"></ion-icon>
+                </div>
+                <div>
+                  0740954945
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="pdf-table">
+        <table id="the-table-header">
+        <tr>
+          <th>MATERIAL CODE</th>
+          <th>MASS (KG)</th>
+          <th>VAT</th>
+          <th>PRICE</th>
+        </tr>
+      </table>
+      </div>
+      <!-- <table>
+        <tr>
+          <td>GL001</td>
+          <td>60 kg</td>
+          <td>R0.40</td>
+          <td>R400.00</td>
+        </tr>
+      </table> -->
+    </div>
+  </div>
 </ion-content>
