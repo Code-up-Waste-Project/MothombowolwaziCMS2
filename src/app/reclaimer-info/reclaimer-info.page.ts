@@ -435,9 +435,43 @@ export class ReclaimerInfoPage implements OnInit {
       })
     })
    }
+//chart createion
+ionViewDidEnter() {
+  this.createLineChart();
+}
+ngOnInit() {
+}
 
-  ngOnInit() {
-  }
+createLineChart() {
+  Chart.defaults.global.defaultFontSize = 15;
+  Chart.defaults.global.defaultFontFamily = 'Roboto';
+  this.bars= new Chart(this.barChart.nativeElement, {
+ 
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Material Sold',
+        data: ['Jan', 'Jan', 'Jan', 'Jan', 'Jan', 
+        'Jan', 'Jan', 'Jan', 'Jan','Jan',
+        'Jan', 'Jan'],
+        backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+        borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+ 
 
   pullHistoryData() {
     // January
@@ -718,32 +752,32 @@ export class ReclaimerInfoPage implements OnInit {
 
   }
 
-  createLineChart() {
-    this.bars= new Chart(this.barChart.nativeElement, {
+  // createLineChart() {
+  //   this.bars= new Chart(this.barChart.nativeElement, {
    
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Material Delivered',
-          data: [this.jan, this.feb, this.mar, this.apr, this.may, 
-                this.jun, this.jul, this.aug, this.sep, this.oct,
-                this.nov, this.dec],
-          backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
-          borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
+  //     type: 'line',
+  //     data: {
+  //       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  //       datasets: [{
+  //         label: 'Material Delivered',
+  //         data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+  //               this.jun, this.jul, this.aug, this.sep, this.oct,
+  //               this.nov, this.dec],
+  //         backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+  //         borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+  //         borderWidth: 1
+  //       }]
+  //     },
+  //     options: {
+  //       scales: {
+  //         yAxes: [{
+  //           ticks: {
+  //             beginAtZero: true
+  //           }
+  //         }]
+  //       }
+  //     }
+  //   });
+  // }
 
 }

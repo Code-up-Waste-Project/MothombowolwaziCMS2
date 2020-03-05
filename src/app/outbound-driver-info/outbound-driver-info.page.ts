@@ -24,6 +24,8 @@ export class OutboundDriverInfoPage implements OnInit {
   
   db = firebase.firestore();
 
+  //method to show and hide profile form
+  display: boolean = true;
   colorArray: any;
   bars: any;
 
@@ -155,6 +157,10 @@ export class OutboundDriverInfoPage implements OnInit {
 
   ngOnInit() {
   }
+//method to show and hide profile
+flip(){
+  this.display = !this.display;
+}
 
   pullDrive() {
     this.Outbound = this.db.collection('outbound').doc(this.id);

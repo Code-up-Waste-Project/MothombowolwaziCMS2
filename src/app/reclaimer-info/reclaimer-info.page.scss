@@ -148,6 +148,7 @@
       left: 2%;
       display: flex;
       flex-direction: column;
+      background: whitesmoke;
   
       h3 {
           // border: 1px solid black;
@@ -253,9 +254,21 @@
       flex-direction: column;
   
       .canvas {
-          background: aqua;
-          height: 85%;
-      }
+        // background: aqua;
+        border: 1px solid gray;
+         height: 82%;
+         width: 96%;
+         position: relative;
+         left: 2%;
+         border-radius: 5px;
+ 
+         canvas {
+             height: 100% !important;
+             width: 100% !important;
+               background: rgba(255, 255, 255, 0.158) !important;
+             border-radius: 12px !important;
+         }
+     }
   .tops {
      // border: 2px solid red;
       height: 15%;

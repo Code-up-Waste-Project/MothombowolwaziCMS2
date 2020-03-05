@@ -1,9 +1,74 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>inboundHistory</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
+  <div class="container" >
+    <div class="head">
+      <p> Inbound Driver's Profile & History</p>
+    </div>
+  <div class="top" padding>
+    <div class="driverDetails" >
+      <div class="profilepic">
+        <p>Driver's Personal Information</p>
+        <div class="profileimage">
+          <!-- <img src="../../assets/girl.jfif"> -->
+          <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+          <img *ngIf="image" src="{{ image }}" alt="">
+        </div>
+      </div>
+      <div class="profiledetails">
+        <p id="name">Mr Milano</p>
+        
+        <p>JK 7945 GP</p>
+        <p>JK 7945 GP</p>
+        <!-- <p id="email">Fumza@gmail.com</p> -->
+        <p>067 051 9651</p>
+        <p id="adres">Deliver Zinto (pty) ltd</p>
+        <!-- <button>Edit Profile</button> -->
+      </div>
+    </div>
+  
+    <div class="tripDetails">
+      <h3>Details Per Trip</h3>
+      <div class="scrollreceipts" >
+        <div class="card" >
+          <div class="leftside">
+            <p class="time"></p>
+            <p>Reference No.</p>
+            <p>Truck Load</p>
+            <p>Destination</p>
+            <p>Distance in km</p>
+          </div>
+          <div class="rightside">
+            <p class="time">:  05/ 03/ 2020</p>
+            <p>: Something </p>
+            <p>: 25 217 kg</p>
+            <p>: 404 cruise road Melville</p>
+            <p>: 527 km</p>
+  
+            <button >Details</button>
+          </div>
+        </div>
 
-</ion-content>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="graph">
+    <div class="tops">
+      <h3 *ngFor="let driver of ViewOutbound">Materials delivered by {{ driver.DriverName }} overtime</h3>
+      <div class="boxes">
+        <P>PAPER <br><span>1235 kg</span></P>
+        <P>PLASTIC <br><span>5847 kg</span></P>
+        <P>ALUMINIUM <br><span>98746 kg</span></P>
+        <P>GLASS <br><span>8469 kg</span></P>
+      </div>
+    </div>
+    <div class="canvas">
+      <canvas #barChart  >
+      </canvas>
+    </div>
+  </div>
+  </div>
+  </ion-content>
+  

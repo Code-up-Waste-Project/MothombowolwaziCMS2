@@ -261,7 +261,7 @@ export class InboundPage implements OnInit {
 //end of slides
 
 inboundHistory(){
-
+  this.route.navigate(['inbound-history']);
 }
   ngOnInit() {
     this.sortTable()
