@@ -11,9 +11,9 @@
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
-          <ion-toolbar color="tertiary">
+          <!-- <ion-toolbar color="tertiary">
             <ion-title class="ion-text-center">Inbound Details</ion-title>
-          </ion-toolbar>
+          </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two" color="primary">
@@ -392,7 +392,7 @@
 <!-- adding parent div -->
 <div class="parentDiv">
   <div class="head">
-    <h3>Record all your dispatch material here</h3>
+    <h3>Record all your incoming material here</h3>
   </div>
   <div class="top-blocks">
     <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
@@ -419,7 +419,7 @@
       <div class="userId">Code</div>
       <div class="name">Driver Name</div>
       <div class="regNo">Registration No.</div>
-      <div></div>
+      <div class="icon">Details</div>
       <div></div>
      </div><!-- end of history-labels -->
 <div class="scrolling">
