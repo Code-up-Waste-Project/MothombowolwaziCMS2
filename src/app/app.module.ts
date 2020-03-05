@@ -37,11 +37,12 @@ var firebaseConfig = {
   appId: "1:341336075428:web:5ca270a91c3b7560840a31",
   measurementId: "G-17SX6EWXGR"
 };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
+// Initialize Firebase
 
-// Your web app's Firebase configuration         New Database 5 Feb 2020
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+// // Your web app's Firebase configuration         New Database 5 Feb 2020
 // var firebaseConfig = {
 //   apiKey: "AIzaSyDM4VPXQFIZnLwAvu6Tbmn4utTNeAP2ZNg",
 //   authDomain: "mthombowolwazicms2.firebaseapp.com",
@@ -52,10 +53,9 @@ var firebaseConfig = {
 //   appId: "1:860270237434:web:419f1774e1269efb38db43",
 //   measurementId: "G-32KKEKZX5S"
 // };
-// Initialize Firebase
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
 
 @NgModule({
   declarations: [AppComponent, RegistersPipe],
