@@ -167,11 +167,7 @@ export class AppComponent implements OnInit {
         icon: 'manageUserz',
         admin:"cool"
       },
-      {
-        title: 'Logout',
-        icon: 'logout',
-        admin: "cool"
-      }
+   
       );
     }
             // console.log(this.appPages);

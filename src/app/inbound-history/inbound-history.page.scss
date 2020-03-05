@@ -95,7 +95,17 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-  
+          &::after {
+            position: absolute;
+            top: 10%;
+            left: 0%;
+            width: 2px;
+            height: 80%;
+            content: '';
+            background: #ddd;
+            border-radius: 50px;
+        
+          }
           
           p {
              // border: 1px solid black;

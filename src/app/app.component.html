@@ -24,9 +24,16 @@
                 {{p.title}}
               </ion-label>
             </ion-item>
+
           </ion-menu-toggle>
+          <ion-item id="signout" style="background: rgb(189, 67, 87);" (click)="Logout()">
+            <ion-icon style="color: white;" slot="start" name="signout" width="20px" ></ion-icon>
+              
+            <ion-label >
+              Logout
+            </ion-label></ion-item>
               <div class="version">
-              <button (click)="Logout()">logout</button>
+              <!-- <button (click)="Logout()">logout</button> -->
 <div class="logos">
   <img src="../assets/logo.svg" /> <h3>Mthombowolwazi</h3>
 </div>

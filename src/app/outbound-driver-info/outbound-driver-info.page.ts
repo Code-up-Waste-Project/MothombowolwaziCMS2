@@ -25,7 +25,8 @@ export class OutboundDriverInfoPage implements OnInit {
   db = firebase.firestore();
 
   //method to show and hide profile form
-  display: boolean = true;
+  come: boolean = true;
+ 
   colorArray: any;
   bars: any;
 
@@ -158,8 +159,8 @@ export class OutboundDriverInfoPage implements OnInit {
   ngOnInit() {
   }
 //method to show and hide profile
-flip(){
-  this.display = !this.display;
+switch(){
+  this.come = !this.come;
 }
 
   pullDrive() {
@@ -589,6 +590,9 @@ flip(){
   // }
 
   createLineChart() {
+    Chart.defaults.global.defaultFontSize = 13;
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
+
     this.bars= new Chart(this.barChart.nativeElement, {
    
       type: 'line',

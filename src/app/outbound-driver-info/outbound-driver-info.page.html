@@ -4,7 +4,7 @@
     <p>Outbound Driver's Profile & History</p>
   </div>
 <div class="top" padding>
-  <div class="driverDetails" *ngFor="let driver of ViewOutbound">
+  <div class="driverDetails" [ngClass]="{'hide' : !come}" *ngFor="let driver of ViewOutbound">
     <div class="profilepic">
       <p>Driver's Personal Information</p>
       <div class="profileimage">
@@ -21,7 +21,28 @@
       <!-- <p id="email">Fumza@gmail.com</p> -->
       <p>{{ driver.numbers }}</p>
       <p id="adres">{{ driver.companyaddress }}</p>
-      <button>Edit Profile</button>
+      <button (click)="switch()">Edit Profile</button>
+    </div>
+
+
+  </div>
+
+  <div class="driverDetails" id="driverDetails" [ngClass]="{'hide' : come}"  *ngFor="let driver of ViewOutbound">
+    <div class="profilepic">
+      <p>Driver's Personal Information</p>
+      <div class="profileimage">
+      
+        <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+        <img *ngIf="image" src="{{ image }}" alt="">
+      </div>
+    </div>
+    <div class="profiledetails">
+      <input placeholder="Full names">
+      <input placeholder="Phone number">
+      <input placeholder="Registration no.">
+      <input placeholder="Company name">
+      <input placeholder="Company address">
+      <ion-button>Update Profile</ion-button>
     </div>
   </div>
 
@@ -48,6 +69,8 @@
       </div>
     </div>
   </div>
+      <!-- div to update drivers information -->
+
 </div>
 
 
@@ -67,25 +90,6 @@
   </div>
 </div>
 
-<!-- div to update drivers information -->
-<div class="driverDetails"  *ngFor="let driver of ViewOutbound">
-  <div class="profilepic">
-    <p>Driver's Personal Information</p>
-    <div class="profileimage">
-      <!-- <img src="../../assets/girl.jfif"> -->
-      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-      <img *ngIf="image" src="{{ image }}" alt="">
-    </div>
-  </div>
-  <div class="profiledetails">
-    <p id="name">{{ driver.DriverName }}</p>
-     <p>{{ driver.truckcode }}</p>
-    <p>{{ driver.RegistarionNumberPlates }}</p>
-    <!-- <p id="email">Fumza@gmail.com</p> -->
-    <p>{{ driver.numbers }}</p>
-    <p id="adres">{{ driver.companyaddress }}</p>
-    <button>Edit Profile</button>
-  </div>
-</div>
+
 </div>
 </ion-content>

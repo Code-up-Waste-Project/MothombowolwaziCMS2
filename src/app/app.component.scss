@@ -3,7 +3,17 @@
     position: absolute;
     bottom: 0;
 }
+ion-list {
+  //  border: 2px solid goldenrod !important;
 
+    ion-menu-toggle {
+        //border: 1px solid red !important;
+
+        ion-item {
+          //  border: 1px solid blue;
+        }
+    }
+}
 .active {
     --background: #558c03  !important;
    // border: 1px solid blue;
@@ -18,7 +28,9 @@ ion-icon {
     color: white;
 }
 }
-
+#signout {
+    cursor: pointer !important;
+}
 ion-label {
       color: white;
       font-weight: 200 !important;
@@ -26,6 +38,7 @@ ion-label {
     // font-weight: lighter;
       font-size: 18px !important;
       letter-spacing: 0.8px;
+     // border: 1px solid blue;
 }
 .profile {
   //  border: 1px solid blue;
