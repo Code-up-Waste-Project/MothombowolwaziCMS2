@@ -11,6 +11,7 @@ import { ModalController, ToastController, LoadingController, AlertController } 
 import { element } from 'protractor';
 import { Location } from "@angular/common";
 import { Chart} from 'chart.js';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-outbound-driver-info',
@@ -21,9 +22,10 @@ export class OutboundDriverInfoPage implements OnInit {
 
   @ViewChild('barChart', {static: false}) barChart;   
   
+  db = firebase.firestore();
+
   colorArray: any;
   bars: any;
-  db = firebase.firestore();
 
   DriverName;
   RegistarionNumberPlates;
@@ -83,6 +85,48 @@ export class OutboundDriverInfoPage implements OnInit {
   glassTotal = 0;
   // barChart: any;
 
+  userArray = [];
+  timeArray = [];
+
+  januserArray = [];
+  febuserArray = [];
+  maruserArray = [];
+  apruserArray = [];
+  mayuserArray = [];
+  junuserArray = [];
+  juluserArray = [];
+  auguserArray = [];
+  sepuserArray = [];
+  octuserArray = [];
+  novuserArray = [];
+  decuserArray = [];
+
+  jantimeArray = [];
+  febtimeArray = [];
+  martimeArray = [];
+  aprtimeArray = [];
+  maytimeArray = [];
+  juntimeArray = [];
+  jultimeArray = [];
+  augtimeArray = [];
+  septimeArray = [];
+  octtimeArray = [];
+  novtimeArray = [];
+  dectimeArray = [];
+
+  jan = 0;
+  feb = 0;
+  mar = 0;
+  apr = 0;
+  may = 0;
+  jun = 0;
+  jul = 0;
+  aug = 0;
+  sep = 0;
+  oct = 0;
+  nov = 0;
+  dec = 0;
+
   constructor(
     public toastController: ToastController,
     private modalcontroller: ModalController,
@@ -105,6 +149,7 @@ export class OutboundDriverInfoPage implements OnInit {
 
     this.pullDrive();
     this.pullMassz();
+    this.pullHistoryData();
     
    }
 
@@ -117,7 +162,7 @@ export class OutboundDriverInfoPage implements OnInit {
     this.Outbound.get().then((element) => {
       // console.log(documentSnapshot.data());
       this.ViewOutbound.push(element.data());
-      console.log(this.ViewOutbound);
+      // console.log(this.ViewOutbound);
 
       // console.log(element.data);
       let DriverName = {};
@@ -130,22 +175,22 @@ export class OutboundDriverInfoPage implements OnInit {
       DriverName = this.DriverName = element.data().DriverName;
       RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
       TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-      // Destination = this.Destination = element.data().Destination;
-      console.log(this.DriverName);
-      console.log(this.RegistarionNumberPlates);
-      // console.log(this.overallStorage);
-      console.log(this.TruckSourcess);
-      // console.log(this.Destination);
-      // console.log(this.overallStoragez);
+      // // Destination = this.Destination = element.data().Destination;
+      // console.log(this.DriverName);
+      // console.log(this.RegistarionNumberPlates);
+      // // console.log(this.overallStorage);
+      // console.log(this.TruckSourcess);
+      // // console.log(this.Destination);
+      // // console.log(this.overallStoragez);
     });
   }
 
   pullMassz() {
     this.db.collection('outboundMass').where('driverID', '==', this.id).onSnapshot(snapshot => {
       snapshot.forEach(element => {
-        console.log(element.data());
+        // console.log(element.data());
         this.ViewOutboundMasses.push(element.data());
-        console.log(this.ViewOutboundMasses);
+        // console.log(this.ViewOutboundMasses);
 
         this.GH001storagemass = element.data().GH001;
         this.GH001storagemassz = (String(this.GH001storagemass).substring(0, 6));
@@ -172,6 +217,21 @@ export class OutboundDriverInfoPage implements OnInit {
         this.PET005storagemass = element.data().PET005;
         this.PET005storagemassz = (String(this.PET005storagemass).substring(0, 6));
 
+        // console.log(this.GH001storagemass);
+        // console.log(this.NFAL01storagemass);
+
+        // console.log(this.PAP005storagemass);
+        // console.log(this.PAP007storagemass);
+        // console.log(this.PAP001storagemass);
+        // console.log(this.PAP003storagemass);
+
+        // console.log(this.HD001storagemass);
+        // console.log(this.LD001storagemass);
+        // console.log(this.LD003storagemass);
+        // console.log(this.PET001storagemass);
+        // console.log(this.PET003storagemass);
+        // console.log(this.PET005storagemass);
+
         this.paperTotal = this.paperTotal 
           +parseFloat(element.data().PAP001) +
           +parseFloat(element.data().PAP003) +
@@ -190,22 +250,6 @@ export class OutboundDriverInfoPage implements OnInit {
 
         this.glassTotal = this.glassTotal +parseFloat(element.data().GH001);
 
-        // graph
-        this.GH001storagemassgraph = this.GH001storagemassgraph +parseFloat(element.data().GH001)
-        this.NFAL01storagemassgraph = this.NFAL01storagemassgraph +parseFloat(element.data().NFAL01)
-
-        this.PAP005storagemassgraph = this.PAP005storagemassgraph +parseFloat(element.data().PAP005)
-        this.PAP007storagemassgraph = this.PAP007storagemassgraph  +parseFloat(element.data().PAP007)
-        this.PAP001storagemassgraph = this.PAP001storagemassgraph +parseFloat(element.data().PAP001)
-        this.PAP003storagemassgraph = this.PAP003storagemassgraph +parseFloat(element.data().PAP003)
-
-        this.HD001storagemassgraph = this.HD001storagemassgraph +parseFloat(element.data().HD001)
-        this.LD001storagemassgraph = this.LD001storagemassgraph +parseFloat(element.data().LD001)
-        this.LD003storagemassgraph = this.LD003storagemassgraph +parseFloat(element.data().LD003)
-        this.PET001storagemassgraph = this.PET001storagemassgraph +parseFloat(element.data().PET00)
-        this.PET003storagemassgraph = this.PET003storagemassgraph +parseFloat(element.data().PET003)
-        this.PET005storagemassgraph = this.PET005storagemassgraph +parseFloat(element.data().PET005)
-        
       });
     })
 
@@ -229,30 +273,341 @@ export class OutboundDriverInfoPage implements OnInit {
     
 //   }
 // }
-createLineChart() {
-  this.bars= new Chart(this.barChart.nativeElement, {
+// createLineChart() {
+//   this.bars= new Chart(this.barChart.nativeElement, {
  
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'Material Delivered',
-        data: [2.5, 3.8, 5, 6.9, 6.9, 7.5, 10, 17, 8,10,2,89],
-        backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
-        borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
+//     type: 'line',
+//     data: {
+//       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+//       datasets: [{
+//         label: 'Material Delivered',
+//         data: [2.5, 3.8, 5, 6.9, 6.9, 7.5, 10, 17, 8,10,2,89],
+//         backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+//         borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+//         borderWidth: 1
+//       }]
+//     },
+//     options: {
+//       scales: {
+//         yAxes: [{
+//           ticks: {
+//             beginAtZero: true
+//           }
+//         }]
+//       }
+//     }
+//   });
+// }
+
+  pullHistoryData() {
+    // January
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.januserArray.push(snap.data());
+        // console.log(this.januserArray);
+        for (let keyjan in this.januserArray) {
+          // console.log(this.januserArray[key].date);
+          // console.log(this.januserArray[key].ovarallMass);
+          if (this.januserArray[keyjan].date >= 'January 01 2020' && this.januserArray[keyjan].date <= 'January 31 2020') {
+            // this.jantimeArray.push(this.januserArray[key])
+            // console.log(this.jantimeArray);
+
+            let janMass = 0;
+            janMass = +janMass + +parseFloat(this.januserArray[keyjan].ovarallMass);
+            this.jan = +this.jan + +janMass;
+            console.log(this.jan);
           }
+        }
+      })
+    })
+
+    // February
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.febuserArray.push(snap.data());
+        // console.log(this.febuserArray);
+        for (let keyfeb in this.febuserArray) {
+          // console.log(this.febuserArray[key].date);
+          // console.log(this.febuserArray[key].ovarallMass);
+          if (this.febuserArray[keyfeb].date >= 'February 01 2020' && this.febuserArray[keyfeb].date <= 'February 28 2020') {
+            // this.febtimeArray.push(this.febuserArray[key])
+            // console.log(this.febtimeArray);
+
+            let febMass = 0;
+            febMass = +febMass + +parseFloat(this.febuserArray[keyfeb].ovarallMass);
+            this.feb = +this.feb + +febMass
+            console.log(this.feb);
+          }
+        }
+      })
+    })
+
+    // March
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+
+      let marMass = 0;
+
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.maruserArray.push(snap.data());
+        // console.log(this.maruserArray);
+        for (let keymar in this.maruserArray) {
+          // console.log(this.maruserArray[key].date);
+          // console.log(this.maruserArray[key].ovarallMass);
+          if (this.maruserArray[keymar].date >= 'March 01 2020' && this.maruserArray[keymar].date <= 'March 31 2020') {
+            marMass = +marMass + +parseFloat(this.maruserArray[keymar].ovarallMass);
+          }
+        }
+        this.mar = +marMass;
+        console.log(marMass);
+        console.log(this.mar);
+      })
+    })
+
+    // April
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.apruserArray.push(snap.data());
+        // console.log(this.apruserArray);
+        for (let keyapr in this.apruserArray) {
+          // console.log(this.apruserArray[key].date);
+          // console.log(this.apruserArray[key].ovarallMass);
+          if (this.apruserArray[keyapr].date >= 'April 01 2020' && this.apruserArray[keyapr].date <= 'April 30 2020') {
+            // this.aprtimeArray.push(this.apruserArray[key])
+            // console.log(this.aprtimeArray);
+
+            let aprMass = 0;
+            aprMass = +aprMass + +parseFloat(this.apruserArray[keyapr].ovarallMass);
+            this.apr = +this.apr + +aprMass;
+            console.log(this.apr);
+          }
+        }
+      })
+    })
+
+    // May
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.mayuserArray.push(snap.data());
+        // console.log(this.mayuserArray);
+        for (let keymay in this.mayuserArray) {
+          // console.log(this.mayuserArray[key].date);
+          // console.log(this.mayuserArray[key].ovarallMass);
+          if (this.mayuserArray[keymay].date >= 'May 01 2020' && this.mayuserArray[keymay].date <= 'May 31 2020') {
+            // this.maytimeArray.push(this.mayuserArray[key])
+            // console.log(this.maytimeArray);
+
+            let mayMass = 0;
+            mayMass = +mayMass + +parseFloat(this.mayuserArray[keymay].ovarallMass);
+            this.may = +this.may + +mayMass;
+            console.log(this.may);
+          }
+        }
+      })
+    })
+
+    // June
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.junuserArray.push(snap.data());
+        // console.log(this.junuserArray);
+        for (let keyjun in this.junuserArray) {
+          // console.log(this.junuserArray[key].date);
+          // console.log(this.junuserArray[key].ovarallMass);
+          if (this.junuserArray[keyjun].date >= 'June 01 2020' && this.junuserArray[keyjun].date <= 'June 30 2020') {
+            // this.juntimeArray.push(this.junuserArray[key])
+            // console.log(this.juntimeArray);
+
+            let junMass = 0;
+            junMass = +junMass + +parseFloat(this.junuserArray[keyjun].ovarallMass);
+            this.jun = +this.jun + +junMass;
+            console.log(this.jun);
+          }
+        }
+      })
+    })
+
+    // July
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.juluserArray.push(snap.data());
+        // console.log(this.juluserArray);
+        for (let keyjul in this.juluserArray) {
+          // console.log(this.juluserArray[key].date);
+          // console.log(this.juluserArray[key].ovarallMass);
+          if (this.juluserArray[keyjul].date >= 'July 01 2020' && this.juluserArray[keyjul].date <= 'July 31 2020') {
+            // this.jultimeArray.push(this.juluserArray[key])
+            // console.log(this.jultimeArray);
+
+            let julMass = 0;
+            julMass = +julMass + +parseFloat(this.juluserArray[keyjul].ovarallMass);
+            this.jul = +this.jul + +julMass;
+            console.log(this.jul);
+          }
+        }
+      })
+    })
+
+    // August
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.auguserArray.push(snap.data());
+        // console.log(this.auguserArray);
+        for (let keyaug in this.auguserArray) {
+          // console.log(this.auguserArray[key].date);
+          // console.log(this.auguserArray[key].ovarallMass);
+          if (this.auguserArray[keyaug].date >= 'August 01 2020' && this.auguserArray[keyaug].date <= 'August 30 2020') {
+            // this.augtimeArray.push(this.auguserArray[key])
+            // console.log(this.augtimeArray);
+
+            let augMass = 0;
+            augMass = +augMass + +parseFloat(this.auguserArray[keyaug].ovarallMass);
+            this.aug = +this.aug + +augMass; 
+            console.log(this.aug);
+          }
+        }
+      })
+    })
+
+    // September
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.sepuserArray.push(snap.data());
+        // console.log(this.sepuserArray);
+        for (let keysep in this.sepuserArray) {
+          // console.log(this.sepuserArray[key].date);
+          // console.log(this.sepuserArray[key].ovarallMass);
+          if (this.sepuserArray[keysep].date >= 'September 01 2020' && this.sepuserArray[keysep].date <= 'September 31 2020') {
+            // this.septimeArray.push(this.sepuserArray[key])
+            // console.log(this.septimeArray);
+
+            let sepMass = 0;
+            sepMass = +sepMass + +parseFloat(this.sepuserArray[keysep].ovarallMass);
+            this.sep = +this.sep + +sepMass;
+            console.log(this.sep);
+          }
+        }
+      })
+    })
+
+    // October
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.octuserArray.push(snap.data());
+        // console.log(this.octuserArray);
+        for (let keyoct in this.octuserArray) {
+          // console.log(this.octuserArray[key].date);
+          // console.log(this.octuserArray[key].ovarallMass);
+          if (this.octuserArray[keyoct].date >= 'October 01 2020' && this.octuserArray[keyoct].date <= 'October 30 2020') {
+            // this.octtimeArray.push(this.octuserArray[key])
+            // console.log(this.octtimeArray);
+
+            let octMass = 0;
+            octMass = +octMass + +parseFloat(this.octuserArray[keyoct].ovarallMass);
+            this.oct = +this.oct + +octMass;
+            console.log(this.oct);
+          }
+        }
+      })
+    })
+
+    // November
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.novuserArray.push(snap.data());
+        // console.log(this.novuserArray);
+        for (let keynov in this.novuserArray) {
+          // console.log(this.novuserArray[key].date);
+          // console.log(this.novuserArray[key].ovarallMass);
+          if (this.novuserArray[keynov].date >= 'November 01 2020' && this.novuserArray[keynov].date <= 'November 30 2020') {
+            // this.novtimeArray.push(this.novuserArray[key])
+            // console.log(this.novtimeArray);
+
+            let novMass = 0;
+            novMass = +novMass + +parseFloat(this.novuserArray[keynov].ovarallMass);
+            this.nov = +this.nov + +novMass;
+            console.log(this.nov);
+          }
+        }
+      })
+    })
+
+    // December
+    this.db.collection('outboundMass').where("driverID", "==", this.id).onSnapshot(snap => {
+      // console.log(snap);
+      snap.forEach(snap => {
+        // console.log(snap.data());
+        this.decuserArray.push(snap.data());
+        // console.log(this.decuserArray);
+        for (let keydec in this.decuserArray) {
+          // console.log(this.decuserArray[key].date);
+          // console.log(this.decuserArray[key].ovarallMass);
+          if (this.decuserArray[keydec].date >= 'December 01 2020' && this.decuserArray[keydec].date <= 'December 31 2020') {
+            // this.dectimeArray.push(this.decuserArray[key])
+            // console.log(this.dectimeArray);
+
+            let decMass = 0;
+            decMass = +decMass + +parseFloat(this.decuserArray[keydec].ovarallMass);
+            this.dec = +this.dec + +decMass; 
+            console.log(this.dec);
+          }
+        }
+      })
+    })
+
+  }
+
+  // ionViewDidEnter() {
+  //   this.createLineChart();
+  // }
+
+  createLineChart() {
+    this.bars= new Chart(this.barChart.nativeElement, {
+   
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Material Delivered',
+          data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+                this.jun, this.jul, this.aug, this.sep, this.oct,
+                this.nov, this.dec],
+          backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+          borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+          borderWidth: 1
         }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
-    }
-  });
-}
+    });
+  }
 
 }

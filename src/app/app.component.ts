@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   public appPages = [];
   admin;
- pos;
+  pos;
   adminss = [];
   
   ActiveAcount: boolean;
@@ -48,20 +48,8 @@ export class AppComponent implements OnInit {
     private content: ElementRef,
     private render: Renderer2,
     public router: Router,
-    
   ) {
-
-
-console.log("good morning")
-
-
-
-
-
-
-
-
-
+    console.log("good morning")
       this.getAuth();
       this.initializeApp();
      
@@ -205,12 +193,7 @@ console.log("good morning")
     getAuth() {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
-            
             this.router.navigateByUrl('/home');
-
-
-            
- 
             this.db.collection('admin').get().then(snapshot => {
               this.Newadmin =[]
                 snapshot.forEach(Element => {
@@ -229,19 +212,6 @@ console.log("good morning")
                   }
                 });
               });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           }else {
             this.router.navigateByUrl('/login');
