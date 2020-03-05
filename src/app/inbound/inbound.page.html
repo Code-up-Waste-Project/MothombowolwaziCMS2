@@ -249,9 +249,6 @@
 
 </div><!-- end of slides -->
 
-
-
-
     <!-- <div class="dismissOverlay" (click)="goAway()"></div> -->
 
     <div class="userForm2" *ngIf="slideTwo === true">
@@ -427,7 +424,7 @@
       <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.truckcode }}</div>
       <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.DriverName }}</div>
       <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
-      <div class="icon"><ion-button [routerLink]="['/outbound-driver-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
+      <div class="icon"><ion-button [routerLink]="['/inbound-history', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
       <!-- <div>
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
@@ -436,8 +433,5 @@
     </div>
   </div><!-- end of history -->
 </div>
- 
-
-
- 
+  
 </ion-content>

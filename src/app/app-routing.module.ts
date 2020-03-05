@@ -128,8 +128,9 @@ const routes: Routes = [
   {
     path: 'reclaimer-info/:id',
     loadChildren: () => import('./reclaimer-info/reclaimer-info.module').then( m => m.ReclaimerInfoPageModule)
-  },  {
-    path: 'inbound-history',
+  },
+  {
+    path: 'inbound-history/:id',
     loadChildren: () => import('./inbound-history/inbound-history.module').then( m => m.InboundHistoryPageModule)
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef,ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { MenuController } from '@ionic/angular';
@@ -142,9 +142,6 @@ export class OutboundDriverInfoPage implements OnInit {
     private location: Location,
     private fileOpener: FileOpener
   ) {
-
-
-
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
 
@@ -156,10 +153,11 @@ export class OutboundDriverInfoPage implements OnInit {
 
   ngOnInit() {
   }
-//method to show and hide profile
-flip(){
-  this.display = !this.display;
-}
+  
+  //method to show and hide profile
+  flip(){
+    this.display = !this.display;
+  }
 
   pullDrive() {
     this.Outbound = this.db.collection('outbound').doc(this.id);
