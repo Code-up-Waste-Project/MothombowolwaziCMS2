@@ -939,23 +939,13 @@ font-family: 'lato';
   font-weight: bold;
 }
 
-
 .singular-input {
   width: 80% !important;
 }
 
-
-
-
 #Opaque{
   opacity: 0.3;
 }
-
-
-
-
-
-
 
 .bottom-button{
   width: 100%;
@@ -972,9 +962,6 @@ font-family: 'lato';
   line-height: 80px;
   text-align: center;
 }
-
-
-
 
 .details-driver {
   position: absolute;
@@ -1006,7 +993,6 @@ font-family: 'lato';
     // opacity: 1;
   }
 }
-
 
 form{
  // border: 2px solid blue;
@@ -1055,7 +1041,6 @@ form > input{
       overflow: hidden;
     }
 }
-
 
 #CODE{
   padding-right: 58px;
@@ -1214,7 +1199,6 @@ form > input{
 
 }
 
-
 #Addd{
   position: absolute;
   right: 109px;
@@ -1226,9 +1210,6 @@ form > input{
   background-color: white;
   // box-shadow: 0px -1px 15px black;
 }
-
-
-
 
 
 @media screen and (max-width:450px){
@@ -1401,7 +1382,6 @@ form > input{
   //   z-index: 10;
   //   position: relative;
   //   //  overflow: hidden;
-
    
   // }
   .dismissOverlay {
@@ -1414,11 +1394,43 @@ form > input{
   }
 }
 
-
-
-
-
-
-
-
 }
+
+.map {
+  height: 100%; //or any height
+}
+
+// .results {
+//   position: absolute;
+//   color: rgb(66, 231, 44);
+//   top: 55px;
+//   left: 10px;
+//   right: 10px;
+//   max-height: 80%;
+//   background: whitesmoke;
+//   z-index: 200;
+//   overflow-y: auto;
+//   justify-content: left;
+//   border-radius: 10px;
+//   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+//   p {
+//     margin: 3px;
+//     padding: 10px;
+//     background: linear-gradient(90deg, rgb(223, 223, 223), white);
+//     color: rgb(68, 68, 68);
+//     border-radius: 7px;
+//   }
+//   .count {
+//     pointer-events: none;
+//     opacity: 0.1;
+//     position: fixed;
+//     top: 54px;
+//     right: 50vw;
+//     transform: translateX(10px);
+//     background: black;
+//     color: white;
+//     padding: 10px;
+//     border-radius: 0px 0px 15px 15px;
+//   }
+// }
+

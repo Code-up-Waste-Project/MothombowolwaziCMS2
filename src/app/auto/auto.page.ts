@@ -20,6 +20,7 @@ export class AutoPage implements OnInit {
    distance = ''
    duration =''
 
+
   @ViewChild('mapElement', {static: false}) mapNativeElement: ElementRef;
   @ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
 
@@ -33,16 +34,14 @@ export class AutoPage implements OnInit {
     lng: 27.9481053
   };
   
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private geolocation: Geolocation
-    
     ) { 
-     
-      
     this.createDirectionForm();
-  }
+    }
 
-  ngOnInit() {
+    ngOnInit() {
     this.autocompleteItems = [];
     this.autocomplete = {
       places: ''
@@ -92,13 +91,10 @@ export class AutoPage implements OnInit {
       zoom: 15
     });
 
-
     const infowindow = new google.maps.InfoWindow();
-
 
     const infowindowContent = document.getElementById('infowindow-content');
     infowindow.setContent(infowindowContent);
-
 
     const marker = new google.maps.Marker({
       map: map,
@@ -110,7 +106,7 @@ export class AutoPage implements OnInit {
       infowindow.close();
       marker.setVisible(false);
       const place = autocomplete.getPlace();
-      console.log('thato',place. formatted_address);
+      console.log(place. formatted_address);
       this.calculateAndDisplayRoute(place. formatted_address)
       
       if (!place.geometry) {

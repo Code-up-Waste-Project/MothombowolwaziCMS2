@@ -1,4 +1,3 @@
-
 <ion-content>
   <div class="mother" *ngIf="popOpOpen === true" >
     <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
@@ -6,8 +5,6 @@
 
   <div class="children-slides">
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
-
-
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
@@ -17,22 +14,32 @@
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two" color="primary">
-                 
-                  <ion-title class="ion-text-left" style="position: relative;">All your drivers <span id="Searchbar"><input type="text" placeholder="Search by name"></span></ion-title>
+                  <!-- Code added by Nathi for Search -->
+                  <div class="results">
+                    <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
+                    <div class='count' *ngIf="searchResults.length > 0">
+                      {{ searchResults.length }}
+                    </div>
+                  </div>
+
+                  <ion-title class="ion-text-left" style="position: relative;">All your drivers 
+                    <span id="Searchbar"><ion-searchbar type="text" name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar></span>
+                  </ion-title>
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card>
-                      <h4>Lebogang Thipenyane</h4>
-                      <p>060 486 9924</p>
+                    <ion-card *ngFor="let records of recordoutbounddisplays">
+                      <h4 (click)='presentAlertAddUser(records.id)'>{{ records.DriverName }}</h4>
+                      <p>{{ records.RegistarionNumberPlates }}</p>
+                      <p>{{ records.truckcode }}</p>
                     </ion-card>
-                    <ion-card>
+                    <!-- <ion-card>
                       <h4>Thato Dlamini</h4>
                       <p>060 486 9924</p>
-                    </ion-card>
+                    </ion-card> -->
                   </div>
                   <div class="btn-new-driver">
-                    <ion-button (click)="animateJs()" [disabled]="transtioning">
+                    <ion-button (click)="animateJs()" [disabled]="transtioning" (click)="nextClick()">
                         <ion-icon name="ios-add"></ion-icon> New Driver
                     </ion-button>
                   </div>
@@ -51,25 +58,36 @@
                 <div class="form">
                   <div class="profileholder">
                     <div class="profile">
-                      <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
+                      <ion-button fill="clear"><ion-icon name="camera"  (change)="changeListener($event)">
+                        <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                        <img *ngIf="image" src="{{ image }}" alt="">
+                        <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)" align="center">
+                      </ion-icon></ion-button>
                     </div>
                   </div>
 
+                  <form [formGroup]="RegisterForm">
                   <div class="inputs">
-                    <input placeholder="Full names">
-                    <input placeholder="Phone number">
-                    <input placeholder="Company name">
-                    <input placeholder="Company address">
-                    <input placeholder="Streetname">
-                    <input placeholder="City">
-                   <ion-button id="btn">Select driver</ion-button>
+                    <input type="text" placeholder="Driver Name & Surname" [(ngModel)]="DriverNameInput"
+                    formControlName="DriverNameInput">
+                    <input type="tel" placeholder="Phone Numbers" [(ngModel)]="PhoneNumbersInput"
+                    formControlName="PhoneNumbersInput" maxlength="10" (keyup)="getPhoneInput($event)">
+                    <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
+                      formControlName="RegistarionNumberPlatesInput">
+                    <input type="text" placeholder="Company Name" [(ngModel)]="TruckSourcessInput"
+                      formControlName="TruckSourcessInput"> 
+                    <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput"
+                    formControlName="CompanyAddressInput">
+                   <div>
+                    <ion-button id="btn" color="clear" (click)="nextislide()"
+                    [disabled]="!RegisterForm.valid">Save driver</ion-button>
+                   </div>
                   </div>
+                </form>
                 </div>
               </div>
           </div>
          </ion-slide>
-
-
 
     <!-- slide 2 id="materials-form"-->
       <ion-slide id="slide2"> 
@@ -117,14 +135,13 @@
                     <p>PAP003</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                   
                      <p id="totals">Total Paper  =  <span>5140 kg</span></p>
-                  </ion-col>
+                  </ion-col> -->
     
                 </ion-row>
               </ion-grid>
-
              
             </div>
             <!-- For PLAstic -->
@@ -170,10 +187,10 @@
                     <p>PET003</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                   
                     <p id="totals">Total Plastic  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -210,10 +227,10 @@
                     <p id="CODE">GL001</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                   
                     <p id="totals">Total Glass  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
@@ -223,34 +240,40 @@
       </ion-slide>
 
 
-
           <!-- slide 3 -->
       <ion-slide id="slide3">
 <div class="map">
-  <h1>map goes here thato</h1>
+  <div #mapElement class="map"></div>
+  
+  <div id="infowindow-content">
+    <img src="" width="16" height="16" id="place-icon">
+    <span id="place-name"  class="title"></span><br>
+    <span id="place-address"></span>
+  </div>
 </div>
 <div class="mapInfo">
-  <p id="p">Choose destination by clicking on the map above or type address below</p>
-    <input type="text" placeholder="Enter destination">
-  <p class="text">Estimated distance to destination in kilometers <br><span>80km</span> </p>
-  <p class="text">Estimated time to destination in minutes <br> <span>155min</span></p>
+  <form [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
+  <!-- <p id="p">Choose destination by clicking on the map above or type address below</p> -->
+  <ion-item>
+    <input class="input" #autoCompleteInput formControlName="destination" />
+  </ion-item>
+  <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
+  <p class="text">Estimated distance to destination in kilometers <br><span>{{ distance }}km</span> </p>
+  <p class="text">Estimated time to destination in minutes <br> <span>{{ duration }}min</span></p>
+</form>
 </div>
 </ion-slide>
-
 
      </ion-slides>
 
      <div class="btn-slides">
       <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
-      <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button>
+      <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" (click)="nextislide()">{{nextText}}</ion-button>
     </div>
   </div><!-- end of children-slides -->
 
 </div><!-- end of slides -->
-
-
-
 
     <!-- <div class="dismissOverlay" (click)="goAway()"></div> -->
 
@@ -436,8 +459,5 @@
     </div>
   </div><!-- end of history -->
 </div>
- 
-
-
  
 </ion-content>
