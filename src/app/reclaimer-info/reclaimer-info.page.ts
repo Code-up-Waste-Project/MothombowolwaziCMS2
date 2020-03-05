@@ -24,6 +24,7 @@ export class ReclaimerInfoPage implements OnInit {
   db = firebase.firestore();
 
   bars: any;
+  colorArray: any;
 
   idz;
   productID;
@@ -341,12 +342,12 @@ export class ReclaimerInfoPage implements OnInit {
         console.log(element.data());
 
       this.ViewReclaimerPDF.push(element.data())
-      console.log(this.ViewReclaimerPDF);
+      // console.log(this.ViewReclaimerPDF);
 
       this.idz = element.id;
-       console.log(this.idz);
+      //  console.log(this.idz);
       this.productID = element.data().productcode;
-      console.log(this.productID);
+      // console.log(this.productID);
       this.overallMass = element.data().OverallMass;
       this.overallMassz = (String(this.overallMass).substring(0, 6));
       this.OverallSubTotal = element.data().OverallSubTotal;
@@ -434,6 +435,9 @@ export class ReclaimerInfoPage implements OnInit {
       
       })
     })
+
+    this.pullHistoryData()
+
    }
 //chart createion
 ionViewDidEnter() {
@@ -472,6 +476,10 @@ createLineChart() {
   });
 }
  
+
+  ionViewDidEnter() {
+    this.createLineChart();
+  }
 
   pullHistoryData() {
     // January

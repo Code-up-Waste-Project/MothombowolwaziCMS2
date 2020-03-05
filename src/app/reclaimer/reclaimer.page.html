@@ -5,9 +5,7 @@
 <div class="slides-container">
 
   <div class="children-slides">
-    <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
-
-
+    <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged($ev)" >
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
@@ -51,25 +49,40 @@
                 <div class="form">
                   <div class="profileholder">
                     <div class="profile">
-                      <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
+                      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                      <img *ngIf="image" src="{{ image }}" alt="">
+                      <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+                      <label for="disapear">
+                        <ion-icon id="Addd" name="camera"></ion-icon>
+                      </label>
+                      <!-- <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button> -->
                     </div>
                   </div>
 
-                  <div class="inputs">
-                    <input placeholder="Full names">
-                    <input placeholder="Identity number">
-                    <input placeholder="Phone number">
-                    <input placeholder="Street name">
-                    <input placeholder="Town">
-                    <input placeholder="City">
-                   <ion-button id="btn">Select Reclaimer</ion-button>
-                  </div>
+                  <form [formGroup]="RegisterForm">
+                    <div class="inputs">
+                      <input type="text" placeholder="Full names" [(ngModel)]="name"
+                      formControlName="name">
+                      <input type="number" placeholder="Identity number" [(ngModel)]="IDno"
+                      formControlName="IDno" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
+                      <input type="tel" placeholder="Phone number" [(ngModel)]="contact"
+                      [ngModelOptions]="{standalone: true}" maxlength="10" (keyup)="getPhoneInput($event)">
+                      <input type="text" placeholder="Street name" [(ngModel)]="streetname"
+                      [ngModelOptions]="{standalone: true}"> 
+                      <input type="text" placeholder="Town" [(ngModel)]="town"
+                      [ngModelOptions]="{standalone: true}">
+                      <input type="text" placeholder="City" [(ngModel)]="city"
+                      [ngModelOptions]="{standalone: true}">
+                     <div>
+                      <ion-button id="btn" color="clear" (click)="nextislide()"
+                      [disabled]="!RegisterForm.valid">Save driver</ion-button>
+                     </div>
+                    </div>
+                  </form>
                 </div>
               </div>
           </div>
          </ion-slide>
-
-
 
     <!-- slide 2 id="materials-form"-->
       <ion-slide id="slide2"> 
@@ -95,32 +108,35 @@
                 <ion-row >
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass2">
-                    <p>PAP005</p>
+                  placeholder="PAP005 (Kg)" [(ngModel)]="PAP005massz"
+                  (change)='onChangePAP005($event.target.value)'><br>
+                    <p>{{ PAP005pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass2">
-                    <p>PAP007</p>
+                    placeholder="PAP007 (Kg)" [(ngModel)]="PAP007massz"
+                    (change)='onChangePAP007($event.target.value)'><br>
+                    <p>{{ PAP007pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass2">
-                    <p>PAP001</p>
+                  placeholder="PAP001 (Kg)" [(ngModel)]="PAP001massz"
+                  (change)='onChangePAP001($event.target.value)'><br>
+                    <p>{{ PAP001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass2">
-                    <p>PAP003</p>
+                    placeholder="PAP003 (Kg)" [(ngModel)]="PAP003massz"
+                    (change)='onChangePAP003($event.target.value)'><br>
+                    <p>{{ PAP003pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                      <p id="totals">Total Paper  =  <span>5140 kg</span></p>
-                  </ion-col>
+                  </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -137,43 +153,48 @@
                 <ion-row>
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="HD001mass2"><br>
-                    <p>HD001</p>
+                  placeholder="HD001 (Kg)" maxlength="4" [(ngModel)]="HD001massz"
+                  (change)='onChangeHD001($event.target.value)'><br>
+                <p>{{ HD001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="LD001mass2"><br>
-                    <p>LD001</p>
+                  maxlength="4" placeholder="LD001 (Kg)" [(ngModel)]="LD001massz"
+                  (change)='onChangeLD001($event.target.value)'><br>
+                <p>{{ LD001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="LD003mass2"><br>
-                    <p>LD003</p>
+                  maxlength="4" placeholder="LD003 (Kg)" [(ngModel)]="LD003massz"
+                  (change)='onChangeLD003($event.target.value)'><br>
+                <p>{{ LD003pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PET005mass2"><br>
-                    <p>PET005</p>
+                  placeholder="PET005 (Kg)" [(ngModel)]="PET005massz"
+                  (change)='onChangePET005($event.target.value)'><br>
+                <p>{{ PET005pricez }}</p>
                   </ion-col>
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PET001mass2"><br>
-                    <p>PET001</p>
+                  placeholder="PET001 (Kg)" [(ngModel)]="PET001massz"
+                  (change)='onChangePET001($event.target.value)'><br>
+                <p>{{ PET001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="PET003mass2"><br>
-                    <p>PET003</p>
+                  placeholder="PET003 (Kg)" [(ngModel)]="PET003massz"
+                  (change)='onChangePET003($event.target.value)'><br>
+                <p>{{ PET003pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Plastic  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -185,14 +206,14 @@
                 <ion-row>
                   <ion-col class="input-textfields">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass2"><br>
-                    <p id="CODE">NFAL01</p>
+                  placeholder="NFAL01 (Kg)" [(ngModel)]="NFAL01massz"
+                  (change)='onChangeNFAL01($event.target.value)'><br>
+                <p>{{ NFAL01pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Aluminium  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
@@ -206,14 +227,13 @@
                 <ion-row>
                   <ion-col class="input-textfields">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                      placeholder="Weight in Kilograms" [(ngModel)]="GH001mass2"><br>
-                    <p id="CODE">GL001</p>
+                  placeholder="GL001 (Kg)" [(ngModel)]="GH001massz" (change)='onChangeGH001($event.target.value)'><br>
+                <p>R{{ GH001pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Glass  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
@@ -222,35 +242,18 @@
       
       </ion-slide>
 
-
-
-          <!-- slide 3 -->
-      <ion-slide id="slide3">
-<div class="map">
-  <h1>map goes here thato</h1>
-</div>
-<div class="mapInfo">
-  <p id="p">Choose destination by clicking on the map above or type address below</p>
-    <input type="text" placeholder="Enter destination">
-  <p class="text">Estimated distance to destination in kilometers <br><span>80km</span> </p>
-  <p class="text">Estimated time to destination in minutes <br> <span>155min</span></p>
-</div>
-</ion-slide>
-
-
      </ion-slides>
 
      <div class="btn-slides">
       <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
-      <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button>
+      <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
+      <ion-button id="nextbtn"  *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
+      <ion-button id="nextbtn" [disabled]="RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 
 </div><!-- end of slides -->
-
-
-
 
     <!-- <div class="dismissOverlay" (click)="goAway()"></div> -->
 

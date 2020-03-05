@@ -6,7 +6,7 @@
       <p> Inbound Driver's Profile & History</p>
     </div>
   <div class="top" padding>
-    <div class="driverDetails" >
+    <div class="driverDetails" *ngFor="let driver of ViewOutbound">
       <div class="profilepic">
         <p>Driver's Personal Information</p>
         <div class="profileimage">
@@ -16,13 +16,13 @@
         </div>
       </div>
       <div class="profiledetails">
-        <p id="name">Mr Milano</p>
+        <p id="name">{{ driver.DriverName }}</p>
         
-        <p>JK 7945 GP</p>
-        <p>JK 7945 GP</p>
+        <p>{{ driver.truckcode }}</p>
+        <p>{{ driver.RegistarionNumberPlates }}</p>
         <!-- <p id="email">Fumza@gmail.com</p> -->
-        <p>067 051 9651</p>
-        <p id="adres">Deliver Zinto (pty) ltd</p>
+        <p>{{ driver.numbers }}</p>
+        <p id="adres">{{ driver.companyaddress }}</p>
         <!-- <button>Edit Profile</button> -->
       </div>
     </div>
@@ -30,22 +30,18 @@
     <div class="tripDetails">
       <h3>Details Per Trip</h3>
       <div class="scrollreceipts" >
-        <div class="card" >
+        <div class="card" *ngFor="let loads of ViewOutboundMasses">
           <div class="leftside">
             <p class="time"></p>
             <p>Reference No.</p>
-            <p>Truck Load</p>
-            <p>Destination</p>
-            <p>Distance in km</p>
+            <!-- <p>Truck Load</p> -->
           </div>
           <div class="rightside">
-            <p class="time">:  05/ 03/ 2020</p>
-            <p>: Something </p>
-            <p>: 25 217 kg</p>
-            <p>: 404 cruise road Melville</p>
-            <p>: 527 km</p>
+            <p class="time">: {{ loads.date }}</p>
+            <p>: {{ loads.driverID }} </p>
+            <!-- <p>: {{ loads.ovarallMass }} kg</p> -->
   
-            <button >Details</button>
+            <button [routerLink]="['/inbound-pdf', loads.truckcode]">Details</button>
           </div>
         </div>
 

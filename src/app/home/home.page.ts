@@ -506,61 +506,61 @@ bD = document.getElementsByClassName('bD')
     this.inboundAlum =0;
     this.inboundweight =0;
     this.inboundplastic =0;
-    firebase.firestore().collection('inbounds').get().then(res=>{
+    firebase.firestore().collection('inboundsMass').get().then(res=>{
       res.forEach(val=>{
   
     // console.log('inboundcalculate',val.data().inboundGH001+val.data().inboundHD001+val.data().inboundLD003+val.data().inboundNFAL01+val.data().inboundPAP001+val.data().inboundPAP003+val.data().inboundPAP005 +val.data().inboundPAP007+val.data().inboundPET001+val.data().inboundPET003+val.data().inboundPET005)
     this.inboundweight =this.inboundweight 
-    +parseFloat(val.data().inboundGH001) +
-    +parseFloat(val.data().inboundNFAL01) +
+    +parseFloat(val.data().GH001) +
+    +parseFloat(val.data().NFAL01) +
 
-    +parseFloat(val.data().inboundPAP001) +
-    +parseFloat(val.data().inboundPAP003) +
-    +parseFloat(val.data().inboundPAP005) +
-    +parseFloat(val.data().inboundPAP007) +
+    +parseFloat(val.data().PAP001) +
+    +parseFloat(val.data().PAP003) +
+    +parseFloat(val.data().PAP005) +
+    +parseFloat(val.data().PAP007) +
 
-    +parseFloat(val.data().inboundHD001) +
-    +parseFloat(val.data().inboundLD001) +
-    +parseFloat(val.data().inboundLD003) +
-    +parseFloat(val.data().inboundPET001) +
-    +parseFloat(val.data().inboundPET003) +
-    +parseFloat(val.data().inboundPET005) ;
+    +parseFloat(val.data().HD001) +
+    +parseFloat(val.data().LD001) +
+    +parseFloat(val.data().LD003) +
+    +parseFloat(val.data().PET00) +
+    +parseFloat(val.data().PET003) +
+    +parseFloat(val.data().PET005) ;
     
     // console.log(new Date(val.data().time.seconds*1000))
     this.updated =(new Date(val.data().time)).toDateString();
 
-    this.inboundgh001 =this.inboundgh001 +parseFloat(val.data().inboundGH001)
+    this.inboundgh001 =this.inboundgh001 +parseFloat(val.data().GH001)
     this.inboundnfalo1 =this.inboundnfalo1 +parseFloat(val.data().inboundNFAL01)
 
-    this.inboundpap005 =this.inboundpap005 +parseFloat(val.data().inboundPAP005)
-    this.inboundpap007 =this.inboundpap007  +parseFloat(val.data().inboundPAP007)
-    this.inboundpap001 =this.inboundpap001 +parseFloat(val.data().inboundPAP001)
-    this.inboundpap003 =this.inboundpap003 +parseFloat(val.data().inboundPAP003)
+    this.inboundpap005 =this.inboundpap005 +parseFloat(val.data().PAP005)
+    this.inboundpap007 =this.inboundpap007  +parseFloat(val.data().PAP007)
+    this.inboundpap001 =this.inboundpap001 +parseFloat(val.data().PAP001)
+    this.inboundpap003 =this.inboundpap003 +parseFloat(val.data().PAP003)
 
-    this.inboundhd001 =this.inboundhd001 +parseFloat(val.data().inboundHD001)
-    this.inboundld001 =this.inboundld001 +parseFloat(val.data().inboundLD001)
-    this.inboundld003 =this.inboundld003 +parseFloat(val.data().inboundLD003)
-    this.inboundpet001 =this.inboundpet001 +parseFloat(val.data().inboundPET001)
-    this.inboundpet003 =this.inboundpet003 +parseFloat(val.data().inboundPET003)
-    this.inboundpet005 =this.inboundpet005 +parseFloat(val.data().inboundPET005)
+    this.inboundhd001 =this.inboundhd001 +parseFloat(val.data().HD001)
+    this.inboundld001 =this.inboundld001 +parseFloat(val.data().LD001)
+    this.inboundld003 =this.inboundld003 +parseFloat(val.data().LD003)
+    this.inboundpet001 =this.inboundpet001 +parseFloat(val.data().PET001)
+    this.inboundpet003 =this.inboundpet003 +parseFloat(val.data().PET003)
+    this.inboundpet005 =this.inboundpet005 +parseFloat(val.data().PET005)
 
     //paper
     this.inboundpaper = this.inboundpaper 
-    +parseFloat(val.data().inboundPAP005) 
-    +parseFloat(val.data().inboundPAP007) 
-    +parseFloat(val.data().inboundPAP003) 
-    +parseFloat(val.data().inboundPAP001);
+    +parseFloat(val.data().PAP005) 
+    +parseFloat(val.data().PAP007) 
+    +parseFloat(val.data().PAP003) 
+    +parseFloat(val.data().PAP001);
 
     //aluminium
-    this.inboundAlum = this.inboundAlum  +parseFloat(val.data().inboundNFAL01) 
+    this.inboundAlum = this.inboundAlum  +parseFloat(val.data().NFAL01) 
 
     //plastic
-    this.inboundplastic =this.inboundplastic + +parseFloat(val.data().inboundHD001) 
-    +parseFloat(val.data().inboundHD001)
-    +parseFloat(val.data().inboundLD001)
-    +parseFloat(val.data().inboundLD003)
-    +parseFloat(val.data().inboundPET003)
-    +parseFloat(val.data().inboundPET001) 
+    this.inboundplastic =this.inboundplastic + +parseFloat(val.data().HD001) 
+    +parseFloat(val.data().LD001)
+    +parseFloat(val.data().LD003)
+    +parseFloat(val.data().PET001)
+    +parseFloat(val.data().PET003)
+    +parseFloat(val.data().PET001) 
       })
       this.createBarChart();
     })
@@ -1525,7 +1525,7 @@ bD = document.getElementsByClassName('bD')
           // data
         });
         // this.outbound.push(element.data());
-        // console.log('inbound', this.outbound);
+        // console.log('', this.outbound);
       });
     });
   }

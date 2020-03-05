@@ -223,6 +223,7 @@ export class OutboundPage implements OnInit {
     }
   }
   isBeginning: boolean = false;
+  isEnd: boolean = false;
   nextText = 'Next';
 
     goAway() {
@@ -406,9 +407,9 @@ export class OutboundPage implements OnInit {
         this.isBeginning = true;
       }
       if(index == 2) {
-        this.nextText = 'Done';
+        this.isEnd = true;
       }else {
-        this.nextText = 'Next';
+        this.isEnd = false;
       }
    });
    }
@@ -423,10 +424,6 @@ export class OutboundPage implements OnInit {
    }
 
   ngOnInit() {
-
-   
-   
-    
     this.sortTable();
 
     this.autocompleteItems = [];
@@ -858,7 +855,9 @@ callback(response, status) {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
-            this.doneBtn();
+            // this.doneBtn();
+            this.nextClick();
+            this.animateJs();
             // this.route.navigateByUrl('/reclaimer');
           }
         }
