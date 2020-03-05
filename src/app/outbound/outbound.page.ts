@@ -1,17 +1,19 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, IonSlides } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { element } from 'protractor';
 import * as moment from 'moment';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
+declare var google;
 
 @Component({
   selector: 'app-outbound',
@@ -20,13 +22,38 @@ import * as moment from 'moment';
 })
 export class OutboundPage implements OnInit {
 
-  myControl = new FormControl();
+  @ViewChild('mapElement', {static: false}) mapNativeElement: ElementRef;
+  @ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
 
+  // Google maps by Thato
+  //autocomplete
+  autocompleteItems;
+  autocomplete;
+  that
+
+  placez = [];
+
+  directionForm: FormGroup;
+
+  // mark
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+  currentLocation: any = {
+    lat: -26.2620432,
+    lng: 27.9481053
+  };
+  ///////////////////////////////////////
+
+  ishidden = false;
+  myControl = new FormControl();
+  
   letterObj = {
     to: '',
     from: '',
     text: ''
   };
+
+  transtioning: boolean = false;
 
   // user infor
   admin = [];
@@ -183,7 +210,20 @@ export class OutboundPage implements OnInit {
 
   storage = firebase.storage().ref();
 
+  @ViewChild('slides', {static: false}) slides: IonSlides;
+
   /////////////////////////////////////////////////////////////////////////////////////
+
+  slideOpts =  {
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    color: 'red !important',
+    }
+  }
+  isBeginning: boolean = false;
+  nextText = 'Next';
 
     goAway() {
       // alert("clicked")
@@ -203,6 +243,10 @@ export class OutboundPage implements OnInit {
     showOtherPopup() {
       // alert("clicked")
       this.otherPopup = true;
+    }
+
+    animateJs() {
+      this.transtioning = !this.transtioning;
     }
 
     showInputs() {
@@ -254,7 +298,9 @@ export class OutboundPage implements OnInit {
     public formGroup: FormBuilder,
     public loadingController: LoadingController,
     public toastController: ToastController,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private fb: FormBuilder,
+    private geolocation: Geolocation
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -271,6 +317,8 @@ export class OutboundPage implements OnInit {
       });
       // console.log('Newadmins', this.Newadmin);
     });
+
+    this.createDirectionForm();
 
     // this.RegisterForm = formGroup.group({
     //     DriverName : ['', [Validators.required, Validators.maxLength(15)]],
@@ -346,8 +394,142 @@ export class OutboundPage implements OnInit {
     
    }
 
+   slideChanged($ev) {
+    this.slides.getActiveIndex().then(index => {
+      // console.log(index);
+      if(index == 0) {
+        this.isBeginning = false;
+      }else {
+        this.isBeginning = true;
+      }
+      if(index == 2) {
+        this.nextText = 'Done';
+      }else {
+        this.nextText = 'Next';
+      }
+   });
+   }
+
+   //slides
+   nextislide(){
+     this.slides.slideNext();
+   }
+
+   previslide() {
+    this.slides.slidePrev();
+   }
+
   ngOnInit() {
     this.sortTable();
+
+    this.autocompleteItems = [];
+    this.autocomplete = { places: '' };
+  }
+
+  createDirectionForm() {
+    this.directionForm = this.fb.group({
+      // mark
+      destination: ['', Validators.required],
+      // placeName: [''],
+    });
+  }
+
+  ngAfterViewInit(): void {
+    const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
+      center: {lat: -26.2620432, lng: 27.9481053},
+      zoom: 15
+    });
+
+    const infowindow = new google.maps.InfoWindow();
+
+    const infowindowContent = document.getElementById('infowindow-content');
+    infowindow.setContent(infowindowContent);
+
+    const marker = new google.maps.Marker({
+      map: map,
+      anchorPoint: new google.maps.Point(0, -29)
+    });
+
+    const autocomplete = new google.maps.places.Autocomplete(this.inputNativeElement.nativeElement as HTMLInputElement);
+    autocomplete.addListener('place_changed', () => {
+      infowindow.close();
+      marker.setVisible(false);
+      const place = autocomplete.getPlace();
+      console.log(place. formatted_address);
+      this.calculateAndDisplayRoute(place. formatted_address)
+      
+      if (!place.geometry) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
+        window.alert('No details available for input: ' + place.name );
+        return;
+      }
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);  // Why 17? Because it looks good.
+      }
+      marker.setPosition(place.geometry.location);
+      marker.setVisible(true);
+      let address = '';
+      if (place.address_components) {
+        address = [
+          (place.address_components[0] && place.address_components[0].short_name || ''),
+          (place.address_components[1] && place.address_components[1].short_name || ''),
+          (place.address_components[2] && place.address_components[2].short_name || '')
+        ].join(' ');
+      }
+      infowindowContent.children['place-icon'].src = place.icon;
+      infowindowContent.children['place-name'].textContent = place.name;
+      infowindowContent.children['place-address'].textContent = address;
+      infowindow.open(map, marker);
+    });
+    this.directionsDisplay.setMap(map);
+      console.log(autocomplete);
+      // this.directionsDisplay.setMap(map);
+  }
+
+   // mark
+   calculateAndDisplayRoute(address) {
+    // console.log('address', address)
+    const that = this;
+    this.directionsService.route({
+
+      origin: this.currentLocation,
+      destination: address,
+      travelMode: 'DRIVING',
+    }, (response, status) => {
+      // console.log('status', status)
+      if (status === 'OK') {
+        that.directionsDisplay.setDirections(response);
+        console.log( 'response', response )
+        this.placez.push(response)
+        console.log( this.placez )
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+
+  }
+
+callback(response, status) {
+    if (status == 'OK') {
+      var origins = response.originAddresses;
+      var destinations = response.destinationAddresses;
+  
+      for (var i = 0; i < origins.length; i++) {
+        var results = response.rows[i].elements;
+        for (var j = 0; j < results.length; j++) {
+          var element = results[j];
+       
+          var distance = element.distance.text;
+          var duration = element.duration.text;
+          var from = origins[i];
+          var to = destinations[j];
+        }
+      }
+    }
   }
 
   sortTable() {
@@ -762,7 +944,7 @@ export class OutboundPage implements OnInit {
         id: this.resultID
       })
       this.db.collection('outboundMass').add({
-        date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+        date: moment(new Date()).format('MMMM DD YYYY'),
         GH001: this.GH001mass2,
         NFAL01: this.NFAL01mass2,
         PAP005: this.PAP005mass2,
@@ -792,7 +974,7 @@ export class OutboundPage implements OnInit {
 
   SaveOutbound2(id) {
     this.db.collection('outboundMass').add({
-      date: moment(new Date()).format('MMMM DD YYYY, h:mm:ss'),
+      date: moment(new Date()).format('MMMM DD YYYY'),
       GH001: this.GH001mass2,
       NFAL01: this.NFAL01mass2,
       PAP005: this.PAP005mass2,

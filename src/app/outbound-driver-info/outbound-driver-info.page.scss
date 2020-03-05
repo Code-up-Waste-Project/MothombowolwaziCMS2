@@ -53,7 +53,7 @@
             // border: 1px solid black;
             position: absolute;
             top: -1%;
-            left: 2%;
+            left: 1%;
             font-family: 'lato';
             padding-bottom: 1em ;
             font-size: 0.9em;
@@ -62,7 +62,7 @@
                 position: absolute;
                 bottom: 5%;
                 left: 0%;
-                width: 18%;
+                width: 16%;
                 height: 2px;
                 content: '';
                 background: #ddd;
@@ -254,11 +254,7 @@
 
     .canvas {
         background: aqua;
-        height: 82%;
-        width: 96%;
-        position: relative;
-        left: 2%;
-        border-radius: 5px;
+        height: 85%;
     }
 .tops {
    // border: 2px solid red;
@@ -266,8 +262,8 @@
     display: flex;
   
     .boxes {
-       // border: 2px solid blue;
-        width: 30%;
+      //  border: 2px solid blue;
+        width: 40%;
         position: absolute;
         right: 0;
         height: 5%;
@@ -278,7 +274,7 @@
             width: 8em;
             height: 2.2em;
             margin: 0;
-            font-family: 'SHKODER 1989';
+            font-family: 'lato';
         }
         span {
          //   color: red;
@@ -290,31 +286,27 @@
 }
 
     h3 {
-        margin: 0;
-        width: 65%;
-        height: 70%;
-       // border: 1px solid black;
+        width: 50%;
+        // border: 1px solid black;
          position: relative;
-        //top: 3% !important;
+         top: -1%;
          left: 1%;
          font-family: 'lato';
-        // padding-bottom: 0.4em ;
-         padding-top: 0.6em;
+         padding-bottom: 1em ;
          font-size: 0.9em;
          letter-spacing: 0.5px;
+         width
          &::after {
-            position: absolute;
-            bottom: 4%;
-            left: 0%;
-            width: 4%;
-            height: 2px;
-            content: '';
-            background: #ddd;
-            border-radius: 50px;
-        
-          }
-
+             position: absolute;
+             bottom: 5%;
+             left: 0%;
+             width: 5%;
+             height: 2px;
+             content: '';
+             background: #ddd;
+             border-radius: 50px;
+         
+           }
      }
 }
-
 }

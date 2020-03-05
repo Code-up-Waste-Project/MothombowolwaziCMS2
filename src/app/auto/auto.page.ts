@@ -14,6 +14,8 @@ export class AutoPage implements OnInit {
    autocomplete;
    that
 
+   placez = [];
+
   @ViewChild('mapElement', {static: false}) mapNativeElement: ElementRef;
   @ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
 
@@ -27,32 +29,25 @@ export class AutoPage implements OnInit {
     lng: 27.9481053
   };
   
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private geolocation: Geolocation
-    
     ) { 
-     
-      
     this.createDirectionForm();
-  }
+    }
 
-  ngOnInit() {
+    ngOnInit() {
     this.autocompleteItems = [];
-    this.autocomplete = {
-      places: ''
-    };
-  
-  }
+    this.autocomplete = { places: '' };
+    } 
 
-
-  createDirectionForm() {
-    this.directionForm = this.fb.group({
-      // mark
-      destination: ['', Validators.required],
-      // placeName: [''],
-    });
-  }
-
+    createDirectionForm() {
+      this.directionForm = this.fb.group({
+        // mark
+        destination: ['', Validators.required],
+        // placeName: [''],
+      });
+    }
 
   // ngAfterViewInit(): void {
   //   this.geolocation.getCurrentPosition().then((resp) => {
@@ -68,32 +63,20 @@ export class AutoPage implements OnInit {
 
   ngAfterViewInit(): void {
 
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.currentLocation.lat = resp.coords.latitude;
-      this.currentLocation.lng = resp.coords.longitude;
-    });
-
-
-    // mark
-  
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.currentLocation.lat = resp.coords.latitude;
-      this.currentLocation.lng = resp.coords.longitude;
-    });
-
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   this.currentLocation.lat = resp.coords.latitude;
+    //   this.currentLocation.lng = resp.coords.longitude;
+    // });
     
     const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
       center: {lat: -26.2620432, lng: 27.9481053},
       zoom: 15
     });
 
-
     const infowindow = new google.maps.InfoWindow();
-
 
     const infowindowContent = document.getElementById('infowindow-content');
     infowindow.setContent(infowindowContent);
-
 
     const marker = new google.maps.Marker({
       map: map,
@@ -105,7 +88,7 @@ export class AutoPage implements OnInit {
       infowindow.close();
       marker.setVisible(false);
       const place = autocomplete.getPlace();
-      console.log('thato',place. formatted_address);
+      console.log(place. formatted_address);
       this.calculateAndDisplayRoute(place. formatted_address)
       
       if (!place.geometry) {
@@ -142,27 +125,23 @@ export class AutoPage implements OnInit {
 
   // mark
   calculateAndDisplayRoute(address) {
-  
-  
+    // console.log('address', address)
     const that = this;
     this.directionsService.route({
 
       origin: this.currentLocation,
-    
       destination: address,
       travelMode: 'DRIVING',
-    
-   
-
-      
     }, (response, status) => {
+      // console.log('status', status)
       if (status === 'OK') {
         that.directionsDisplay.setDirections(response);
+        console.log( 'response', response )
+        this.placez.push(response)
+        console.log( this.placez )
       } else {
         window.alert('Directions request failed due to ' + status);
       }
-      console.log('origin', origin)
-    
     });
 
   }
@@ -185,4 +164,6 @@ callback(response, status) {
       }
     }
   }
+
+
 }
