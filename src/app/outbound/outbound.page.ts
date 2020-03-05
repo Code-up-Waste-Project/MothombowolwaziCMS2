@@ -223,6 +223,7 @@ export class OutboundPage implements OnInit {
     }
   }
   isBeginning: boolean = false;
+  isEnd: boolean = false;
   nextText = 'Next';
 
     goAway() {
@@ -406,9 +407,9 @@ export class OutboundPage implements OnInit {
         this.isBeginning = true;
       }
       if(index == 2) {
-        this.nextText = 'Done';
+        this.isEnd = true;
       }else {
-        this.nextText = 'Next';
+        this.isEnd = false;
       }
    });
    }
@@ -423,10 +424,6 @@ export class OutboundPage implements OnInit {
    }
 
   ngOnInit() {
-
-   
-   
-    
     this.sortTable();
 
     this.autocompleteItems = [];
@@ -442,59 +439,59 @@ export class OutboundPage implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
-      center: {lat: -26.2620432, lng: 27.9481053},
-      zoom: 15
-    });
+    // const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
+    //   center: {lat: -26.2620432, lng: 27.9481053},
+    //   zoom: 15
+    // });
 
-    const infowindow = new google.maps.InfoWindow();
+    // const infowindow = new google.maps.InfoWindow();
 
-    const infowindowContent = document.getElementById('infowindow-content');
-    infowindow.setContent(infowindowContent);
+    // const infowindowContent = document.getElementById('infowindow-content');
+    // infowindow.setContent(infowindowContent);
 
-    const marker = new google.maps.Marker({
-      map: map,
-      anchorPoint: new google.maps.Point(0, -29)
-    });
+    // const marker = new google.maps.Marker({
+    //   map: map,
+    //   anchorPoint: new google.maps.Point(0, -29)
+    // });
 
-    const autocomplete = new google.maps.places.Autocomplete(this.inputNativeElement.nativeElement as HTMLInputElement);
-    autocomplete.addListener('place_changed', () => {
-      infowindow.close();
-      marker.setVisible(false);
-      const place = autocomplete.getPlace();
-      console.log(place. formatted_address);
-      this.calculateAndDisplayRoute(place. formatted_address)
+    // const autocomplete = new google.maps.places.Autocomplete(this.inputNativeElement.nativeElement as HTMLInputElement);
+    // autocomplete.addListener('place_changed', () => {
+    //   infowindow.close();
+    //   marker.setVisible(false);
+    //   const place = autocomplete.getPlace();
+    //   console.log(place. formatted_address);
+    //   this.calculateAndDisplayRoute(place. formatted_address)
       
-      if (!place.geometry) {
-        // User entered the name of a Place that was not suggested and
-        // pressed the Enter key, or the Place Details request failed.
-        window.alert('No details available for input: ' + place.name );
-        return;
-      }
-      if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
-      } else {
-        map.setCenter(place.geometry.location);
-        map.setZoom(17);  // Why 17? Because it looks good.
-      }
-      marker.setPosition(place.geometry.location);
-      marker.setVisible(true);
-      let address = '';
-      if (place.address_components) {
-        address = [
-          (place.address_components[0] && place.address_components[0].short_name || ''),
-          (place.address_components[1] && place.address_components[1].short_name || ''),
-          (place.address_components[2] && place.address_components[2].short_name || '')
-        ].join(' ');
-      }
-      infowindowContent.children['place-icon'].src = place.icon;
-      infowindowContent.children['place-name'].textContent = place.name;
-      infowindowContent.children['place-address'].textContent = address;
-      infowindow.open(map, marker);
-    });
-    this.directionsDisplay.setMap(map);
-      console.log(autocomplete);
-      // this.directionsDisplay.setMap(map);
+    //   if (!place.geometry) {
+    //     // User entered the name of a Place that was not suggested and
+    //     // pressed the Enter key, or the Place Details request failed.
+    //     window.alert('No details available for input: ' + place.name );
+    //     return;
+    //   }
+    //   if (place.geometry.viewport) {
+    //     map.fitBounds(place.geometry.viewport);
+    //   } else {
+    //     map.setCenter(place.geometry.location);
+    //     map.setZoom(17);  // Why 17? Because it looks good.
+    //   }
+    //   marker.setPosition(place.geometry.location);
+    //   marker.setVisible(true);
+    //   let address = '';
+    //   if (place.address_components) {
+    //     address = [
+    //       (place.address_components[0] && place.address_components[0].short_name || ''),
+    //       (place.address_components[1] && place.address_components[1].short_name || ''),
+    //       (place.address_components[2] && place.address_components[2].short_name || '')
+    //     ].join(' ');
+    //   }
+    //   infowindowContent.children['place-icon'].src = place.icon;
+    //   infowindowContent.children['place-name'].textContent = place.name;
+    //   infowindowContent.children['place-address'].textContent = address;
+    //   infowindow.open(map, marker);
+    // });
+    // this.directionsDisplay.setMap(map);
+    //   console.log(autocomplete);
+    //   // this.directionsDisplay.setMap(map);
   }
 
    // mark
@@ -858,7 +855,9 @@ callback(response, status) {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
-            this.doneBtn();
+            // this.doneBtn();
+            this.nextClick();
+            this.animateJs();
             // this.route.navigateByUrl('/reclaimer');
           }
         }

@@ -28,8 +28,8 @@
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card *ngFor="let records of recordoutbounddisplays">
-                      <h4 (click)='presentAlertAddUser(records.id)'>{{ records.DriverName }}</h4>
+                    <ion-card *ngFor="let records of recordoutbounddisplays" (click)='presentAlertAddUser(records.id)'>
+                      <h4>{{ records.DriverName }}</h4>
                       <p>{{ records.RegistarionNumberPlates }}</p>
                       <p>{{ records.truckcode }}</p>
                     </ion-card>
@@ -58,11 +58,15 @@
                 <div class="form">
                   <div class="profileholder">
                     <div class="profile">
-                      <ion-button fill="clear"><ion-icon name="camera"  (change)="changeListener($event)">
-                        <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-                        <img *ngIf="image" src="{{ image }}" alt="">
-                        <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)" align="center">
-                      </ion-icon></ion-button>
+                      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                      <img *ngIf="image" src="{{ image }}" alt="">
+                      <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+                      <label for="disapear">
+                        <ion-icon id="Addd" name="camera"></ion-icon>
+                      </label>
+                      <!-- <ion-button fill="clear"><ion-icon name="camera" > -->
+                        
+                      <!-- </ion-icon></ion-button> -->
                     </div>
                   </div>
 
@@ -269,7 +273,8 @@
      <div class="btn-slides">
       <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
-      <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" (click)="nextislide()">{{nextText}}</ion-button>
+      <ion-button id="nextbtn"  *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
+      <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" (click)="CheckInputsEmptyString()" *ngIf="isEnd" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 

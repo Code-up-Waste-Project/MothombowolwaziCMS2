@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ElementRef,ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
