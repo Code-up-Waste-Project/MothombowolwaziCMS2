@@ -38,12 +38,11 @@
         <p id="borderb"></p>
         <div padding class="info" >
           <h4>{{name}} {{surname}}</h4>
-         
           <p>{{email}}</p>
           <p>{{number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
-          <p>lebogang@gmail.com</p>
-          <p style="font-weight: bold;padding-top: 3px;">282 Mokokeana Street <br> Pimville Klipspruit {{address}}</p>
+          <p>{{ email }}</p>
+          <p style="font-weight: bold;padding-top: 3px;"> {{address}}</p>
           <button (click)='presentAlertDelete(id)'>delete user</button>
         </div>
   
@@ -84,8 +83,8 @@
       <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email">
       <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position">
       <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password">
-      <input class="inputs" placeholder="Identity Number"  type="text">
-      <textarea placeholder="Physical Address" class="inputs2" name="" id="" cols="30" rows="10"></textarea>
+      <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  type="text" this.idnumber.reset autocomplete="off" autocorrect="off" id="myInput" value="idnumber">
+      <textarea placeholder="Physical Address" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres"></textarea>
      <button ion-button   type="reset"   onclick="document.getElementById('myInput').value = ''" (click)="saveNewUseer()">Register</button>
      
      <!-- <div class="bottomdeco">

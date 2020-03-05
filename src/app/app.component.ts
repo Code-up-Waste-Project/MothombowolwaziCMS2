@@ -120,7 +120,7 @@ console.log("good morning")
     this.appPages.push({
      
       title: 'Home',
-      url: '/home',
+      url: '/home2',
       icon: 'homeW',
       admin:"hot",
       

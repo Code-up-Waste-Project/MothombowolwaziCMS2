@@ -20,7 +20,7 @@
           <P>Welcome back, Please login to your account</P>
         
             <ion-input placeholder="Enter email"  formControlName="email" [class.invalid]="!loginForm.controls['email'].valid &&
-            loginForm.controls['email'].touched" ></ion-input>
+            loginForm.controls['email'].touched" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email" ></ion-input>
             <div class="error" *ngIf="!loginForm.controls['email'].valid &&
             loginForm.controls['email'].touched">
         <div class="messages">
@@ -29,7 +29,7 @@
       </div>
 
             <ion-input placeholder="Enter password" formControlName="password" type='password'
-            [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched" ></ion-input>
+            [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched" this.password.reset autocomplete="off" autocorrect="off" id="myInput" value="password"></ion-input>
             <p id="password" (click)="resetepassword()">Forgot Password</p>
             <!-- <button fill="clear" (click)="presentModal()" ion-button>Forgot Password</button> -->
 
