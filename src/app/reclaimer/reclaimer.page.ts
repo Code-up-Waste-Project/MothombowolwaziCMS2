@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
@@ -9,7 +9,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, IonSlides } from '@ionic/angular';
 import { analyzeFileForInjectables } from '@angular/compiler';
 import * as moment from 'moment'
 import { Location } from "@angular/common";
@@ -20,7 +20,23 @@ import { Location } from "@angular/common";
   styleUrls: ['./reclaimer.page.scss'],
 })
 export class ReclaimerPage implements OnInit {
+  transtioning: boolean = false;
+  animateJs() {
+    this.transtioning = !this.transtioning;
+  }
 
+  @ViewChild('slides', {static: false}) slides: IonSlides;
+
+  slideOpts =  {
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    height: '4px'
+    }
+  }
+  isBeginning: boolean = false;
+  nextText = 'Next'
   db = firebase.firestore();
 
   IDno;
@@ -481,7 +497,31 @@ export class ReclaimerPage implements OnInit {
       addresss : ['', [Validators.required, , Validators.maxLength(40)]],
     });
    }
+//slides
+slideChanged($ev) {
+  this.slides.getActiveIndex().then(index => {
+    console.log(index);
+    if(index == 0) {
+      this.isBeginning = false;
+    }else {
+      this.isBeginning = true;
+    }
+    if(index == 2) {
+      this.nextText = 'Done';
+      
+    }else {
+      this.nextText = 'Next';
+    }
+ });
+ }
 
+ //slides
+ nextislide(){
+this.slides.slideNext();
+ }
+ previslide() {
+  this.slides.slidePrev();
+ }
   ngOnInit() {
     // this.getMaxMin();
   }

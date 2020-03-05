@@ -11,9 +11,9 @@
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
-          <ion-toolbar color="tertiary">
+          <!-- <ion-toolbar color="tertiary">
             <ion-title class="ion-text-center">Inbound Details</ion-title>
-          </ion-toolbar>
+          </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two" color="primary">
@@ -378,7 +378,7 @@
 <!-- adding parent div -->
 <div class="parentDiv">
   <div class="head">
-    <h3>Record all your dispatch material here</h3>
+    <h3>Record all your incoming material here</h3>
   </div>
   <div class="top-blocks">
     <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
@@ -405,15 +405,15 @@
       <div class="userId">Code</div>
       <div class="name">Driver Name</div>
       <div class="regNo">Registration No.</div>
-      <div></div>
+      <div class="icon">Details</div>
       <div></div>
      </div><!-- end of history-labels -->
 <div class="scrolling">
-    <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
-      <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.truckcode }}</div>
-      <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.DriverName }}</div>
-      <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
-      <div class="icon"><ion-button [routerLink]="['/outbound-driver-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
+    <div class="itemList" >
+      <div class="userId" >Testing</div>
+      <div class="name" >Testing</div>
+      <div class="regNo" >Testing</div>
+      <div class="icon"><ion-button (click)="inboundHistory()" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
       <!-- <div>
         <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
-import { AlertController, LoadingController, ToastController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController, ModalController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -23,6 +23,15 @@ export class InboundPage implements OnInit {
   transtioning: boolean = false;
   isBeginning: boolean = false;
   nextText = 'Next'
+
+  slideOpts =  {
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    height: '4px'
+    }
+  }
   // start of Declaretions
   // user infor
   admin = [];
@@ -121,6 +130,7 @@ export class InboundPage implements OnInit {
   RegisterForm: FormGroup;
 
   @ViewChild('slides', {static: false}) slides: IonSlides;
+  navController: any;
   goAway() {
     // alert("clicked")
     // this.selectedCat = "";
@@ -200,7 +210,8 @@ export class InboundPage implements OnInit {
     public toastController: ToastController,
     public alertController: AlertController,
     public formGroup: FormBuilder,
-    private modalController: ModalController
+    private modalController: ModalController,
+    public navCtrl: NavController
   ) {
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -223,7 +234,7 @@ export class InboundPage implements OnInit {
 
    }
 
-
+//slides
    slideChanged($ev) {
     this.slides.getActiveIndex().then(index => {
       console.log(index);
@@ -247,7 +258,11 @@ export class InboundPage implements OnInit {
    previslide() {
     this.slides.slidePrev();
    }
+//end of slides
 
+inboundHistory(){
+
+}
   ngOnInit() {
     this.sortTable()
   }
