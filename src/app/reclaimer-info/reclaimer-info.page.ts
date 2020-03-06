@@ -24,6 +24,7 @@ export class ReclaimerInfoPage implements OnInit {
   db = firebase.firestore();
 
   bars: any;
+  colorArray: any;
 
   idz;
   productID;
@@ -341,12 +342,12 @@ export class ReclaimerInfoPage implements OnInit {
         console.log(element.data());
 
       this.ViewReclaimerPDF.push(element.data())
-      console.log(this.ViewReclaimerPDF);
+      // console.log(this.ViewReclaimerPDF);
 
       this.idz = element.id;
-       console.log(this.idz);
+      //  console.log(this.idz);
       this.productID = element.data().productcode;
-      console.log(this.productID);
+      // console.log(this.productID);
       this.overallMass = element.data().OverallMass;
       this.overallMassz = (String(this.overallMass).substring(0, 6));
       this.OverallSubTotal = element.data().OverallSubTotal;
@@ -434,9 +435,50 @@ export class ReclaimerInfoPage implements OnInit {
       
       })
     })
-   }
 
-  ngOnInit() {
+    this.pullHistoryData()
+
+   }
+//chart createion
+ionViewDidEnter() {
+  this.createLineChart();
+}
+ngOnInit() {
+}
+
+createLineChart() {
+  Chart.defaults.global.defaultFontSize = 15;
+  Chart.defaults.global.defaultFontFamily = 'Roboto';
+  this.bars= new Chart(this.barChart.nativeElement, {
+ 
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Material Sold',
+        data: ['Jan', 'Jan', 'Jan', 'Jan', 'Jan', 
+        'Jan', 'Jan', 'Jan', 'Jan','Jan',
+        'Jan', 'Jan'],
+        backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+        borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+ 
+
+  ionViewDidEnter() {
+    this.createLineChart();
   }
 
   pullHistoryData() {
@@ -718,32 +760,32 @@ export class ReclaimerInfoPage implements OnInit {
 
   }
 
-  createLineChart() {
-    this.bars= new Chart(this.barChart.nativeElement, {
+  // createLineChart() {
+  //   this.bars= new Chart(this.barChart.nativeElement, {
    
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Material Delivered',
-          data: [this.jan, this.feb, this.mar, this.apr, this.may, 
-                this.jun, this.jul, this.aug, this.sep, this.oct,
-                this.nov, this.dec],
-          backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
-          borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
+  //     type: 'line',
+  //     data: {
+  //       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  //       datasets: [{
+  //         label: 'Material Delivered',
+  //         data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+  //               this.jun, this.jul, this.aug, this.sep, this.oct,
+  //               this.nov, this.dec],
+  //         backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+  //         borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+  //         borderWidth: 1
+  //       }]
+  //     },
+  //     options: {
+  //       scales: {
+  //         yAxes: [{
+  //           ticks: {
+  //             beginAtZero: true
+  //           }
+  //         }]
+  //       }
+  //     }
+  //   });
+  // }
 
 }

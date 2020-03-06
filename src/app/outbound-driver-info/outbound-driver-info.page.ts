@@ -1,5 +1,4 @@
-
-import { Component, OnInit, ElementRef,ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { MenuController } from '@ionic/angular';
@@ -24,6 +23,9 @@ export class OutboundDriverInfoPage implements OnInit {
   
   db = firebase.firestore();
 
+  //method to show and hide profile form
+  come: boolean = true;
+ 
   colorArray: any;
   bars: any;
 
@@ -141,9 +143,6 @@ export class OutboundDriverInfoPage implements OnInit {
     private location: Location,
     private fileOpener: FileOpener
   ) {
-
-
-
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
 
@@ -155,6 +154,10 @@ export class OutboundDriverInfoPage implements OnInit {
 
   ngOnInit() {
   }
+//method to show and hide profile
+switch(){
+  this.come = !this.come;
+}
 
   pullDrive() {
     this.Outbound = this.db.collection('outbound').doc(this.id);
@@ -583,6 +586,9 @@ export class OutboundDriverInfoPage implements OnInit {
   // }
 
   createLineChart() {
+    Chart.defaults.global.defaultFontSize = 13;
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
+
     this.bars= new Chart(this.barChart.nativeElement, {
    
       type: 'line',

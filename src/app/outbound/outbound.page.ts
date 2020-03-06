@@ -233,6 +233,7 @@ currentLocation: any = {
     }
   }
   isBeginning: boolean = false;
+  isEnd: boolean = false;
   nextText = 'Next';
 
     goAway() {
@@ -422,9 +423,9 @@ currentLocation: any = {
         this.isBeginning = true;
       }
       if(index == 2) {
-        this.nextText = 'Done';
+        this.isEnd = true;
       }else {
-        this.nextText = 'Next';
+        this.isEnd = false;
       }
    });
    }
@@ -894,7 +895,9 @@ in_your_method() {
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
-            this.doneBtn();
+            // this.doneBtn();
+            this.nextClick();
+            this.animateJs();
             // this.route.navigateByUrl('/reclaimer');
           }
         }

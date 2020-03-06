@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
@@ -9,7 +9,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, IonSlides } from '@ionic/angular';
 import { analyzeFileForInjectables } from '@angular/compiler';
 import * as moment from 'moment'
 import { Location } from "@angular/common";
@@ -20,7 +20,23 @@ import { Location } from "@angular/common";
   styleUrls: ['./reclaimer.page.scss'],
 })
 export class ReclaimerPage implements OnInit {
+  transtioning: boolean = false;
+  animateJs() {
+    this.transtioning = !this.transtioning;
+  }
 
+  @ViewChild('slides', {static: false}) slides: IonSlides;
+
+  slideOpts =  {
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    height: '4px'
+    }
+  }
+  isBeginning: boolean = false;
+  nextText = 'Next'
   db = firebase.firestore();
 
   IDno;
@@ -31,6 +47,9 @@ export class ReclaimerPage implements OnInit {
   time;
   id;
   image;
+  streetname;
+  town;
+  city;
 
   names;
   surnames;
@@ -336,6 +355,8 @@ export class ReclaimerPage implements OnInit {
   UpdateID;
   storage = firebase.storage().ref();
 
+  isEnd: boolean = false;
+
   ///////////////////////////////////////////////////////////////
 
   otherPopup: boolean = false;
@@ -436,20 +457,20 @@ export class ReclaimerPage implements OnInit {
         let OverallGrandTotal = {};
         let reclaimercode = {};
 
-        id = this.id = element.id;
-        reclaimername = this.reclaimername = element.data().name;
-        reclaimersurname = this.reclaimersurname = element.data().surname;
-        reclaimerDate = this.reclaimerDate = element.data().date;
-        reclaimercode = this.reclaimercode = element.data().reclaimercode;
+        // id = this.id = element.id;
+        // reclaimername = this.reclaimername = element.data().name;
+        // reclaimersurname = this.reclaimersurname = element.data().surname;
+        // reclaimerDate = this.reclaimerDate = element.data().date;
+        // reclaimercode = this.reclaimercode = element.data().reclaimercode;
 
         this.image = element.data().image;
         // this.truckcode2222 = element.data().reclaimercode;
 
-        name = this.name = element.data().name;
-        surname = this.surname = element.data().surname;
-        contact = this.contact = element.data().contact;
-        address = this.address = element.data().address;
-        OverallGrandTotal = this.OverallGrandTotal = element.data().OverallGrandTotal;
+        // name = this.name = element.data().name;
+        // surname = this.surname = element.data().surname;
+        // contact = this.contact = element.data().contact;
+        // address = this.address = element.data().address;
+        // OverallGrandTotal = this.OverallGrandTotal = element.data().OverallGrandTotal;
 
         this.usersz.push(reclaimercode)
 
@@ -475,13 +496,38 @@ export class ReclaimerPage implements OnInit {
     });
 
     this.RegisterForm = formGroup.group({
-      names : ['', [Validators.required, Validators.maxLength(15)]],
-      surnames : ['', [Validators.required, Validators.maxLength(15)]],
-      // contacts : ['', [Validators.required, Validators.maxLength(10)]],
-      addresss : ['', [Validators.required, , Validators.maxLength(40)]],
+      IDno : ['', [Validators.required]],
+      name : ['', [Validators.required]],
+      // contact : ['', [Validators.required, Validators.maxLength(10)]],
+      // streetname : ['', [Validators.required, , Validators.maxLength(40)]],
+      // town : ['', [Validators.required, , Validators.maxLength(40)]],
+      // city : ['', [Validators.required, , Validators.maxLength(40)]],
     });
    }
+//slides
+slideChanged($ev) {
+  this.slides.getActiveIndex().then(index => {
+    // console.log(index);
+    if(index == 0) {
+      this.isBeginning = false;
+    }else {
+      this.isBeginning = true;
+    }
+    if(index == 1) {
+      this.isEnd = true;
+    }else {
+      this.isEnd = false;
+    }
+ });
+ }
 
+ //slides
+ nextislide(){
+this.slides.slideNext();
+ }
+ previslide() {
+  this.slides.slidePrev();
+ }
   ngOnInit() {
     // this.getMaxMin();
   }
@@ -497,19 +543,19 @@ export class ReclaimerPage implements OnInit {
   }
 
   getPhoneInput(ev: any) {
-    this.contacts = ev.target.value;
+    this.contact = ev.target.value;
 
     // calling firebase
     // this.contact[0] == '0'
-    if (this.contacts[0] !== '0') {
+    if (this.contact[0] !== '0') {
       this.presentAlertPhoneValidation();
     } else {
       // this.showInputs()
-      // console.log('im working');
-      this.contacts = this.contacts;
+      console.log('im working');
+      this.contact = this.contact;
     }
       // console.log(this.phoneVal);
-      // console.log(this.contacts);
+      console.log(this.contact);
   }
 
   // getIDInput(ev: any) {
@@ -620,7 +666,7 @@ export class ReclaimerPage implements OnInit {
   }
 
   erasedToContact() {
-    this.contacts = '';
+    this.contact = '';
   }
 
   erasedToID() {
@@ -628,7 +674,7 @@ export class ReclaimerPage implements OnInit {
   }
 
   clearForm() {
-    this.names = '';
+    this.name = '';
     this.surnames = '';
     this.contacts = '';
     this.addresss = ''
@@ -696,18 +742,19 @@ export class ReclaimerPage implements OnInit {
     this.db.collection('reclaimers').where('id', '==', id).onSnapshot(element => {
       element.forEach(element => {
         let name = {};
-        let surname = {};
         let contact = {};
         let address = {};
         let reclaimer = {};
 
+        this.IDno = element.data().IDno;
         name = this.names = element.data().name;
-        surname = this.surnames = element.data().surname;
         contact = this.contacts = element.data().contact;
-        address = this.addresss = element.data().address;
         this.image = element.data().image;
         reclaimer = this.truckcode2222 = element.data().reclaimercode;
         this.UpdateID = id;
+        this.streetname = element.data().streetname;
+        this.town = element.data().town;
+        this.city = element.data().city;
         })
 
         // adding data to textboxes
@@ -1579,11 +1626,12 @@ export class ReclaimerPage implements OnInit {
     this.db.collection('reclaimers').add({
       reclaimercode: Math.floor(Math.random()*899999+100000),
       image: this.image,
-      name: this.names,
-      surname: this.surnames,
-      address: this.addresss,
-      contact: this.contacts,
+      name: this.name,
+      contact: this.contact,
       IDnumber: this.IDno,
+      streetname: this.streetname,
+      town: this.town,
+      city: this.city,
     }).then(result => {
       // console.log(result);
       console.log(result.id);
