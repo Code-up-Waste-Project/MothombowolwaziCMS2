@@ -1,3 +1,8 @@
+.map {
+
+  height: 80%;
+}
+
 div.swiper-container-horizontal > div.swiper-pagination-progressbar {
   top: inherit;
   bottom: 0 !important;
@@ -683,7 +688,7 @@ ion-title {
 
           //new css
          
-          
+    
         }
         #slide2 {
       // border: 2px solid red;
@@ -748,16 +753,18 @@ ion-title {
           display: flex;
           flex-direction: column;
           position: relative;
-
-          .map {
+          
+          .maps {
          background: honeydew;
-            height: 70%;
+            height: 100%;
             width: 100%;
             position: absolute;
             top: 0;
             display: flex;
             justify-content: center;
             align-items: center;
+            display: flex;
+            flex-direction: column;
           }
           .mapInfo {
            // border: 2px solid green;
@@ -1420,10 +1427,11 @@ form > input{
   }
 }
 
-}
-
 .map {
   height: 100%; //or any height
+  width: 100%;
+}
+
 }
 
 // .results {

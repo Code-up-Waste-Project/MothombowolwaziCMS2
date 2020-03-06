@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
+// import { Component, OnInit, ElementRef, Renderer2, ViewChild,AfterViewInit, } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -11,8 +11,11 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { element } from 'protractor';
 import * as moment from 'moment';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 
+
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 declare var google;
 
 @Component({
@@ -20,28 +23,35 @@ declare var google;
   templateUrl: './outbound.page.html',
   styleUrls: ['./outbound.page.scss'],
 })
-export class OutboundPage implements OnInit {
+export class OutboundPage implements OnInit{
 
-  @ViewChild('mapElement', {static: false}) mapNativeElement: ElementRef;
-  @ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
+ //autocomplete
+ yourBoolean = false; /*viewable by default*/
+ autocompleteItems;
+ autocomplete;
+ that
+ placez=[]
 
-  // Google maps by Thato
-  //autocomplete
-  autocompleteItems;
-  autocomplete;
-  that
+ distance = ''
+ duration =''
 
-  placez = [];
+@ViewChild('map', {static: true}) mapNativeElement: ElementRef;
+mapNative: HTMLCollectionOf<Element>  = document.getElementsByClassName('map')
+@ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
 
-  directionForm: FormGroup;
+@ViewChild('sliderRef', { static: true }) protected slide: ElementRef<IonSlides>;
 
-  // mark
-  directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer;
-  currentLocation: any = {
-    lat: -26.2620432,
-    lng: 27.9481053
-  };
+directionForm: FormGroup;
+
+// mark
+directionsService = new google.maps.DirectionsService;
+directionsDisplay = new google.maps.DirectionsRenderer;
+currentLocation: any = {
+  lat: -26.2620432,
+  lng: 27.9481053
+};
+
+
   ///////////////////////////////////////
 
   ishidden = false;
@@ -287,8 +297,12 @@ export class OutboundPage implements OnInit {
       } else if (this.selectedCat === 'glass') {
         this.toggleGlass();
       }
-      }, 10);
+      
+      }, 500);
       // console.log(this.selectedCat);
+      setTimeout(() => {
+        this.loadmap()
+      }, 1000);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -305,6 +319,8 @@ export class OutboundPage implements OnInit {
     private fb: FormBuilder,
     private geolocation: Geolocation
   ) {
+
+    this.createDirectionForm();
     // pulling for admin
     this.db.collection('admin').onSnapshot(snapshot => {
       this.Newadmin = [];
@@ -321,7 +337,7 @@ export class OutboundPage implements OnInit {
       // console.log('Newadmins', this.Newadmin);
     });
 
-    this.createDirectionForm();
+
 
     // this.RegisterForm = formGroup.group({
     //     DriverName : ['', [Validators.required, Validators.maxLength(15)]],
@@ -416,6 +432,7 @@ export class OutboundPage implements OnInit {
    //slides
    nextislide(){
      this.slides.slideNext();
+     
    }
 
    previslide() {
@@ -425,14 +442,23 @@ export class OutboundPage implements OnInit {
   ngOnInit() {
 
    
-   
+    this.autocompleteItems = [];
+    this.autocomplete = {
+      places: ''
+    };
     
     this.sortTable();
-
-    this.autocompleteItems = [];
-    this.autocomplete = { places: '' };
+    setTimeout(() => {
+      console.log('map load');
+      
+      
+    }, 2000);
+    
   }
 
+  ionViewDidEnter(){
+
+  }
   createDirectionForm() {
     this.directionForm = this.fb.group({
       // mark
@@ -441,8 +467,21 @@ export class OutboundPage implements OnInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
+loadmap() {
+  console.log(this.mapNative[0]);
+  
+    // // this.geolocation.getCurrentPosition().then((resp) => {
+    // //   this.currentLocation.lat = resp.coords.latitude;
+    // //   this.currentLocation.lng = resp.coords.longitude;
+    // // });
+
+    // // mark
+  
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.currentLocation.lat = resp.coords.latitude;
+      this.currentLocation.lng = resp.coords.longitude;
+    });
+    const map = new google.maps.Map(this.mapNative[0], {
       center: {lat: -26.2620432, lng: 27.9481053},
       zoom: 15
     });
@@ -478,7 +517,7 @@ export class OutboundPage implements OnInit {
         map.setZoom(17);  // Why 17? Because it looks good.
       }
       marker.setPosition(place.geometry.location);
-      marker.setVisible(true);
+      marker.setVisible(false);
       let address = '';
       if (place.address_components) {
         address = [
@@ -498,46 +537,43 @@ export class OutboundPage implements OnInit {
   }
 
    // mark
-   calculateAndDisplayRoute(address) {
+    // mark
+  calculateAndDisplayRoute(address) {
     // console.log('address', address)
     const that = this;
     this.directionsService.route({
-
+  
       origin: this.currentLocation,
       destination: address,
       travelMode: 'DRIVING',
     }, (response, status) => {
       // console.log('status', status)
       if (status === 'OK') {
+        this.distance= response.routes[0].legs[0].distance.text,
+        this.duration= response.routes[0].legs[0].duration.text,
+
         that.directionsDisplay.setDirections(response);
+
         console.log( 'response', response )
+      
+        
+        console.log( 'distance', response.routes[0].legs[0].distance.text)
+        console.log( 'duration', response.routes[0].legs[0].duration.text)
         this.placez.push(response)
         console.log( this.placez )
       } else {
         window.alert('Directions request failed due to ' + status);
       }
     });
-
+    this.in_your_method()
   }
 
-callback(response, status) {
-    if (status == 'OK') {
-      var origins = response.originAddresses;
-      var destinations = response.destinationAddresses;
+in_your_method() {
+  this.yourBoolean = true;
+}
+
+
   
-      for (var i = 0; i < origins.length; i++) {
-        var results = response.rows[i].elements;
-        for (var j = 0; j < results.length; j++) {
-          var element = results[j];
-       
-          var distance = element.distance.text;
-          var duration = element.duration.text;
-          var from = origins[i];
-          var to = destinations[j];
-        }
-      }
-    }
-  }
 
   sortTable() {
     this.db.collection('outbound').onSnapshot(element => {
