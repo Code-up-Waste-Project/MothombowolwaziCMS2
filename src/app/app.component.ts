@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
     this.appPages.push({
      
       title: 'Home',
-      url: '/home',
+      url: '/home2',
       icon: 'homeW',
       admin:"hot",
       

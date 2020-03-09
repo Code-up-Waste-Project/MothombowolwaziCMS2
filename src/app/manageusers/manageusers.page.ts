@@ -25,6 +25,7 @@ registerForm = false;
  ActiveAcount;
  number;
  id;
+ addres;
 
   Userids;
   Username;
@@ -55,6 +56,7 @@ registerForm = false;
   positions;
   address
   selectedUser ={}
+idnumber;
 
   constructor(
     public platform: Platform,
@@ -309,10 +311,14 @@ firsttem(obj:any ={})
               password: this.password,
               profile:'no',
               positions:this.positions,
+              idnumber:this.idnumber,
+              addres:this.addres
             }).then(async res =>{
               this.email=null
               this.positions=null
               this.password=null
+              this.idnumber=null
+              this.addres=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user ',
                 
@@ -389,9 +395,10 @@ firsttem(obj:any ={})
             let name = {};
             let surname = {};
             let number = {};
-            let address = {};
+            let addres = {};
             let image = {};
             let ActiveAcount = {};
+            let idnumber = {}
 
             id = this.id = element.id;
             name = this.name = element.data().name;
@@ -399,7 +406,9 @@ firsttem(obj:any ={})
             number = this.number = element.data().number;
             this.position = this.position = element.data().position;
             this.image =this.image= element.data().image;
+            this.addres =this.addres= element.data().addres;
             ActiveAcount = this.ActiveAcount = element.data().ActiveAcount;
+            idnumber = this.idnumber =element.data().idnumber;
             // })
 
             console.log(this.id);
@@ -409,6 +418,7 @@ firsttem(obj:any ={})
             console.log(this.position);
             console.log(this.image);
             console.log(this.ActiveAcount);
+            console.log(this.idnumber);
             // adding data to textboxes
             this.id = this.id;
             this.name = this.name;
@@ -417,6 +427,8 @@ firsttem(obj:any ={})
             this.position = this.position;
             this.image = this.image;
             this.ActiveAcount = this.ActiveAcount;
+            this.idnumber =this.idnumber
+            this.addres =this.addres
           // })
       })
     }
@@ -437,6 +449,9 @@ firsttem(obj:any ={})
       let activeAccount = {};
       let position = {};
       let image = {};
+      let idnumber = {}
+
+      let addres={}
 
       id = this.Userids = element.data().userid;
       name = this.name = element.data().name;
@@ -444,6 +459,8 @@ firsttem(obj:any ={})
       this.number = this.number = element.data().number;
       this.position = this.position = element.data().position;
       this.image =this.image= element.data().image;
+      idnumber = this.idnumber =element.data().idnumber;
+      addres=this.addres =element.data().addres;
 
         this.Snapprofile.push({
           id: this.Userids,
@@ -452,7 +469,9 @@ firsttem(obj:any ={})
           number: this.number,
           position: this.position,
           image: this.image,
-          activeAccount: this.ActiveAcount
+          activeAccount: this.ActiveAcount,
+          idnumber:this.idnumber,
+          addres:this.addres
         })
         console.log(this.Snapprofile);
       });

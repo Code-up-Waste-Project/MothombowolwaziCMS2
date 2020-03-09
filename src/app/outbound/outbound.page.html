@@ -1,4 +1,6 @@
 <ion-content>
+  
+  
   <div class="mother" *ngIf="popOpOpen === true" >
     <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
 <div class="slides-container">
@@ -245,26 +247,33 @@
 
 
           <!-- slide 3 -->
-      <ion-slide id="slide3">
-<div class="map">
-  <div #mapElement class="map"></div>
+      <ion-slide style="height: 100% !important;" id="slide3">
+<div class="maps">
+
+  <div #map class="map" style="position: absolute; top: 0px;
+  left: 0px; right: 0; bottom: 50%; z-index: 10; background: brown;"></div>
+
+   
   
-  <div id="infowindow-content">
-    <img src="" width="16" height="16" id="place-icon">
-    <span id="place-name"  class="title"></span><br>
-    <span id="place-address"></span>
-  </div>
+    
+  
+    <div id="infowindow-content">
+      <img src="" width="16" height="16" id="place-icon">
+      <span id="place-name"  class="title"></span><br>
+      <span id="place-address"></span>
+    </div>
 </div>
 <div class="mapInfo">
-  <form [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
-  <!-- <p id="p">Choose destination by clicking on the map above or type address below</p> -->
-  <ion-item>
-    <input class="input" #autoCompleteInput formControlName="destination" />
-  </ion-item>
-  <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
-  <p class="text">Estimated distance to destination in kilometers <br><span>{{ distance }}km</span> </p>
-  <p class="text">Estimated time to destination in minutes <br> <span>{{ duration }}min</span></p>
-</form>
+  <form style="    position: absolute;
+  z-index: 122;
+  bottom: 0;" [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
+    <ion-item>
+      <input class="input" #autoCompleteInput formControlName="destination" />
+    </ion-item>
+    <!-- <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button> -->
+  </form>
+  <p *ngIf="yourBoolean"> Estimated distance:{{distance }}</p>
+  <p *ngIf="yourBoolean"> Estimated duration:{{duration }}</p>
 </div>
 </ion-slide>
 
