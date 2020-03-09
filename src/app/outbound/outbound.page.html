@@ -13,7 +13,7 @@
           </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
-                <ion-toolbar id="two" color="primary">
+                <ion-toolbar id="two" >
                   <!-- Code added by Nathi for Search -->
                   <div class="results">
                     <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
@@ -22,7 +22,7 @@
                     </div>
                   </div>
 
-                  <ion-title class="ion-text-left" style="position: relative;">All your drivers 
+                  <ion-title class="ion-text-left" style="position: relative;background: white !important">All your drivers 
                     <span id="Searchbar"><ion-searchbar type="text" name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar></span>
                   </ion-title>
                 </ion-toolbar>

@@ -443,6 +443,7 @@ export class ReclaimerInfoPage implements OnInit {
 ionViewDidEnter() {
   this.createLineChart();
 }
+
 ngOnInit() {
 }
 
@@ -477,9 +478,7 @@ createLineChart() {
 }
  
 
-  ionViewDidEnter() {
-    this.createLineChart();
-  }
+ 
 
   pullHistoryData() {
     // January
