@@ -56,9 +56,9 @@
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
                       <label for="disapear">
-                        <ion-icon id="Addd" name="camera"></ion-icon>
+                        <!-- <ion-icon id="camera" name="camera"></ion-icon> -->
                       </label>
-                      <!-- <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button> -->
+                      <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                     </div>
                   </div>
 
@@ -74,11 +74,12 @@
                         formControlName="TruckSourcessInput"> 
                       <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput"
                       formControlName="CompanyAddressInput">
-                     <div>
-                      <ion-button id="btn" color="clear" (click)="nextislide()"
+   
+                    </div>
+                    <div id="save">
+                      <ion-button id="btn"  (click)="nextislide()"
                       [disabled]="!RegisterForm.valid">Save driver</ion-button>
                      </div>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -102,7 +103,7 @@
           <div class="SecSection">
             <!-- For Paper -->
     
-            <div class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
+            <div  class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
               <!-- paper -->
               <!-- <div class="Next-button">
                 <ion-button fill="clear" color="light" (click)="togglePlastic()">Next</ion-button>
@@ -133,9 +134,9 @@
                     <p>PAP003</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                      <p id="totals">Total Paper  =  <span>5140 kg</span></p>
-                  </ion-col> -->
+                  </ion-col>
     
                 </ion-row>
               </ion-grid>
@@ -185,9 +186,9 @@
                     <p>PET003</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Plastic  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                 </ion-col>
     
                 </ion-row>
               </ion-grid>
@@ -203,9 +204,9 @@
                     <p id="CODE">NFAL01</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Aluminium  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                 </ion-col>
 
                 </ion-row>
               </ion-grid>
@@ -224,9 +225,9 @@
                     <p id="CODE">GL001</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Glass  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                 </ion-col>
 
                 </ion-row>
               </ion-grid>
