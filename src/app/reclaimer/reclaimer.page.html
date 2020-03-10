@@ -14,7 +14,7 @@
           </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
-                <ion-toolbar id="two" color="primary">
+                <ion-toolbar id="two" >
                  
                   <ion-title class="ion-text-left" style="position: relative;">All your regular customers <span id="Searchbar"><input type="text" placeholder="Search by name"></span></ion-title>
                 </ion-toolbar>
@@ -52,10 +52,10 @@
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                      <label for="disapear">
+                      <!-- <label for="disapear">
                         <ion-icon id="Addd" name="camera"></ion-icon>
-                      </label>
-                      <!-- <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button> -->
+                      </label> -->
+                      <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                     </div>
                   </div>
 
@@ -73,11 +73,12 @@
                       [ngModelOptions]="{standalone: true}">
                       <input type="text" placeholder="City" [(ngModel)]="city"
                       [ngModelOptions]="{standalone: true}">
-                     <div>
-                      <ion-button id="btn" color="clear" (click)="nextislide()"
+                     
+                    </div>
+                    <div id="save">
+                      <ion-button id="btn"  (click)="nextislide()"
                       [disabled]="!RegisterForm.valid">Save driver</ion-button>
                      </div>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -110,33 +111,33 @@
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="PAP005 (Kg)" [(ngModel)]="PAP005massz"
                   (change)='onChangePAP005($event.target.value)'><br>
-                    <p>{{ PAP005pricez }}</p>
+                    <p>R {{ PAP005pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                     placeholder="PAP007 (Kg)" [(ngModel)]="PAP007massz"
                     (change)='onChangePAP007($event.target.value)'><br>
-                    <p>{{ PAP007pricez }}</p>
+                    <p>R {{ PAP007pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="PAP001 (Kg)" [(ngModel)]="PAP001massz"
                   (change)='onChangePAP001($event.target.value)'><br>
-                    <p>{{ PAP001pricez }}</p>
+                    <p>R {{ PAP001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                     placeholder="PAP003 (Kg)" [(ngModel)]="PAP003massz"
                     (change)='onChangePAP003($event.target.value)'><br>
-                    <p>{{ PAP003pricez }}</p>
+                    <p>R {{ PAP003pricez }}</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
-                     <p id="totals">Total Paper  =  <span>5140 kg</span></p>
-                  </ion-col> -->
+                  <ion-col class="input-textfields" size="12">
+                     <p id="totals"> Total Payable amount for paper =  <span>R 5140. 00</span></p>
+                  </ion-col>
     
                 </ion-row>
               </ion-grid>
@@ -155,46 +156,46 @@
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="HD001 (Kg)" maxlength="4" [(ngModel)]="HD001massz"
                   (change)='onChangeHD001($event.target.value)'><br>
-                <p>{{ HD001pricez }}</p>
+                <p>R {{ HD001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   maxlength="4" placeholder="LD001 (Kg)" [(ngModel)]="LD001massz"
                   (change)='onChangeLD001($event.target.value)'><br>
-                <p>{{ LD001pricez }}</p>
+                <p>R {{ LD001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   maxlength="4" placeholder="LD003 (Kg)" [(ngModel)]="LD003massz"
                   (change)='onChangeLD003($event.target.value)'><br>
-                <p>{{ LD003pricez }}</p>
+                <p>R {{ LD003pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="PET005 (Kg)" [(ngModel)]="PET005massz"
                   (change)='onChangePET005($event.target.value)'><br>
-                <p>{{ PET005pricez }}</p>
+                <p>R {{ PET005pricez }}</p>
                   </ion-col>
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="PET001 (Kg)" [(ngModel)]="PET001massz"
                   (change)='onChangePET001($event.target.value)'><br>
-                <p>{{ PET001pricez }}</p>
+                <p>R {{ PET001pricez }}</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="PET003 (Kg)" [(ngModel)]="PET003massz"
                   (change)='onChangePET003($event.target.value)'><br>
-                <p>{{ PET003pricez }}</p>
+                <p>R {{ PET003pricez }}</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
-                    <p id="totals">Total Plastic  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                  <ion-col class="input-textfields" size="12">
+                    <p id="totals">Total payable amount for Plastic  =  <span> R 5140 kg</span></p>
+                 </ion-col>
     
                 </ion-row>
               </ion-grid>
@@ -208,12 +209,11 @@
                     <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
                   placeholder="NFAL01 (Kg)" [(ngModel)]="NFAL01massz"
                   (change)='onChangeNFAL01($event.target.value)'><br>
-                <p>{{ NFAL01pricez }}</p>
+                <p>R {{ NFAL01pricez }}</p>
                   </ion-col>
-
-                  <!-- <ion-col class="input-textfields" size="12">
-                    <p id="totals">Total Aluminium  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                  <ion-col class="input-textfields" size="12">
+                    <p id="totals">Total payable amount for Aluminium  =  <span> R 5140 kg</span></p>
+                 </ion-col>
                 </ion-row>
               </ion-grid>
             </div>
@@ -231,9 +231,9 @@
                 <p>R{{ GH001pricez }}</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
-                    <p id="totals">Total Glass  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                  <ion-col class="input-textfields" size="12">
+                    <p id="totals">Total payable amount for Glass  =  <span> R 5140 kg</span></p>
+                 </ion-col>
                 </ion-row>
               </ion-grid>
             </div>
