@@ -22,7 +22,7 @@
       <p>{{ driver.numbers }}</p>
       <p id="adres">{{ driver.companyaddress }}</p>
       <button (click)="switch()">Edit Profile</button>
-    </div>
+    </div><!-- display -->
 
 
   </div>
@@ -44,7 +44,7 @@
       <input placeholder="Company address">
       <ion-button>Update Profile</ion-button>
     </div>
-  </div>
+  </div><!-- update -->
 
   <div class="tripDetails">
     <h3>Details Per Trip</h3>
@@ -64,14 +64,14 @@
           <p>: 404 cruise road Melville</p>
           <p>: 527 km</p>
 
-          <button [routerLink]="['/outbound-pdf', loads.truckcode]">Details</button>
+          <button id="btndetails" [routerLink]="['/outbound-pdf', loads.truckcode]">Details</button>
         </div>
       </div>
     </div>
   </div>
       <!-- div to update drivers information -->
 
-</div>
+</div><!-- end of profile details -->
 
 
 <div class="graph">

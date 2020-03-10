@@ -22,7 +22,7 @@ export class ReclaimerInfoPage implements OnInit {
   @ViewChild('barChart', {static: false}) barChart;
 
   db = firebase.firestore();
-
+  come: boolean = true;
   bars: any;
   colorArray: any;
 
@@ -445,6 +445,9 @@ ionViewDidEnter() {
 }
 
 ngOnInit() {
+}
+switch(){
+  this.come = !this.come;
 }
 
 createLineChart() {
