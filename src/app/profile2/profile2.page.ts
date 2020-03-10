@@ -248,4 +248,15 @@ export class Profile2Page implements OnInit {
       //   
       // }
 
+
+      formOpen: boolean = false;
+
+      openPopUp(){
+        this.formOpen = true
+      }
+
+      closePopUp(){
+        this.formOpen = false
+      }
+
 }

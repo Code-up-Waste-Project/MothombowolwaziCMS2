@@ -708,6 +708,11 @@ bD = document.getElementsByClassName('bD')
     }
    
   ngOnInit() {
+
+  
+
+
+
     this.prices = firebase.firestore().collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot((documentSnapshot) => {
       this.price = [];
       // console.log(documentSnapshot.data());
