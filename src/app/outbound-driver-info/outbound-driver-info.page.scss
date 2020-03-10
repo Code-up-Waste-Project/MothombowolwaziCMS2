@@ -85,8 +85,8 @@
         }
         .profileimage {
            border: 2px solid rgb(211, 208, 208);
-            width: 300px;
-            height: 300px;
+           width: 200px;
+           height: 200px;
             border-radius: 50%;
             img {
                 object-fit: cover;
@@ -275,7 +275,7 @@
 
              }
              .rightside {
-               // border: 2px solid black;
+                //border: 2px solid black;
                 width: 65%;
                 position: relative;
                 padding-top: 1% !important;
@@ -292,7 +292,8 @@
                     padding-left: 5px;
                 }
 
-                button {
+                #btndetails {
+                 //border: 1px solid blue !important;
                     width: 50%;
                     background: #558c03;
                     border-radius: 50px;

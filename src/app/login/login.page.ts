@@ -38,6 +38,21 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+
+
+
+
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.router.navigateByUrl('/home');
+
+      }else {
+        this.router.navigateByUrl('/login');
+      }
+      }); 
+
+
     this.loginForm.reset()
     this.menuCtrl.enable(false); // or true
   }

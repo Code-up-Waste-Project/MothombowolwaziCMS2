@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
@@ -13,7 +11,6 @@ import { FormsModule, ReactiveFormsModule,  } from '@angular/forms';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import * as firebase from 'firebase';
-
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { RegistersPipe } from './registers.pipe';
 import { ResetPasswordPageModule } from './reset-password/reset-password.module';
@@ -21,11 +18,8 @@ import { ProfilePageModule} from './profile/profile.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
  
-
-
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
-
 // // Your web app's Firebase configuration       OLD Database 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
@@ -40,7 +34,6 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 // // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
-
 // // Your web app's Firebase configuration         New Database 5 Feb 2020
 var firebaseConfig = {
   apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
