@@ -1,11 +1,11 @@
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import * as firebase from 'firebase';
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from '../app/user/auth.service';
 
-import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, } from '@angular/router';
 import { element } from 'protractor';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
@@ -20,7 +20,7 @@ const STORE_KEY =  'lastAction';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  public unsubscribeBackEvent: any;
   public appPages = [];
   admin;
   pos;
@@ -48,7 +48,9 @@ export class AppComponent implements OnInit {
     private content: ElementRef,
     private render: Renderer2,
     public router: Router,
+    public alertCtrl: AlertController,
   ) {
+    this.Logout()
     console.log("good morning")
       this.getAuth();
       this.initializeApp();
@@ -80,6 +82,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
+// check if the user did the onboarding
+
+ 
+   
+
+
+
+    this.backButton()
     // this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
     //   this.Newadmin = [];
     //   // snapshot.forEach(Element => {
@@ -177,10 +189,37 @@ export class AppComponent implements OnInit {
     
       initializeApp() {
         this.platform.ready().then(() => {
+          // this.platform.backButton.subscribeWithPriority(9999, () => {
+          //   document.addEventListener('backbutton', function (event) {
+          //     event.preventDefault();
+          //     event.stopPropagation();
+          //     console.log('hello');
+          //   }, false);
+          // });
+          
           this.statusBar.styleDefault();
           this.splashScreen.hide();
         });
+
       }
+
+
+      // initializeApp() {
+      //   this.platform.ready().then(() => {
+      //     this.platform.backButton.subscribeWithPriority(9999, () => {
+      //       document.addEventListener('backbutton', function (event) {
+      //         event.preventDefault();
+      //         event.stopPropagation();
+      //         console.log('hello');
+      //       }, false);
+      //     });
+      //     this.statusBar.styleDefault();
+      //   });
+      // }
+
+
+
+
 
       activate(i) {
         this.active = i
@@ -214,6 +253,12 @@ export class AppComponent implements OnInit {
           }
           });
         }
+
+
+    
+
+
+
 
         initListener() {
           document.body.addEventListener('click', () => this.reset());
@@ -251,5 +296,33 @@ export class AppComponent implements OnInit {
             this.router.navigateByUrl('/login');
            });
           
+          }
+
+          ionViewWillLeave() {
+            // Unregister the custom back button action for this page
+            this.unsubscribeBackEvent && this.unsubscribeBackEvent();
+          }
+          async backButton() {
+            this.platform.backButton.subscribeWithPriority(1, async () => {
+              console.log(this.router.url);
+              if (this.router.url == '/home') {
+              this.router.navigate(['home']);
+              } else {
+                let alerter = await this.alertCtrl.create({
+                  message: 'Do you want to exit the App?',
+                  buttons: [{
+                    text: 'No',
+                    role: 'cancel'
+                  },
+                {
+                  text: 'Yes',
+                  handler: ()=> {
+                      navigator['app'].exitApp();
+                  }
+                }]
+                })
+                alerter.present()
+              }
+          });
           }
 }

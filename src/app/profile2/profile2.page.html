@@ -1,19 +1,136 @@
-
-  <!-- <div class="The-header">
-    <div class="sub-header" padding>
-      Your Profile
-    </div>
-  </div> -->
-
 <ion-content>
-  
-
-  <div class="Profile-content">
-    <div class="profile-background">
-      <img src="../../assets/loginright.svg" alt="">
-      <!-- <img src="../../assets/outboundPOPup                                                                .svg" alt="">
-      <img src="../../assets/ReclaimerPopup.svg" alt=""> -->
+  <div class="mask">
+    <div class="pop-up" *ngIf="formOpen === true">
+      <div id="the-edit-div" (click)="closePopUp()">
+        <ion-icon id="edit-icon2" src="../../assets/close.svg" alt=""></ion-icon>
+      </div>
+      <div id="user-form">
+        <div class="the-input-circles"> 
+          <div id="color-one"></div>
+          <div id="color-two"></div>
+          <div id="color-three"></div>
+        </div>
+        <div class="user-profile">
+          <img src="../../assets/user (1).png" alt="">
+        </div>
+        <div class="user-inputs">
+          <div class="user-div">
+            <div class="input-icon">
+              <ion-icon name="person"></ion-icon>
+            </div>
+          <input type="text" placeholder="Name and Surname">
+        </div>
+        <div class="user-div">
+          <div class="input-icon">
+            <ion-icon name="call"></ion-icon>
+          </div>
+        <input type="text" placeholder="Phone No.">
+      </div>
+      <div class="user-div">
+        <div class="input-icon">
+          <ion-icon name="body"></ion-icon>
+        </div>
+      <input type="text" placeholder="Role">
     </div>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address"></textarea>
+        </div>
+        <div id="the-button">
+          <ion-button>SAVE</ion-button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- The begining of the everything outside pop-up (user-form) -->
+    <div class="the-edit-div" (click)="openPopUp()">
+      <ion-icon id="edit-icon" name="create"></ion-icon>
+    </div>
+    <div class="the-profile">
+      <div class="the-circle">
+        <img src="../../assets/girl.jfif" alt="">
+      </div>
+    </div>
+    <div class="the-name">
+      <h1><b>Collins Lesulie</b></h1>
+    </div>
+    <div class="location">
+      <ion-icon name="pin"></ion-icon>
+      <p>Soweto, Pimville</p>
+    </div>
+    <div class="the-circles">
+      <div id="circle-one"></div>
+      <div id="circle-two"></div>
+      <div id="circle-three"></div>
+    </div>
+    <div class="the-information">
+      <div id="user-email">
+        <div id="user-email-circle">
+          <ion-icon src="../../assets/phone.svg" alt=""></ion-icon>
+        </div>
+        <p>my phone</p>
+        <h3><b>+27 74 905 4945</b></h3>
+      </div>
+      <div id="user-email">
+        <div id="user-email-circle">
+          <ion-icon src="../../assets/email (1).svg" alt=""></ion-icon>
+        </div>
+        <p>my email</p>
+        <h3><b>lebothipenyane@gmail.com</b></h3>
+      </div>
+    </div>
+  </div>
+  <div class="cover"></div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="Profile-content">
+    <div class="profile-background">
+      <img src="../../assets/loginright.svg" alt=""> -->
+<!-- <img src="../../assets/outboundPOPup                                                                .svg" alt="">
+      <img src="../../assets/ReclaimerPopup.svg" alt=""> -->
+<!-- </div>
     <div class="mask">
       <div class="user-card">
         <div class="first-section">
@@ -50,11 +167,40 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-</ion-content>
 
-  <!-- <div class="container">      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">      
     <img id="background1" src="../../assets/outboundPOPup                                                                .svg">
     <img id="people" src="../../assets/ReclaimerPopup.svg">
     <ion-button id="close" fill="clear" slot="icon-only"  (click)="myBackButton()" ><ion-icon mode="ios" name="close-circle" (click)="myBackButton()"></ion-icon></ion-button>

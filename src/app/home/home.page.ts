@@ -498,7 +498,7 @@ bD = document.getElementsByClassName('bD')
      updateReclaimer
 
     ionViewDidEnter() {
-
+     
     //pulling data
     //inbound
     // this.inboundgh001=0;
@@ -708,6 +708,8 @@ bD = document.getElementsByClassName('bD')
     }
    
   ngOnInit() {
+    //auth gurd
+   
     this.prices = firebase.firestore().collection('price').doc("SinUfRNnbB073KZiDIZE").onSnapshot((documentSnapshot) => {
       this.price = [];
       // console.log(documentSnapshot.data());
@@ -3130,6 +3132,13 @@ viewMoreAluminium(){
     this.isOpenAluminium = false;
     dropDown[0].style.maxHeight = "30px";
     document.getElementById("chevron-drop-down4").style.transform="rotateX(0DEG)"
+  }
+}
+backbutton(){
+  if(firebase.auth().currentUser) {
+    this.route.navigateByUrl('/home');
+  }else {
+    this.route.navigateByUrl('/login');
   }
 }
 
