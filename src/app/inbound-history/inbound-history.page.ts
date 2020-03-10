@@ -316,15 +316,17 @@ pullHistoryData() {
     snap.forEach(snap => {
       // console.log(snap.data());
       this.maruserArray.push(snap.data());
-      // console.log(this.maruserArray);
+      console.log(this.maruserArray);
       for (let keymar in this.maruserArray) {
         // console.log(this.maruserArray[key].date);
         // console.log(this.maruserArray[key].ovarallMass);
         if (this.maruserArray[keymar].date >= 'March 01 2020' && this.maruserArray[keymar].date <= 'March 31 2020') {
           marMass = +marMass + +parseFloat(this.maruserArray[keymar].ovarallMass);
         }
+        // console.log(this.maruserArray[keymar].date);
       }
-      this.mar = +marMass;
+      this.mar = marMass;
+
       console.log(marMass);
       console.log(this.mar);
     })

@@ -581,9 +581,6 @@ switch(){
 
   }
 
-  // ionViewDidEnter() {
-  //   this.createLineChart();
-  // }
 
   createLineChart() {
     Chart.defaults.global.defaultFontSize = 13;

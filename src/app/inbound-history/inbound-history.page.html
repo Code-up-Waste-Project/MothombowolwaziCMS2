@@ -54,10 +54,10 @@
     <div class="tops">
       <h3 *ngFor="let driver of ViewOutbound">Materials delivered by {{ driver.DriverName }} overtime</h3>
       <div class="boxes">
-        <P>PAPER <br><span>1235 kg</span></P>
-        <P>PLASTIC <br><span>5847 kg</span></P>
-        <P>ALUMINIUM <br><span>98746 kg</span></P>
-        <P>GLASS <br><span>8469 kg</span></P>
+        <P>PAPER <br><span>{{ paperTotal }} kg</span></P>
+        <P>PLASTIC <br><span>{{ plasticTotal }} kg</span></P>
+        <P>ALUMINIUM <br><span>{{ alumTotal }} kg</span></P>
+        <P>GLASS <br><span>{{ glassTotal }} kg</span></P>
       </div>
     </div>
     <div class="canvas">

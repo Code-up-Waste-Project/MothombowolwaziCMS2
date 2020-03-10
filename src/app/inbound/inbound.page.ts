@@ -158,6 +158,8 @@ export class InboundPage implements OnInit {
   numbers;
   companyaddress;
 
+  ovarallMass;
+
   @ViewChild('slides', {static: false}) slides: IonSlides;
   navController: any;
   goAway() {
@@ -667,8 +669,40 @@ inboundHistory(){
     }
     // console.log(this.PET005mass);
 
-    this.presentAlertupdate();
+    this.CalcTotals();
 
+  }
+
+  CalcTotals() {
+    this.ovarallMass = +parseFloat(this.GH001mass) +
+      +parseFloat(this.NFAL01mass) +
+      +parseFloat(this.HD001mass) +
+      +parseFloat(this.LD001mass) +
+      +parseFloat(this.LD003mass) +
+      +parseFloat(this.PET001mass) +
+      +parseFloat(this.PET003mass) +
+      +parseFloat(this.PAP005mass) +
+      +parseFloat(this.PAP007mass) +
+      +parseFloat(this.PAP001mass) +
+      +parseFloat(this.PAP003mass) +
+      +parseFloat(this.PET005mass);
+
+      console.log(this.ovarallMass);
+
+    console.log(this.GH001mass)
+     console.log(this.NFAL01mass)
+     console.log(this.PAP005mass)
+     console.log(this.PAP007mass)
+     console.log(this.PAP001mass)
+     console.log(this.PAP003mass)
+     console.log(this.HD001mass)
+     console.log(this.LD001mass)
+     console.log(this.LD003mass)
+     console.log(this.PET001mass)
+     console.log(this.PET003mass)
+     console.log(this.PET005mass);
+
+      this.presentAlertupdate();
   }
 
   saveDatafirebase() {
@@ -799,7 +833,8 @@ inboundHistory(){
         PET00: this.PET001mass,
         PET003: this.PET003mass,
         PET005: this.PET005mass,
-        driverID: this.resultID
+        driverID: this.resultID,
+        ovarallMass: this.ovarallMass
       }).then(result => {
         // console.log(result);
         console.log(result.id);
@@ -827,7 +862,8 @@ inboundHistory(){
         PET00: this.PET001mass,
         PET003: this.PET003mass,
         PET005: this.PET005mass,
-      driverID: id,
+        driverID: id,
+        ovarallMass: this.ovarallMass
     }).then(result => {
       // console.log(result);
       console.log(result.id);
@@ -895,7 +931,7 @@ inboundHistory(){
           handler: () => {
             this.AddUserToForm(id);
             // this.doneBtn();
-            // this.nextClick();
+            this.nextislide();
             this.animateJs();
             // this.route.navigateByUrl('/reclaimer');
           }
