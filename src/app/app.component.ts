@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
     this.appPages.push({
      
       title: 'Home',
-      url: '/home',
+      url: '/home2',
       icon: 'homeW',
       admin:"hot",
       
@@ -167,11 +167,7 @@ export class AppComponent implements OnInit {
         icon: 'manageUserz',
         admin:"cool"
       },
-      {
-        title: 'Logout',
-        icon: 'logout',
-        admin: "cool"
-      }
+   
       );
     }
             // console.log(this.appPages);

@@ -6,7 +6,7 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile2',
+  selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
@@ -24,7 +24,7 @@ export class ProfilePage implements OnInit {
   profile = {
   image: '',
   name: null,
-  address: null,
+  addres: null,
   surname: null,
   position: null,
   number:null,
@@ -52,7 +52,7 @@ export class ProfilePage implements OnInit {
         this.profile.image = snapshot.data().image;
         this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
-        this.profile.address = snapshot.data().address;
+        this.profile.addres = snapshot.data().address;
         console.log('admin', this.userprofile);
       });
    }
@@ -73,7 +73,7 @@ export class ProfilePage implements OnInit {
          this.buttonDisabled = false;
        });
 
-    this.menuCtrl.enable(true);
+    // this.menuCtrl.enable(true);
   }
 
   async users() {
@@ -91,7 +91,7 @@ export class ProfilePage implements OnInit {
           duration: 2000
         });
         toast.present();
-      }else if (this.profile.address == "" || this.profile.address == undefined) {
+      }else if (this.profile.addres == "" || this.profile.addres == undefined) {
           const toast = await this.toastController.create({
             message: 'Enter the address',
             duration: 2000
@@ -113,10 +113,10 @@ export class ProfilePage implements OnInit {
         email: this.profile.email,
         number:this.profile.number,
         position: this.profile.position,
-        address: this.profile.address,
         image: this.profile.image,
         isAdmin: this.isAdmin,
         userid: this.profile.userid,
+        address: this.profile.addres
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -223,18 +223,11 @@ export class ProfilePage implements OnInit {
   
     
   
-    // ionViewWillEnter() {
-    //   this.menuCtrl.enable(false);
-    //  }
-  
-    //  ionViewDidLeave() {
-    //   // enable the root left menu when leaving the tutorial page
-    //   this.menuCtrl.enable(true);
-    // }
+   
 
     myBackButton(){
       this.location.back();
-      // this.menuCtrl.enable(true);
+     
     }
 
     Logout() {
@@ -244,8 +237,5 @@ export class ProfilePage implements OnInit {
        });
       
       }
-      // theadmin(){
-      //   
-      // }
-
+   
 }

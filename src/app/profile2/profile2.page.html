@@ -157,7 +157,7 @@
           <div id="the-inputs">
             <input type="text" placeholder="Name" [(ngModel)]="profile.name">
             <input type="text" placeholder="Surname" [(ngModel)]="profile.surname">
-            <input type="tel" placeholder="Phone Number" [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)">
+            <input  placeholder="Phone Number" [(ngModel)]="profile.number" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;">
             <input type="text" placeholder="Role" [(ngModel)]="profile.position">
             <input type="text" placeholder="Physical Address" [(ngModel)]="profile.addres">
           </div>

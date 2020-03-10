@@ -1,4 +1,6 @@
 <ion-content>
+  
+  
   <div class="mother" *ngIf="popOpOpen === true" >
     <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
 <div class="slides-container">
@@ -8,12 +10,12 @@
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
-          <ion-toolbar color="tertiary">
+          <!-- <ion-toolbar color="warning">
             <ion-title class="ion-text-center">Outbound Details</ion-title>
-          </ion-toolbar>
+          </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
-                <ion-toolbar id="two" color="primary">
+                <ion-toolbar id="two" >
                   <!-- Code added by Nathi for Search -->
                   <div class="results">
                     <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
@@ -22,14 +24,14 @@
                     </div>
                   </div>
 
-                  <ion-title class="ion-text-left" style="position: relative;">All your drivers 
-                    <span id="Searchbar"><ion-searchbar type="text" name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar></span>
+                  <ion-title class="ion-text-left" style="position: relative;background: white !important">All your drivers 
+                    <span id="Searchbar"><input type="text" name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></span>
                   </ion-title>
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card *ngFor="let records of recordoutbounddisplays">
-                      <h4 (click)='presentAlertAddUser(records.id)'>{{ records.DriverName }}</h4>
+                    <ion-card *ngFor="let records of recordoutbounddisplays" (click)='presentAlertAddUser(records.id)'>
+                      <h4>{{ records.DriverName }}</h4>
                       <p>{{ records.RegistarionNumberPlates }}</p>
                       <p>{{ records.truckcode }}</p>
                     </ion-card>
@@ -58,11 +60,15 @@
                 <div class="form">
                   <div class="profileholder">
                     <div class="profile">
-                      <ion-button fill="clear"><ion-icon name="camera"  (change)="changeListener($event)">
-                        <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-                        <img *ngIf="image" src="{{ image }}" alt="">
-                        <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)" align="center">
-                      </ion-icon></ion-button>
+                      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                      <img *ngIf="image" src="{{ image }}" alt="">
+                      <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+                      <!-- <label for="disapear">
+                        <ion-icon id="Addd" name="camera"></ion-icon>
+                      </label> -->
+                      <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
+                        
+                      <!-- </ion-icon></ion-button> -->
                     </div>
                   </div>
 
@@ -78,11 +84,13 @@
                       formControlName="TruckSourcessInput"> 
                     <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput"
                     formControlName="CompanyAddressInput">
-                   <div>
-                    <ion-button id="btn" color="clear" (click)="nextislide()"
+                  
+                  </div>
+
+                   <div id="save">
+                    <ion-button id="btn"  (click)="nextislide()"
                     [disabled]="!RegisterForm.valid">Save driver</ion-button>
                    </div>
-                  </div>
                 </form>
                 </div>
               </div>
@@ -135,10 +143,10 @@
                     <p>PAP003</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                   
                      <p id="totals">Total Paper  =  <span>5140 kg</span></p>
-                  </ion-col> -->
+                  </ion-col>
     
                 </ion-row>
               </ion-grid>
@@ -187,10 +195,10 @@
                     <p>PET003</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                   
                     <p id="totals">Total Plastic  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                 </ion-col>
     
                 </ion-row>
               </ion-grid>
@@ -227,10 +235,10 @@
                     <p id="CODE">GL001</p>
                   </ion-col>
 
-                  <!-- <ion-col class="input-textfields" size="12">
+                  <ion-col class="input-textfields" size="12">
                   
                     <p id="totals">Total Glass  =  <span>5140 kg</span></p>
-                 </ion-col> -->
+                 </ion-col>
                 </ion-row>
               </ion-grid>
             </div>
@@ -241,26 +249,35 @@
 
 
           <!-- slide 3 -->
-      <ion-slide id="slide3">
-<div class="map">
-  <div #mapElement class="map"></div>
+      <ion-slide style="height: 100% !important;" id="slide3">
+<div class="maps">
+
+  <div #map class="map" style="position: absolute; top: 0px;
+  left: 0px; right: 0; bottom: 50%; z-index: 10; background: brown;"></div>
+
+   
   
-  <div id="infowindow-content">
-    <img src="" width="16" height="16" id="place-icon">
-    <span id="place-name"  class="title"></span><br>
-    <span id="place-address"></span>
-  </div>
+    
+  
+    <!-- <div id="infowindow-content">
+      <img src="" width="16" height="16" id="place-icon">
+      <span id="place-name"  class="title"></span><br>
+      <span id="place-address"></span>
+    </div> -->
 </div>
 <div class="mapInfo">
-  <form [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
-  <!-- <p id="p">Choose destination by clicking on the map above or type address below</p> -->
-  <ion-item>
-    <input class="input" #autoCompleteInput formControlName="destination" />
-  </ion-item>
-  <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
-  <p class="text">Estimated distance to destination in kilometers <br><span>{{ distance }}km</span> </p>
-  <p class="text">Estimated time to destination in minutes <br> <span>{{ duration }}min</span></p>
+  <form  [formGroup]="directionForm"  (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
+ <input class="input" #autoCompleteInput formControlName="destination" />
+
+    <!-- <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button> -->
 </form>
+  <p style="padding-top: 10px;"> Estimated distance to destination in km: </p>
+  <p class="results"  > testing</p>
+  <p > Estimated time to destination in minutes: </p>
+  <p class="results" >testing</p>
+  <p > Truck registration number </p>
+  <p class="results" >jpy 1284 GP</p>
+  <button id="preview">Preview</button>
 </div>
 </ion-slide>
 
@@ -269,7 +286,8 @@
      <div class="btn-slides">
       <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
-      <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" (click)="nextislide()">{{nextText}}</ion-button>
+      <ion-button id="nextbtn"  *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
+      <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" (click)="CheckInputsEmptyString()" *ngIf="isEnd" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 
@@ -442,14 +460,14 @@
       <div class="userId">Code</div>
       <div class="name">Driver Name</div>
       <div class="regNo">Registration No.</div>
-      <div></div>
+      <div class="icon">Details</div>
       <div></div>
      </div><!-- end of history-labels -->
 <div class="scrolling">
     <div class="itemList" *ngFor="let records of recordoutbounddisplayshome">
-      <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.truckcode }}</div>
-      <div class="name" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.DriverName }}</div>
-      <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
+      <div class="userId">{{ records.truckcode }}</div>
+      <div class="name" >{{ records.DriverName }}</div>
+      <div class="regNo">{{ records.RegistarionNumberPlates }}</div>
       <div class="icon"><ion-button [routerLink]="['/outbound-driver-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
       <!-- <div>

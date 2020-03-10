@@ -1,8 +1,7 @@
-
 <ion-content>
   <div class="container" >
     <div class="head">
-      <p>Reclaimer's Profile $ History</p>
+      <p>Reclaimer's Profile & History</p>
     </div>
   <div class="top" padding>
     <div class="driverDetails" *ngFor="let reclaim of ViewReclaimer">
@@ -81,7 +80,8 @@
       </div>
     </div>
     <div class="canvas">
-      <h1>MAP GOES HERE</h1>
+      <canvas #barChart style="height: 50% !important;" >
+      </canvas>
     </div>
   </div>
   </div>
