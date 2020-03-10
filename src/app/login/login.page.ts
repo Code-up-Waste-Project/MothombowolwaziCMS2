@@ -135,5 +135,19 @@ export class LoginPage implements OnInit {
   //   // enable the root left menu when leaving the tutorial page
   //   this.menuCtrl.enable(true);
   // }
+  ionViewDidEnter() {
+    if(firebase.auth().currentUser) {
+      this.router.navigateByUrl('/home');
+    }else {
+      this.router.navigateByUrl('/login');
+    }
+  }
 
+  ionViewWillLeave() {
+    if(firebase.auth().currentUser) {
+      this.router.navigateByUrl('/home');
+    }else {
+      this.router.navigateByUrl('/login');
+    }
+  }
 }

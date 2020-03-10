@@ -104,7 +104,14 @@ firsttem(obj:any ={})
 }
 
   ngOnInit() {
-   
+   //auth gurd
+  //  firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     this.router.navigateByUrl('/home');
+  //   }else {
+  //     this.router.navigateByUrl('/login');
+  //   }
+  //   });
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
