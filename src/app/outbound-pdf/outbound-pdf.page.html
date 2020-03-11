@@ -14,109 +14,133 @@
 </ion-header>
 
 <ion-content>
-  <div class="Thecont">
-    <div class="Information">
-  <div  *ngFor="let out of ViewOutbound">
+  <div class="the-pdf">
+    <div id="the-pdf-page">
+      <div id="pdf-header">
+        <div id="first-section">
+          <h1>MTHOMBOWOLWAZI</h1>
+          <P>OUTBOUND WASTE RECYCLING</P>
+        </div>
+        <div id="second-setion">
+          <div id="the-image-div">
+            <img src="../../assets/mthombologo (1).png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="pdf-details">
+        <div id="info-one">
+          <!-- <ion-grid>
+            <ion-row>
+              <ion-col id="for-icon">
+                sdsd
+              </ion-col>
+              <ion-col>
+                sdsd
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
 
-  <div class="Info">
-    <div class="div1"></div>
-    <!-- <div class="div2"><h2>Date:  {{ out.date }}</h2></div> -->
+          <table id="receipt-table">
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="person"></ion-icon>
+                </div>
+                <div> Lebogang Thipenyane </div>
+              </td>
+              <td>REGISTRATIO NO.</td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="pin"></ion-icon>
+                </div>
+                <div>
+                  7118 ISIGEDLA, STREET Naledi EXT 2
+                </div>
+              </td>
+              <td>78283 GP</td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="mail"></ion-icon>
+                </div>
+                <div>
+                  mthombowolwazi@gmail.com
+                </div>
+              </td>
+              <td>Date Issued</td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <ion-icon name="call"></ion-icon>
+                </div>
+                <div>
+                  0740954945
+                </div>
+              </td>
+              <td>23 July 2020</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="the-table">
+        <div class="table-header">
+          <div id="material-code">
+            <h3>MATERIAL CODE</h3>
+          </div>
+          <div id="mass">
+            <h3>MASS (KG)</h3>
+          </div>
+          <div id="VAT">
+            <h3>VAT</h3>
+          </div>
+          <div id="price">
+            <h3>PRICE</h3>
+          </div>
+        </div>
+        <div class="table-content">
+          <div id="code">
+            <h3>GH001</h3>
+          </div>
+          <div id="kgs">
+            <h3>5</h3>
+          </div>
+          <div id="percentage">
+            <h3>0.65</h3>
+          </div>
+          <div id="amount">
+            <h3>R10.00</h3>
+          </div>
+        </div>
+        <div class="total">  
+          <div id="total1"></div>
+          <div id="total1"></div>
+          <div id="total1">
+            <h3> <b>Total</b> </h3>
+          </div>
+          <div id="total1">
+            <h3> <b>R10.00</b> </h3>
+          </div>
+        </div>
+        <div class="foooter">
+          <div id="section-one">
+            <div class="deliver"><h5>Deliver To</h5></div>
+            <div id="info"><p>Nompumelelo Mbatha</p></div>
+            <div id="info"><p>Coca-Cola</p></div>
+            <div id="info"><p>Coca-Cola@gmail.com</p></div>
+          </div>
+          <div id="section-two">
+            <div class="driver"><h5>Driver</h5></div>
+            <div id="info2"><p>Nathi Mbatha</p></div>
+            <div id="info2"><p>075 025 6555</p></div>
+            <div id="info2"><p>5855G GP</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <h1>Purchases Per Product Summery</h1>
-
-  <table style="width:100%">
-  <!-- <tr>
-    <th>Name & Surname</th>
-    <th>Reg No Plates.</th>
-    <th>Company Name</th>
-    <th>Location</th>
-  </tr>
-  <tr>
-    <td><p>{{ out.DriverName }}</p></td>
-    <td><p>{{ out.RegistarionNumberPlates }}</p></td>
-    <td><p>{{ out.TruckSourcess }}</p></td>
-    <td><p>{{ out.Destination }}</p></td>
-  </tr> -->
-<br><br><br>
-  <tr>
-    <th>Waste Type</th>
-    <th>CODE/NUMBER</th>
-    <th>Mass(kg)</th>
-  </tr>
-  <tr>
-    <td><p>Glass</p></td>
-    <td><p>{{ GH001 }}</p></td>
-    <td><p>{{ GH001storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p>Non-Ferrous</p></td>
-    <td><p>NFAL01</p></td>
-    <td><p>{{ NFAL01storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p>PAPER</p></td>
-    <td><p>PAP005</p></td>
-    <td><p>{{ PAP005storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP007</p></td>
-    <td><p>{{ PAP007storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP001</p></td>
-    <td><p>{{ PAP001storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PAP003</p></td>
-    <td><p>{{ PAP003storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p>PLASTIC</p></td>
-    <td><p>HD001</p></td>
-    <td><p>{{ HD001storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>LD001</p></td>
-    <td><p>{{ LD001storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>LD003</p></td>
-    <td><p>{{ LD003storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET001</p></td>
-    <td><p>{{ PET001storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET003</p></td>
-    <td><p>{{ PET003storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <td><p></p></td>
-    <td><p>PET005</p></td>
-    <td><p>{{ PET005storagemassz }}</p></td>
-  </tr>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>Overall Mass</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td><p>{{ overallStoragez }}</p></td>
-  </tr>
-</table>
-</div>
-
-    </div>
-    </div>
 </ion-content>

@@ -14,355 +14,133 @@
 </ion-header>
 
 <ion-content>
-    <div class="Thecont">
-        <div class="Information">
-    <div *ngFor="let rec of testArray">
-        <div class="Info">
-            <div class="div1"></div>
-            <!-- <div class="div2">Date:  {{ rec.date }}</div> -->
+    <div class="the-pdf">
+      <div id="the-pdf-page">
+        <div id="pdf-header">
+          <div id="first-section">
+            <h1>MTHOMBOWOLWAZI</h1>
+            <P>RECLAIMER WASTE RECYCLING</P>
+          </div>
+          <div id="second-setion">
+            <div id="the-image-div">
+              <img src="../../assets/mthombologo (1).png" alt="">
+            </div>
+          </div>
         </div>
-
-        <h1>Purchases Per Product</h1>
-
-        <table style="width: 100%;">
-            <!-- <tr>
-                <th>Full Name</th>
-                <th>Phone No.</th>
-                <th>Address</th>
-                <th>Code</th>
-            </tr>
-             <tr>
-                <td>
-                    <p>{{ reclaimername }} {{ reclaimersurname }}</p>
-                </td>
-                <td>
-                    <p>{{ reclaimercontact }}</p>
-                </td>
-                <td>
-                    <p>{{ reclaimerAddress }}</p>
-                </td>
-                <td>
-                    <p>{{ reclaimercode }}</p>
-                </td>
-            </tr> 
-
-            <br><br><br> -->
-
-            <tr>
-                <th>Glass</th>
-                <th>Price incl.</th>
-                <th>Mass</th>
-                <th>VAT</th>
-                <th>Sub Total</th>
-                <th>Grand Total</th>
-            </tr>
-            <tr>
-                <td>
-                    <p>GH001</p>
-                </td>
-                <td>
-                    <p>{{ rec.GH001price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.GH001mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.GH001SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.GH001Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.GH001 }}</p>
-                </td>
-            </tr>
-            <br><br>
-
-            <tr>
-                <th>NON-FERROUS</th>
-                <th>Price incl.</th>
-                <th>Mass</th>
-                <th>VAT</th>
-                <th>Sub Total</th>
-                <th>Grand Total</th>
-            </tr>
-
-            <tr>
-                <td>
-                    <p>NFAL01</p>
-                </td>
-                <td>
-                    <p>{{ rec.NFAL01price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.NFAL01mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.NFAL01SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.NFAL01Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.NFAL01 }}</p>
-                </td>
-            </tr>
-
-            <br><br>
-
-            <tr>
-                <th>PAPER</th>
-                <th>Price incl.</th>
-                <th>Mass</th>
-                <th>VAT</th>
-                <th>Sub Total</th>
-                <th>Grand Total</th>
-            </tr>
-            <tr>
-                <td>
-                    <p>PAP005</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP005price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP005mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP005SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP005Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP005 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>PAP007</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP007price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP007mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP007SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP007Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP007 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>PAP001</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP001price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP001mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP001SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP001Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP001 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>PAP003</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP003price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP003mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP003SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP003Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PAP003 }}</p>
-                </td>
-            </tr>
-
-            <br><br>
-
-            <tr>
-                <th>PLASTIC</th>
-                <th>Price incl.</th>
-                <th>Mass</th>
-                <th>VAT</th>
-                <th>Sub Total</th>
-                <th>Grand Total</th>
-            </tr>
-            <tr>
-                <td>
-                    <p>HD001</p>
-                </td>
-                <td>
-                    <p>{{ rec.HD001price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.HD001mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.HD001SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.HD001Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.HD001 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>LD001</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD001price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD001mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD001SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD001Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD001 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>LD003</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD003price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD003mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD003SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD003Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.LD003 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>PET005</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET005price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET005mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET005SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET005Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET005 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>PET001</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET001price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET001mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET001SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET001Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET001 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>PET003</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET003price }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET003mass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET003SubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET003Vat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.PET003 }}</p>
-                </td>
-            </tr>
-
-            <br><br>
-
-            <tr>
-                <td></td>
-                <td></td>
-                <th>Overall Mass</th>
-                <th>Overall VAT</th>
-                <th>Overall Sub Total</th>
-                <th>Overall Grand Total</th>
-            </tr>
-            <tr>
-                <td>
-                    <p></p>
-                </td>
-                <td>
-                    <p></p>
-                </td>
-                <td>
-                    <p>{{ rec.OverallMass }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.OverallSubTotal }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.OverallVat }}</p>
-                </td>
-                <td>
-                    <p>{{ rec.OverallGrandTotal }}</p>
-                </td>
-            </tr>
-        </table>
+        <div class="pdf-details">
+          <div id="info-one">
+            <!-- <ion-grid>
+              <ion-row>
+                <ion-col id="for-icon">
+                  sdsd
+                </ion-col>
+                <ion-col>
+                  sdsd
+                </ion-col>
+              </ion-row>
+            </ion-grid> -->
+  
+            <table id="receipt-table">
+              <tr>
+                <td>
+                  <div>
+                    <ion-icon name="person"></ion-icon>
+                  </div>
+                  <div> Lebogang Thipenyane </div>
+                </td>
+                <td>REGISTRATIO NO.</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <ion-icon name="pin"></ion-icon>
+                  </div>
+                  <div>
+                    7118 ISIGEDLA, STREET Naledi EXT 2
+                  </div>
+                </td>
+                <td>78283 GP</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <ion-icon name="mail"></ion-icon>
+                  </div>
+                  <div>
+                    mthombowolwazi@gmail.com
+                  </div>
+                </td>
+                <td>Date Issued</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <ion-icon name="call"></ion-icon>
+                  </div>
+                  <div>
+                    0740954945
+                  </div>
+                </td>
+                <td>23 July 2020</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+  
+        <div class="the-table">
+          <div class="table-header">
+            <div id="material-code">
+              <h3>MATERIAL CODE</h3>
+            </div>
+            <div id="mass">
+              <h3>MASS (KG)</h3>
+            </div>
+            <div id="VAT">
+              <h3>VAT</h3>
+            </div>
+            <div id="price">
+              <h3>PRICE</h3>
+            </div>
+          </div>
+          <div class="table-content">
+            <div id="code">
+              <h3>GH001</h3>
+            </div>
+            <div id="kgs">
+              <h3>5</h3>
+            </div>
+            <div id="percentage">
+              <h3>0.65</h3>
+            </div>
+            <div id="amount">
+              <h3>R10.00</h3>
+            </div>
+          </div>
+          <div class="total">  
+            <div id="total1"></div>
+            <div id="total1"></div>
+            <div id="total1">
+              <h3> <b>Total</b> </h3>
+            </div>
+            <div id="total1">
+              <h3> <b>R10.00</b> </h3>
+            </div>
+          </div>
+          <div class="foooter">
+            <div id="section-one">
+              <div class="deliver"><h5>Deliver To</h5></div>
+              <div id="info"><p>Nompumelelo Mbatha</p></div>
+              <div id="info"><p>Coca-Cola</p></div>
+              <div id="info"><p>Coca-Cola@gmail.com</p></div>
+            </div>
+            <div id="section-two">
+              <div class="driver"><h5>Driver</h5></div>
+              <div id="info2"><p>Nathi Mbatha</p></div>
+              <div id="info2"><p>075 025 6555</p></div>
+              <div id="info2"><p>5855G GP</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-</div>
-</div>
-</ion-content>
+  </ion-content>
