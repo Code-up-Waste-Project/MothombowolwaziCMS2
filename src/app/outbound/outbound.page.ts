@@ -443,7 +443,16 @@ currentLocation: any = {
 
   ngOnInit() {
 
+    //auth gurd
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     this.route.navigateByUrl('/home');
+    //   }else {
+    //     this.route.navigateByUrl('/login');
+    //   }
+    //   });
    
+
     this.autocompleteItems = [];
     this.autocomplete = {
       places: ''

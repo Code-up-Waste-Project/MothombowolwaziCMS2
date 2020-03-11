@@ -4,18 +4,19 @@
 <div class="slides-container">
 
   <div class="children-slides">
+    <h2>Outbound drivers</h2>
+    <img id="image" src="../../assets/recycle.svg">
+    <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged($ev)" >
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
-          <!-- <ion-toolbar color="tertiary">
-            <ion-title class="ion-text-center">Inbound Details</ion-title>
-          </ion-toolbar> -->
+     
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two">
                  
-                  <ion-title  class="ion-text-left" style="position: relative; font-size: 1.2em;font-weight: bolder;"> Outbound drivers <span id="Searchbar" style="font-size: 0.8em;font-weight: lighter;"><input type="text" placeholder="Search by name"></span></ion-title>
+                  <ion-title  class="ion-text-left" style="position: relative; font-size: 1.2em;font-weight: bolder;"><span id="Searchbar" style="font-size: 0.8em;font-weight: lighter;"><input type="text" placeholder="Search by name"></span></ion-title>
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
@@ -24,10 +25,7 @@
                       <p>{{ records.truckcode }}</p>
                       <p>{{ records.RegistarionNumberPlates }}</p>
                     </ion-card>
-                    <!-- <ion-card>
-                      <h4>Thato Dlamini</h4>
-                      <p>060 486 9924</p>
-                    </ion-card> -->
+                
                   </div>
                   <div class="btn-new-driver">
                     <ion-button (click)="animateJs()" [disabled]="transtioning">
@@ -239,7 +237,7 @@
       <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
       <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
-      <ion-button id="nextbtn"  *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
+      <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
       <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->

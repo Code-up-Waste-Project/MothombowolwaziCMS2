@@ -21,8 +21,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
 
-
-// // Your web app's Firebase configuration       OLD Database 
+// // Your web app's Firebase configuration         New Database 5 Feb 2020
 // var firebaseConfig = {
 //   apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
 //   authDomain: "mothombowolwazicms.firebaseapp.com",
@@ -36,7 +35,6 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 // // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
-
 
 // Your web app's Firebase configuration         New Database 5 Feb 2020
 var firebaseConfig = {
@@ -52,7 +50,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
 
 @NgModule({
   declarations: [AppComponent, RegistersPipe],
