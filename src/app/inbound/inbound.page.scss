@@ -317,7 +317,7 @@ h2 {
         position: absolute;
         bottom: 0;
         right: 0;
-        border: 2px solid red;
+      //  border: 2px solid red;
         background: #A76FBF;
         display: flex;
         justify-content: space-evenly;
@@ -334,7 +334,7 @@ h2 {
   
       }
       ion-slides {
-       border: 1px solid red;
+     //  border: 1px solid red;
         position: absolute;
         top: 10% ;
         left: 5%;
@@ -348,7 +348,7 @@ h2 {
           color: red !important;
                 }
 ion-slide {
-  border: 1px solid green;
+ // border: 1px solid green;
 }
         ion-slide.slideOne {
           justify-content: flex-start !important;
@@ -363,7 +363,9 @@ ion-slide {
             display: flex;
             flex-direction: row;
             align-items: center;
-            background: #eaeaea;
+            background: white;
+            box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.192), -6px -6px 16px rgb(255, 255, 255);
+
            // padding: 1%;
             .list {
               flex: 0 0 100%;
