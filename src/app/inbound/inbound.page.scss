@@ -277,29 +277,56 @@ ion-title {
   }
   .slides-container {
     flex: 0 0 85%;
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
 
     .children-slides {
       flex: 0 0 90%;
       position: relative;
-     // border: 4px solid green;
+     border: 1px solid blue;
       background: white;
+h2 {
+ // border: 2px solid red;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  font-size: 2em;
+  padding-left: 3%;
+  font-weight: bolder;
+}
+      #image {
+     //   border: 1px solid red;
+        width: 40%;
+        position: absolute;
+        right: 0;
+        top: 0;
+   background: rgb(255, 255, 255);
+      }
+      #reclaimer {
+        width: 20%;
+        position: absolute;
+        left: 0;
+        bottom: 2%;
+      }
       .btn-slides {
         // flex: 0 0 10%;
-        width: 100%;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        width: 50%;
         position: absolute;
         bottom: 0;
-       // border: 2px solid red;
-      //  background: black;
+        right: 0;
+      //  border: 2px solid red;
+        background: #A76FBF;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         #nextbtn,   #backbtn {
           width: 25%;
           font-family: 'lato';
           font-size: 0.8em;
           letter-spacing: 0.5px;
+          color: white;
         }
         #backbtn {
   
@@ -307,12 +334,12 @@ ion-title {
   
       }
       ion-slides {
-      //  border: 4px solid red;
+     //  border: 1px solid red;
         position: absolute;
-        top: 0 ;
-        left: 0;
-        width:100%;
-        height: 92%;
+        top: 10% ;
+        left: 5%;
+        width:90%;
+        height: 80%;
         border-radius: 5px;
         background: white;
   
@@ -320,7 +347,9 @@ ion-title {
           background: red !important;
           color: red !important;
                 }
-
+ion-slide {
+ // border: 1px solid green;
+}
         ion-slide.slideOne {
           justify-content: flex-start !important;
           align-items: flex-start !important;
@@ -334,7 +363,9 @@ ion-title {
             display: flex;
             flex-direction: row;
             align-items: center;
-            background: #eaeaea;
+            background: white;
+            box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.192), -6px -6px 16px rgb(255, 255, 255);
+
            // padding: 1%;
             .list {
               flex: 0 0 100%;
