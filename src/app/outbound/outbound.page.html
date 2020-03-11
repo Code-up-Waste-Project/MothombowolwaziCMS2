@@ -18,7 +18,7 @@
                 <ion-toolbar id="two" >
                   <!-- Code added by Nathi for Search -->
                   <div class="results">
-                    <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
+                    <p *ngFor="let g of searchResults" (click)="selectLocation(g)" > {{ g }} </p>
                     <div class='count' *ngIf="searchResults.length > 0">
                       {{ searchResults.length }}
                     </div>
@@ -30,7 +30,7 @@
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card *ngFor="let records of recordoutbounddisplays" (click)='presentAlertAddUser(records.id)'>
+                    <ion-card *ngFor="let records of recordoutbounddisplays" (click)='presentAlertAddUser(records.id)' > <!-- (click)="nextislide()" -->
                       <h4>{{ records.DriverName }}</h4>
                       <p>{{ records.RegistarionNumberPlates }}</p>
                       <p>{{ records.truckcode }}</p>
@@ -88,7 +88,7 @@
                   </div>
 
                    <div id="save">
-                    <ion-button id="btn"  (click)="nextislide()"
+                    <ion-button id="btn" (click)="nextislide()"
                     [disabled]="!RegisterForm.valid">Save driver</ion-button>
                    </div>
                 </form>

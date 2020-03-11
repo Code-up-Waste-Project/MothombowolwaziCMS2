@@ -11,28 +11,29 @@
           <div id="color-three"></div>
         </div>
         <div class="user-profile">
-          <img src="../../assets/user (1).png" alt="">
+          <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
+          <img *ngIf="profile.image" src="{{ profile.name }}" alt="">
         </div>
         <div class="user-inputs">
           <div class="user-div">
             <div class="input-icon">
               <ion-icon name="person"></ion-icon>
             </div>
-          <input type="text" placeholder="Name and Surname">
+          <input type="text" placeholder="Name and Surname" [(ngModel)]="profile.name">
         </div>
         <div class="user-div">
           <div class="input-icon">
             <ion-icon name="call"></ion-icon>
           </div>
-        <input type="text" placeholder="Phone No.">
+        <input type="text" placeholder="Phone No." [(ngModel)]="profile.number">
       </div>
       <div class="user-div">
         <div class="input-icon">
           <ion-icon name="body"></ion-icon>
         </div>
-      <input type="text" placeholder="Role">
+      <input type="text" placeholder="Role" [(ngModel)]="profile.position">
     </div>
-          <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address"></textarea>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address" [(ngModel)]="profile.addres"></textarea>
         </div>
         <div id="the-button">
           <ion-button>SAVE</ion-button>
@@ -40,22 +41,22 @@
       </div>
     </div>
 
-
     <!-- The begining of the everything outside pop-up (user-form) -->
     <div class="the-edit-div" (click)="openPopUp()">
       <ion-icon id="edit-icon" name="create"></ion-icon>
     </div>
     <div class="the-profile">
       <div class="the-circle">
-        <img src="../../assets/girl.jfif" alt="">
+        <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
+        <img *ngIf="profile.image" src="{{ profile.name }}" alt="">
       </div>
     </div>
     <div class="the-name">
-      <h1><b>Collins Lesulie</b></h1>
+      <h1><b>{{ profile.name }}</b></h1>
     </div>
     <div class="location">
       <ion-icon name="pin"></ion-icon>
-      <p>Soweto, Pimville</p>
+      <p>{{ profile.addres }}</p>
     </div>
     <div class="the-circles">
       <div id="circle-one"></div>
@@ -68,14 +69,14 @@
           <ion-icon src="../../assets/phone.svg" alt=""></ion-icon>
         </div>
         <p>my phone</p>
-        <h3><b>+27 74 905 4945</b></h3>
+        <h3><b>{{ profile.number }}</b></h3>
       </div>
       <div id="user-email">
         <div id="user-email-circle">
           <ion-icon src="../../assets/email (1).svg" alt=""></ion-icon>
         </div>
         <p>my email</p>
-        <h3><b>lebothipenyane@gmail.com</b></h3>
+        <h3><b>{{ profile.email }}</b></h3>
       </div>
     </div>
   </div>

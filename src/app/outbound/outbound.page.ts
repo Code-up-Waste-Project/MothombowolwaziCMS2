@@ -435,7 +435,6 @@ currentLocation: any = {
    //slides
    nextislide(){
      this.slides.slideNext();
-     
    }
 
    previslide() {
@@ -900,7 +899,8 @@ in_your_method() {
           handler: () => {
             this.AddUserToForm(id);
             // this.doneBtn();
-            this.nextClick();
+            this.nextislide();
+            // console.log("next slide selected");
             this.animateJs();
             // this.route.navigateByUrl('/reclaimer');
           }
@@ -945,7 +945,7 @@ in_your_method() {
         console.log(this.truckcode2222);
       })
 
-  this.nextClick()
+  // this.nextClick()
 
   }
 
@@ -1042,6 +1042,9 @@ in_your_method() {
       PET005: this.PET005mass2,
       driverID: id,
       ovarallMass: this.overallStorage2,
+      destination: this.destination,
+      distance:  this.distance,
+      duration: this.duration
     }).then(result => {
       // console.log(result);
       console.log(result.id);
@@ -1323,6 +1326,7 @@ in_your_method() {
           handler: () => {
             this.checkinputfields();
             this.clearInputs();
+            // this.nextislide();
             this.route.navigateByUrl('/outbound');
             console.log('Confirm Okay');
           }

@@ -56,13 +56,15 @@
           <p>Truck Load</p>
           <p>Destination</p>
           <p>Distance in km</p>
+          <p>Duration</p>
         </div>
         <div class="rightside">
           <p class="time">{{ loads.date }}</p>
           <p>: {{ loads.driverID }}</p>
           <p>: {{ loads.ovarallMass }} kg</p>
-          <p>: 404 cruise road Melville</p>
-          <p>: 527 km</p>
+          <p>: {{ loads.destination }}</p>
+          <p>: {{ loads.distance }} </p>
+          <p>: {{ loads.duration }}</p>
 
           <button id="btndetails" [routerLink]="['/outbound-pdf', loads.truckcode]">Details</button>
         </div>

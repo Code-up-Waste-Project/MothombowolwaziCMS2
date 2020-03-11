@@ -728,6 +728,7 @@ this.slides.slideNext();
           text: 'Okay',
           handler: () => {
             this.AddUserToForm(id);
+            this.nextislide();
             this.doneBtn();
             // this.allocate();
             // this.route.navigateByUrl('/reclaimer');
@@ -771,8 +772,6 @@ this.slides.slideNext();
         // console.log(this.addresss);
         // console.log(this.reclaimercode);
   })
-
-  this.nextClick();
 
   }
 

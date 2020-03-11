@@ -25,7 +25,6 @@ export class Profile2Page implements OnInit {
   image: '',
   name: null,
   addres: null,
-  surname: null,
   position: null,
   number:null,
   // isAdmin: true,
@@ -48,9 +47,8 @@ export class Profile2Page implements OnInit {
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
         this.profile.name = snapshot.data().name;
-        this.profile.surname = snapshot.data().surname;
         this.profile.image = snapshot.data().image;
-        this.profile.position= snapshot.data().position;
+        this.profile.position = snapshot.data().position;
         this.profile.number = snapshot.data().number;
         this.profile.addres = snapshot.data().address;
         console.log('admin', this.userprofile);
@@ -109,7 +107,6 @@ export class Profile2Page implements OnInit {
        
       this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
         name: this.profile.name,
-        surname: this.profile.surname,
         email: this.profile.email,
         number:this.profile.number,
         position: this.profile.position,
@@ -221,16 +218,6 @@ export class Profile2Page implements OnInit {
       this.profile.number = '';
     }
   
-    
-  
-    // ionViewWillEnter() {
-    //   this.menuCtrl.enable(false);
-    //  }
-  
-    //  ionViewDidLeave() {
-    //   // enable the root left menu when leaving the tutorial page
-    //   this.menuCtrl.enable(true);
-    // }
 
     myBackButton(){
       this.location.back();
@@ -244,10 +231,6 @@ export class Profile2Page implements OnInit {
        });
       
       }
-      // theadmin(){
-      //   
-      // }
-
 
       formOpen: boolean = false;
 

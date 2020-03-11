@@ -20,14 +20,15 @@
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card>
-                      <h4>Lebogang Thipenyane</h4>
-                      <p>060 486 9924</p>
+                    <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
+                      <h4>{{ records.name }}</h4>
+                      <p>{{ records.reclaimercode }}</p>
+                      <p>{{ records.contact }}</p>
                     </ion-card>
-                    <ion-card>
+                    <!-- <ion-card>
                       <h4>Thato Dlamini</h4>
                       <p>060 486 9924</p>
-                    </ion-card>
+                    </ion-card> -->
                   </div>
                   <div class="btn-new-driver">
                     <ion-button (click)="animateJs()" [disabled]="transtioning">
@@ -52,9 +53,9 @@
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                      <!-- <label for="disapear">
+                      <label for="disapear">
                         <ion-icon id="Addd" name="camera"></ion-icon>
-                      </label> -->
+                      </label>
                       <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                     </div>
                   </div>
@@ -135,9 +136,9 @@
                     <p>R {{ PAP003pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                      <p id="totals"> Total Payable amount for paper =  <span>R 5140. 00</span></p>
-                  </ion-col>
+                  </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -193,9 +194,9 @@
                 <p>R {{ PET003pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total payable amount for Plastic  =  <span> R 5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -211,9 +212,9 @@
                   (change)='onChangeNFAL01($event.target.value)'><br>
                 <p>R {{ NFAL01pricez }}</p>
                   </ion-col>
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total payable amount for Aluminium  =  <span> R 5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
@@ -231,9 +232,9 @@
                 <p>R{{ GH001pricez }}</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total payable amount for Glass  =  <span> R 5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
