@@ -19,7 +19,6 @@ export class ManageusersPage implements OnInit {
 registerForm = false;
  //admin
  name;
- surname;
  position;
  image;
  ActiveAcount;
@@ -56,7 +55,7 @@ registerForm = false;
   positions;
   address
   selectedUser ={}
-idnumber;
+  idnumber;
 
   constructor(
     public platform: Platform,
@@ -72,7 +71,6 @@ idnumber;
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       name: ['', [Validators.required, ]],
-      // surname: ['', [Validators.required, ]],
       position: ['', [Validators.required, ]],
     });
 
@@ -96,7 +94,6 @@ firsttem(obj:any ={})
 {
  console.log(obj)
  this.name =obj.name
- this.surname=obj.surname
  this.number=obj.number
  this.position=obj.position
  this.image=obj.image
@@ -104,7 +101,14 @@ firsttem(obj:any ={})
 }
 
   ngOnInit() {
-   
+   //auth gurd
+  //  firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //     this.router.navigateByUrl('/home');
+  //   }else {
+  //     this.router.navigateByUrl('/login');
+  //   }
+  //   });
     this.getUsers();
 
     this.db.collection('admin').onSnapshot(snapshot => {
@@ -112,7 +116,6 @@ firsttem(obj:any ={})
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
       // this.profile.name = snapshot.data().name;
-      // this.profile.surname = snapshot.data().surname;
       // this.profile.position = snapshot.data().position;
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
@@ -145,7 +148,6 @@ firsttem(obj:any ={})
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
       // this.profile.name = snapshot.data().name;
-      // this.profile.surname = snapshot.data().surname;
       // this.profile.position = snapshot.data().position;
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
@@ -375,7 +377,6 @@ firsttem(obj:any ={})
           // this.profile.email = snapshot.data().email;
           // email: firebase.auth().currentUser.email,
           // this.profile.name = snapshot.data().name;
-          // this.profile.surname = snapshot.data().surname;
           // this.profile.position = snapshot.data().position;
           // // this.profile.image = snapshot.data().image;
           // console.log('users', this.userprofile);
@@ -393,7 +394,6 @@ firsttem(obj:any ={})
           // element.forEach(element => { ActiveAcount
             let id = {};
             let name = {};
-            let surname = {};
             let number = {};
             let addres = {};
             let image = {};
@@ -402,7 +402,6 @@ firsttem(obj:any ={})
 
             id = this.id = element.id;
             name = this.name = element.data().name;
-            surname = this.surname = element.data().surname;
             number = this.number = element.data().number;
             this.position = this.position = element.data().position;
             this.image =this.image= element.data().image;
@@ -413,7 +412,6 @@ firsttem(obj:any ={})
 
             console.log(this.id);
             console.log(this.name);
-            console.log(this.surname);
             console.log(this.number);
             console.log(this.position);
             console.log(this.image);
@@ -422,7 +420,6 @@ firsttem(obj:any ={})
             // adding data to textboxes
             this.id = this.id;
             this.name = this.name;
-            this.surname = this.surname;
             this.number = this.number;
             this.position = this.position;
             this.image = this.image;
@@ -433,18 +430,10 @@ firsttem(obj:any ={})
       })
     }
 
-  //Userids;
-  // Username;
-  // Usersurname;
-  // Useremail;
-  // UseractiveAccount;
-  // Userposition;
-
     AddUser(id) {
       this.db.collection('admin').doc(id).onSnapshot(element => {
       let id = {};
       let name = {};
-      let surname = {};
       let email = {};
       let activeAccount = {};
       let position = {};
@@ -455,7 +444,6 @@ firsttem(obj:any ={})
 
       id = this.Userids = element.data().userid;
       name = this.name = element.data().name;
-      surname = this.surname = element.data().surname;
       this.number = this.number = element.data().number;
       this.position = this.position = element.data().position;
       this.image =this.image= element.data().image;
@@ -465,7 +453,6 @@ firsttem(obj:any ={})
         this.Snapprofile.push({
           id: this.Userids,
           name: this.name,
-          surname: this.surname,
           number: this.number,
           position: this.position,
           image: this.image,

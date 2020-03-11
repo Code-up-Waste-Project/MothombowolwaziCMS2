@@ -1377,62 +1377,9 @@ ion-icon {
   // }
 }
 @media screen and (min-width: 768px) and(max-width: 1024px) {
-  .header {
-    ion-title {
-      p {
-        text-align: left;
-        margin-left: -4%;
-      }
-    }
-    ion-avatar {
-      margin-left: 0 !important;
-      position: absolute;
-      left: 1% !important;
-      top: 3.5px;
-      width: 35px;
-      height: 35px;
-    }
-    #logout {
-      width: auto;
-      font-size: 15px;
-      letter-spacing: 1px;
-      padding: 0 !important;
-    }
-  }
 
-  .container {
-    //border: 2px solid red;
-    .small {
-      //  border: 2px solid red;
-      height: 60%;
-    }
-    .alltime {
-      //
-      height: 25%;
-      /* .updates {
- //  border: 2px solid rgb(0, 68, 255);
-   height: 25%;
-   margin-top: 5%;
-} */
-    }
-    .burgercontent,
-    .burgercontent2,
-    .burgercontent3,
-    .burgercontent4 {
-      // border: 2px solid rgb(0, 68, 255);
-      margin-bottom: 15%;
-    }
-    .chartbuttons {
-      // border: 2px solid rgb(176, 235, 16);
-      p {
-        width: 70%;
-      }
-      .dynamicBtns {
-        // border: 2px solid rgb(0, 68, 255);
-        margin-right: 2%;
-      }
-    }
-  }
+
+
 }
 
 @media only screen and (max-width: 600px) {

@@ -403,30 +403,30 @@ export class InboundPDFPage implements OnInit {
      
      
     };
-this.pdfObj = pdfMake.createPdf(docDefinition, null, pdfMake.fonts);
+    this.pdfObj = pdfMake.createPdf(docDefinition, null, pdfMake.fonts);
     }
 
-downloadPdf() {
-  if (this.plt.is('cordova')) {
-    this.pdfObj.getBuffer((buffer) => {
-      var blob = new Blob([buffer], { type: 'application/pdf' });
+    downloadPdf() {
+      if (this.plt.is('cordova')) {
+        this.pdfObj.getBuffer((buffer) => {
+          var blob = new Blob([buffer], { type: 'application/pdf' });
 
-      // Save the PDF to the data Directory of our App
-      this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
-        // Open the PDf with the correct OS tools
-        this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
-      });
-    });
-  } else {
-    // this.pdfObj = pdfMake.createPdf(docDefinition); On a browser simply use download!
-    this.pdfObj.download();
-  }
-}
+          // Save the PDF to the data Directory of our App
+          this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
+            // Open the PDf with the correct OS tools
+            this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');
+          });
+        });
+      } else {
+        // this.pdfObj = pdfMake.createPdf(docDefinition); On a browser simply use download!
+        this.pdfObj.download();
+      }
+    }
 
-myBackButton(){
-  this.location.back();
-  // this.menuCtrl.enable(true);
-}
+    myBackButton(){
+      this.location.back();
+      // this.menuCtrl.enable(true);
+    }
 
 
 }

@@ -222,6 +222,8 @@ currentLocation: any = {
 
   @ViewChild('slides', {static: false}) slides: IonSlides;
 
+  destination;
+
   /////////////////////////////////////////////////////////////////////////////////////
 
   slideOpts =  {
@@ -433,7 +435,6 @@ currentLocation: any = {
    //slides
    nextislide(){
      this.slides.slideNext();
-     
    }
 
    previslide() {
@@ -442,7 +443,16 @@ currentLocation: any = {
 
   ngOnInit() {
 
+    //auth gurd
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     this.route.navigateByUrl('/home');
+    //   }else {
+    //     this.route.navigateByUrl('/login');
+    //   }
+    //   });
    
+
     this.autocompleteItems = [];
     this.autocomplete = {
       places: ''
@@ -502,7 +512,9 @@ loadmap() {
       infowindow.close();
       marker.setVisible(false);
       const place = autocomplete.getPlace();
+      this.destination = place. formatted_address;
       console.log(place. formatted_address);
+      console.log(this.destination);
       this.calculateAndDisplayRoute(place. formatted_address)
       
       if (!place.geometry) {
@@ -556,12 +568,12 @@ loadmap() {
         that.directionsDisplay.setDirections(response);
 
         console.log( 'response', response )
-      
         
-        console.log( 'distance', response.routes[0].legs[0].distance.text)
-        console.log( 'duration', response.routes[0].legs[0].duration.text)
+        console.log( 'distance', this.distance)
+        console.log( 'duration', this.duration)
+        console.log( 'destination', this.duration)
         this.placez.push(response)
-        console.log( this.placez )
+        // console.log( this.placez )
       } else {
         window.alert('Directions request failed due to ' + status);
       }
@@ -896,7 +908,8 @@ in_your_method() {
           handler: () => {
             this.AddUserToForm(id);
             // this.doneBtn();
-            this.nextClick();
+            this.nextislide();
+            // console.log("next slide selected");
             this.animateJs();
             // this.route.navigateByUrl('/reclaimer');
           }
@@ -941,7 +954,7 @@ in_your_method() {
         console.log(this.truckcode2222);
       })
 
-  this.nextClick()
+  // this.nextClick()
 
   }
 
@@ -1004,7 +1017,10 @@ in_your_method() {
         PET003: this.PET003mass2,
         PET005: this.PET005mass2,
         ovarallMass: this.overallStorage2,
-        driverID: this.resultID
+        driverID: this.resultID,
+        destination: this.destination,
+        distance:  this.distance,
+        duration: this.duration
       }).then(result => {
         // console.log(result);
         console.log(result.id);
@@ -1035,6 +1051,9 @@ in_your_method() {
       PET005: this.PET005mass2,
       driverID: id,
       ovarallMass: this.overallStorage2,
+      destination: this.destination,
+      distance:  this.distance,
+      duration: this.duration
     }).then(result => {
       // console.log(result);
       console.log(result.id);
@@ -1316,6 +1335,7 @@ in_your_method() {
           handler: () => {
             this.checkinputfields();
             this.clearInputs();
+            // this.nextislide();
             this.route.navigateByUrl('/outbound');
             console.log('Confirm Okay');
           }

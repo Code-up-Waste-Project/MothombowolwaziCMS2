@@ -450,39 +450,6 @@ switch(){
   this.come = !this.come;
 }
 
-createLineChart() {
-  Chart.defaults.global.defaultFontSize = 15;
-  Chart.defaults.global.defaultFontFamily = 'Roboto';
-  this.bars= new Chart(this.barChart.nativeElement, {
- 
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'Material Sold',
-        data: ['Jan', 'Jan', 'Jan', 'Jan', 'Jan', 
-        'Jan', 'Jan', 'Jan', 'Jan','Jan',
-        'Jan', 'Jan'],
-        backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
-        borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  });
-}
- 
-
- 
-
   pullHistoryData() {
     // January
     this.db.collection('reclaimersMass').where("reclaimerID", "==", this.id).onSnapshot(snap => {
@@ -499,7 +466,7 @@ createLineChart() {
             // console.log(this.jantimeArray);
 
             let janMass = 0;
-            janMass = +janMass + +parseFloat(this.januserArray[keyjan].ovarallMass);
+            janMass = +janMass + +parseFloat(this.januserArray[keyjan].OverallMass);
             this.jan = +this.jan + +janMass;
             console.log(this.jan);
           }
@@ -522,7 +489,7 @@ createLineChart() {
             // console.log(this.febtimeArray);
 
             let febMass = 0;
-            febMass = +febMass + +parseFloat(this.febuserArray[keyfeb].ovarallMass);
+            febMass = +febMass + +parseFloat(this.febuserArray[keyfeb].OverallMass);
             this.feb = +this.feb + +febMass
             console.log(this.feb);
           }
@@ -544,7 +511,7 @@ createLineChart() {
           // console.log(this.maruserArray[key].date);
           // console.log(this.maruserArray[key].ovarallMass);
           if (this.maruserArray[keymar].date >= 'March 01 2020' && this.maruserArray[keymar].date <= 'March 31 2020') {
-            marMass = +marMass + +parseFloat(this.maruserArray[keymar].ovarallMass);
+            marMass = +marMass + +parseFloat(this.maruserArray[keymar].OverallMass);
           }
         }
         this.mar = +marMass;
@@ -568,7 +535,7 @@ createLineChart() {
             // console.log(this.aprtimeArray);
 
             let aprMass = 0;
-            aprMass = +aprMass + +parseFloat(this.apruserArray[keyapr].ovarallMass);
+            aprMass = +aprMass + +parseFloat(this.apruserArray[keyapr].OverallMass);
             this.apr = +this.apr + +aprMass;
             console.log(this.apr);
           }
@@ -591,7 +558,7 @@ createLineChart() {
             // console.log(this.maytimeArray);
 
             let mayMass = 0;
-            mayMass = +mayMass + +parseFloat(this.mayuserArray[keymay].ovarallMass);
+            mayMass = +mayMass + +parseFloat(this.mayuserArray[keymay].OverallMass);
             this.may = +this.may + +mayMass;
             console.log(this.may);
           }
@@ -614,7 +581,7 @@ createLineChart() {
             // console.log(this.juntimeArray);
 
             let junMass = 0;
-            junMass = +junMass + +parseFloat(this.junuserArray[keyjun].ovarallMass);
+            junMass = +junMass + +parseFloat(this.junuserArray[keyjun].OverallMass);
             this.jun = +this.jun + +junMass;
             console.log(this.jun);
           }
@@ -637,7 +604,7 @@ createLineChart() {
             // console.log(this.jultimeArray);
 
             let julMass = 0;
-            julMass = +julMass + +parseFloat(this.juluserArray[keyjul].ovarallMass);
+            julMass = +julMass + +parseFloat(this.juluserArray[keyjul].OverallMass);
             this.jul = +this.jul + +julMass;
             console.log(this.jul);
           }
@@ -660,7 +627,7 @@ createLineChart() {
             // console.log(this.augtimeArray);
 
             let augMass = 0;
-            augMass = +augMass + +parseFloat(this.auguserArray[keyaug].ovarallMass);
+            augMass = +augMass + +parseFloat(this.auguserArray[keyaug].OverallMass);
             this.aug = +this.aug + +augMass; 
             console.log(this.aug);
           }
@@ -683,7 +650,7 @@ createLineChart() {
             // console.log(this.septimeArray);
 
             let sepMass = 0;
-            sepMass = +sepMass + +parseFloat(this.sepuserArray[keysep].ovarallMass);
+            sepMass = +sepMass + +parseFloat(this.sepuserArray[keysep].OverallMass);
             this.sep = +this.sep + +sepMass;
             console.log(this.sep);
           }
@@ -706,7 +673,7 @@ createLineChart() {
             // console.log(this.octtimeArray);
 
             let octMass = 0;
-            octMass = +octMass + +parseFloat(this.octuserArray[keyoct].ovarallMass);
+            octMass = +octMass + +parseFloat(this.octuserArray[keyoct].OverallMass);
             this.oct = +this.oct + +octMass;
             console.log(this.oct);
           }
@@ -729,7 +696,7 @@ createLineChart() {
             // console.log(this.novtimeArray);
 
             let novMass = 0;
-            novMass = +novMass + +parseFloat(this.novuserArray[keynov].ovarallMass);
+            novMass = +novMass + +parseFloat(this.novuserArray[keynov].OverallMass);
             this.nov = +this.nov + +novMass;
             console.log(this.nov);
           }
@@ -752,7 +719,7 @@ createLineChart() {
             // console.log(this.dectimeArray);
 
             let decMass = 0;
-            decMass = +decMass + +parseFloat(this.decuserArray[keydec].ovarallMass);
+            decMass = +decMass + +parseFloat(this.decuserArray[keydec].OverallMass);
             this.dec = +this.dec + +decMass; 
             console.log(this.dec);
           }
@@ -762,32 +729,32 @@ createLineChart() {
 
   }
 
-  // createLineChart() {
-  //   this.bars= new Chart(this.barChart.nativeElement, {
+  createLineChart() {
+    this.bars= new Chart(this.barChart.nativeElement, {
    
-  //     type: 'line',
-  //     data: {
-  //       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  //       datasets: [{
-  //         label: 'Material Delivered',
-  //         data: [this.jan, this.feb, this.mar, this.apr, this.may, 
-  //               this.jun, this.jul, this.aug, this.sep, this.oct,
-  //               this.nov, this.dec],
-  //         backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
-  //         borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
-  //         borderWidth: 1
-  //       }]
-  //     },
-  //     options: {
-  //       scales: {
-  //         yAxes: [{
-  //           ticks: {
-  //             beginAtZero: true
-  //           }
-  //         }]
-  //       }
-  //     }
-  //   });
-  // }
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Material Delivered',
+          data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+                this.jun, this.jul, this.aug, this.sep, this.oct,
+                this.nov, this.dec],
+          backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+          borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
 
 }

@@ -18,7 +18,7 @@
                 <ion-toolbar id="two" >
                   <!-- Code added by Nathi for Search -->
                   <div class="results">
-                    <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
+                    <p *ngFor="let g of searchResults" (click)="selectLocation(g)" > {{ g }} </p>
                     <div class='count' *ngIf="searchResults.length > 0">
                       {{ searchResults.length }}
                     </div>
@@ -30,7 +30,7 @@
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card *ngFor="let records of recordoutbounddisplays" (click)='presentAlertAddUser(records.id)'>
+                    <ion-card *ngFor="let records of recordoutbounddisplays" (click)='presentAlertAddUser(records.id)' > <!-- (click)="nextislide()" -->
                       <h4>{{ records.DriverName }}</h4>
                       <p>{{ records.RegistarionNumberPlates }}</p>
                       <p>{{ records.truckcode }}</p>
@@ -63,9 +63,9 @@
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                      <!-- <label for="disapear">
+                      <label for="disapear">
                         <ion-icon id="Addd" name="camera"></ion-icon>
-                      </label> -->
+                      </label>
                       <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                         
                       <!-- </ion-icon></ion-button> -->
@@ -88,7 +88,7 @@
                   </div>
 
                    <div id="save">
-                    <ion-button id="btn"  (click)="nextislide()"
+                    <ion-button id="btn" (click)="nextislide()"
                     [disabled]="!RegisterForm.valid">Save driver</ion-button>
                    </div>
                 </form>
@@ -143,10 +143,9 @@
                     <p>PAP003</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                      <p id="totals">Total Paper  =  <span>5140 kg</span></p>
-                  </ion-col>
+                  </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -195,10 +194,9 @@
                     <p>PET003</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Plastic  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
     
                 </ion-row>
               </ion-grid>
@@ -214,10 +212,9 @@
                     <p id="CODE">NFAL01</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Aluminium  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
@@ -235,10 +232,9 @@
                     <p id="CODE">GL001</p>
                   </ion-col>
 
-                  <ion-col class="input-textfields" size="12">
-                  
+                  <!-- <ion-col class="input-textfields" size="12">
                     <p id="totals">Total Glass  =  <span>5140 kg</span></p>
-                 </ion-col>
+                 </ion-col> -->
                 </ion-row>
               </ion-grid>
             </div>
@@ -247,17 +243,12 @@
       
       </ion-slide>
 
-
           <!-- slide 3 -->
       <ion-slide style="height: 100% !important;" id="slide3">
 <div class="maps">
 
   <div #map class="map" style="position: absolute; top: 0px;
   left: 0px; right: 0; bottom: 50%; z-index: 10; background: brown;"></div>
-
-   
-  
-    
   
     <!-- <div id="infowindow-content">
       <img src="" width="16" height="16" id="place-icon">
@@ -271,13 +262,15 @@
 
     <!-- <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button> -->
 </form>
+<!-- <p *ngIf="yourBoolean"> Estimated distance:{{ distance }}</p>
+  <p *ngIf="yourBoolean"> Estimated duration:{{ duration }}</p> -->
   <p style="padding-top: 10px;"> Estimated distance to destination in km: </p>
-  <p class="results"  > testing</p>
+  <p class="results"  > {{ distance }}</p>
   <p > Estimated time to destination in minutes: </p>
-  <p class="results" >testing</p>
-  <p > Truck registration number </p>
-  <p class="results" >jpy 1284 GP</p>
-  <button id="preview">Preview</button>
+  <p class="results" >{{ duration }}</p>
+  <!-- <p > Truck registration number </p>
+  <p class="results" >jpy 1284 GP</p> -->
+  <!-- <button id="preview">Preview</button> -->
 </div>
 </ion-slide>
 

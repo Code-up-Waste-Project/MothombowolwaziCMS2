@@ -474,6 +474,14 @@ export class Reclaimer2Page implements OnInit {
    }
 
   ngOnInit() {
+    //auth gurd
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.route.navigateByUrl('/home');
+      }else {
+        this.route.navigateByUrl('/login');
+      }
+      });
   }
 
       getMaxMin() {
