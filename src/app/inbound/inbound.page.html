@@ -1,10 +1,11 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>  <!-- see how there are no complicated things here -->
+      <ion-menu-button></ion-menu-button> 
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
 <ion-content>
   
   <div class="mother" *ngIf="popOpOpen === true" >
@@ -27,6 +28,17 @@
                  
                   <ion-title  class="ion-text-left" style="position: relative; font-size: 1.2em;font-weight: bolder;"><span id="Searchbar" style="font-size: 0.8em;font-weight: lighter;">
                     <input type="text" placeholder="Search by name"></span></ion-title>
+
+                    <!-- <div class="results">
+                      <p *ngFor="let g of searchResults" (click)="selectLocation(g)" (click)="nextClick()"> {{ g }} </p>
+                      <div class='count' *ngIf="searchResults.length > 0">
+                        {{ searchResults.length }}
+                      </div>
+                    </div> -->
+                    <!-- <ion-input type="text" placeholder="MyLocation" [(ngModel)]="myLocation"></ion-input> -->
+                    <ion-searchbar name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></ion-searchbar>
+                  
+                    
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
@@ -56,12 +68,11 @@
                 </ion-toolbar>
                 <div class="form">
                   <div class="profileholder">
-                    <div class="profile">
+                    <div class="profile" >
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                    
-                      <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
+                      <ion-button fill="clear" for="disapear" id="Addd" name="camera"><ion-icon id="Addd" name="camera" ></ion-icon></ion-button>
                     </div>
                   </div>
 
