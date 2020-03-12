@@ -549,7 +549,7 @@ this.slides.slideNext();
     // this.contact[0] == '0'
     if (this.contact[0] !== '0') {
       this.presentAlertPhoneValidation();
-    } else {
+    } else {z
       // this.showInputs()
       console.log('im working');
       this.contact = this.contact;
