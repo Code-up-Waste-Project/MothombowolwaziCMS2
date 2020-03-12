@@ -21,6 +21,21 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
 
+// Your web app's Firebase configuration         New Database 5 Feb 2020
+var firebaseConfig = {
+  apiKey: "AIzaSyBwoBzADNtm1Nn6EyGY3UtmCk7GDsyhBFI",
+  authDomain: "mothombowolwazicms.firebaseapp.com",
+  databaseURL: "https://mothombowolwazicms.firebaseio.com",
+  projectId: "mothombowolwazicms",
+  storageBucket: "mothombowolwazicms.appspot.com",
+  messagingSenderId: "341336075428",
+  appId: "1:341336075428:web:5ca270a91c3b7560840a31",
+  measurementId: "G-17SX6EWXGR"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
 // // Your web app's Firebase configuration         New Database 5 Feb 2020
 // var firebaseConfig = {
 //   apiKey: "AIzaSyDM4VPXQFIZnLwAvu6Tbmn4utTNeAP2ZNg",
@@ -35,21 +50,6 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 // // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
-
-// Your web app's Firebase configuration         New Database 5 Feb 2020
-var firebaseConfig = {
-  apiKey: "AIzaSyDM4VPXQFIZnLwAvu6Tbmn4utTNeAP2ZNg",
-  authDomain: "mthombowolwazicms2.firebaseapp.com",
-  databaseURL: "https://mthombowolwazicms2.firebaseio.com",
-  projectId: "mthombowolwazicms2",
-  storageBucket: "mthombowolwazicms2.appspot.com",
-  messagingSenderId: "860270237434",
-  appId: "1:860270237434:web:419f1774e1269efb38db43",
-  measurementId: "G-32KKEKZX5S"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 @NgModule({
   declarations: [AppComponent, RegistersPipe],

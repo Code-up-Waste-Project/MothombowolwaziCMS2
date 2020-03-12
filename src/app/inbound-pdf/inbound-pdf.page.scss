@@ -212,7 +212,8 @@ ion-grid{
     border: solid 1px black;
 }
 h3{
-    font-size: 1vw;
+    // font-size: 1vw;
+    font-family: 'Montserrat', ;
 }
 #content-col{
     border: white solid 1px;
@@ -240,11 +241,11 @@ h3{
 }
 
 .deliver{
-    font-size: 1.2vw;
+    // font-size: 1.2vw;
     font-family: 'Montserrat', ;
 }
 .deliver > h5{    
- font-size: 1.2vw;
+//  font-size: 1.2vw;
  font-family: 'Montserrat', ;
 }
 
@@ -288,128 +289,31 @@ h3{
 
 
 
+// Media Queries
 
+@media screen and (max-width:1024px){
 
-
-
-// .table-header{
-//     border: solid 2px rgb(0, 0, 0);
-//     height: 10%;
-//     width: 80%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;    
-// }
-// #material-code{
-//     border-right: 1px solid black;
-//     background: orangered;
-//     height: 100%;
-//     width: 50%;
-//     display: flex;
-//     align-items: center;
-// }
-// #mass{
-//     // border-right: 1px solid black;
-//     border-left: 1px solid black;
-//     background: blue;
-//     height: 100%;
-//     width: 50%;
-//     display: flex;
-//     align-items: center;
-// }
-// h3{
-//     font-size: 1vw;
-// }
-
-// .table-content{
-//     // border: solid 2px orange;
-//     background: green;
-//     height: 40%;
-//     width: 80%;
-//     display: flex;
-//     flex-direction: row;
-//     margin: 0px
-// }
-// #code{
-//     // border-right: 1px solid rgb(255, 255, 255);
-//     height: 25%;
-//     width: 50%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;   
-//     background-color: rgb(226, 226, 226);
-//     // border: solid 2px brown;
-// }
-// #kgs{
-//     // border-right: 1px solid rgb(255, 255, 255);
-//     // border-left: 1px solid rgb(255, 255, 255);
-//     height: 25%;
-//     width: 50%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center; 
-//     background-color: rgb(226, 226, 226);
-//     // border: solid 2px mediumpurple ;
-// }
-// #percentage{
-//     border-right: 1px solid rgb(255, 255, 255);
-//     border-left: 1px solid rgb(255, 255, 255);
-//     height: 25%;
-//     width: 25%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center; 
-//     background-color: rgb(226, 226, 226);
-// }
-// #amount{
-//     border-right: 1px solid rgb(255, 255, 255);
-//     border-left: 1px solid rgb(255, 255, 255);
-//     height: 25%;
-//     width: 25%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center; 
-//     background-color: rgb(226, 226, 226);
-// }
-
-// .total{
-//     height: 40%;
-//     width: 80%;
-//     display: flex;
-//     flex-direction: row;    
-//     // border: solid 2px purple;
-//     margin-top: -110px;
-// }
-// #total1{
-//     border-right: 1px solid rgb(255, 255, 255);
-//     border-left: 1px solid rgb(255, 255, 255);
-//     height: 25%;
-//     width: 50%;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center; 
-//     background-color: rgb(226, 226, 226);    
-// }
-
-
-// @media screen and (max-width:1024px){
+    #second-setion{
+        height: 100%;
+        width: 20%;
+        // background: pink;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        margin-right: 59px;
+    }
     
+    #the-image-div{
+        height: 147px;
+        width: 120px;
+        background: white;
+        border: solid 2px;
+    }
+
     
-// .the-pdf{
-//     border: solid 2px purple;
-//     height: 120%;
-//     width: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     overflow: scroll;
-//     justify-content: center;
-// }
-// #the-pdf-page{
-//     width: 70%;
-//     height: 61%;
-//     max-height: 60%;
-//     border: solid 1px rgb(0, 0, 0);
-//     // background: pink;
-// }
-// }
+#the-pdf-page{
+    width: 80%;
+    height: 112vh;
+    border: solid 1px rgb(0, 0, 0);
+}
+}
