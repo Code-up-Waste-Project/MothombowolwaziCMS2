@@ -1,5 +1,12 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>   see how there are no complicated things here 
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>-->
 <ion-content>
-
+  <main class="small-screen-size-not-supported"></main>
   <!-- <button (click)="map()">map</button> -->
   
   <div class="bD" [ngClass]="{'backdrop':viewingGraph,'backdrop-h':!viewingGraph}">
@@ -8,7 +15,7 @@
   <div class="container">
   
     <div padding class="alltime">
-      <h4 class="heading">All Storage Material</h4>
+      <h4 class="heading"> <ion-menu-button></ion-menu-button> All Storage Material</h4>
      <!-- <div class="log-out">
      
       <ion-button fill="clear" (click)="Logout()"><ion-icon name="log-out" ></ion-icon></ion-button>
@@ -312,8 +319,69 @@
 
             
   
+              <div class="meshy">
+                <div class="col">
+                  <h4 class="headz"></h4>
+                 </div>
+                <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+                <div class="col"><h4 class="the-date"> </h4></div>
+                <div class="col"><h4 class="the-date">  LD003 </h4></div>
+                <div class="col"><h4 class="the-date">{{ plastic.newld003 }}</h4></div>
+                <div class="col"><h4 class="the-date">{{ plastic.oldld003 }}</h4></div>
+              </div>
+              
+              
+  
+              <div class="meshy">
+                <div class="col">
+                  <h4 class="headz"></h4>
+                 </div>
+                <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+                <div class="col"><h4 class="the-date"> </h4></div>
+                <div class="col"><h4 class="the-date"> PET003 </h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.newpet003 }}</h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.oldpet003 }}</h4></div>
+              </div>
+              <div class="meshy">
+                <div class="col">
+                  <h4 class="headz"></h4>
+                 </div>
+                <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+                <div class="col"><h4 class="the-date"> </h4></div>
+                <div class="col"><h4 class="the-date">LD001</h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.newld001 }}</h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.oldld001 }}</h4></div>
+              </div>
+              <div class="meshy">
+                <div class="col">
+                  <h4 class="headz"></h4>
+                 </div>
+                <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+                <div class="col"><h4 class="the-date"> </h4></div>
+                <div class="col"><h4 class="the-date"> PET001 </h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.newpet001 }}</h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.oldpet001 }}</h4></div>
+              </div>
+  
+              <div class="meshy">
+                <div class="col">
+                  <h4 class="headz"></h4>
+                 </div>
+                <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+                <div class="col"><h4 class="the-date"> </h4></div>
+                <div class="col"><h4 class="the-date"> PET005 </h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.newpet005 }}</h4></div>
+                <div class="col"><h4 class="the-date">R{{ plastic.oldpet005 }}</h4></div>
+              </div>
+  
+  
+  
+              
+    
+            </div>
           </div>
-        </div>
+         </div>
+      
        </div>
   
     </div>
@@ -347,15 +415,26 @@
       <div class="col"><h4 class="headz">Old Price</h4></div>
       <div class="col"><h4 class="headz">New Price</h4></div>
     </div>
+    <div class="scrollGlass">
+      <div class="dropper3"   *ngFor="let tinns of glassArrayHistory">
+        <div class="top-cell" (click)="viewMoreGlass()"  >
+          <div class="meshy">
+            <div class="col">
+              <h4 class="the-date-head"><p>{{tinns.timeglass}}</p></h4>
+             </div>
+            <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+            <div class="col"><h4 class="the-date-head">Thato</h4></div>
+            <div class="col"><h4 class="the-date-head"> GL001</h4></div>
+            <div class="col"><h4 class="the-date-head">R{{ tinns.oldgl001 }}</h4></div>
+            <div class="col"><h4 class="the-date-head">R{{ tinns.gl001 }}</h4>
+              <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+            </div>
+          </div></div>
+    
+      </div>
+    </div>
   
-    <!-- <div class="rows" *ngFor="let paper of PaperArrayHistory">
-     <div class="col">
-       <h4 class="headz">{{paper.timePaper}}</h4></div>
-     <div class="col"> <h4 class="headz">R{{paper.pap001}}</h4></div>
-     <div class="col"> <h4 class="headz">R{{paper.pap003}}</h4></div>
-     <div class="col"> <h4 class="headz">R{{paper.pap005}}</h4></div>
-     <div class="col"> <h4 class="headz">R{{paper.pap007}}</h4></div>
-   </div> -->
+  
   
 
   </div>

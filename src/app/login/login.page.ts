@@ -43,14 +43,14 @@ export class LoginPage implements OnInit {
 
 
 
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.router.navigateByUrl('/home');
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     this.router.navigateByUrl('/home');
 
-      }else {
-        this.router.navigateByUrl('/login');
-      }
-      }); 
+    //   }else {
+    //     this.router.navigateByUrl('/login');
+    //   }
+    //   }); 
 
 
     this.loginForm.reset()
@@ -140,6 +140,7 @@ export class LoginPage implements OnInit {
 
   goToRegister() {
     this.router.navigate(['register']);
+    
   }
 
   ionViewWillEnter() {

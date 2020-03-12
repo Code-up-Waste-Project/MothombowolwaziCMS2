@@ -80,19 +80,25 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    // this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
+    //   this.Newadmin = [];
+    //   // snapshot.forEach(Element => {
+    //     this.adminss.push(element);
+    //   // });
+    // });
+    // console.log(this.adminss);
 
     this.appPages = [];
     
     firebase.auth().onAuthStateChanged(user => {
-//        console.log(user.email)
-//       firebase.firestore().collection('userprofiles').where('email','==',user.email).get().then(res=>{
-//       res.forEach(val=>{
-//           this.pos =val.data().positions
-//          console.log("Look here ",val.data().positions)
-//       })
-//       })
-      firebase.firestore().collection('userprofiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
+      // console.log(user.email)
+      // firebase.firestore().collection('userprofiles').where('email','==',user.email).get().then(res=>{
+      // res.forEach(val=>{
+      //   // this.pos =val.data().positions
+      //   console.log("Look here ",val.data().positions)
+      // })
+      // })
+      firebase.firestore().collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         // this.profile.email = snapshot.data().email;
 
         // console.log('users', snapshot.data().isAdmin);
@@ -184,9 +190,8 @@ export class AppComponent implements OnInit {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             this.router.navigateByUrl('/home');
-            this.Newadmin =[]
-            this.db.collection('userprofiles').get().then(snapshot => {
-             
+            this.db.collection('admin').get().then(snapshot => {
+              this.Newadmin =[]
                 snapshot.forEach(Element => {
           
                   this.myadmis.push(Element.data());

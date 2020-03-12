@@ -2,10 +2,13 @@
   
   
   <div class="mother" *ngIf="popOpOpen === true" >
-    <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
 <div class="slides-container">
 
   <div class="children-slides">
+    <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+    <h2>Outbound drivers</h2>
+    <img id="image" src="../../assets/recycle.svg">
+    <img id="reclaimer" src="../../assets/outboundPopup.svg">
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
 
       <!-- slide 1 -->
@@ -24,8 +27,8 @@
                     </div>
                   </div>
 
-                  <ion-title class="ion-text-left" style="position: relative;background: white !important">All your drivers 
-                    <span id="Searchbar"><input type="text" name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)"></span>
+                  <ion-title class="ion-text-left" >
+                   <input type="text" name="search" placeholder="Search by Driver's Name" (ionInput)="getItems($event)">
                   </ion-title>
                 </ion-toolbar>
                 <div class="items">
@@ -35,10 +38,7 @@
                       <p>{{ records.RegistarionNumberPlates }}</p>
                       <p>{{ records.truckcode }}</p>
                     </ion-card>
-                    <!-- <ion-card>
-                      <h4>Thato Dlamini</h4>
-                      <p>060 486 9924</p>
-                    </ion-card> -->
+                   
                   </div>
                   <div class="btn-new-driver">
                     <ion-button (click)="animateJs()" [disabled]="transtioning" (click)="nextClick()">
@@ -63,9 +63,7 @@
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                      <label for="disapear">
-                        <ion-icon id="Addd" name="camera"></ion-icon>
-                      </label>
+                  
                       <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                         
                       <!-- </ion-icon></ion-button> -->
@@ -264,7 +262,7 @@
 </form>
 <!-- <p *ngIf="yourBoolean"> Estimated distance:{{ distance }}</p>
   <p *ngIf="yourBoolean"> Estimated duration:{{ duration }}</p> -->
-  <p style="padding-top: 10px;"> Estimated distance to destination in km: </p>
+  <p style="margin-top: 0.7em !important;"> Estimated distance to destination in km: </p>
   <p class="results"  > {{ distance }}</p>
   <p > Estimated time to destination in minutes: </p>
   <p class="results" >{{ duration }}</p>
@@ -277,10 +275,10 @@
      </ion-slides>
 
      <div class="btn-slides">
-      <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
+      <ion-button id="backbtn" fill="clear" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
-      <ion-button id="nextbtn"  *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
-      <ion-button id="nextbtn" [disabled]="!RegisterForm.valid" (click)="CheckInputsEmptyString()" *ngIf="isEnd" (click)="nextislide()">Done</ion-button>
+      <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
+      <ion-button id="nextbtn" fill="clear" [disabled]="!RegisterForm.valid" (click)="CheckInputsEmptyString()" *ngIf="isEnd" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 

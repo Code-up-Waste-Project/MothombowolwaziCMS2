@@ -531,7 +531,13 @@ newdatereclaimerM;
      updateReclaimer
 
     ionViewDidEnter() {
-     
+
+      if(firebase.auth().currentUser) {
+        this.route.navigateByUrl('/home');
+      }else {
+        this.route.navigateByUrl('/login');
+      }
+
     //pulling data
     //inbound
     // this.inboundgh001=0;
