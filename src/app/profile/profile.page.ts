@@ -44,7 +44,7 @@ export class ProfilePage implements OnInit {
     
     this.menuCtrl.enable(false);
   
-      this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
+      this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
         this.profile.name = snapshot.data().name;
@@ -53,25 +53,26 @@ export class ProfilePage implements OnInit {
         this.profile.position= snapshot.data().position;
         this.profile.number = snapshot.data().number;
         this.profile.addres = snapshot.data().address;
-        console.log('admin', this.userprofile);
+        console.log('userprofiles', this.userprofile);
       });
    }
 
   ngOnInit() {
 
-    firebase.auth().onAuthStateChanged(user => {
+    // firebase.auth().onAuthStateChanged(user => {
 
-        if (user) {
-          firebase
-             .firestore()
-             .doc(`/admin/${user.uid}`)
-              .get()
-              .then(userProfileSnapshot => {
-                this.isAdmin = userProfileSnapshot.data().isAdmin;
-              });
-         }
-         this.buttonDisabled = false;
-       });
+    //     if (user) {
+    //       firebase
+    //          .firestore()
+    //          .doc(`/userprofiles/${user.uid}`)
+    //           .get()
+    //           .then(userProfileSnapshot => {
+    //             this.isAdmin = userProfileSnapshot.data().isAdmin;
+    //           });
+    //      }
+
+    //      this.buttonDisabled = false;
+    //    });
 
     // this.menuCtrl.enable(true);
   }
@@ -107,7 +108,7 @@ export class ProfilePage implements OnInit {
       }
        else {
        
-      this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
+      this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).set({
         name: this.profile.name,
         surname: this.profile.surname,
         email: this.profile.email,
@@ -115,7 +116,7 @@ export class ProfilePage implements OnInit {
         position: this.profile.position,
         image: this.profile.image,
         isAdmin: this.isAdmin,
-        userid: this.profile.userid,
+        userid: firebase.auth().currentUser.uid,
         address: this.profile.addres
       })
       .then(function() {
@@ -128,8 +129,8 @@ export class ProfilePage implements OnInit {
     }
     }
   
-    changeListener(admin): void {
-      const i = admin.target.files[0];
+    changeListener(userprofiles): void {
+      const i = userprofiles.target.files[0];
       console.log(i);
       const upload = this.storage.child(i.name).put(i);
       upload.on('state_changed', snapshot => {

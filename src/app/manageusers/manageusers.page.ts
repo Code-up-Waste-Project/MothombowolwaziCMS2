@@ -111,7 +111,7 @@ firsttem(obj:any ={})
   //   });
     this.getUsers();
 
-    this.db.collection('admin').onSnapshot(snapshot => {
+    this.db.collection('userprofiles').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
@@ -143,7 +143,7 @@ firsttem(obj:any ={})
       }
       
   getUsers() {
-    this.db.collection('admin').onSnapshot(snapshot => {
+    this.db.collection('userprofiles').onSnapshot(snapshot => {
       // this.profile.name = snapshot.docs.name
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
@@ -236,7 +236,7 @@ firsttem(obj:any ={})
 
   viewprofile(id) {
     this.newuserprofilezzzzz = [];
-    this.viewuser = this.db.collection('admin').doc(id);
+    this.viewuser = this.db.collection('userprofiles').doc(id);
     this.viewuser.get().then((documentSnapshot) => {
         this.newuserprofilezzzzz = [];
         // console.log(documentSnapshot.data());
@@ -247,23 +247,21 @@ firsttem(obj:any ={})
 
       delete(userid) {
         console.log(userid);
-        // let email = x.email;
-        // this.Booking = [];
-        this.db.collection("admin").doc(userid.id).delete().then(function() {
+       
+        this.db.collection("userprofiles").doc(userid.id).delete().then(function() {
           console.log("Document successfully deleted!");
       }).catch(function(error) {
           console.error("Error removing document: ", error);
       });
-      //   this.newuserprofile = [];
-      //   this.db.collection("userprofile2").get().then(res => {
-      //   res.forEach(res => {
-      //     this.newuserprofile.push({...{userUid: res.id}, ...res.data()});
-      //   });
-      // });
+    
       }
+
       deleteuser(id) {
-        this.db.collection('admin').doc(id).delete();
-        
+        this.db.collection('userprofiles').doc(id).delete().then(function(){
+          console.log("Document successfully deleted")
+        }).catch(function(error){
+          console.error("Error removing document: ", error); 
+        });
         console.log('user  deleted');
       }
 
@@ -306,21 +304,21 @@ firsttem(obj:any ={})
           backdropDismiss: false,
         })
 
-        this.db.collection('admin').where('email', '==',this.email).get().then(async (data) => {
+        this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
            if(data.size == 0) {
             this.db.collection('admin').add({
               email: this.email,
               password: this.password,
               profile:'no',
-              positions:this.positions,
-              idnumber:this.idnumber,
-              addres:this.addres
+              // positions:this.positions,
+              // idnumber:this.idnumber,
+              // addres:this.addres
             }).then(async res =>{
               this.email=null
-              this.positions=null
+              // this.positions=null
               this.password=null
-              this.idnumber=null
-              this.addres=null
+              // this.idnumber=null
+              // this.addres=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user ',
                 
@@ -349,6 +347,52 @@ firsttem(obj:any ={})
             console.log('This email has already been used already');
            }
         })
+
+//userprofiles
+
+this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
+  if(data.size == 0) {
+   this.db.collection('adminprofiles').add({
+     email: this.email,
+     password: this.password,
+     profile:'no',
+     positions:this.positions,
+
+     idnumber:this.idnumber,
+     addres:this.addres
+   }).then(async res =>{
+     this.email=null
+     this.positions=null
+     this.password=null
+     this.idnumber=null
+     this.addres=null
+     let alert = await this.alertCtrl.create({
+     message:'You Have just created a new user ',
+     buttons: [
+       {
+         text: 'OK'
+       }
+     ]
+     });
+ alert.present();
+ console.log('user addded to cloud ')
+   })
+   console.log('user saved to cloud');
+  }else {
+   let alert = await this.alertCtrl.create({
+     message: 'the email is already  been used',
+     
+     buttons: [
+       {
+         text: 'OK'
+       }
+     ]
+   });
+   alert.present();
+   console.log('This email has already been used already');
+  }
+})
+
       }
 
       changeListener(admin): void {
@@ -372,7 +416,7 @@ firsttem(obj:any ={})
       // }
 
       adminprofile(){
-        this.db.collection('admin').onSnapshot(snapshot => {
+        this.db.collection('userprofiles').onSnapshot(snapshot => {
           // this.profile.name = snapshot.docs.name
           // this.profile.email = snapshot.data().email;
           // email: firebase.auth().currentUser.email,
@@ -390,7 +434,7 @@ firsttem(obj:any ={})
       }
 
       AddUserToForm(id) {
-        this.db.collection('admin').doc(id).onSnapshot(element => {
+        this.db.collection('userprofiles').doc(id).onSnapshot(element => {
           // element.forEach(element => { ActiveAcount
             let id = {};
             let name = {};
@@ -431,7 +475,7 @@ firsttem(obj:any ={})
     }
 
     AddUser(id) {
-      this.db.collection('admin').doc(id).onSnapshot(element => {
+      this.db.collection('userprofiles').doc(id).onSnapshot(element => {
       let id = {};
       let name = {};
       let email = {};

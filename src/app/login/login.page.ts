@@ -56,7 +56,7 @@ export class LoginPage implements OnInit {
     this.loginForm.reset()
     this.menuCtrl.enable(false); // or true
   }
-
+ 
   async loginUser(loginForm: FormGroup): Promise<void> {
     if (!loginForm.valid) {
       console.log('Form is not valid yet, current value:', loginForm.value);
@@ -74,7 +74,7 @@ export class LoginPage implements OnInit {
         (user) => {
           firebase.auth().onAuthStateChanged(user => {
             if (user.uid) {
-              this.db.collection('admin').where('userid', '==', user.uid).get().then(res => {
+              this.db.collection('userprofiles').where('userid', '==', user.uid).get().then(res => {
                 if (res.empty) {
                   // this.loading.dismiss();
                   this.router.navigate(['profile']);
