@@ -79,6 +79,9 @@ export class InboundPDFPage implements OnInit {
   PET005 = 'PET005';
   Mass = 'MASS';
 
+  printDataName = [];
+  printDataNumber = [];
+
   constructor(
     public toastController: ToastController,
     private modalcontroller: ModalController,
@@ -108,11 +111,11 @@ export class InboundPDFPage implements OnInit {
       this.ViewInbound = [];
       // console.log(element.data());
       this.ViewInbound.push(element.data());
-      // console.log(this.ViewInbound);
+      console.log(this.ViewInbound);
       // });
     });
 
-    this.db.collection('inbounds').doc(Userid).onSnapshot(DocumentSnapshot => {
+    this.db.collection('inboundsMass').doc(Userid).onSnapshot(DocumentSnapshot => {
       // snapshot.forEach(element => {
       let id = {};
       let GH001storagemass = {};
@@ -133,29 +136,29 @@ export class InboundPDFPage implements OnInit {
 
       this.ids = DocumentSnapshot.id;
       // console.log(this.ids);
-      GH001storagemass = this.GH001storagemass = DocumentSnapshot.data().inboundGH001;
+      GH001storagemass = this.GH001storagemass = DocumentSnapshot.data().GH001;
       this.GH001storagemassz = (String(GH001storagemass).substring(0, 6));
-      NFAL01storagemass = this.NFAL01storagemass = DocumentSnapshot.data().inboundNFAL01;
+      NFAL01storagemass = this.NFAL01storagemass = DocumentSnapshot.data().NFAL01;
       this.NFAL01storagemassz = (String(NFAL01storagemass).substring(0, 6));
-      PAP005storagemass = this.PAP005storagemass = DocumentSnapshot.data().inboundPAP005;
+      PAP005storagemass = this.PAP005storagemass = DocumentSnapshot.data().PAP005;
       this.PAP005storagemassz = (String(PAP005storagemass).substring(0, 6));
-      PAP007storagemass = this.PAP007storagemass = DocumentSnapshot.data().inboundPAP007;
+      PAP007storagemass = this.PAP007storagemass = DocumentSnapshot.data().PAP007;
       this.PAP007storagemassz = (String(PAP007storagemass).substring(0, 6));
-      PAP001storagemass = this.PAP001storagemass = DocumentSnapshot.data().inboundPAP001;
+      PAP001storagemass = this.PAP001storagemass = DocumentSnapshot.data().PAP001;
       this.PAP001storagemassz = (String(PAP001storagemass).substring(0, 6));
-      PAP003storagemass = this.PAP003storagemass = DocumentSnapshot.data().inboundPAP003;
+      PAP003storagemass = this.PAP003storagemass = DocumentSnapshot.data().PAP003;
       this.PAP003storagemassz = (String(PAP003storagemass).substring(0, 6));
-      HD001storagemass = this.HD001storagemass = DocumentSnapshot.data().inboundHD001;
+      HD001storagemass = this.HD001storagemass = DocumentSnapshot.data().HD001;
       this.HD001storagemassz = (String(HD001storagemass).substring(0, 6));
-      LD001storagemass = this.LD001storagemass = DocumentSnapshot.data().inboundLD001;
+      LD001storagemass = this.LD001storagemass = DocumentSnapshot.data().LD001;
       this.LD001storagemassz = (String(LD001storagemass).substring(0, 6));
-      LD003storagemass = this.LD003storagemass = DocumentSnapshot.data().inboundLD003;
+      LD003storagemass = this.LD003storagemass = DocumentSnapshot.data().LD003;
       this.LD003storagemassz = (String(LD003storagemass).substring(0, 6));
-      PET001storagemass = this.PET001storagemass = DocumentSnapshot.data().inboundPET001;
+      PET001storagemass = this.PET001storagemass = DocumentSnapshot.data().PET00;
       this.PET001storagemassz = (String(PET001storagemass).substring(0, 6));
-      PET003storagemass = this.PET003storagemass = DocumentSnapshot.data().inboundPET003;
+      PET003storagemass = this.PET003storagemass = DocumentSnapshot.data().PET003;
       this.PET003storagemassz = (String(PET003storagemass).substring(0, 6));
-      PET005storagemass = this.PET005storagemass = DocumentSnapshot.data().inboundPET005;
+      PET005storagemass = this.PET005storagemass = DocumentSnapshot.data().PET005;
       this.PET005storagemassz = (String(PET005storagemass).substring(0, 6));
       // console.log(this.GH001storagemass);
       // console.log(this.NFAL01storagemass);
@@ -263,22 +266,20 @@ export class InboundPDFPage implements OnInit {
   }
 
   createPdf() {
-    let printDataName = [];
-    let printDataNumber = [];
 
     this.PDFArrayPrint.forEach((item) => {
-      printDataName.push(item.name);
-      printDataNumber.push(item.number);
+      this.printDataName.push(item.name);
+      this.printDataNumber.push(item.number);
     });
+     console.log(this.printDataName);
+    console.log(this.printDataName);
+
     // console.log(this.PDFArrayPrint);
     // console.log(printDataName);  timez
     // console.log(printDataNumber);
   
     var docDefinition = {
 
-      
-     
-  
       content: [
        {canvas: [ { type: 'rect', x: 0, y: 0, w: 600, h: 200, color: '#000' },
         
@@ -325,7 +326,7 @@ export class InboundPDFPage implements OnInit {
           table: {
             widths: ['50%', '50%'],
             body: [
-              [ printDataName, printDataNumber ],  //output data here
+              [ this.printDataName, this.printDataNumber ],  //output data here
             ]
             
           },
@@ -399,9 +400,6 @@ export class InboundPDFPage implements OnInit {
       pageSize: 'A4',
       pageOrientation: 'portrait',
       pageMargins: [ 0, 0, 0, 0 ],
-
-     
-     
     };
     this.pdfObj = pdfMake.createPdf(docDefinition, null, pdfMake.fonts);
     }
@@ -427,6 +425,5 @@ export class InboundPDFPage implements OnInit {
       this.location.back();
       // this.menuCtrl.enable(true);
     }
-
 
 }

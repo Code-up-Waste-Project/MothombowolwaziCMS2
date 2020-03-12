@@ -729,7 +729,7 @@ this.slides.slideNext();
           handler: () => {
             this.AddUserToForm(id);
             this.nextislide();
-            this.doneBtn();
+            // this.doneBtn();
             // this.allocate();
             // this.route.navigateByUrl('/reclaimer');
           }

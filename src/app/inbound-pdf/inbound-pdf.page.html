@@ -97,11 +97,11 @@
           </div>
         </div>
         <div class="table-content">
-          <div id="code">
-            <h3>GH001</h3>
+          <div id="code" *ngFor="let code of printDataName">
+            <h3>{{ code }}</h3>
           </div>
-          <div id="kgs">
-            <h3>5</h3>
+          <div id="kgs" *ngFor="let data of printDataNumber">
+            <h3>{{ data }}</h3>
           </div>
         </div>
         <div class="total">  

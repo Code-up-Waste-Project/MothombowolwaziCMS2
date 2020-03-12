@@ -53,6 +53,7 @@ export class Profile2Page implements OnInit {
         this.profile.addres = snapshot.data().address;
         console.log('admin', this.userprofile);
       });
+      console.log(this.profile.image);
    }
 
   ngOnInit() {
