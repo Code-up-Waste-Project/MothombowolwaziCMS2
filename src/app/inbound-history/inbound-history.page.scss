@@ -332,4 +332,56 @@
              }
        }
   }
+  @media screen and (min-width: 768px) and(max-width: 1024px) {
+  
+
+    .driverDetails {
+        //border: 2px solid red;
+        display: flex;
+        flex-direction: column !important;
+        .profilepic ,   .profiledetails {
+         // border: 2px solid blue;
+          width: 100% !important;
+          
+        }
+        .profilepic {
+          height: 70%;
+        }
+        .profiledetails {
+          height: 30%;
+          display: flex;
+          flex-direction: column;
+          #name {
+          position: absolute;
+          top: -35% !important;
+          }
+           p {
+          //  border: 1px solid red;
+            font-size: 1.3em;
+          }
+          
+        }
+     
+    }
+    .tripDetails {
+     // border: 1px solid green;
+      h3 {
+        font-size: 1em;
+      }
+
+      .scrollreceipts {
+        //border: 1px solid green;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+     
+        .card {
+          //border: 1px solid blue;
+          width: 100% !important;
+          margin: 1em;
+        }
+      }
+    }
   }
+  }
+ 
