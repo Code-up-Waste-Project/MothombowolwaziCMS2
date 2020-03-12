@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
     public router: Router,
     public alertCtrl: AlertController,
   ) {
-    this.Logout()
     console.log("good morning")
       this.getAuth();
       this.initializeApp();
@@ -225,7 +224,8 @@ export class AppComponent implements OnInit {
         this.active = i
       }
 
-    getAuth() {
+    
+      getAuth() {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             this.router.navigateByUrl('/home');
@@ -247,18 +247,11 @@ export class AppComponent implements OnInit {
                   }
                 });
               });
-
           }else {
             this.router.navigateByUrl('/login');
           }
           });
         }
-
-
-    
-
-
-
 
         initListener() {
           document.body.addEventListener('click', () => this.reset());
@@ -290,6 +283,7 @@ export class AppComponent implements OnInit {
             this.router.navigate(['./login']);
           }
         }
+
         Logout() {
           firebase.auth().signOut().then((res) => {
             console.log(res);

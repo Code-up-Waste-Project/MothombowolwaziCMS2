@@ -134,7 +134,7 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
 
    newreclaimer = [];
    outbound = [];
-   inbound = [];
+    // = [];
 
   // @ViewChild('barChart', {static: false}) barChart;
   // bars: any;
@@ -457,6 +457,24 @@ glassArray = [];
 glassArrayHistory = [];
 
 bD = document.getElementsByClassName('bD')
+
+outboundGraph = [];
+inboundGraph = [];
+reclaimerboundGraph = [];
+
+inboundGraphWeekly = [];
+outboundGraphWeekly = []
+reclaimerGraphWeekly = []
+newdate;
+newdateout;
+newdatereclaimer;
+
+inboundGraphMonthly = [];
+outboundGraphMonthly = [];
+reclaimerGraphMonthly = [];
+newdateinboundM;
+newdateoutboundM;
+newdatereclaimerM;
 
   constructor(
     private modalcontroller: ModalController,
@@ -1614,8 +1632,12 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('inbounds').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('inboundsMass').where("date", "==", date).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
+          this.inboundGraph.push(element.data())
+          // console.log(this.inboundGraph);
+          // console.log('ngila baba');
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -1630,19 +1652,19 @@ bD = document.getElementsByClassName('bD')
           let pet003 = {};
           let pet001 = {};
 
-          time = element.data().time;
-          gl001 = element.data().inboundGH001;
-          nfalo1 = element.data().inboundNFAL01;
-          pap005 = element.data().inboundPAP005;
-          pap007 = element.data().inboundPAP007;
-          pap001 = element.data().inboundPAP001;
-          pap003 = element.data().inboundPAP003;
-          hd001 = element.data().inboundHD001;
-          ld003 = element.data().inboundLD003;
-          ld001 = element.data().inboundLD001;
-          pet005 = element.data().inboundPET005;
-          pet003 = element.data().inboundPET003;
-          pet001 = element.data().inboundPET00;
+          time = element.data().date;
+          gl001 = element.data().GH001;
+          nfalo1 = element.data().NFAL01;
+          pap005 = element.data().PAP005;
+          pap007 = element.data().PAP007;
+          pap001 = element.data().PAP001;
+          pap003 = element.data().PAP003;
+          hd001 = element.data().HD001;
+          ld003 = element.data().LD003;
+          ld001 = element.data().LD001;
+          pet005 = element.data().PET005;
+          pet003 = element.data().PET003;
+          pet001 = element.data().PET00;
 
           this.inboundGraphDisplay.push({
             time: time,
@@ -1705,7 +1727,7 @@ bD = document.getElementsByClassName('bD')
       })
       // this.outBoundGraphDisplayDay.push(date)
       // console.log(this.inboundGraphDisplay);
-      console.log('kaberekaDay');
+      // console.log('kaberekaDay');
     }
 
     // OutBound Graph
@@ -1716,10 +1738,13 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('outboundMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('outboundMass').where("date", "==", date).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
-        // console.log(Snapshot);
+        
         Snapshot.forEach(element => {
+          this.outboundGraph.push(element.data())
+          // console.log(this.outboundGraph);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -1819,8 +1844,11 @@ bD = document.getElementsByClassName('bD')
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('reclaimersMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('reclaimersMass').where("date", ">=", date).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
+          this.reclaimerboundGraph.push(element.data())
+          // console.log(this.reclaimerboundGraph);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -1916,16 +1944,19 @@ bD = document.getElementsByClassName('bD')
 
   PullWeekData() {
     // Inbound Graph
-    for(let key in this.outBoundGraph) {
-      var i = 0; i < 7; i++;
+    for(var i = 0; i < 7; i++) {
       let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+      this.newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
 
       // console.log(date);
       // console.log(newdate);
+    }
 
-      this.db.collection('inbounds').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('inboundsMass').where("date", ">=", this.newdate).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
+          this.inboundGraphWeekly.push(element.data())
+          // console.log(this.inboundGraphWeekly);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -1940,19 +1971,19 @@ bD = document.getElementsByClassName('bD')
           let pet003 = {};
           let pet001 = {};
 
-          time = element.data().time;
-          gl001 = element.data().inboundGH001;
-          nfalo1 = element.data().inboundNFAL01;
-          pap005 = element.data().inboundPAP005;
-          pap007 = element.data().inboundPAP007;
-          pap001 = element.data().inboundPAP001;
-          pap003 = element.data().inboundPAP003;
-          hd001 = element.data().inboundHD001;
-          ld003 = element.data().inboundLD003;
-          ld001 = element.data().inboundLD001;
-          pet005 = element.data().inboundPET005;
-          pet003 = element.data().inboundPET003;
-          pet001 = element.data().inboundPET00;
+          time = element.data().date;
+          gl001 = element.data().GH001;
+          nfalo1 = element.data().NFAL01;
+          pap005 = element.data().PAP005;
+          pap007 = element.data().PAP007;
+          pap001 = element.data().PAP001;
+          pap003 = element.data().PAP003;
+          hd001 = element.data().HD001;
+          ld003 = element.data().LD003;
+          ld001 = element.data().LD001;
+          pet005 = element.data().PET005;
+          pet003 = element.data().PET003;
+          pet001 = element.data().PET00;
 
           this.inboundGraphDisplay.push({
             time: time,
@@ -2013,23 +2044,24 @@ bD = document.getElementsByClassName('bD')
         })
         this.createBarChart();
       })
-      // this.outBoundGraphDisplayDay.push(date)
-      // console.log(this.inboundGraphDisplay);
-    }
+
 
     // code for outbound
-    for(let key in this.outBoundGraph) {
-      var i = 0; i < 7; i++;
+    for(var i = 0; i < 7; i++) {
       let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+      this.newdateout = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+    }
 
       // console.log(date);
       // console.log(newdate);
 
-      this.db.collection('outboundMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('outboundMass').where("date", ">=", this.newdateout).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
         // console.log(Snapshot);
         Snapshot.forEach(element => {
+          this.outboundGraphWeekly.push(element.data())
+          // console.log(this.outboundGraphWeekly);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -2118,20 +2150,22 @@ bD = document.getElementsByClassName('bD')
         this.createBarChart1();
       })
       // this.outBoundGraphDisplayDay.push(date)
-      // console.log(this.outBoundGraphDisplayDay);
-    }
+      // console.log(this.outBoundGraphDisplayDay)
 
     // reclaimers Graph
-    for(let key in this.outBoundGraph) {
-      var i = 0; i < 7; i++;
+    for(var i = 0; i < 7; i++) {
       let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+      this.newdatereclaimer = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
 
       // console.log(date);
       // console.log(newdate);
+    }
 
-      this.db.collection('reclaimersMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('reclaimersMass').where("date", ">=", this.newdatereclaimer).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
+          this.reclaimerGraphWeekly.push(element.data())
+          // console.log(this.reclaimerGraphWeekly);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -2221,22 +2255,24 @@ bD = document.getElementsByClassName('bD')
       })
       // this.outBoundGraphDisplayDay.push(date)
       // console.log(this.inboundGraphDisplay);
-    }
 
   }
 
   PullMonthData() {
     // Inbound Graph
-    for(let key in this.outBoundGraph) {
-      var i = 0; i < 30; i++;
+    for(var i = 0; i < 30; i++) {
       let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+      this.newdateinboundM = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
 
       // console.log(date);
       // console.log(newdate);
+    }
 
-      this.db.collection('inbounds').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('inboundsMass').where("date", ">=", this.newdateinboundM).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
+          this.inboundGraphMonthly.push(element.data())
+          // console.log(this.inboundGraphMonthly);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -2251,19 +2287,19 @@ bD = document.getElementsByClassName('bD')
           let pet003 = {};
           let pet001 = {};
 
-          time = element.data().time;
-          gl001 = element.data().inboundGH001;
-          nfalo1 = element.data().inboundNFAL01;
-          pap005 = element.data().inboundPAP005;
-          pap007 = element.data().inboundPAP007;
-          pap001 = element.data().inboundPAP001;
-          pap003 = element.data().inboundPAP003;
-          hd001 = element.data().inboundHD001;
-          ld003 = element.data().inboundLD003;
-          ld001 = element.data().inboundLD001;
-          pet005 = element.data().inboundPET005;
-          pet003 = element.data().inboundPET003;
-          pet001 = element.data().inboundPET00;
+          time = element.data().date;
+          gl001 = element.data().GH001;
+          nfalo1 = element.data().NFAL01;
+          pap005 = element.data().PAP005;
+          pap007 = element.data().PAP007;
+          pap001 = element.data().PAP001;
+          pap003 = element.data().PAP003;
+          hd001 = element.data().HD001;
+          ld003 = element.data().LD003;
+          ld001 = element.data().LD001;
+          pet005 = element.data().PET005;
+          pet003 = element.data().PET003;
+          pet001 = element.data().PET00;
 
           this.inboundGraphDisplay.push({
             time: time,
@@ -2326,21 +2362,23 @@ bD = document.getElementsByClassName('bD')
       })
       // this.outBoundGraphDisplayDay.push(date)
       // console.log(this.inboundGraphDisplay);
-    }
 
     // code for outbound
-    for(let key in this.outBoundGraph) {
-      var i = 0; i < 30; i++;
+    for(var i = 0; i < 30; i++) {
       let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+      this.newdateoutboundM = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
 
       // console.log(date);
       // console.log(newdate);
+    }
 
-      this.db.collection('outboundMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('outboundMass').where("date", ">=", this.newdateoutboundM).onSnapshot(Snapshot => {
         // this.outBoundGraphDisplayDay.push(Snapshot);
         // console.log(Snapshot);
         Snapshot.forEach(element => {
+          this.outboundGraphMonthly.push(element.data())
+          // console.log(this.outboundGraphMonthly);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -2430,19 +2468,22 @@ bD = document.getElementsByClassName('bD')
       })
       // this.outBoundGraphDisplayDay.push(date)
       // console.log(this.outBoundGraphDisplayDay);
-    }
+    
 
     // reclaimers Graph
-    for(let key in this.outBoundGraph) {
-      var i = 0; i < 30; i++;
+    for(var i = 0; i < 30; i++) {
       let date = moment(new Date()).format('MMMM DD YYYY');
-      let newdate = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
+      this.newdatereclaimerM = moment(date).subtract(i, 'days').format('MMMM DD YYYY');
 
       // console.log(date);
       // console.log(newdate);
+    }
 
-      this.db.collection('reclaimersMass').where("date", ">=", newdate).onSnapshot(Snapshot => {
+      this.db.collection('reclaimersMass').where("date", ">=", this.newdatereclaimerM).onSnapshot(Snapshot => {
         Snapshot.forEach(element => {
+          this.reclaimerGraphMonthly.push(element.data())
+          // console.log(this.reclaimerGraphMonthly);
+
           let time = {};
           let gl001 = {};
           let nfalo1 = {};
@@ -2532,7 +2573,6 @@ bD = document.getElementsByClassName('bD')
       })
       // this.outBoundGraphDisplayDay.push(date)
       // console.log(this.inboundGraphDisplay);
-    }
 
   }
 
