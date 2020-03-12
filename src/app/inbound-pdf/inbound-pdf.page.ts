@@ -79,6 +79,9 @@ export class InboundPDFPage implements OnInit {
   PET005 = 'PET005';
   Mass = 'MASS';
 
+  printDataName = [];
+  printDataNumber = [];
+
   constructor(
     public toastController: ToastController,
     private modalcontroller: ModalController,
@@ -108,7 +111,7 @@ export class InboundPDFPage implements OnInit {
       this.ViewInbound = [];
       // console.log(element.data());
       this.ViewInbound.push(element.data());
-      // console.log(this.ViewInbound);
+      console.log(this.ViewInbound);
       // });
     });
 
@@ -263,13 +266,14 @@ export class InboundPDFPage implements OnInit {
   }
 
   createPdf() {
-    let printDataName = [];
-    let printDataNumber = [];
 
     this.PDFArrayPrint.forEach((item) => {
-      printDataName.push(item.name);
-      printDataNumber.push(item.number);
+      this.printDataName.push(item.name);
+      this.printDataNumber.push(item.number);
     });
+     console.log(this.printDataName);
+    console.log(this.printDataName);
+
     // console.log(this.PDFArrayPrint);
     // console.log(printDataName);  timez
     // console.log(printDataNumber);
@@ -322,7 +326,7 @@ export class InboundPDFPage implements OnInit {
           table: {
             widths: ['50%', '50%'],
             body: [
-              [ printDataName, printDataNumber ],  //output data here
+              [ this.printDataName, this.printDataNumber ],  //output data here
             ]
             
           },
