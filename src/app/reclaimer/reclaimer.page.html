@@ -1,10 +1,14 @@
 
 <ion-content>
   <div class="mother" *ngIf="popOpOpen === true" >
-    <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
 <div class="slides-container">
 
   <div class="children-slides">
+    <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+    <h2>Reclaimer Information</h2>
+    <img id="image" src="../../assets/recycle.svg">
+    <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">
+   
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged($ev)" >
 
       <!-- slide 1 -->
@@ -16,7 +20,7 @@
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two" >
                  
-                  <ion-title class="ion-text-left" style="position: relative;">All your regular customers <span id="Searchbar"><input type="text" placeholder="Search by name"></span></ion-title>
+                  <ion-title class="ion-text-left" ><input type="text" placeholder="Search by name"></ion-title>
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
@@ -53,9 +57,7 @@
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                      <label for="disapear">
-                        <ion-icon id="Addd" name="camera"></ion-icon>
-                      </label>
+                     
                       <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                     </div>
                   </div>
@@ -246,11 +248,11 @@
      </ion-slides>
 
      <div class="btn-slides">
-      <ion-button id="backbtn" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
+      <ion-button id="backbtn" fill="clear" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
       <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
-      <ion-button id="nextbtn"  *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
-      <ion-button id="nextbtn" [disabled]="RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
+      <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
+      <ion-button id="nextbtn" fill="clear" [disabled]="RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 

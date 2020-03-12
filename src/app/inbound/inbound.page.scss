@@ -74,9 +74,9 @@ ion-title {
     }
   }
 
-  .top-blocks {
-    height: 40%;
-  }
+  // .top-blocks {
+  //   height: 40%;
+  // }
 
   .history {
   //  background: gray;
@@ -172,13 +172,14 @@ ion-title {
 .top-blocks {
  // border: 2px solid green;
   width: 100%;
-  padding: 10px;
+  // padding: 10px;
   height: 40%;
    background: white;
   overflow-x: scroll;
   display: flex;
+  justify-content: space-between;
   .waste-blocks {
-    width: 24%;
+    width: 23%;
     min-width: 200px;
     height: 90%;
     background: white;
@@ -188,7 +189,7 @@ ion-title {
     justify-content: center;
     text-align: right;
     position: relative;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.253);
     img {
       width: 100%;
@@ -237,7 +238,7 @@ ion-title {
 }
 .userId, .name, .regNo, .icon, .phone {
 //  border: 1px solid black;
-  width: 20%;
+  width: 25%;
   padding-left: 5px;
   display: flex;
   align-items: center;
@@ -268,13 +269,7 @@ ion-title {
   justify-content: center;
   align-items: center;
   //fifi adding slides.
-  #close {
-    font-size: 1.5em;
-   
-    position: absolute;
-    right: 0 !important;
-    top: 0;
-  }
+
   .slides-container {
     flex: 0 0 85%;
     width: 70%;
@@ -284,8 +279,17 @@ ion-title {
     .children-slides {
       flex: 0 0 90%;
       position: relative;
-     border: 1px solid blue;
+     border-radius: 5px;
       background: white;
+
+
+      #close {
+        font-size: 1.8em;
+       z-index: 25;
+        position: absolute;
+        right: -4% !important;
+        top: 0%;
+      }
 h2 {
  // border: 2px solid red;
   width: 100%;
@@ -296,7 +300,7 @@ h2 {
   font-weight: bolder;
 }
       #image {
-     //   border: 1px solid red;
+     border-top-right-radius: 5px;
         width: 40%;
         position: absolute;
         right: 0;
@@ -304,18 +308,20 @@ h2 {
    background: rgb(255, 255, 255);
       }
       #reclaimer {
-        width: 20%;
+        width: 4em;
         position: absolute;
-        left: 0;
+        left: 0.5em;
         bottom: 2%;
+        color: red;
       }
       .btn-slides {
         // flex: 0 0 10%;
         border-top-left-radius: 50px;
         border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 5px;
         width: 50%;
         position: absolute;
-        bottom: 0;
+        bottom: 0.6em;
         right: 0;
       //  border: 2px solid red;
         background: #A76FBF;
@@ -327,10 +333,9 @@ h2 {
           font-size: 0.8em;
           letter-spacing: 0.5px;
           color: white;
+          letter-spacing: 1px;
         }
-        #backbtn {
-  
-        }
+
   
       }
       ion-slides {
@@ -342,19 +347,20 @@ h2 {
         height: 80%;
         border-radius: 5px;
         background: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
         .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
           background: red !important;
           color: red !important;
                 }
 ion-slide {
- // border: 1px solid green;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
         ion-slide.slideOne {
           justify-content: flex-start !important;
           align-items: flex-start !important;
           flex-direction: column !important;
-        //  border: 2px solid rgb(148, 87, 245);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           
           height: 100%;
           .drivers-container {
@@ -380,34 +386,26 @@ ion-slide {
              // border: 4px solid aqua;
              margin: 0 !important;
 #two {
- // border: 2px solid red;
+  //border: 2px solid red;
   background: white !important;
-
-  #Searchbar {
-    //border: 2px solid red;
-   // background: greenyellow;
-    position: absolute;
-    right: 2%;  
-      width: 40%;
-      border-radius: 50px;
-      border: 1px solid rgb(212, 212, 212);
-      box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.055), -6px -6px 16px rgba(255, 255, 255, 0.432);
-
-    input {
+display: flex;
+justify-content: start;
+   input {
      border: none;
-     width: 100%;
+     width: 80%;
     border-radius: 50px;
     font-size: 0.8em ;
     padding-left: 2%;
     font-family: 'lato';
     font-style: italic;
-    padding: 2%;
+    padding: 0.6em;
     color: gray;
     outline: none;
     background: #ececec;
+  margin-top: 2% !important;
     }
  
-  }
+  
 }
               .items {
                 height: 100%;
@@ -455,35 +453,30 @@ ion-slide {
             display: flex;
             flex-direction: row;
             align-items: center;
-            background: #eaeaea;
+          box-shadow: 2px 1px 2px 1px rgba(184, 181, 181, 0.678);
+
+            //background: #eaeaea;
             padding: 1%;
            // border: 1px solid red;
             #two {
              // 
               position: relative;
-              ion-title {
-                
-               // border: 1px solid rgb(29, 206, 230);
-            margin-right: 10%;
-                //right: 2%;  
+              ion-title { 
                   width: 100%;
 
                 input {
-                  position: absolute;
-                  right: 2% !important;
-                //  border: 1px solid red;
                   border: none;
-                  font-family: 'lato';
-                  font-size: 0.9em;
-                  padding-left: 2%;
-                  
-                  border-radius: 50px;
-                  background: #ececec;
-                  height: 25px;
-                  width: 50%;
-                //margin: 2%;
-                // box-shadow: 2px 1px 2px 1px rgba(184, 181, 181, 0.678);
-              
+                  width: 80%;
+                 border-radius: 50px;
+                 font-size: 0.8em ;
+                 padding-left: 2%;
+                 font-family: 'lato';
+                 font-style: italic;
+                 padding: 0.8em !important;
+                 color: gray;
+                 outline: none;
+                 background: #ececec;
+                 margin: 0;
                 }
               }
             }
@@ -497,8 +490,29 @@ ion-slide {
               box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.192), -6px -6px 16px rgb(255, 255, 255);
               transition: all 500ms;
               overflow: hidden;
-           //   border: 2px solid blue;
-          
+             // border: 2px solid blue;
+              #two {
+              //  border: 2px solid red;
+                background: white !important;
+              display: flex;
+              justify-content: center !important;
+                 input {
+                   border: none;
+                   width: 80%;
+                  border-radius: 50px;
+                  font-size: 0.6em ;
+                  padding-left: 2%;
+                  font-family: 'lato';
+                  font-style: italic;
+                  padding: 0.5em;
+                  color: gray;
+                  outline: none;
+                  background: #ececec;
+                  margin: 0;
+                  }
+               
+                
+              }
               .items {
                 height: 100%;
                 width: 100%;
@@ -533,11 +547,11 @@ ion-slide {
             
             //  border: 2px solid red;
               .form {
-               // border: 2px solid blue;
+                //border: 2px solid blue;
                 height: 90% !important;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                // justify-content: center;
                 position: relative;
                 .profileholder {
                  // border: 1px solid red;
@@ -573,21 +587,16 @@ img {
                   }
                 }
                 .inputs {
-                  //border: 3px solid rgb(162, 240, 16);
-                  // height: 80% !important;
+               //   border: 3px solid rgb(162, 240, 16);
+                 height: 60%;
+                 width: 100%;
                   display: flex;
                   flex-direction: column;
                   align-content: center;
-                 // background: aqua;
+                position: absolute;
+                top: 20%;
                   align-items: center;
-                  // #btn {
-                  //  // border: 2px solid red !important;
-                  //  position: absolute;
-                  //  bottom: 3%;
-                  //  font-family: 'lato';
-                  //  font-size: 0.8em !important;
-                  //  padding-left: 2%;
-                  // }
+                  
                   input {
                     outline: none;
                     border: none;
@@ -607,13 +616,15 @@ img {
                  
                 }
                 #save {
-                  //border: 1px solid red;
+               //   border: 1px solid red;
                   width: 100%;
-                  height: 40%;
+                  height: 20%;
                   display: flex;
                   flex-direction: column;
                   justify-content: center;
                   align-items: center;
+                  position: absolute;
+                  bottom: 0;
                 }
               }
             }
