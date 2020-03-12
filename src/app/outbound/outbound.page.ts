@@ -416,7 +416,7 @@ currentLocation: any = {
     
    }
 
-   slideChanged($ev) {
+   slideChanged() {
     this.slides.getActiveIndex().then(index => {
       // console.log(index);
       if(index == 0) {

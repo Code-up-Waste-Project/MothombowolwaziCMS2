@@ -9,8 +9,8 @@
         <p>Reclaimer's Personal Information</p>
         <div class="profileimage">
           <!-- <img src="../../assets/girl.jfif"> -->
-          <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-          <img *ngIf="image" src="{{ image }}" alt="">
+          <img *ngIf="!reclaim.image" src="../../assets/mthombologo (1).png" alt=""> 
+          <img *ngIf="reclaim.image" src="{{ reclaim.image }}" alt="">
         </div>
       </div>
       <div class="profiledetails">
@@ -24,22 +24,23 @@
       </div>
     </div><!-- display -->
 
-    <div class="driverDetails" id="driverDetails" [ngClass]="{'hide' : come}" >
+    <div class="driverDetails" id="driverDetails" [ngClass]="{'hide' : come}" *ngFor="let reclaim of ViewReclaimer">
       <div class="profilepic">
-        <p>Driver's Personal Information</p>
+        <p>Reclaimer's Personal Information</p>
         <div class="profileimage">
         
-          <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-          <img *ngIf="image" src="{{ image }}" alt="">
+          <img *ngIf="!reclaim.image" src="../../assets/mthombologo (1).png" alt=""> 
+          <img *ngIf="reclaim.image" src="{{ reclaim.image }}" alt="">
         </div>
       </div>
       <div class="profiledetails">
-        <input placeholder="Full names">
-        <input placeholder="Phone number">
-        <input placeholder="Registration no.">
-        <input placeholder="Company name">
-        <input placeholder="Company address">
-        <ion-button>Update Profile</ion-button>
+        <input placeholder="Full names" [(ngModel)]="name">
+        <input placeholder="Phone number" [(ngModel)]="contact" maxlength="10" (keyup)="getPhoneInput($event)" type="tel">
+        <input placeholder="Registration no." [(ngModel)]="IDnumber">
+        <input placeholder="Company name" [(ngModel)]="streetname">
+        <input placeholder="Company address" [(ngModel)]="town">
+        <input placeholder="Company address" [(ngModel)]="city">
+        <ion-button (click)="presentAlertUpdate()">Update Profile</ion-button>
       </div>
     </div><!-- update -->
   
