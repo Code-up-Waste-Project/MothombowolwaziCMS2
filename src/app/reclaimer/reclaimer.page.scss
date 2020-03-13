@@ -1290,6 +1290,10 @@ font-family: 'lato';
 
 }
 
+.hello{
+  color: red;
+}
+
 
 
 
@@ -1456,7 +1460,7 @@ font-family: 'lato';
      overflow-x: scroll;
      display: flex;
      justify-content: space-between;
-     margin-top: 67px;
+     margin-top: -2px;
      .waste-blocks {
        width: 23%;
        min-width: 328px;
@@ -1594,7 +1598,7 @@ font-family: 'lato';
        min-width: 200px;
        height: 70%;
        background: white;
-       margin: 49px auto;
+       margin: 10px auto;
        display: flex;
        flex-direction: column;
        justify-content: center;
@@ -1708,4 +1712,9 @@ font-family: 'lato';
 
   }
    
+  }
+
+
+  #recLaimer-toolbar{
+    margin: 0px;
   }
