@@ -17,22 +17,47 @@
             <ion-title class="ion-text-center">Reclaimer Details</ion-title>
           </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
+
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two" >
+                  <div class="Searhcer">
+                    <div class="results">
+                      <!-- <p *ngFor="let records of searchResults" (click)="selectLocation(g)" (click)="nextislide()"> {{ records }} </p> -->
+                      <div class='count' *ngIf="searchResults.length > 0">
+                        <!-- {{ searchResults.length }} -->
+                      </div>
+                    </div>
+                    <ion-searchbar name="search" placeholder="Search by Reclaimer's Code" (ionInput)="getItems($event)"></ion-searchbar>
+                  </div>
                  
-                  <ion-title class="ion-text-left" ><input type="text" placeholder="Search by name"></ion-title>
+                  <!-- <ion-title class="ion-text-left" ><input type="text" placeholder="Search by name"></ion-title> -->
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
+                    <!-- <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
                       <h4>{{ records.name }}</h4>
                       <p>{{ records.reclaimercode }}</p>
                       <p>{{ records.contact }}</p>
-                    </ion-card>
-                    <!-- <ion-card>
-                      <h4>Thato Dlamini</h4>
-                      <p>060 486 9924</p>
                     </ion-card> -->
+
+                    <div *ngIf="searchResults.length > 0">
+                      <ion-card *ngFor="let records of searchResults" (click)='presentAlertAddUser(records.id)'>
+                        <h4>{{ records.name }}</h4>
+                        <p>{{ records.contact }}</p>
+                      <p>{{ records.IDnumber }}</p>
+                      <p>{{ records.reclaimercode }}</p>
+                      </ion-card>
+                    </div>
+
+                    <div *ngIf="searchResults.length == 0">
+                      <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
+                        <h4>{{ records.name }}</h4>
+                        <p>{{ records.contact }}</p>
+                      <p>{{ records.IDnumber }}</p>
+                      <p>{{ records.reclaimercode }}</p>
+                      </ion-card>
+                    </div>
+                   
                   </div>
                   <div class="btn-new-driver">
                     <ion-button (click)="animateJs()" [disabled]="transtioning">
@@ -52,15 +77,23 @@
                   <ion-title class="ion-text-left">Create New Driver</ion-title>
                 </ion-toolbar>
                 <div class="form">
-                  <div class="profileholder">
+                  <!-- <div class="profileholder">
                     <div class="profile">
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                     
                       <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                     </div>
-                  </div>
+                  </div> -->
+
+                  <div class="profileholder">
+                      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                      <img *ngIf="image" src="{{ image }}" alt="">
+                      <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+                      <label for="disapear">
+                        <ion-icon id="Addd" name="camera"></ion-icon>
+                      </label>
+                    </div>
 
                   <form [formGroup]="RegisterForm">
                     <div class="inputs">
@@ -79,8 +112,7 @@
                      
                     </div>
                     <div id="save">
-                      <ion-button id="btn"  (click)="nextislide()"
-                      [disabled]="!RegisterForm.valid">Save driver</ion-button>
+                      <ion-button id="btn"  (click)="nextislide()">Save driver</ion-button>
                      </div>
                   </form>
                 </div>
@@ -252,7 +284,7 @@
      
       <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
       <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
-      <ion-button id="nextbtn" fill="clear" [disabled]="RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
+      <ion-button id="nextbtn" fill="clear" [disabled]="!RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 

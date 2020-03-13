@@ -25,7 +25,7 @@
           <div class="input-icon">
             <ion-icon name="call"></ion-icon>
           </div>
-        <input type="text" placeholder="Phone No." [(ngModel)]="profile.number">
+        <input type="tel" placeholder="Phone No." [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)">
       </div>
       <div class="user-div">
         <div class="input-icon">
