@@ -74,6 +74,20 @@ imgGraph3 = document.getElementsByClassName('inbgraph3');
   oldpricepap005;
   oldpricepap003;
   oldpricepap007;
+
+  
+  nfal01;
+  Glas;
+  hd001;
+  ld001;
+  ld003;
+  pet003;
+  pet001;
+  pet005;
+  pap001;
+  pap005;
+  pap003;
+  pap007;
  
   price = [];
   prices;
@@ -457,6 +471,7 @@ glassArray = [];
 glassArrayHistory = [];
 
 bD = document.getElementsByClassName('bD')
+  active: any;
 
 outboundGraph = [];
 inboundGraph = [];
@@ -795,6 +810,7 @@ newdatereclaimerM;
       this.pricess.pap003 = snap.data().newpap003;
       this.pricess.pap005 = snap.data().newpap005;
       this.pricess.pap007 = snap.data().newpap007;
+    
     })
     console.log(this.PaperArray)
     this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").get().then(snap => {
@@ -1097,7 +1113,7 @@ newdatereclaimerM;
           handler: () => {
             this.checkglassInputs();
             this.glassShow();
-            this.route.navigateByUrl('/home');
+            
             console.log('Confirm Okay');
           }
         }
@@ -1117,7 +1133,7 @@ newdatereclaimerM;
     }
     // console.log(this.nFAL01);
     this.Updateglass()
-
+    this.route.navigateByUrl('/home');
   }
 
   async presentAlertUpdatePaper() {
@@ -1462,6 +1478,8 @@ newdatereclaimerM;
       timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
       gl001: this.GH001price,
       oldgl001: this.oldpriceglass,
+      nameglass: this.Glas
+
     })
 
         // To update price :
@@ -1469,7 +1487,9 @@ newdatereclaimerM;
           timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
           newgl001: this.GH001price,
           oldgl001: this.oldpriceglass,
+          nameglass: this.Glas
         }).then((data) => {
+          this.route.navigateByUrl('/home');
           // console.log("Paper old storage successfully updated!");
         });
 
@@ -1483,6 +1503,7 @@ newdatereclaimerM;
     // });
 
     this.clearInputsGlass();
+   
   }
 
   clearInputsPaper() {
@@ -3119,33 +3140,37 @@ map(){
   this.route.navigateByUrl('/auto');
 }
 
-viewMorePaper(){
-  let dropDown = document.getElementsByClassName("dropper1") as HTMLCollectionOf <HTMLElement>
+viewMorePaper(i){
+   this.active = i
+   console.log(this.active);
+   
+  let dropDown = document.getElementsByClassName("dropper1") as HTMLCollectionOf <HTMLDListElement>
 
   if(this.isOpenPaper == false){
     this.isOpenPaper = true;
-    dropDown[0].style.maxHeight = "100%";
-    document.getElementById("chevron-drop-down1").style.transform="rotateX(180DEG)"
+    dropDown[i].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down-"+i).style.transform="rotateX(180DEG)"
   }
   else{
     this.isOpenPaper = false;
-    dropDown[0].style.maxHeight = "30px";
-    document.getElementById("chevron-drop-down1").style.transform="rotateX(0DEG)"
+    dropDown[i].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down-"+i).style.transform="rotateX(0DEG)"
   }
 }
 
-viewMorePlastic(){
+viewMorePlastic(i){
+  this.active = i
   let dropDown = document.getElementsByClassName("dropper2") as HTMLCollectionOf <HTMLElement>
 
   if(this.isOpenPlastic == false){
     this.isOpenPlastic = true;
-    dropDown[0].style.maxHeight = "100%";
-    document.getElementById("chevron-drop-down2").style.transform="rotateX(180DEG)"
+    dropDown[i].style.maxHeight = "100%";
+    document.getElementById("chevron-drop-down2-"+1).style.transform="rotateX(180DEG)"
   }
   else{
     this.isOpenPlastic = false;
-    dropDown[0].style.maxHeight = "30px";
-    document.getElementById("chevron-drop-down2").style.transform="rotateX(0DEG)"
+    dropDown[i].style.maxHeight = "30px";
+    document.getElementById("chevron-drop-down2-"+1).style.transform="rotateX(0DEG)"
   }
 }
 
