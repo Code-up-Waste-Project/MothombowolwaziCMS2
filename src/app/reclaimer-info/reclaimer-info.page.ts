@@ -34,6 +34,13 @@ export class ReclaimerInfoPage implements OnInit {
   ViewReclaimerMass = [];
   ViewReclaimerPDF = [];
 
+  name;
+  contact;
+  IDnumber;
+  streetname;
+  town;
+  city;
+
   overallMass;
   OverallSubTotal;
   OverallVat;
@@ -325,15 +332,14 @@ export class ReclaimerInfoPage implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
 
+    this.PullUserInfor();
+
     this.reclaimer = this.db.collection('reclaimers').doc(this.id);
     this.reclaimer.get().then((documentSnapshot) => {
       this.ViewReclaimer = [];
-      // documentSnapshot.forEach(element => {
-        // console.log(documentSnapshot.data()); 0769424068
+      
       this.ViewReclaimer.push(documentSnapshot.data());
       console.log(this.ViewReclaimer);
-      // console.log(this.id);
-      // });
     });
 
     this.db.collection('reclaimersMass').where('reclaimerID', '==', this.id).onSnapshot(snapshot => {
@@ -439,16 +445,115 @@ export class ReclaimerInfoPage implements OnInit {
     this.pullHistoryData()
 
    }
-//chart createion
-ionViewDidEnter() {
-  this.createLineChart();
-}
 
-ngOnInit() {
-}
-switch(){
-  this.come = !this.come;
-}
+    //chart createion
+    ionViewDidEnter() {
+      this.createLineChart();
+    }
+
+    ngOnInit() {
+     
+    }
+
+    PullUserInfor() {
+      this.reclaimer = this.db.collection('reclaimers').doc(this.id).get().then(element => {
+        console.log(element.data());
+        // snap.forEach(element => {
+          this.name = element.data().name;
+          this.contact = element.data().contact;
+          this.IDnumber = element.data().IDnumber;
+          this.streetname = element.data().streetname;
+          this.town = element.data().town;
+          this.city = element.data().city;
+        // });
+        // console.log(this.name);
+        // console.log(this.contact);
+        // console.log(this.IDnumber);
+        // console.log(this.streetname);
+        // console.log(this.town);
+        // console.log(this.city);
+      });
+      
+    }
+
+    async presentAlertUpdate() {
+      const alert = await this.alertController.create({
+        header: 'Warning!',
+        message: '<strong>Are you sure you want to update Driver Information?.</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          },
+          {
+            text: 'Okay',
+            handler: () => {
+              this.SaveUpdates()
+              this.route.navigateByUrl('/outbound-driver-info');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    SaveUpdates() {
+      this.db.collection('outbound').doc(this.id).update({
+        name: this.name,
+        contact: this.contact,
+        IDnumber: this.IDnumber,
+        streetname: this.streetname,
+        town: this.town,
+        city: this.city
+      })
+    }
+
+    getPhoneInput(ev: any) {
+      this.contact = ev.target.value;
+    
+      // calling firebase
+      // this.contact[0] == '0'
+      if (this.contact[0] !== '0') {
+        this.presentAlertPhoneValidation();
+      } else {
+        // this.showInputs()
+        console.log('im working');
+        this.contact = this.contact;
+      }
+        // console.log(this.phoneVal);
+        console.log(this.contact);
+    }
+
+    async presentAlertPhoneValidation() {
+      const alert = await this.alertController.create({
+        header: 'Confirm!',
+        message: '<strong>Phone Numbers must start with a number: 0.</strong>!!!',
+        buttons: [
+          {
+            text: 'Okay',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              this.erasedToContact();
+              console.log('Confirm Cancel: blah');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+    
+    erasedToContact() {
+      this.contact = '';
+    }
+
+    switch(){
+      this.come = !this.come;
+    }
 
   pullHistoryData() {
     // January

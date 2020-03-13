@@ -59,7 +59,7 @@
 
 #the-pdf-page{
     width: 80%;
-    height: 138vh;
+    height: 135vh;
     border: solid 1px rgb(0, 0, 0);
 }
 
@@ -212,8 +212,8 @@ ion-grid{
     border: solid 1px black;
 }
 h3{
-    // font-size: 1vw;    
-    font-family: "Montserrat";
+    // font-size: 1vw;
+    font-family: 'Montserrat', ;
 }
 #content-col{
     border: white solid 1px;
@@ -241,11 +241,11 @@ h3{
 }
 
 .deliver{
-    font-size: 1.2vw;
+    // font-size: 1.2vw;
     font-family: 'Montserrat', ;
 }
 .deliver > h5{    
- font-size: 1.2vw;
+//  font-size: 1.2vw;
  font-family: 'Montserrat', ;
 }
 
@@ -262,11 +262,11 @@ h3{
 }
 
 .driver{
-    // font-size: 1.2vw;
+    font-size: 1.2vw;
     font-family: 'Montserrat', ;
 }
 .driver > h5 {
-    // font-size: 1.2vw;
+    font-size: 1.2vw;
     font-family: 'Montserrat', ;       
     text-align: right;
 }
@@ -288,3 +288,32 @@ h3{
 
 
 
+
+// Media Queries
+
+@media screen and (max-width:1024px){
+
+    #second-setion{
+        height: 100%;
+        width: 20%;
+        // background: pink;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        margin-right: 59px;
+    }
+    
+    #the-image-div{
+        height: 147px;
+        width: 120px;
+        background: white;
+        border: solid 2px;
+    }
+
+    
+#the-pdf-page{
+    width: 80%;
+    height: 112vh;
+    border: solid 1px rgb(0, 0, 0);
+}
+}

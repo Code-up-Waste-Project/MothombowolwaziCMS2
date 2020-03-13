@@ -33,6 +33,10 @@
     color: rgb(153, 153, 153);
     font-size: 35px;
   }
+  ion-menu-button{    
+    color: rgb(153, 153, 153);
+    padding-left: 25px;
+  }
   .the-profile{
     // border: solid 3px orange;
     height: 45%;
@@ -324,5 +328,36 @@
   font-size: 15px;
   font-weight: lighter;
   font-family: 'Open Sans Condensed', sans-serif;
+}
+
+
+
+
+
+// Media queries
+
+@media screen and (max-width:1024px){
+
+  #user-form{
+    height: 64%;
+    width: 78%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  @media screen and (max-width:768){
+    #user-form{
+      height: 64%;
+      width: 67%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+  }
 }
 

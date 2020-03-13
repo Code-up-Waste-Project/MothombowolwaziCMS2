@@ -1,7 +1,4 @@
 .container {
-    //border: 1px solid red;
-    // background-image: url(../../assets/loginwave.svg);
-    // background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     display: flex;
@@ -138,58 +135,83 @@ align-items: center;
 
 //media queries
 @media screen and (min-width: 768px) and(max-width: 1024px) {
-.container {
- // border:  2px solid red;
+    .container {
+      overflow-y: fixed;
 
-  form {
-     // border: 2px solid blue;
-      width: 100%;
-      height: 100%;
-      .left {
-         // border: 1px solid black;
-          display: flex;
-          flex-direction: column;
-          .logo {
-            //@function: 1px solid black;
-            height: 25%;
+        .leftwave ,  #grocery {
+            display: none;
+        }
+        form {
+           // border: 1px solid red;
+            width: 100%;
+            height: 100%;
+            position: relative;
 
-            img {
-                width: 2em;
+           .right, .left {
+                // border: 1px solid red;
             }
-            h3 {
-                font-size: 2.1em;
+            .right {
+                width: 100%;
+                height: 100%;
+                position: absolute;
             }
-          }
-          .middle {
-             // border: 1px solid red;
-              width: 80%;
-              margin-left: 10%;
-              height: 70%;
-              position: relative;
+            .left {
+               // border: 1px solid blue;
+                position: absolute;
+                right: 0;
+                z-index: 2;
+                background: rgba(255, 255, 255, 0.795);
+                width: 60%;
+                height: 60%;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                
+                .logo {
+                   // border: 1px solid blue; 
+                    img {
+                        width: 10%;
+                    }
+                    h3 {
+                        font-size: 1.5em;
+                    }
+                }
+                .middle {
+                   // border: 1px solid red;
+                  width: 90%;
+                  margin-left : 5%;
 
-              p {
-                  font-size: 0.8em;
-                  font-family: 'lato';
-                  font-weight: lighter;
-                  letter-spacing: 0.5px;
-              }
-              ion-input {
-                           //    border: 1px solid blue;
-                               padding: 1.1% !important;
-                               font-size: 0.7em;
-                               padding-left: 2% !important;
-              }
-     
-              
-              button {
-                 // border: 1px solid green;
-                  position: absolute;
-                  right: 25% !important;
-              }
-          }
-      }
-  }
-}
+                  .errors {
+                      color: red;
+                      font-size: 1em;
+                      padding: 0;
+                      letter-spacing: 0.5px;
+                  }
+                  p {
+                      font-size: 1.1em;
+                      font-family: 'lato';
+                  }
+                  ion-input {
+                  //  border: 1px solid red;
+                    font-size: 1.2em;
+
+                  }
+                  #password {
+                    font-size: 0.9em;
+                    font-family: 'lato';
+                    letter-spacing: 0.5px;
+                  }
+                  button {
+                      //border: 1px solid red;
+                      font-size: 1.2em;
+                      font-family: 'lato';
+                      letter-spacing: 0.5px;
+                  }
+                }
+            }
+        }
+       
+    }
 }
 
 @media screen and (min-width: 1920px) {
