@@ -1,8 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> Reclaimer's Profile & History 
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="container" >
-    <div class="head">
+    <!-- <div class="head">
       <p>Reclaimer's Profile & History</p>
-    </div>
+    </div> -->
   <div class="top" padding>
     <div class="driverDetails" id="driverDetails"  [ngClass]="{'hide' : !come}" *ngFor="let reclaim of ViewReclaimer">
       <div class="profilepic">

@@ -293,9 +293,15 @@ ion-title {
          width: 100%;
          position: absolute;
          top: 0;
+         
          font-size: 2em;
-         padding-left: 3%;
+         padding-left: 8%;
          font-weight: bolder;
+         #reclaimer {
+           width: 1.5em;
+           padding-right: 10px;
+           margin-left: 20px;
+         }
        }
        #image {
         //   border: 1px solid red;

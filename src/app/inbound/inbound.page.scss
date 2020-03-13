@@ -6,9 +6,6 @@ div.swiper-container-horizontal > div.swiper-pagination-progressbar {
   background: red !important;
 }
 
-// #camera {
-//   color: red;
-// }
 ion-card {
 background: #ececec;
 
@@ -296,9 +293,15 @@ h2 {
   width: 100%;
   position: absolute;
   top: 0;
+  
   font-size: 2em;
   padding-left: 3%;
   font-weight: bolder;
+  #reclaimer {
+    width: 1.5em;
+    padding-right: 10px;
+    margin-left: 20px;
+  }
 }
       #image {
      border-top-right-radius: 5px;
@@ -308,13 +311,7 @@ h2 {
         top: 0;
    background: rgb(255, 255, 255);
       }
-      #reclaimer {
-        width: 4em;
-        position: absolute;
-        left: 0.5em;
-        bottom: 2%;
-        color: red;
-      }
+   
       .btn-slides {
         // flex: 0 0 10%;
         border-top-left-radius: 50px;
@@ -328,7 +325,7 @@ h2 {
         background: #A76FBF;
         display: flex;
         justify-content: space-evenly;
-        #nextbtn,   #backbtn {
+        #nextbtn,   #backbtn, #done {
           width: 25%;
           font-family: 'lato';
           font-size: 0.8em;
@@ -336,7 +333,19 @@ h2 {
           color: white;
           letter-spacing: 1px;
         }
+#done {
+  &::after {
+    position: absolute;
+    top: 5px;
+    left: 47%;
+    width: 2px;
+    height: 80%;
+    content: '';
+    background: #ddd;
+    border-radius: 50px;
 
+  }
+}
   
       }
       ion-slides {
@@ -676,12 +685,7 @@ img {
             top: 15%;
             height: 85%;
             left: 0;
-            .results {
-            //  border: 5px solid purple;
-            }
-.searchbar {
- // border: 7px solid goldenrod;
-}
+  
   
 
             .contact-cards {
@@ -692,9 +696,7 @@ img {
                 background: gray;
               }
             }
-            .blockItems {
-           //   border: 2px solid blue;
-            }
+       
             #absolutely{
                   z-index: 10;
                   //border: 1px solid red;
@@ -907,12 +909,6 @@ img {
     cursor: pointer;
   }
 }
-
-
-
-  
-
-
 #isPaper,
 #isPlastic,
 #isAluminium,
@@ -1257,9 +1253,7 @@ font-family: 'lato';
 
 #disapear{
   display: none;
-
 }
-
 
 #the-info{
   //  border: 2px solid rgb(180, 252, 12);
@@ -1274,12 +1268,6 @@ font-family: 'lato';
      height: 100%;
      display: none;
 }
-
-
-
-
-
-
 
 @media screen and (max-width:450px){
   .The-header{
@@ -1419,8 +1407,6 @@ font-family: 'lato';
 }
 
 }
-
-
 
 @media  screen and (max-width: 1024px){
   
@@ -1669,7 +1655,7 @@ font-family: 'lato';
   
    
    #the-info{
-    //  border: 2px solid rgb(180, 252, 12);
+      border: 2px solid rgb(180, 252, 12);
        padding-left: 2%;
        font-family: 'lato';
        font-size: 1em;
@@ -1678,10 +1664,39 @@ font-family: 'lato';
        position: relative;
        letter-spacing: 0.5px;
        margin: 0;
-       height: 100%;
+      //  height: 100%;
        display: block;
+      // width: 90% !important;
   }
 
   }
    
+  }
+
+  @media screen and (min-width: 768px) and(max-width: 1024px) {
+    .mother {
+      //border: solid 2px purple;
+      .slides-container {
+       // border: 2px solid blue;
+        width: 100% !important;
+        height: 1080px !important;
+            .children-slides , .slideOne{
+             // border: solid 2px rgb(140, 241, 45);
+              height: 100% !important;
+              width: 100% !important;
+              margin: 0;
+
+              .drivers-container_transforms {
+ #searchbar {
+ // border: 2px solid blue;
+  position: absolute !important;
+  left: 2% !important;
+}
+              }
+
+              
+      }
+      }
+  
+    }
   }
