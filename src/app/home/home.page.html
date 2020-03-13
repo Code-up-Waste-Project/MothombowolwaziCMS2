@@ -158,8 +158,6 @@
           <p class="smallp">NFALO01</p>
         </div>
        </div>
-  
-   
     </div>
       </div><!-- end of material div -->
   
@@ -189,8 +187,6 @@
       </div>
       </div>
     </div>
-  
-  
   </div>
   
   <!-- EDIT PRICE FOR PLASTIC -->
@@ -214,10 +210,6 @@
     <input placeholder="PET003price" [(ngModel)]="PET003price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"> 
   
    </div>
-  
-
-   
-
 
        <button ion-button id="savePlastic" (click)="CheckInputsEmptyStringPlastics()">Save</button>
        <p class="heading" id="HeadingPlastic">Keep Records of all updates  </p>
@@ -328,9 +320,7 @@
                 <div class="col"><h4 class="the-date">  LD003 </h4></div>
                 <div class="col"><h4 class="the-date">{{ plastic.newld003 }}</h4></div>
                 <div class="col"><h4 class="the-date">{{ plastic.oldld003 }}</h4></div>
-              </div>
-              
-              
+              </div>   
   
               <div class="meshy">
                 <div class="col">
@@ -373,11 +363,6 @@
                 <div class="col"><h4 class="the-date">R{{ plastic.newpet005 }}</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.oldpet005 }}</h4></div>
               </div>
-  
-  
-  
-              
-    
             </div>
           </div>
          </div>
@@ -386,9 +371,6 @@
   
     </div>
   </div>
-  
-  
-
   
   <!-- EDIT PRICE FOR GLASS -->
   <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -433,12 +415,7 @@
     
       </div>
     </div>
-  
-  
-  
-
   </div>
-
 
    <div class="dropper3"  *ngFor="let tinns of glassArrayHistory; let i=index;">
      <div class="top-cell" (click)="viewMoreGlass()"  >

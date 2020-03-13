@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar id="recLaimer-toolbar">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>  Record all your incoming material here
     </ion-buttons>
@@ -436,9 +436,9 @@
 
 <!-- adding parent div -->
 <div class="parentDiv">
-  <div class="head">
+  <!-- <div class="head">
     <ion-menu-button></ion-menu-button><h3>Process all your waste sales here</h3>
-  </div>
+  </div> -->
   <div class="top-blocks">
     <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
       <!-- <img src="../../assets/Asset 9.svg" alt=""> -->
@@ -467,8 +467,9 @@
       <div class="phone">Phone number</div>
       <div class="icon">Details</div>
      </div ><!-- end of history-labels -->
-<div class="scrolling">
-    <div class="itemList" *ngFor="let records of testArrays">
+<div class="scrolling" >
+
+    <div class="itemList"  *ngFor="let records of testArrays">
       <div class="userId">{{ records.reclaimercode }}</div>
       <div class="name">{{ records.name }} {{ records.surname }}</div>
       <div class="regNo">{{ records.contact}}</div>
@@ -476,7 +477,7 @@
 
       <div class="icon"><ion-button [routerLink]="['/reclaimer-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
-   
+       <h3 class="hello" *ngIf="records.length == 0">You've got nothing on your history</h3>
        </div>
     </div>
   </div><!-- end of history -->
