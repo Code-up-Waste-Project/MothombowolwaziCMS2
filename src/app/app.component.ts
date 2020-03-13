@@ -102,9 +102,10 @@ export class AppComponent implements OnInit {
         // this.profile.email = snapshot.data().email;
 
         // console.log('users', snapshot.data().isAdmin);
-        this.admin = snapshot.data().isAdmin;
+        this.admin = snapshot.data().isAdmin;
+            console.log(this.admin);
         this.appPages = [];
-        if (this.admin == "true") {
+        if (this.admin === "true") {
     this.appPages.push({
      
       title: 'Home',

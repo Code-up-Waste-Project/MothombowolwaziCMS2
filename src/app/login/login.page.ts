@@ -39,10 +39,6 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
 
-
-
-
-
     // firebase.auth().onAuthStateChanged((user) => {
     //   if (user) {
     //     this.router.navigateByUrl('/home');
