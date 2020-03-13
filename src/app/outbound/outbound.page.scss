@@ -1408,6 +1408,20 @@ font-family: 'lato';
 
 }
 
+#the-info{
+  //  border: 2px solid rgb(180, 252, 12);
+     padding-left: 2%;
+     font-family: 'lato';
+     font-size: 1em;
+     padding-top: 1%;
+    padding-bottom: 1%;
+     position: relative;
+     letter-spacing: 0.5px;
+     margin: 0;
+     height: 100%;
+     display: block;
+}
+
 
 
 
@@ -1425,7 +1439,7 @@ font-family: 'lato';
      justify-content: space-between;
      .waste-blocks {
        width: 23%;
-       min-width: 200px;
+       min-width: 328px;
        height: 70%;
        background: white;
        margin: 10px auto;
@@ -1482,7 +1496,7 @@ font-family: 'lato';
          padding-left: 2%;
          font-family: 'lato';
          font-size: 1em;
-         padding-top: 1%;
+         padding-top: 26px;
         padding-bottom: 1%;
          position: relative;
          letter-spacing: 0.5px;
@@ -1553,6 +1567,7 @@ font-family: 'lato';
      overflow-x: scroll;
      display: flex;
      justify-content: space-between;
+     padding: 21px;
      .waste-blocks {
        width: 23%;
        min-width: 200px;
@@ -1613,7 +1628,7 @@ font-family: 'lato';
          padding-left: 2%;
          font-family: 'lato';
          font-size: 1em;
-         padding-top: 1%;
+         padding-top: 10px;
         padding-bottom: 1%;
          position: relative;
          letter-spacing: 0.5px;
