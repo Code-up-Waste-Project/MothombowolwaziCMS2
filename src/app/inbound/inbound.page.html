@@ -28,7 +28,7 @@
 
                     <div class="Searhcer">
                       <div class="results">
-                        <p *ngFor="let records of searchResults" (click)="selectLocation(g)" (click)="nextislide()"> {{ records }} </p>
+                        <p *ngFor="let records of searchResults" (click)="selectLocation(records)" (click)="nextislide()"> {{ records }} </p>
                         <div class='count' *ngIf="searchResults.length > 0">
                           {{ searchResults.length }}
                         </div>

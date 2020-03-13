@@ -532,11 +532,11 @@ newdatereclaimerM;
 
     ionViewDidEnter() {
 
-      // if(firebase.auth().currentUser) {
-      //   this.route.navigateByUrl('/home');
-      // }else {
-      //   this.route.navigateByUrl('/login');
-      // }
+      if(firebase.auth().currentUser) {
+        this.route.navigateByUrl('/home');
+      }else {
+        this.route.navigateByUrl('/login');
+      }
 
     //pulling data
     //inbound
@@ -777,14 +777,14 @@ newdatereclaimerM;
     this.menuCtrl.enable(true); // or true
 
     // Glass Prices
-    this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").get().then((snap) => {
+    this.db.collection('price').doc("8FtqTT4N4mFpbI4DKc25").onSnapshot((snap) => {
       this.glassArray = [];
       this.glassArray.push(snap.data())
 
       this.oldpriceglass = snap.data().newgl001;
 
-      // this.oldpriceglass = snap.data().newgl001;
-      console.log(this.glassArrayHistory);
+
+      this.pricess.gl001 = snap.data().newgl001;
     })
     //  console.log(this.glassArray)
     this.db.collection('pricehistory').doc("8FtqTT4N4mFpbI4DKc25").collection("glass").orderBy('timeglass', "desc").get().then(snap => {
@@ -799,7 +799,7 @@ newdatereclaimerM;
     this.db.collection('price').doc("uk3Rla3tt9xgd8NivPJ6").onSnapshot(snap => {
       this.PaperArray = [];
       this.PaperArray.push(snap.data())
-      console.log(snap.data())
+      // console.log(snap.data())
 
       this.oldpricepap003 = snap.data().newpap003;
       this.oldpricepap001 = snap.data().newpap001;
