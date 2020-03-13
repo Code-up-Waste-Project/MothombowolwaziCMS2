@@ -15,7 +15,7 @@ import { Directive, HostListener, Output, EventEmitter, ElementRef, Input } from
 //   selector: '[br-data-dependency]' // Attribute selector
 // })
 export class LoginPage implements OnInit {
-
+  @Output() onSignIn: EventEmitter<any> = new EventEmitter<any>()
   db = firebase.firestore();
 
   public loginForm: FormGroup;
@@ -68,8 +68,10 @@ export class LoginPage implements OnInit {
       const password = loginForm.value.password;
       this.authService.loginUser(email, password).then(
         (user) => {
+          
           firebase.auth().onAuthStateChanged(user => {
             if (user.uid) {
+              this.onSignIn.emit(true);
               this.db.collection('userprofiles').where('userid', '==', user.uid).get().then(res => {
                 if (res.empty) {
                   // this.loading.dismiss();
