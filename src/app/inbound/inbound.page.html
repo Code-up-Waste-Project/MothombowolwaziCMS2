@@ -16,7 +16,7 @@
     <h2>Inbound drivers</h2>
     <img id="image" src="../../assets/recycle.svg">
     <img id="reclaimer" src="../../assets/inbound.svg">
-    <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged($ev)" >
+    <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
@@ -282,25 +282,25 @@
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass"><br>
                 <p>PAP005</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass"><br>
                 <p>PAP007</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass"><br>
                 <p>PAP001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass"><br>
                 <p>PAP003</p>
               </ion-col>
 
@@ -317,36 +317,36 @@
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="HD001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="HD001mass"><br>
                 <p>HD001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="LD001mass"><br>
                 <p>LD001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD003mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="LD003mass"><br>
                 <p>LD003</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET005mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET005mass"><br>
                 <p>PET005</p>
               </ion-col>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass"><br>
                 <p>PET001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET003mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET003mass"><br>
                 <p>PET003</p>
               </ion-col>
 
@@ -363,7 +363,7 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass"><br>
                 <p id="CODE">NFAL01</p>
               </ion-col>
             </ion-row>
@@ -379,7 +379,7 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="GH001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="GH001mass"><br>
                 <p id="CODE">GL001</p>
               </ion-col>
             </ion-row>

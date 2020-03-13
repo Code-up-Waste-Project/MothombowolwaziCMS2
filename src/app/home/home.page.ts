@@ -532,11 +532,11 @@ newdatereclaimerM;
 
     ionViewDidEnter() {
 
-      if(firebase.auth().currentUser) {
-        this.route.navigateByUrl('/home');
-      }else {
-        this.route.navigateByUrl('/login');
-      }
+      // if(firebase.auth().currentUser) {
+      //   this.route.navigateByUrl('/home');
+      // }else {
+      //   this.route.navigateByUrl('/login');
+      // }
 
     //pulling data
     //inbound
