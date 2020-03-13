@@ -14,8 +14,8 @@
         <p>Driver's Personal Information</p>
         <div class="profileimage">
           <!-- <img src="../../assets/girl.jfif"> -->
-          <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-          <img *ngIf="image" src="{{ image }}" alt="">
+          <img *ngIf="!driver.image" src="../../assets/mthombologo (1).png" alt=""> 
+          <img *ngIf="driver.image" src="{{ driver.image }}" alt="">
         </div>
       </div>
       <div class="profiledetails">

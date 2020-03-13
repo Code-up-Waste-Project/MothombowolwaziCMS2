@@ -10,9 +10,9 @@
   <div class="background-Logo">
     <img src="../../assets/icon/Asset 10.svg" alt="">
   </div>
-    <div class="cont-container">
-      <div padding class="left">
-        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)'>
+    <div class="cont-container" >
+      <div padding class="left" >
+        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)' >
            <div class="names">
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.position }}</p>
@@ -35,7 +35,7 @@
         </div>
         <p id="borderb"></p>
         <div padding class="info" >
-          <h4>{{name}} </h4>
+          <h4>{{name}}</h4>
           <p>{{email}}</p>
           <p>{{number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
@@ -58,10 +58,10 @@
       <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
      
       <h1>Register</h1>
-      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email">
+      <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="default@example.com"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
       <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position">
-      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password">
-     <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  attern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
+      <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password" >
+     <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
       <textarea placeholder="Physical Address" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres"></textarea> 
      <button ion-button   type="reset"   onclick="document.getElementById('myInput').value = ''" (click)="saveNewUseer()">Register</button>
      

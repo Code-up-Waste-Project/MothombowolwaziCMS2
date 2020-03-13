@@ -30,6 +30,8 @@ export class InboundPDFPage implements OnInit {
   PDFArray = {};
   PDFArrayPrint = [];
   timez;
+  overallMass;
+  code;
 
   letterObj = {
     to: '',
@@ -131,7 +133,10 @@ export class InboundPDFPage implements OnInit {
       let PET003storagemass = {};
       let PET005storagemass = {};
 
-      this.timez = DocumentSnapshot.data().time;
+      this.timez = DocumentSnapshot.data().date;
+      this.overallMass = DocumentSnapshot.data().ovarallMass;
+      this.code = DocumentSnapshot.data().truckcode;
+
       // console.log(this.timez);
 
       this.ids = DocumentSnapshot.id;

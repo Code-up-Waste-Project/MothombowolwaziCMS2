@@ -59,20 +59,20 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
 
-    // firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
 
-    //     if (user) {
-    //       firebase
-    //          .firestore()
-    //          .doc(`/userprofiles/${user.uid}`)
-    //           .get()
-    //           .then(userProfileSnapshot => {
-    //             this.isAdmin = userProfileSnapshot.data().isAdmin;
-    //           });
-    //      }
+        if (user) {
+          firebase
+             .firestore()
+             .doc(`/userprofiles/${user.uid}`)
+              .get()
+              .then(userProfileSnapshot => {
+                this.isAdmin = userProfileSnapshot.data().isAdmin;
+              });
+         }
 
-    //      this.buttonDisabled = false;
-    //    });
+         this.buttonDisabled = false;
+       });
 
     // this.menuCtrl.enable(true);
   }
