@@ -16,9 +16,6 @@ import { Location } from "@angular/common";
   styleUrls: ['./manageusers.page.scss'],
 })
 export class ManageusersPage implements OnInit {
-
-
-
   
   buttonDisabled: boolean;
 registerForm = false;
@@ -94,17 +91,11 @@ isAdmin: string = 'true';
       //  this.buttonDisabled = false;
      })
 
-
-
-
-
-
-
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-      name: ['', [Validators.required, ]],
-      position: ['', [Validators.required, ]],
+      // name: ['', [Validators.required, ]],
+      positions: ['', [Validators.required, ]],
     });
 
     this.db.collection('userprofiles').onSnapshot(snapshot => {
@@ -153,13 +144,6 @@ firsttem(obj:any ={})
        this.buttonDisabled = false;
      });
 
-
-
-
-
-
-
-
    //auth gurd
   //  firebase.auth().onAuthStateChanged((user) => {
   //   if (user) {
@@ -171,19 +155,8 @@ firsttem(obj:any ={})
     this.getUsers();
 
     this.db.collection('userprofiles').where("isAdmin" ,"==","true" ).get().then(snapshot => {
-      // this.profile.name = snapshot.docs.name
-      // this.profile.email = snapshot.data().email;
-      // email: firebase.auth().currentUser.email,
-      // this.profile.name = snapshot.data().name;
-      // this.profile.position = snapshot.data().position;
-      // // this.profile.image = snapshot.data().image;
-      // console.log('users', this.userprofile);
      
       this.newuserprofile = [];
-      // console.log("removed tt removed ", removed);
-      // removed = newuserprofile.splice(firebase.auth().currentUser.email, "remove current user");
-      // elements = newuserprofile.splice( );
-      // console.log('splice' ,elements)
 
       snapshot.forEach(item => {
         this.newuserprofile.push({...{id:item.id},...item.data()});
@@ -454,8 +427,6 @@ firsttem(obj:any ={})
             toast.present();
           }
         })
-
-       
 
 //userprofiles
 
