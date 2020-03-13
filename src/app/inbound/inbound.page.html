@@ -14,7 +14,7 @@
   <div class="children-slides">
     <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
 
-    <h2>Inbound drivers</h2>
+    <h2>  <img id="reclaimer" src="../../assets/inbound.svg">Inbound drivers</h2>
     <img id="image" src="../../assets/recycle.svg">
     <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
@@ -281,7 +281,7 @@
      
       <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
       <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
-      <ion-button id="nextbtn" fill="clear" [disabled]="!RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
+      <ion-button id="done" fill="clear" [disabled]="!RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 

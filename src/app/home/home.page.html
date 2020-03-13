@@ -1,10 +1,10 @@
-<!--<ion-header>
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>   see how there are no complicated things here 
+      <ion-menu-button></ion-menu-button> All Storage Material
     </ion-buttons>
   </ion-toolbar>
-</ion-header>-->
+</ion-header>
 <ion-content>
   <main class="small-screen-size-not-supported"></main>
   <!-- <button (click)="map()">map</button> -->
@@ -15,7 +15,7 @@
   <div class="container">
   
     <div padding class="alltime">
-      <h4 class="heading"> <ion-menu-button></ion-menu-button> All Storage Material</h4>
+      <!-- <h4 class="heading"> <ion-menu-button></ion-menu-button> All Storage Material</h4> -->
      <!-- <div class="log-out">
      
       <ion-button fill="clear" (click)="Logout()"><ion-icon name="log-out" ></ion-icon></ion-button>
@@ -63,8 +63,7 @@
         <h4 class="heading2">All Material and Prices</h4>
       </div>
     <div class="boxez" padding>
-      
-      <!-- paper -->
+       <!-- paper -->
       <div class="box" >
   <div class="head">
     <h3 class="materialz">PAPER </h3>
@@ -174,8 +173,7 @@
         </div>
       </div>
       <div padding class="chartsjs">
-        
-      <div id="yellow"  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
+         <div id="yellow"  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
         <canvas #barChart >
     </canvas>
          </div>
@@ -220,13 +218,13 @@
 
 
        <button ion-button id="savePlastic" (click)="CheckInputsEmptyStringPlastics()">Save</button>
-       <p class="heading" id="HeadingPlastic">Keep Records of all updates </p>
+       <p class="heading" id="HeadingPlastic">Keep Records of all updates  </p>
        <div class="historydetailsPlastic" >
          <div class="heady">
            <div class="col">
              <h4 class="headz">Date</h4>
            </div>
-           <div class="col"><h4 class="headz">Name</h4></div>
+           <!-- <div class="col"><h4 class="headz">Name</h4></div> -->
           <div class="col"><h4 class="headz"> Material</h4></div>
           <div class="col"><h4 class="headz">Old Price</h4></div>
           <div class="col"><h4 class="headz">New Price</h4></div>
@@ -236,7 +234,7 @@
             <div class="top-cell" (click)="viewMorePlastic()">
               <div class="meshy">
                 <div class="col">
-                  <h4 class="the-date-head"><p>23 July 2020</p></h4>
+                  <h4 class="the-date-head"><p style="font-family: 'lato';">23 July 2020</p></h4>
                  </div>
                 <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
                 <div class="col"><h4 class="the-date-head">Thato</h4></div>
@@ -260,6 +258,80 @@
                 <div class="col"><h4 class="the-date">R{{ plastic.newhd001 }}</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.oldhd001 }}</h4></div>
               </div>
+            </div></div>
+          <div class="myCell">
+            <div class="meshy">
+              <div class="col">
+                <h4 class="headz"></h4>
+               </div>
+
+            
+
+              <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+              <div class="col"><h4 class="the-date"></h4></div>
+              <div class="col"><h4 class="the-date">LD001</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.ld001 }}</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.oldhd001 }}</h4></div>
+            </div>
+
+            <div class="meshy">
+              <div class="col">
+                <h4 class="headz"></h4>
+               </div>
+              <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+              <div class="col"><h4 class="the-date"> </h4></div>
+              <div class="col"><h4 class="the-date">  LD003 </h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.ld003 }}</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.oldld003 }}</h4></div>
+            </div>
+            
+            
+
+            <div class="meshy">
+              <div class="col">
+                <h4 class="headz"></h4>
+               </div>
+              <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+              <div class="col"><h4 class="the-date"> </h4></div>
+              <div class="col"><h4 class="the-date"> PET003 </h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.pet003 }}</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.oldpet003 }}</h4></div>
+            </div>
+            <!-- <div class="meshy">
+              <div class="col">
+                <h4 class="headz"></h4>
+               </div>
+        
+              <div class="col"><h4 class="the-date"> </h4></div>
+              <div class="col"><h4 class="the-date">LD001</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.ld001 }}</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.oldld001 }}</h4></div>
+            </div> -->
+            <div class="meshy">
+              <div class="col">
+                <h4 class="headz"></h4>
+               </div>
+              <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+              <div class="col"><h4 class="the-date"> </h4></div>
+              <div class="col"><h4 class="the-date"> PET001 </h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.pet001 }}</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.oldpet001 }}</h4></div>
+            </div>
+
+            <div class="meshy">
+              <div class="col">
+                <h4 class="headz"></h4>
+               </div>
+              <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+              <div class="col"><h4 class="the-date"> </h4></div>
+              <div class="col"><h4 class="the-date"> PET005 </h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.pet005 }}</h4></div>
+              <div class="col"><h4 class="the-date">R{{ plastic.oldpet005 }}</h4></div>
+            </div>
+
+
+
+            
   
               <div class="meshy">
                 <div class="col">
@@ -330,7 +402,7 @@
   </div>
   
   
-  </div>
+  
   
   <!-- EDIT PRICE FOR GLASS -->
   <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
@@ -352,7 +424,7 @@
         <h4 class="headz">Date</h4>
        </div>
       <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-      <div class="col"><h4 class="headz">Name</h4></div>
+      <!-- <div class="col"><h4 class="headz">Name</h4></div> -->
       <div class="col"><h4 class="headz"> Material</h4></div>
       <div class="col"><h4 class="headz">Old Price</h4></div>
       <div class="col"><h4 class="headz">New Price</h4></div>
@@ -382,7 +454,43 @@
   </div>
 
 
-
+   <div class="dropper3"  *ngFor="let tinns of glassArrayHistory; let i=index;">
+     <div class="top-cell" (click)="viewMoreGlass()"  >
+       <div class="meshy">
+         <div class="col">
+           <h4 class="the-date-head"><p>{{tinns.timeglass}}</p></h4>
+          </div>
+         <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
+         <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
+         <div class="col"><h4 class="the-date-head"> GL001</h4></div>
+         <div class="col"><h4 class="the-date-head">R{{ tinns.oldgl001 }}</h4></div>
+         <div class="col"><h4 class="the-date-head">R{{ tinns.gl001 }}</h4>
+           <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+         </div>
+       </div></div>
+     <!-- <div class="myCell">
+       <div class="meshy">
+         <div class="col">
+           <h4 class="headz"></h4>
+          </div>
+         <div class="col"> <h4 class="headz">Admin</h4></div> 
+          <div class="col"><h4 class="the-date"></h4></div>
+         <div class="col"><h4 class="the-date"> PAP001</h4></div>
+         <div class="col"><h4 class="the-date">R1.00</h4></div>
+         <div class="col"><h4 class="the-date">R2.00</h4></div> 
+       </div>
+       <div class="meshy">
+         <div class="col">
+           <h4 class="headz"></h4>
+          </div>
+          <div class="col"> <h4 class="headz">Admin</h4></div> 
+          <div class="col"><h4 class="the-date"> </h4></div>
+         <div class="col"><h4 class="the-date"> NFL01</h4></div>
+         <div class="col"><h4 class="the-date">R1.50</h4></div>
+         <div class="col"><h4 class="the-date">R2.00</h4></div> 
+       </div>
+     </div> -->
+   </div>
   </div>
     </div>
   
@@ -414,7 +522,7 @@
          <h4 class="headz">Date</h4>
         </div>
        <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-       <div class="col"><h4 class="headz">Name</h4></div>
+       <!-- <div class="col"><h4 class="headz">Name</h4></div> -->
        <div class="col"><h4 class="headz"> Material</h4></div>
        <div class="col"><h4 class="headz">Old Price</h4></div>
        <div class="col"><h4 class="headz">New Price</h4></div>
@@ -429,22 +537,22 @@
       <div class="col"> <h4 class="headz">R{{paper.pap007}}</h4></div>
     </div> -->
   
-    <div class="dropper1" *ngFor="let paper of PaperArrayHistory">
-      <div class="top-cell" (click)="viewMorePaper()">
+    <div class="dropper1" *ngFor="let paper of PaperArrayHistory; let i=index;">
+      <div class="top-cell" (click)="viewMorePaper(i)" >
         <div class="meshy">
           <div class="col">
-            <h4 class="the-date-head"><p>23 July 2020</p></h4>
+            <h4 class="the-date-head"><p>{{paper.timePaper}}</p></h4>
            </div>
           <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-          <div class="col"><h4 class="the-date-head">Thato</h4></div>
+          <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
           <div class="col"><h4 class="the-date-head"> GL001</h4></div>
           <div class="col"><h4 class="the-date-head">R{{paper.oldpap001}}</h4></div>
           <div class="col"><h4 class="the-date-head">R{{paper.pap001}}</h4>
-            <ion-icon id="chevron-drop-down1" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+            <ion-icon id="chevron-drop-down-{{i}}" class="chevron-drop-down1" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
           </div>
         </div></div>
-      <div class="myCell">
-        <div class="meshy">
+      <div class="myCell"  >
+        <div class="meshy"  >
           <div class="col">
             <h4 class="headz"></h4>
            </div>
@@ -502,8 +610,7 @@
       <div class="row1Glass">
     <input placeholder="NFAL01" [(ngModel)]="NFAL01price" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
   </div>
-  
-  
+
   <button ion-button id="savePaper" (click)="CheckInputsEmptyStringAlum()">Save</button>
   </div>
   <p class="heading">Keep Record of all updates </p>
@@ -523,7 +630,7 @@
       <div class="top-cell" (click)="viewMoreAluminium()">
         <div class="meshy">
           <div class="col">
-            <h4 class="the-date-head"><p>Date{{allu.timePlastic}}</p></h4>
+            <h4 class="the-date-head"><p>{{allu.timePlastic}}</p></h4>
            </div>
           <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
           <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
@@ -609,8 +716,8 @@
   </div>
   
   <!-- history for plastic -->
-  <div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
-    <div padding class="editform2 test">
+  <!--  <div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
+   <div padding class="editform2 test">
       <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
       <h1>Keeping Track Of All Your Updates ttt</h1>
       <div class="headers">
@@ -618,14 +725,14 @@
         <div class="one"><h2 >Old Pricing</h2></div>
         <div class="one"><h2  style="padding-right: 5px;text-align: left;">New Pricing</h2></div>
       </div>
-  </div>
-  </div>
+  </div> 
+  </div>-->
   
   <!-- history for glass -->
   <div class="opacitydivs glassDiv " [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
     <div padding class="editform2 test"  >
       <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-      <h1>Keeping Track Of All Your Updates </h1>
+      <h1>Keeping Track Of All Your Updates hello</h1>
       <div class="headers">
         <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
         <div class="one"><h2 >Old Pricing</h2></div>

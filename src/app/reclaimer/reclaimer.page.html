@@ -1,3 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>  Record all your incoming material here
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <div class="mother" *ngIf="popOpOpen === true" >
@@ -5,9 +12,9 @@
 
   <div class="children-slides">
     <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
-    <h2>Reclaimer Information</h2>
+    <h2>  <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">Reclaimer Information</h2>
     <img id="image" src="../../assets/recycle.svg">
-    <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">
+  
    
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
 
@@ -429,9 +436,7 @@
 
 <!-- adding parent div -->
 <div class="parentDiv">
-  <div class="head">
-    <h3>Process all your waste sales here</h3>
-  </div>
+
   <div class="top-blocks">
     <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
       <!-- <img src="../../assets/Asset 9.svg" alt=""> -->

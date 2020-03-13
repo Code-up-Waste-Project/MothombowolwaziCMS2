@@ -1,12 +1,10 @@
-<div class="The-header">
-  <div class="sub-header" padding>
- <h1 class="heading">Manage Admins</h1>
-</div>
-<!-- <div class="log-out">.
-<ion-icon name="log-out" (click)="Logout()"></ion-icon>
-</div> -->
-</div>
- <div class="line-breaker"></div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> Manage Administrators here
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
   
   <ion-content>
   <div class="background-Logo">
@@ -42,7 +40,7 @@
           <p>{{number}}</p>
           <p style="font-weight: bold;padding-top: 3px;"> {{position}}</p>
           <p>{{ email }}</p>
-          <p style="font-weight: bold;padding-top: 3px;"> {{address}}</p>
+          <!-- <p style="font-weight: bold;padding-top: 3px;"> {{address}}</p> -->
           <button (click)='presentAlertDelete(id)'>delete user</button>
         </div>
   
@@ -51,27 +49,7 @@
         </ion-fab>
     </div>
 
-    <!-- <div class="right" *ngFor="let profile of Snapprofile">
-      <div class="pic" padding >
-     <ion-avatar>
-      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-      <img  *ngIf="image" src="{{image}}" alt="">
-      </ion-avatar>
-      </div>
-      <p id="borderb"></p>
-      <div padding class="info" >
-        <h4>{{ profile.name }} { profile.{surname }}</h4>
-        <p>{{ profile.position }}</p>
-        <p>{{ profile.email }}</p>
-        <p>{{ profile.number }}</p>
-        <p style="font-weight: bold;padding-top: 3px;"> {{ profile.position }}</p>
-        <button (click)='presentAlertDelete(oneprofile.id)'>delete user</button>
-      </div>
-
-      <ion-fab >
-        <ion-fab-button (click)="showRegisterForm()" ><ion-icon name="add"></ion-icon></ion-fab-button>
-      </ion-fab>
-  </div> -->
+  
 
   <!-- this form appears when fab button is clicked -->
 
@@ -83,8 +61,8 @@
       <input class="inputs" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="email">
       <input class="inputs" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position">
       <input class="inputs" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password">
-      <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  type="text" this.idnumber.reset autocomplete="off" autocorrect="off" id="myInput" value="idnumber">
-      <textarea placeholder="Physical Address" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres"></textarea>
+     <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  attern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
+      <textarea placeholder="Physical Address" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres"></textarea> 
      <button ion-button   type="reset"   onclick="document.getElementById('myInput').value = ''" (click)="saveNewUseer()">Register</button>
      
      <!-- <div class="bottomdeco">

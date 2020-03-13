@@ -42,8 +42,9 @@
     </div>
 
     <!-- The begining of the everything outside pop-up (user-form) -->
-    <div class="the-edit-div" (click)="openPopUp()">
-      <ion-icon id="edit-icon" name="create"></ion-icon>
+    <div class="the-edit-div">
+      <ion-menu-button></ion-menu-button>
+      <ion-icon id="edit-icon" name="create" (click)="openPopUp()"></ion-icon>
     </div>
     <div class="the-profile">
       <div class="the-circle">

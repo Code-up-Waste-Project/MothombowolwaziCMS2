@@ -4,17 +4,21 @@
   box-sizing: border-box;
 }
 
+ion-header {
+  //border: 1px solid red !important;
+ 
+}
 .logo-header {
   width: 30px;
 }
-ion-toolbar {
-  border: 1px solid red !important;
-  display: flex !important;
-  flex-direction: row;
-  p {
-    width: 50%;
-  }
-}
+// ion-toolbar {
+//   border: 1px solid red !important;
+//   display: flex !important;
+//   flex-direction: row;
+//   p {
+//     width: 50%;
+//   }
+// }
 .bD {
   display: none;
 }
@@ -219,11 +223,12 @@ ion-icon {
 .stats {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(51, 51, 51, 0.103);
   flex: 0 0 31%;
-  height: 70%;
+ height: 95% !important;
   margin: 1%;
   display: flex;
   position: relative;
   border-radius: 5px;
+ // border: 1px solid red;
   .first,
   .second {
     display: flex;
@@ -291,15 +296,12 @@ ion-icon {
   flex-basis: 34%;
   display: flex;
   flex-direction: column;
-  //   justify-content: space-evenly;
-  //   align-content: flex-start;
-  // //background: yellow;
-  //border: 2px solid black;
+//border: 2px solid blue;
 
   .matHeading {
-    // border: 1px solid red;
+  
     .heading2 {
-      // border: 1px solid black;
+ 
       width: 100%;
       margin-top: 0 !important;
       font-family: "lato";
@@ -321,11 +323,9 @@ ion-icon {
     }
   }
   .boxez {
-    // background: aqua;
     height: 90%;
     display: flex;
-    justify-content: space-evenly;
-    align-content: flex-start;
+   // border: 2px solid blue;
   }
 
   .box {
@@ -334,14 +334,13 @@ ion-icon {
     border-radius: 5px;
     position: relative;
     bottom: 0 !important;
-    //  margin-top: 5.5% !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.11), 0 3px 10px 0 rgba(51, 51, 51, 0.034);
     border-radius: 5px;
     background: #ececec;
     display: flex;
     flex-direction: column;
-    // margin: 0 !important;
     padding: 0 !important;
+    margin-right: 1em;
     .head {
       background: rgb(216, 215, 215);
       height: 20%;
@@ -352,7 +351,6 @@ ion-icon {
       border-top-right-radius: 5px;
 
       .materialz {
-        //border: 1px solid black;
         margin: 0 !important;
         padding: 0 !important;
         width: 80%;
@@ -364,7 +362,6 @@ ion-icon {
         align-content: center;
       }
       .icon {
-        // border: 1px solid black;
         width: 20%;
         height: 100%;
         margin: 0 !important;
@@ -384,7 +381,6 @@ ion-icon {
       }
     }
     .sub-material {
-      // border: 1px solid black;
       height: 80%;
       margin: 0 !important;
       padding: 0 !important;
@@ -393,7 +389,6 @@ ion-icon {
 
       .matb,
       .smallp {
-        //  border: 1px solid black;
         margin: 0 !important;
         padding: 0 !important;
       }
@@ -698,10 +693,11 @@ ion-icon {
     }
   }
   .chartsjs {
-    // border: 2px solid red;
+   //  border: 2px solid red;
     height: 80%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+  
 
     #yellow {
       position: relative;
@@ -709,6 +705,8 @@ ion-icon {
         position: absolute;
         top: 2%;
         left: 0%;
+      
+      
         width: 100%;
         height: 10%;
         // border: 1px solid red;
@@ -1288,7 +1286,7 @@ ion-icon {
   }
 }
 .chartbuttons {
-  border: 1px solid red;
+  //border: 1px solid red;
   height: 5%;
   margin: 0;
   padding: 0;
@@ -1379,7 +1377,7 @@ ion-icon {
     //border: 2px solid red;
     margin-top: -1.5%;
     .dynamicBtns {
-      // border: 1px solid blue;
+  
       margin-right: 1.8%;
       margin-top: -1%;
       ion-button {
@@ -1389,16 +1387,7 @@ ion-icon {
       }
     }
   }
-  // .graphs {
-  //   // border: 2px solid blue;
-  //   height: 34%;
-  //   margin: 0;
-  //   margin-top: -2% !important;
-  //   .graph {
-  //     //border: 1px solid red;
-  //     height: 105%;
-  //   }
-  // }
+
 }
 @media screen and (min-width: 768px) and(max-width: 1024px) {
   .container {
@@ -1411,11 +1400,13 @@ ion-icon {
  margin-right: 1em;
  transform: translate(-1em, 0%);
  padding: 1em;
+ margin-top: -20px !important;
+ padding-top: -20px !important;
 
     .stats {
-      //border: 2px solid red;
+      //border: 2px solid rgb(49, 95, 247);
       flex: 0 0 45%;
-      height: 80%;
+      height: 90% !important;
       margin-left: 1em;
       position: relative;
       transition: 500ms;
@@ -1446,14 +1437,17 @@ ion-icon {
   }
 
   .material {
-   // border: 1px solid blue;
-    overflow-x: scroll;
+    //border: 1px solid rgb(255, 240, 24);
+  position: relative;
     margin-right: 1em;
     margin-left: 1em;
     overflow-y: hidden;
   
+    .matHeading {
+      position: fixed;
+      width: 100%;
+    }
     .heading2 {
-      // border: 1px solid black;
       width: 100%;
       margin-top: 0 !important;
       font-family: "lato";
@@ -1473,22 +1467,19 @@ ion-icon {
         border-radius: 50px;
       }
     }
-    .boxes {
-      flex-basis: 40%;
-     // width: 100%;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      margin-right: 1em;
-      transform: translate(-1em, 0%);
-      padding: 1em;
-
+    .boxez {
+      flex-basis: 45%;
+       padding: 0 !important;
+      // border: 1px solid green !important;
+       height: 23em !important;
     }
     .box {
       //border: 2px solid red;
       flex: 0 0 40%;
       height: 95%;
-      margin-left: 1em;
+      margin-right: 1em;
       position: relative;
+      top: 2.5em;
       transition: 500ms;
     }
   }
@@ -1497,16 +1488,13 @@ ion-icon {
  
   }
   .chartsjs {
-  //  border: 3px solid rgb(255, 230, 0); 
     overflow-x: scroll;
-   // margin-right: 0.5em;
- //   margin-left: 1em;
     overflow-y: hidden;
     transform: translate(-1em, 0%);
     padding: 1em;
   }
   .graph {
-    //border: 2px solid red;
+
     flex: 0 0 40%;
     flex-basis: 60%;
     height: 95%;
@@ -1518,19 +1506,34 @@ ion-icon {
   .chartsbtn {
   //  border: 2px solid blue;
 height: 17%;
+h3 {
+ // border: 2px solid blue;
+  padding-left: 2%;
+
+  &::after {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    width: 10%;
+    height: 2px;
+    content: "";
+    background: #ddd;
+    border-radius: 50px;
+  }
+}
     .btns {
-     // border: 2px solid red;
 
       .btnze{
         width: 10em;
       }
     }
   }
-
-
 }
 .opacitydivs {
-  border: 2px solid blue;
+//  border: 2px solid blue;
+  width: 100%;
+  height: 100%;
+ 
   ion-button {
     padding: 0;
    // border: 3px solid black;
@@ -1545,32 +1548,32 @@ height: 17%;
     }
   }
   .scroll {
-    border: 3px solid black;
-    height: 75%;
+  //  border: 3px solid black;
+    height: 65%;
     overflow-y: scroll;
+   // background: red;
   }
   .scrollGlass {
     height: 100%;
     overflow-y: scroll;
-    border: 3px solid black;
+   // border: 3px solid black;
+   
     .dropper3 {
-      border: 2px solid blue;
+     // border: 2px solid blue;
     }
   }
   .createDiv, .glassDiv, .editDiv, .deleteDiv {
-  
+    overflow-y: hidden;
     #plasticPrices , .editform2{
-      border: 2px solid green;
+     // border: 2px solid green;
       margin-left: 5%;
-
-    
-
-}
+      overflow-y: hidden;
+    }
   }
 .dropper2 {
-  border: 1px solid red;
+ // border: 1px solid red;
   .top-cell {
-    border: 1px solid blue;
+    //border: 1px solid blue;
     background: aqua;
   }
 }
@@ -1771,7 +1774,7 @@ height: 17%;
   }
 }
 .drop-down-info{
- border: 1px solid red;
+ //border: 1px solid red;
  width: 80%;
 }
 
@@ -1788,7 +1791,7 @@ height: 17%;
 }
 
 
-#chevron-drop-down1, #chevron-drop-down2, #chevron-drop-down3, #chevron-drop-down4{
+.chevron-drop-down1, #chevron-drop-down2, #chevron-drop-down3, #chevron-drop-down4{
   font-size: 20px;
   color: rgb(100, 100, 100);
   position: absolute;

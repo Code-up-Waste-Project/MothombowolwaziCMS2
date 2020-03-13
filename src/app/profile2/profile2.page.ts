@@ -43,7 +43,7 @@ export class Profile2Page implements OnInit {
     
     this.menuCtrl.enable(false);
   
-      this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
+      this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
         this.profile.name = snapshot.data().name;
@@ -51,7 +51,7 @@ export class Profile2Page implements OnInit {
         this.profile.position = snapshot.data().position;
         this.profile.number = snapshot.data().number;
         this.profile.addres = snapshot.data().address;
-        console.log('admin', this.userprofile);
+        console.log('aduserprofilesmins', this.userprofile);
       });
       console.log(this.profile.image);
    }
