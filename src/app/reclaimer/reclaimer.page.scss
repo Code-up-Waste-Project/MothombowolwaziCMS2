@@ -294,15 +294,21 @@ ion-title {
         right: -4% !important;
         top: 0%;
       }
-h2 {
- // border: 2px solid red;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  font-size: 2em;
-  padding-left: 3%;
-  font-weight: bolder;
-}
+      h2 {
+        // border: 2px solid red;
+         width: 100%;
+         position: absolute;
+         top: 0;
+         
+         font-size: 2em;
+         padding-left: 8%;
+         font-weight: bolder;
+         #reclaimer {
+           width: 1.5em;
+           padding-right: 10px;
+           margin-left: 20px;
+         }
+       }
       #image {
      border-top-right-radius: 5px;
         width: 40%;
