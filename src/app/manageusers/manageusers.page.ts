@@ -85,7 +85,10 @@ isAdmin: string = 'true';
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       name: ['', [Validators.required, ]],
-      positions: ['', [Validators.required, ]],
+      // positions: ['', [Validators.required, ]],
+      // idnumber: ['', Validators.compose([Validators.minLength(13), Validators.required])],
+     
+
     });
     this.db.collection('userprofiles').onSnapshot(snapshot => {
       this.Newadmin = [];
@@ -159,9 +162,6 @@ firsttem(obj:any ={})
     });
     this.firsttem()
   }
-    showRegisterForm(){
-      this.registerForm = !this.registerForm;
-    }
       
       seeprofile(profile){
         this.selectedUser = profile
@@ -326,15 +326,15 @@ firsttem(obj:any ={})
               email: this.email,
               password: this.password,
               profile:'no',
-              positions:this.positions,
+              // positions:this.positions,
               idnumber:this.idnumber,
-              addres:this.addres
+              // addres:this.addres
             }).then(async res =>{
               this.email=null
-              this.positions=null
+              // this.positions=null
               this.password=null
               this.idnumber=null
-              this.addres=null
+              // this.addres=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user ',
                 
@@ -375,29 +375,29 @@ firsttem(obj:any ={})
             });
             toast.present();
           }
-         else if (this.positions == "" || this.positions == undefined) {
-          const toast = await this.toastController.create({
-            message: 'Enter the position',
-            duration: 2000
-          });
-          toast.present();
-        }
+        //  else if (this.positions == "" || this.positions == undefined) {
+        //   const toast = await this.toastController.create({
+        //     message: 'Enter the position',
+        //     duration: 2000
+        //   });
+        //   // toast.present();
+        // }
   
-   else if (this.idnumber == "" || this.idnumber == undefined) {
-            const toast = await this.toastController.create({
-              message: 'Enter the idnumber',
-              duration: 2000
-            });
-            toast.present();
-          }
+  //  else if (this.idnumber == "" || this.idnumber == undefined) {
+  //           const toast = await this.toastController.create({
+  //             message: 'Enter the idnumber',
+  //             duration: 2000
+  //           });
+  //           toast.present();
+  //         }
   
-          else if (this.addres == "" || this.addres == undefined) {
-            const toast = await this.toastController.create({
-              message: 'Enter the address',
-              duration: 2000
-            });
-            toast.present();
-          }
+          // else if (this.addres == "" || this.addres == undefined) {
+          //   const toast = await this.toastController.create({
+          //     message: 'Enter the address',
+          //     duration: 2000
+          //   });
+          //   toast.present();
+          // }
         })
        
 //userprofiles
@@ -554,4 +554,21 @@ back(){
 //   in_your_method() {
    
 // }
+
+isUser: boolean = false;
+isProfile: boolean;
+showUser(){
+  this.isUser = true;
+  this.isProfile = true;
+}
+hideUser(){
+  this.isUser = false
+  this.isProfile = false;
+}
+
+showRegisterForm(){
+  this.registerForm = !this.registerForm;
+  this.isUser = true;
+  this.isProfile = false;
+}
 }

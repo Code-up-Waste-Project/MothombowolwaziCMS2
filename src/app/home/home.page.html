@@ -56,9 +56,9 @@
       
       <!-- paper -->
       <div class="box" >
-  <div class="head">
+  <div class="head" >
     <h3 class="materialz">PAPER </h3>
-    <p class="icon">  <ion-icon name="create" mode="ios" (click)="HideandShowSave()" ></ion-icon></p>
+    <p class="icon" >  <ion-icon name="create" mode="ios" (click)="HideandShowSave()" ></ion-icon></p>
   </div>
   
   <div class="sub-material" *ngFor="let paper of PaperArray">
@@ -374,9 +374,9 @@
       <input placeholder="GH001" [(ngModel)]="GH001price"  type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
     </div>
       
-    <button ion-button id="savePaper" (click)="CheckInputsEmptyStringglass()">Save</button>
+    <button ion-button id="savePaper" (click)="CheckInputsEmptyStringglasszz()">Save</button>
   </div>
-  <p class="heading">Keep Record of all updates glhh</p>
+  <p class="heading">Keep Record of all updates glass</p>
   <div class="historydetails">
     <div class="heady">
       <div class="col">
@@ -390,17 +390,17 @@
     </div>
     <div class="scrollGlass">
       <div class="dropper3"   *ngFor="let tinns of glassArrayHistory">
-        <div class="top-cell" (click)="viewMoreGlass()"  >
+        <div class="top-cell" (click)="viewMoreGlass()">
           <div class="meshy">
             <div class="col">
               <h4 class="the-date-head"><p>{{tinns.timeglass}}</p></h4>
              </div>
             <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-            <div class="col"><h4 class="the-date-head">Thato</h4></div>
+            <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
             <div class="col"><h4 class="the-date-head"> GL001</h4></div>
             <div class="col"><h4 class="the-date-head">R{{ tinns.oldgl001 }}</h4></div>
             <div class="col"><h4 class="the-date-head">R{{ tinns.gl001 }}</h4>
-              <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+              <!-- <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon> -->
             </div>
           </div></div>
     
@@ -424,7 +424,7 @@
          <div class="col"><h4 class="the-date-head"> GL001</h4></div>
          <div class="col"><h4 class="the-date-head">R{{ tinns.oldgl001 }}</h4></div>
          <div class="col"><h4 class="the-date-head">R{{ tinns.gl001 }}</h4>
-           <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+           <!-- <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon> -->
          </div>
        </div></div>
      <!-- <div class="myCell">
@@ -456,7 +456,7 @@
   <!-- EDIT PRICE FOR PAPER -->
   <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
     <div padding class="editform2" id="plasticPrices">
-      <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only" ><ion-icon name="close-circle"></ion-icon></ion-button>
     <h1>Edit Price For Paper</h1>
   
     <div class="inputs">
@@ -596,7 +596,7 @@
           <div class="col"><h4 class="the-date-head"> NFALO01</h4></div>
           <div class="col"><h4 class="the-date-head">R{{ allu.oldnfal01 }}</h4></div>
           <div class="col"><h4 class="the-date-head">R{{ allu.nfal01 }}</h4>
-            <ion-icon id="chevron-drop-down4" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
+            <!-- <ion-icon id="chevron-drop-down4" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon> -->
           </div>
         </div></div>
       <!-- <div class="myCell">
@@ -678,7 +678,7 @@
   <div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
     <div padding class="editform2 test">
       <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
-      <h1>Keeping Track Of All Your Updates ttt</h1>
+      <h1>Keeping Track Of All Your Updates </h1>
       <div class="headers">
         <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
         <div class="one"><h2 >Old Pricing</h2></div>

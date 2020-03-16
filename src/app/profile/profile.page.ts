@@ -123,7 +123,7 @@ export class ProfilePage implements OnInit {
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/home2');
     }
     }
   

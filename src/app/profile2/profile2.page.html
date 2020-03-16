@@ -13,6 +13,7 @@
         <div class="user-profile">
           <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
           <img *ngIf="profile.image" src="{{ profile.image }}" alt="">
+          <input id="disapear" class="image-upload"  type="file"  accept="image/*" (change)="changeListener($event)" align="center">
         </div>
         <div class="user-inputs">
           <div class="user-div">

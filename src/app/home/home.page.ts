@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
   isOpenAluminium = false;
   viewBackdrop = false;
 
+  buttonDisabled: boolean;
   @ViewChild('barChart', {static: false}) barChart;        
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
@@ -498,6 +499,22 @@ newdatereclaimerM;
     private render: Renderer2,
     public alertController: AlertController,
     ) {
+
+      firebase.auth().onAuthStateChanged(user => {
+
+        if (user) {
+          firebase
+             .firestore()
+             .doc(`/userprofiles/${user.uid}`)
+              .get()
+              .then(userProfileSnapshot => {
+                this.isAdmin = userProfileSnapshot.data().isAdmin;
+              });
+         }
+        //  this.buttonDisabled = false;
+       });
+
+
     // code by nathi 3 feb
     this.pullWeeklyInbound();
     this.PullDayData();
@@ -1087,13 +1104,13 @@ newdatereclaimerM;
       }
   }
 
-  CheckInputsEmptyStringglass() {
+  CheckInputsEmptyStringglasszz() {
     if (
       this.GH001price === undefined
       ) {
         this.presentAlertcheckInputs();
       } else {
-        this.presentAlertUpdateglass();
+        this.presentAlertUpdateGlass();
       }
   }
   
@@ -1135,6 +1152,32 @@ newdatereclaimerM;
     // console.log(this.nFAL01);
     this.Updateglass()
     this.route.navigateByUrl('/home');
+  }
+
+  async presentAlertUpdateGlass() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to change prices?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.checkglassInputs();
+            this.route.navigateByUrl('/home');
+            // this.HideandShowSave();
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   async presentAlertUpdatePaper() {
@@ -1341,7 +1384,7 @@ newdatereclaimerM;
   UpdatePaper() {
     // Update Price History
     this.db.collection("pricehistory").doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").doc().set({
-      timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timePaper: moment().format('MMMM Do YYYY, h:mm'),
       pap005: this.PAP005price,
       pap007: this.PAP007price,
       pap001: this.PAP001price,
@@ -1355,7 +1398,7 @@ newdatereclaimerM;
 
     // To update price :
     this.db.collection("price").doc("uk3Rla3tt9xgd8NivPJ6").update({
-      timePaper: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timePaper: moment().format('MMMM Do YYYY, h:mm'),
      
       newpap005: this.PAP005price,
       newpap007: this.PAP007price,
@@ -1388,7 +1431,7 @@ newdatereclaimerM;
   UpdatePlastic() {
     // Update Price History
     this.db.collection("pricehistory").doc("7O6KqClxLD780ltfC6i5").collection("plastic").doc().set({
-      timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timePlastic2: moment().format('MMMM Do YYYY, h:mm'),
  
       hd001: this.HD001price,
       ld001: this.LD001price,
@@ -1407,7 +1450,7 @@ newdatereclaimerM;
 
     // To update price :
     this.db.collection("price").doc("7O6KqClxLD780ltfC6i5").update({
-      timePlastic2: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timePlastic2: moment().format('MMMM Do YYYY, h:mm'),
  
       newhd001: this.HD001price,
       newld001: this.LD001price,
@@ -1447,14 +1490,14 @@ newdatereclaimerM;
   UpdateAlum() {
     // Update Price History
     this.db.collection("pricehistory").doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").doc().set({
-      timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timePlastic: moment().format('MMMM Do YYYY, h:mm'),
       nfal01: this.oldpriceNFAL01,
       oldnfal01: this.oldpriceNFAL01,
     })
 
     // To update price :
     this.db.collection("price").doc("ChHHlFcUFzucHOzPpEgE").update({
-      timePlastic: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timePlastic: moment().format('MMMM Do YYYY, h:mm'),
       oldnfal01: this.oldpriceNFAL01,
       newnfal01: this.NFAL01price,
       
@@ -1476,19 +1519,19 @@ newdatereclaimerM;
 
   Updateglass() {
     this.db.collection("pricehistory").doc("8FtqTT4N4mFpbI4DKc25").collection("glass").doc().set({
-      timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+      timeglass:moment().format('MMMM Do YYYY, h:mm'),
       gl001: this.GH001price,
       oldgl001: this.oldpriceglass,
-      nameglass: this.Glas
+      nameglass: this.GH001price
 
     })
 
         // To update price :
         this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
-          timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
+          timeglass:moment().format('MMMM Do YYYY, h:mm'),
           newgl001: this.GH001price,
           oldgl001: this.oldpriceglass,
-          nameglass: this.Glas
+          nameglass: this.GH001price
         }).then((data) => {
           this.route.navigateByUrl('/home');
           // console.log("Paper old storage successfully updated!");

@@ -175,6 +175,25 @@ export class AppComponent implements OnInit {
                     );
                 }
                 this.getAuth()
+
+                this.db.collection('userprofiles').onSnapshot(snapshot => {
+                    this.Newadmin = []
+                    snapshot.forEach(Element => {
+   
+                        this.myadmis.push(Element.data());
+                        //  this.Newadmin =[]
+                        // console.log(Element.data());
+                    });
+                    this.myadmis.forEach(item => {
+                        if (item.userid === firebase.auth().currentUser.uid) {
+                     
+                            console.log('Newadmins', this.Newadmin);
+                            this.Newadmin.push(item);
+                            this.Newadmin.splice(1, 1);
+
+                        }
+                    });
+                });
                 // console.log(this.appPages);
             });
         });
@@ -195,20 +214,26 @@ export class AppComponent implements OnInit {
         firebase.auth().onAuthStateChanged((user) => {
             console.log('Component authstate triggerd');
 
+
+
+
+            
             if (user) {
                 this.router.navigateByUrl('/home');
 
-                this.db.collection('userprofiles').get().then(snapshot => {
-                    this.Newadmin = []
-                    snapshot.forEach(Element => {
 
+
+                this.db.collection('userprofiles').onSnapshot(snapshot => {
+                
+                    snapshot.forEach(Element => {
+   
                         this.myadmis.push(Element.data());
-                        // this.Newadmin =[]
+                        //  this.Newadmin =[]
                         // console.log(Element.data());
                     });
                     this.myadmis.forEach(item => {
                         if (item.userid === firebase.auth().currentUser.uid) {
-
+                            this.Newadmin = []
                             console.log('Newadmins', this.Newadmin);
                             this.Newadmin.push(item);
                             this.Newadmin.splice(1, 1);
@@ -250,7 +275,8 @@ export class AppComponent implements OnInit {
 
         if (isTimeout) {
             localStorage.clear();
-            this.router.navigate(['./login']);
+            // this.router.navigate(['./login']);
+            this.Logout();
         }
     }
     Logout() {
