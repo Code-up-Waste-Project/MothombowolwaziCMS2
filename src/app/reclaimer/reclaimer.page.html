@@ -105,7 +105,7 @@
                   <form [formGroup]="RegisterForm">
                     <div class="inputs">
                       <input type="text" placeholder="Full names" [(ngModel)]="name" formControlName="name">
-                      <input type="number" placeholder="Identity number" [(ngModel)]="IDno" formControlName="IDno" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
+                      <input type="number" placeholder="Identity number" [(ngModel)]="IDno" [ngModelOptions]="{standalone: true}" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
                       <input type="tel" placeholder="Phone number" [(ngModel)]="contact" formControlName="contact" maxlength="10" (keyup)="getPhoneInput($event)">
                       <input type="text" placeholder="Street name" [(ngModel)]="streetname" formControlName="streetname"> 
                       <input type="text" placeholder="Town" [(ngModel)]="town" formControlName="town">
