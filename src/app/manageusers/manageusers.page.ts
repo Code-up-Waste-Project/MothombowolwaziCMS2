@@ -170,9 +170,6 @@ firsttem(obj:any ={})
 
   }
 
-    showRegisterForm(){
-      this.registerForm = !this.registerForm;
-    }
       
       seeprofile(profile){
         this.selectedUser = profile
@@ -597,4 +594,20 @@ back(){
    
 // }
 
+isUser: boolean = false;
+isProfile: boolean;
+showUser(){
+  this.isUser = true;
+  this.isProfile = true;
+}
+hideUser(){
+  this.isUser = false
+  this.isProfile = false;
+}
+
+showRegisterForm(){
+  this.registerForm = !this.registerForm;
+  this.isUser = true;
+  this.isProfile = false;
+}
 }

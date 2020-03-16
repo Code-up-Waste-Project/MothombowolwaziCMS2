@@ -6,13 +6,79 @@
   </ion-toolbar>
 </ion-header>
   
-  <ion-content>
+  <ion-content>  
+    <div class="mask" *ngIf="isUser === true">  
+      <div class="the-dismiss" (click)="hideUser()">
+        <ion-icon id="edit-icon2" src="../../assets/close.svg" alt=""></ion-icon>
+      </div>
+      <div class="profile-info" *ngIf="isProfile === true">
+        <div class="three-circles">
+          <div id="color-one"></div>
+          <div id="color-two"></div>
+          <div id="color-three"></div>
+        </div>
+        <div class="profile-div">
+          <div class="circle-picture">
+            <img src="../../assets/user (1).png" alt="">
+          </div>
+        </div>
+        <div class="the-info">
+          <p><b>Lebogang Thipenyane</b></p>          
+        </div>
+        <div class="user-phone">
+          <p>074 905 4945</p>
+        </div>
+        <div class="user-role">
+          <p><b>Manager</b></p>
+        </div>
+        <div class="delete">
+          <ion-icon name="trash"></ion-icon>
+        </div>
+        <!-- end of user-info pop-over -->
+
+
+      </div>
+      <div class="adding-users" *ngIf="isProfile === false">
+        <div class="three-circles">
+          <div id="color-one"></div>
+          <div id="color-two"></div>
+          <div id="color-three"></div>
+        </div>
+        <div class="user-inputs">          
+          <div class="user-div">
+            <div class="input-icon">
+              <ion-icon name="person"></ion-icon>
+            </div>
+          <input type="text" placeholder="Name and Surname">
+        </div>
+        <div class="user-div">
+          <div class="input-icon">
+            <ion-icon name="person"></ion-icon>
+          </div>
+        <input type="text" placeholder="Name and Surname">
+      </div>
+      <div class="user-div">
+        <div class="input-icon">
+          <ion-icon name="person"></ion-icon>
+        </div>
+      <input type="text" placeholder="Name and Surname">
+    </div>
+        </div>
+        <div class="the-button">
+          <ion-button id="reg-button">Register</ion-button>
+        </div>
+      </div>
+
+      <!-- end of add-user pop-over -->
+    </div>
+    
+      <!-- End of View-user0-profile Pop-over -->
   <div class="background-Logo">
     <img src="../../assets/icon/Asset 10.svg" alt="">
   </div>
     <div class="cont-container" >
       <div padding class="left" >
-        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)' >
+        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)' (click)="showUser()">
            <div class="names">
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.position }}</p>
@@ -24,6 +90,15 @@
             </div>
           </div>
           </div>
+
+          
+        <ion-fab>
+          <ion-fab-button id="the-fab" (click)="showRegisterForm()" ><ion-icon name="add"></ion-icon></ion-fab-button>
+        </ion-fab>
+
+
+
+
       </div>
   
       <div class="right" *ngIf="!registerForm" >
