@@ -340,14 +340,6 @@ currentLocation: any = {
       // console.log('Newadmins', this.Newadmin);
     });
 
-
-
-    // this.RegisterForm = formGroup.group({
-    //     DriverName : ['', [Validators.required, Validators.maxLength(15)]],
-    //     RegistarionNumberPlates : ['', [Validators.required, Validators.maxLength(10)]],
-    //     Destination : ['', [Validators.required, Validators.maxLength(25)]],
-    //   });
-
     this.getMasses();
     this.pdfmakerFirebase();
 

@@ -70,8 +70,6 @@ export class ProfilePage implements OnInit {
                 this.isAdmin = userProfileSnapshot.data().isAdmin;
               });
          }
-
-         this.buttonDisabled = false;
        });
 
     // this.menuCtrl.enable(true);

@@ -110,16 +110,11 @@
 
                   <form [formGroup]="RegisterForm">
                   <div class="inputs">
-                    <input type="text" placeholder="Driver Name & Surname" [(ngModel)]="DriverNameInput"
-                    formControlName="DriverNameInput">
-                    <input type="tel" placeholder="Phone Numbers" [(ngModel)]="PhoneNumbersInput"
-                    formControlName="PhoneNumbersInput" maxlength="10" (keyup)="getPhoneInput($event)">
-                    <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
-                      formControlName="RegistarionNumberPlatesInput">
-                    <input type="text" placeholder="Company Name" [(ngModel)]="TruckSourcessInput"
-                      formControlName="TruckSourcessInput"> 
-                    <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput"
-                    formControlName="CompanyAddressInput">
+                    <input type="text" placeholder="Name & Surname" [(ngModel)]="DriverNameInput" formControlName="DriverNameInput">
+                    <input type="tel" placeholder="Phone Numbers" [(ngModel)]="PhoneNumbersInput" formControlName="PhoneNumbersInput" maxlength="10" (keyup)="getPhoneInput($event)">
+                    <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput" formControlName="RegistarionNumberPlatesInput">
+                    <input type="text" placeholder="Company Name" [(ngModel)]="TruckSourcessInput" formControlName="TruckSourcessInput"> 
+                    <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput" formControlName="CompanyAddressInput">
                   
                   </div>
 
