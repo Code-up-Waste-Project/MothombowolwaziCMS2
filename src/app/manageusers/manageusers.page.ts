@@ -85,8 +85,8 @@ isAdmin: string = 'true';
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       name: ['', [Validators.required, ]],
-      positions: ['', [Validators.required, ]],
-      idnumber: ['', Validators.compose([Validators.minLength(13), Validators.required])],
+      // positions: ['', [Validators.required, ]],
+      // idnumber: ['', Validators.compose([Validators.minLength(13), Validators.required])],
      
 
     });
@@ -329,15 +329,15 @@ firsttem(obj:any ={})
               email: this.email,
               password: this.password,
               profile:'no',
-              positions:this.positions,
+              // positions:this.positions,
               idnumber:this.idnumber,
-              addres:this.addres
+              // addres:this.addres
             }).then(async res =>{
               this.email=null
-              this.positions=null
+              // this.positions=null
               this.password=null
               this.idnumber=null
-              this.addres=null
+              // this.addres=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user ',
                 

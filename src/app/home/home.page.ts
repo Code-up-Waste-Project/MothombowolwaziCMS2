@@ -1479,7 +1479,7 @@ newdatereclaimerM;
       timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
       gl001: this.GH001price,
       oldgl001: this.oldpriceglass,
-      nameglass: this.Glas
+      // nameglass: this.Glas
 
     })
 
@@ -1488,7 +1488,7 @@ newdatereclaimerM;
           timeglass:moment().format('MMMM Do YYYY, h:mm:ss a'),
           newgl001: this.GH001price,
           oldgl001: this.oldpriceglass,
-          nameglass: this.Glas
+          // nameglass: this.Glas
         }).then((data) => {
           this.route.navigateByUrl('/home');
           // console.log("Paper old storage successfully updated!");
