@@ -285,8 +285,10 @@ ion-title {
         font-size: 1.8em;
        z-index: 25;
         position: absolute;
-        right: -4% !important;
-        top: 0%;
+        right: -3% !important;
+        top: -2%;
+        //border: 1px solid red;
+        margin: 0 !important;
       }
 h2 {
  // border: 2px solid red;
@@ -1679,22 +1681,16 @@ font-family: 'lato';
         width: 100% !important;
         height: 1080px !important;
             .children-slides , .slideOne{
-             // border: solid 2px rgb(140, 241, 45);
               height: 100% !important;
               width: 100% !important;
               margin: 0;
-
-              .drivers-container_transforms {
- #searchbar {
- // border: 2px solid blue;
-  position: absolute !important;
-  left: 2% !important;
-}
+              #two {
+                //border: 1px solid red;
               }
-
-              
-      }
-      }
-  
+//  #searchbar {
+//   border: 2px solid blue;
+//   position: absolute !important;
+//   left: 2% !important;
+//     }
     }
-  }
+  }}}
