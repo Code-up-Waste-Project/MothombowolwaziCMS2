@@ -787,7 +787,7 @@ newdatereclaimerM;
       this.pricess.gl001 = snap.data().newgl001;
     })
     //  console.log(this.glassArray)
-    this.db.collection('pricehistory').doc("8FtqTT4N4mFpbI4DKc25").collection("glass").orderBy('timeglass', "desc").get().then(snap => {
+    this.db.collection('pricehistory').doc("8FtqTT4N4mFpbI4DKc25").collection("glass").orderBy('timeglass', "desc").onSnapshot(snap => {
       this.glassArrayHistory = [];
       snap.forEach(element => {
       this.glassArrayHistory.push(element.data())
@@ -813,7 +813,7 @@ newdatereclaimerM;
     
     })
     console.log(this.PaperArray)
-    this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").get().then(snap => {
+    this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").onSnapshot(snap => {
       this.PaperArrayHistory = [];
       snap.forEach(snap => {
       this.PaperArrayHistory.push(snap.data())
@@ -842,9 +842,10 @@ newdatereclaimerM;
       this.pricess.pet005 = snap.data().newpet005;
     })
     // console.log(this.plasticarray)
-    this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").get().then(snap => {
+    this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").onSnapshot(snap => {
       this.plasticarrayHistory = [];
       snap.forEach(element => {
+        
       this.plasticarrayHistory.push(element.data())
       })
       console.log(this.plasticarrayHistory);
@@ -860,7 +861,7 @@ newdatereclaimerM;
       this.pricess.nfalo1 = snap.data().newnfal01;
     })
     // console.log(this.NFAL001Array);
-    this.db.collection('pricehistory').doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").orderBy('timePlastic', "desc").get().then(snap => {
+    this.db.collection('pricehistory').doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").orderBy('timePlastic', "desc").onSnapshot(snap => {
       this.NFAL001ArrayHistory = [];
       snap.forEach(element => {
       this.NFAL001ArrayHistory.push(element.data())
@@ -3140,8 +3141,7 @@ map(){
   this.route.navigateByUrl('/auto');
 }
 
-viewMorePaper(){
-  let i
+viewMorePaper(i){
    this.active = i
    console.log(this.active);
    
@@ -3159,8 +3159,7 @@ viewMorePaper(){
   }
 }
 
-viewMorePlastic(){
-  let i
+viewMorePlastic(i){
   this.active = i
   let dropDown = document.getElementsByClassName("dropper2") as HTMLCollectionOf <HTMLElement>
 

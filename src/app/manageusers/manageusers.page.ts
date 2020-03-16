@@ -9,7 +9,6 @@ import { MenuController } from '@ionic/angular';
 import { AbstractExtendedWebDriver } from 'protractor/built/browser';
 import { element } from 'protractor';
 import { Location } from "@angular/common";
-
 @Component({
   selector: 'app-manageusers',
   templateUrl: './manageusers.page.html',
@@ -19,10 +18,8 @@ export class ManageusersPage implements OnInit {
   
   buttonDisabled: boolean;
 registerForm = false;
-
 yourBoolean = true; /*viewable by default*/
 ishidden = false;
-
 ActiveAcounts: boolean = false;
 isAdmin: string = 'true';
  //admin
@@ -33,7 +30,6 @@ isAdmin: string = 'true';
  number;
  id;
  addres;
-
   Userids;
   Username;
   Usersurname;
@@ -41,9 +37,7 @@ isAdmin: string = 'true';
   UseractiveAccount;
   Userposition;
   UserImage;
-
   public signupForm: FormGroup;
-
   viewuser;
   storage = firebase.storage().ref();
   admin = [];
@@ -58,14 +52,12 @@ isAdmin: string = 'true';
   isLabelActive;
   oneprofile:any ={};
   public loading: any;
-
   email;
   password;
   positions;
   address
   selectedUser ={}
   idnumber;
-
   constructor(
     public platform: Platform,
     public authService: AuthService,
@@ -76,7 +68,6 @@ isAdmin: string = 'true';
     private toastController: ToastController,
     private location: Location
   ) {
-
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         firebase
@@ -90,14 +81,12 @@ isAdmin: string = 'true';
        this.yourBoolean = false;
       //  this.buttonDisabled = false;
      })
-
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-      // name: ['', [Validators.required, ]],
+      name: ['', [Validators.required, ]],
       positions: ['', [Validators.required, ]],
     });
-
     this.db.collection('userprofiles').onSnapshot(snapshot => {
       this.Newadmin = [];
       snapshot.forEach(Element => {
@@ -111,9 +100,7 @@ isAdmin: string = 'true';
       });
       // console.log('Newadmins', this.Newadmin);
     });
-
    }
-
 firsttem(obj:any ={})
 {
  console.log(obj)
@@ -123,14 +110,11 @@ firsttem(obj:any ={})
  this.image=obj.image
  this.ActiveAcount=obj.ActiveAcount
 }
-
-
-
   ngOnInit() {
 
+    // this.presentAlertDelete
 
     firebase.auth().onAuthStateChanged(user => {
-
       if (user) {
         firebase
            .firestore()
@@ -140,10 +124,8 @@ firsttem(obj:any ={})
               this.isAdmin = userProfileSnapshot.data().isAdmin;
             });
        }
-
        this.buttonDisabled = false;
      });
-
    //auth gurd
   //  firebase.auth().onAuthStateChanged((user) => {
   //   if (user) {
@@ -153,23 +135,30 @@ firsttem(obj:any ={})
   //   }
   //   });
     this.getUsers();
-
-    this.db.collection('userprofiles').where("isAdmin" ,"==","true" ).get().then(snapshot => {
+    this.db.collection('userprofiles').where("isAdmin" ,"==","true" ).onSnapshot(snapshot => {
+      // this.profile.name = snapshot.docs.name
+      // this.profile.email = snapshot.data().email;
+      // email: firebase.auth().currentUser.email,
+      // this.profile.name = snapshot.data().name;
+      // this.profile.position = snapshot.data().position;
+      // // this.profile.image = snapshot.data().image;
+      // console.log('users', this.userprofile);
      
       this.newuserprofile = [];
-
+      // console.log("removed tt removed ", removed);
+      // removed = newuserprofile.splice(firebase.auth().currentUser.email, "remove current user");
+      // elements = newuserprofile.splice( );
+      // console.log('splice' ,elements)
       snapshot.forEach(item => {
+      
         this.newuserprofile.push({...{id:item.id},...item.data()});
        this.firsttem(item.data())
          console.log("user profile ", this.oneprofile = item.data());
       
       });
     });
-
     this.firsttem()
-
   }
-
     showRegisterForm(){
       this.registerForm = !this.registerForm;
     }
@@ -188,9 +177,7 @@ firsttem(obj:any ={})
       // this.profile.position = snapshot.data().position;
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
-
       // this.newuserprofile = [];
-
       snapshot.forEach(item => {
         this.newuserprofile = [];
         this.newuserprofile.push({...{id: item.id},...item.data()});
@@ -198,7 +185,6 @@ firsttem(obj:any ={})
       });
     });
   }
-
   segmentChanged(ev: any, id) {
     if (ev.detail.value === 'true') {
       this.presentAlertChangeStatusAccountTrue(id);
@@ -211,17 +197,14 @@ firsttem(obj:any ={})
     console.log('Segment changed', ev);
     console.log(id);
   }
-
   // changeSegmentTrue(id) {
   //   this.db.collection('admin').doc(id).update({ActiveAcount: true});
   //     this.getUsers();
   // }
-
   // changeSegmentFalse(id) {
   //   this.db.collection('admin').doc(id).update({ActiveAcount: false});
   //     this.getUsers();
   // }
-
   async presentAlertChangeStatusAccountTrue(id) {
     const alert = await this.alertCtrl.create({
       header: 'Confirm!',
@@ -246,7 +229,6 @@ firsttem(obj:any ={})
     });
     await alert.present();
   }
-
   async presentAlertChangeStatusAccountFalse(id) {
     const alert = await this.alertCtrl.create({
       header: 'Confirm!',
@@ -271,7 +253,6 @@ firsttem(obj:any ={})
     });
     await alert.present();
   }
-
   viewprofile(id) {
     this.newuserprofilezzzzz = [];
     this.viewuser = this.db.collection('userprofiles').doc(id);
@@ -282,7 +263,6 @@ firsttem(obj:any ={})
         console.log(this.newuserprofilezzzzz);
       });
   }
-
       delete(userid) {
         console.log(userid);
        
@@ -293,8 +273,8 @@ firsttem(obj:any ={})
       });
     
       }
-
       deleteuser(id) {
+
         this.db.collection('userprofiles').doc(id).delete().then(function(){
           console.log("Document successfully deleted")
         }).catch(function(error){
@@ -302,8 +282,8 @@ firsttem(obj:any ={})
         });
         console.log('user  deleted');
       }
-
       async presentAlertDelete(id) {
+        
         const alert = await this.alertCtrl.create({
           header: 'Confirm!',
           message: '<strong>Are you sure you want to Delete this record, Data will not be saved.</strong>!!!',
@@ -327,26 +307,21 @@ firsttem(obj:any ={})
         await alert.present();
       }
 
-
     Logout() {
       firebase.auth().signOut().then((res) => {
         console.log(res);
         this.router.navigateByUrl('/login');
        });
       }
-
       async  saveNewUseer() {
-
         const alert = await this.alertCtrl.create({
           header: 'New CMS User',
           message: 'This user will have access to your CMS',
           backdropDismiss: false,
         })
-
         this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
          
            if(data.size == 0) {
-
             this.db.collection('admin').add({
               email: this.email,
               password: this.password,
@@ -368,7 +343,6 @@ firsttem(obj:any ={})
                   text: 'OK'
                 }
               ]
-
               });
           alert.present();
           console.log('user addded to cloud ')
@@ -385,8 +359,6 @@ firsttem(obj:any ={})
               ]
             });
             alert.present();
-
-
             
             console.log('This email has already been used already');
            }
@@ -427,9 +399,8 @@ firsttem(obj:any ={})
             toast.present();
           }
         })
-
+       
 //userprofiles
-
 // this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
 //   if(data.size == 0) {
 //    this.db.collection('adminprofiles').add({
@@ -437,7 +408,6 @@ firsttem(obj:any ={})
 //      password: this.password,
 //      profile:'no',
 //      positions:this.positions,
-
 //      idnumber:this.idnumber,
 //      addres:this.addres
 //    }).then(async res =>{
@@ -472,9 +442,7 @@ firsttem(obj:any ={})
 //    console.log('This email has already been used already');
 //   }
 // })
-
       }
-
       changeListener(admin): void {
         const i = admin.target.files[0];
         console.log(i);
@@ -490,11 +458,9 @@ firsttem(obj:any ={})
           });
         });
       }
-
       // editprofile() {
       //   this.router.navigate(['profile2']);
       // }
-
       adminprofile(){
         this.db.collection('userprofiles').onSnapshot(snapshot => {
           // this.profile.name = snapshot.docs.name
@@ -512,7 +478,6 @@ firsttem(obj:any ={})
           });
         });
       }
-
       AddUserToForm(id) {
         this.db.collection('userprofiles').doc(id).onSnapshot(element => {
           // element.forEach(element => { ActiveAcount
@@ -523,7 +488,6 @@ firsttem(obj:any ={})
             let image = {};
             let ActiveAcount = {};
             let idnumber = {}
-
             id = this.id = element.id;
             name = this.name = element.data().name;
             number = this.number = element.data().number;
@@ -533,7 +497,6 @@ firsttem(obj:any ={})
             ActiveAcount = this.ActiveAcount = element.data().ActiveAcount;
             idnumber = this.idnumber =element.data().idnumber;
             // })
-
             console.log(this.id);
             console.log(this.name);
             console.log(this.number);
@@ -553,7 +516,6 @@ firsttem(obj:any ={})
           // })
       })
     }
-
     AddUser(id) {
       this.db.collection('userprofiles').doc(id).onSnapshot(element => {
       let id = {};
@@ -563,9 +525,7 @@ firsttem(obj:any ={})
       let position = {};
       let image = {};
       let idnumber = {}
-
       let addres={}
-
       id = this.Userids = element.data().userid;
       name = this.name = element.data().name;
       this.number = this.number = element.data().number;
@@ -573,7 +533,6 @@ firsttem(obj:any ={})
       this.image =this.image= element.data().image;
       idnumber = this.idnumber =element.data().idnumber;
       addres=this.addres =element.data().addres;
-
         this.Snapprofile.push({
           id: this.Userids,
           name: this.name,
@@ -591,10 +550,8 @@ back(){
   console.log('tbladddd' )
   this.router.navigateByUrl('/home');
 }
-
  
 //   in_your_method() {
    
 // }
-
 }

@@ -58,12 +58,12 @@
       <h1>Register</h1>
       <form [formGroup]="signupForm">
       <input class="inputs" type="email" formControlName="email" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="default@example.com"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
-      <input class="inputs" type="text" formControlName="positions" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position">
+      <!-- <input class="inputs" type="text" formControlName="positions" placeholder="Enter position" [(ngModel)]="positions"  this.position.reset autocomplete="off" autocorrect="off" id="myInput" value="position"> -->
       <input class="inputs" formControlName="password" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password" >
-     <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
-      <textarea placeholder="Physical Address" type="text" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres"></textarea> 
+     <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13" [ngModelOptions]="{standalone: true}">
+      <!-- <textarea placeholder="Physical Address" type="text" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres" [ngModelOptions]="{standalone: true}"></textarea>  -->
       </form>
-     <button ion-button type="reset" onclick="document.getElementById('myInput').value =''" (click)="saveNewUseer()" [disabled]="!signupForm.valid">Register</button>
+     <button ion-button type="reset" onclick="document.getElementById('myInput').value =''" (click)="saveNewUseer()" >Register</button>
      
      <!-- <div class="bottomdeco">
     <img  src="../../assets/binsPopup  2.svg">
