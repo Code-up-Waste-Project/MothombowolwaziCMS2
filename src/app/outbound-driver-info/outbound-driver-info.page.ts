@@ -238,8 +238,8 @@ erasedToContact() {
 
   pullDrive() {
     this.Outbound = this.db.collection('outbound').doc(this.id);
-    this.ViewOutbound = [];
     this.Outbound.get().then((element) => {
+      this.ViewOutbound = [];
       // console.log(documentSnapshot.data());
       this.ViewOutbound.push(element.data());
       // console.log(this.ViewOutbound);

@@ -502,6 +502,7 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
             widths: ['50%', '50%'],
             body: [
               [ this.printDataNamezz, this.printDataNumberzz ],  //output data here
+              [ 'Total Mass', this.overallStoragez ],
             ]
             
           },

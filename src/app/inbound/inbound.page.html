@@ -1,10 +1,11 @@
-<!-- <ion-header>
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> 
+      <ion-menu-button></ion-menu-button>  
+      Record all incoming material
     </ion-buttons>
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
 
 <ion-content>
   
@@ -16,7 +17,7 @@
 
     <h2>  <img id="reclaimer" src="../../assets/inbound.svg">Inbound drivers</h2>
     <img id="image" src="../../assets/recycle.svg">
-    <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">
+
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
 
       <!-- slide 1 -->
@@ -28,9 +29,9 @@
 
                     <div class="Searhcer">
                       <div class="results">
-                        <p *ngFor="let records of searchResults" (click)="selectLocation(records)" (click)="nextislide()"> {{ records }} </p>
+                        <!-- <p *ngFor="let records of searchResults" (click)="selectLocation(records)" (click)="nextislide()"> {{ records }} </p> -->
                         <div class='count' *ngIf="searchResults.length > 0">
-                          {{ searchResults.length }}
+                          <!-- {{ searchResults.length }} -->
                         </div>
                       </div>
                       <ion-searchbar name="search" placeholder="Search by Driver's Code" (ionInput)="getItems($event)"></ion-searchbar>

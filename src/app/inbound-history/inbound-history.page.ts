@@ -160,8 +160,8 @@ flip(){
 
 pullDrive() {
   this.Outbound = this.db.collection('inbounds').doc(this.id);
-  this.ViewOutbound = [];
   this.Outbound.get().then((element) => {
+    this.ViewOutbound = [];
     // console.log(documentSnapshot.data());
     this.ViewOutbound.push(element.data());
     console.log(this.ViewOutbound);

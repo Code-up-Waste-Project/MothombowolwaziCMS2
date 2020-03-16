@@ -104,23 +104,16 @@
 
                   <form [formGroup]="RegisterForm">
                     <div class="inputs">
-                      <input type="text" placeholder="Full names" [(ngModel)]="name"
-                      formControlName="name">
-                      <input type="number" placeholder="Identity number" [(ngModel)]="IDno"
-                      formControlName="IDno" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
-                      <input type="tel" placeholder="Phone number" [(ngModel)]="contact"
-                      [ngModelOptions]="{standalone: true}" maxlength="10" (keyup)="getPhoneInput($event)">
-                      <input type="text" placeholder="Street name" [(ngModel)]="streetname"
-                      [ngModelOptions]="{standalone: true}"> 
-                      <input type="text" placeholder="Town" [(ngModel)]="town"
-                      [ngModelOptions]="{standalone: true}">
-                      <input type="text" placeholder="City" [(ngModel)]="city"
-                      [ngModelOptions]="{standalone: true}">
-                     
+                      <input type="text" placeholder="Full names" [(ngModel)]="name" formControlName="name">
+                      <input type="number" placeholder="Identity number" [(ngModel)]="IDno" formControlName="IDno" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13">
+                      <input type="tel" placeholder="Phone number" [(ngModel)]="contact" formControlName="contact" maxlength="10" (keyup)="getPhoneInput($event)">
+                      <input type="text" placeholder="Street name" [(ngModel)]="streetname" formControlName="streetname"> 
+                      <input type="text" placeholder="Town" [(ngModel)]="town" formControlName="town">
+                      <input type="text" placeholder="City" [(ngModel)]="city" formControlName="city">
                     </div>
-                    <div id="save">
+                    <!-- <div id="save">
                       <ion-button id="btn"  (click)="nextislide()">Save driver</ion-button>
-                     </div>
+                     </div> -->
                   </form>
                 </div>
               </div>
