@@ -86,6 +86,9 @@ isAdmin: string = 'true';
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       name: ['', [Validators.required, ]],
       positions: ['', [Validators.required, ]],
+      idnumber: ['', Validators.compose([Validators.minLength(13), Validators.required])],
+     
+
     });
     this.db.collection('userprofiles').onSnapshot(snapshot => {
       this.Newadmin = [];
@@ -375,29 +378,29 @@ firsttem(obj:any ={})
             });
             toast.present();
           }
-         else if (this.positions == "" || this.positions == undefined) {
-          const toast = await this.toastController.create({
-            message: 'Enter the position',
-            duration: 2000
-          });
-          toast.present();
-        }
+        //  else if (this.positions == "" || this.positions == undefined) {
+        //   const toast = await this.toastController.create({
+        //     message: 'Enter the position',
+        //     duration: 2000
+        //   });
+        //   // toast.present();
+        // }
   
-   else if (this.idnumber == "" || this.idnumber == undefined) {
-            const toast = await this.toastController.create({
-              message: 'Enter the idnumber',
-              duration: 2000
-            });
-            toast.present();
-          }
+  //  else if (this.idnumber == "" || this.idnumber == undefined) {
+  //           const toast = await this.toastController.create({
+  //             message: 'Enter the idnumber',
+  //             duration: 2000
+  //           });
+  //           toast.present();
+  //         }
   
-          else if (this.addres == "" || this.addres == undefined) {
-            const toast = await this.toastController.create({
-              message: 'Enter the address',
-              duration: 2000
-            });
-            toast.present();
-          }
+          // else if (this.addres == "" || this.addres == undefined) {
+          //   const toast = await this.toastController.create({
+          //     message: 'Enter the address',
+          //     duration: 2000
+          //   });
+          //   toast.present();
+          // }
         })
        
 //userprofiles
