@@ -496,8 +496,8 @@ export class ReclaimerPage implements OnInit {
     });
 
     this.RegisterForm = formGroup.group({
-      IDno : ['', [Validators.required]],
-      name : ['', [Validators.required]],
+      name : ['', [Validators.required, Validators.maxLength(20)]],
+      // IDno : ['', [Validators.required, Validators.maxLength(13)]],
       contact : ['', [Validators.required, Validators.maxLength(10)]],
       streetname : ['', [Validators.required, , Validators.maxLength(40)]],
       town : ['', [Validators.required, , Validators.maxLength(40)]],

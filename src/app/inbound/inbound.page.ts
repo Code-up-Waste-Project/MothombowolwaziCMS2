@@ -843,7 +843,7 @@ inboundHistory(){
       this.db.collection('inbounds').doc(this.resultID).update({
         id: this.resultID
       })
-      this.addMass22();
+      this.SaveInbound2(this.resultID);
     })
   }
 

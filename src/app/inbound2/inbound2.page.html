@@ -1,12 +1,4 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> 
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header> -->
-
-<ion-content>
+<!-- <ion-content>
   
   <div class="mother" *ngIf="popOpOpen === true" >
 <div class="slides-container">
@@ -19,11 +11,11 @@
     <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">
     <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
 
-      <!-- slide 1 -->
+     
       <ion-slide class="slideOne">
      
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
-              <div class="list"><!-- div containing names of drivers -->
+              <div class="list">
                 <ion-toolbar id="two">
 
                     <div class="Searhcer">
@@ -39,12 +31,7 @@
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <!-- <ion-card *ngFor="let records of recordinbounddisplaysz" (click)='presentAlertAddUser(records.id)'>
-                      <h4>{{ records }}</h4>
-                      <h4>{{ records.DriverName }}</h4>
-                      <p>{{ records.truckcode }}</p>
-                      <p>{{ records.RegistarionNumberPlates }}</p>
-                    </ion-card> -->
+                 
 
                     <div *ngIf="searchResults.length > 0">
                       <ion-card *ngFor="let records of searchResults" (click)='presentAlertAddUser(records.id)'>
@@ -70,8 +57,7 @@
                     </ion-button>
                   </div>
                 </div>
-              </div> <!-- end of list container -->
-              <!-- form on the right for listof users -->
+              </div> 
               <div class="small-slide animated "   [ngClass]="{'slideInLeft':transtioning, 'slideInRight': !transtioning}">
                 <ion-toolbar color="primary">
                   <ion-buttons slot="start">
@@ -82,14 +68,7 @@
                   <ion-title class="ion-text-left">Create New Driver</ion-title>
                 </ion-toolbar>
                 <div class="form">
-                  <!-- <div class="profileholder">
-                    <div class="profile" >
-                      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
-                      <img *ngIf="image" src="{{ image }}" alt="">
-                      <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                      <ion-button fill="clear" for="disapear" id="Addd" name="camera"><ion-icon id="Addd" name="camera" ></ion-icon></ion-button>
-                    </div>
-                  </div> -->
+                 
 
                   <div class="profileholder">
                     <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
@@ -100,35 +79,15 @@
                     </label>
                   </div>
 
-                  <form [formGroup]="RegisterForm">
-                    <div class="inputs">
-                      <input type="text" placeholder="Driver Name & Surname" [(ngModel)]="DriverNameInput"
-                      formControlName="DriverNameInput">
-                      <input type="tel" placeholder="Phone Numbers" [(ngModel)]="PhoneNumbersInput"
-                      formControlName="PhoneNumbersInput" maxlength="10" (keyup)="getPhoneInput($event)">
-                      <input type="text" placeholder="Registration No." [(ngModel)]="RegistarionNumberPlatesInput"
-                        formControlName="RegistarionNumberPlatesInput">
-                      <input type="text" placeholder="Company Name" [(ngModel)]="TruckSourcessInput"
-                        formControlName="TruckSourcessInput"> 
-                      <input type="text" placeholder="Campany Address" [(ngModel)]="CompanyAddressInput"
-                      formControlName="CompanyAddressInput">
-   
-                    </div>
-                    <div id="save">
-                      <ion-button id="btn" (click)="nextislide()" >Save driver</ion-button>
-                     </div>
-                  </form>
+                 
                 </div>
               </div>
           </div>
          </ion-slide>
 
-
-
-    <!-- slide 2 id="materials-form"-->
       <ion-slide id="slide2"> 
         <div id="slide2cont"  >
-          <!-- this is for the materials form -->
+        
           <div class="waste-materials">
             <div (click)="togglePaper()" id="isPaper">PAPER</div>
             <div (click)="togglePlastic()" id="isPlastic">PLASTIC</div>
@@ -138,13 +97,9 @@
           </div>
 
           <div class="SecSection">
-            <!-- For Paper -->
     
             <div  class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
-              <!-- paper -->
-              <!-- <div class="Next-button">
-                <ion-button fill="clear" color="light" (click)="togglePlastic()">Next</ion-button>
-              </div> -->
+
               <ion-grid>
                 <ion-row >
                   <ion-col class="input-textfields" size="6">
@@ -172,7 +127,7 @@
                   </ion-col>
 
                   <ion-col class="input-textfields" size="12">
-                     <!-- <p id="totals">Total Paper  =  <span>5140 kg</span></p> -->
+
                   </ion-col>
     
                 </ion-row>
@@ -180,12 +135,9 @@
 
              
             </div>
-            <!-- For PLAstic -->
+        
             <div class="Material-inputs" id="forPlastic" *ngIf="isPlastic === true">
-              <!-- plastic -->
-              <!-- <div class="Next-button">
-                <ion-button fill="clear" color="light" (click)="toggleAluminium()">Next</ion-button>
-              </div> -->
+       
               <ion-grid>
                 <ion-row>
                   <ion-col class="input-textfields" size="6">
@@ -224,13 +176,13 @@
                   </ion-col>
 
                   <ion-col class="input-textfields" size="12">
-                    <!-- <p id="totals">Total Plastic  =  <span>5140 kg</span></p> -->
+              
                  </ion-col>
     
                 </ion-row>
               </ion-grid>
             </div>
-            <!-- For Aluminium -->
+        
             <div class="Material-inputs" id="forAluminium" *ngIf="isAluminium === true">
              
               <ion-grid>
@@ -242,18 +194,15 @@
                   </ion-col>
 
                   <ion-col class="input-textfields" size="12">
-                    <!-- <p id="totals">Total Aluminium  =  <span>5140 kg</span></p> -->
+                 
                  </ion-col>
 
                 </ion-row>
               </ion-grid>
             </div>
-            <!-- For Glass -->
+            
             <div class="Material-inputs" id="forGlass" *ngIf="isGlass === true">
-              <!-- Glass -->
-              <!-- <div class="Next-button">
-                <ion-button fill="clear" color="light" (click)="CheckInputsEmptyString()">Save</ion-button>
-              </div> -->
+    
               <ion-grid>
                 <ion-row>
                   <ion-col class="input-textfields">
@@ -263,7 +212,7 @@
                   </ion-col>
 
                   <ion-col class="input-textfields" size="12">
-                    <!-- <p id="totals">Total Glass  =  <span>5140 kg</span></p> -->
+                
                  </ion-col>
 
                 </ion-row>
@@ -279,18 +228,17 @@
      <div class="btn-slides">
       <ion-button id="backbtn" fill="clear" (click)="previslide()" *ngIf="isBeginning">back</ion-button>
      
-      <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
+
       <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
       <ion-button id="done" fill="clear" [disabled]="!RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
-  </div><!-- end of children-slides -->
+  </div>
 
-</div><!-- end of slides -->
+</div>
 
-    <!-- <div class="dismissOverlay" (click)="goAway()"></div> -->
 
     <div class="userForm2" *ngIf="slideTwo === true">
-      <!-- this is for the materials form -->
+    
       <div class="waste-materials">
         <div (click)="togglePaper()" id="isPaper">PAPER</div>
         <div (click)="togglePlastic()" id="isPlastic">PLASTIC</div>
@@ -306,13 +254,10 @@
         <img src="../../assets/binsPopup  2.svg" alt="">
       </div>
       <div class="SecSection">
-        <!-- For Paper -->
+    
 
         <div class="Material-inputs" id="forPaper" *ngIf="isPaper === true">
-          <!-- paper -->
-          <!-- <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="togglePlastic()">Next</ion-button>
-          </div> -->
+
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields" size="6">
@@ -342,12 +287,9 @@
             </ion-row>
           </ion-grid>
         </div>
-        <!-- For PLAstic -->
+   
         <div class="Material-inputs" id="forPlastic" *ngIf="isPlastic === true">
-          <!-- plastic -->
-          <!-- <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="toggleAluminium()">Next</ion-button>
-          </div> -->
+
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields" size="6">
@@ -388,12 +330,9 @@
             </ion-row>
           </ion-grid>
         </div>
-        <!-- For Aluminium -->
+     
         <div class="Material-inputs" id="forAluminium" *ngIf="isAluminium === true">
-          <!-- Aluminium -->
-          <!-- <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="toggleGlass()">Next</ion-button>
-          </div> -->
+ 
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields">
@@ -404,12 +343,9 @@
             </ion-row>
           </ion-grid>
         </div>
-        <!-- For Glass -->
+    
         <div class="Material-inputs" id="forGlass" *ngIf="isGlass === true">
-          <!-- Glass -->
-          <!-- <div class="Next-button">
-            <ion-button fill="clear" color="light" (click)="CheckInputsEmptyString()">Save</ion-button>
-          </div> -->
+      
           <ion-grid>
             <ion-row>
               <ion-col class="input-textfields">
@@ -422,28 +358,28 @@
         </div>
       </div>
     </div>
- </div><!-- end of mother -->
+ </div>
 
-<!-- adding parent div -->
+
 <div class="parentDiv">
   <div class="head">
     <h3>Record all your incoming material here</h3>
   </div>
   <div class="top-blocks">
     <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
-      <!-- <img src="../../assets/Asset 9.svg" alt=""> -->
+
       <p>PAPER</p>
     </div>
     <div class="waste-blocks" id="Plastic" (click)="showPopUp('plastic')">
-      <!-- <img src="../../assets/Asset 9.svg" alt=""> -->
+   
       <p>PLASTIC</p>
     </div>
     <div class="waste-blocks" id="Aluminium" (click)="showPopUp('aluminium')">
-      <!-- <img src="../../assets/Asset 9.svg" alt=""> -->
+  
       <p>ALUMINIUM</p>
     </div>
     <div class="waste-blocks" id="Glass" (click)="showPopUp('glass')">
-      <!-- <img src="../../assets/Asset 9.svg" alt=""> -->
+    
       <p>GLASS</p>
     </div>
   </div>
@@ -456,7 +392,7 @@
       <div class="regNo">Registration No.</div>
       <div class="icon">Details</div>
       <div></div>
-     </div><!-- end of history-labels -->
+     </div>
 <div class="scrolling">
     <div class="itemList" *ngFor="let records of recordinbounddisplaysz">
       <div class="userId" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.truckcode }}</div>
@@ -464,12 +400,10 @@
       <div class="regNo" style="font-family: Microsoft YaHei UI;font-size: 15px;">{{ records.RegistarionNumberPlates }}</div>
       <div class="icon"><ion-button [routerLink]="['/inbound-history', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
-      <!-- <div>
-        <ion-icon name="trash" (click)='presentAlertDelete(records.id)'></ion-icon>
-      </div> -->
+ 
        </div>
     </div>
-  </div><!-- end of history -->
+  </div>
 </div>
   
-</ion-content>
+</ion-content> -->

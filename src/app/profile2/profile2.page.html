@@ -36,7 +36,7 @@
           <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address" [(ngModel)]="profile.addres"></textarea>
         </div>
         <div id="the-button">
-          <ion-button (click)="users()">SAVE</ion-button>
+          <ion-button (click)="users()" disabled="{{buttonDisabled}}" >SAVE</ion-button>
         </div>
       </div>
     </div>
