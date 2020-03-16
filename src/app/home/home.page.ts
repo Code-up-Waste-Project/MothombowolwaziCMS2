@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
   isOpenAluminium = false;
   viewBackdrop = false;
 
+  buttonDisabled: boolean;
   @ViewChild('barChart', {static: false}) barChart;        
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
@@ -498,6 +499,22 @@ newdatereclaimerM;
     private render: Renderer2,
     public alertController: AlertController,
     ) {
+
+      firebase.auth().onAuthStateChanged(user => {
+
+        if (user) {
+          firebase
+             .firestore()
+             .doc(`/userprofiles/${user.uid}`)
+              .get()
+              .then(userProfileSnapshot => {
+                this.isAdmin = userProfileSnapshot.data().isAdmin;
+              });
+         }
+        //  this.buttonDisabled = false;
+       });
+
+
     // code by nathi 3 feb
     this.pullWeeklyInbound();
     this.PullDayData();

@@ -73,12 +73,12 @@
         </div>
       </div>
      <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13"  [ngModelOptions]="{standalone: true}" >
-     <div *ngIf="!signupForm.controls['idnumber'].valid
+     <!-- <div *ngIf="!signupForm.controls['idnumber'].valid
      && signupForm.controls['idnumber'].touched" class="error">
        <div class="messages">
       Enter the correct idnumber .
        </div>
-     </div>
+     </div> -->
       <!-- <textarea placeholder="Physical Address" type="text" class="inputs2" name="" id="" cols="30" rows="10" [(ngModel)]="addres" this.addres.reset autocomplete="off" autocorrect="off" id="myInput" value="addres" [ngModelOptions]="{standalone: true}"></textarea>  -->
       </form>
      <button ion-button type="reset" onclick="document.getElementById('myInput').value =''" (click)="saveNewUseer()" >Register</button>
@@ -89,6 +89,7 @@
     </div>
   
     </div>
+    
     <!-- <button (click)="AddUser(id)">view</button> -->
 
   </ion-content>
