@@ -16,7 +16,15 @@ import { Location } from "@angular/common";
   styleUrls: ['./manageusers.page.scss'],
 })
 export class ManageusersPage implements OnInit {
+  
+  buttonDisabled: boolean;
 registerForm = false;
+
+yourBoolean = true; /*viewable by default*/
+ishidden = false;
+
+ActiveAcounts: boolean = false;
+isAdmin: string = 'true';
  //admin
  name;
  position;
@@ -35,6 +43,7 @@ registerForm = false;
   UserImage;
 
   public signupForm: FormGroup;
+
   viewuser;
   storage = firebase.storage().ref();
   admin = [];
@@ -67,14 +76,29 @@ registerForm = false;
     private toastController: ToastController,
     private location: Location
   ) {
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        firebase
+           .firestore()
+           .doc(`/userprofiles/${user.uid}`)
+            .get()
+            .then(userProfileSnapshot => {
+              this.isAdmin = userProfileSnapshot.data().isAdmin;
+            });
+       }
+       this.yourBoolean = false;
+      //  this.buttonDisabled = false;
+     })
+
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-      name: ['', [Validators.required, ]],
-      position: ['', [Validators.required, ]],
+      // name: ['', [Validators.required, ]],
+      positions: ['', [Validators.required, ]],
     });
 
-    this.db.collection('admin').onSnapshot(snapshot => {
+    this.db.collection('userprofiles').onSnapshot(snapshot => {
       this.Newadmin = [];
       snapshot.forEach(Element => {
         this.admin.push(Element.data());
@@ -100,7 +124,26 @@ firsttem(obj:any ={})
  this.ActiveAcount=obj.ActiveAcount
 }
 
+
+
   ngOnInit() {
+
+
+    firebase.auth().onAuthStateChanged(user => {
+
+      if (user) {
+        firebase
+           .firestore()
+           .doc(`/userprofiles/${user.uid}`)
+            .get()
+            .then(userProfileSnapshot => {
+              this.isAdmin = userProfileSnapshot.data().isAdmin;
+            });
+       }
+
+       this.buttonDisabled = false;
+     });
+
    //auth gurd
   //  firebase.auth().onAuthStateChanged((user) => {
   //   if (user) {
@@ -111,16 +154,10 @@ firsttem(obj:any ={})
   //   });
     this.getUsers();
 
-    this.db.collection('userprofiles').onSnapshot(snapshot => {
-      // this.profile.name = snapshot.docs.name
-      // this.profile.email = snapshot.data().email;
-      // email: firebase.auth().currentUser.email,
-      // this.profile.name = snapshot.data().name;
-      // this.profile.position = snapshot.data().position;
-      // // this.profile.image = snapshot.data().image;
-      // console.log('users', this.userprofile);
-      
+    this.db.collection('userprofiles').where("isAdmin" ,"==","true" ).get().then(snapshot => {
+     
       this.newuserprofile = [];
+
       snapshot.forEach(item => {
         this.newuserprofile.push({...{id:item.id},...item.data()});
        this.firsttem(item.data())
@@ -153,6 +190,7 @@ firsttem(obj:any ={})
       // console.log('users', this.userprofile);
 
       // this.newuserprofile = [];
+
       snapshot.forEach(item => {
         this.newuserprofile = [];
         this.newuserprofile.push({...{id: item.id},...item.data()});
@@ -298,6 +336,7 @@ firsttem(obj:any ={})
       }
 
       async  saveNewUseer() {
+
         const alert = await this.alertCtrl.create({
           header: 'New CMS User',
           message: 'This user will have access to your CMS',
@@ -305,20 +344,22 @@ firsttem(obj:any ={})
         })
 
         this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
+         
            if(data.size == 0) {
+
             this.db.collection('admin').add({
               email: this.email,
               password: this.password,
               profile:'no',
-              // positions:this.positions,
-              // idnumber:this.idnumber,
-              // addres:this.addres
+              positions:this.positions,
+              idnumber:this.idnumber,
+              addres:this.addres
             }).then(async res =>{
               this.email=null
-              // this.positions=null
+              this.positions=null
               this.password=null
-              // this.idnumber=null
-              // this.addres=null
+              this.idnumber=null
+              this.addres=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user ',
                 
@@ -344,54 +385,93 @@ firsttem(obj:any ={})
               ]
             });
             alert.present();
+
+
+            
             console.log('This email has already been used already');
            }
+           if (this.email == "" || this.email == undefined) {
+            const toast = await this.toastController.create({
+              message: 'Enter the email.',
+              duration: 2000
+            });
+            toast.present();
+          } else if (this.password == "" || this.password == undefined) {
+            const toast = await this.toastController.create({
+              message: 'Enter the password',
+              duration: 2000
+            });
+            toast.present();
+          }
+         else if (this.positions == "" || this.positions == undefined) {
+          const toast = await this.toastController.create({
+            message: 'Enter the position',
+            duration: 2000
+          });
+          toast.present();
+        }
+  
+   else if (this.idnumber == "" || this.idnumber == undefined) {
+            const toast = await this.toastController.create({
+              message: 'Enter the idnumber',
+              duration: 2000
+            });
+            toast.present();
+          }
+  
+          else if (this.addres == "" || this.addres == undefined) {
+            const toast = await this.toastController.create({
+              message: 'Enter the address',
+              duration: 2000
+            });
+            toast.present();
+          }
         })
 
 //userprofiles
 
-this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
-  if(data.size == 0) {
-   this.db.collection('adminprofiles').add({
-     email: this.email,
-     password: this.password,
-     profile:'no',
-     positions:this.positions,
+// this.db.collection('userprofiles').where('email', '==',this.email).get().then(async (data) => {
+//   if(data.size == 0) {
+//    this.db.collection('adminprofiles').add({
+//      email: this.email,
+//      password: this.password,
+//      profile:'no',
+//      positions:this.positions,
 
-     idnumber:this.idnumber,
-     addres:this.addres
-   }).then(async res =>{
-     this.email=null
-     this.positions=null
-     this.password=null
-     this.idnumber=null
-     this.addres=null
-     let alert = await this.alertCtrl.create({
-     message:'You Have just created a new user ',
-     buttons: [
-       {
-         text: 'OK'
-       }
-     ]
-     });
- alert.present();
- console.log('user addded to cloud ')
-   })
-   console.log('user saved to cloud');
-  }else {
-   let alert = await this.alertCtrl.create({
-     message: 'the email is already  been used',
+//      idnumber:this.idnumber,
+//      addres:this.addres
+//    }).then(async res =>{
+//      this.email=null
+//      this.positions=null
+//      this.password=null
+//      this.idnumber=null
+//      this.addres=null
+    //  let alert = await this.alertCtrl.create({
+    //  message:'You Have just created a new user ',
+    //  buttons: [
+    //    {
+    //      text: 'OK'
+    //    }
+    //  ]
+    //  });
+//  alert.present();
+//  console.log('user addded to cloud ')
+//    })
+//    console.log('user saved to cloud');
+//   }else {
+//    let alert = await this.alertCtrl.create({
+//      message: 'the email is already  been used',
      
-     buttons: [
-       {
-         text: 'OK'
-       }
-     ]
-   });
-   alert.present();
-   console.log('This email has already been used already');
-  }
-})
+//      buttons: [
+//        {
+//          text: 'OK'
+//        }
+//      ]
+//    });
+//   //  alert.present();
+//    console.log('This email has already been used already');
+//   }
+// })
 
       }
 
@@ -511,6 +591,10 @@ back(){
   console.log('tbladddd' )
   this.router.navigateByUrl('/home');
 }
-    
-     
+
+ 
+//   in_your_method() {
+   
+// }
+
 }

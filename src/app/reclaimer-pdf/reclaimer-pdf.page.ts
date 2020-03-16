@@ -305,6 +305,8 @@ export class ReclaimerPDFPage implements OnInit {
   reclaimercode;
   reclaimercontact;
   time;
+  productCode;
+  reclaimerID;
 
   pdfObj = null;
 
@@ -785,6 +787,10 @@ export class ReclaimerPDFPage implements OnInit {
         // console.log(this.PET005SubTotalz);
         // console.log(this.PET005Vatz);
         // console.log(this.PET005GrandTotalz);
+
+        this.time = element.data().date;
+        this.productCode = element.data().productcode;
+        this.reclaimerID = element.data().reclaimerID;
 
         this.testArray.push({
           overallMass: this.overallMass2,

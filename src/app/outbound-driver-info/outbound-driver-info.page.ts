@@ -35,6 +35,8 @@ export class OutboundDriverInfoPage implements OnInit {
   overallStoragez;
   TruckSourcess;
   Destination;
+  numbers;
+  companyaddress;
 
   id;
   Outbound;
@@ -139,6 +141,7 @@ export class OutboundDriverInfoPage implements OnInit {
     private content: ElementRef,
     public rendered: Renderer2,
     private plt: Platform,
+    public route: Router,
     private file: File,
     private location: Location,
     private fileOpener: FileOpener
@@ -159,6 +162,80 @@ switch(){
   this.come = !this.come;
 }
 
+async presentAlertUpdate() {
+  const alert = await this.alertController.create({
+    header: 'Warning!',
+    message: '<strong>Are you sure you want to update Driver Information?.</strong>!!!',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      },
+      {
+        text: 'Okay',
+        handler: () => {
+          this.SaveUpdates()
+          this.route.navigateByUrl('/outbound-driver-info');
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+getPhoneInput(ev: any) {
+  this.numbers = ev.target.value;
+
+  // calling firebase
+  // this.contact[0] == '0'
+  if (this.numbers[0] !== '0') {
+    this.presentAlertPhoneValidation();
+  } else {
+    // this.showInputs()
+    console.log('im working');
+    this.numbers = this.numbers;
+  }
+    // console.log(this.phoneVal);
+    console.log(this.numbers);
+}
+
+async presentAlertPhoneValidation() {
+  const alert = await this.alertController.create({
+    header: 'Confirm!',
+    message: '<strong>Phone Numbers must start with a number: 0.</strong>!!!',
+    buttons: [
+      {
+        text: 'Okay',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          this.erasedToContact();
+          console.log('Confirm Cancel: blah');
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+erasedToContact() {
+  this.numbers = '';
+}
+
+  SaveUpdates() {
+    this.db.collection('outbound').doc(this.id).update({
+      DriverName: this.DriverName,
+      RegistarionNumberPlates: this.RegistarionNumberPlates,
+      numbers: this.numbers,
+      TruckSourcess: this.TruckSourcess,
+      companyaddress: this.companyaddress
+    })
+  }
+
   pullDrive() {
     this.Outbound = this.db.collection('outbound').doc(this.id);
     this.ViewOutbound = [];
@@ -178,7 +255,8 @@ switch(){
       DriverName = this.DriverName = element.data().DriverName;
       RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
       TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-      // // Destination = this.Destination = element.data().Destination;
+      this.companyaddress = element.data().companyaddress;
+      this.numbers = element.data().numbers;
       // console.log(this.DriverName);
       // console.log(this.RegistarionNumberPlates);
       // // console.log(this.overallStorage);

@@ -532,11 +532,11 @@ newdatereclaimerM;
 
     ionViewDidEnter() {
 
-      // if(firebase.auth().currentUser) {
-      //   this.route.navigateByUrl('/home');
-      // }else {
-      //   this.route.navigateByUrl('/login');
-      // }
+      if(firebase.auth().currentUser) {
+        this.route.navigateByUrl('/home');
+      }else {
+        this.route.navigateByUrl('/login');
+      }
 
     //pulling data
     //inbound
@@ -3140,7 +3140,8 @@ map(){
   this.route.navigateByUrl('/auto');
 }
 
-viewMorePaper(i){
+viewMorePaper(){
+  let i
    this.active = i
    console.log(this.active);
    
@@ -3158,7 +3159,8 @@ viewMorePaper(i){
   }
 }
 
-viewMorePlastic(i){
+viewMorePlastic(){
+  let i
   this.active = i
   let dropDown = document.getElementsByClassName("dropper2") as HTMLCollectionOf <HTMLElement>
 

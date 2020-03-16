@@ -56,7 +56,12 @@ export class OutboundPDFPage implements OnInit {
   overallStorage;
   overallStoragez;
   TruckSourcess;
+
   Destination;
+  distance;
+  duration;
+  driveID;
+  truckcode;
 
   OutName = this.DriverName;
   OutNumberPlates = this.RegistarionNumberPlates;
@@ -180,6 +185,12 @@ export class OutboundPDFPage implements OnInit {
 
         this.ids = element.id;
         // console.log(this.ids);
+
+        this.Destination = element.data().destination;
+        this.distance = element.data().distance;
+        this.duration = element.data().duration;
+        this.driveID = element.data().driverID;
+        this.truckcode = element.data().truckcode;
 
         time = this.time = element.data().date;
         overallStorage = this.overallStorage = element.data().ovarallMass;
@@ -336,8 +347,7 @@ export class OutboundPDFPage implements OnInit {
         widths: ['50%','50%'],
         body: [
           // [{ text: 'Mthombowolwazi General Service (PTY) LTD', color: 'gray' }, { text: '', color: 'gray', Border: false }],
-          [{ text: 'Physical Address', color: 'gray' }, { text: '7118 ISIGEDLA STREET', color: 'gray', Border: false }],
-          [{ text: '', color: 'gray' }, { text: 'Naledi EXT 2', color: 'gray', Border: false }],
+          [{ text: 'Destination', color: 'gray' }, { text: this.Destination, color: 'gray', Border: false }],
           [{ text: '', color: 'gray' }, { text: 'Soweto JHB', color: 'gray', Border: false }],
           [{ text: '', color: 'gray' }, { text: '1868', color: 'gray', Border: false }],
         ]
@@ -461,10 +471,12 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
           
             body: [
               // [{ text: 'Mthombowolwazi General Service (PTY) LTD', color: 'gray' }, { text: '', color: 'gray', Border: false }],
-              [{ text: 'Lebogang Thipenyane', color: 'gray' }, { text: 'Registration No', color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right'  }],
-              [{ text: '7118 ISIGEDLA, STREET Naledi EXT 2', color: 'gray' }, { text: '78283 GP', color: 'gray', Border: false, bold: false, alignment: 'right' }],
-              [{ text: 'mthombowolwazi@gmail.com', color: 'gray' }, { text: 'Date Issued', color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right'}],
-              [{ text: '+27 76 647 6482', color: 'gray' }, { text: '17 Sept 2020', color: 'gray', Border: false, bold: false, alignment: 'right'}],
+              [{ text: 'Destination', color: 'gray' }, { text: this.Destination, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right'  }],
+              [{ text: 'Distance', color: 'gray' }, { text: this.distance, color: 'gray', Border: false, bold: false, alignment: 'right' }],
+              [{ text: 'Duration', color: 'gray' }, { text: this.duration, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right'}],
+              [{ text: 'Drive ID', color: 'gray' }, { text: this.driveID, color: 'gray', Border: false, bold: false, alignment: 'right' }],
+              [{ text: 'Truck Code', color: 'gray' }, { text: this.truckcode, color: 'gray', Border: false, bold: false, alignment: 'right' }],
+              [{ text: 'Date', color: 'gray' }, { text: this.time, color: 'gray', Border: false, bold: false, alignment: 'right'}],
             ]
           }
         },

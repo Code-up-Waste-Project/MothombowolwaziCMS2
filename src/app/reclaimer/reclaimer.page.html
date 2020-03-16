@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar id="recLaimer-toolbar">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>  Record all your incoming material here
     </ion-buttons>
@@ -16,7 +16,7 @@
     <img id="image" src="../../assets/recycle.svg">
   
    
-    <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged($ev)" >
+    <ion-slides #slides pager [options]="slideOpts" (ionSlideDidChange)="slideChanged()" >
 
       <!-- slide 1 -->
       <ion-slide class="slideOne">
@@ -24,22 +24,47 @@
             <ion-title class="ion-text-center">Reclaimer Details</ion-title>
           </ion-toolbar> -->
           <div [ngClass]="{'drivers-container_transforms': transtioning, 'drivers-container': !transtioning}">
+
               <div class="list"><!-- div containing names of drivers -->
                 <ion-toolbar id="two" >
+                  <div class="Searhcer">
+                    <div class="results">
+                      <!-- <p *ngFor="let records of searchResults" (click)="selectLocation(g)" (click)="nextislide()"> {{ records }} </p> -->
+                      <div class='count' *ngIf="searchResults.length > 0">
+                        <!-- {{ searchResults.length }} -->
+                      </div>
+                    </div>
+                    <ion-searchbar name="search" placeholder="Search by Reclaimer's Code" (ionInput)="getItems($event)"></ion-searchbar>
+                  </div>
                  
-                  <ion-title class="ion-text-left" ><input type="text" placeholder="Search by name"></ion-title>
+                  <!-- <ion-title class="ion-text-left" ><input type="text" placeholder="Search by name"></ion-title> -->
                 </ion-toolbar>
                 <div class="items">
                   <div class="individuals">
-                    <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
+                    <!-- <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
                       <h4>{{ records.name }}</h4>
                       <p>{{ records.reclaimercode }}</p>
                       <p>{{ records.contact }}</p>
-                    </ion-card>
-                    <!-- <ion-card>
-                      <h4>Thato Dlamini</h4>
-                      <p>060 486 9924</p>
                     </ion-card> -->
+
+                    <div *ngIf="searchResults.length > 0">
+                      <ion-card *ngFor="let records of searchResults" (click)='presentAlertAddUser(records.id)'>
+                        <h4>{{ records.name }}</h4>
+                        <p>{{ records.contact }}</p>
+                      <p>{{ records.IDnumber }}</p>
+                      <p>{{ records.reclaimercode }}</p>
+                      </ion-card>
+                    </div>
+
+                    <div *ngIf="searchResults.length == 0">
+                      <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
+                        <h4>{{ records.name }}</h4>
+                        <p>{{ records.contact }}</p>
+                      <p>{{ records.IDnumber }}</p>
+                      <p>{{ records.reclaimercode }}</p>
+                      </ion-card>
+                    </div>
+                   
                   </div>
                   <div class="btn-new-driver">
                     <ion-button (click)="animateJs()" [disabled]="transtioning">
@@ -59,15 +84,23 @@
                   <ion-title class="ion-text-left">Create New Driver</ion-title>
                 </ion-toolbar>
                 <div class="form">
-                  <div class="profileholder">
+                  <!-- <div class="profileholder">
                     <div class="profile">
                       <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
                       <img *ngIf="image" src="{{ image }}" alt="">
                       <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
-                     
                       <ion-button fill="clear"><ion-icon name="camera" ></ion-icon></ion-button>
                     </div>
-                  </div>
+                  </div> -->
+
+                  <div class="profileholder">
+                      <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+                      <img *ngIf="image" src="{{ image }}" alt="">
+                      <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+                      <label for="disapear">
+                        <ion-icon id="Addd" name="camera"></ion-icon>
+                      </label>
+                    </div>
 
                   <form [formGroup]="RegisterForm">
                     <div class="inputs">
@@ -86,8 +119,7 @@
                      
                     </div>
                     <div id="save">
-                      <ion-button id="btn"  (click)="nextislide()"
-                      [disabled]="!RegisterForm.valid">Save driver</ion-button>
+                      <ion-button id="btn"  (click)="nextislide()">Save driver</ion-button>
                      </div>
                   </form>
                 </div>
@@ -259,7 +291,7 @@
      
       <!-- <ion-button id="nextbtn" (click)="nextislide()">{{nextText}}</ion-button> -->
       <ion-button id="nextbtn" fill="clear" *ngIf="!isEnd" (click)="nextislide()">Next</ion-button>
-      <ion-button id="nextbtn" fill="clear" [disabled]="RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
+      <ion-button id="nextbtn" fill="clear" [disabled]="!RegisterForm.valid" *ngIf="isEnd" (click)="CheckInputsEmptyString()" (click)="nextislide()">Done</ion-button>
     </div>
   </div><!-- end of children-slides -->
 
@@ -295,25 +327,25 @@
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP005massz"><br>
                 <p>PAP005</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP007massz"><br>
                 <p>PAP007</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP001massz"><br>
                 <p>PAP001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PAP003massz"><br>
                 <p>PAP003</p>
               </ion-col>
 
@@ -330,36 +362,36 @@
             <ion-row>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="HD001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="HD001massz"><br>
                 <p>HD001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="LD001massz"><br>
                 <p>LD001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="LD003mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="LD003massz"><br>
                 <p>LD003</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET005mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET005massz"><br>
                 <p>PET005</p>
               </ion-col>
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET001massz"><br>
                 <p>PET001</p>
               </ion-col>
 
               <ion-col class="input-textfields" size="6">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="PET003mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="PET003massz"><br>
                 <p>PET003</p>
               </ion-col>
 
@@ -376,7 +408,7 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01massz"><br>
                 <p id="CODE">NFAL01</p>
               </ion-col>
             </ion-row>
@@ -392,7 +424,7 @@
             <ion-row>
               <ion-col class="input-textfields">
                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
-                  placeholder="Weight in Kilograms" [(ngModel)]="GH001mass2"><br>
+                  placeholder="Weight in Kilograms" [(ngModel)]="GH001massz"><br>
                 <p id="CODE">GL001</p>
               </ion-col>
             </ion-row>
@@ -404,7 +436,9 @@
 
 <!-- adding parent div -->
 <div class="parentDiv">
-
+  <!-- <div class="head">
+    <ion-menu-button></ion-menu-button><h3>Process all your waste sales here</h3>
+  </div> -->
   <div class="top-blocks">
     <div class="waste-blocks" id="Paper" (click)="showPopUp('paper')">
       <!-- <img src="../../assets/Asset 9.svg" alt=""> -->
@@ -433,8 +467,9 @@
       <div class="phone">Phone number</div>
       <div class="icon">Details</div>
      </div ><!-- end of history-labels -->
-<div class="scrolling">
-    <div class="itemList" *ngFor="let records of testArrays">
+<div class="scrolling" >
+
+    <div class="itemList"  *ngFor="let records of testArrays">
       <div class="userId">{{ records.reclaimercode }}</div>
       <div class="name">{{ records.name }} {{ records.surname }}</div>
       <div class="regNo">{{ records.contact}}</div>
@@ -442,7 +477,7 @@
 
       <div class="icon"><ion-button [routerLink]="['/reclaimer-info', records.id]" fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
       </div>
-   
+       <h3 class="hello" *ngIf="records.length == 0">You've got nothing on your history</h3>
        </div>
     </div>
   </div><!-- end of history -->
