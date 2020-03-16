@@ -1,10 +1,10 @@
-div.swiper-container-horizontal > div.swiper-pagination-progressbar {
-  top: inherit;
-  bottom: 0 !important;
-}
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: red !important;
-}
+// div.swiper-container-horizontal > div.swiper-pagination-progressbar {
+//   top: inherit;
+//   bottom: 0 !important;
+// }
+// .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+//   background: red !important;
+// }
 
 ion-card {
   background: #ececec;
@@ -288,12 +288,10 @@ ion-title {
 
       #close {
         font-size: 1.8em;
-        z-index: 25;
+       z-index: 25;
         position: absolute;
-        right: -3% !important;
-        top: -2%;
-        //border: 1px solid red;
-        margin: 0 !important;
+        right: -4% !important;
+        top: 0%;
       }
       h2 {
         // border: 2px solid red;
@@ -366,10 +364,10 @@ ion-title {
         background: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-          background: red !important;
-          color: red !important;
-        }
+        // .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+        //   background: red !important;
+        //   color: red !important;
+        // }
         ion-slide {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
@@ -1152,17 +1150,7 @@ ion-title {
   color: brown;
 }
 
-// .line-breaker{
-//   border: solid 1px rgb(153, 152, 152);
-//   border-bottom:0px;
-//   border-right: 0px;
-//   border-left: 0px;
-//   width: 5%;
-//   margin-left: 10px;
-//   margin-bottom: 15px;
-//   position: relative;
-//   top: 5px;
-// }
+
 
 .Title {
   margin: 0;
@@ -1656,5 +1644,10 @@ ion-title {
         }
       }
     }
+  }
+}
+@media screen and (max-width: 1920) {
+  .mother {
+background: red;
   }
 }

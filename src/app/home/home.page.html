@@ -215,16 +215,16 @@
           <div class="col"><h4 class="headz">New Price</h4></div>
          </div>
          <div class="dropper2" *ngFor="let plastic of plasticarrayHistory, let i=index;">
-          <div class="top-cell" (click)="viewMorePlastic(i)" >
+          <div class="top-cell" (click)="viewMorePlastic(i)">
             <div class="meshy">
               <div class="col">
                 <h4 class="the-date-head"><p>{{plastic.timePlastic2}}</p></h4>
                </div>
               <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
               <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
-              <div class="col"><h4 class="the-date-head"> HD001</h4></div>
-              <div class="col"><h4 class="the-date-head">R{{ plastic.oldhd001 }}</h4></div>
-              <div class="col"><h4 class="the-date-head">R{{ plastic.hd001 }}</h4>
+              <div class="col col2" ><h4 class="the-date-head"> HD001</h4></div>
+              <div class="col col2" ><h4 class="the-date-head">R{{ plastic.oldhd001 }}</h4></div>
+              <div class="col col2" ><h4 class="the-date-head">R{{ plastic.hd001 }}</h4>
                 <ion-icon  id="chevron-drop-down2-{{i}}" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon>
               </div>
             </div></div>
@@ -237,7 +237,7 @@
             
 
               <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-              <div class="col"><h4 class="the-date"></h4></div>
+              <!-- <div class="col"><h4 class="the-date"></h4></div> -->
               <div class="col"><h4 class="the-date">LD001</h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.ld001 }}</h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.oldhd001 }}</h4></div>
@@ -248,7 +248,7 @@
                 <h4 class="headz"></h4>
                </div>
               <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-              <div class="col"><h4 class="the-date"> </h4></div>
+              <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
               <div class="col"><h4 class="the-date">  LD003 </h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.ld003 }}</h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.oldld003 }}</h4></div>
@@ -261,7 +261,7 @@
                 <h4 class="headz"></h4>
                </div>
             
-              <div class="col"><h4 class="the-date"> </h4></div>
+              <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
               <div class="col"><h4 class="the-date"> PET003 </h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.pet003 }}</h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.oldpet003 }}</h4></div>
@@ -271,7 +271,7 @@
               <div class="col">
                 <h4 class="headz"></h4>
                </div>
-              <div class="col"><h4 class="the-date"> </h4></div>
+              <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
               <div class="col"><h4 class="the-date"> PET001 </h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.pet001 }}</h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.oldpet001 }}</h4></div>
@@ -282,7 +282,7 @@
                 <h4 class="headz"></h4>
                </div>
               <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-              <div class="col"><h4 class="the-date"> </h4></div>
+              <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
               <div class="col"><h4 class="the-date"> PET005 </h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.pet005 }}</h4></div>
               <div class="col"><h4 class="the-date">R{{ plastic.oldpet005 }}</h4></div>
@@ -297,7 +297,7 @@
                   <h4 class="headz"></h4>
                  </div>
                 <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-                <div class="col"><h4 class="the-date"> </h4></div>
+                <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
                 <div class="col"><h4 class="the-date">  LD003 </h4></div>
                 <div class="col"><h4 class="the-date">{{ plastic.newld003 }}</h4></div>
                 <div class="col"><h4 class="the-date">{{ plastic.oldld003 }}</h4></div>
@@ -310,7 +310,7 @@
                   <h4 class="headz"></h4>
                  </div>
                 <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-                <div class="col"><h4 class="the-date"> </h4></div>
+                <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
                 <div class="col"><h4 class="the-date"> PET003 </h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.newpet003 }}</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.oldpet003 }}</h4></div>
@@ -320,7 +320,7 @@
                   <h4 class="headz"></h4>
                  </div>
                 <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-                <div class="col"><h4 class="the-date"> </h4></div>
+                <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
                 <div class="col"><h4 class="the-date">LD001</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.newld001 }}</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.oldld001 }}</h4></div>
@@ -330,7 +330,7 @@
                   <h4 class="headz"></h4>
                  </div>
                 <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-                <div class="col"><h4 class="the-date"> </h4></div>
+                <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
                 <div class="col"><h4 class="the-date"> PET001 </h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.newpet001 }}</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.oldpet001 }}</h4></div>
@@ -341,7 +341,7 @@
                   <h4 class="headz"></h4>
                  </div>
                 <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-                <div class="col"><h4 class="the-date"> </h4></div>
+                <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
                 <div class="col"><h4 class="the-date"> PET005 </h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.newpet005 }}</h4></div>
                 <div class="col"><h4 class="the-date">R{{ plastic.oldpet005 }}</h4></div>
@@ -519,7 +519,7 @@
 
 
           <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-          <div class="col"><h4 class="the-date"></h4></div>
+          <!-- <div class="col"><h4 class="the-date"></h4></div> -->
           <div class="col"><h4 class="the-date"> pap003</h4></div>
           <div class="col"><h4 class="the-date">R{{paper.oldpap003}}</h4></div>
           <div class="col"><h4 class="the-date">R{{paper.pap003}}</h4></div>
@@ -532,7 +532,7 @@
 
 
           <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-          <div class="col"><h4 class="the-date"> </h4></div>
+         <!--  <div class="col"><h4 class="the-date"> </h4></div> -->
           <div class="col"><h4 class="the-date"> oldpap005</h4></div>
           <div class="col"><h4 class="the-date">R{{paper.oldpap005}}</h4></div>
           <div class="col"><h4 class="the-date">R{{paper.pap005}}</h4></div>
@@ -543,7 +543,7 @@
            </div>
 
           <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-          <div class="col"><h4 class="the-date"> </h4></div>
+          <!-- <div class="col"><h4 class="the-date"> </h4></div> -->
           <div class="col"><h4 class="the-date"> oldpap005</h4></div>
           <div class="col"><h4 class="the-date">R{{paper.oldpap007}}</h4></div>
           <div class="col"><h4 class="the-date">R{{paper.pap007}}</h4></div>
