@@ -343,7 +343,7 @@ currentLocation: any = {
     this.getMasses();
     this.pdfmakerFirebase();
 
-    this.db.collection('outbound').onSnapshot(snapshot => {
+    this.db.collection('outbound').orderBy('DriverName', "desc").onSnapshot(snapshot => {
       this.outbound = [];
       snapshot.forEach(element => {
         let id = {};

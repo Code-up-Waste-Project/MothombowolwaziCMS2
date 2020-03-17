@@ -44,7 +44,6 @@ export class Profile2Page implements OnInit {
     this.menuCtrl.enable(false);
   
       this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
-
         this.profile.email = snapshot.data().email;
         email: firebase.auth().currentUser.email,
         this.profile.name = snapshot.data().name;
@@ -119,12 +118,16 @@ export class Profile2Page implements OnInit {
       })
       .then(function() {
         console.log("Document successfully written!");
+        
       })
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
-      this.router.navigateByUrl('/home2');
+      // this.router.navigate('/profile2');
+      this.router.navigateByUrl('/profile2');
+      this.closePopUp();
     }
+
     }
   
     changeListener(userprofiles): void {
