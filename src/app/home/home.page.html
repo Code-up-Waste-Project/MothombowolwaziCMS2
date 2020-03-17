@@ -360,74 +360,47 @@
       <div class="col">
         <h4 class="headz">Date</h4>
        </div>
-      <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-      <!-- <div class="col"><h4 class="headz">Name</h4></div> -->
-      <div class="col"><h4 class="headz"> Material</h4></div>
+      <div class="col" ><h4 class="headz"> Material</h4></div>
       <div class="col"><h4 class="headz">Old Price</h4></div>
       <div class="col"><h4 class="headz">New Price</h4></div>
     </div>
-    <div class="scrollGlass">
-      <div class="dropper3"   *ngFor="let tinns of glassArrayHistory">
+
+    <!-- <div class="scrollGlass"> -->
+      <!-- <div class="dropper3"   *ngFor="let tinns of glassArrayHistory">
         <div class="top-cell" (click)="viewMoreGlass()">
           <div class="meshy">
             <div class="col">
               <h4 class="the-date-head"><p>{{tinns.timeglass}}</p></h4>
              </div>
-            <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-            <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
             <div class="col"><h4 class="the-date-head"> GL001</h4></div>
             <div class="col"><h4 class="the-date-head">R{{ tinns.oldgl001 }}</h4></div>
             <div class="col"><h4 class="the-date-head">R{{ tinns.gl001 }}</h4>
-              <!-- <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon> -->
             </div>
           </div></div>
     
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   
   
-  
-
-  </div>
-
-
-   <div class="dropper3"  *ngFor="let tinns of glassArrayHistory; let i=index;">
+     <div class="dropper3"  *ngFor="let tinns of glassArrayHistory; let i=index;">
      <div class="top-cell" (click)="viewMoreGlass()"  >
        <div class="meshy">
          <div class="col">
            <h4 class="the-date-head"><p>{{tinns.timeglass}}</p></h4>
           </div>
-         <!-- <div class="col"> <h4 class="headz">Admin</h4></div> -->
-         <!-- <div class="col"><h4 class="the-date-head">Thato</h4></div> -->
+     
          <div class="col"><h4 class="the-date-head"> GL001</h4></div>
          <div class="col"><h4 class="the-date-head">R{{ tinns.oldgl001 }}</h4></div>
          <div class="col"><h4 class="the-date-head">R{{ tinns.gl001 }}</h4>
-           <!-- <ion-icon id="chevron-drop-down3" src="../../assets/SVG/chevron-down-outline.svg"></ion-icon> -->
          </div>
        </div></div>
-     <!-- <div class="myCell">
-       <div class="meshy">
-         <div class="col">
-           <h4 class="headz"></h4>
-          </div>
-         <div class="col"> <h4 class="headz">Admin</h4></div> 
-          <div class="col"><h4 class="the-date"></h4></div>
-         <div class="col"><h4 class="the-date"> PAP001</h4></div>
-         <div class="col"><h4 class="the-date">R1.00</h4></div>
-         <div class="col"><h4 class="the-date">R2.00</h4></div> 
-       </div>
-       <div class="meshy">
-         <div class="col">
-           <h4 class="headz"></h4>
-          </div>
-          <div class="col"> <h4 class="headz">Admin</h4></div> 
-          <div class="col"><h4 class="the-date"> </h4></div>
-         <div class="col"><h4 class="the-date"> NFL01</h4></div>
-         <div class="col"><h4 class="the-date">R1.50</h4></div>
-         <div class="col"><h4 class="the-date">R2.00</h4></div> 
-       </div>
-     </div> -->
+
    </div>
+
+  </div>
+
+
+
   </div>
     </div>
   
