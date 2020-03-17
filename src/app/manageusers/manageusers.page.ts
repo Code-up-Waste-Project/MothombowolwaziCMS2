@@ -139,7 +139,7 @@ firsttem(obj:any ={})
   //   });
     this.getUsers();
     this.db.collection('userprofiles').where("isAdmin" ,"==","true" ).onSnapshot(snapshot => {
-      // this.profile.name = snapshot.docs.name
+      // this.profile.name = snapshot.docs.name;
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
       // this.profile.name = snapshot.data().name;
@@ -147,11 +147,12 @@ firsttem(obj:any ={})
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
      
+
       this.newuserprofile = [];
       // console.log("removed tt removed ", removed);
       // removed = newuserprofile.splice(firebase.auth().currentUser.email, "remove current user");
       // elements = newuserprofile.splice( );
-      // console.log('splice' ,elements)
+      // console.log('splice' ,elements);
       snapshot.forEach(item => {
       
         this.newuserprofile.push({...{id:item.id},...item.data()});
