@@ -964,19 +964,28 @@ ion-icon {
   //   background: #265902;
   //   color: white;
   // }
+
+  // #close {
+  //   font-size: 1.8em;
+  //  z-index: 25;
+  //   position: absolute;
+  //   right: -3% !important;
+  //   top: 0%;
+  // }
   .close {
     // border: 1px solid red;
     width: 15%;
     position: absolute;
     top: 1%;
-    right: 0;
+    right: -4% !important;
     display: flex;
     justify-content: right;
     margin: 0;
     padding: 0;
+    // font-size: 3em;
     ion-icon {
-      font-size: 2em;
-      text-align: right;
+      font-size: 3.8em;
+      color: green;
     }
   }
 }
@@ -1579,12 +1588,12 @@ height: 17%;
 
 }
   }
-.dropper2 {
-  border: 1px solid red;
-  .top-cell {
+// .dropper2 {
+//   border: 1px solid red;
+//   .top-cell {
   
-  }
-}
+//   }
+// }
 }
 
 }
@@ -1743,6 +1752,10 @@ height: 17%;
   position: relative;
   padding-top: 30px;
   transition: 300ms;
+  //border: 1px solid red;
+}
+.dropper1, .dropper2, .dropper3, .dropper4:nth-child(odd) {
+  background: red;
 }
 .top-cell {
   width: 100%;
@@ -1754,7 +1767,9 @@ height: 17%;
   line-height: 30px;
   color: white;
 }
-
+.top-cell:nth-child(even) {
+  background: red;
+}
 .myCell {
   color: white;
   display: flex;
@@ -1763,7 +1778,7 @@ height: 17%;
 
 .meshy{
    //  border: 1px solid green;
-  background: #ececec;
+  //background: red;
   display: flex;
   height: 30px;
   justify-content: space-evenly;
@@ -1781,6 +1796,17 @@ height: 17%;
       color: black;
     }
   }
+}
+.meshy:nth-child(odd) {
+  background: white;
+  // font-family: 'lato';
+  // font-size: 1em;
+}
+.meshy:nth-child(even) {
+  background: white;
+  // font-family: 'lato';
+  // font-size: 1em;
+
 }
 
 .drop-down-info{
@@ -1808,4 +1834,51 @@ height: 17%;
   color: rgb(100, 100, 100);
   position: absolute;
   right: 20px;
+}
+
+#graph-overlay{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.507);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000000000000000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: 300ms fadeIn;
+}
+
+.resized-chart{
+  width: 80%;
+  height: 65%;
+  background: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#one, #two, #three{
+  display: none
+}
+.myCanvas {
+  width: 90%;
+  height: 1
+}
+.dismisser-block{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }

@@ -1,5 +1,19 @@
 
 <ion-content>
+  <div id="graph-overlay">
+    <div class="dismisser-block"(click)="dismissChart()">
+      
+    </div>
+    <div class="resized-chart" id="one">
+      <canvas class="myCanvas" #barChartbig></canvas>
+    </div>
+    <div class="resized-chart" id="two">
+      <canvas class="myCanvas" #barChart1big></canvas>
+    </div>
+    <div class="resized-chart" id="three">
+      <canvas class="myCanvas" #barChart2big></canvas>
+    </div>
+  </div>
   <main class="small-screen-size-not-supported"></main>
   <!-- <button (click)="map()">map</button> -->
   
@@ -164,17 +178,22 @@
         </div>
       </div>
       <div padding class="chartsjs">
-        
-      <div id="yellow"  class="graph inbgraph" [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" (click)="transformGraph('graph1')" style="background: #FFF3C2;" >
+        <!-- 
+          (click)="transformGraph('graph1')"
+           [ngClass]="{'graph1':viewingGraph=='graph1','graph1-h':viewingGraph!='graph1'}" 
+ [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"
+ [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')" 
+         -->
+      <div id="yellow"  class="graph inbgraph" (click)="openChart('barChart')" style="background: #FFF3C2;" >
         <canvas #barChart >
     </canvas>
          </div>
   
-      <div id="pink"  class="graph inbgraph2" [ngClass]="{'graph2':viewingGraph=='graph2','graph2-h':viewingGraph!='graph2'}"  (click)="transformGraph('graph2')"  style="background: #FFCFE5;">
+      <div id="pink"  class="graph inbgraph2"  (click)="openChart('barChart1')" style="background: #FFCFE5;">
         <canvas #barChart1  ></canvas>
       </div>
   
-      <div id="green"  class="graph inbgraph3" [ngClass]="{'graph3':viewingGraph=='graph3','graph3-h':viewingGraph!='graph3'}"  (click)="transformGraph('graph3')"   style="background: #CCFFFE;">
+      <div id="green"  class="graph inbgraph3"  (click)="openChart('barChart2')" style="background: #CCFFFE;">
         <canvas #barChart2></canvas>
       </div>
       </div>
@@ -184,7 +203,7 @@
   <!-- EDIT PRICE FOR PLASTIC -->
   <div class="opacitydivs createDiv" [ngClass]="{'slideIn': create, 'slideOut': !create}">
   <div padding class="editform2" id="plasticPrices">
-    <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
+    <ion-button class="close"   fill="clear" (click)="HideandShowCreate()" slot="icon-only"><ion-icon mode="ios" name="close-circle-outline"></ion-icon></ion-button>
     <h1>Edit Price for Plastic</h1>
     <div class="inputs">
       <div class="row1">
@@ -366,7 +385,9 @@
   <!-- EDIT PRICE FOR GLASS -->
   <div class="opacitydivs glassDiv" [ngClass]="{'slideIn': glass, 'slideOut': !glass}">
     <div padding class="editform2" id="plasticPrices">
-      <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button>
+      <ion-button class="close"  fill="clear"  slot="icon-only" (click)="glassShow()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+
+      <!-- <ion-button class="close"   fill="clear" (click)="glassShow()" slot="icon-only"><ion-icon mode="ios" name="close-circle"></ion-icon></ion-button> -->
       <h1>Edit Price For Glass </h1>
      
       <div class="inputs">
@@ -429,7 +450,8 @@
   <!-- EDIT PRICE FOR PAPER -->
   <div class="opacitydivs editDiv" [ngClass]="{'slideIn': edit, 'slideOut': !edit}">
     <div padding class="editform2" id="plasticPrices">
-      <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only" ><ion-icon name="close-circle"></ion-icon></ion-button>
+      <!-- <ion-button class="close" fill="clear" (click)="HideandShowSave()" slot="icon-only" ><ion-icon name="close-circle"></ion-icon></ion-button> -->
+      <ion-button class="close"  fill="clear"  slot="icon-only" (click)="HideandShowSave()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
     <h1>Edit Price For Paper</h1>
   
     <div class="inputs">
@@ -534,8 +556,11 @@
   <!-- EDIT PRICE FOR ALUMINIUM -->
   <div class="opacitydivs deleteDiv" [ngClass]="{'slideIn': delete, 'slideOut': !delete}">
   <div padding class="editform2" id="plasticPrices">
-    <ion-button class="close"  fill="clear" (click)="HideandShowDelete()"
-     slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button>
+    <ion-button class="close"  fill="clear"  slot="icon-only" (click)="HideandShowDelete()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+
+
+    <!-- <ion-button class="close"  fill="clear" (click)="HideandShowDelete()"
+     slot="icon-only"><ion-icon name="close-circle" ></ion-icon></ion-button> -->
     <h1>Edit Price For AluminIum</h1>
    
     <div class="inputs">
@@ -603,7 +628,8 @@
   <!-- history for paper -->
   <div class="opacitydivs paperDiv" [ngClass]="{'slideIn': paper, 'slideOut': !paper}">
     <div padding id="history" class="editform2 test">
-      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <ion-button class="close"  fill="clear"  slot="icon-only" (click)="HideandShowHISTORYPAPER()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+      <!-- <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPAPER()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button> -->
     <h1>Keeping Track Of All Your Updates </h1>
     <div class="headers">
       <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
@@ -650,7 +676,9 @@
   <!-- history for plastic -->
   <div class="opacitydivs plasticDiv" [ngClass]="{'slideIn': plastic, 'slideOut': !plastic}">
     <div padding class="editform2 test">
-      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <ion-button class="close"  fill="clear"  slot="icon-only" (click)="HideandShowHISTORYPPLASTIC()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+
+      <!-- <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYPPLASTIC()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button> -->
       <h1>Keeping Track Of All Your Updates </h1>
       <div class="headers">
         <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
@@ -663,7 +691,7 @@
   <!-- history for glass -->
   <div class="opacitydivs glassDiv " [ngClass]="{'slideIn': glassh, 'slideOut': !glassh}">
     <div padding class="editform2 test"  >
-      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYGLASS()" slot="icon-only"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
       <h1>Keeping Track Of All Your Updates </h1>
       <div class="headers">
         <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>
@@ -676,7 +704,7 @@
   <!-- history for alu -->
   <div class="opacitydivs aluDiv" [ngClass]="{'slideIn': alu, 'slideOut': !alu}">
     <div padding class="editform2 test" *ngFor="let p of price">
-      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
+      <ion-button class="close"  fill="clear" (click)="HideandShowHISTORYALUMINIUM()" slot="icon-only"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
       <h1>Keeping Track Of All Your Updates</h1>
       <div class="headers">
         <div class="one"><h2 style="padding-left: 5px !important;">Date</h2></div>

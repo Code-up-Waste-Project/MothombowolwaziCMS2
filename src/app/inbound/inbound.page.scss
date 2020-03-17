@@ -290,7 +290,7 @@ ion-title {
         font-size: 1.8em;
        z-index: 25;
         position: absolute;
-        right: -4% !important;
+        right: -3% !important;
         top: 0%;
       }
       h2 {
@@ -1648,6 +1648,12 @@ ion-title {
 }
 @media screen and (max-width: 1920) {
   .mother {
-background: red;
+//background: red;
+#close {
+  //border: 2px solid blue;
+  position: absolute;
+  right: 2% !important;
+  top: 1%;
+}
   }
 }
