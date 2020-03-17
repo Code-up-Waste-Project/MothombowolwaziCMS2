@@ -12,7 +12,7 @@
   width: 30px;
 }
 ion-toolbar {
-  border: 1px solid red !important;
+ // border: 1px solid red !important;
   display: flex !important;
   flex-direction: row;
   p {
@@ -879,7 +879,7 @@ ion-icon {
 }
 
 .opacitydivs {
-  //border: 2px solid black;
+  border: 2px solid black;
   position: absolute;
   top: 0;
   left: 0%;
@@ -900,7 +900,7 @@ ion-icon {
 // style for the edit modal
 
 .editform2 {
-  //  border: 2px solid red;
+ // border: 2px solid red;
   width: 80%;
   height: 60%;
   position: relative;
@@ -982,7 +982,7 @@ ion-icon {
 }
 
 #plasticPrices {
-  // border: 3px solid black;
+  // border: 3px solid green;
   position: relative;
   max-width: 800px;
   max-height: 600px;
@@ -1133,6 +1133,7 @@ ion-icon {
           font-size: 1em;
           font-family: "lato";
           color: black;
+          padding-left: 6px;
         }
       }
     }
@@ -1156,13 +1157,13 @@ ion-icon {
     flex-direction: column;
     .heady,
     .rows {
-      //   border: 1px solid green;
+        //border: 1px solid green;
       background: #d9c2f9;
       display: flex;
       height: 13%;
       justify-content: space-evenly;
       .col {
-        //  border: 1px solid red;
+     //  border: 1px solid red;
         width: 30%;
         display: flex;
         //justify-content: center;
@@ -1175,7 +1176,14 @@ ion-icon {
           font-family: "lato";
           color: black;
         }
+
+        // :nth-child(n) {
+        //   text-align: left;
+        //   border: 1px solid blue !important;
+        // }
       }
+ 
+
     }
     .rows {
       height: 10% !important;
@@ -1564,7 +1572,7 @@ height: 17%;
   .createDiv, .glassDiv, .editDiv, .deleteDiv {
   
     #plasticPrices , .editform2{
-      border: 2px solid green;
+     // border: 2px solid green;
       margin-left: 5%;
 
     
@@ -1574,8 +1582,7 @@ height: 17%;
 .dropper2 {
   border: 1px solid red;
   .top-cell {
-    border: 1px solid blue;
-    background: aqua;
+  
   }
 }
 }
@@ -1747,6 +1754,7 @@ height: 17%;
   line-height: 30px;
   color: white;
 }
+
 .myCell {
   color: white;
   display: flex;
@@ -1754,8 +1762,8 @@ height: 17%;
 }
 
 .meshy{
-  //   border: 1px solid green;
-  background: rgb(233, 233, 233);
+   //  border: 1px solid green;
+  background: #ececec;
   display: flex;
   height: 30px;
   justify-content: space-evenly;
@@ -1774,6 +1782,7 @@ height: 17%;
     }
   }
 }
+
 .drop-down-info{
  border: 1px solid red;
  width: 80%;
@@ -1786,9 +1795,11 @@ height: 17%;
 }
 
 .the-date-head{
-  font-size: 15px;
+  font-size: 0.8em;
+  padding-left: 5px;
   text-align: center;
   color: rgb(100, 100, 100);
+  font-family: 'lato';
 }
 
 

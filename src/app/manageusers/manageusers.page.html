@@ -19,23 +19,25 @@
         </div>
         <div class="profile-div">
           <div class="circle-picture">
-            <img src="../../assets/user (1).png" alt="">
+            <img *ngIf="!image" src="../../assets/mthombologo (1).png" alt=""> 
+            <img  *ngIf="image" src="{{image}}" alt="">
           </div>
         </div>
+        <div *ngIf="!registerForm">
         <div class="the-info">
-          <p><b>Lebogang Thipenyane</b></p>          
+          <p><b>{{ name }} {{ surname }}</b></p>          
         </div>
         <div class="user-phone">
-          <p>074 905 4945</p>
+          <p>{{number}}</p>
         </div>
         <div class="user-role">
-          <p><b>Manager</b></p>
+          <p><b>{{ position }}</b></p>
         </div>
         <div class="delete">
-          <ion-icon name="trash"></ion-icon>
+          <ion-icon name="trash" (click)='presentAlertDelete(id)'></ion-icon>
         </div>
+      </div>
         <!-- end of user-info pop-over -->
-
 
       </div>
       <div class="adding-users" *ngIf="isProfile === false">
@@ -44,28 +46,42 @@
           <div id="color-two"></div>
           <div id="color-three"></div>
         </div>
+        <form [formGroup]="signupForm">
         <div class="user-inputs">          
           <div class="user-div">
             <div class="input-icon">
               <ion-icon name="person"></ion-icon>
             </div>
-          <input type="text" placeholder="Name and Surname">
+            <input class="inputs" type="email" formControlName="email" placeholder="Enter Email" [(ngModel)]="email" this.email.reset autocomplete="off" autocorrect="off" id="myInput" value="default@example.com"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+            <div *ngIf="!signupForm.controls['email'].valid
+            && signupForm.controls['email'].touched" class="error">
+              <div class="messages">
+                Please enter email address..
+              </div>
+            </div>
         </div>
         <div class="user-div">
           <div class="input-icon">
             <ion-icon name="person"></ion-icon>
           </div>
-        <input type="text" placeholder="Name and Surname">
+          <input class="inputs" formControlName="password" placeholder="Enter Password" [(ngModel)]="password" type="password" this.password.reset autocomplete="off" autocorrect="off"  id="myInput" value="password" >
+          <div *ngIf="!signupForm.controls['password'].valid
+          && signupForm.controls['password'].touched" class="error">
+            <div class="messages">
+           Enter the correct password .
+            </div>
+          </div>
       </div>
       <div class="user-div">
         <div class="input-icon">
           <ion-icon name="person"></ion-icon>
         </div>
-      <input type="text" placeholder="Name and Surname">
+        <input class="inputs" placeholder="Identity Number" [(ngModel)]="idnumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" maxlength="13"  [ngModelOptions]="{standalone: true}" >
     </div>
         </div>
+      </form>
         <div class="the-button">
-          <ion-button id="reg-button">Register</ion-button>
+          <ion-button id="reg-button" (click)="saveNewUseer()">Register</ion-button>
         </div>
       </div>
 
@@ -78,7 +94,7 @@
   </div>
     <div class="cont-container" >
       <div padding class="left" >
-        <div padding class="profile" *ngFor = "let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)' (click)="showUser()">
+        <div padding class="profile" *ngFor="let myprofiles  of newuserprofile; let z = index" (click)='AddUser(myprofiles.id)' (click)='AddUserToForm(myprofiles.id)' (click)="showUser()">
            <div class="names">
             <h4>{{ myprofiles.name }} {{ myprofiles.surname }}</h4> 
             <p>{{ myprofiles.position }}</p>
@@ -90,14 +106,10 @@
             </div>
           </div>
           </div>
-
           
         <ion-fab>
           <ion-fab-button id="the-fab" (click)="showRegisterForm()" ><ion-icon name="add"></ion-icon></ion-fab-button>
         </ion-fab>
-
-
-
 
       </div>
   
@@ -127,7 +139,6 @@
   <!-- this form appears when fab button is clicked -->
 
     <div padding class="registerform"  class="right" *ngIf="registerForm" >
-     
       <ion-button class="close"  fill="clear" (click)="showRegisterForm()" slot="icon-only"><ion-icon name="close-circle"></ion-icon></ion-button>
 
       <h1>Register</h1>
