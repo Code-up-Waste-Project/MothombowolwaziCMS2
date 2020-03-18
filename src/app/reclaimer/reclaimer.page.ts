@@ -439,7 +439,7 @@ export class ReclaimerPage implements OnInit {
     });
 
     // pulling from reclaimers
-    this.db.collection('reclaimers').orderBy('name', "desc").onSnapshot(snapshot => {
+    this.db.collection('reclaimers').orderBy('name', "asc").onSnapshot(snapshot => {
       this.testArrays = [];
       snapshot.forEach(element => {
 

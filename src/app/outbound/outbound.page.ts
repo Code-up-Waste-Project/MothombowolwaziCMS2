@@ -581,7 +581,7 @@ in_your_method() {
   
 
   sortTable() {
-    this.db.collection('outbound').onSnapshot(element => {
+    this.db.collection('outbound').orderBy('DriverName', "asc").onSnapshot(element => {
       this.recordoutbounddisplayshome = [];
       // console.log(element)
       let loads = {};
@@ -594,6 +594,10 @@ in_your_method() {
         this.TruckSourcess = snap.data().TruckSourcess;
         this.truckcode = snap.data().truckcode;
         this.recordoutbounddisplayshome.push(snap.data());
+
+        // this.recordoutbounddisplayshome.sort((a,b) => {
+        //   return (b.DriverName) - (a.DriverName)
+        // });
       })
       // console.log(this.recordoutbounddisplayshome);
     })

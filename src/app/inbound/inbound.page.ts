@@ -332,9 +332,10 @@ inboundHistory(){
   }
 
   sortTable() {
-    this.db.collection('inbounds').orderBy('DriverName', "desc").onSnapshot(element => {
+    this.db.collection('inbounds').orderBy('DriverName', "asc").onSnapshot(element => {
       this.recordinbounddisplaysz = [];
       element.forEach(element => {
+
         let time = {};
         let id = {};
 
@@ -346,6 +347,10 @@ inboundHistory(){
         this.recordinbounddisplaysz.push(element.data());
         // console.log(element.data());
         console.log(this.recordinbounddisplaysz);
+
+        let order = this.recordinbounddisplaysz.sort((a,b) => {
+          return (b.data.timesOrdered) - (a.data.timesOrdered)
+        });
 
         this.usersz.push(
           this.truckcode,
