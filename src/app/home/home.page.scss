@@ -1114,7 +1114,7 @@ ion-icon {
   }
   
   .historydetails {
-    //border: 2px solid blue;
+    // border: 2px solid blue;
     height: 50%;
     position: absolute;
     bottom: 3%;
@@ -1156,6 +1156,14 @@ ion-icon {
       }
     }
   }
+
+  .everything{
+    // border: solid 2px purple;
+    width: 100%;
+    height: 70%;
+    overflow-x: scroll;
+  }
+
   .historydetailsPlastic {
     // border: 2px solid blue;
     height: auto;
