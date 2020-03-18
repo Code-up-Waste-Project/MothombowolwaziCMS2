@@ -12,7 +12,7 @@
   width: 30px;
 }
 ion-toolbar {
-  border: 1px solid red !important;
+ // border: 1px solid red !important;
   display: flex !important;
   flex-direction: row;
   p {
@@ -879,7 +879,7 @@ ion-icon {
 }
 
 .opacitydivs {
-  //border: 2px solid black;
+  border: 2px solid black;
   position: absolute;
   top: 0;
   left: 0%;
@@ -900,7 +900,7 @@ ion-icon {
 // style for the edit modal
 
 .editform2 {
-  //  border: 2px solid red;
+ // border: 2px solid red;
   width: 80%;
   height: 60%;
   position: relative;
@@ -964,25 +964,34 @@ ion-icon {
   //   background: #265902;
   //   color: white;
   // }
+
+  // #close {
+  //   font-size: 1.8em;
+  //  z-index: 25;
+  //   position: absolute;
+  //   right: -3% !important;
+  //   top: 0%;
+  // }
   .close {
     // border: 1px solid red;
     width: 15%;
     position: absolute;
     top: 1%;
-    right: 0;
+    right: -4% !important;
     display: flex;
     justify-content: right;
     margin: 0;
     padding: 0;
+    // font-size: 3em;
     ion-icon {
-      font-size: 2em;
-      text-align: right;
+      font-size: 3.8em;
+      color: green;
     }
   }
 }
 
 #plasticPrices {
-  // border: 3px solid black;
+  // border: 3px solid green;
   position: relative;
   max-width: 800px;
   max-height: 600px;
@@ -1133,6 +1142,7 @@ ion-icon {
           font-size: 1em;
           font-family: "lato";
           color: black;
+          padding-left: 6px;
         }
       }
     }
@@ -1156,13 +1166,13 @@ ion-icon {
     flex-direction: column;
     .heady,
     .rows {
-      //   border: 1px solid green;
+        //border: 1px solid green;
       background: #d9c2f9;
       display: flex;
       height: 13%;
       justify-content: space-evenly;
       .col {
-        //  border: 1px solid red;
+     //  border: 1px solid red;
         width: 30%;
         display: flex;
         //justify-content: center;
@@ -1175,7 +1185,14 @@ ion-icon {
           font-family: "lato";
           color: black;
         }
+
+        // :nth-child(n) {
+        //   text-align: left;
+        //   border: 1px solid blue !important;
+        // }
       }
+ 
+
     }
     .rows {
       height: 10% !important;
@@ -1564,20 +1581,19 @@ height: 17%;
   .createDiv, .glassDiv, .editDiv, .deleteDiv {
   
     #plasticPrices , .editform2{
-      border: 2px solid green;
+     // border: 2px solid green;
       margin-left: 5%;
 
     
 
 }
   }
-.dropper2 {
-  border: 1px solid red;
-  .top-cell {
-    border: 1px solid blue;
-    background: aqua;
-  }
-}
+// .dropper2 {
+//   border: 1px solid red;
+//   .top-cell {
+  
+//   }
+// }
 }
 
 }
@@ -1736,6 +1752,10 @@ height: 17%;
   position: relative;
   padding-top: 30px;
   transition: 300ms;
+  //border: 1px solid red;
+}
+.dropper1, .dropper2, .dropper3, .dropper4:nth-child(odd) {
+  background: red;
 }
 .top-cell {
   width: 100%;
@@ -1747,6 +1767,9 @@ height: 17%;
   line-height: 30px;
   color: white;
 }
+.top-cell:nth-child(even) {
+  background: red;
+}
 .myCell {
   color: white;
   display: flex;
@@ -1754,8 +1777,8 @@ height: 17%;
 }
 
 .meshy{
-  //   border: 1px solid green;
-  background: rgb(233, 233, 233);
+   //  border: 1px solid green;
+  //background: red;
   display: flex;
   height: 30px;
   justify-content: space-evenly;
@@ -1774,27 +1797,100 @@ height: 17%;
     }
   }
 }
+.meshy:nth-child(odd) {
+  background: white;
+  // font-family: 'lato';
+  // font-size: 1em;
+}
+.meshy:nth-child(even) {
+  background: white;
+  // font-family: 'lato';
+  // font-size: 1em;
+
+}
+
 .drop-down-info{
  border: 1px solid red;
  width: 80%;
 }
 
 .the-date{
-  font-size: 15px;
+  font-size: 0.8em;
   text-align: center;
   color: grey;
+  font-family: 'lato';
+  padding-left: 5px;
 }
 
 .the-date-head{
-  font-size: 15px;
+  font-size: 0.8em;
+  padding-left: 5px;
   text-align: center;
   color: rgb(100, 100, 100);
+  font-family: 'lato';
+ // border: 1px solid red;
 }
-
+.meshy:nth-child(odd) {
+  //background: blue;
+  // font-family: 'lato';
+  // font-size: 1em;
+}
+// .the-date-head:nth-child(even) {
+//   background: blue;
+//   // font-family: 'lato';
+//   // font-size: 1em;
+// }
 
 .chevron-drop-down1, #chevron-drop-down2, #chevron-drop-down3, #chevron-drop-down4{
   font-size: 20px;
   color: rgb(100, 100, 100);
   position: absolute;
   right: 20px;
+}
+
+#graph-overlay{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.507);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000000000000000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: 300ms fadeIn;
+}
+
+.resized-chart{
+  width: 80%;
+  height: 65%;
+  background: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#one, #two, #three{
+  display: none
+}
+.myCanvas {
+  width: 90%;
+  height: 1
+}
+.dismisser-block{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }

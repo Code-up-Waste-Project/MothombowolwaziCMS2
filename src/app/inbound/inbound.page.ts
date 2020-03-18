@@ -332,7 +332,7 @@ inboundHistory(){
   }
 
   sortTable() {
-    this.db.collection('inbounds').onSnapshot(element => {
+    this.db.collection('inbounds').orderBy('DriverName', "desc").onSnapshot(element => {
       this.recordinbounddisplaysz = [];
       element.forEach(element => {
         let time = {};

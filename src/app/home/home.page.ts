@@ -22,9 +22,13 @@ export class HomePage implements OnInit {
   isOpenAluminium = false;
   viewBackdrop = false;
 
+  buttonDisabled: boolean;
   @ViewChild('barChart', {static: false}) barChart;        
   @ViewChild('barChart1', {static: false}) barChart1;
   @ViewChild('barChart2', {static: false}) barChart2;
+  @ViewChild('barChartbig', {static: false}) barChartbig;        
+  @ViewChild('barChart1big', {static: false}) barChart1big;
+  @ViewChild('barChart2big', {static: false}) barChart2big;
 
 //store element into a variable
 imgGraph = document.getElementsByClassName('inbgraph');
@@ -498,6 +502,22 @@ newdatereclaimerM;
     private render: Renderer2,
     public alertController: AlertController,
     ) {
+
+      firebase.auth().onAuthStateChanged(user => {
+
+        if (user) {
+          firebase
+             .firestore()
+             .doc(`/userprofiles/${user.uid}`)
+              .get()
+              .then(userProfileSnapshot => {
+                this.isAdmin = userProfileSnapshot.data().isAdmin;
+              });
+         }
+        //  this.buttonDisabled = false;
+       });
+
+
     // code by nathi 3 feb
     this.pullWeeklyInbound();
     this.PullDayData();
@@ -506,22 +526,22 @@ newdatereclaimerM;
 
     //increase the size of clicked graph
     transformGraph(graph) {
-      if (this.viewingGraph == graph) {
-        this.viewingGraph = ''
-        this.viewBackdrop = false
-      } else {
-        this.viewingGraph = graph
-        this.viewBackdrop = true;
-      }
-      if (this.viewBackdrop) {
-        this.render.setStyle(this.bD[0],'display','block')
-      } else {
-        setTimeout(() => {
-          console.log('çloses');
+      // if (this.viewingGraph == graph) {
+      //   this.viewingGraph = ''
+      //   this.viewBackdrop = false
+      // } else {
+      //   this.viewingGraph = graph
+      //   this.viewBackdrop = true;
+      // }
+      // if (this.viewBackdrop) {
+      //   this.render.setStyle(this.bD[0],'display','block')
+      // } else {
+      //   setTimeout(() => {
+      //     console.log('çloses');
           
-          this.render.setStyle(this.bD[0],'display','none')
-        }, 500);
-      }
+      //     this.render.setStyle(this.bD[0],'display','none')
+      //   }, 500);
+      // }
     }
 
      //chart
@@ -2751,7 +2771,7 @@ HideandShowHISTORYGLASS() {
 }
 
   createBarChart() {
-    Chart.defaults.global.defaultFontSize = 4;
+    Chart.defaults.global.defaultFontSize = 12;
     Chart.defaults.global.defaultFontFamily = 'Roboto';
 
     this.bars = new Chart(this.barChart.nativeElement, {
@@ -2803,12 +2823,109 @@ HideandShowHISTORYGLASS() {
         }
       }
     });
+    this.bars = new Chart(this.barChartbig.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+        datasets: [{
+          label: 'INBOUND',
+          data: [ 
+            this.inboundgh001,
+            this.inboundnfalo1,
+
+            this.inboundpap005,
+            this.inboundpap007,
+            this.inboundpap001,
+            this.inboundpap003,
+
+            this.inboundhd001,
+            this.inboundld001,
+            this.inboundld003,
+            this.inboundpet001,
+            this.inboundpet003,
+            this.inboundpet005,
+            
+          ],
+          // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+          backgroundColor: 'rgb(90, 78, 31)', // array should have same number of elements as number of dataset
+          borderColor: 'rgb(90, 78, 31)',  // array should have same number of elements as number of dataset
+          borderWidth: 0.1,
+        
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            stacked: true,
+            gridLines: {
+              display: false,
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+        labels: {
+          defaultFontSize: 5
+        }
+      }
+    });
   }
 
   createBarChart1() {
-    Chart.defaults.global.defaultFontSize = 3;
+    Chart.defaults.global.defaultFontSize = 10;
     Chart.defaults.global.defaultFontFamily = 'Roboto';
     this.bars = new Chart(this.barChart1.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+        // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
+        datasets: [{
+          label: 'OUTBOUND',
+          data: [
+            this.outboundgh001,
+            this.outboundnfal01,
+            this.outboundpap005,
+            this.outboundpap007,
+            this.outboundpap001,
+            this.outboundpap003,
+            this.outboundhd001,
+            this.outboundld001,
+            this.outboundld003,
+            this.outboundpet001,
+            this.outboundpet003,
+            this.outboundpet005
+          ],
+      
+          // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+          backgroundColor: 'rgb(75, 35, 54)', // array should have same number of elements as number of dataset
+          borderColor: 'rrgb(75, 35, 54)ed',  // array should have same number of elements as number of dataset
+          borderWidth: 0.1,
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            stacked: true,
+            gridLines: {
+              display: false,
+           
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+        labels: {
+          defaultFontSize: 5
+        }
+      }
+    });
+    this.bars = new Chart(this.barChart1big.nativeElement, {
       type: 'bar',
       data: {
         labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
@@ -2862,6 +2979,54 @@ HideandShowHISTORYGLASS() {
    
     createBarChart2() {
       this.bars = new Chart(this.barChart2.nativeElement, {
+        type: 'bar',
+        data: {
+          labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
+          // labels: ['Aluminium', 'Glass', 'Paper(PAP005)', 'Paper(PAP007)', 'Paper(PAP003)', 'Paper(PAP003)'],
+          datasets: [{
+            label: 'RECLAIMER',
+   
+      data: [ 
+        this.reclaimergh001mass,
+        this.reclaimernfa01Mass,
+        this.reclaimerpap005mass,
+        this.reclaimerpap007Mass,
+        this.reclaimerpap001mass,
+        this.reclaimerpap003mass,
+        this.reclaimerhd001mass,
+        this.reclaimerld001mass,
+        this.reclaimerld003mass,
+        this.reclaimerpet001mass,
+        this.reclaimerpet003mass,
+        this.reclaimerpet005mass
+      ],
+            // data: [this.NFAL01storagemass, this.GH001storagemass, this.PAP005storagemass, this.PAP007storagemass, this.PAP007storagemass, this.PAP003storagemass],
+            backgroundColor: 'rgb(29, 61, 61)', // array should have same number of elements as number of dataset
+            borderColor: 'rgb(29, 61, 61)',  // array should have same number of elements as number of dataset
+            borderWidth: 0.1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              stacked: true,
+              gridLines: {
+                display: false,
+             
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false
+              }
+            }]
+          },
+          labels: {
+            defaultFontSize: 5
+          }
+        }
+      });
+      this.bars = new Chart(this.barChart2big.nativeElement, {
         type: 'bar',
         data: {
           labels: ['GH001', 'NFAL01', 'PAP005', 'PAP007', 'PAP001', 'PAP003', 'HD001', 'LD001', 'LD003', 'PET001', 'PET003', 'PET005'],
@@ -3239,5 +3404,34 @@ backbutton(){
     this.route.navigateByUrl('/login');
   }
 }
+  openChart(val){
+    console.log(val);
+    document.getElementById("graph-overlay").style.display = "flex";
 
+    if(val == "barChart"){
+
+      document.getElementById("one").style.display = "flex";
+      document.getElementById("two").style.display = "none";
+      document.getElementById("three").style.display = "none";
+    }
+    else if(val == "barChart1"){
+      document.getElementById("one").style.display = "none";
+      document.getElementById("two").style.display = "flex";
+      document.getElementById("three").style.display = "none";
+
+    }
+    else{
+
+      document.getElementById("one").style.display = "none";
+      document.getElementById("two").style.display = "none";
+      document.getElementById("three").style.display = "flex";
+    }
+
+  }
+  dismissChart(){
+    document.getElementById("graph-overlay").style.display = "none";
+    document.getElementById("one").style.display = "none";
+    document.getElementById("two").style.display = "none";
+    document.getElementById("three").style.display = "none";
+  }
 }

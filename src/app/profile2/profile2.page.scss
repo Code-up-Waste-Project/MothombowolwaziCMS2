@@ -64,14 +64,18 @@
     // border: solid 2px purple;
     height: 7%;
     text-align: center;
+    #namey {
+      font-family: 'brandish';
+      font-size: 3vw;
+    }
   }
-  .the-name > h1 {    
-    font-size: 50px;
-    color: #414141;
-    // position: relative;
-    // bottom: 15px;
-    margin-top: -10px;
-  }
+  // .the-name > h1 {    
+  //   font-size: 50px;
+  //   color: #414141;
+  //   // position: relative;
+  //   // bottom: 15px;
+  //   margin-top: -10px;
+  // }
 
   .location{
     // height: 5%;

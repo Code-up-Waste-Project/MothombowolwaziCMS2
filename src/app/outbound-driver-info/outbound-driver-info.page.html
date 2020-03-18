@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
+      <!-- <ion-button (click)="openCamera()" fill="clear"> -->
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+        
+      <!-- </ion-button> -->
+    </ion-buttons>
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button> Outbound Driver's Profile & History
     </ion-buttons>
   </ion-toolbar>
@@ -26,7 +32,7 @@
       <!-- <p id="email">Fumza@gmail.com</p> -->
       <p>{{ driver.numbers }}</p>
       <p id="adres">{{ driver.companyaddress }}</p>
-      <button (click)="switch()">Edit Profile</button>
+      <button (click)="switch()" (click)="SaveUpdates()">Edit Profile</button>
     </div><!-- display -->
 
 
@@ -56,7 +62,7 @@
     <div class="scrollreceipts" >
       <div class="card" *ngFor="let loads of ViewOutboundMasses">
         <div class="leftside">
-          <p class="time"></p>
+          <p class="time" style="color: transparent;">--</p>
           <p>Reference No.</p>
           <p>Truck Load</p>
           <p>Destination</p>

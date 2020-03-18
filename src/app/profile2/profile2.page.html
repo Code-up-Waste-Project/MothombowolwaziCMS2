@@ -11,8 +11,14 @@
           <div id="color-three"></div>
         </div>
         <div class="user-profile">
-          <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
+          <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="">
           <img *ngIf="profile.image" src="{{ profile.image }}" alt="">
+          
+            <label for="disapear">
+              <ion-icon id="Addd" name="camera">
+              <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+            </ion-icon>
+            </label>
         </div>
         <div class="user-inputs">
           <div class="user-div">
@@ -36,7 +42,7 @@
           <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address" [(ngModel)]="profile.addres"></textarea>
         </div>
         <div id="the-button">
-          <ion-button (click)="users()" disabled="{{buttonDisabled}}" >SAVE</ion-button>
+           <ion-button (click)="users()" disabled="{{buttonDisabled}}" >SAVE</ion-button> <!-- -->
         </div>
       </div>
     </div>
@@ -48,12 +54,12 @@
     </div>
     <div class="the-profile">
       <div class="the-circle">
-        <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
+        <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="">
         <img *ngIf="profile.image" src="{{ profile.image }}" alt="">
       </div>
     </div>
     <div class="the-name">
-      <h1><b>{{ profile.name }}</b></h1>
+      <h1  id="namey">{{ profile.name }}</h1>
     </div>
     <div class="location">
       <ion-icon name="pin"></ion-icon>

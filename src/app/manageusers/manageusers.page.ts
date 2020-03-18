@@ -85,8 +85,8 @@ isAdmin: string = 'true';
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       name: ['', [Validators.required, ]],
-      positions: ['', [Validators.required, ]],
-      idnumber: ['', Validators.compose([Validators.minLength(13), Validators.required])],
+      // positions: ['', [Validators.required, ]],
+      // idnumber: ['', Validators.compose([Validators.minLength(13), Validators.required])],
      
 
     });
@@ -139,7 +139,7 @@ firsttem(obj:any ={})
   //   });
     this.getUsers();
     this.db.collection('userprofiles').where("isAdmin" ,"==","true" ).onSnapshot(snapshot => {
-      // this.profile.name = snapshot.docs.name
+      // this.profile.name = snapshot.docs.name;
       // this.profile.email = snapshot.data().email;
       // email: firebase.auth().currentUser.email,
       // this.profile.name = snapshot.data().name;
@@ -147,11 +147,12 @@ firsttem(obj:any ={})
       // // this.profile.image = snapshot.data().image;
       // console.log('users', this.userprofile);
      
+
       this.newuserprofile = [];
       // console.log("removed tt removed ", removed);
       // removed = newuserprofile.splice(firebase.auth().currentUser.email, "remove current user");
       // elements = newuserprofile.splice( );
-      // console.log('splice' ,elements)
+      // console.log('splice' ,elements);
       snapshot.forEach(item => {
       
         this.newuserprofile.push({...{id:item.id},...item.data()});
@@ -326,15 +327,15 @@ firsttem(obj:any ={})
               email: this.email,
               password: this.password,
               profile:'no',
-              positions:this.positions,
+              // positions:this.positions,
               idnumber:this.idnumber,
-              addres:this.addres
+              // addres:this.addres
             }).then(async res =>{
               this.email=null
-              this.positions=null
+              // this.positions=null
               this.password=null
               this.idnumber=null
-              this.addres=null
+              // this.addres=null
               let alert = await this.alertCtrl.create({
               message:'You Have just created a new user ',
                 

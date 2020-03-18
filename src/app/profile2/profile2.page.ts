@@ -105,8 +105,8 @@ export class Profile2Page implements OnInit {
   toast.present();
       }
        else {
-       
-      this.db.collection('admin').doc(firebase.auth().currentUser.uid).set({
+      // this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot =>
+      this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).set({
         name: this.profile.name,
         email: this.profile.email,
         number:this.profile.number,
@@ -118,16 +118,20 @@ export class Profile2Page implements OnInit {
       })
       .then(function() {
         console.log("Document successfully written!");
+        
       })
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
-      this.router.navigateByUrl('/home');
+      // this.router.navigate('/profile2');
+      this.router.navigateByUrl('/profile2');
+      this.closePopUp();
     }
+
     }
   
-    changeListener(admin): void {
-      const i = admin.target.files[0];
+    changeListener(userprofiles): void {
+      const i = userprofiles.target.files[0];
       console.log(i);
       const upload = this.storage.child(i.name).put(i);
       upload.on('state_changed', snapshot => {
