@@ -108,7 +108,7 @@ margin-top: 3%;
         }
     }
     .active, .names:hover{
-      border: 2px solid red;
+      border: 2px solid #042525;
     }
     .image {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.048), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
@@ -198,7 +198,7 @@ ion-icon {
 //right div ebds here
 .inputs {
             width: 100%;
-            // margin-top: 3%;
+            margin-top: 3%;
             border-radius: 50px;
             background: #EAEAEA;
             padding: 12px;
@@ -365,7 +365,7 @@ to {
 
   .inputs {
     width: 100%;
-    // margin-top: 3%;
+    margin-top: 0px;
     border-radius: 50px;
     background: #EAEAEA;
     padding: 12px;
@@ -398,7 +398,7 @@ to {
   display: block;
   position: absolute;
   left: 528px;
-  top: 504px;
+  top: 484px;
 
 }
   
@@ -780,7 +780,7 @@ to {
   display: block;
   position: absolute;
   left: 610px;
-  top: 171px; 
+  top: 148px;
 
 }
   
@@ -1131,6 +1131,10 @@ to {
 
   
 
+}
+
+.active{
+  border: 2px solid #042525
 }
 
 

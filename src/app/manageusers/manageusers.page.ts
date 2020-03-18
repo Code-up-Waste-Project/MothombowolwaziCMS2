@@ -129,6 +129,7 @@ firsttem(obj:any ={})
        }
        this.buttonDisabled = false;
      });
+     
    //auth gurd
   //  firebase.auth().onAuthStateChanged((user) => {
   //   if (user) {
