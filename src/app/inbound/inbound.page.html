@@ -46,13 +46,13 @@
                       <p>{{ records.RegistarionNumberPlates }}</p>
                     </ion-card> -->
 
-                    <div *ngIf="searchResults.length > 0">
+                    <!-- <div *ngIf="searchResults.length > 0">
                       <ion-card *ngFor="let records of searchResults" (click)='presentAlertAddUser(records.id)'>
                         <h4>{{ records.DriverName }}</h4>
                         <p>{{ records.truckcode }}</p>
                       <p>{{ records.RegistarionNumberPlates }}</p>
                       </ion-card>
-                    </div>
+                    </div> -->
 
                     <div *ngIf="searchResults.length == 0">
                       <ion-card *ngFor="let records of recordinbounddisplaysz" (click)='presentAlertAddUser(records.id)'>
@@ -65,7 +65,7 @@
                 
                   </div>
                   <div class="btn-new-driver">
-                    <ion-button (click)="animateJs()" [disabled]="transtioning">
+                    <ion-button id="driver" (click)="animateJs()" [disabled]="transtioning">
                         <ion-icon name="ios-add"></ion-icon> New Driver
                     </ion-button>
                   </div>
