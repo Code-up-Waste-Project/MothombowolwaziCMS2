@@ -83,6 +83,8 @@ export class AppComponent implements OnInit {
 
     }
     ngOnInit() {
+        console.log('triggerd');
+        
         //     // this.db.collection('admin').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
         //     //   this.Newadmin = [];
         //     //   // snapshot.forEach(Element => {
@@ -102,7 +104,7 @@ export class AppComponent implements OnInit {
             //        })
             //        })
             firebase.firestore().collection('userprofiles').doc(firebase.auth().currentUser.uid).onSnapshot(snapshot => {
-                
+
                 // this.profile.email = snapshot.data().email;
 
                 // console.log('users', snapshot.data().isAdmin);
@@ -171,7 +173,6 @@ export class AppComponent implements OnInit {
                         icon: 'manageUserz',
                         admin: "cool"
                     },
-
                     );
                 }
                 // this.getAuth()
@@ -179,14 +180,14 @@ export class AppComponent implements OnInit {
                 // this.db.collection('userprofiles').onSnapshot(snapshot => {
                 //     this.Newadmin = []
                 //     snapshot.forEach(Element => {
-   
+
                 //         this.myadmis.push(Element.data());
                 //         //  this.Newadmin =[]
                 //         // console.log(Element.data());
                 //     });
                 //     this.myadmis.forEach(item => {
                 //         if (item.userid === firebase.auth().currentUser.uid) {
-                     
+
                 //             console.log('Newadmins', this.Newadmin);
                 //             this.Newadmin.push(item);
                 //             this.Newadmin.splice(1, 1);
@@ -207,15 +208,18 @@ export class AppComponent implements OnInit {
 
     activate(i) {
         this.active = i
+        let r = this.router.getCurrentNavigation()
+        console.log(r );
+        
     }
 
     getAuth() {
         firebase.auth().onAuthStateChanged((user) => {
             console.log('Component authstate triggerd');
-      
+
             if (user) {
                 this.router.navigateByUrl('/home');
-                this.db.collection('userprofiles').onSnapshot(snapshot => {      
+                this.db.collection('userprofiles').onSnapshot(snapshot => {
                     snapshot.forEach(Element => {
                         this.myadmis.push(Element.data());
                         //  this.Newadmin =[]

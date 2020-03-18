@@ -20,7 +20,10 @@
             <ion-item no-lines [routerDirection]="'root'" [ngClass]="{'active':active==i}" [routerLink]="[p.url]" [routerLinkActive]="['active']">
               <ion-icon style="color: white;" slot="start" width="20px" src="../assets/{{p.icon}}.svg"></ion-icon>
               
-              <ion-label >
+              <!-- <ion-label *ngIf="p.url==='/outbound-driver-info'">
+                {{p.title}}
+              </ion-label> -->
+              <ion-label>
                 {{p.title}}
               </ion-label>
             </ion-item>

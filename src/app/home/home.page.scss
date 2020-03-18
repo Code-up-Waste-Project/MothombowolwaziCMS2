@@ -900,7 +900,7 @@ ion-icon {
 // style for the edit modal
 
 .editform2 {
- border: 2px solid red;
+ // border: 2px solid red;
   width: 80%;
   height: 60%;
   position: relative;
@@ -1165,14 +1165,13 @@ ion-icon {
   }
 
   .historydetailsPlastic {
-    // border: 2px solid blue;
-    height: auto;
+    //border: 2px solid blue;
+    height: 50%;
     position: absolute;
-    //bottom: -5%;
+    bottom: -5%;
     width: 95%;
     display: flex;
     flex-direction: column;
-    // overflow-y: auto;
     .heady,
     .rows {
         //border: 1px solid green;
@@ -1181,7 +1180,7 @@ ion-icon {
       height: 13%;
       justify-content: space-evenly;
       .col {
-     // border: 1px solid red;
+     //  border: 1px solid red;
         width: 30%;
         display: flex;
         //justify-content: center;
@@ -1761,7 +1760,6 @@ height: 17%;
   position: relative;
   padding-top: 30px;
   transition: 300ms;
-  overflow-y: auto;
   //border: 1px solid red;
 }
 .dropper1, .dropper2, .dropper3, .dropper4:nth-child(odd) {
