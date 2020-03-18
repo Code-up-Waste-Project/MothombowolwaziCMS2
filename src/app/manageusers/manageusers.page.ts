@@ -338,7 +338,7 @@ firsttem(obj:any ={})
               this.idnumber=null
               // this.addres=null
               let alert = await this.alertCtrl.create({
-              message:'You Have just created a new user ',
+              message:'You Have just created a new user ,The user will appear on your list once they create a profile ',
                 
               buttons: [
                 {

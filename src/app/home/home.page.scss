@@ -1317,7 +1317,7 @@ ion-icon {
   }
 }
 .chartbuttons {
-  border: 1px solid red;
+  //border: 1px solid red;
   height: 5%;
   margin: 0;
   padding: 0;
@@ -1559,7 +1559,7 @@ height: 17%;
 
 }
 .opacitydivs {
-  border: 2px solid blue;
+  // border: 2px solid blue;
   ion-button {
     padding: 0;
    // border: 3px solid black;
@@ -1583,7 +1583,7 @@ height: 17%;
     overflow-y: scroll;
     border: 3px solid black;
     .dropper3 {
-      border: 2px solid blue;
+      // border: 2px solid blue;
     }
   }
   .createDiv, .glassDiv, .editDiv, .deleteDiv {
@@ -1755,7 +1755,7 @@ height: 17%;
   width: 100%;
   max-height: 30px;
   background: white;
-  color: red;
+  // color: red;
   overflow: hidden;
   position: relative;
   padding-top: 30px;
@@ -1763,7 +1763,7 @@ height: 17%;
   //border: 1px solid red;
 }
 .dropper1, .dropper2, .dropper3, .dropper4:nth-child(odd) {
-  background: red;
+ // background: red;
 }
 .top-cell {
   width: 100%;
@@ -1776,7 +1776,7 @@ height: 17%;
   color: white;
 }
 .top-cell:nth-child(even) {
-  background: red;
+  //background: red;
 }
 .myCell {
   color: white;
@@ -1818,7 +1818,7 @@ height: 17%;
 }
 
 .drop-down-info{
- border: 1px solid red;
+// border: 1px solid red;
  width: 80%;
 }
 

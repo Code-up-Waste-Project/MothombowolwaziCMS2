@@ -12,7 +12,8 @@
 
   <div class="children-slides">
     <ion-button id="close"  fill="clear"  slot="icon-only" (click)="goAway()" ><ion-icon name="close-circle-outline"></ion-icon></ion-button>
-    <h2>  <img id="reclaimer" src="../../assets/ReclaimerPopup.svg">Reclaimer Information</h2>
+    <!-- <img id="reclaimer" src="../../assets/ReclaimerPopup.svg"> -->
+    <h2>  Reclaimer Information</h2>
     <img id="image" src="../../assets/recycle.svg">
   
    
@@ -60,7 +61,7 @@
                       <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
                         <h4>{{ records.name }}</h4>
                         <p>{{ records.contact }}</p>
-                      <p>{{ records.IDnumber }}</p>
+                      <!-- <p>{{ records.IDnumber }}</p> -->
                       <p>{{ records.reclaimercode }}</p>
                       </ion-card>
                     </div>

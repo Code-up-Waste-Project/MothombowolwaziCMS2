@@ -300,7 +300,7 @@ ion-title {
         position: absolute;
         top: 0;
 
-        //font-size: 2em;
+        font-size: 2em;
         padding-left: 3%;
         font-weight: bolder;
         #reclaimer {
@@ -346,10 +346,10 @@ ion-title {
             position: absolute;
             top: 5px;
             left: 47%;
-            width: 2px;
+            width: 1px;
             height: 80%;
             content: "";
-            background: #ddd;
+            background: rgba(221, 221, 221, 0.685);
             border-radius: 50px;
           }
         }
@@ -440,6 +440,14 @@ ion-title {
                   display: flex;
                   justify-content: center;
                   align-content: center;
+                  //border: 2px solid blue;
+                  position: absolute;
+                  bottom: 0;
+                  width: 100%;
+                  padding: 6px;
+                  background: white !important;
+
+  
                 }
               }
             }
@@ -525,19 +533,28 @@ ion-title {
               .items {
                 height: 100%;
                 width: 100%;
-
+                position: relative;
                 display: flex;
                 flex-direction: column;
 
                 .individuals {
                   flex: 0 0 80%;
-                  //  border: 3px solid black;
+                  overflow-y: scroll;
+                //  border: 2px solid red;
                 }
                 .btn-new-driver {
                   flex-basis: 20%;
                   display: flex;
                   justify-content: center;
                   align-content: center;
+                  //border: 2px solid purple;
+                  position: relative;
+               bottom: 7%;
+               background: white;
+                  #driver {
+                   // border: 1px solid blue;
+                    margin-top: 2%;
+                  }
                 }
               }
             }
@@ -553,14 +570,14 @@ ion-title {
 
               //  border: 2px solid red;
               .form {
-                //border: 2px solid blue;
+              //  border: 2px solid blue;
                 height: 90% !important;
                 display: flex;
                 flex-direction: column;
                 // justify-content: center;
                 position: relative;
                 .profileholder {
-                  // border: 1px solid red;
+                  //@include border: 1px solid red;
                   //    background: pink;
                   height: 20% !important;
                   display: flex;
@@ -568,39 +585,50 @@ ion-title {
                   align-content: center;
                   justify-content: center;
                   align-items: center;
-                  position: absolute;
-                  top: 0;
+                  position: relative;
+                  top: 5%;
                   width: 100%;
+
+                  img {
+                  
+                    object-fit: cover;
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    border: 1px solid gray !important;
+
+                  }
+                  #Addd {
+                    //border: 2px solid blue;
+                    position: absolute;
+                    top: 60%;
+                    left: 55%;
+                  }
+                  ion-button {
+                    position: absolute;
+                    top: 40%;
+                    left: 40%;
+                    font-size: 1em;
+                  }
                   .profile {
                     width: 70px;
                     height: 70px;
                     border-radius: 50%;
-                    background: gray;
+                    // background: gray;
                     position: relative;
-                    border: 1px solid rgb(219, 219, 219);
-                    img {
-                      border-radius: 50%;
-                      object-fit: cover;
-                      height: 100%;
-                      width: 100%;
-                    }
-                    ion-button {
-                      position: absolute;
-                      top: 40%;
-                      left: 40%;
-                      font-size: 1em;
-                    }
+                
+                   
                   }
                 }
                 .inputs {
-                  //   border: 3px solid rgb(162, 240, 16);
+                   // border: 3px solid rgb(162, 240, 16);
                   height: 60%;
                   width: 100%;
                   display: flex;
                   flex-direction: column;
                   align-content: center;
                   position: absolute;
-                  top: 20%;
+                  top: 30%;
                   align-items: center;
 
                   input {
@@ -1400,9 +1428,52 @@ font-family: 'lato';
 
 
 
+  
+@media screen and (max-width: 1440px) {
+  .btn-slides {
+  //border: 1px solid blue;
+  height: 40px;
+  position: absolute !important;
+  bottom: 5px !important;
+}
+.form {
+  //background: red !important;
+
+  .profileholder {
+    border: 1px solid white;
+    margin: 0 !important;
+    margin-top: -2% !important;
+  }
+  form {
+    //border: 1px solid green;
+    .inputs {
+     // border: 1px solid rgb(219, 12, 226);
+      margin-top: -15px !important;
+    }
+  }
+}
+
+.profileholder {
+ // border: 1px solid red;
+  position: relative;
+  margin: 0 !important;
+  margin-top: -2% !important;
+  height: 20% !important;
+  img {
+    border: 1px solid rgb(209, 206, 206);
+    border-radius: 50px;
+
+  }
+  #Addd {
+   // border: 1px solid rgb(68, 37, 240);
+    position: absolute;
+    top: 50%;
+    right: 35%;
+  }
+}
 
 
-
+}
 
 
 
