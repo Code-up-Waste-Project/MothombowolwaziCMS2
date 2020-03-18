@@ -108,7 +108,7 @@ export class ProfilePage implements OnInit {
        
       this.db.collection('userprofiles').doc(firebase.auth().currentUser.uid).set({
         name: this.profile.name,
-        surname: this.profile.surname,
+        // surname: this.profile.surname,
         email: this.profile.email,
         number:this.profile.number,
         position: this.profile.position,
