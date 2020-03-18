@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="openCamera()" fill="clear">
-        <ion-icon name="arrow-back"></ion-icon>
+      <!-- <ion-button (click)="openCamera()" fill="clear"> -->
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
         
-      </ion-button>
+      <!-- </ion-button> -->
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button> Outbound Driver's Profile & History
@@ -32,7 +32,7 @@
       <!-- <p id="email">Fumza@gmail.com</p> -->
       <p>{{ driver.numbers }}</p>
       <p id="adres">{{ driver.companyaddress }}</p>
-      <button (click)="switch()">Edit Profile</button>
+      <button (click)="switch()" (click)="SaveUpdates()">Edit Profile</button>
     </div><!-- display -->
 
 

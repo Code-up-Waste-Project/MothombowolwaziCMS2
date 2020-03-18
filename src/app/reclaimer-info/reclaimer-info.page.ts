@@ -502,7 +502,7 @@ export class ReclaimerInfoPage implements OnInit {
     }
 
     SaveUpdates() {
-      this.db.collection('outbound').doc(this.id).update({
+      this.db.collection('reclaimers').doc(this.id).update({
         name: this.name,
         contact: this.contact,
         IDnumber: this.IDnumber,

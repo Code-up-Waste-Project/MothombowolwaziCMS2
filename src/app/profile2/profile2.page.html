@@ -11,7 +11,7 @@
           <div id="color-three"></div>
         </div>
         <div class="user-profile">
-          <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
+          <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="">
           <img *ngIf="profile.image" src="{{ profile.image }}" alt="">
           
             <label for="disapear">
@@ -42,7 +42,7 @@
           <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address" [(ngModel)]="profile.addres"></textarea>
         </div>
         <div id="the-button">
-          <ion-button (click)="users()" disabled="{{buttonDisabled}}" >SAVE</ion-button>
+           <ion-button (click)="users()" disabled="{{buttonDisabled}}" >SAVE</ion-button> <!-- -->
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
     </div>
     <div class="the-profile">
       <div class="the-circle">
-        <img *ngIf="!profile.image" src="../../assets/girl.jfif" alt="">
+        <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="">
         <img *ngIf="profile.image" src="{{ profile.image }}" alt="">
       </div>
     </div>
