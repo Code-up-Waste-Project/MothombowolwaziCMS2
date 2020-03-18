@@ -107,6 +107,9 @@ margin-top: 3%;
             padding-top: 5px;
         }
     }
+    .active, .names:hover{
+      border: 2px solid red;
+    }
     .image {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.048), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
        // border: 1px solid red;
@@ -195,7 +198,7 @@ ion-icon {
 //right div ebds here
 .inputs {
             width: 100%;
-            margin-top: 3%;
+            // margin-top: 3%;
             border-radius: 50px;
             background: #EAEAEA;
             padding: 12px;
@@ -360,6 +363,16 @@ to {
 
 @media screen and (max-width:1024px){
 
+  .inputs {
+    width: 100%;
+    // margin-top: 3%;
+    border-radius: 50px;
+    background: #EAEAEA;
+    padding: 12px;
+    border: none !important;
+    outline: none;
+    font-size: 13px;
+  }
 
   .mask{
     height: 100%;
@@ -385,7 +398,7 @@ to {
   display: block;
   position: absolute;
   left: 528px;
-  top: 593px;
+  top: 504px;
 
 }
   
@@ -694,6 +707,7 @@ to {
 .user-div{
   height: 54px;
   margin: 10px;
+  width: 296px;
   background-color: rgba(0, 0, 0, 0);
  border: 1px solid #AEA8A8;
  input{
@@ -766,7 +780,7 @@ to {
   display: block;
   position: absolute;
   left: 610px;
-  top: 282px;
+  top: 171px; 
 
 }
   
