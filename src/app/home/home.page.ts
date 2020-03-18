@@ -1387,7 +1387,7 @@ newdatereclaimerM;
   UpdatePaper() {
     // Update Price History
     this.db.collection("pricehistory").doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").doc().set({
-      timePaper: moment().format('MMMM Do YYYY, h:mm'),
+      timePaper: moment().format('lll'),
       pap005: this.PAP005price,
       pap007: this.PAP007price,
       pap001: this.PAP001price,
@@ -1401,7 +1401,7 @@ newdatereclaimerM;
 
     // To update price :
     this.db.collection("price").doc("uk3Rla3tt9xgd8NivPJ6").update({
-      timePaper: moment().format('MMMM Do YYYY, h:mm'),
+      timePaper: moment().format('lll'),
      
       newpap005: this.PAP005price,
       newpap007: this.PAP007price,
@@ -1434,7 +1434,7 @@ newdatereclaimerM;
   UpdatePlastic() {
     // Update Price History
     this.db.collection("pricehistory").doc("7O6KqClxLD780ltfC6i5").collection("plastic").doc().set({
-      timePlastic2: moment().format('MMMM Do YYYY, h:mm'),
+      timePlastic2: moment().format('lll'),
  
       hd001: this.HD001price,
       ld001: this.LD001price,
@@ -1453,7 +1453,7 @@ newdatereclaimerM;
 
     // To update price :
     this.db.collection("price").doc("7O6KqClxLD780ltfC6i5").update({
-      timePlastic2: moment().format('MMMM Do YYYY, h:mm'),
+      timePlastic2: moment().format('lll'),
  
       newhd001: this.HD001price,
       newld001: this.LD001price,
@@ -1493,14 +1493,14 @@ newdatereclaimerM;
   UpdateAlum() {
     // Update Price History
     this.db.collection("pricehistory").doc("ChHHlFcUFzucHOzPpEgE").collection("aluminium").doc().set({
-      timePlastic: moment().format('MMMM Do YYYY, h:mm'),
+      timePlastic: moment().format('lll'),
       nfal01: this.oldpriceNFAL01,
       oldnfal01: this.oldpriceNFAL01,
     })
 
     // To update price :
     this.db.collection("price").doc("ChHHlFcUFzucHOzPpEgE").update({
-      timePlastic: moment().format('MMMM Do YYYY, h:mm'),
+      timePlastic: moment().format('lll'),
       oldnfal01: this.oldpriceNFAL01,
       newnfal01: this.NFAL01price,
       
@@ -1522,7 +1522,7 @@ newdatereclaimerM;
 
   Updateglass() {
     this.db.collection("pricehistory").doc("8FtqTT4N4mFpbI4DKc25").collection("glass").doc().set({
-      timeglass:moment().format('MMMM Do YYYY, h:mm'),
+      timeglass:moment().format('lll'),
       gl001: this.GH001price,
       oldgl001: this.oldpriceglass,
       nameglass: this.GH001price
@@ -1531,7 +1531,7 @@ newdatereclaimerM;
 
         // To update price :
         this.db.collection("price").doc("8FtqTT4N4mFpbI4DKc25").update({
-          timeglass:moment().format('MMMM Do YYYY, h:mm'),
+          timeglass:moment().format('lll'),
           newgl001: this.GH001price,
           oldgl001: this.oldpriceglass,
           nameglass: this.GH001price

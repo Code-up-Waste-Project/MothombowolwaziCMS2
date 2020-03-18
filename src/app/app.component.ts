@@ -190,7 +190,6 @@ export class AppComponent implements OnInit {
                             console.log('Newadmins', this.Newadmin);
                             this.Newadmin.push(item);
                             this.Newadmin.splice(1, 1);
-
                         }
                     });
                 });
@@ -213,20 +212,11 @@ export class AppComponent implements OnInit {
     getAuth() {
         firebase.auth().onAuthStateChanged((user) => {
             console.log('Component authstate triggerd');
-
-
-
-
-            
+      
             if (user) {
                 this.router.navigateByUrl('/home');
-
-
-
-                this.db.collection('userprofiles').onSnapshot(snapshot => {
-                
+                this.db.collection('userprofiles').onSnapshot(snapshot => {      
                     snapshot.forEach(Element => {
-   
                         this.myadmis.push(Element.data());
                         //  this.Newadmin =[]
                         // console.log(Element.data());
@@ -237,11 +227,9 @@ export class AppComponent implements OnInit {
                             console.log('Newadmins', this.Newadmin);
                             this.Newadmin.push(item);
                             this.Newadmin.splice(1, 1);
-
                         }
                     });
                 });
-
             } else {
                 this.router.navigateByUrl('/login');
             }
