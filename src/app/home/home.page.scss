@@ -1815,9 +1815,11 @@ height: 17%;
 }
 
 .the-date{
-  font-size: 15px;
+  font-size: 0.8em;
   text-align: center;
   color: grey;
+  font-family: 'lato';
+  padding-left: 5px;
 }
 
 .the-date-head{
@@ -1826,8 +1828,18 @@ height: 17%;
   text-align: center;
   color: rgb(100, 100, 100);
   font-family: 'lato';
+ // border: 1px solid red;
 }
-
+.meshy:nth-child(odd) {
+  //background: blue;
+  // font-family: 'lato';
+  // font-size: 1em;
+}
+// .the-date-head:nth-child(even) {
+//   background: blue;
+//   // font-family: 'lato';
+//   // font-size: 1em;
+// }
 
 .chevron-drop-down1, #chevron-drop-down2, #chevron-drop-down3, #chevron-drop-down4{
   font-size: 20px;
