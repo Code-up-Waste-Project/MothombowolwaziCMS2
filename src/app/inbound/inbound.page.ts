@@ -46,6 +46,7 @@ export class InboundPage implements OnInit {
   recordinbounddisplays = [];
   recordinbounddisplaysHome = [];
   recordinbounddisplaysz = [];
+  recordinbounddisplays2 = [];
 
   testArray = [];
   PDFArray = {};
@@ -92,6 +93,19 @@ export class InboundPage implements OnInit {
   PET001mass;
   PET003mass;
   PET005mass;
+
+  GH001mass2;
+  NFAL01mass2;
+  PAP005mass2;
+  PAP007mass2;
+  PAP001mass2;
+  PAP003mass2;
+  HD001mass2;
+  LD001mass2;
+  LD003mass2;
+  PET001mass2;
+  PET003mass2;
+  PET005mass2;
 
   storageGH001;
   storageNFAL01;
@@ -278,6 +292,7 @@ export class InboundPage implements OnInit {
       // console.log('Newadmins', this.Newadmin);
     });
 
+    this.sortTable();
     this.getMasses();
     this.pdfmakerFirebase();
 
@@ -328,8 +343,7 @@ inboundHistory(){
   this.route.navigate(['inbound-history']);
 }
   ngOnInit() {
-    this.sortTable()
-    
+  
   }
   switchBack() {
     document.getElementById('driverDetailz').style.display = 'none';
@@ -348,19 +362,23 @@ inboundHistory(){
         this.truckcode = element.data().truckcode;
         // this.DriverName = element.data().DriverName;
 
-        this.recordinbounddisplaysz.push({data: element.data(), id : element.id});
+        // this.recordinbounddisplaysz.push({data: element.data(), id : element.id});
+        this.recordinbounddisplaysz.push(element.data());
         // console.log(element.data());
-        console.log(this.recordinbounddisplaysz);
+        // console.log(this.recordinbounddisplaysz);
 
-        let order = this.recordinbounddisplaysz.sort((a,b) => {
-          return (b.data.timesOrdered) - (a.data.timesOrdered)
-        });
+        this.recordinbounddisplays2.push(element.data());
+        // console.log(this.recordinbounddisplays2);
+
+        // let order = this.recordinbounddisplaysz.sort((a,b) => {
+        //   return (b.data.timesOrdered) - (a.data.timesOrdered)
+        // });
 
         this.usersz.push(
           this.truckcode,
           // this.DriverName
           )
-        console.log(this.usersz);
+        // console.log(this.usersz);
       })
     })
   }
@@ -372,7 +390,7 @@ inboundHistory(){
 
         this.recordinbounddisplaysHome.push(element.data())
 
-        console.log(this.recordinbounddisplaysHome);
+        // console.log(this.recordinbounddisplaysHome);
 
         let time = {};
         let GH001storagemass = {};
@@ -546,18 +564,18 @@ inboundHistory(){
 
   CheckInputsEmptyString() {
     if (
-        this.GH001mass === undefined &&
-        this.NFAL01mass === undefined &&
-        this.PAP005mass === undefined &&
-        this.PAP007mass === undefined &&
-        this.PAP001mass === undefined &&
-        this.PAP003mass === undefined &&
-        this.HD001mass === undefined &&
-        this.LD001mass === undefined &&
-        this.LD003mass === undefined &&
-        this.PET001mass === undefined &&
-        this.PET003mass === undefined &&
-        this.PET005mass === undefined
+        this.GH001mass2 === undefined &&
+        this.NFAL01mass2 === undefined &&
+        this.PAP005mass2 === undefined &&
+        this.PAP007mass2 === undefined &&
+        this.PAP001mass2 === undefined &&
+        this.PAP003mass2 === undefined &&
+        this.HD001mass2 === undefined &&
+        this.LD001mass2 === undefined &&
+        this.LD003mass2 === undefined &&
+        this.PET001mass2 === undefined &&
+        this.PET003mass2 === undefined &&
+        this.PET005mass2 === undefined
       ) {
         this.presentAlertcheckInputs();
       } else {
@@ -588,109 +606,109 @@ inboundHistory(){
 
   checkinputfields() {
     // GH001mass
-    if (this.GH001mass === null) {
-      this.GH001mass = 0;
-    } else if (this.GH001mass === undefined) {
-      this.GH001mass = 0;
+    if (this.GH001mass2 === null) {
+      this.GH001mass2 = 0;
+    } else if (this.GH001mass2 === undefined) {
+      this.GH001mass2 = 0;
     }
     // console.log(this.GH001mass);
 
     // NFAL01mass
-    if (this.NFAL01mass === null) {
-      this.NFAL01mass = 0;
+    if (this.NFAL01mass2 === null) {
+      this.NFAL01mass2 = 0;
     }
-    if (this.NFAL01mass === undefined) {
-      this.NFAL01mass = 0;
+    if (this.NFAL01mass2 === undefined) {
+      this.NFAL01mass2 = 0;
     }
     // console.log(this.NFAL01mass);
 
     // PAP005mass
-    if (this.PAP005mass === null) {
-      this.PAP005mass = 0;
+    if (this.PAP005mass2 === null) {
+      this.PAP005mass2 = 0;
     }
-    if (this.PAP005mass === undefined) {
-      this.PAP005mass = 0;
+    if (this.PAP005mass2 === undefined) {
+      this.PAP005mass2 = 0;
     }
     // console.log(this.PAP005mass);
 
     // PAP007mass
-    if (this.PAP007mass === null) {
-      this.PAP007mass = 0;
+    if (this.PAP007mass2 === null) {
+      this.PAP007mass2 = 0;
     }
-    if (this.PAP007mass === undefined) {
-      this.PAP007mass = 0;
+    if (this.PAP007mass2 === undefined) {
+      this.PAP007mass2 = 0;
     }
     // console.log(this.PAP007mass);
 
     // PAP001mass
-    if (this.PAP001mass === null) {
-      this.PAP001mass = 0;
+    if (this.PAP001mass2 === null) {
+      this.PAP001mass2 = 0;
     }
-    if (this.PAP001mass === undefined) {
-      this.PAP001mass = 0;
+    if (this.PAP001mass2 === undefined) {
+      this.PAP001mass2 = 0;
     }
     // console.log(this.PAP001mass);
 
     // PAP003mass
-    if (this.PAP003mass === null) {
-      this.PAP003mass = 0;
+    if (this.PAP003mass2 === null) {
+      this.PAP003mass2 = 0;
     }
-    if (this.PAP003mass === undefined) {
-      this.PAP003mass = 0;
+    if (this.PAP003mass2 === undefined) {
+      this.PAP003mass2 = 0;
     }
     // console.log(this.PAP003mass);
 
     // HD001mass
-    if (this.HD001mass === null) {
-      this.HD001mass = 0;
+    if (this.HD001mass2 === null) {
+      this.HD001mass2 = 0;
     }
-    if (this.HD001mass === undefined) {
-      this.HD001mass = 0;
+    if (this.HD001mass2 === undefined) {
+      this.HD001mass2 = 0;
     }
     // console.log(this.HD001mass);
 
     // LD001mass
-    if (this.LD001mass === null) {
-      this.LD001mass = 0;
+    if (this.LD001mass2 === null) {
+      this.LD001mass2 = 0;
     }
-    if (this.LD001mass === undefined) {
-      this.LD001mass = 0;
+    if (this.LD001mass2 === undefined) {
+      this.LD001mass2 = 0;
     }
     // console.log(this.LD001mass);
 
     // LD003mass
-    if (this.LD003mass === null) {
-      this.LD003mass = 0;
+    if (this.LD003mass2 === null) {
+      this.LD003mass2 = 0;
     }
-    if (this.LD003mass === undefined) {
-      this.LD003mass = 0;
+    if (this.LD003mass2 === undefined) {
+      this.LD003mass2 = 0;
     }
     // console.log(this.LD003mass);
 
     // PET001mass
-    if (this.PET001mass === null) {
-      this.PET001mass = 0;
+    if (this.PET001mass2 === null) {
+      this.PET001mass2 = 0;
     }
-    if (this.PET001mass === undefined) {
-      this.PET001mass = 0;
+    if (this.PET001mass2 === undefined) {
+      this.PET001mass2 = 0;
     }
     // console.log(this.PET001mass);
 
     // PET003mass
-    if (this.PET003mass === null) {
-      this.PET003mass = 0;
+    if (this.PET003mass2 === null) {
+      this.PET003mass2 = 0;
     }
-    if (this.PET003mass === undefined) {
-      this.PET003mass = 0;
+    if (this.PET003mass2 === undefined) {
+      this.PET003mass2 = 0;
     }
     // console.log(this.PET003mass);
 
     // PET005mass
-    if (this.PET005mass === null) {
-      this.PET005mass = 0;
+    if (this.PET005mass2 === null) {
+      this.PET005mass2 = 0;
     }
-    if (this.PET005mass === undefined) {
-      this.PET005mass = 0;
+    if (this.PET005mass2 === undefined) {
+      this.PET005mass2 = 0;
     }
     // console.log(this.PET005mass);
 
@@ -699,95 +717,95 @@ inboundHistory(){
   }
 
   CalcTotals() {
-    this.ovarallMass = +parseFloat(this.GH001mass) +
-      +parseFloat(this.NFAL01mass) +
-      +parseFloat(this.HD001mass) +
-      +parseFloat(this.LD001mass) +
-      +parseFloat(this.LD003mass) +
-      +parseFloat(this.PET001mass) +
-      +parseFloat(this.PET003mass) +
-      +parseFloat(this.PAP005mass) +
-      +parseFloat(this.PAP007mass) +
-      +parseFloat(this.PAP001mass) +
-      +parseFloat(this.PAP003mass) +
-      +parseFloat(this.PET005mass);
+    this.ovarallMass = +parseFloat(this.GH001mass2) +
+      +parseFloat(this.NFAL01mass2) +
+      +parseFloat(this.HD001mass2) +
+      +parseFloat(this.LD001mass2) +
+      +parseFloat(this.LD003mass2) +
+      +parseFloat(this.PET001mass2) +
+      +parseFloat(this.PET003mass2) +
+      +parseFloat(this.PAP005mass2) +
+      +parseFloat(this.PAP007mass2) +
+      +parseFloat(this.PAP001mass2) +
+      +parseFloat(this.PAP003mass2) +
+      +parseFloat(this.PET005mass2);
 
       console.log(this.ovarallMass);
 
-    console.log(this.GH001mass)
-     console.log(this.NFAL01mass)
-     console.log(this.PAP005mass)
-     console.log(this.PAP007mass)
-     console.log(this.PAP001mass)
-     console.log(this.PAP003mass)
-     console.log(this.HD001mass)
-     console.log(this.LD001mass)
-     console.log(this.LD003mass)
-     console.log(this.PET001mass)
-     console.log(this.PET003mass)
-     console.log(this.PET005mass);
+    // console.log(this.GH001mass2)
+    //  console.log(this.NFAL01mass2)
+    //  console.log(this.PAP005mass2)
+    //  console.log(this.PAP007mass2)
+    //  console.log(this.PAP001mass2)
+    //  console.log(this.PAP003mass2)
+    //  console.log(this.HD001mass2)
+    //  console.log(this.LD001mass2)
+    //  console.log(this.LD003mass2)
+    //  console.log(this.PET001mass2)
+    //  console.log(this.PET003mass2)
+    //  console.log(this.PET005mass2);
 
       this.presentAlertupdate();
   }
 
   saveDatafirebase() {
     // storageGH001
-    this.storageGH001 = this.GH001storagemass + this.GH001mass;
+    this.storageGH001 = this.GH001storagemass + this.GH001mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({GL001: this.storageGH001});
     // console.log(this.storageGH001);
 
     // storage NFAL01;
-    this.storageNFAL01 = this.NFAL01storagemass + this.NFAL01mass;
+    this.storageNFAL01 = this.NFAL01storagemass + this.NFAL01mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({NFAL01: this.storageNFAL01});
     // console.log(this.storageNFAL01);
 
     // storage PAP005;
-    this.storagePAP005 = this.PAP005storagemass + this.PAP005mass;
+    this.storagePAP005 = this.PAP005storagemass + this.PAP005mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP005: this.storagePAP005});
     // console.log(this.storagePAP005);
 
     // storage PAP007;
-    this.storagePAP007 = this.PAP007storagemass + this.PAP007mass;
+    this.storagePAP007 = this.PAP007storagemass + this.PAP007mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP007: this.storagePAP007});
     // console.log(this.storagePAP007);
 
     // storage PAP001;
-    this.storagePAP001 = this.PAP001storagemass + this.PAP001mass;
+    this.storagePAP001 = this.PAP001storagemass + this.PAP001mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP001: this.storagePAP001});
     // console.log(this.storagePAP001);
 
     // storage PAP003;
-    this.storagePAP003 = this.PAP003storagemass + this.PAP003mass;
+    this.storagePAP003 = this.PAP003storagemass + this.PAP003mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PAP003: this.storagePAP003});
     // console.log(this.storagePAP003);
 
     // storage HD001;
-    this.storageHD001 = this.HD001storagemass + this.HD001mass;
+    this.storageHD001 = this.HD001storagemass + this.HD001mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({HD001: this.storageHD001});
     // console.log(this.storageHD001);
 
     // storage LD001;
-    this.storageLD001 = this.LD001storagemass + this.LD001mass;
+    this.storageLD001 = this.LD001storagemass + this.LD001mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({LD001: this.storageLD001});
     // console.log(this.storageLD001);
 
     // storage LD003;
-    this.storageLD003 = this.LD003storagemass + this.LD003mass;
+    this.storageLD003 = this.LD003storagemass + this.LD003mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({LD003: this.storageLD003});
     // console.log(this.storageLD003);
 
     // storage PET001;
-    this.storagePET001 = this.PET001storagemass + this.PET001mass;
+    this.storagePET001 = this.PET001storagemass + this.PET001mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PET001: this.storagePET001});
     // console.log(this.storagePET001);
 
     // storage PET003;
-    this.storagePET003 = this.PET003storagemass + this.PET003mass;
+    this.storagePET003 = this.PET003storagemass + this.PET003mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PET003: this.storagePET003});
     // console.log(this.storagePET003);
 
     // storage PET005;
-    this.storagePET005 = this.PET005storagemass + this.PET005mass;
+    this.storagePET005 = this.PET005storagemass + this.PET005mass2;
     this.db.collection("storage").doc("hD3GRe9MMPFB401vA7kS").update({PEP005: this.storagePET005});
     // console.log(this.storagePET005);
 
@@ -850,32 +868,36 @@ inboundHistory(){
       this.resultID = result.id
       // console.log(resultID);
       this.db.collection('inbounds').doc(this.resultID).update({
-        id: this.resultID
+        id: this.resultID,
+      }).then(res => {
+        this.addMass22();
+        console.log('im clicked');
       })
-      this.SaveInbound2(this.resultID);
+      // this.SaveInbound2(this.resultID);
+      
     })
   }
 
   addMass22() {
     this.db.collection('inboundsMass').add({
       date: moment(new Date()).format('MMMM DD YYYY'),
-      GH001: this.GH001mass,
-      NFAL01: this.NFAL01mass,
-      PAP005: this.PAP005mass,
-      PAP007: this.PAP007mass,
-      PAP001: this.PAP001mass,
-      PAP003: this.PAP003mass,
-      HD001: this.HD001mass,
-      LD001: this.LD001mass,
-      LD003: this.LD003mass,
-      PET00: this.PET001mass,
-      PET003: this.PET003mass,
-      PET005: this.PET005mass,
+      GH001: this.GH001mass2,
+      NFAL01: this.NFAL01mass2,
+      PAP005: this.PAP005mass2,
+      PAP007: this.PAP007mass2,
+      PAP001: this.PAP001mass2,
+      PAP003: this.PAP003mass2,
+      HD001: this.HD001mass2,
+      LD001: this.LD001mass2,
+      LD003: this.LD003mass2,
+      PET00: this.PET001mass2,
+      PET003: this.PET003mass2,
+      PET005: this.PET005mass2,
       driverID: this.resultID,
       ovarallMass: this.ovarallMass
     }).then(result => {
       // console.log(result);
-      console.log(result.id);
+      // console.log(result.id);
       this.resultID = result.id
       // console.log(resultID);
       this.db.collection('inboundsMass').doc(this.resultID).update({
@@ -887,18 +909,18 @@ inboundHistory(){
   SaveInbound2(id) {
     this.db.collection('inboundsMass').add({
       date: moment(new Date()).format('MMMM DD YYYY'),
-      GH001: this.GH001mass,
-        NFAL01: this.NFAL01mass,
-        PAP005: this.PAP005mass,
-        PAP007: this.PAP007mass,
-        PAP001: this.PAP001mass,
-        PAP003: this.PAP003mass,
-        HD001: this.HD001mass,
-        LD001: this.LD001mass,
-        LD003: this.LD003mass,
-        PET00: this.PET001mass,
-        PET003: this.PET003mass,
-        PET005: this.PET005mass,
+      GH001: this.GH001mass2,
+        NFAL01: this.NFAL01mass2,
+        PAP005: this.PAP005mass2,
+        PAP007: this.PAP007mass2,
+        PAP001: this.PAP001mass2,
+        PAP003: this.PAP003mass2,
+        HD001: this.HD001mass2,
+        LD001: this.LD001mass2,
+        LD003: this.LD003mass2,
+        PET00: this.PET001mass2,
+        PET003: this.PET003mass2,
+        PET005: this.PET005mass2,
         driverID: id,
         ovarallMass: this.ovarallMass
     }).then(result => {
@@ -921,11 +943,11 @@ inboundHistory(){
       this.presentAlertPhoneValidation();
     } else {
       // this.showInputs()
-      console.log('im working');
+      // console.log('im working');
       this.PhoneNumbersInput = this.PhoneNumbersInput;
     }
       // console.log(this.phoneVal);
-      console.log(this.PhoneNumbersInput);
+      // console.log(this.PhoneNumbersInput);
   }
 
   async presentAlertPhoneValidation() {
@@ -1063,7 +1085,7 @@ inboundHistory(){
           handler: () => {
             this.saveDatafirebase();
             this.createDriver();
-            this.clearInputs();
+            // this.clearInputs();
             this.route.navigateByUrl('/inbound');
             console.log('Confirm Okay');
           }
@@ -1074,18 +1096,18 @@ inboundHistory(){
   }
 
   clearInputs() {
-    this.GH001mass = '';
-    this.NFAL01mass = '';
-    this.PAP005mass = '';
-    this.PAP007mass = '';
-    this.PAP001mass = '';
-    this.PAP003mass = '';
-    this.HD001mass = '';
-    this.LD001mass = '';
-    this.LD003mass = '';
-    this.PET001mass = '';
-    this.PET003mass = '';
-    this.PET005mass = '';
+    this.GH001mass2 = '';
+    this.NFAL01mass2 = '';
+    this.PAP005mass2 = '';
+    this.PAP007mass2 = '';
+    this.PAP001mass2 = '';
+    this.PAP003mass2 = '';
+    this.HD001mass2 = '';
+    this.LD001mass2 = '';
+    this.LD003mass2 = '';
+    this.PET001mass2 = '';
+    this.PET003mass2 = '';
+    this.PET005mass2 = '';
   }
 
   async presentAlertupdatedelete() {
@@ -1162,9 +1184,9 @@ inboundHistory(){
         this.searchResults = [];
       }
 
-      console.log(this.usersz);
-      console.log(this.recordinbounddisplaysz);
-      console.log(this.searchResults);
+      // console.log(this.usersz);
+      // console.log(this.recordinbounddisplaysz);
+      // console.log(this.searchResults);
       
     }
 
