@@ -5,7 +5,7 @@
         <ion-icon id="edit-icon2" src="../../assets/close.svg" alt=""></ion-icon>
       </div>
       <div id="user-form">
-        <div class="the-input-circles"> 
+        <div class="the-input-circles">
           <div id="color-one"></div>
           <div id="color-two"></div>
           <div id="color-three"></div>
@@ -13,36 +13,38 @@
         <div class="user-profile">
           <img *ngIf="!profile.image" src="../../assets/mthombologo (1).png" alt="">
           <img *ngIf="profile.image" src="{{ profile.image }}" alt="">
-          
-            <label for="disapear">
-              <ion-icon id="Addd" name="camera">
+
+          <label for="disapear">
+            <ion-icon id="Addd" name="camera">
               <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
             </ion-icon>
-            </label>
+          </label>
         </div>
         <div class="user-inputs">
           <div class="user-div">
             <div class="input-icon">
               <ion-icon name="person"></ion-icon>
             </div>
-          <input type="text" placeholder="Name and Surname" [(ngModel)]="profile.name">
-        </div>
-        <div class="user-div">
-          <div class="input-icon">
-            <ion-icon name="call"></ion-icon>
+            <input type="text" placeholder="Name and Surname" [(ngModel)]="profile.name">
           </div>
-        <input type="tel" placeholder="Phone No." [(ngModel)]="profile.number" maxlength="10" (keyup)="getPhoneInput($event)">
-      </div>
-      <div class="user-div">
-        <div class="input-icon">
-          <ion-icon name="body"></ion-icon>
-        </div>
-      <input type="text" placeholder="Role" [(ngModel)]="profile.position">
-    </div>
-          <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address" [(ngModel)]="profile.addres"></textarea>
+          <div class="user-div">
+            <div class="input-icon">
+              <ion-icon name="call"></ion-icon>
+            </div>
+            <input type="tel" placeholder="Phone No." [(ngModel)]="profile.number" maxlength="10"
+              (keyup)="getPhoneInput($event)">
+          </div>
+          <div class="user-div">
+            <div class="input-icon">
+              <ion-icon name="body"></ion-icon>
+            </div>
+            <input type="text" placeholder="Role" [(ngModel)]="profile.position">
+          </div>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Physical Address"
+            [(ngModel)]="profile.addres"></textarea>
         </div>
         <div id="the-button">
-           <ion-button (click)="users()" disabled="{{buttonDisabled}}" >SAVE</ion-button> <!-- -->
+          <ion-button (click)="users()" disabled="{{buttonDisabled}}">SAVE</ion-button> <!-- -->
         </div>
       </div>
     </div>
@@ -59,7 +61,7 @@
       </div>
     </div>
     <div class="the-name">
-      <h1  id="namey">{{ profile.name }}</h1>
+      <h1 id="namey">{{ profile.name }}</h1>
     </div>
     <div class="location">
       <ion-icon name="pin"></ion-icon>

@@ -443,7 +443,7 @@ export class ReclaimerPage implements OnInit {
       this.testArrays = [];
       snapshot.forEach(element => {
 
-        this.testArrays.push(element.data())
+        this.testArrays.push({data:element.data(), id : element.id})
         console.log(this.testArrays);
 
         let id = {};
@@ -2132,5 +2132,630 @@ allocate() {
 viewReclaimerHistory() {
   this.route.navigate(['reclaimerHistory']);
 }
+
+
+switchView(id) {
+  this.PullUserInfor(id);
+  // this.pullDrive();
+  this.reclaimer = this.db.collection('reclaimers').doc(id);
+  this.reclaimer.get().then((documentSnapshot) => {
+    this.ViewReclaimer = [];
+    this.ViewReclaimer.push(documentSnapshot.data());
+    console.log(this.ViewReclaimer);
+  });
+  this.db.collection('reclaimersMass').where('reclaimerID', '==', id).onSnapshot(snapshot => {
+    this.ViewReclaimerMass = [];
+    snapshot.forEach(element => {
+      // this.ViewReclaimerMass = [];
+      console.log(element.data());
+
+    this.ViewReclaimerPDF.push(element.data())
+    // console.log(this.ViewReclaimerPDF);
+
+    this.idz = element.id;
+    //  console.log(this.idz);
+    this.productID = element.data().productcode;
+    // console.log(this.productID);
+    this.overallMass = element.data().OverallMass;
+    this.overallMassz = (String(this.overallMass).substring(0, 6));
+    this.OverallSubTotal = element.data().OverallSubTotal;
+    this.OverallSubTotalz = (String(this.OverallSubTotal).substring(0, 6));
+    this.OverallVat = element.data().OverallVat;
+    this.OverallVatz = (String(this.OverallVat).substring(0, 6));
+    this.OverallGrandTotal = element.data().OverallGrandTotal;
+    this.OverallGrandTotalz = (String(this.OverallGrandTotal).substring(0, 6));
+
+    this.ViewReclaimerMass.push({
+      OverallMass: this.overallMassz,
+      OverallSubTotal: this.OverallSubTotalz,
+      OverallVat: this.OverallVatz,
+      OverallGrandTotal: this.OverallGrandTotalz,
+      reclaimerID: this.id,
+      productID: this.productID
+    });
+      console.log(this.ViewReclaimerMass);
+    
+      this.GH001storagemass = element.data().GH001;
+      this.GH001storagemassz = (String(this.GH001storagemass).substring(0, 6));
+      this.NFAL01storagemass = element.data().NFAL01;
+      this.NFAL01storagemassz = (String(this.NFAL01storagemass).substring(0, 6));
+      this.PAP005storagemass = element.data().PAP005;
+      this.PAP005storagemassz = (String(this.PAP005storagemass).substring(0, 6));
+      this.PAP007storagemass = element.data().PAP007;
+      this.PAP007storagemassz = (String(this.PAP007storagemass).substring(0, 6));
+      this.PAP001storagemass = element.data().PAP001;
+      this.PAP001storagemassz = (String(this.PAP001storagemass).substring(0, 6));
+      this.PAP003storagemass = element.data().PAP003;
+      this.PAP003storagemassz = (String(this.PAP003storagemass).substring(0, 6));
+      this.HD001storagemass = element.data().HD001;
+      this.HD001storagemassz = (String(this.HD001storagemass).substring(0, 6));
+      this.LD001storagemass = element.data().LD001;
+      this.LD001storagemassz = (String(this.LD001storagemass).substring(0, 6));
+      this.LD003storagemass = element.data().LD003;
+      this.LD003storagemassz = (String(this.LD003storagemass).substring(0, 6));
+      this.PET001storagemass = element.data().PET001;
+      this.PET001storagemassz = (String(this.PET001storagemass).substring(0, 6));
+      this.PET003storagemass = element.data().PET003;
+      this.PET003storagemassz = (String(this.PET003storagemass).substring(0, 6));
+      this.PET005storagemass = element.data().PET005;
+      this.PET005storagemassz = (String(this.PET005storagemass).substring(0, 6));
+
+      this.paperTotal = this.paperTotal 
+        +parseFloat(element.data().PAP001) +
+        +parseFloat(element.data().PAP003) +
+        +parseFloat(element.data().PAP005) +
+        +parseFloat(element.data().PAP007);
+      
+        this.plasticTotal = this.paperTotal 
+        +parseFloat(element.data().HD001) +
+        +parseFloat(element.data().LD001) +
+        +parseFloat(element.data().LD003) +
+        +parseFloat(element.data().PET001) +
+        +parseFloat(element.data().PET003) +
+        +parseFloat(element.data().PEP005);
+        // console.log(element.data().HD001);
+        // console.log(element.data().LD001);
+        // console.log(element.data().LD003);
+        // console.log(element.data().PET001);
+        // console.log(element.data().PET003);
+        // console.log(element.data().PEP005);
+        
+
+      this.alumTotal = this.alumTotal +parseFloat(element.data().NFAL01);
+
+      this.glassTotal = this.glassTotal +parseFloat(element.data().GH001);
+
+      // graph
+      this.GH001storagemassgraph = this.GH001storagemassgraph +parseFloat(element.data().GH001)
+      this.NFAL01storagemassgraph = this.NFAL01storagemassgraph +parseFloat(element.data().NFAL01)
+
+      this.PAP005storagemassgraph = this.PAP005storagemassgraph +parseFloat(element.data().PAP005)
+      this.PAP007storagemassgraph = this.PAP007storagemassgraph  +parseFloat(element.data().PAP007)
+      this.PAP001storagemassgraph = this.PAP001storagemassgraph +parseFloat(element.data().PAP001)
+      this.PAP003storagemassgraph = this.PAP003storagemassgraph +parseFloat(element.data().PAP003)
+
+      this.HD001storagemassgraph = this.HD001storagemassgraph +parseFloat(element.data().HD001)
+      this.LD001storagemassgraph = this.LD001storagemassgraph +parseFloat(element.data().LD001)
+      this.LD003storagemassgraph = this.LD003storagemassgraph +parseFloat(element.data().LD003)
+      this.PET001storagemassgraph = this.PET001storagemassgraph +parseFloat(element.data().PET00)
+      this.PET003storagemassgraph = this.PET003storagemassgraph +parseFloat(element.data().PET003)
+      this.PET005storagemassgraph = this.PET005storagemassgraph +parseFloat(element.data().PET005)
+    
+    })
+  })
+  this.pullHistoryData(id);
+
+  // this.pullMassz();
+  // this.pullHistoryData();
+  document.getElementById('driverDetailz').style.display = 'flex';
+  document.getElementById('reclaimer-123').style.display = 'none';
+}
+
+
+
+
+// ///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
+
+come: boolean = true;
+bars: any;
+colorArray: any;
+
+idz;
+productID;
+
+reclaimer;
+
+ViewReclaimerMass = [];
+ViewReclaimerPDF = [];
+
+
+// substrings
+GH001storagemassz;
+NFAL01storagemassz;
+PAP005storagemassz;
+PAP007storagemassz;
+PAP001storagemassz;
+PAP003storagemassz;
+HD001storagemassz;
+LD001storagemassz;
+LD003storagemassz;
+PET001storagemassz;
+PET003storagemassz;
+PET005storagemassz;
+
+GH001storagemassgraph;
+NFAL01storagemassgraph;
+PAP005storagemassgraph;
+PAP007storagemassgraph;
+PAP001storagemassgraph;
+PAP003storagemassgraph;
+HD001storagemassgraph;
+LD001storagemassgraph;
+LD003storagemassgraph;
+PET001storagemassgraph;
+PET003storagemassgraph;
+PET005storagemassgraph;
+
+paperTotal = 0;
+plasticTotal = 0;
+alumTotal = 0;
+glassTotal = 0;
+
+userArray = [];
+timeArray = [];
+
+januserArray = [];
+febuserArray = [];
+maruserArray = [];
+apruserArray = [];
+mayuserArray = [];
+junuserArray = [];
+juluserArray = [];
+auguserArray = [];
+sepuserArray = [];
+octuserArray = [];
+novuserArray = [];
+decuserArray = [];
+
+jantimeArray = [];
+febtimeArray = [];
+martimeArray = [];
+aprtimeArray = [];
+maytimeArray = [];
+juntimeArray = [];
+jultimeArray = [];
+augtimeArray = [];
+septimeArray = [];
+octtimeArray = [];
+novtimeArray = [];
+dectimeArray = [];
+
+jan = 0;
+feb = 0;
+mar = 0;
+apr = 0;
+may = 0;
+jun = 0;
+jul = 0;
+aug = 0;
+sep = 0;
+oct = 0;
+nov = 0;
+dec = 0;
+IDnumber:any
+
+  PullUserInfor(id) {
+    this.reclaimer = this.db.collection('reclaimers').doc(id).get().then(element => {
+      console.log(element.data());
+      // snap.forEach(element => {
+        this.name = element.data().name;
+        this.contact = element.data().contact;
+        this.IDnumber = element.data().IDnumber;
+        this.streetname = element.data().streetname;
+        this.town = element.data().town;
+        this.city = element.data().city;
+      // });
+      // console.log(this.name);
+      // console.log(this.contact);
+      // console.log(this.IDnumber);
+      // console.log(this.streetname);
+      // console.log(this.town);
+      // console.log(this.city);
+    });
+    
+  }
+
+  async presentAlertUpdate() {
+    const alert = await this.alertController.create({
+      header: 'Warning!',
+      message: '<strong>Are you sure you want to update Driver Information?.</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        },
+        {
+          text: 'Okay',
+          handler: () => {
+            this.SaveUpdates()
+            this.route.navigateByUrl('/outbound-driver-info');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  SaveUpdates() {
+    this.db.collection('reclaimers').doc(this.id).update({
+      name: this.name,
+      contact: this.contact,
+      IDnumber: this.IDnumber,
+      streetname: this.streetname,
+      town: this.town,
+      city: this.city
+    })
+  }
+
+  // getPhoneInput(ev: any) {
+  //   this.contact = ev.target.value;
+  
+  //   // calling firebase
+  //   // this.contact[0] == '0'
+  //   if (this.contact[0] !== '0') {
+  //     this.presentAlertPhoneValidation();
+  //   } else {
+  //     // this.showInputs()
+  //     console.log('im working');
+  //     this.contact = this.contact;
+  //   }
+  //     // console.log(this.phoneVal);
+  //     console.log(this.contact);
+  // }
+
+  // async presentAlertPhoneValidation() {
+  //   const alert = await this.alertController.create({
+  //     header: 'Confirm!',
+  //     message: '<strong>Phone Numbers must start with a number: 0.</strong>!!!',
+  //     buttons: [
+  //       {
+  //         text: 'Okay',
+  //         role: 'cancel',
+  //         cssClass: 'secondary',
+  //         handler: (blah) => {
+  //           this.erasedToContact();
+  //           console.log('Confirm Cancel: blah');
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   await alert.present();
+  // }
+  
+  // erasedToContact() {
+  //   this.contact = '';
+  // }
+
+  switch(){
+    this.come = !this.come;
+  }
+
+pullHistoryData(id) {
+  // January
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.januserArray.push(snap.data());
+      // console.log(this.januserArray);
+      for (let keyjan in this.januserArray) {
+        // console.log(this.januserArray[key].date);
+        // console.log(this.januserArray[key].ovarallMass);
+        if (this.januserArray[keyjan].date >= 'January 01 2020' && this.januserArray[keyjan].date <= 'January 31 2020') {
+          // this.jantimeArray.push(this.januserArray[key])
+          // console.log(this.jantimeArray);
+
+          let janMass = 0;
+          janMass = +janMass + +parseFloat(this.januserArray[keyjan].OverallMass);
+          this.jan = +this.jan + +janMass;
+          console.log(this.jan);
+        }
+      }
+    })
+  })
+
+  // February
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.febuserArray.push(snap.data());
+      // console.log(this.febuserArray);
+      for (let keyfeb in this.febuserArray) {
+        // console.log(this.febuserArray[key].date);
+        // console.log(this.febuserArray[key].ovarallMass);
+        if (this.febuserArray[keyfeb].date >= 'February 01 2020' && this.febuserArray[keyfeb].date <= 'February 28 2020') {
+          // this.febtimeArray.push(this.febuserArray[key])
+          // console.log(this.febtimeArray);
+
+          let febMass = 0;
+          febMass = +febMass + +parseFloat(this.febuserArray[keyfeb].OverallMass);
+          this.feb = +this.feb + +febMass
+          console.log(this.feb);
+        }
+      }
+    })
+  })
+
+  // March
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+
+    let marMass = 0;
+
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.maruserArray.push(snap.data());
+      // console.log(this.maruserArray);
+      for (let keymar in this.maruserArray) {
+        // console.log(this.maruserArray[key].date);
+        // console.log(this.maruserArray[key].ovarallMass);
+        if (this.maruserArray[keymar].date >= 'March 01 2020' && this.maruserArray[keymar].date <= 'March 31 2020') {
+          marMass = +marMass + +parseFloat(this.maruserArray[keymar].OverallMass);
+        }
+      }
+      this.mar = +marMass;
+      console.log(marMass);
+      console.log(this.mar);
+    })
+  })
+
+  // April
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.apruserArray.push(snap.data());
+      // console.log(this.apruserArray);
+      for (let keyapr in this.apruserArray) {
+        // console.log(this.apruserArray[key].date);
+        // console.log(this.apruserArray[key].ovarallMass);
+        if (this.apruserArray[keyapr].date >= 'April 01 2020' && this.apruserArray[keyapr].date <= 'April 30 2020') {
+          // this.aprtimeArray.push(this.apruserArray[key])
+          // console.log(this.aprtimeArray);
+
+          let aprMass = 0;
+          aprMass = +aprMass + +parseFloat(this.apruserArray[keyapr].OverallMass);
+          this.apr = +this.apr + +aprMass;
+          console.log(this.apr);
+        }
+      }
+    })
+  })
+
+  // May
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.mayuserArray.push(snap.data());
+      // console.log(this.mayuserArray);
+      for (let keymay in this.mayuserArray) {
+        // console.log(this.mayuserArray[key].date);
+        // console.log(this.mayuserArray[key].ovarallMass);
+        if (this.mayuserArray[keymay].date >= 'May 01 2020' && this.mayuserArray[keymay].date <= 'May 31 2020') {
+          // this.maytimeArray.push(this.mayuserArray[key])
+          // console.log(this.maytimeArray);
+
+          let mayMass = 0;
+          mayMass = +mayMass + +parseFloat(this.mayuserArray[keymay].OverallMass);
+          this.may = +this.may + +mayMass;
+          console.log(this.may);
+        }
+      }
+    })
+  })
+
+  // June
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.junuserArray.push(snap.data());
+      // console.log(this.junuserArray);
+      for (let keyjun in this.junuserArray) {
+        // console.log(this.junuserArray[key].date);
+        // console.log(this.junuserArray[key].ovarallMass);
+        if (this.junuserArray[keyjun].date >= 'June 01 2020' && this.junuserArray[keyjun].date <= 'June 30 2020') {
+          // this.juntimeArray.push(this.junuserArray[key])
+          // console.log(this.juntimeArray);
+
+          let junMass = 0;
+          junMass = +junMass + +parseFloat(this.junuserArray[keyjun].OverallMass);
+          this.jun = +this.jun + +junMass;
+          console.log(this.jun);
+        }
+      }
+    })
+  })
+
+  // July
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.juluserArray.push(snap.data());
+      // console.log(this.juluserArray);
+      for (let keyjul in this.juluserArray) {
+        // console.log(this.juluserArray[key].date);
+        // console.log(this.juluserArray[key].ovarallMass);
+        if (this.juluserArray[keyjul].date >= 'July 01 2020' && this.juluserArray[keyjul].date <= 'July 31 2020') {
+          // this.jultimeArray.push(this.juluserArray[key])
+          // console.log(this.jultimeArray);
+
+          let julMass = 0;
+          julMass = +julMass + +parseFloat(this.juluserArray[keyjul].OverallMass);
+          this.jul = +this.jul + +julMass;
+          console.log(this.jul);
+        }
+      }
+    })
+  })
+
+  // August
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.auguserArray.push(snap.data());
+      // console.log(this.auguserArray);
+      for (let keyaug in this.auguserArray) {
+        // console.log(this.auguserArray[key].date);
+        // console.log(this.auguserArray[key].ovarallMass);
+        if (this.auguserArray[keyaug].date >= 'August 01 2020' && this.auguserArray[keyaug].date <= 'August 30 2020') {
+          // this.augtimeArray.push(this.auguserArray[key])
+          // console.log(this.augtimeArray);
+
+          let augMass = 0;
+          augMass = +augMass + +parseFloat(this.auguserArray[keyaug].OverallMass);
+          this.aug = +this.aug + +augMass; 
+          console.log(this.aug);
+        }
+      }
+    })
+  })
+
+  // September
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.sepuserArray.push(snap.data());
+      // console.log(this.sepuserArray);
+      for (let keysep in this.sepuserArray) {
+        // console.log(this.sepuserArray[key].date);
+        // console.log(this.sepuserArray[key].ovarallMass);
+        if (this.sepuserArray[keysep].date >= 'September 01 2020' && this.sepuserArray[keysep].date <= 'September 31 2020') {
+          // this.septimeArray.push(this.sepuserArray[key])
+          // console.log(this.septimeArray);
+
+          let sepMass = 0;
+          sepMass = +sepMass + +parseFloat(this.sepuserArray[keysep].OverallMass);
+          this.sep = +this.sep + +sepMass;
+          console.log(this.sep);
+        }
+      }
+    })
+  })
+
+  // October
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.octuserArray.push(snap.data());
+      // console.log(this.octuserArray);
+      for (let keyoct in this.octuserArray) {
+        // console.log(this.octuserArray[key].date);
+        // console.log(this.octuserArray[key].ovarallMass);
+        if (this.octuserArray[keyoct].date >= 'October 01 2020' && this.octuserArray[keyoct].date <= 'October 30 2020') {
+          // this.octtimeArray.push(this.octuserArray[key])
+          // console.log(this.octtimeArray);
+
+          let octMass = 0;
+          octMass = +octMass + +parseFloat(this.octuserArray[keyoct].OverallMass);
+          this.oct = +this.oct + +octMass;
+          console.log(this.oct);
+        }
+      }
+    })
+  })
+
+  // November
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.novuserArray.push(snap.data());
+      // console.log(this.novuserArray);
+      for (let keynov in this.novuserArray) {
+        // console.log(this.novuserArray[key].date);
+        // console.log(this.novuserArray[key].ovarallMass);
+        if (this.novuserArray[keynov].date >= 'November 01 2020' && this.novuserArray[keynov].date <= 'November 30 2020') {
+          // this.novtimeArray.push(this.novuserArray[key])
+          // console.log(this.novtimeArray);
+
+          let novMass = 0;
+          novMass = +novMass + +parseFloat(this.novuserArray[keynov].OverallMass);
+          this.nov = +this.nov + +novMass;
+          console.log(this.nov);
+        }
+      }
+    })
+  })
+
+  // December
+  this.db.collection('reclaimersMass').where("reclaimerID", "==", id).onSnapshot(snap => {
+    // console.log(snap);
+    snap.forEach(snap => {
+      // console.log(snap.data());
+      this.decuserArray.push(snap.data());
+      // console.log(this.decuserArray);
+      for (let keydec in this.decuserArray) {
+        // console.log(this.decuserArray[key].date);
+        // console.log(this.decuserArray[key].ovarallMass);
+        if (this.decuserArray[keydec].date >= 'December 01 2020' && this.decuserArray[keydec].date <= 'December 31 2020') {
+          // this.dectimeArray.push(this.decuserArray[key])
+          // console.log(this.dectimeArray);
+
+          let decMass = 0;
+          decMass = +decMass + +parseFloat(this.decuserArray[keydec].OverallMass);
+          this.dec = +this.dec + +decMass; 
+          console.log(this.dec);
+        }
+      }
+    })
+  })
+
+}
+switchBack() {
+  document.getElementById('driverDetailz').style.display = 'none';
+  document.getElementById('reclaimer-123').style.display = 'flex';
+}
+// createLineChart() {
+//   this.bars= new Chart(this.barChart.nativeElement, {
+ 
+//     type: 'line',
+//     data: {
+//       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+//       datasets: [{
+//         label: 'Material Delivered',
+//         data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+//               this.jun, this.jul, this.aug, this.sep, this.oct,
+//               this.nov, this.dec],
+//         backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+//         borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+//         borderWidth: 1
+//       }]
+//     },
+//     options: {
+//       scales: {
+//         yAxes: [{
+//           ticks: {
+//             beginAtZero: true
+//           }
+//         }]
+//       }
+//     }
+//   });
+// }
+
 
 }
