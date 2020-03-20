@@ -499,9 +499,8 @@
           <img *ngIf="reclaim.image" src="{{ reclaim.image }}" alt="">
         </div>
       </div>
-      <div class="profiledetails">
+      <div class="profiledetails" style="display: flex;flex-direction: column;justify-content: center;align-items: center;background: white;">
         <p id="name">{{ reclaim.name }} {{ reclaim.surname }}</p>
-        
         <p>{{ reclaim.reclaimercode }}</p>
         <p>{{ reclaim.contact }}</p>
         <p>{{ reclaim.IDnumber }}</p>
@@ -520,13 +519,13 @@
         </div>
       </div>
       <div class="profiledetails">
-        <input placeholder="Full names" [(ngModel)]="name">
+        <input placeholder="Full names" [(ngModel)]="name" >
         <input placeholder="Phone number" [(ngModel)]="contact" maxlength="10" (keyup)="getPhoneInput($event)" type="tel">
         <input placeholder="Registration no." [(ngModel)]="IDnumber">
         <input placeholder="Company name" [(ngModel)]="streetname">
         <input placeholder="Company address" [(ngModel)]="town">
         <input placeholder="Company address" [(ngModel)]="city">
-        <ion-button (click)="presentAlertUpdate()">Update Profile</ion-button>
+        <ion-button id="update" (click)="presentAlertUpdate()">Update Profile</ion-button>
       </div>
     </div><!-- update -->
   

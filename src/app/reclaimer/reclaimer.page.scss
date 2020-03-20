@@ -1174,7 +1174,7 @@ font-family: 'lato';
 }
 
 .The-header{
-   border: solid blue 2px;
+ //  border: solid blue 2px;
   height: 50px;
   width: 100%;
   display: flex;
@@ -1870,8 +1870,8 @@ font-family: 'lato';
       // padding: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      // justify-content: center;
+      // align-items: center;
       &::after {
           position: absolute;
           top: 10%;
@@ -1883,9 +1883,14 @@ font-family: 'lato';
           border-radius: 50px;
       
         }
-      
+      #update {
+       // border: 1px solid black;
+        position: absolute;
+        bottom: 2%;
+        left: 25%;
+      }
       p {
-         // border: 1px solid black;
+         
           margin: 0 !important;
           font-family: 'lato';
           padding: 2px;
@@ -1955,6 +1960,7 @@ font-family: 'lato';
           font-size: 1em;
           font-family: 'lato';
           width: 90%;
+          margin-left: 5%;
           height: 40px;
           border: none;
           outline: none;
