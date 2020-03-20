@@ -362,8 +362,8 @@ inboundHistory(){
         this.truckcode = element.data().truckcode;
         // this.DriverName = element.data().DriverName;
 
-        // this.recordinbounddisplaysz.push({data: element.data(), id : element.id});
-        this.recordinbounddisplaysz.push(element.data());
+       this.recordinbounddisplaysz.push({data: element.data(), id : element.id});
+        // this.recordinbounddisplaysz.push(element.data());
         // console.log(element.data());
         // console.log(this.recordinbounddisplaysz);
 
