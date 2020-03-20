@@ -1762,9 +1762,9 @@ height: 17%;
   transition: 300ms;
   //border: 1px solid red;
 }
-.dropper1, .dropper2, .dropper3, .dropper4:nth-child(odd) {
- // background: red;
-}
+// .dropper1, .dropper2, .dropper3, .dropper4:nth-child(odd) {
+//  // background: red;
+// }
 .top-cell {
   width: 100%;
   height: 30px;
@@ -1775,9 +1775,7 @@ height: 17%;
   line-height: 30px;
   color: white;
 }
-.top-cell:nth-child(even) {
-  //background: red;
-}
+
 .myCell {
   color: white;
   display: flex;
@@ -1785,20 +1783,16 @@ height: 17%;
 }
 
 .meshy{
-   //  border: 1px solid green;
-  //background: red;
+
   display: flex;
   height: 30px;
   justify-content: space-evenly;
   .col {
-    //  border: 1px solid red;
     width: 30%;
     display: flex;
-    //justify-content: center;
     align-items: center;
     align-content: center;
     .headz {
-      // border: 1px solid red;
       text-align: left;
       font-family: "lato";
       color: black;
@@ -1807,18 +1801,15 @@ height: 17%;
 }
 .meshy:nth-child(odd) {
   background: white;
-  // font-family: 'lato';
-  // font-size: 1em;
+
 }
 .meshy:nth-child(even) {
   background: white;
-  // font-family: 'lato';
-  // font-size: 1em;
+
 
 }
 
 .drop-down-info{
-// border: 1px solid red;
  width: 80%;
 }
 
@@ -1838,16 +1829,7 @@ height: 17%;
   font-family: 'lato';
  // border: 1px solid red;
 }
-.meshy:nth-child(odd) {
-  //background: blue;
-  // font-family: 'lato';
-  // font-size: 1em;
-}
-// .the-date-head:nth-child(even) {
-//   background: blue;
-//   // font-family: 'lato';
-//   // font-size: 1em;
-// }
+
 
 .chevron-drop-down1, #chevron-drop-down2, #chevron-drop-down3, #chevron-drop-down4{
   font-size: 20px;
