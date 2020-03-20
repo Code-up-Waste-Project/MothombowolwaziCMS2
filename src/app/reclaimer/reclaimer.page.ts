@@ -1957,7 +1957,7 @@ Logout() {
         console.log(!(num == 0));
         
         
-        let arr = this.testArrays.filter(item => String(item.reclaimercode).indexOf(val) >= 0)
+        let arr = this.testArrays.filter(item => String(item.data.reclaimercode).indexOf(val) >= 0)
         console.log(arr);
 
         this.searchResults = arr;

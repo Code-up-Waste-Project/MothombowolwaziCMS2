@@ -46,6 +46,7 @@ export class InboundPage implements OnInit {
   recordinbounddisplays = [];
   recordinbounddisplaysHome = [];
   recordinbounddisplaysz = [];
+  recordinbounddisplays2 = [];
 
   testArray = [];
   PDFArray = {};
@@ -291,6 +292,7 @@ export class InboundPage implements OnInit {
       // console.log('Newadmins', this.Newadmin);
     });
 
+    this.sortTable();
     this.getMasses();
     this.pdfmakerFirebase();
 
@@ -341,8 +343,7 @@ inboundHistory(){
   this.route.navigate(['inbound-history']);
 }
   ngOnInit() {
-    this.sortTable()
-    
+  
   }
   switchBack() {
     document.getElementById('driverDetailz').style.display = 'none';
@@ -361,9 +362,13 @@ inboundHistory(){
         this.truckcode = element.data().truckcode;
         // this.DriverName = element.data().DriverName;
 
-        this.recordinbounddisplaysz.push({data: element.data(), id : element.id});
+        // this.recordinbounddisplaysz.push({data: element.data(), id : element.id});
+        this.recordinbounddisplaysz.push(element.data());
         // console.log(element.data());
         // console.log(this.recordinbounddisplaysz);
+
+        this.recordinbounddisplays2.push(element.data());
+        // console.log(this.recordinbounddisplays2);
 
         // let order = this.recordinbounddisplaysz.sort((a,b) => {
         //   return (b.data.timesOrdered) - (a.data.timesOrdered)
@@ -1179,9 +1184,9 @@ inboundHistory(){
         this.searchResults = [];
       }
 
-      console.log(this.usersz);
-      console.log(this.recordinbounddisplaysz);
-      console.log(this.searchResults);
+      // console.log(this.usersz);
+      // console.log(this.recordinbounddisplaysz);
+      // console.log(this.searchResults);
       
     }
 

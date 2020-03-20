@@ -50,19 +50,19 @@
 
                     <div *ngIf="searchResults.length > 0">
                       <ion-card *ngFor="let records of searchResults" (click)='presentAlertAddUser(records.id)'>
-                        <h4>{{ records.name }}</h4>
-                        <p>{{ records.contact }}</p>
-                      <p>{{ records.IDnumber }}</p>
-                      <p>{{ records.reclaimercode }}</p>
+                        <h4>{{ records.data.name }}</h4>
+                        <p>{{ records.data.reclaimercode }}</p>
+                      <!-- <p>{{ records.IDnumber }}</p> -->
+                      <p>{{ records.data.contact }}</p>
                       </ion-card>
                     </div>
 
                     <div *ngIf="searchResults.length == 0">
                       <ion-card *ngFor="let records of testArrays" (click)='presentAlertAddUser(records.id)'>
-                        <h4>{{ records.name }}</h4>
-                        <p>{{ records.contact }}</p>
+                        <h4>{{ records.data.name }}</h4>
+                        <p>{{ records.data.reclaimercode }}</p>
                       <!-- <p>{{ records.IDnumber }}</p> -->
-                      <p>{{ records.reclaimercode }}</p>
+                      <p>{{ records.data.contact }}</p>
                       </ion-card>
                     </div>
                    
@@ -465,8 +465,8 @@
 
     <div class="itemList"  *ngFor="let records of testArrays">
       <div class="userId">{{ records.data.reclaimercode }}</div>
-      <div class="name">{{ records.data.name }} {{ records.data.surname }}</div>
-      <div class="regNo">{{ records.data.contact}}</div>
+      <div class="name">{{ records.data.name }}</div>
+      <div class="regNo">{{ records.data.IDnumber}}</div>
       <div class="phone">{{ records.data.contact }}</div>
 
       <div class="icon"><ion-button (click)="switchView(records.id)"  fill="clear"  slot="icon-only"><ion-icon mode="ios" name="eye"></ion-icon></ion-button>
