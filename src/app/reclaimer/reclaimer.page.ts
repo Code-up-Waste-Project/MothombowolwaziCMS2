@@ -13,6 +13,7 @@ import { Platform, IonSlides } from '@ionic/angular';
 import { analyzeFileForInjectables } from '@angular/compiler';
 import * as moment from 'moment'
 import { Location } from "@angular/common";
+import { Chart} from 'chart.js';
 
 @Component({
   selector: 'app-reclaimer',
@@ -20,6 +21,9 @@ import { Location } from "@angular/common";
   styleUrls: ['./reclaimer.page.scss'],
 })
 export class ReclaimerPage implements OnInit {
+  @ViewChild('barChart', {static: false}) barChart;   
+  colorArray: any;
+  bars: any;
   transtioning: boolean = false;
   animateJs() {
     this.transtioning = !this.transtioning;
@@ -504,6 +508,42 @@ export class ReclaimerPage implements OnInit {
       city : ['', [Validators.required, , Validators.maxLength(40)]],
     });
    }
+
+      //charts
+      createLineChart() {
+        Chart.defaults.global.defaultFontSize = 13;
+        Chart.defaults.global.defaultFontFamily = 'Roboto';
+    
+        this.bars= new Chart(this.barChart.nativeElement, {
+       
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+              label: 'Material Delivered',
+              data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+                    this.jun, this.jul, this.aug, this.sep, this.oct,
+                    this.nov, this.dec],
+              backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+              borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
+      }
+
+      ionViewDidEnter() {
+        this.createLineChart();
+      }
 //slides
 slideChanged() {
   this.slides.getActiveIndex().then(index => {

@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { element } from 'protractor';
 import * as moment from 'moment';
+import { Chart} from 'chart.js';
 
 
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
@@ -25,6 +26,9 @@ declare var google;
 })
 export class OutboundPage implements OnInit{
 
+  @ViewChild('barChart', {static: false}) barChart;   
+  colorArray: any;
+  bars: any;
  //autocomplete
  yourBoolean = false; /*viewable by default*/
  autocompleteItems;
@@ -408,6 +412,38 @@ currentLocation: any = {
     this.LoopNames();
     
    }
+  
+   //charts
+   createLineChart() {
+    Chart.defaults.global.defaultFontSize = 13;
+    Chart.defaults.global.defaultFontFamily = 'Roboto';
+
+    this.bars= new Chart(this.barChart.nativeElement, {
+   
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Material Delivered',
+          data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+                this.jun, this.jul, this.aug, this.sep, this.oct,
+                this.nov, this.dec],
+          backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+          borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
 
    slideChanged() {
     this.slides.getActiveIndex().then(index => {
@@ -460,8 +496,8 @@ currentLocation: any = {
     
   }
 
-  ionViewDidEnter(){
-
+  ionViewDidEnter() {
+    this.createLineChart();
   }
   createDirectionForm() {
     this.directionForm = this.fb.group({
@@ -1739,6 +1775,41 @@ in_your_method() {
     this.popOpOpen = false;
 
   }
+
+   async presentAlertUpdateDriver() {
+  const alert = await this.alertController.create({
+    header: 'Warning!',
+    message: '<strong>Are you sure you want to update Driver Information?.</strong>!!!',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      },
+      {
+        text: 'Okay',
+        handler: () => {
+          this.SaveUpdates()
+          this.route.navigateByUrl('/outbound-driver-info');
+        }
+      }
+    ]
+  });
+  await alert.present();
+} 
+
+SaveUpdates() {
+  this.db.collection('outbound').doc(this.id).update({
+    DriverName: this.DriverName,
+    RegistarionNumberPlates: this.RegistarionNumberPlates,
+    numbers: this.numbers,
+    TruckSourcess: this.TruckSourcess,
+    companyaddress: this.companyaddress
+  })
+}
 
   async presentAlertupdate() {
     const alert = await this.alertController.create({

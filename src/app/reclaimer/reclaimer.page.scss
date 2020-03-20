@@ -2082,23 +2082,23 @@ font-family: 'lato';
   flex-direction: column;
 
   .canvas {
-     // background: aqua;
-     border: 1px solid rgb(224, 223, 223);
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.075), 0 6px 20px 0 rgba(0, 0, 0, 0.089);
-       height: 82%;
-      width: 96%;
-      position: relative;
-      left: 2%;
-      border-radius: 5px;
+    // background: aqua;
+    border: 1px solid rgb(224, 223, 223);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.075), 0 6px 20px 0 rgba(0, 0, 0, 0.089);
+      height: 82%;
+     width: 96%;
+     position: relative;
+     left: 2%;
+     border-radius: 5px;
 
-      canvas {
-          height: 100% !important;
-          width: 100% !important;
-         
-          background: rgba(255, 255, 255, 0.158) !important;
-          border-radius: 12px !important;
-      }
-  }
+     canvas {
+         height: 100% !important;
+         width: 100% !important;
+        
+         background: rgba(255, 255, 255, 0.158) !important;
+         border-radius: 12px !important;
+     }
+ }
 .tops {
  // border: 2px solid red;
   height: 15%;
