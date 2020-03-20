@@ -17,6 +17,7 @@
   width: 100%;
   position: absolute;
   z-index: 100000000;
+  overflow: hidden;
   }
 
   .the-edit-div{
@@ -90,13 +91,13 @@
     color: #9E9E9E;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    margin-top: -20px;
+    margin-top: -5px;
   }
   .location > p {
     color: #9E9E9E;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    margin-top: 2px;
+    margin-top: 15px;
   }
   
   .the-circles{
