@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { element } from 'protractor';
 import * as moment from 'moment';
+import { Chart} from 'chart.js';
 
 
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
@@ -40,6 +41,7 @@ mapNative: HTMLCollectionOf<Element>  = document.getElementsByClassName('map')
 @ViewChild('autoCompleteInput', {static: false}) inputNativeElement: any;
 
 @ViewChild('sliderRef', { static: true }) protected slide: ElementRef<IonSlides>;
+@ViewChild('barChart', {static: false}) barChart;  
 
 directionForm: FormGroup;
 
@@ -62,6 +64,10 @@ currentLocation: any = {
     from: '',
     text: ''
   };
+
+  colorArray: any;
+  bars: any;
+  come: boolean = true;
 
   transtioning: boolean = false;
 
@@ -460,9 +466,10 @@ currentLocation: any = {
     
   }
 
-  ionViewDidEnter(){
-
+  ionViewDidEnter() {
+    this.createLineChart();
   }
+
   createDirectionForm() {
     this.directionForm = this.fb.group({
       // mark
@@ -2171,11 +2178,46 @@ in_your_method() {
     ViewDriver() {
       this.route.navigate(['outbound-driver-info']);
     }
+
+    switch(){
+      this.come = !this.come;
+    }
   
     // hide() {
     //   console.log('clloseee',this.hideMe);
       
     //   this.hideMe = true;
     // }
+
+    createLineChart() {
+      // Chart.defaults.global.defaultFontSize = 13;
+      // Chart.defaults.global.defaultFontFamily = 'Roboto';
+  
+      this.bars= new Chart(this.barChart.nativeElement, {
+     
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Material Delivered',
+            data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+                  this.jun, this.jul, this.aug, this.sep, this.oct,
+                  this.nov, this.dec],
+            backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+            borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    }
    
 }

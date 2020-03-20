@@ -13,6 +13,7 @@ import { Platform, IonSlides } from '@ionic/angular';
 import { analyzeFileForInjectables } from '@angular/compiler';
 import * as moment from 'moment'
 import { Location } from "@angular/common";
+import { Chart} from 'chart.js';
 
 @Component({
   selector: 'app-reclaimer',
@@ -26,6 +27,7 @@ export class ReclaimerPage implements OnInit {
   }
 
   @ViewChild('slides', {static: false}) slides: IonSlides;
+  @ViewChild('barChart', {static: false}) barChart;
 
   slideOpts =  {
     loop: false,
@@ -504,6 +506,7 @@ export class ReclaimerPage implements OnInit {
       city : ['', [Validators.required, , Validators.maxLength(40)]],
     });
    }
+
 //slides
 slideChanged() {
   this.slides.getActiveIndex().then(index => {
@@ -530,6 +533,11 @@ this.slides.slideNext();
  }
   ngOnInit() {
     // this.getMaxMin();
+  }
+
+   //chart createion
+   ionViewDidEnter() {
+    this.createLineChart();
   }
 
   getMaxMin() {
@@ -2252,11 +2260,8 @@ switchView(id) {
 }
 
 
-
-
 // ///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-
 
 
 come: boolean = true;
@@ -2508,10 +2513,12 @@ pullHistoryData(id) {
         // console.log(this.maruserArray[key].date);
         // console.log(this.maruserArray[key].ovarallMass);
         if (this.maruserArray[keymar].date >= 'March 01 2020' && this.maruserArray[keymar].date <= 'March 31 2020') {
-          marMass = +marMass + +parseFloat(this.maruserArray[keymar].OverallMass);
+          // marMass = marMass + parseInt(this.maruserArray[keymar].OverallMass);
+          marMass = marMass + parseInt(this.maruserArray[keymar].OverallMass);
+          this.mar = +parseFloat(String(marMass));
         }
       }
-      this.mar = +marMass;
+      
       console.log(marMass);
       console.log(this.mar);
     })
@@ -2756,6 +2763,34 @@ switchBack() {
 //     }
 //   });
 // }
+
+createLineChart() {
+  this.bars= new Chart(this.barChart.nativeElement, {
+ 
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Material Delivered',
+        data: [this.jan, this.feb, this.mar, this.apr, this.may, 
+              this.jun, this.jul, this.aug, this.sep, this.oct,
+              this.nov, this.dec],
+        backgroundColor: '#ffd7e9', // array should have same number of elements as number of dataset
+        borderColor: '#ffd7e9',// array should have same number of elements as number of dataset
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
 
 
 }

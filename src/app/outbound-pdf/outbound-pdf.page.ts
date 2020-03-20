@@ -28,6 +28,7 @@ export class OutboundPDFPage implements OnInit {
   ids;
   Outbound;
   ViewOutbound = [];
+  ViewOutbound2 = [];
   testArray = [];
   time;
 
@@ -135,31 +136,6 @@ export class OutboundPDFPage implements OnInit {
 
     this.getDatafirebase(this.id);
 
-    this.db.collection('outbound').doc(this.id).onSnapshot((element) => {
-      console.log(element.data());
-      // this.ViewOutbound.push(element.data());
-      // console.log(this.ViewOutbound);
-
-      // console.log(element.data);
-      let DriverName = {};
-      let RegistarionNumberPlates = {};
-      let overallStorage = {};
-      let TruckSourcess = {};
-      let Destination = {};
-      let time = {};
-
-      // DriverName = this.DriverName = element.data().DriverName;
-      // RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
-      // TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-      // Destination = this.Destination = element.data().Destination;
-      // console.log(this.DriverName);
-      // console.log(this.RegistarionNumberPlates);
-      // console.log(this.overallStorage);
-      // console.log(this.TruckSourcess);
-      // console.log(this.Destination);
-      // console.log(this.overallStoragez);
-    });
-
     this.db.collection('outboundMass').doc(this.id).onSnapshot(element => {
       // element.forEach(element => {
         // console.log(element);
@@ -169,6 +145,7 @@ export class OutboundPDFPage implements OnInit {
         let TruckSourcess = {};
         let Destination = {};
         let time = {};
+        let driverID = {};
 
         let GH001storagemass = {};
         let NFAL01storagemass = {};
@@ -191,6 +168,7 @@ export class OutboundPDFPage implements OnInit {
         this.duration = element.data().duration;
         this.driveID = element.data().driverID;
         this.truckcode = element.data().truckcode;
+        console.log(this.driveID);
 
         time = this.time = element.data().date;
         overallStorage = this.overallStorage = element.data().ovarallMass;
@@ -295,6 +273,7 @@ export class OutboundPDFPage implements OnInit {
         }
       }
 
+      this.getUserInfor(this.driveID);
       this.CreatePDF2();
 
     })
@@ -305,6 +284,33 @@ export class OutboundPDFPage implements OnInit {
    }
 
    ngOnInit() {
+  }
+
+  getUserInfor(id) {
+    this.db.collection('outbound').doc(id).onSnapshot((element) => {
+      console.log(element.data());
+      // this.ViewOutbound.push(element.data());
+      // console.log(this.ViewOutbound);
+
+      // console.log(element.data);
+      let DriverName = {};
+      let RegistarionNumberPlates = {};
+      let overallStorage = {};
+      let TruckSourcess = {};
+      let Destination = {};
+      let time = {};
+
+      DriverName = this.DriverName = element.data().DriverName;
+      RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
+      TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
+      Destination = this.Destination = element.data().Destination;
+      console.log(this.DriverName);
+      console.log(this.RegistarionNumberPlates);
+      // console.log(this.overallStorage);
+      console.log(this.TruckSourcess);
+      console.log(this.Destination);
+      // console.log(this.overallStoragez);
+    });
   }
 
    getDatafirebase(id) {
