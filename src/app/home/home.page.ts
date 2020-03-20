@@ -833,7 +833,7 @@ newdatereclaimerM;
     
     })
     console.log(this.PaperArray)
-    this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").onSnapshot(snap => {
+    this.db.collection('pricehistory').doc("uk3Rla3tt9xgd8NivPJ6").collection("paper").orderBy('timePaper', "desc").limitToLast(5).onSnapshot(snap => {
       this.PaperArrayHistory = [];
       snap.forEach(snap => {
       this.PaperArrayHistory.push(snap.data())
@@ -862,7 +862,7 @@ newdatereclaimerM;
       this.pricess.pet005 = snap.data().newpet005;
     })
     // console.log(this.plasticarray)
-    this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").onSnapshot(snap => {
+    this.db.collection('pricehistory').doc("7O6KqClxLD780ltfC6i5").collection("plastic").orderBy('timePlastic2', "desc").limitToLast(5).onSnapshot(snap => {
       this.plasticarrayHistory = [];
       snap.forEach(element => {
         
