@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -30,9 +30,15 @@
 // @import url("./assets/fonts/SkarpaLt.ttf");
 // @import url("./assets/fonts/Brand__.ttf");
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 /* #9dcde2  blue */
 /* #cde6ad green */
 /* #e0c798 yellow */
 
+.menu-inner {
 
+    border: 2px solid red;
+    left: 0;
+    width: 100%
+
+}

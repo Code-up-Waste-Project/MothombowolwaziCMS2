@@ -137,7 +137,7 @@ align-items: center;
 @media screen and (min-width: 768px) and(max-width: 1024px) {
     .container {
       overflow-y: fixed;
-
+       // border: 2px solid blue;
         .leftwave ,  #grocery {
             display: none;
         }
@@ -177,33 +177,35 @@ align-items: center;
                     }
                 }
                 .middle {
-                   // border: 1px solid red;
+                 //border: 1px solid red;
                   width: 90%;
                   margin-left : 5%;
 
                   .errors {
                       color: red;
-                      font-size: 1em;
+                      font-size: 1.3em;
                       padding: 0;
                       letter-spacing: 0.5px;
                   }
                   p {
-                      font-size: 1.1em;
+                      font-size: 1.5em;
                       font-family: 'lato';
+                      letter-spacing: 1px;
                   }
                   ion-input {
-                  //  border: 1px solid red;
-                    font-size: 1.2em;
+                   // border: 1px solid red;
+                    font-size: 1.8em;
+                    padding: 1em;
 
                   }
                   #password {
-                    font-size: 0.9em;
+                    font-size: 1.3em;
                     font-family: 'lato';
                     letter-spacing: 0.5px;
+                    color: #265902;
                   }
                   button {
-                      //border: 1px solid red;
-                      font-size: 1.2em;
+                    font-size: 1.8em;
                       font-family: 'lato';
                       letter-spacing: 0.5px;
                   }

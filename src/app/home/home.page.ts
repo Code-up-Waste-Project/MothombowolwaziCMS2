@@ -543,7 +543,7 @@ newdatereclaimerM;
       //   }, 500);
       // }
     }
-
+   
      //chart
      updated
 
