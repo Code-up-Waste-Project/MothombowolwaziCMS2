@@ -17,6 +17,8 @@ import { ResetPasswordPageModule } from './reset-password/reset-password.module'
 import { ProfilePageModule} from './profile/profile.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
  
 // import { ResetPasswordPage } from './reset-password/reset-password.page';
 // import { AutoCompleteModule } from 'ionic4-auto-complete';
@@ -72,6 +74,7 @@ firebase.analytics();
     SplashScreen,
     Geolocation,
     NativeGeocoder,
+    ScreenOrientation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     FileOpener,
     File

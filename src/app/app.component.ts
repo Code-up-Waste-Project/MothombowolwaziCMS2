@@ -8,6 +8,7 @@ import { AuthService } from '../app/user/auth.service';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { element } from 'protractor';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 
 const MINUTES_UNITL_AUTO_LOGOUT = 5 // in mins
@@ -49,6 +50,7 @@ export class AppComponent implements OnInit {
         private content: ElementRef,
         private render: Renderer2,
         public router: Router,
+        private screenOrientation: ScreenOrientation,
     ) {
         console.log("good morning")
         this.getAuth();
@@ -80,8 +82,16 @@ export class AppComponent implements OnInit {
         localStorage.setItem(STORE_KEY, Date.now().toString());
     }
     onSignIn() {
+        // get current
+        console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
 
+        // set to landscape
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+
+        // allow user rotate
+        this.screenOrientation.unlock();
     }
+
     ngOnInit() {
         console.log('triggerd');
         

@@ -415,6 +415,10 @@ currentLocation: any = {
     
    }
 
+   ionViewDidEnter() {
+    this.createLineChart();
+  }
+
    slideChanged() {
     this.slides.getActiveIndex().then(index => {
       // console.log(index);
@@ -464,10 +468,6 @@ currentLocation: any = {
       
     }, 2000);
     
-  }
-
-  ionViewDidEnter() {
-    this.createLineChart();
   }
 
   createDirectionForm() {
@@ -733,7 +733,7 @@ in_your_method() {
           +parseFloat(element.data().PAP005) +
           +parseFloat(element.data().PAP007);
         
-          this.plasticTotal = this.paperTotal 
+          this.plasticTotal = 
           +parseFloat(element.data().HD001) +
           +parseFloat(element.data().LD001) +
           +parseFloat(element.data().LD003) +
