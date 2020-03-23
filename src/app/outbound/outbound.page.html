@@ -151,25 +151,25 @@
               <ion-grid>
                 <ion-row >
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PAP005mass2">
                     <p>PAP005</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PAP007mass2">
                     <p>PAP007</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PAP001mass2">
                     <p>PAP001</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PAP003mass2">
                     <p>PAP003</p>
                   </ion-col>
@@ -191,36 +191,36 @@
               <ion-grid>
                 <ion-row>
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="HD001mass2"><br>
                     <p>HD001</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="LD001mass2"><br>
                     <p>LD001</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="LD003mass2"><br>
                     <p>LD003</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PET005mass2"><br>
                     <p>PET005</p>
                   </ion-col>
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PET001mass2"><br>
                     <p>PET001</p>
                   </ion-col>
     
                   <ion-col class="input-textfields" size="6">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="PET003mass2"><br>
                     <p>PET003</p>
                   </ion-col>
@@ -238,7 +238,7 @@
               <ion-grid>
                 <ion-row>
                   <ion-col class="input-textfields">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]=" NFAL01mass2"><br>
                     <p id="CODE">NFAL01</p>
                   </ion-col>
@@ -258,7 +258,7 @@
               <ion-grid>
                 <ion-row>
                   <ion-col class="input-textfields">
-                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;"
+                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" step="1" min="0"
                       placeholder="Weight in Kilograms" [(ngModel)]="GH001mass2"><br>
                     <p id="CODE">GL001</p>
                   </ion-col>
@@ -525,7 +525,7 @@
         <!-- <p id="email">Fumza@gmail.com</p> -->
         <p>{{ driver.numbers }}</p>
         <p id="adres">{{ driver.companyaddress }}</p>
-        <button (click)="switch()" (click)="SaveUpdates()">Edit Profile</button>
+        <button (click)="switch()">Edit Profile</button>
       </div><!-- display -->
   
   
@@ -538,6 +538,12 @@
         
           <img *ngIf="!driver.image" src="../../assets/mthombologo (1).png" alt=""> 
           <img *ngIf="driver.image" src="{{ driver.image }}" alt="">
+
+          <label for="disapear">
+            <ion-icon id="Addd" name="camera">
+              <input id="disapear" class="image-upload" type="file" accept="image/*" (change)="changeListener($event)">
+            </ion-icon>
+          </label>
         </div>
       </div>
       <div class="profiledetails">

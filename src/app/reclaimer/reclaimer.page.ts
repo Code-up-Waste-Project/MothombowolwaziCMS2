@@ -468,11 +468,18 @@ export class ReclaimerPage implements OnInit {
         this.image = element.data().image;
         // this.truckcode2222 = element.data().reclaimercode;
 
-        // name = this.name = element.data().name;
-        // surname = this.surname = element.data().surname;
-        // contact = this.contact = element.data().contact;
-        // address = this.address = element.data().address;
-        // OverallGrandTotal = this.OverallGrandTotal = element.data().OverallGrandTotal;
+        this.name = element.data().name;
+        this.contact = element.data().contact;
+        this.IDnumber = element.data().IDnumber;
+        this.streetname = element.data().streetname;
+        this.town = element.data().town;
+        this.city = element.data().city;
+        // console.log(this.name);
+        // console.log(this.contact);
+        // console.log(this.IDnumber);
+        // console.log(this.streetname);
+        // console.log(this.town);
+        // console.log(this.city);
 
         this.usersz.push(reclaimercode)
 
@@ -685,7 +692,7 @@ this.slides.slideNext();
     this.name = '';
     this.surnames = '';
     this.contacts = '';
-    this.addresss = ''
+    // this.addresss = ''
   }
 
   async presentAlertDelete(id) {
@@ -2149,13 +2156,15 @@ switchView(id) {
   this.reclaimer.get().then((documentSnapshot) => {
     this.ViewReclaimer = [];
     this.ViewReclaimer.push(documentSnapshot.data());
-    console.log(this.ViewReclaimer);
+    this.id = documentSnapshot.data().id;
+    this.image = documentSnapshot.data().image;
+    console.log(this.image);
   });
   this.db.collection('reclaimersMass').where('reclaimerID', '==', id).onSnapshot(snapshot => {
     this.ViewReclaimerMass = [];
     snapshot.forEach(element => {
       // this.ViewReclaimerMass = [];
-      console.log(element.data());
+      // console.log(element.data());
 
     this.ViewReclaimerPDF.push(element.data())
     // console.log(this.ViewReclaimerPDF);
@@ -2181,7 +2190,7 @@ switchView(id) {
       reclaimerID: this.id,
       productID: this.productID
     });
-      console.log(this.ViewReclaimerMass);
+      // console.log(this.ViewReclaimerMass);
     
       this.GH001storagemass = element.data().GH001;
       this.GH001storagemassz = (String(this.GH001storagemass).substring(0, 6));
@@ -2354,7 +2363,7 @@ IDnumber:any
 
   PullUserInfor(id) {
     this.reclaimer = this.db.collection('reclaimers').doc(id).get().then(element => {
-      console.log(element.data());
+      // console.log(element.data());
       // snap.forEach(element => {
         this.name = element.data().name;
         this.contact = element.data().contact;
@@ -2390,7 +2399,9 @@ IDnumber:any
           text: 'Okay',
           handler: () => {
             this.SaveUpdates()
-            this.route.navigateByUrl('/outbound-driver-info');
+            console.log(this.id);
+            // console.log('im here im clicked');
+            this.route.navigateByUrl('/reclaimer');
           }
         }
       ]
@@ -2405,8 +2416,10 @@ IDnumber:any
       IDnumber: this.IDnumber,
       streetname: this.streetname,
       town: this.town,
-      city: this.city
+      city: this.city,
+      image: this.image
     })
+       console.log(this.id);
   }
 
   // getPhoneInput(ev: any) {
@@ -2470,7 +2483,7 @@ pullHistoryData(id) {
           let janMass = 0;
           janMass = +janMass + +parseFloat(this.januserArray[keyjan].OverallMass);
           this.jan = +this.jan + +janMass;
-          console.log(this.jan);
+          // console.log(this.jan);
         }
       }
     })
@@ -2493,7 +2506,7 @@ pullHistoryData(id) {
           let febMass = 0;
           febMass = +febMass + +parseFloat(this.febuserArray[keyfeb].OverallMass);
           this.feb = +this.feb + +febMass
-          console.log(this.feb);
+          // console.log(this.feb);
         }
       }
     })
@@ -2519,8 +2532,8 @@ pullHistoryData(id) {
         }
       }
       
-      console.log(marMass);
-      console.log(this.mar);
+      // console.log(marMass);
+      // console.log(this.mar);
     })
   })
 
@@ -2541,7 +2554,7 @@ pullHistoryData(id) {
           let aprMass = 0;
           aprMass = +aprMass + +parseFloat(this.apruserArray[keyapr].OverallMass);
           this.apr = +this.apr + +aprMass;
-          console.log(this.apr);
+          // console.log(this.apr);
         }
       }
     })
@@ -2564,7 +2577,7 @@ pullHistoryData(id) {
           let mayMass = 0;
           mayMass = +mayMass + +parseFloat(this.mayuserArray[keymay].OverallMass);
           this.may = +this.may + +mayMass;
-          console.log(this.may);
+          // console.log(this.may);
         }
       }
     })
@@ -2587,7 +2600,7 @@ pullHistoryData(id) {
           let junMass = 0;
           junMass = +junMass + +parseFloat(this.junuserArray[keyjun].OverallMass);
           this.jun = +this.jun + +junMass;
-          console.log(this.jun);
+          // console.log(this.jun);
         }
       }
     })
@@ -2610,7 +2623,7 @@ pullHistoryData(id) {
           let julMass = 0;
           julMass = +julMass + +parseFloat(this.juluserArray[keyjul].OverallMass);
           this.jul = +this.jul + +julMass;
-          console.log(this.jul);
+          // console.log(this.jul);
         }
       }
     })
@@ -2633,7 +2646,7 @@ pullHistoryData(id) {
           let augMass = 0;
           augMass = +augMass + +parseFloat(this.auguserArray[keyaug].OverallMass);
           this.aug = +this.aug + +augMass; 
-          console.log(this.aug);
+          // console.log(this.aug);
         }
       }
     })
@@ -2656,7 +2669,7 @@ pullHistoryData(id) {
           let sepMass = 0;
           sepMass = +sepMass + +parseFloat(this.sepuserArray[keysep].OverallMass);
           this.sep = +this.sep + +sepMass;
-          console.log(this.sep);
+          // console.log(this.sep);
         }
       }
     })
@@ -2679,7 +2692,7 @@ pullHistoryData(id) {
           let octMass = 0;
           octMass = +octMass + +parseFloat(this.octuserArray[keyoct].OverallMass);
           this.oct = +this.oct + +octMass;
-          console.log(this.oct);
+          // console.log(this.oct);
         }
       }
     })
@@ -2702,7 +2715,7 @@ pullHistoryData(id) {
           let novMass = 0;
           novMass = +novMass + +parseFloat(this.novuserArray[keynov].OverallMass);
           this.nov = +this.nov + +novMass;
-          console.log(this.nov);
+          // console.log(this.nov);
         }
       }
     })
@@ -2725,7 +2738,7 @@ pullHistoryData(id) {
           let decMass = 0;
           decMass = +decMass + +parseFloat(this.decuserArray[keydec].OverallMass);
           this.dec = +this.dec + +decMass; 
-          console.log(this.dec);
+          // console.log(this.dec);
         }
       }
     })

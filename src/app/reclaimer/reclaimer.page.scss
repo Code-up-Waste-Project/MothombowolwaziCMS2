@@ -1849,18 +1849,18 @@ font-family: 'lato';
             }
       }
       .profileimage {
-         border: 2px solid rgb(211, 208, 208);
-         width: 200px;
-         height: 200px;
-          border-radius: 50%;
-          img {
-              object-fit: cover;
-              border-radius: 50%;
-              height: 100%;
-              width: 100%;
-          }
+        border: 2px solid rgb(211, 208, 208);
+        width: 200px;
+        height: 200px;
+         border-radius: 50%;
+         img {
+             object-fit: cover;
+             border-radius: 50%;
+             height: 100%;
+             width: 100%;
+         }
 
-      }
+     }
   }
   .profiledetails {
     //  border: 1px solid green;

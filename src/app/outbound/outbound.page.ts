@@ -368,7 +368,7 @@ currentLocation: any = {
         outDriverName = this.outDriverName = element.data().DriverName;
         outRegistarionNumberPlates = this.outRegistarionNumberPlates = element.data().RegistarionNumberPlates;
         outovarallMass = this.outovarallMass = element.data().ovarallMass;
-        // Destination = this.Destination = element.data().Destination;
+        this.image = element.data().image;
         TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
 
         // this.outbound = [];
@@ -685,7 +685,7 @@ in_your_method() {
       snapshot.forEach(element => {
         // console.log(element.data());
         this.ViewOutboundMasses.push(element.data());
-        console.log(this.ViewOutboundMasses);
+        // console.log(this.ViewOutboundMasses);
 
         this.GH001storagemass = element.data().GH001;
         this.GH001storagemassz = (String(this.GH001storagemass).substring(0, 6));
@@ -741,9 +741,12 @@ in_your_method() {
           +parseFloat(element.data().PET003) +
           +parseFloat(element.data().PET005);
 
-        this.alumTotal = this.alumTotal +parseFloat(element.data().NFAL01);
+        this.alumTotal = +parseFloat(element.data().NFAL01);
 
-        this.glassTotal = this.glassTotal +parseFloat(element.data().GH001);
+        this.glassTotal = +parseFloat(element.data().GH001);
+
+        // console.log(this.alumTotal);
+        // console.log(this.glassTotal);
 
       });
     })
@@ -2181,6 +2184,45 @@ in_your_method() {
 
     switch(){
       this.come = !this.come;
+    }
+
+    async presentAlertUpdate() {
+      const alert = await this.alertController.create({
+        header: 'Warning!',
+        message: '<strong>Are you sure you want to update Driver Information?.</strong>!!!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          },
+          {
+            text: 'Okay',
+            handler: () => {
+              this.SaveUpdates()
+              console.log(this.id);
+              console.log('im here im clicked');
+              this.route.navigateByUrl('/outbound');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+
+    SaveUpdates() {
+      this.db.collection('outbound').doc(this.id).update({
+        DriverName: this.DriverName,
+        numbers: this.numbers,
+        RegistarionNumberPlates: this.RegistarionNumberPlates,
+        TruckSourcess: this.TruckSourcess,
+        companyaddress: this.companyaddress,
+        image: this.image
+      })
+         console.log(this.id);
     }
   
     // hide() {

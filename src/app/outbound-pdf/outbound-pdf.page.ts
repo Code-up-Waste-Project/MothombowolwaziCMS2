@@ -63,12 +63,14 @@ export class OutboundPDFPage implements OnInit {
   duration;
   driveID;
   truckcode;
+  truckcodes;
 
   OutName = this.DriverName;
   OutNumberPlates = this.RegistarionNumberPlates;
   Outstorage = this.overallStorage;
   OutTruckSource = this.TruckSourcess;
   OutDestination = this.Destination;
+  numbers;
 
   GH001storagemass;
   NFAL01storagemass;
@@ -272,27 +274,24 @@ export class OutboundPDFPage implements OnInit {
           this.outBoundPDFPrint.push({name: key, number: this.PDFArray2[key]})
         }
       }
-
-      this.getUserInfor(this.driveID);
-      this.CreatePDF2();
+      this.getUserInfor(this.id)
 
     })
        
-        // console.log(this.PDFArrayPrint);
-      // });
-
    }
 
    ngOnInit() {
   }
 
   getUserInfor(id) {
-    this.db.collection('outbound').doc(id).onSnapshot((element) => {
-      console.log(element.data());
+    this.db.collection('outbound').doc(this.driveID).onSnapshot((element) => {
+      // console.log(element.data());
       // this.ViewOutbound.push(element.data());
-      // console.log(this.ViewOutbound);
+      // console.log(this.id);
 
       // console.log(element.data);
+
+      // element.forEach(snap => {
       let DriverName = {};
       let RegistarionNumberPlates = {};
       let overallStorage = {};
@@ -300,16 +299,22 @@ export class OutboundPDFPage implements OnInit {
       let Destination = {};
       let time = {};
 
+      
       DriverName = this.DriverName = element.data().DriverName;
       RegistarionNumberPlates = this.RegistarionNumberPlates = element.data().RegistarionNumberPlates;
       TruckSourcess = this.TruckSourcess = element.data().TruckSourcess;
-      Destination = this.Destination = element.data().Destination;
+      this.truckcodes = element.data().truckcode;
+      this.numbers = element.data().numbers;
       console.log(this.DriverName);
       console.log(this.RegistarionNumberPlates);
-      // console.log(this.overallStorage);
+      console.log(this.truckcodes);
       console.log(this.TruckSourcess);
-      console.log(this.Destination);
+      // console.log(this.Destination);
       // console.log(this.overallStoragez);
+      // })
+
+      this.CreatePDF2();
+      
     });
   }
 
@@ -476,9 +481,12 @@ this.pdfObj = pdfMake.createPdf(docDefinition);
             widths: ['50%','50%'],
           
             body: [
-              // [{ text: 'Mthombowolwazi General Service (PTY) LTD', color: 'gray' }, { text: '', color: 'gray', Border: false }],
+              [{ text: 'Drivers Name', color: 'gray' }, { text: this.DriverName, color: 'gray', Border: false,bold: true, fontSize: 14, alignment: 'right' }],
+              [{ text: 'Drivers Phone Numbers', color: 'gray' }, { text: this.numbers, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right' }],
+              [{ text: 'Drivers truckcode', color: 'gray' }, { text: this.truckcodes, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right' }],
+              [{ text: 'Drivers Company Name', color: 'gray' }, { text: this.TruckSourcess, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right' }],
               [{ text: 'Destination', color: 'gray' }, { text: this.Destination, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right'  }],
-              [{ text: 'Distance', color: 'gray' }, { text: this.distance, color: 'gray', Border: false, bold: false, alignment: 'right' }],
+              [{ text: 'Distance', color: 'gray' }, { text: this.distance, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right' }],
               [{ text: 'Duration', color: 'gray' }, { text: this.duration, color: 'gray', Border: false, bold: true, fontSize: 14, alignment: 'right'}],
               [{ text: 'Drive ID', color: 'gray' }, { text: this.driveID, color: 'gray', Border: false, bold: false, alignment: 'right' }],
               [{ text: 'Truck Code', color: 'gray' }, { text: this.truckcode, color: 'gray', Border: false, bold: false, alignment: 'right' }],

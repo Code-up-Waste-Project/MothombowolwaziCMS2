@@ -1171,7 +1171,7 @@ inboundHistory(){
         console.log(!(num == 0));
         
         
-        let arr = this.recordinbounddisplaysz.filter(item => String(item.truckcode).indexOf(val) >= 0)
+        let arr = this.recordinbounddisplaysz.filter(item => String(item.data.truckcode).indexOf(val) >= 0)
         console.log(arr);
 
         this.searchResults = arr;
